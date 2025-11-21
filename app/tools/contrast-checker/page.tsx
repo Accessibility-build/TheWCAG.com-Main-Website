@@ -308,7 +308,7 @@ export default function ContrastCheckerPage() {
               <h2 className="text-2xl font-bold mb-4">Related Success Criteria</h2>
               <div className="grid sm:grid-cols-3 gap-3">
                 <Link
-                  href="/criteria/1-4-3"
+                  href="/criteria/1.4.3"
                   className="flex items-center justify-between p-4 rounded-lg border hover:bg-muted transition-colors"
                 >
                   <div>
@@ -318,7 +318,7 @@ export default function ContrastCheckerPage() {
                   <ArrowRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
                 </Link>
                 <Link
-                  href="/criteria/1-4-6"
+                  href="/criteria/1.4.6"
                   className="flex items-center justify-between p-4 rounded-lg border hover:bg-muted transition-colors"
                 >
                   <div>
@@ -328,7 +328,7 @@ export default function ContrastCheckerPage() {
                   <ArrowRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
                 </Link>
                 <Link
-                  href="/criteria/1-4-11"
+                  href="/criteria/1.4.11"
                   className="flex items-center justify-between p-4 rounded-lg border hover:bg-muted transition-colors"
                 >
                   <div>

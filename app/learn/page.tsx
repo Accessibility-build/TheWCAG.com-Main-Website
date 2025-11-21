@@ -44,19 +44,19 @@ export default function LearnPage() {
                       <ul className="space-y-1 text-sm text-muted-foreground">
                         <li>
                           •{" "}
-                          <Link href="/criteria/4-1-2" className="hover:text-foreground">
+                          <Link href="/criteria/4.1.2" className="hover:text-foreground">
                             Semantic HTML basics
                           </Link>
                         </li>
                         <li>
                           •{" "}
-                          <Link href="/criteria/2-1-1" className="hover:text-foreground">
+                          <Link href="/criteria/2.1.1" className="hover:text-foreground">
                             Keyboard accessibility
                           </Link>
                         </li>
                         <li>
                           •{" "}
-                          <Link href="/criteria/1-1-1" className="hover:text-foreground">
+                          <Link href="/criteria/1.1.1" className="hover:text-foreground">
                             Alt text for images
                           </Link>
                         </li>
@@ -89,19 +89,19 @@ export default function LearnPage() {
                       <ul className="space-y-1 text-sm text-muted-foreground">
                         <li>
                           •{" "}
-                          <Link href="/criteria/1-4-3" className="hover:text-foreground">
+                          <Link href="/criteria/1.4.3" className="hover:text-foreground">
                             Color contrast requirements
                           </Link>
                         </li>
                         <li>
                           •{" "}
-                          <Link href="/criteria/2-5-8" className="hover:text-foreground">
+                          <Link href="/criteria/2.5.8" className="hover:text-foreground">
                             Touch target sizing
                           </Link>
                         </li>
                         <li>
                           •{" "}
-                          <Link href="/criteria/1-4-1" className="hover:text-foreground">
+                          <Link href="/criteria/1.4.1" className="hover:text-foreground">
                             Don't rely on color alone
                           </Link>
                         </li>
@@ -164,19 +164,19 @@ export default function LearnPage() {
                       <ul className="space-y-1 text-sm text-muted-foreground">
                         <li>
                           •{" "}
-                          <Link href="/criteria/1-3-1" className="hover:text-foreground">
+                          <Link href="/criteria/1.3.1" className="hover:text-foreground">
                             Proper heading structure
                           </Link>
                         </li>
                         <li>
                           •{" "}
-                          <Link href="/criteria/2-4-4" className="hover:text-foreground">
+                          <Link href="/criteria/2.4.4" className="hover:text-foreground">
                             Descriptive link text
                           </Link>
                         </li>
                         <li>
                           •{" "}
-                          <Link href="/criteria/3-1-5" className="hover:text-foreground">
+                          <Link href="/criteria/3.1.5" className="hover:text-foreground">
                             Reading level guidance
                           </Link>
                         </li>

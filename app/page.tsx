@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -7,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { HeroSearch } from "@/components/hero-search"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
+import { StructuredData } from "@/components/structured-data"
 import {
   Search,
   Eye,
@@ -21,9 +23,88 @@ import {
   ShieldCheck,
 } from "lucide-react"
 
+export const metadata: Metadata = {
+  title: "TheWCAG.com - Complete WCAG 2.2 Accessibility Guidelines & Resources",
+  description:
+    "Master web accessibility with TheWCAG.com - your comprehensive guide to WCAG 2.2. Interactive examples, code snippets, testing guides, and tools for developers and designers.",
+  keywords: [
+    "WCAG",
+    "WCAG 2.2",
+    "web accessibility",
+    "accessibility guidelines",
+    "a11y",
+    "WCAG compliance",
+    "accessibility standards",
+    "web accessibility tools",
+    "accessibility checklist",
+    "ADA compliance",
+    "Section 508",
+  ],
+  openGraph: {
+    title: "TheWCAG.com - Complete WCAG 2.2 Accessibility Guidelines",
+    description:
+      "Master web accessibility with our comprehensive WCAG 2.2 guide. Interactive examples, tools, and resources.",
+    url: "https://thewcag.com",
+    siteName: "TheWCAG",
+    type: "website",
+    images: [
+      {
+        url: "https://thewcag.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "TheWCAG.com - WCAG 2.2 Accessibility Guidelines",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TheWCAG.com - Complete WCAG 2.2 Accessibility Guidelines",
+    description:
+      "Master web accessibility with our comprehensive WCAG 2.2 guide. Interactive examples, tools, and resources.",
+    images: ["https://thewcag.com/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://thewcag.com",
+  },
+}
+
 export default function HomePage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "TheWCAG.com",
+    description: "Complete WCAG 2.2 Accessibility Guidelines with interactive examples and tools",
+    url: "https://thewcag.com",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://thewcag.com/?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+    },
+  }
+
+  const organizationData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "TheWCAG.com",
+    url: "https://thewcag.com",
+    description: "Comprehensive WCAG 2.2 accessibility guidelines and resources",
+    sameAs: [
+      // Add social media links when available
+    ],
+  }
+
   return (
     <>
+      <StructuredData data={structuredData} />
+      <StructuredData data={organizationData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

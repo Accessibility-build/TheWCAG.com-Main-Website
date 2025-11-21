@@ -72,7 +72,7 @@ export default function WhatsNewPage() {
                   <Card key={criterion.id} className="hover:shadow-md transition-shadow">
                     <CardHeader>
                       <div className="flex items-start justify-between gap-4 mb-2">
-                        <Link href={`/criteria/${criterion.id}`} className="flex-1 group">
+                        <Link href={`/criteria/${criterion.number}`} className="flex-1 group">
                           <CardTitle className="group-hover:text-primary transition-colors">
                             {criterion.number} {criterion.title}
                           </CardTitle>
@@ -85,7 +85,7 @@ export default function WhatsNewPage() {
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-muted-foreground capitalize">{criterion.principle}</span>
                         <Link
-                          href={`/criteria/${criterion.id}`}
+                          href={`/criteria/${criterion.number}`}
                           className="inline-flex items-center text-sm font-medium text-primary hover:underline"
                         >
                           Learn more

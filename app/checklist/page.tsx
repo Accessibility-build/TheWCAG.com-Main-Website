@@ -1,5 +1,6 @@
 "use client"
 
+import type { Metadata } from "next"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Header } from "@/components/header"
@@ -14,6 +15,9 @@ import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Download, Filter, CheckCircle2, Circle } from "lucide-react"
 import { successCriteria, principles } from "@/lib/wcag-data"
+
+// Note: Metadata cannot be exported from client components
+// Consider creating a layout.tsx or converting to server component if metadata is needed
 
 export default function ChecklistPage() {
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set())
@@ -120,11 +124,17 @@ export default function ChecklistPage() {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="w-full h-4 bg-muted rounded-full overflow-hidden">
+                <div 
+                  className="w-full h-5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden border-2 border-gray-400 dark:border-gray-600 shadow-inner"
+                  role="progressbar"
+                  aria-valuenow={progressPercent}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-label={`${progressPercent}% complete`}
+                >
                   <div
-                    className="h-full bg-primary transition-all duration-300"
+                    className="h-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 dark:from-orange-500 dark:via-orange-400 dark:to-orange-500 transition-all duration-300 rounded-full shadow-sm"
                     style={{ width: `${progressPercent}%` }}
-                    aria-label={`${progressPercent}% complete`}
                   />
                 </div>
               </CardContent>
@@ -132,76 +142,87 @@ export default function ChecklistPage() {
 
             {/* Filters */}
             <Card className="mb-8">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+              <CardHeader className="pb-4">
+                <CardTitle className="flex items-center gap-2 text-xl">
                   <Filter className="h-5 w-5" aria-hidden="true" />
                   Filters
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="space-y-2">
-                    <label htmlFor="filter-level" className="text-sm font-medium">
-                      Conformance Level
-                    </label>
-                    <Select value={filterLevel} onValueChange={(value: any) => setFilterLevel(value)}>
-                      <SelectTrigger id="filter-level">
-                        <SelectValue placeholder="All levels" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Visible Levels</SelectItem>
-                        <SelectItem value="A">Level A Only</SelectItem>
-                        <SelectItem value="AA">Level AA (A + AA)</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="filter-principle" className="text-sm font-medium">
-                      Principle
-                    </label>
-                    <Select value={filterPrinciple} onValueChange={setFilterPrinciple}>
-                      <SelectTrigger id="filter-principle">
-                        <SelectValue placeholder="All principles" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Principles</SelectItem>
-                        <SelectItem value="perceivable">Perceivable</SelectItem>
-                        <SelectItem value="operable">Operable</SelectItem>
-                        <SelectItem value="understandable">Understandable</SelectItem>
-                        <SelectItem value="robust">Robust</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="flex flex-col justify-end gap-2">
-                    <button
-                      onClick={() => setFilterNew(!filterNew)}
-                      className={`flex items-center gap-2 px-4 py-2 border rounded-md transition-colors text-sm ${
-                        filterNew ? "bg-primary text-primary-foreground" : "hover:bg-muted"
-                      }`}
-                    >
-                      {filterNew ? <CheckCircle2 className="h-4 w-4" /> : <Circle className="h-4 w-4" />}
-                      New in 2.2
-                    </button>
-
-                    <div className="flex items-center space-x-2 px-1">
-                      <Checkbox
-                        id="show-aaa"
-                        checked={showAAA}
-                        onCheckedChange={(checked) => setShowAAA(checked as boolean)}
-                      />
-                      <label
-                        htmlFor="show-aaa"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Show AAA Criteria
+                <div className="space-y-6">
+                  {/* First Row: Dropdown Filters */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label htmlFor="filter-level" className="text-sm font-semibold text-foreground block">
+                        Conformance Level
                       </label>
+                      <Select value={filterLevel} onValueChange={(value: any) => setFilterLevel(value)}>
+                        <SelectTrigger id="filter-level" className="w-full">
+                          <SelectValue placeholder="Select level" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Visible Levels</SelectItem>
+                          <SelectItem value="A">Level A Only</SelectItem>
+                          <SelectItem value="AA">Level AA (A + AA)</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label htmlFor="filter-principle" className="text-sm font-semibold text-foreground block">
+                        Principle
+                      </label>
+                      <Select value={filterPrinciple} onValueChange={setFilterPrinciple}>
+                        <SelectTrigger id="filter-principle" className="w-full">
+                          <SelectValue placeholder="Select principle" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Principles</SelectItem>
+                          <SelectItem value="perceivable">Perceivable</SelectItem>
+                          <SelectItem value="operable">Operable</SelectItem>
+                          <SelectItem value="understandable">Understandable</SelectItem>
+                          <SelectItem value="robust">Robust</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                   </div>
 
-                  <div className="flex items-end gap-2">
-                    <Button variant="outline" onClick={clearAll} className="flex-1 bg-transparent">
+                  {/* Second Row: Toggles and Actions */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t">
+                    <div className="flex flex-wrap items-center gap-6">
+                      <Button
+                        variant={filterNew ? "default" : "outline"}
+                        onClick={() => setFilterNew(!filterNew)}
+                        className="h-9"
+                      >
+                        {filterNew ? (
+                          <CheckCircle2 className="h-4 w-4 mr-2" />
+                        ) : (
+                          <Circle className="h-4 w-4 mr-2" />
+                        )}
+                        New in 2.2
+                      </Button>
+
+                      <div className="flex items-center gap-3">
+                        <Checkbox
+                          id="show-aaa"
+                          checked={showAAA}
+                          onCheckedChange={(checked) => setShowAAA(checked as boolean)}
+                        />
+                        <label
+                          htmlFor="show-aaa"
+                          className="text-sm font-medium leading-none cursor-pointer select-none"
+                        >
+                          Show AAA Criteria
+                        </label>
+                      </div>
+                    </div>
+
+                    <Button 
+                      variant="outline" 
+                      onClick={clearAll}
+                      className="h-9"
+                    >
                       Clear All
                     </Button>
                   </div>
@@ -227,9 +248,16 @@ export default function ChecklistPage() {
                         </Badge>
                       </div>
                       <CardDescription>{principleData.description}</CardDescription>
-                      <div className="w-full h-2 bg-muted rounded-full overflow-hidden mt-3">
+                      <div 
+                        className="w-full h-3 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden mt-3 border border-gray-400 dark:border-gray-600 shadow-inner"
+                        role="progressbar"
+                        aria-valuenow={principlePercent}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                        aria-label={`${principlePercent}% complete for ${principleData.title}`}
+                      >
                         <div
-                          className="h-full bg-primary transition-all duration-300"
+                          className="h-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 dark:from-orange-500 dark:via-orange-400 dark:to-orange-500 transition-all duration-300 rounded-full shadow-sm"
                           style={{ width: `${principlePercent}%` }}
                         />
                       </div>
@@ -260,7 +288,7 @@ export default function ChecklistPage() {
                               <p className="text-sm text-muted-foreground">{criterion.summary}</p>
                             </label>
                             <Link
-                              href={`/criteria/${criterion.id}`}
+                              href={`/criteria/${criterion.number}`}
                               className="text-sm text-primary hover:underline inline-flex items-center mt-1"
                             >
                               View details →

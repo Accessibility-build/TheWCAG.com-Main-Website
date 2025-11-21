@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
@@ -15,6 +16,7 @@ export default function ExamplesPage() {
           title: "Accessible Input Fields",
           description: "Proper labels, error messages, and validation",
           criteria: ["3.3.1", "3.3.2", "4.1.2"],
+          href: "/examples/accessible-input-fields",
         },
         {
           title: "Date Picker",
@@ -106,26 +108,34 @@ export default function ExamplesPage() {
                       {category.category}
                     </h2>
                     <div className="grid md:grid-cols-2 gap-4">
-                      {category.items.map((item) => (
-                        <Card key={item.title} className="hover:shadow-md transition-shadow">
-                          <CardHeader>
-                            <CardTitle className="text-lg">{item.title}</CardTitle>
-                            <CardDescription className="leading-relaxed">{item.description}</CardDescription>
-                          </CardHeader>
-                          <CardContent>
-                            <div className="flex items-center justify-between">
-                              <div className="flex gap-2 flex-wrap">
-                                {item.criteria.map((criterion) => (
-                                  <Badge key={criterion} variant="outline" className="text-xs">
-                                    {criterion}
-                                  </Badge>
-                                ))}
-                              </div>
-                              <Code2 className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
+                      {category.items.map((item) => {
+                        const ItemCard = item.href ? Link : "div"
+                        return (
+                          <ItemCard key={item.title} href={item.href || "#"} className={item.href ? "block" : ""}>
+                            <Card className={`hover:shadow-md transition-shadow ${item.href ? "cursor-pointer" : ""}`}>
+                              <CardHeader>
+                                <CardTitle className="text-lg flex items-center justify-between">
+                                  {item.title}
+                                  {item.href && <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />}
+                                </CardTitle>
+                                <CardDescription className="leading-relaxed">{item.description}</CardDescription>
+                              </CardHeader>
+                              <CardContent>
+                                <div className="flex items-center justify-between">
+                                  <div className="flex gap-2 flex-wrap">
+                                    {item.criteria.map((criterion) => (
+                                      <Badge key={criterion} variant="outline" className="text-xs">
+                                        {criterion}
+                                      </Badge>
+                                    ))}
+                                  </div>
+                                  {!item.href && <Code2 className="h-4 w-4 text-muted-foreground" aria-hidden="true" />}
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </ItemCard>
+                        )
+                      })}
                     </div>
                   </section>
                 )

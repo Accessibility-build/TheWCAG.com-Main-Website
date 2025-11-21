@@ -64,8 +64,43 @@ export default async function PrinciplePage({
     {} as Record<string, { title: string; criteria: typeof criteria }>,
   )
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: `${principleData.title} - WCAG 2.2`,
+    description: principleData.description,
+    url: `https://thewcag.com/principles/${principle}`,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Principles",
+          item: "https://thewcag.com/principles",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: principleData.title,
+          item: `https://thewcag.com/principles/${principle}`,
+        },
+      ],
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />
@@ -117,7 +152,7 @@ export default async function PrinciplePage({
                       <Card key={criterion.id} className="hover:shadow-md transition-shadow">
                         <CardHeader>
                           <div className="flex items-start justify-between gap-4">
-                            <Link href={`/criteria/${criterion.id}`} className="flex-1 group">
+                            <Link href={`/criteria/${criterion.number}`} className="flex-1 group">
                               <CardTitle className="group-hover:text-primary transition-colors mb-2">
                                 {criterion.number} {criterion.title}
                               </CardTitle>
@@ -131,7 +166,7 @@ export default async function PrinciplePage({
                         </CardHeader>
                         <CardContent>
                           <Link
-                            href={`/criteria/${criterion.id}`}
+                            href={`/criteria/${criterion.number}`}
                             className="inline-flex items-center text-sm font-medium text-primary hover:underline"
                           >
                             View details
