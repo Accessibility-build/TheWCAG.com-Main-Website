@@ -1,12 +1,13 @@
 "use client"
 
-import { CheckCircle2, XCircle, Copy, Check } from "lucide-react"
+import { CheckCircle2, XCircle, Copy, Check, Eye, Image as ImageIcon, FileImage, AlertCircle } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { LevelBadge } from "@/components/level-badge"
+import { CriteriaPageLayout } from "@/components/criteria-page-layout"
 import Image from "next/image"
 
 export default function NonTextContentPage() {
@@ -19,7 +20,8 @@ export default function NonTextContentPage() {
   }
 
   return (
-    <div className="container py-8 max-w-6xl">
+    <CriteriaPageLayout>
+      <div className="container py-8 md:py-12 max-w-6xl">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
         <Link href="/" className="hover:text-foreground transition-colors">
@@ -46,13 +48,41 @@ export default function NonTextContentPage() {
       </div>
 
       {/* Why It Matters */}
-      <Card className="p-6 mb-8 bg-primary/5 border-primary/20">
-        <h2 className="text-2xl font-semibold mb-4">Why This Matters</h2>
-        <p className="text-lg leading-relaxed">
-          Text alternatives make visual content accessible to people who cannot see images, whether due to blindness,
-          low vision, or technical limitations. Screen readers announce these alternatives, ensuring everyone can
-          understand the content's meaning and purpose.
-        </p>
+      <Card className="p-6 md:p-8 mb-8 bg-primary/5 border-primary/20">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+          <AlertCircle className="w-6 h-6 text-primary" />
+          Why This Matters
+        </h2>
+        <div className="space-y-4">
+          <p className="text-lg leading-relaxed">
+            Text alternatives make visual content accessible to people who cannot see images, whether due to blindness,
+            low vision, or technical limitations. Screen readers announce these alternatives, ensuring everyone can
+            understand the content's meaning and purpose.
+          </p>
+          <div className="grid md:grid-cols-3 gap-4 mt-6">
+            <div className="flex items-start gap-3">
+              <Eye className="w-5 h-5 text-primary mt-1" />
+              <div>
+                <h4 className="font-semibold mb-1">Blind Users</h4>
+                <p className="text-sm text-muted-foreground">Rely entirely on alt text to understand images</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <ImageIcon className="w-5 h-5 text-primary mt-1" />
+              <div>
+                <h4 className="font-semibold mb-1">Low Vision</h4>
+                <p className="text-sm text-muted-foreground">May use screen readers or zoom tools</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <FileImage className="w-5 h-5 text-primary mt-1" />
+              <div>
+                <h4 className="font-semibold mb-1">Slow Connections</h4>
+                <p className="text-sm text-muted-foreground">Images may not load, alt text provides context</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </Card>
 
       {/* Interactive Examples */}
@@ -66,14 +96,31 @@ export default function NonTextContentPage() {
               <XCircle className="w-5 h-5 text-destructive" />
               <h3 className="font-semibold text-lg">❌ Incorrect</h3>
             </div>
-            <div className="bg-muted p-4 rounded-lg mb-4">
-              <Image src="/product-screenshot.png" alt="" width={300} height={200} className="w-full rounded" />
+            <div className="bg-muted p-4 rounded-lg mb-4 min-h-[200px] flex items-center justify-center border-2 border-dashed border-destructive/30">
+              <div className="text-center">
+                <ImageIcon className="w-16 h-16 mx-auto mb-2 text-muted-foreground/50" />
+                <p className="text-sm text-muted-foreground">Image without alt text</p>
+              </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-2">
-              <strong>Problem:</strong> Empty alt attribute on meaningful image
-            </p>
-            <code className="text-xs bg-destructive/10 px-2 py-1 rounded block">alt=""</code>
-            <p className="text-sm mt-2">Screen reader says: "Image" (no context)</p>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm font-semibold mb-2 text-destructive">Problem:</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Empty alt attribute on meaningful image. Screen readers cannot convey any information about this image.
+                </p>
+                <code className="text-xs bg-destructive/10 px-2 py-1 rounded block">alt=""</code>
+              </div>
+              <div className="bg-destructive/5 p-3 rounded border border-destructive/20">
+                <p className="text-xs font-semibold mb-1">Screen Reader Output:</p>
+                <p className="text-xs text-muted-foreground italic">"Image" (no context provided)</p>
+              </div>
+              <div className="bg-destructive/5 p-3 rounded border border-destructive/20">
+                <p className="text-xs font-semibold mb-1">Impact:</p>
+                <p className="text-xs text-muted-foreground">
+                  Users who cannot see the image miss all information it contains. This violates WCAG 2.2 Level A.
+                </p>
+              </div>
+            </div>
           </Card>
 
           {/* Good Example */}
@@ -82,22 +129,126 @@ export default function NonTextContentPage() {
               <CheckCircle2 className="w-5 h-5 text-green-600" />
               <h3 className="font-semibold text-lg">✓ Correct</h3>
             </div>
-            <div className="bg-muted p-4 rounded-lg mb-4">
-              <Image
-                src="/product-screenshot.png"
-                alt="Dashboard showing sales growth of 45% in Q4 2024"
-                width={300}
-                height={200}
-                className="w-full rounded"
-              />
+            <div className="bg-muted p-4 rounded-lg mb-4 min-h-[200px] flex items-center justify-center border-2 border-green-500/30">
+              <div className="text-center">
+                <ImageIcon className="w-16 h-16 mx-auto mb-2 text-green-600/50" />
+                <p className="text-sm font-semibold">Dashboard Chart</p>
+                <p className="text-xs text-muted-foreground mt-1">Sales growth visualization</p>
+              </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-2">
-              <strong>Solution:</strong> Descriptive alt text explaining the content
-            </p>
-            <code className="text-xs bg-green-500/10 px-2 py-1 rounded block">
-              alt="Dashboard showing sales growth of 45% in Q4 2024"
-            </code>
-            <p className="text-sm mt-2">Screen reader says: "Dashboard showing sales growth of 45% in Q4 2024"</p>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm font-semibold mb-2 text-green-600">Solution:</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Descriptive alt text that explains both the content and its purpose in context.
+                </p>
+                <code className="text-xs bg-green-500/10 px-2 py-1 rounded block">
+                  alt="Dashboard showing sales growth of 45% in Q4 2024"
+                </code>
+              </div>
+              <div className="bg-green-500/5 p-3 rounded border border-green-500/20">
+                <p className="text-xs font-semibold mb-1">Screen Reader Output:</p>
+                <p className="text-xs text-muted-foreground italic">
+                  "Dashboard showing sales growth of 45% in Q4 2024, image"
+                </p>
+              </div>
+              <div className="bg-green-500/5 p-3 rounded border border-green-500/20">
+                <p className="text-xs font-semibold mb-1">Impact:</p>
+                <p className="text-xs text-muted-foreground">
+                  All users understand the image content. Meets WCAG 2.2 Level A requirements.
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      {/* Real-World Scenarios */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold mb-6">Real-World Scenarios</h2>
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <Card className="p-6">
+            <h3 className="text-xl font-semibold mb-3">📱 E-commerce Product Images</h3>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm font-semibold mb-1">❌ Bad:</p>
+                <code className="text-xs bg-destructive/10 px-2 py-1 rounded block mb-2">
+                  alt="product-image.jpg"
+                </code>
+              </div>
+              <div>
+                <p className="text-sm font-semibold mb-1">✓ Good:</p>
+                <code className="text-xs bg-green-500/10 px-2 py-1 rounded block">
+                  alt="Blue wireless headphones with noise cancellation, $199"
+                </code>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Why:</strong> Users need to know what the product is and key details. The filename provides no value.
+              </p>
+            </div>
+          </Card>
+
+          <Card className="p-6">
+            <h3 className="text-xl font-semibold mb-3">📊 Data Visualizations</h3>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm font-semibold mb-1">❌ Bad:</p>
+                <code className="text-xs bg-destructive/10 px-2 py-1 rounded block mb-2">
+                  alt="Chart"
+                </code>
+              </div>
+              <div>
+                <p className="text-sm font-semibold mb-1">✓ Good:</p>
+                <code className="text-xs bg-green-500/10 px-2 py-1 rounded block">
+                  alt="Bar chart: Sales increased from $50K in Q1 to $120K in Q4"
+                </code>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Why:</strong> Charts contain critical data. Summarize key trends and numbers in the alt text.
+              </p>
+            </div>
+          </Card>
+
+          <Card className="p-6">
+            <h3 className="text-xl font-semibold mb-3">🔘 Icon Buttons</h3>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm font-semibold mb-1">❌ Bad:</p>
+                <code className="text-xs bg-destructive/10 px-2 py-1 rounded block mb-2">
+                  alt="icon"
+                </code>
+              </div>
+              <div>
+                <p className="text-sm font-semibold mb-1">✓ Good:</p>
+                <code className="text-xs bg-green-500/10 px-2 py-1 rounded block">
+                  alt="Print this page"
+                </code>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Why:</strong> Describe the action, not the appearance. Users need to know what happens when they click.
+              </p>
+            </div>
+          </Card>
+
+          <Card className="p-6">
+            <h3 className="text-xl font-semibold mb-3">🎨 Decorative Elements</h3>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm font-semibold mb-1">❌ Bad:</p>
+                <code className="text-xs bg-destructive/10 px-2 py-1 rounded block mb-2">
+                  alt="Decorative border"
+                </code>
+              </div>
+              <div>
+                <p className="text-sm font-semibold mb-1">✓ Good:</p>
+                <code className="text-xs bg-green-500/10 px-2 py-1 rounded block">
+                  alt="" role="presentation"
+                </code>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Why:</strong> Decorative images add no information. Empty alt tells screen readers to skip them.
+              </p>
+            </div>
           </Card>
         </div>
       </section>
@@ -440,6 +591,7 @@ const decorativeImage = '/decoration.png'
           </Link>
         </div>
       </section>
-    </div>
+      </div>
+    </CriteriaPageLayout>
   )
 }

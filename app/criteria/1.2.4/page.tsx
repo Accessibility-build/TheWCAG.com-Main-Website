@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { LevelBadge } from "@/components/level-badge"
+import { CriteriaPageLayout } from "@/components/criteria-page-layout"
 
 export default function CaptionsLivePage() {
   const [copiedCode, setCopiedCode] = useState<string | null>(null)
@@ -17,7 +18,8 @@ export default function CaptionsLivePage() {
   }
 
   return (
-    <div className="container py-8 max-w-6xl">
+    <CriteriaPageLayout>
+      <div className="container py-8 md:py-12 max-w-6xl">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
         <Link href="/" className="hover:text-foreground transition-colors">
@@ -171,6 +173,7 @@ export default function CaptionsLivePage() {
           </Link>
         </div>
       </section>
-    </div>
+      </div>
+    </CriteriaPageLayout>
   )
 }

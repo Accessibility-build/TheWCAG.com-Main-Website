@@ -142,6 +142,18 @@ export function Footer() {
           <p>Designed with inclusion in mind.</p>
         </div>
       </div>
+      
+      {/* Large Brand Text */}
+      <div className="pt-24 md:pt-32 pb-12 md:pb-20">
+        <div className="container px-4 md:px-6">
+          <div className="flex justify-center">
+            <h2 className="text-[12vw] md:text-[14vw] leading-[0.8] font-black tracking-tighter text-center text-background/5 select-none pointer-events-none">
+              TheWCAG
+              <span className="text-background/10">.com</span>
+            </h2>
+          </div>
+        </div>
+      </div>
     </footer>
   )
 }
