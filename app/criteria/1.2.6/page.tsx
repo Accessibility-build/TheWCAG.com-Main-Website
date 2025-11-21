@@ -291,7 +291,8 @@ export default function SignLanguagePrerecordedPage() {
         </section>
       )}
       </div>
-      </CriteriaPageLayout>
+    </CriteriaPageLayout>
+    </>
   )
 }
 

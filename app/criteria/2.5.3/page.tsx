@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckCircle2, XCircle, Copy, Check, Tag, Label } from "lucide-react"
+import { CheckCircle2, XCircle, Copy, Check, Tag } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -61,7 +61,7 @@ export default function LabelInNamePage() {
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <Label className="w-5 h-5 text-primary mt-1" />
+            <Tag className="w-5 h-5 text-primary mt-1" />
             <div>
               <h4 className="font-semibold mb-1">Screen Reader Users</h4>
               <p className="text-sm text-muted-foreground">Name should match visible label</p>
@@ -90,7 +90,7 @@ export default function LabelInNamePage() {
             </div>
             <div className="bg-muted p-4 rounded-lg mb-4 min-h-[200px] flex items-center justify-center border-2 border-dashed border-destructive/30">
               <div className="text-center">
-                <Label className="w-16 h-16 mx-auto mb-2 text-destructive/50" />
+                <Tag className="w-16 h-16 mx-auto mb-2 text-destructive/50" />
                 <p className="text-sm text-muted-foreground">Visible: "Submit"</p>
                 <p className="text-xs text-destructive mt-2">Accessible name: "Send form"</p>
               </div>
@@ -112,7 +112,7 @@ export default function LabelInNamePage() {
             </div>
             <div className="bg-muted p-4 rounded-lg mb-4 min-h-[200px] flex items-center justify-center border-2 border-green-500/30">
               <div className="text-center">
-                <Label className="w-16 h-16 mx-auto mb-2 text-green-600/50" />
+                <Tag className="w-16 h-16 mx-auto mb-2 text-green-600/50" />
                 <p className="text-sm font-semibold">Visible: "Submit"</p>
                 <p className="text-xs text-green-600 mt-2">Accessible name: "Submit"</p>
               </div>

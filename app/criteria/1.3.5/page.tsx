@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckCircle2, XCircle, Copy, Check, Tag, Label } from "lucide-react"
+import { CheckCircle2, XCircle, Copy, Check, Tag } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -61,7 +61,7 @@ export default function IdentifyInputPurposePage() {
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <Label className="w-5 h-5 text-primary mt-1" />
+            <Tag className="w-5 h-5 text-primary mt-1" />
             <div>
               <h4 className="font-semibold mb-1">Cognitive Disabilities</h4>
               <p className="text-sm text-muted-foreground">Reduce memory burden</p>

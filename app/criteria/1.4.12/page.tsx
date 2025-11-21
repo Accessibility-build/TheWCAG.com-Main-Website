@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckCircle2, XCircle, Copy, Check, Type, Spacing } from "lucide-react"
+import { CheckCircle2, XCircle, Copy, Check, Type } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -64,7 +64,7 @@ export default function TextSpacingPage() {
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <Spacing className="w-5 h-5 text-primary mt-1" />
+            <Type className="w-5 h-5 text-primary mt-1" />
             <div>
               <h4 className="font-semibold mb-1">Users with Low Vision</h4>
               <p className="text-sm text-muted-foreground">Need spacing adjustments</p>

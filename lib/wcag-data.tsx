@@ -1621,7 +1621,7 @@ function CustomizableText({ children }) {
           color: textColor,
           backgroundColor: bgColor,
           lineHeight: lineHeight,
-          maxWidth: `${textWidth}px`,
+          maxWidth: textWidth + 'px',
         }}
       >
         {children}
@@ -4615,7 +4615,7 @@ function SimpleContent() {
       react: `// ✅ Good: Pronunciation component
 function WordWithPronunciation({ word, pronunciation }) {
   return (
-    <span title={`pronounced: ${pronunciation}`}>
+    <span title={'pronounced: ' + pronunciation}>
       {word}
     </span>
   )
@@ -5152,10 +5152,10 @@ function FormField({ label, id, helpText, ...props }) {
       <label htmlFor={id}>{label}</label>
       <input
         id={id}
-        aria-describedby={`${id}-help`}
+        aria-describedby={id + '-help'}
         {...props}
       />
-      <div id={`${id}-help`} className="help-text">
+      <div id={id + '-help'} className="help-text">
         {helpText}
       </div>
     </div>

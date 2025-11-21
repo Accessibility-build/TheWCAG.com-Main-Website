@@ -532,7 +532,7 @@ function ItemList() {
     <h2>Review Your Order</h2>
     <div>
       <h3>Order Summary</h3>
-      <p>Total: ${{ order.total }}</p>
+      <p>Total: ${'{order.total}'}</p>
     </div>
     
     <label>

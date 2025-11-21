@@ -21,6 +21,7 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 - **Learning Resources** - Guides, checklists, and educational content
 - **Search Functionality** - Quick access to any criterion or topic
 - **Fully Accessible** - Built following WCAG guidelines itself
+- **Legal Pages** - Privacy Policy, Terms of Service, Accessibility Statement, and Contact page
 
 ## ✨ Features
 
@@ -51,6 +52,7 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 - Loading states
 - Performance optimizations
 - TypeScript for type safety
+- Production build verified
 
 ### ♿ Accessibility First
 - WCAG 2.2 AA compliant
@@ -59,6 +61,12 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 - Skip links
 - Proper ARIA labels
 - Semantic HTML
+
+### 📄 Legal & Compliance
+- Privacy Policy page
+- Terms of Service page
+- Accessibility Statement
+- Contact Us page with form
 
 ## 🚀 Getting Started
 
@@ -71,7 +79,7 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/TheWCAG.git
+git clone https://github.com/WOLFIEEEE/TheWCAG.git
 cd TheWCAG
 ```
 
@@ -101,12 +109,16 @@ TheWCAG/
 │   │   └── [id]/          # Dynamic route for criteria
 │   ├── principles/         # WCAG principles pages
 │   ├── tools/             # Accessibility tools
-│   ├── examples/           # Code examples
-│   ├── learn/              # Learning resources
+│   ├── examples/          # Code examples
+│   ├── learn/             # Learning resources
 │   ├── checklist/          # WCAG checklist
 │   ├── overview/           # WCAG overview
 │   ├── about/              # About page
 │   ├── resources/          # Additional resources
+│   ├── privacy/           # Privacy Policy
+│   ├── terms/              # Terms of Service
+│   ├── accessibility/      # Accessibility Statement
+│   ├── contact/            # Contact Us page
 │   ├── layout.tsx          # Root layout
 │   ├── page.tsx            # Home page
 │   ├── sitemap.ts          # Dynamic sitemap
@@ -155,6 +167,10 @@ TheWCAG/
 - `/examples` - Code examples and patterns
 - `/resources` - Additional resources and downloads
 - `/about` - About TheWCAG.com
+- `/privacy` - Privacy Policy
+- `/terms` - Terms of Service
+- `/accessibility` - Accessibility Statement
+- `/contact` - Contact Us page
 
 ### Dynamic Routes
 - `/principles/[principle]` - Individual principle pages (perceivable, operable, understandable, robust)
@@ -200,6 +216,28 @@ This site is built to be accessible:
 - Focus management
 - Color contrast compliance
 
+## 🚀 Deployment
+
+### Recommended: Vercel
+1. Connect your GitHub repository
+2. Vercel will auto-detect Next.js
+3. Add environment variables in Vercel dashboard
+4. Deploy!
+
+### Other Platforms:
+- Ensure Node.js 18+ support
+- Build command: `npm run build`
+- Start command: `npm start`
+- Set environment variables
+
+## ✅ Build Status
+
+The project builds successfully with:
+- ✅ TypeScript compilation
+- ✅ Next.js optimization
+- ✅ No build errors
+- ✅ Production-ready
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -223,13 +261,14 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 📧 Contact
 
-For questions, suggestions, or feedback, please open an issue on GitHub.
+For questions, suggestions, or feedback, please visit our [Contact page](/contact) or open an issue on GitHub.
 
 ## 🔗 Links
 
 - **Live Site**: https://thewcag.com
 - **WCAG 2.2 Specification**: https://www.w3.org/WAI/WCAG22/quickref/
 - **W3C WAI**: https://www.w3.org/WAI/
+- **GitHub Repository**: https://github.com/WOLFIEEEE/TheWCAG
 
 ---
 
