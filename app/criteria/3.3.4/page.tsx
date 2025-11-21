@@ -433,7 +433,7 @@ function PaymentReview({ order, onConfirm, onCancel }) {
       <h2>Review Your Order</h2>
       <div>
         <h3>Order Summary</h3>
-        <p>Total: ${order.total}</p>
+        <p>Total: $&#123;order.total&#125;</p>
       </div>
       
       <label>
@@ -532,7 +532,7 @@ function ItemList() {
     <h2>Review Your Order</h2>
     <div>
       <h3>Order Summary</h3>
-      <p>Total: ${'{order.total}'}</p>
+      <p>Total: $&#123;order.total&#125;</p>
     </div>
     
     <label>
