@@ -1,0 +1,306 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import { SkipLink } from "@/components/skip-link"
+import { LevelBadge } from "@/components/level-badge"
+import { NewBadge } from "@/components/new-badge"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Download, Filter, CheckCircle2, Circle } from "lucide-react"
+import { successCriteria, principles } from "@/lib/wcag-data"
+
+export default function ChecklistPage() {
+  const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set())
+  const [filterLevel, setFilterLevel] = useState<"all" | "A" | "AA">("all")
+  const [filterPrinciple, setFilterPrinciple] = useState<string>("all")
+  const [filterNew, setFilterNew] = useState(false)
+  const [showAAA, setShowAAA] = useState(false)
+
+  // Load checked items from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem("wcag-checklist")
+    if (saved) {
+      setCheckedItems(new Set(JSON.parse(saved)))
+    }
+  }, [])
+
+  // Save to localStorage whenever checkedItems changes
+  useEffect(() => {
+    localStorage.setItem("wcag-checklist", JSON.stringify(Array.from(checkedItems)))
+  }, [checkedItems])
+
+  const toggleItem = (id: string) => {
+    const newChecked = new Set(checkedItems)
+    if (newChecked.has(id)) {
+      newChecked.delete(id)
+    } else {
+      newChecked.add(id)
+    }
+    setCheckedItems(newChecked)
+  }
+
+  const clearAll = () => {
+    if (confirm("Are you sure you want to clear all checked items?")) {
+      setCheckedItems(new Set())
+    }
+  }
+
+  // Filter criteria
+  let filteredCriteria = successCriteria
+
+  // First, filter out AAA if not enabled
+  if (!showAAA) {
+    filteredCriteria = filteredCriteria.filter((c) => c.level !== "AAA")
+  }
+
+  if (filterLevel !== "all") {
+    if (filterLevel === "A") {
+      filteredCriteria = filteredCriteria.filter((c) => c.level === "A")
+    } else if (filterLevel === "AA") {
+      filteredCriteria = filteredCriteria.filter((c) => c.level === "A" || c.level === "AA")
+    }
+  }
+
+  if (filterPrinciple !== "all") {
+    filteredCriteria = filteredCriteria.filter((c) => c.principle === filterPrinciple)
+  }
+
+  if (filterNew) {
+    filteredCriteria = filteredCriteria.filter((c) => c.isNew)
+  }
+
+  // Calculate progress
+  const totalCriteria = filteredCriteria.length
+  const completedCriteria = filteredCriteria.filter((c) => checkedItems.has(c.id)).length
+  const progressPercent = totalCriteria > 0 ? Math.round((completedCriteria / totalCriteria) * 100) : 0
+
+  // Group by principle
+  const criteriaByPrinciple = filteredCriteria.reduce(
+    (acc, criterion) => {
+      if (!acc[criterion.principle]) {
+        acc[criterion.principle] = []
+      }
+      acc[criterion.principle].push(criterion)
+      return acc
+    },
+    {} as Record<string, typeof filteredCriteria>,
+  )
+
+  return (
+    <>
+      <SkipLink />
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main id="main-content" className="flex-1">
+          <div className="container py-8 md:py-12 max-w-5xl">
+            <div className="mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">WCAG Compliance Checklist</h1>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Track your progress toward WCAG compliance with this interactive checklist
+              </p>
+            </div>
+
+            {/* Progress Card */}
+            <Card className="mb-8">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle className="text-2xl">Your Progress</CardTitle>
+                    <CardDescription>
+                      {completedCriteria} of {totalCriteria} criteria completed
+                    </CardDescription>
+                  </div>
+                  <div className="text-4xl font-bold text-primary">{progressPercent}%</div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="w-full h-4 bg-muted rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-primary transition-all duration-300"
+                    style={{ width: `${progressPercent}%` }}
+                    aria-label={`${progressPercent}% complete`}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Filters */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Filter className="h-5 w-5" aria-hidden="true" />
+                  Filters
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="space-y-2">
+                    <label htmlFor="filter-level" className="text-sm font-medium">
+                      Conformance Level
+                    </label>
+                    <Select value={filterLevel} onValueChange={(value: any) => setFilterLevel(value)}>
+                      <SelectTrigger id="filter-level">
+                        <SelectValue placeholder="All levels" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Visible Levels</SelectItem>
+                        <SelectItem value="A">Level A Only</SelectItem>
+                        <SelectItem value="AA">Level AA (A + AA)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="filter-principle" className="text-sm font-medium">
+                      Principle
+                    </label>
+                    <Select value={filterPrinciple} onValueChange={setFilterPrinciple}>
+                      <SelectTrigger id="filter-principle">
+                        <SelectValue placeholder="All principles" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Principles</SelectItem>
+                        <SelectItem value="perceivable">Perceivable</SelectItem>
+                        <SelectItem value="operable">Operable</SelectItem>
+                        <SelectItem value="understandable">Understandable</SelectItem>
+                        <SelectItem value="robust">Robust</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex flex-col justify-end gap-2">
+                    <button
+                      onClick={() => setFilterNew(!filterNew)}
+                      className={`flex items-center gap-2 px-4 py-2 border rounded-md transition-colors text-sm ${
+                        filterNew ? "bg-primary text-primary-foreground" : "hover:bg-muted"
+                      }`}
+                    >
+                      {filterNew ? <CheckCircle2 className="h-4 w-4" /> : <Circle className="h-4 w-4" />}
+                      New in 2.2
+                    </button>
+
+                    <div className="flex items-center space-x-2 px-1">
+                      <Checkbox
+                        id="show-aaa"
+                        checked={showAAA}
+                        onCheckedChange={(checked) => setShowAAA(checked as boolean)}
+                      />
+                      <label
+                        htmlFor="show-aaa"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Show AAA Criteria
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="flex items-end gap-2">
+                    <Button variant="outline" onClick={clearAll} className="flex-1 bg-transparent">
+                      Clear All
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Checklist */}
+            <div className="space-y-6">
+              {Object.entries(criteriaByPrinciple).map(([principle, criteria]) => {
+                const principleData = principles[principle as keyof typeof principles]
+                const principleCompleted = criteria.filter((c) => checkedItems.has(c.id)).length
+                const principleTotal = criteria.length
+                const principlePercent = Math.round((principleCompleted / principleTotal) * 100)
+
+                return (
+                  <Card key={principle}>
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <CardTitle className="capitalize">{principleData.title}</CardTitle>
+                        <Badge variant="outline">
+                          {principleCompleted}/{principleTotal}
+                        </Badge>
+                      </div>
+                      <CardDescription>{principleData.description}</CardDescription>
+                      <div className="w-full h-2 bg-muted rounded-full overflow-hidden mt-3">
+                        <div
+                          className="h-full bg-primary transition-all duration-300"
+                          style={{ width: `${principlePercent}%` }}
+                        />
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                      {criteria.map((criterion) => (
+                        <div
+                          key={criterion.id}
+                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                        >
+                          <Checkbox
+                            id={criterion.id}
+                            checked={checkedItems.has(criterion.id)}
+                            onCheckedChange={() => toggleItem(criterion.id)}
+                            className="mt-1"
+                          />
+                          <div className="flex-1">
+                            <label htmlFor={criterion.id} className="cursor-pointer">
+                              <div className="flex items-start justify-between gap-3 mb-1">
+                                <p className="font-medium">
+                                  {criterion.number} {criterion.title}
+                                </p>
+                                <div className="flex items-center gap-2 shrink-0">
+                                  {criterion.isNew && <NewBadge />}
+                                  <LevelBadge level={criterion.level} />
+                                </div>
+                              </div>
+                              <p className="text-sm text-muted-foreground">{criterion.summary}</p>
+                            </label>
+                            <Link
+                              href={`/criteria/${criterion.id}`}
+                              className="text-sm text-primary hover:underline inline-flex items-center mt-1"
+                            >
+                              View details →
+                            </Link>
+                          </div>
+                        </div>
+                      ))}
+                    </CardContent>
+                  </Card>
+                )
+              })}
+            </div>
+
+            {/* Export Options */}
+            <Card className="mt-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Download className="h-5 w-5" aria-hidden="true" />
+                  Export & Share
+                </CardTitle>
+                <CardDescription>Download your checklist progress or print for offline use</CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-wrap gap-3">
+                <Button variant="outline" onClick={() => window.print()}>
+                  Print Checklist
+                </Button>
+                <Button variant="outline" disabled>
+                  Export to PDF
+                  <span className="ml-2 text-xs">(Coming Soon)</span>
+                </Button>
+                <Button variant="outline" disabled>
+                  Export to CSV
+                  <span className="ml-2 text-xs">(Coming Soon)</span>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </>
+  )
+}
