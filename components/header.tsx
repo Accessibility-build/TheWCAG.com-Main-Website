@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Search, ArrowRight, ChevronDown } from "lucide-react"
+import { Search, ArrowRight, ChevronDown, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState, useEffect, useRef } from "react"
@@ -396,9 +396,10 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
+          {/* Desktop Search - Inline expansion */}
           <div
             className={cn(
-              "flex items-center overflow-hidden transition-all duration-300 ease-in-out",
+              "hidden lg:flex items-center overflow-hidden transition-all duration-300 ease-in-out",
               searchOpen ? "w-48 sm:w-64 opacity-100 mr-2" : "w-0 opacity-0",
             )}
           >
@@ -414,6 +415,7 @@ export function Header() {
             </div>
           </div>
 
+          {/* Search Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -541,6 +543,41 @@ export function Header() {
           </Sheet>
         </div>
       </div>
+
+      {/* Mobile Bottom Search Bar */}
+      {searchOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="lg:hidden fixed inset-0 bg-black/50 z-40 animate-in fade-in duration-300"
+            onClick={() => setSearchOpen(false)}
+            aria-hidden="true"
+          />
+          {/* Search Bar */}
+          <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border shadow-lg animate-in slide-in-from-bottom duration-300">
+            <div className="container py-4 px-4">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input
+                  type="search"
+                  placeholder="Search WCAG criteria..."
+                  className="h-12 w-full pl-12 pr-12 text-base rounded-xl bg-secondary/10 border-border focus-visible:bg-background focus-visible:border-primary/20"
+                  autoFocus
+                />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setSearchOpen(false)}
+                  aria-label="Close search"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full hover:bg-secondary/20"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </header>
   )
 }
