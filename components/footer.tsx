@@ -149,12 +149,12 @@ export function Footer() {
       </div>
       
       {/* Large Brand Text */}
-      <div className="pt-24 md:pt-32 pb-12 md:pb-20">
+      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
         <div className="container px-4 md:px-6">
-          <div className="flex justify-center">
-            <h2 className="text-[12vw] md:text-[14vw] leading-[0.8] font-black tracking-tighter text-center select-none pointer-events-none">
-              <span className="text-orange-500/40 drop-shadow-[0_0_8px_rgba(249,115,22,0.3)]">TheWCAG</span>
-              <span className="text-background/35">.com</span>
+          <div className="flex justify-center overflow-hidden">
+            <h2 className="text-[10vw] sm:text-[11vw] md:text-[12vw] lg:text-[14vw] leading-[0.85] sm:leading-[0.8] font-black tracking-tighter text-center select-none pointer-events-none break-words max-w-full">
+              <span className="block sm:inline text-orange-500/40 drop-shadow-[0_0_8px_rgba(249,115,22,0.3)]">TheWCAG</span>
+              <span className="block sm:inline text-background/35">.com</span>
             </h2>
           </div>
         </div>
