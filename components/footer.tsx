@@ -182,15 +182,15 @@ export function Footer() {
         </div>
       </div>
       
-      {/* Large Brand Text - Full Width */}
-      <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-8 sm:pb-12 md:pb-16 lg:pb-20 w-full">
-        <div className="w-full overflow-x-visible">
-          <div className="flex justify-center items-center w-full">
-            <div className="flex flex-col items-center justify-center">
-              <h2 className="text-[14vw] sm:text-[15vw] md:text-[17vw] lg:text-[19vw] xl:text-[21vw] leading-[0.85] sm:leading-[0.8] font-black tracking-tighter text-center select-none pointer-events-none text-orange-500/40 drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] whitespace-nowrap">
+      {/* Large Brand Text - Full Width (Outside Container) */}
+      <div className="w-full overflow-x-visible">
+        <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-8 sm:pb-12 md:pb-16 lg:pb-20 w-full">
+          <div className="w-full flex justify-center items-center">
+            <div className="flex flex-col items-center justify-center w-full min-w-0">
+              <h2 className="text-[20vw] sm:text-[18vw] md:text-[17vw] lg:text-[19vw] xl:text-[21vw] leading-[0.85] sm:leading-[0.8] font-black tracking-tighter text-center select-none pointer-events-none text-orange-500/40 drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] whitespace-nowrap px-1">
                 TheWCAG
               </h2>
-              <span className="text-[4vw] sm:text-[4.5vw] md:text-[5vw] lg:text-[5.5vw] xl:text-[6vw] text-background/35 font-black tracking-tighter select-none pointer-events-none whitespace-nowrap">
+              <span className="text-[5vw] sm:text-[4.5vw] md:text-[5vw] lg:text-[5.5vw] xl:text-[6vw] text-background/35 font-black tracking-tighter select-none pointer-events-none whitespace-nowrap">
                 .com
               </span>
             </div>
