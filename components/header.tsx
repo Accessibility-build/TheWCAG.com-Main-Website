@@ -32,6 +32,7 @@ export function Header() {
     { href: "/tools", label: "Tools" },
     { href: "/examples", label: "Examples" },
     { href: "/learn", label: "Learn" },
+    { href: "/compliance", label: "Compliance" },
   ]
 
   return (
