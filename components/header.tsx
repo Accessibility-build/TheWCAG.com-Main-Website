@@ -33,6 +33,7 @@ export function Header() {
     { href: "/examples", label: "Examples" },
     { href: "/learn", label: "Learn" },
     { href: "/compliance", label: "Compliance" },
+    { href: "/compare", label: "Compare" },
   ]
 
   return (
