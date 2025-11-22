@@ -1,13 +1,41 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Download, FileText, BookOpen, ExternalLink, Chrome, Video } from "lucide-react"
 
 export default function ResourcesPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Accessibility Resources",
+    description:
+      "Download WCAG accessibility checklists, templates, and explore additional resources. Find browser extensions, testing tools, documentation, and guides.",
+    url: "https://thewcag.com/resources",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Resources",
+          item: "https://thewcag.com/resources",
+        },
+      ],
+    },
+  }
+
   return (
     <>
+      <StructuredData data={structuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

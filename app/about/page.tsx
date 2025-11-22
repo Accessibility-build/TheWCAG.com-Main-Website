@@ -2,12 +2,40 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ShieldCheck, Scale, Heart, Users } from "lucide-react"
 
 export default function AboutPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About TheWCAG.com",
+    description:
+      "TheWCAG.com is an independent educational resource dedicated to simplifying web accessibility guidelines for developers, designers, and content creators.",
+    url: "https://thewcag.com/about",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "About",
+          item: "https://thewcag.com/about",
+        },
+      ],
+    },
+  }
+
   return (
     <>
+      <StructuredData data={structuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

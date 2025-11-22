@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { LevelBadge } from "@/components/level-badge"
 import { NewBadge } from "@/components/new-badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,8 +12,36 @@ import { getNewCriteria } from "@/lib/wcag-data"
 export default function WhatsNewPage() {
   const newCriteria = getNewCriteria()
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "What's New in WCAG 2.2",
+    description:
+      "Discover the 9 new success criteria in WCAG 2.2. Learn about focus appearance, dragging movements, target size, and other new accessibility requirements.",
+    url: "https://thewcag.com/whats-new",
+    datePublished: "2023-10-05",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "What's New in WCAG 2.2",
+          item: "https://thewcag.com/whats-new",
+        },
+      ],
+    },
+  }
+
   return (
     <>
+      <StructuredData data={structuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

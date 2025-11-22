@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   referrer: "origin-when-cross-origin",
   metadataBase: new URL("https://thewcag.com"),
   alternates: {
-    canonical: "/",
+    canonical: "https://thewcag.com",
   },
   openGraph: {
     type: "website",

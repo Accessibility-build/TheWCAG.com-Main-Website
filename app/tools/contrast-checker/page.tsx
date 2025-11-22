@@ -54,8 +54,46 @@ export default function ContrastCheckerPage() {
   const largeTextAAA = contrastRatio >= 4.5
   const uiComponentsAA = contrastRatio >= 3
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "WCAG Color Contrast Checker",
+    description:
+      "Free WCAG contrast checker tool. Test color contrast ratios for text and backgrounds to ensure compliance with WCAG 2.2 Level AA and AAA requirements.",
+    url: "https://thewcag.com/tools/contrast-checker",
+    applicationCategory: "WebApplication",
+    operatingSystem: "Any",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Tools",
+          item: "https://thewcag.com/tools",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Contrast Checker",
+          item: "https://thewcag.com/tools/contrast-checker",
+        },
+      ],
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

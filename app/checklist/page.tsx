@@ -96,8 +96,38 @@ export default function ChecklistPage() {
     {} as Record<string, typeof filteredCriteria>,
   )
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "WCAG 2.2 Checklist",
+    description:
+      "Interactive WCAG 2.2 compliance checklist. Track your accessibility progress with our comprehensive checklist covering all Level A, AA, and AAA success criteria.",
+    url: "https://thewcag.com/checklist",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "WCAG 2.2 Checklist",
+          item: "https://thewcag.com/checklist",
+        },
+      ],
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

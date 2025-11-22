@@ -2,11 +2,38 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Code2, FormInput, Menu, PlayCircle, Table, GripVertical, AlertCircle } from "lucide-react"
 
 export default function ExamplesPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Accessibility Examples",
+    description:
+      "Explore real-world examples of accessible web components and patterns with practical code examples for forms, navigation, media, and more.",
+    url: "https://thewcag.com/examples",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Accessibility Examples",
+          item: "https://thewcag.com/examples",
+        },
+      ],
+    },
+  }
+
   const examples = [
     {
       category: "Forms",
@@ -86,6 +113,7 @@ export default function ExamplesPage() {
 
   return (
     <>
+      <StructuredData data={structuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

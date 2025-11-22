@@ -2,13 +2,41 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, Eye, Keyboard, Lightbulb, Wrench } from "lucide-react"
 import { principles } from "@/lib/wcag-data"
 
 export default function PrinciplesPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "WCAG Principles",
+    description:
+      "Explore the four foundational principles of WCAG 2.2: Perceivable, Operable, Understandable, and Robust (POUR).",
+    url: "https://thewcag.com/principles",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "WCAG Principles",
+          item: "https://thewcag.com/principles",
+        },
+      ],
+    },
+  }
+
   return (
     <>
+      <StructuredData data={structuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

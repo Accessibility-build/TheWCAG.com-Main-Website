@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -22,6 +23,32 @@ import {
 } from "lucide-react"
 
 export default function ToolsPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Accessibility Tools",
+    description:
+      "Free accessibility tools and resources including color contrast checker, AI-powered audit helper, alt text generator, and more.",
+    url: "https://thewcag.com/tools",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Accessibility Tools",
+          item: "https://thewcag.com/tools",
+        },
+      ],
+    },
+  }
+
   const accessibilityBuildTools = [
     {
       icon: Sparkles,
