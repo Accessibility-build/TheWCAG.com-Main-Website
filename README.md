@@ -268,7 +268,7 @@ For questions, suggestions, or feedback, please visit our [Contact page](/contac
 - **Live Site**: https://thewcag.com
 - **WCAG 2.2 Specification**: https://www.w3.org/WAI/WCAG22/quickref/
 - **W3C WAI**: https://www.w3.org/WAI/
-- **GitHub Repository**: https://github.com/WOLFIEEEE/TheWCAG
+- **GitHub Repository**: https://github.com/Accessibility-build/TheWCAG.com-Main-Website
 
 ---
 
