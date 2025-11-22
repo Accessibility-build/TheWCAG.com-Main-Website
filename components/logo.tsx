@@ -16,11 +16,11 @@ export function Logo({ className = "w-8 h-8" }: { className?: string }) {
 
 export function LogoText({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center gap-2.5 sm:gap-3 ${className}`}>
+    <div className={`flex items-center gap-2.5 ${className}`}>
       <Logo className="w-8 h-8 sm:w-9 sm:h-9" />
-      <span className="text-xl sm:text-2xl md:text-2xl tracking-tight font-semibold leading-tight">
-        <span className="font-light text-foreground/60 lowercase text-lg sm:text-xl md:text-2xl">the</span>
-        <span className="font-black bg-gradient-to-r from-primary via-primary to-orange-500 bg-clip-text text-transparent drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] text-xl sm:text-2xl md:text-2xl ml-0.5">WCAG</span>
+      <span className="text-xl sm:text-2xl tracking-tighter leading-none select-none">
+        <span className="font-light text-foreground/80">the</span>
+        <span className="font-black bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">WCAG</span>
       </span>
     </div>
   )
