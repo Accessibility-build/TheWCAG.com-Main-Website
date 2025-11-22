@@ -79,7 +79,7 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/WOLFIEEEE/TheWCAG.git
+git clone https://github.com/Accessibility-build/TheWCAG.com-Main-Website.git
 cd TheWCAG
 ```
 
