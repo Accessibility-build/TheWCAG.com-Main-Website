@@ -286,6 +286,216 @@ This case highlighted that fashion and retail websites must be accessible, and t
     impact:
       "This case reinforced that all retail websites, regardless of industry, must be accessible. It also showed that class-action lawsuits can result in comprehensive accessibility remediation requirements.",
   },
+  {
+    slug: "canali-usa-accessibility-lawsuit-2025",
+    title: "Canali U.S.A. Website Accessibility Lawsuit",
+    defendant: "Canali U.S.A., Inc.",
+    plaintiff: "Unknown (Filed by serial plaintiff)",
+    dateFiled: "2025-03-15",
+    status: "ongoing",
+    summary:
+      "A luxury menswear brand faced a lawsuit alleging their website was inaccessible to visually impaired users, highlighting that high-end fashion retailers are not exempt from accessibility requirements.",
+    details: `Canali U.S.A., Inc., a luxury Italian menswear brand, was sued in March 2025 for operating a website that was not accessible to users with visual impairments. The lawsuit alleged that the company's website violated Title III of the Americans with Disabilities Act (ADA) by failing to provide accessible features for screen reader users.
+
+The case is part of the 2025 surge in accessibility litigation, which saw a 37% increase in ADA website lawsuits compared to 2024. Luxury fashion brands, like other e-commerce retailers, are required to ensure their websites are accessible to all users, regardless of their abilities.
+
+The lawsuit likely alleged common accessibility barriers such as missing alt text for product images, inaccessible navigation menus, lack of keyboard navigation support, and screen reader incompatibility. These barriers prevent visually impaired customers from browsing products, viewing product details, or completing purchases independently.
+
+This case demonstrates that accessibility requirements apply universally across all industries and business sizes, from small retailers to luxury brands. The fashion and apparel industry was among the top five industries targeted by accessibility lawsuits in 2025.`,
+    issues: [
+      "Missing alt text for product images",
+      "Inaccessible navigation and menus",
+      "Lack of keyboard navigation support",
+      "Screen reader incompatibility",
+      "Inaccessible product browsing and shopping experience",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "United States (likely New York, Florida, or California)",
+    keyTakeaways: [
+      "Luxury brands are not exempt from accessibility requirements",
+      "Fashion and apparel industry is heavily targeted in accessibility litigation",
+      "All e-commerce websites must be accessible regardless of brand positioning",
+      "2025 saw a significant increase in accessibility lawsuits across industries",
+    ],
+    impact:
+      "This case highlights that accessibility requirements apply to all businesses, including luxury brands. It's part of a broader trend showing that no industry is immune from accessibility litigation, and proactive compliance is essential for all online retailers.",
+  },
+  {
+    slug: "et-browne-palmers-accessibility-lawsuit-2025",
+    title: "E.T. Browne Drug Co. (Palmer's) Website Accessibility Lawsuit",
+    defendant: "E.T. Browne Drug Co., Inc.",
+    plaintiff: "Unknown (Filed by serial plaintiff)",
+    dateFiled: "2025-03-20",
+    status: "ongoing",
+    summary:
+      "The maker of Palmer's skincare products was sued for operating a website that did not support screen readers or provide accessible navigation, demonstrating that beauty and skincare brands must ensure digital accessibility.",
+    details: `E.T. Browne Drug Co., Inc., the manufacturer of Palmer's Cocoa Butter Formula and other skincare products, faced a website accessibility lawsuit in March 2025. The lawsuit alleged that the company's website violated the ADA by not supporting screen readers and failing to provide accessible navigation for users with disabilities.
+
+The beauty, skin, and body care industry was among the top five industries most affected by accessibility lawsuits in 2025, with over 90% of lawsuits targeting ten specific industries. This case is representative of the growing trend of accessibility litigation in the consumer goods and beauty sectors.
+
+The lawsuit likely claimed that users with visual impairments could not:
+- Navigate the website using screen readers
+- Access product information and descriptions
+- Browse product categories and collections
+- Complete purchases or access customer service features
+- View product images with proper alternative text
+
+This case demonstrates that consumer product companies, regardless of their product category, must ensure their digital presence is accessible. The beauty industry's heavy reliance on visual content makes proper accessibility implementation even more critical.`,
+    issues: [
+      "Website did not support screen readers",
+      "Lack of accessible navigation",
+      "Missing alt text for product images",
+      "Inaccessible product information and descriptions",
+      "No keyboard navigation support",
+      "Inaccessible forms and checkout process",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "United States (likely New York, Florida, or California)",
+    keyTakeaways: [
+      "Beauty and skincare brands must ensure website accessibility",
+      "Consumer product companies are frequent targets of accessibility litigation",
+      "Visual-heavy industries require careful accessibility implementation",
+      "Screen reader compatibility is a fundamental accessibility requirement",
+    ],
+    impact:
+      "This case highlights that accessibility requirements extend to all consumer-facing industries, including beauty and personal care. Companies in visually-oriented industries must pay special attention to implementing proper alternative text and accessible navigation structures.",
+  },
+  {
+    slug: "sun-sky-spa-accessibility-lawsuit-2025",
+    title: "Sun & Sky Spa Website Accessibility Lawsuit",
+    defendant: "Sun & Sky – Spa / Salon",
+    plaintiff: "Unknown (Filed by serial plaintiff)",
+    dateFiled: "2025-03-10",
+    status: "ongoing",
+    summary:
+      "A single-location spa in Brooklyn was sued for having a website that was not sufficiently accessible to users with disabilities, showing that small businesses are also subject to accessibility requirements.",
+    details: `Sun & Sky, a single-location spa and salon in Brooklyn, New York, was named in a website accessibility lawsuit filed in March 2025. The case demonstrates that accessibility requirements apply to businesses of all sizes, from small local establishments to large corporations.
+
+The lawsuit alleged that the spa's website was not sufficiently accessible to users with disabilities, preventing potential customers from accessing information about services, booking appointments, or learning about the business online. This case is particularly notable because it involves a small, local business rather than a large corporation.
+
+Small businesses often face unique challenges when it comes to website accessibility, as they may lack the resources or technical expertise of larger companies. However, the ADA applies equally to all businesses that serve the public, regardless of size.
+
+The lawsuit likely claimed violations such as:
+- Inaccessible service descriptions and pricing information
+- Lack of keyboard navigation for appointment booking
+- Missing alt text for images of the spa and services
+- Screen reader incompatibility
+- Inaccessible contact forms or booking systems
+
+This case serves as a reminder that all businesses, including small local establishments, must ensure their websites are accessible to comply with the ADA.`,
+    issues: [
+      "Website not sufficiently accessible to users with disabilities",
+      "Inaccessible service information and descriptions",
+      "Lack of keyboard navigation support",
+      "Missing alt text for images",
+      "Screen reader incompatibility",
+      "Inaccessible booking or contact forms",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "United States (Eastern District of New York - Brooklyn)",
+    keyTakeaways: [
+      "Small businesses are subject to the same accessibility requirements as large corporations",
+      "Local service businesses must ensure their websites are accessible",
+      "Size does not exempt businesses from ADA compliance",
+      "Service industry websites must be accessible for booking and information access",
+    ],
+    impact:
+      "This case highlights that accessibility requirements apply universally, regardless of business size. Small businesses must prioritize website accessibility, and may need to seek affordable solutions or guidance to ensure compliance with the ADA.",
+  },
+  {
+    slug: "omoi-inc-accessibility-lawsuit-2025",
+    title: "Omoi, Inc. Website Accessibility Lawsuit",
+    defendant: "Omoi, Inc.",
+    plaintiff: "Unknown (Filed by serial plaintiff)",
+    dateFiled: "2025-03-25",
+    status: "ongoing",
+    summary:
+      "A small retailer in Philadelphia faced legal action over an inaccessible online shopping experience for users with disabilities, emphasizing that all e-commerce businesses must prioritize accessibility.",
+    details: `Omoi, Inc., a small retailer based in Philadelphia, Pennsylvania, was sued in March 2025 for operating a website that provided an inaccessible online shopping experience for users with disabilities. The lawsuit alleged violations of the ADA and potentially Pennsylvania state accessibility laws.
+
+This case is representative of the broader trend in 2025 where small and medium-sized retailers faced accessibility litigation. The lawsuit likely claimed that users with disabilities could not:
+- Browse products effectively using assistive technologies
+- Access product descriptions and details
+- Navigate the shopping cart and checkout process
+- Complete purchases independently
+- Access customer service or support features
+
+Small retailers often operate with limited budgets and may not have dedicated web development teams, making accessibility implementation more challenging. However, the ADA requires all businesses that serve the public to ensure their digital properties are accessible.
+
+The case demonstrates that:
+- E-commerce accessibility is mandatory for all retailers, regardless of size
+- Small businesses need affordable accessibility solutions
+- Online shopping must be accessible to all customers
+- State laws may provide additional accessibility requirements beyond the ADA
+
+This lawsuit is part of the 2025 surge in accessibility litigation, which saw over 2,000 ADA website lawsuits filed in the first half of the year alone.`,
+    issues: [
+      "Inaccessible online shopping experience",
+      "Inability to browse products using assistive technologies",
+      "Lack of keyboard navigation support",
+      "Missing alt text for product images",
+      "Inaccessible shopping cart and checkout process",
+      "Screen reader incompatibility",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "United States (Eastern District of Pennsylvania - Philadelphia)",
+    keyTakeaways: [
+      "Small retailers must ensure e-commerce accessibility",
+      "Online shopping must be accessible to all customers",
+      "Business size does not exempt companies from ADA compliance",
+      "Affordable accessibility solutions are needed for small businesses",
+    ],
+    impact:
+      "This case emphasizes that accessibility is not optional for any e-commerce business, regardless of size. Small retailers must find ways to implement accessibility, whether through affordable tools, developer training, or consulting services, to avoid legal liability and serve all customers.",
+  },
+  {
+    slug: "academy-museum-foundation-accessibility-lawsuit-2025",
+    title: "Academy Museum Foundation Website Accessibility Lawsuit",
+    defendant: "Academy Museum Foundation",
+    plaintiff: "Unknown (Filed by serial plaintiff)",
+    dateFiled: "2025-03-18",
+    status: "ongoing",
+    summary:
+      "A nonprofit organization affiliated with the Academy of Motion Picture Arts and Sciences was sued for website barriers that prevented users with disabilities from accessing online content and services, showing that cultural institutions must prioritize accessibility.",
+    details: `The Academy Museum Foundation, a nonprofit organization affiliated with the Academy of Motion Picture Arts and Sciences (the organization behind the Oscars), faced a website accessibility lawsuit in March 2025. The lawsuit alleged that the organization's website contained barriers that prevented users with disabilities from accessing online content, services, and information.
+
+This case is particularly significant because it involves a cultural and educational institution that should be leading by example in accessibility. Museums and cultural organizations have a responsibility to ensure their digital content is accessible to all visitors, including those with disabilities.
+
+The lawsuit likely claimed that users with disabilities could not:
+- Access information about museum exhibitions and events
+- Purchase tickets online
+- Navigate the website using assistive technologies
+- Access educational content and resources
+- View images and multimedia content with proper accessibility features
+- Complete online forms for membership or donations
+
+Nonprofit organizations, including museums and cultural institutions, are subject to the same ADA requirements as for-profit businesses. Additionally, many cultural institutions receive public funding, which may include additional accessibility requirements.
+
+This case demonstrates that:
+- Cultural institutions must ensure digital accessibility
+- Educational and nonprofit websites are subject to ADA requirements
+- Museums should lead by example in accessibility implementation
+- Public-facing organizations have a particular responsibility for accessibility`,
+    issues: [
+      "Website barriers preventing access to online content",
+      "Inaccessible ticket purchasing system",
+      "Lack of keyboard navigation support",
+      "Missing alt text for images and multimedia",
+      "Screen reader incompatibility",
+      "Inaccessible forms for membership or donations",
+      "Inaccessible educational content and resources",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "United States (likely Central District of California - Los Angeles)",
+    keyTakeaways: [
+      "Nonprofit organizations must ensure website accessibility",
+      "Cultural and educational institutions should lead in accessibility",
+      "Museums and cultural sites must make digital content accessible",
+      "Public-facing organizations have accessibility responsibilities",
+    ],
+    impact:
+      "This case highlights that accessibility requirements apply to all types of organizations, including nonprofits and cultural institutions. Museums and educational organizations should prioritize accessibility not only for legal compliance but also to fulfill their mission of serving all members of the public.",
+  },
 ]
 
 export function getLawsuitBySlug(slug: string): Lawsuit | undefined {
