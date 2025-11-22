@@ -253,7 +253,7 @@ The site includes:
 - Frame protection
 - Secure cookie settings
 
-All security headers are configured in `middleware.ts` and `next.config.mjs`.
+All security headers are configured in `proxy.ts` and `next.config.mjs`.
 
 ### Performance Optimization
 
@@ -320,7 +320,7 @@ TheWCAG/
 │   ├── lawsuits-data.tsx  # Accessibility lawsuits data
 │   └── utils.ts           # Utility functions
 ├── public/                 # Static assets
-├── middleware.ts           # Security headers middleware
+├── proxy.ts                  # Security headers proxy (Next.js 16)
 └── next.config.mjs         # Next.js configuration
 ```
 
@@ -403,7 +403,7 @@ The site implements comprehensive security headers:
 - Referrer Policy
 - Permissions Policy
 
-See `middleware.ts` for security configuration.
+See `proxy.ts` for security configuration.
 
 ## 📊 SEO Features
 
