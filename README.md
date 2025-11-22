@@ -19,13 +19,15 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 - **Interactive Examples** - Real-world code examples and implementations
 - **Practical Tools** - Accessibility testing tools and checkers
 - **Learning Resources** - Guides, checklists, and educational content
-- **7 SEO-Optimized Pages** - FAQ, Glossary, Getting Started, WCAG Comparison, Myths, Testing Guide, and Industry Guides
+- **15+ SEO-Optimized Pages** - FAQ, Glossary, Getting Started, WCAG Comparisons, Myths, Testing Guide, Industry Guides, and more
+- **WCAG Version Pages** - Dedicated pages for WCAG 1.0, 2.0, 2.1, 2.2, and 3.0 with detailed history and comparisons
+- **Accessibility Lawsuits** - Comprehensive database of recent accessibility lawsuits with detailed case information
 - **Comprehensive Comparisons** - Tool comparisons (20+ tools), compliance law guides (6 laws), and WCAG version comparisons
 - **Industry-Specific Guides** - Tailored guides for e-commerce, education, healthcare, government, and finance
 - **Search Functionality** - Quick access to any criterion or topic
 - **Fully Accessible** - Built following WCAG guidelines itself
 - **Legal Pages** - Privacy Policy, Terms of Service, Accessibility Statement, and Contact page
-- **120+ Total Pages** - Comprehensive coverage of all accessibility topics
+- **137+ Total Pages** - Comprehensive coverage of all accessibility topics
 
 ## ✨ Features
 
@@ -39,13 +41,20 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 - Comprehensive glossary with 30+ accessibility terms
 - Getting started guide with 6-step process
 - WCAG 2.2 vs 2.1 comparison and migration guide
+- WCAG version pages (1.0, 2.0, 2.1, 2.2, 3.0) with detailed history
 - Accessibility myths debunked (12 common misconceptions)
 - Comprehensive accessibility testing guide
 - Industry-specific guides (e-commerce, education, healthcare, government, finance)
+- Accessibility lawsuits database with 6+ detailed case studies
+- How to make a website accessible (step-by-step guide)
+- Accessibility best practices with code examples
+- Mobile accessibility guide
+- Accessibility audit guide
+- Accessibility statement template
 
 ### 🎨 User Experience
 - Clean, modern, and accessible design
-- Dark mode support
+- Light mode (dark mode removed for consistency)
 - Fully responsive design (mobile, tablet, desktop) - optimized for all screen sizes
 - Fast page loads with optimized performance
 - Intuitive navigation and search
@@ -53,6 +62,7 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 - Comparison tables for tools and services
 - Step-by-step guides for beginners
 - Quick access sections for easy navigation
+- Resources dropdown menu for easy access to all guides
 
 ### 🔍 SEO Optimized
 - Complete metadata for all pages
@@ -142,10 +152,22 @@ TheWCAG/
 │   ├── faq/               # FAQ page (SEO)
 │   ├── glossary/          # Glossary page (SEO)
 │   ├── getting-started/    # Getting Started guide (SEO)
+│   ├── wcag-1-0/          # WCAG 1.0 version page
+│   ├── wcag-2-0/          # WCAG 2.0 version page
+│   ├── wcag-2-1/          # WCAG 2.1 version page
+│   ├── wcag-2-2/          # WCAG 2.2 version page
+│   ├── wcag-3-0/          # WCAG 3.0 version page
 │   ├── wcag-2-2-vs-2-1/   # WCAG comparison (SEO)
 │   ├── myths/             # Accessibility myths (SEO)
 │   ├── testing-guide/     # Testing guide (SEO)
 │   ├── industry-guides/   # Industry guides (SEO)
+│   ├── how-to-make-website-accessible/ # Step-by-step guide
+│   ├── best-practices/    # Best practices guide
+│   ├── mobile-accessibility/ # Mobile accessibility guide
+│   ├── accessibility-audit-guide/ # Audit guide
+│   ├── accessibility-statement-template/ # Statement template
+│   ├── lawsuits/          # Accessibility lawsuits section
+│   │   └── [slug]/        # Dynamic lawsuit detail pages
 │   ├── compliance/        # Compliance laws guide
 │   ├── compare/           # Tools comparison
 │   ├── privacy/           # Privacy Policy
@@ -164,6 +186,7 @@ TheWCAG/
 │   └── ...
 ├── lib/                    # Utilities and data
 │   ├── wcag-data.tsx      # WCAG criteria data (complete)
+│   ├── lawsuits-data.tsx  # Accessibility lawsuits data
 │   └── utils.ts           # Utility functions
 ├── public/                 # Static assets
 ├── middleware.ts           # Security headers middleware
@@ -210,16 +233,28 @@ TheWCAG/
 - `/faq` - Frequently Asked Questions about WCAG and accessibility (15+ questions with structured data)
 - `/glossary` - Comprehensive accessibility glossary with 30+ terms and definitions (searchable and filterable)
 - `/getting-started` - Step-by-step guide for beginners with 6-step process and quick wins
+- `/wcag-1-0` - WCAG 1.0 version page (May 1999, legacy)
+- `/wcag-2-0` - WCAG 2.0 version page (December 2008, ISO standard)
+- `/wcag-2-1` - WCAG 2.1 version page (June 2018, 17 new criteria)
+- `/wcag-2-2` - WCAG 2.2 version page (October 2023, current version)
+- `/wcag-3-0` - WCAG 3.0 version page (in development, future version)
 - `/wcag-2-2-vs-2-1` - Detailed comparison of WCAG 2.2 vs 2.1 with migration guide and all 9 new criteria
 - `/myths` - Accessibility myths debunked (12 common misconceptions with impact ratings)
 - `/testing-guide` - Comprehensive accessibility testing guide (automated, manual, screen reader, user testing)
 - `/industry-guides` - Industry-specific accessibility guides (e-commerce, education, healthcare, government, finance)
+- `/how-to-make-website-accessible` - Step-by-step guide on making a website accessible (8-step process)
+- `/best-practices` - Web accessibility best practices with code examples
+- `/mobile-accessibility` - Mobile-specific accessibility guidelines and best practices
+- `/accessibility-audit-guide` - Comprehensive guide to conducting accessibility audits
+- `/accessibility-statement-template` - Free accessibility statement template and guide
 - `/compliance` - Comprehensive guide to accessibility laws (ADA, Section 508, EN 301 549, AODA, EAA, CVAA)
 - `/compare` - Detailed comparison of accessibility tools, services, screen readers, and testing solutions (20+ tools)
+- `/lawsuits` - Recent accessibility lawsuits and legal cases with detailed information
 
 ### Dynamic Routes
 - `/principles/[principle]` - Individual principle pages (perceivable, operable, understandable, robust)
 - `/criteria/[id]` - Individual success criterion pages (e.g., `/criteria/1.1.1`)
+- `/lawsuits/[slug]` - Individual lawsuit detail pages (e.g., `/lawsuits/dominos-pizza-v-robles`)
 
 ### Tools
 - `/tools/contrast-checker` - Color contrast checker tool
@@ -242,19 +277,26 @@ See `middleware.ts` for security configuration.
 ## 📊 SEO Features
 
 - Dynamic metadata for all pages
-- Structured data (JSON-LD) for rich snippets (FAQPage, WebSite, Organization, Article, BreadcrumbList)
-- Automatic sitemap generation (120+ pages)
+- Structured data (JSON-LD) for rich snippets (FAQPage, WebSite, Organization, Article, BreadcrumbList, CollectionPage)
+- Automatic sitemap generation (137+ pages)
 - Robots.txt configuration
 - Open Graph and Twitter Card metadata
 - Canonical URLs throughout
-- 7 SEO-focused pages targeting long-tail keywords:
+- 15+ SEO-focused pages targeting long-tail keywords:
   - FAQ page with structured data
   - Glossary with search functionality
   - Getting Started guide
+  - WCAG version pages (1.0, 2.0, 2.1, 2.2, 3.0)
   - WCAG 2.2 vs 2.1 comparison
   - Accessibility myths debunked
   - Comprehensive testing guide
   - Industry-specific guides
+  - How to make a website accessible
+  - Best practices guide
+  - Mobile accessibility guide
+  - Audit guide
+  - Accessibility statement template
+  - Lawsuits database
 - Internal linking structure for better crawlability
 - Mobile-optimized content and navigation
 
@@ -293,12 +335,15 @@ The project builds successfully with:
 - ✅ Next.js optimization
 - ✅ No build errors
 - ✅ Production-ready
-- ✅ 120+ static pages generated
+- ✅ 137+ static pages generated
 - ✅ All SEO pages included
+- ✅ WCAG version pages (1.0, 2.0, 2.1, 2.2, 3.0)
+- ✅ Accessibility lawsuits section (6+ cases)
 - ✅ Full responsive design verified
 - ✅ Accessibility compliance verified
 - ✅ Google Analytics integrated
 - ✅ All internal links verified
+- ✅ Formspree integration for contact form
 
 ## 🤝 Contributing
 
