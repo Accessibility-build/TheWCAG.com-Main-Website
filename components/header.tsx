@@ -23,100 +23,170 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Main navigation links - only the most important ones
   const navLinks = [
     { href: "/overview", label: "Overview" },
     { href: "/principles", label: "Principles" },
     { href: "/checklist", label: "Checklist" },
     { href: "/tools", label: "Tools" },
-    { href: "/examples", label: "Examples" },
-    { href: "/learn", label: "Learn" },
-    { href: "/compliance", label: "Compliance" },
-    { href: "/compare", label: "Compare" },
   ]
 
-  const resourcesLinks = [
+  // Learn submenu
+  const learnLinks = [
+    { href: "/learn", label: "Learn" },
     { href: "/getting-started", label: "Getting Started" },
     { href: "/how-to-make-website-accessible", label: "How to Make Website Accessible" },
     { href: "/best-practices", label: "Best Practices" },
+    { href: "/examples", label: "Examples" },
+  ]
+
+  // Compliance submenu
+  const complianceLinks = [
+    { href: "/compliance", label: "Compliance" },
+    { href: "/compare", label: "Compare Tools" },
+    { href: "/lawsuits", label: "Accessibility Lawsuits" },
+    { href: "/wcag-2-2-vs-2-1", label: "WCAG 2.2 vs 2.1" },
+  ]
+
+  // Resources submenu
+  const resourcesLinks = [
+    { href: "/testing-guide", label: "Testing Guide" },
     { href: "/accessibility-audit-guide", label: "Audit Guide" },
     { href: "/mobile-accessibility", label: "Mobile Accessibility" },
-    { href: "/lawsuits", label: "Accessibility Lawsuits" },
+    { href: "/industry-guides", label: "Industry Guides" },
     { href: "/faq", label: "FAQ" },
     { href: "/glossary", label: "Glossary" },
-    { href: "/wcag-2-2-vs-2-1", label: "WCAG 2.2 vs 2.1" },
     { href: "/myths", label: "Accessibility Myths" },
-    { href: "/testing-guide", label: "Testing Guide" },
-    { href: "/industry-guides", label: "Industry Guides" },
     { href: "/accessibility-statement-template", label: "Statement Template" },
   ]
 
+  const [learnOpen, setLearnOpen] = useState(false)
+  const [complianceOpen, setComplianceOpen] = useState(false)
   const [resourcesOpen, setResourcesOpen] = useState(false)
+  
+  const [focusedLearnIndex, setFocusedLearnIndex] = useState(-1)
+  const [focusedComplianceIndex, setFocusedComplianceIndex] = useState(-1)
   const [focusedResourceIndex, setFocusedResourceIndex] = useState(-1)
+  
+  const learnRef = useRef<HTMLDivElement>(null)
+  const complianceRef = useRef<HTMLDivElement>(null)
   const resourcesRef = useRef<HTMLDivElement>(null)
+  
+  const learnButtonRef = useRef<HTMLButtonElement>(null)
+  const complianceButtonRef = useRef<HTMLButtonElement>(null)
   const resourcesButtonRef = useRef<HTMLButtonElement>(null)
+  
+  const learnMenuRef = useRef<HTMLDivElement>(null)
+  const complianceMenuRef = useRef<HTMLDivElement>(null)
   const resourcesMenuRef = useRef<HTMLDivElement>(null)
+  
+  const learnLinksRef = useRef<(HTMLAnchorElement | null)[]>([])
+  const complianceLinksRef = useRef<(HTMLAnchorElement | null)[]>([])
   const resourceLinksRef = useRef<(HTMLAnchorElement | null)[]>([])
 
+  // Close menus when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      if (learnRef.current && !learnRef.current.contains(event.target as Node)) {
+        setLearnOpen(false)
+        setFocusedLearnIndex(-1)
+      }
+      if (complianceRef.current && !complianceRef.current.contains(event.target as Node)) {
+        setComplianceOpen(false)
+        setFocusedComplianceIndex(-1)
+      }
       if (resourcesRef.current && !resourcesRef.current.contains(event.target as Node)) {
         setResourcesOpen(false)
         setFocusedResourceIndex(-1)
       }
     }
 
-    if (resourcesOpen) {
+    if (learnOpen || complianceOpen || resourcesOpen) {
       document.addEventListener("mousedown", handleClickOutside)
       return () => document.removeEventListener("mousedown", handleClickOutside)
     }
-  }, [resourcesOpen])
+  }, [learnOpen, complianceOpen, resourcesOpen])
 
   useEffect(() => {
+    if (learnOpen && focusedLearnIndex >= 0 && learnLinksRef.current[focusedLearnIndex]) {
+      learnLinksRef.current[focusedLearnIndex]?.focus()
+    }
+    if (complianceOpen && focusedComplianceIndex >= 0 && complianceLinksRef.current[focusedComplianceIndex]) {
+      complianceLinksRef.current[focusedComplianceIndex]?.focus()
+    }
     if (resourcesOpen && focusedResourceIndex >= 0 && resourceLinksRef.current[focusedResourceIndex]) {
       resourceLinksRef.current[focusedResourceIndex]?.focus()
     }
-  }, [resourcesOpen, focusedResourceIndex])
+  }, [learnOpen, complianceOpen, resourcesOpen, focusedLearnIndex, focusedComplianceIndex, focusedResourceIndex])
 
-  const handleResourcesKeyDown = (e: React.KeyboardEvent) => {
-    switch (e.key) {
-      case "Escape":
-        setResourcesOpen(false)
-        setFocusedResourceIndex(-1)
-        resourcesButtonRef.current?.focus()
-        break
-      case "ArrowDown":
-        e.preventDefault()
-        if (!resourcesOpen) {
-          setResourcesOpen(true)
-          setFocusedResourceIndex(0)
-        } else {
-          setFocusedResourceIndex((prev) =>
-            prev < resourcesLinks.length - 1 ? prev + 1 : 0
-          )
-        }
-        break
-      case "ArrowUp":
-        e.preventDefault()
-        if (resourcesOpen) {
-          setFocusedResourceIndex((prev) =>
-            prev > 0 ? prev - 1 : resourcesLinks.length - 1
-          )
-        }
-        break
-      case "Home":
-        e.preventDefault()
-        if (resourcesOpen) {
-          setFocusedResourceIndex(0)
-        }
-        break
-      case "End":
-        e.preventDefault()
-        if (resourcesOpen) {
-          setFocusedResourceIndex(resourcesLinks.length - 1)
-        }
-        break
+  const createMenuKeyHandler = (
+    isOpen: boolean,
+    setIsOpen: (open: boolean) => void,
+    setFocusedIndex: (index: number) => void,
+    linksLength: number,
+    buttonRef: React.RefObject<HTMLButtonElement>,
+  ) => {
+    return (e: React.KeyboardEvent) => {
+      switch (e.key) {
+        case "Escape":
+          setIsOpen(false)
+          setFocusedIndex(-1)
+          buttonRef.current?.focus()
+          break
+        case "ArrowDown":
+          e.preventDefault()
+          if (!isOpen) {
+            setIsOpen(true)
+            setFocusedIndex(0)
+          } else {
+            setFocusedIndex((prev) => (prev < linksLength - 1 ? prev + 1 : 0))
+          }
+          break
+        case "ArrowUp":
+          e.preventDefault()
+          if (isOpen) {
+            setFocusedIndex((prev) => (prev > 0 ? prev - 1 : linksLength - 1))
+          }
+          break
+        case "Home":
+          e.preventDefault()
+          if (isOpen) {
+            setFocusedIndex(0)
+          }
+          break
+        case "End":
+          e.preventDefault()
+          if (isOpen) {
+            setFocusedIndex(linksLength - 1)
+          }
+          break
+      }
     }
   }
+
+  const handleLearnKeyDown = createMenuKeyHandler(
+    learnOpen,
+    setLearnOpen,
+    setFocusedLearnIndex,
+    learnLinks.length,
+    learnButtonRef,
+  )
+
+  const handleComplianceKeyDown = createMenuKeyHandler(
+    complianceOpen,
+    setComplianceOpen,
+    setFocusedComplianceIndex,
+    complianceLinks.length,
+    complianceButtonRef,
+  )
+
+  const handleResourcesKeyDown = createMenuKeyHandler(
+    resourcesOpen,
+    setResourcesOpen,
+    setFocusedResourceIndex,
+    resourcesLinks.length,
+    resourcesButtonRef,
+  )
 
   return (
     <header
@@ -143,11 +213,137 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          
+          {/* Learn Dropdown */}
+          <div className="relative" ref={learnRef}>
+            <button
+              ref={learnButtonRef}
+              type="button"
+              onClick={() => {
+                setLearnOpen(!learnOpen)
+                setComplianceOpen(false)
+                setResourcesOpen(false)
+              }}
+              onKeyDown={handleLearnKeyDown}
+              aria-expanded={learnOpen}
+              aria-haspopup="true"
+              aria-label="Learn menu"
+              className="px-3 xl:px-4 py-2 text-sm font-medium rounded-full transition-all hover:bg-background hover:shadow-sm hover:text-primary text-foreground/70 flex items-center gap-1"
+            >
+              Learn
+              <ChevronDown
+                className={cn(
+                  "h-3 w-3 transition-transform duration-200",
+                  learnOpen && "rotate-180"
+                )}
+                aria-hidden="true"
+              />
+            </button>
+            {learnOpen && (
+              <div
+                ref={learnMenuRef}
+                role="menu"
+                className="absolute top-full left-0 mt-2 min-w-[240px] bg-background border border-border rounded-lg shadow-lg py-2 z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200"
+                onKeyDown={handleLearnKeyDown}
+              >
+                {learnLinks.map((link, index) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    ref={(el) => {
+                      learnLinksRef.current[index] = el
+                    }}
+                    role="menuitem"
+                    tabIndex={focusedLearnIndex === index ? 0 : -1}
+                    className="block px-4 py-2 text-sm text-foreground/90 hover:bg-primary/10 hover:text-foreground transition-colors focus:bg-primary/10 focus:text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    onClick={() => {
+                      setLearnOpen(false)
+                      setFocusedLearnIndex(-1)
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        setLearnOpen(false)
+                        setFocusedLearnIndex(-1)
+                      }
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Compliance Dropdown */}
+          <div className="relative" ref={complianceRef}>
+            <button
+              ref={complianceButtonRef}
+              type="button"
+              onClick={() => {
+                setComplianceOpen(!complianceOpen)
+                setLearnOpen(false)
+                setResourcesOpen(false)
+              }}
+              onKeyDown={handleComplianceKeyDown}
+              aria-expanded={complianceOpen}
+              aria-haspopup="true"
+              aria-label="Compliance menu"
+              className="px-3 xl:px-4 py-2 text-sm font-medium rounded-full transition-all hover:bg-background hover:shadow-sm hover:text-primary text-foreground/70 flex items-center gap-1"
+            >
+              Compliance
+              <ChevronDown
+                className={cn(
+                  "h-3 w-3 transition-transform duration-200",
+                  complianceOpen && "rotate-180"
+                )}
+                aria-hidden="true"
+              />
+            </button>
+            {complianceOpen && (
+              <div
+                ref={complianceMenuRef}
+                role="menu"
+                className="absolute top-full left-0 mt-2 min-w-[240px] bg-background border border-border rounded-lg shadow-lg py-2 z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200"
+                onKeyDown={handleComplianceKeyDown}
+              >
+                {complianceLinks.map((link, index) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    ref={(el) => {
+                      complianceLinksRef.current[index] = el
+                    }}
+                    role="menuitem"
+                    tabIndex={focusedComplianceIndex === index ? 0 : -1}
+                    className="block px-4 py-2 text-sm text-foreground/90 hover:bg-primary/10 hover:text-foreground transition-colors focus:bg-primary/10 focus:text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    onClick={() => {
+                      setComplianceOpen(false)
+                      setFocusedComplianceIndex(-1)
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        setComplianceOpen(false)
+                        setFocusedComplianceIndex(-1)
+                      }
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Resources Dropdown */}
           <div className="relative" ref={resourcesRef}>
             <button
               ref={resourcesButtonRef}
               type="button"
-              onClick={() => setResourcesOpen(!resourcesOpen)}
+              onClick={() => {
+                setResourcesOpen(!resourcesOpen)
+                setLearnOpen(false)
+                setComplianceOpen(false)
+              }}
               onKeyDown={handleResourcesKeyDown}
               aria-expanded={resourcesOpen}
               aria-haspopup="true"
@@ -167,7 +363,7 @@ export function Header() {
               <div
                 ref={resourcesMenuRef}
                 role="menu"
-                className="absolute top-full left-0 mt-2 min-w-[220px] bg-background border border-border rounded-lg shadow-lg py-2 z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200"
+                className="absolute top-full left-0 mt-2 min-w-[240px] bg-background border border-border rounded-lg shadow-lg py-2 z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200"
                 onKeyDown={handleResourcesKeyDown}
               >
                 {resourcesLinks.map((link, index) => (
@@ -274,13 +470,55 @@ export function Header() {
                     ))}
                     <li className="pt-4 mt-2 border-t border-border">
                       <div className="px-4 py-2 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+                        Learn
+                      </div>
+                    </li>
+                    {learnLinks.map((link, i) => (
+                      <li
+                        key={link.href}
+                        style={{ animationDelay: `${(navLinks.length + i) * 50}ms` }}
+                        className="animate-in slide-in-from-right-4 fade-in duration-500 fill-mode-backwards"
+                      >
+                        <Link
+                          href={link.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="flex items-center justify-between p-4 text-lg font-medium rounded-xl hover:bg-secondary/10 transition-colors group"
+                        >
+                          {link.label}
+                          <ArrowRight className="h-5 w-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
+                        </Link>
+                      </li>
+                    ))}
+                    <li className="pt-4 mt-2 border-t border-border">
+                      <div className="px-4 py-2 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+                        Compliance
+                      </div>
+                    </li>
+                    {complianceLinks.map((link, i) => (
+                      <li
+                        key={link.href}
+                        style={{ animationDelay: `${(navLinks.length + learnLinks.length + i) * 50}ms` }}
+                        className="animate-in slide-in-from-right-4 fade-in duration-500 fill-mode-backwards"
+                      >
+                        <Link
+                          href={link.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="flex items-center justify-between p-4 text-lg font-medium rounded-xl hover:bg-secondary/10 transition-colors group"
+                        >
+                          {link.label}
+                          <ArrowRight className="h-5 w-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
+                        </Link>
+                      </li>
+                    ))}
+                    <li className="pt-4 mt-2 border-t border-border">
+                      <div className="px-4 py-2 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
                         Resources
                       </div>
                     </li>
                     {resourcesLinks.map((link, i) => (
                       <li
                         key={link.href}
-                        style={{ animationDelay: `${(navLinks.length + i) * 50}ms` }}
+                        style={{ animationDelay: `${(navLinks.length + learnLinks.length + complianceLinks.length + i) * 50}ms` }}
                         className="animate-in slide-in-from-right-4 fade-in duration-500 fill-mode-backwards"
                       >
                         <Link
