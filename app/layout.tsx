@@ -1,12 +1,21 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Outfit, Pacifico } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
+const outfit = Outfit({ 
+  subsets: ["latin"],
+  variable: "--font-outfit",
+})
+const pacifico = Pacifico({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-pacifico",
+})
 
 export const metadata: Metadata = {
   // <CHANGE> Updated metadata for WCAG guide
@@ -141,7 +150,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://formspree.io" />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} ${outfit.variable} ${pacifico.variable} antialiased`}>
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-9WQ5PHRJ4K"
