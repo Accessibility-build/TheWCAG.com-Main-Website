@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -7,7 +5,6 @@ import { SkipLink } from "@/components/skip-link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Scale,
   Zap,
@@ -15,7 +12,6 @@ import {
   Shield,
   Code,
   Palette,
-  Globe,
   CheckCircle2,
   XCircle,
   ExternalLink,
@@ -25,11 +21,140 @@ import {
   Info,
   Building2,
   FileText,
+  Sparkles,
+  Image,
+  ArrowRight,
 } from "lucide-react"
-import { useState } from "react"
 
 export default function ComparePage() {
-  const [selectedCategory, setSelectedCategory] = useState("testing")
+  // AI-Powered Tools (accessibility.build)
+  const aiTools = [
+    {
+      name: "AI Audit Helper",
+      type: "AI-Powered Accessibility Auditor",
+      pricing: "Free",
+      price: "Free",
+      wcag: "WCAG 2.2",
+      features: [
+        "AI-powered comprehensive website scanning",
+        "Context-aware issue identification",
+        "Intelligent, actionable recommendations",
+        "WCAG 2.2 guideline compliance",
+        "Understands content context",
+        "Tailored recommendations per page",
+      ],
+      pros: [
+        "Free to use",
+        "AI understands context, not just rules",
+        "Provides intelligent recommendations",
+        "Comprehensive WCAG 2.2 coverage",
+        "Easy to use interface",
+        "No technical knowledge required",
+      ],
+      cons: [
+        "Online tool only",
+        "May require manual verification",
+        "Newer tool (less community feedback)",
+      ],
+      bestFor: "Developers, designers, content creators",
+      url: "https://www.accessibility.build/tools/accessibility-audit-helper",
+      rating: 5,
+      unique: "AI-powered context understanding",
+    },
+    {
+      name: "AI Alt Text Generator",
+      type: "AI-Powered Alt Text Generator",
+      pricing: "Free",
+      price: "Free",
+      wcag: "WCAG 2.2 (1.1.1, 1.4.5)",
+      features: [
+        "AI analyzes images with full context",
+        "Considers surrounding content",
+        "Understands page context and image purpose",
+        "Generates descriptive, contextually appropriate alt text",
+        "Meets WCAG 2.2 requirements",
+        "Context-aware descriptions",
+      ],
+      pros: [
+        "Completely free",
+        "AI understands image context",
+        "Considers surrounding content",
+        "Generates meaningful descriptions",
+        "Saves time on manual alt text writing",
+        "WCAG compliant output",
+      ],
+      cons: [
+        "Online tool only",
+        "May need review for complex images",
+      ],
+      bestFor: "Content creators, designers, developers",
+      url: "https://www.accessibility.build/tools/alt-text-generator",
+      rating: 5,
+      unique: "Context-aware AI alt text generation",
+    },
+    {
+      name: "Color Contrast Analyzer",
+      type: "Color Contrast Testing Tool",
+      pricing: "Free",
+      price: "Free",
+      wcag: "WCAG 2.2 (1.4.3, 1.4.6, 1.4.11)",
+      features: [
+        "Test color combinations instantly",
+        "WCAG 2.2 contrast requirements",
+        "Pass/fail results with detailed ratios",
+        "Normal and large text calculations",
+        "Real-time color picker",
+        "Multiple color format support",
+      ],
+      pros: [
+        "Free",
+        "Instant results",
+        "WCAG 2.2 compliant",
+        "Easy to use",
+        "Detailed contrast ratios",
+        "No installation needed",
+      ],
+      cons: [
+        "Online tool only",
+        "Basic features",
+      ],
+      bestFor: "Designers, developers, QA testers",
+      url: "https://www.accessibility.build/tools/contrast-checker",
+      rating: 4,
+      unique: "WCAG 2.2 specific contrast testing",
+    },
+    {
+      name: "Color Palette Generator",
+      type: "Accessible Color Palette Generator",
+      pricing: "Free",
+      price: "Free",
+      wcag: "WCAG 2.2 (1.4.3, 1.4.6)",
+      features: [
+        "Generate accessible color palettes",
+        "All combinations tested against WCAG 2.2",
+        "Harmonious color schemes",
+        "Inclusive design focus",
+        "Multiple palette options",
+        "Contrast ratio validation",
+      ],
+      pros: [
+        "Free",
+        "Generates WCAG-compliant palettes",
+        "Beautiful, harmonious colors",
+        "Saves design time",
+        "Accessibility built-in",
+        "Multiple options",
+      ],
+      cons: [
+        "Online tool only",
+        "Limited customization",
+      ],
+      bestFor: "Designers, UI/UX professionals",
+      url: "https://www.accessibility.build/tools/color-palette-generator",
+      rating: 4,
+      unique: "Generates accessible palettes automatically",
+    },
+  ]
 
   // Automated Testing Tools
   const testingTools = [
@@ -629,73 +754,12 @@ export default function ComparePage() {
     },
   ]
 
-  const renderComparisonTable = (items: typeof testingTools) => {
-    return (
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr className="border-b-2">
-              <th className="text-left p-3 font-semibold sticky left-0 bg-background z-10">Tool</th>
-              <th className="text-left p-3 font-semibold">Type</th>
-              <th className="text-left p-3 font-semibold">Pricing</th>
-              <th className="text-left p-3 font-semibold">WCAG Support</th>
-              <th className="text-left p-3 font-semibold">Best For</th>
-              <th className="text-left p-3 font-semibold">Rating</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item, index) => (
-              <tr key={index} className="border-b hover:bg-muted/50">
-                <td className="p-3 font-medium sticky left-0 bg-background z-10">
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline flex items-center gap-1"
-                  >
-                    {item.name}
-                    <ExternalLink className="h-3 w-3" />
-                  </a>
-                </td>
-                <td className="p-3 text-muted-foreground">{item.type}</td>
-                <td className="p-3">
-                  <Badge variant={item.pricing === "Free" ? "default" : "secondary"}>
-                    {item.pricing}
-                  </Badge>
-                  <div className="text-xs text-muted-foreground mt-1">{item.price}</div>
-                </td>
-                <td className="p-3">
-                  <Badge variant="outline">{item.wcag}</Badge>
-                </td>
-                <td className="p-3 text-muted-foreground">{item.bestFor}</td>
-                <td className="p-3">
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-4 w-4 ${
-                          i < item.rating
-                            ? "fill-yellow-400 text-yellow-400"
-                            : "text-muted-foreground"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    )
-  }
-
-  const renderToolCard = (item: typeof testingTools[0]) => {
+  const renderToolCard = (item: typeof aiTools[0]) => {
     return (
       <Card key={item.name} className="h-full">
         <CardHeader>
           <div className="flex items-start justify-between">
-            <div>
+            <div className="flex-1">
               <CardTitle className="text-xl mb-2">
                 <a
                   href={item.url}
@@ -709,7 +773,7 @@ export default function ComparePage() {
               </CardTitle>
               <CardDescription>{item.type}</CardDescription>
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 shrink-0">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
@@ -722,6 +786,16 @@ export default function ComparePage() {
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
+          {item.unique && (
+            <div className="bg-primary/10 border border-primary/20 rounded-lg p-3">
+              <div className="flex items-center gap-2 mb-1">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span className="font-semibold text-sm text-primary">Unique Feature:</span>
+              </div>
+              <p className="text-sm text-muted-foreground">{item.unique}</p>
+            </div>
+          )}
+
           <div>
             <div className="flex items-center gap-2 mb-2">
               <DollarSign className="h-4 w-4 text-muted-foreground" />
@@ -797,6 +871,67 @@ export default function ComparePage() {
     )
   }
 
+  const renderComparisonTable = (items: typeof testingTools) => {
+    return (
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b-2">
+              <th className="text-left p-3 font-semibold sticky left-0 bg-background z-10">Tool</th>
+              <th className="text-left p-3 font-semibold">Type</th>
+              <th className="text-left p-3 font-semibold">Pricing</th>
+              <th className="text-left p-3 font-semibold">WCAG Support</th>
+              <th className="text-left p-3 font-semibold">Best For</th>
+              <th className="text-left p-3 font-semibold">Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((item, index) => (
+              <tr key={index} className="border-b hover:bg-muted/50">
+                <td className="p-3 font-medium sticky left-0 bg-background z-10">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline flex items-center gap-1"
+                  >
+                    {item.name}
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </td>
+                <td className="p-3 text-muted-foreground">{item.type}</td>
+                <td className="p-3">
+                  <Badge variant={item.pricing === "Free" ? "default" : "secondary"}>
+                    {item.pricing}
+                  </Badge>
+                  <div className="text-xs text-muted-foreground mt-1">{item.price}</div>
+                </td>
+                <td className="p-3">
+                  <Badge variant="outline">{item.wcag}</Badge>
+                </td>
+                <td className="p-3 text-muted-foreground">{item.bestFor}</td>
+                <td className="p-3">
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-4 w-4 ${
+                          i < item.rating
+                            ? "fill-yellow-400 text-yellow-400"
+                            : "text-muted-foreground"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+
   return (
     <>
       <SkipLink />
@@ -835,121 +970,173 @@ export default function ComparePage() {
               </CardContent>
             </Card>
 
-            {/* Comparison Tabs */}
-            <Tabs defaultValue="testing" className="mb-12">
-              <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
-                <TabsTrigger value="testing">Testing Tools</TabsTrigger>
-                <TabsTrigger value="services">Services</TabsTrigger>
-                <TabsTrigger value="readers">Screen Readers</TabsTrigger>
-                <TabsTrigger value="contrast">Contrast Tools</TabsTrigger>
-              </TabsList>
+            {/* AI-Powered Tools Section */}
+            <section className="mb-16">
+              <div className="mb-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <Sparkles className="h-6 w-6 text-primary" />
+                  <h2 className="text-3xl font-bold">AI-Powered Accessibility Tools</h2>
+                </div>
+                <p className="text-muted-foreground">
+                  Next-generation accessibility tools powered by artificial intelligence. These tools from{" "}
+                  <a
+                    href="https://www.accessibility.build"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    accessibility.build
+                  </a>{" "}
+                  use AI to understand context and provide intelligent recommendations.
+                </p>
+              </div>
 
-              {/* Testing Tools */}
-              <TabsContent value="testing" className="space-y-8">
-                <div>
-                  <h2 className="text-2xl font-bold mb-4">Automated Testing Tools</h2>
-                  <p className="text-muted-foreground mb-6">
-                    Tools for developers and testers to identify accessibility issues in code and websites.
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                {aiTools.map((tool) => renderToolCard(tool))}
+              </div>
+
+              <Card className="bg-primary/5 border-primary/20">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Info className="h-5 w-5 text-primary" />
+                    Why AI-Powered Tools?
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    Traditional accessibility testing tools check against rules, but AI-powered tools understand context.
+                    They can analyze how content relates to surrounding elements, understand user intent, and provide
+                    more intelligent recommendations that go beyond simple rule checking.
                   </p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <span>
+                        <strong>Context Awareness:</strong> Understands how elements relate to each other and the page
+                        context
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <span>
+                        <strong>Intelligent Recommendations:</strong> Provides actionable suggestions, not just error
+                        lists
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <span>
+                        <strong>WCAG 2.2 Support:</strong> Up-to-date with the latest accessibility guidelines
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <span>
+                        <strong>Free to Use:</strong> All accessibility.build tools are currently free
+                      </span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Automated Testing Tools */}
+            <section className="mb-16">
+              <div className="mb-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <Zap className="h-6 w-6 text-primary" />
+                  <h2 className="text-3xl font-bold">Automated Testing Tools</h2>
                 </div>
+                <p className="text-muted-foreground">
+                  Tools for developers and testers to identify accessibility issues in code and websites.
+                </p>
+              </div>
 
-                {/* Table View */}
-                <Card className="mb-8">
-                  <CardHeader>
-                    <CardTitle>Quick Comparison Table</CardTitle>
-                  </CardHeader>
-                  <CardContent>{renderComparisonTable(testingTools)}</CardContent>
-                </Card>
+              <Card className="mb-8">
+                <CardHeader>
+                  <CardTitle>Quick Comparison Table</CardTitle>
+                </CardHeader>
+                <CardContent>{renderComparisonTable(testingTools)}</CardContent>
+              </Card>
 
-                {/* Detailed Cards */}
-                <div>
-                  <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {testingTools.map((tool) => renderToolCard(tool))}
-                  </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                {testingTools.map((tool) => renderToolCard(tool))}
+              </div>
+            </section>
+
+            {/* Accessibility Services */}
+            <section className="mb-16">
+              <div className="mb-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <Building2 className="h-6 w-6 text-primary" />
+                  <h2 className="text-3xl font-bold">Accessibility Services & Platforms</h2>
                 </div>
-              </TabsContent>
+                <p className="text-muted-foreground">
+                  Comprehensive services and platforms that offer accessibility audits, remediation, and compliance
+                  solutions.
+                </p>
+              </div>
 
-              {/* Services */}
-              <TabsContent value="services" className="space-y-8">
-                <div>
-                  <h2 className="text-2xl font-bold mb-4">Accessibility Services & Platforms</h2>
-                  <p className="text-muted-foreground mb-6">
-                    Comprehensive services and platforms that offer accessibility audits, remediation, and compliance
-                    solutions.
-                  </p>
+              <Card className="mb-8">
+                <CardHeader>
+                  <CardTitle>Quick Comparison Table</CardTitle>
+                </CardHeader>
+                <CardContent>{renderComparisonTable(accessibilityServices)}</CardContent>
+              </Card>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {accessibilityServices.map((service) => renderToolCard(service))}
+              </div>
+            </section>
+
+            {/* Screen Readers */}
+            <section className="mb-16">
+              <div className="mb-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <Eye className="h-6 w-6 text-primary" />
+                  <h2 className="text-3xl font-bold">Screen Readers</h2>
                 </div>
+                <p className="text-muted-foreground">
+                  Screen reading software used by people with visual impairments. Essential for testing your
+                  website&apos;s accessibility.
+                </p>
+              </div>
 
-                {/* Table View */}
-                <Card className="mb-8">
-                  <CardHeader>
-                    <CardTitle>Quick Comparison Table</CardTitle>
-                  </CardHeader>
-                  <CardContent>{renderComparisonTable(accessibilityServices)}</CardContent>
-                </Card>
+              <Card className="mb-8">
+                <CardHeader>
+                  <CardTitle>Quick Comparison Table</CardTitle>
+                </CardHeader>
+                <CardContent>{renderComparisonTable(screenReaders)}</CardContent>
+              </Card>
 
-                {/* Detailed Cards */}
-                <div>
-                  <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {accessibilityServices.map((service) => renderToolCard(service))}
-                  </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                {screenReaders.map((reader) => renderToolCard(reader))}
+              </div>
+            </section>
+
+            {/* Color Contrast Tools */}
+            <section className="mb-16">
+              <div className="mb-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <Palette className="h-6 w-6 text-primary" />
+                  <h2 className="text-3xl font-bold">Color Contrast Checkers</h2>
                 </div>
-              </TabsContent>
+                <p className="text-muted-foreground">
+                  Tools specifically designed for checking color contrast ratios against WCAG requirements.
+                </p>
+              </div>
 
-              {/* Screen Readers */}
-              <TabsContent value="readers" className="space-y-8">
-                <div>
-                  <h2 className="text-2xl font-bold mb-4">Screen Readers</h2>
-                  <p className="text-muted-foreground mb-6">
-                    Screen reading software used by people with visual impairments. Essential for testing your
-                    website&apos;s accessibility.
-                  </p>
-                </div>
+              <Card className="mb-8">
+                <CardHeader>
+                  <CardTitle>Quick Comparison Table</CardTitle>
+                </CardHeader>
+                <CardContent>{renderComparisonTable(contrastTools)}</CardContent>
+              </Card>
 
-                {/* Table View */}
-                <Card className="mb-8">
-                  <CardHeader>
-                    <CardTitle>Quick Comparison Table</CardTitle>
-                  </CardHeader>
-                  <CardContent>{renderComparisonTable(screenReaders)}</CardContent>
-                </Card>
-
-                {/* Detailed Cards */}
-                <div>
-                  <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {screenReaders.map((reader) => renderToolCard(reader))}
-                  </div>
-                </div>
-              </TabsContent>
-
-              {/* Contrast Tools */}
-              <TabsContent value="contrast" className="space-y-8">
-                <div>
-                  <h2 className="text-2xl font-bold mb-4">Color Contrast Checkers</h2>
-                  <p className="text-muted-foreground mb-6">
-                    Tools specifically designed for checking color contrast ratios against WCAG requirements.
-                  </p>
-                </div>
-
-                {/* Table View */}
-                <Card className="mb-8">
-                  <CardHeader>
-                    <CardTitle>Quick Comparison Table</CardTitle>
-                  </CardHeader>
-                  <CardContent>{renderComparisonTable(contrastTools)}</CardContent>
-                </Card>
-
-                {/* Detailed Cards */}
-                <div>
-                  <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {contrastTools.map((tool) => renderToolCard(tool))}
-                  </div>
-                </div>
-              </TabsContent>
-            </Tabs>
+              <div className="grid md:grid-cols-2 gap-6">
+                {contrastTools.map((tool) => renderToolCard(tool))}
+              </div>
+            </section>
 
             {/* Recommendations */}
             <Card className="mb-12">
@@ -967,7 +1154,8 @@ export default function ComparePage() {
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
                         <span>
-                          <strong>Start with:</strong> axe DevTools (free browser extension)
+                          <strong>Start with:</strong> AI Audit Helper (free, context-aware) or axe DevTools (free
+                          extension)
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
@@ -993,19 +1181,20 @@ export default function ComparePage() {
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
                         <span>
-                          <strong>Quick checks:</strong> WAVE browser extension
+                          <strong>Quick checks:</strong> WAVE browser extension or AI Audit Helper
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
                         <span>
-                          <strong>Contrast:</strong> WebAIM Contrast Checker or Colour Contrast Analyser
+                          <strong>Contrast:</strong> Color Contrast Analyzer (accessibility.build) or WebAIM Contrast
+                          Checker
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
                         <span>
-                          <strong>Visual testing:</strong> Accessibility Insights for tab stops
+                          <strong>Alt text:</strong> AI Alt Text Generator (context-aware, free)
                         </span>
                       </li>
                     </ul>
@@ -1045,7 +1234,8 @@ export default function ComparePage() {
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
                         <span>
-                          <strong>Start simple:</strong> WAVE (free, visual feedback)
+                          <strong>Start simple:</strong> AI Audit Helper (free, intelligent) or WAVE (free, visual
+                          feedback)
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
@@ -1119,4 +1309,3 @@ export default function ComparePage() {
     </>
   )
 }
-
