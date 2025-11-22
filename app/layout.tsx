@@ -96,18 +96,15 @@ export const metadata: Metadata = {
         type: "image/png",
       },
     ],
-    apple: "/favicon/apple-touch-icon.png",
-    other: [
+    apple: [
       {
-        rel: "apple-touch-icon",
         url: "/favicon/apple-touch-icon.png",
-      },
-      {
-        rel: "manifest",
-        url: "/favicon/site.webmanifest",
+        sizes: "180x180",
+        type: "image/png",
       },
     ],
   },
+  manifest: "/favicon/site.webmanifest",
   verification: {
     // Google Search Console verification
     // To verify your site:
