@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { logger } from "@/lib/logger"
 import { 
   Mail, 
   MessageSquare, 
@@ -68,7 +69,7 @@ export default function ContactPage() {
       } catch (jsonError) {
         // If response is not JSON, log the text response
         const textResponse = await response.text()
-        console.error("Formspree non-JSON response:", textResponse)
+        logger.error("Formspree non-JSON response", jsonError, { textResponse })
         data = {}
       }
 
@@ -77,7 +78,7 @@ export default function ContactPage() {
         setFormData({ name: "", email: "", subject: "", message: "" })
         setTimeout(() => setStatus("idle"), 5000)
       } else {
-        console.error("Formspree error response:", {
+        logger.error("Formspree error response", undefined, {
           status: response.status,
           statusText: response.statusText,
           data: data,
@@ -86,7 +87,7 @@ export default function ContactPage() {
         setTimeout(() => setStatus("idle"), 5000)
       }
     } catch (error) {
-      console.error("Form submission error:", error)
+      logger.error("Form submission error", error)
       setStatus("error")
       setTimeout(() => setStatus("idle"), 5000)
     }

@@ -145,6 +145,125 @@ npm run dev
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## 🚀 Production Deployment
+
+### Pre-Deployment Checklist
+
+Before deploying to production, ensure:
+
+- [ ] Production build succeeds: `npm run build`
+- [ ] All pages load correctly
+- [ ] Contact form submits successfully
+- [ ] All navigation links work
+- [ ] No console errors in production
+- [ ] Images load and are optimized
+- [ ] Mobile responsive on all devices
+- [ ] SEO metadata present on all pages
+- [ ] Structured data validates
+- [ ] Sitemap is accessible at `/sitemap.xml`
+- [ ] Robots.txt is correct at `/robots.txt`
+- [ ] Security headers are present
+- [ ] Performance scores are acceptable (Lighthouse 90+)
+- [ ] Error pages work correctly
+
+### Environment Variables
+
+Create a `.env.local` file (or set in your deployment platform) with:
+
+```bash
+# Google Search Console Verification (optional)
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-verification-code
+
+# Node Environment (automatically set by deployment platform)
+NODE_ENV=production
+```
+
+### Building for Production
+
+1. **Run production build:**
+   ```bash
+   npm run build
+   ```
+
+2. **Test production build locally:**
+   ```bash
+   npm run start
+   ```
+
+3. **Verify build output:**
+   - Check for any build warnings or errors
+   - Verify all static pages are generated
+   - Test critical user paths
+
+### Deployment Platforms
+
+#### Vercel (Recommended)
+
+1. Push code to GitHub
+2. Import project in Vercel
+3. Configure environment variables
+4. Deploy automatically on push
+
+The site is optimized for Vercel with:
+- Automatic HTTPS
+- Edge network optimization
+- Analytics integration
+- Automatic deployments
+
+#### Other Platforms
+
+The site can be deployed to any platform supporting Next.js:
+- Netlify
+- AWS Amplify
+- Railway
+- DigitalOcean App Platform
+- Self-hosted with Node.js
+
+### Health Check Endpoint
+
+Monitor site health using:
+```
+GET /api/health
+```
+
+Returns:
+```json
+{
+  "status": "healthy",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "service": "TheWCAG.com",
+  "version": "1.0.0",
+  "environment": "production"
+}
+```
+
+### Monitoring & Alerts
+
+- **Error Tracking**: Configure error tracking service (Sentry, LogRocket, etc.) in `lib/logger.ts`
+- **Analytics**: Google Analytics is already integrated (G-9WQ5PHRJ4K)
+- **Performance**: Use Vercel Analytics or Lighthouse CI for performance monitoring
+- **Uptime**: Set up uptime monitoring (UptimeRobot, Pingdom, etc.)
+
+### Security
+
+The site includes:
+- Content Security Policy (CSP)
+- Strict Transport Security (HSTS)
+- XSS Protection headers
+- Frame protection
+- Secure cookie settings
+
+All security headers are configured in `middleware.ts` and `next.config.mjs`.
+
+### Performance Optimization
+
+- Image optimization via Next.js Image component
+- Automatic code splitting
+- Static page generation for all content pages
+- Resource hints for external services
+- Compression enabled
+- Font optimization
+
 ## 📁 Project Structure
 
 ```

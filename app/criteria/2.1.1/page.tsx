@@ -78,7 +78,9 @@ export default function KeyboardPage() {
               </div>
               <div className="mt-4">
                 <div 
-                  onMouseEnter={() => console.log('hovered')}
+                  onMouseEnter={() => {
+                    // Interactive example - no action needed
+                  }}
                   className="p-2 border rounded"
                 >
                   Hover to see menu (mouse only)
@@ -116,7 +118,9 @@ export default function KeyboardPage() {
               <div className="mt-4">
                 <button 
                   className="w-full p-2 border rounded text-left hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  onFocus={() => console.log('focused')}
+                  onFocus={() => {
+                    // Interactive example - no action needed
+                  }}
                 >
                   Tab to focus (keyboard accessible)
                 </button>

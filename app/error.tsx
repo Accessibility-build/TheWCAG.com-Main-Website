@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
 import { AlertCircle, RefreshCw, Home, ArrowLeft } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { logger } from "@/lib/logger"
 
 export default function Error({
   error,
@@ -16,14 +17,12 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
-    // Log error to error reporting service in production
-    if (process.env.NODE_ENV === 'production') {
-      // Example: Send to error tracking service
-      // logErrorToService(error)
-      console.error('Production error:', error)
-    } else {
-      console.error('Development error:', error)
-    }
+    // Log error to error reporting service
+    logger.error('Application error occurred', error, {
+      digest: error.digest,
+      message: error.message,
+      stack: error.stack,
+    })
   }, [error])
 
   return (
