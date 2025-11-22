@@ -33,17 +33,40 @@ export default function ContactPage() {
   })
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setStatus("sending")
     
-    // Simulate form submission
-    // In production, you would send this to your backend/API
-    setTimeout(() => {
-      setStatus("success")
-      setFormData({ name: "", email: "", subject: "", message: "" })
+    try {
+      const form = e.currentTarget
+      const formDataToSend = new FormData(form)
+      
+      const response = await fetch("https://formspree.io/f/xpwndkoe", {
+        method: "POST",
+        body: formDataToSend,
+        headers: {
+          Accept: "application/json",
+        },
+      })
+
+      if (response.ok) {
+        setStatus("success")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+        form.reset()
+        setTimeout(() => setStatus("idle"), 5000)
+      } else {
+        const data = await response.json()
+        if (data.errors) {
+          console.error("Formspree errors:", data.errors)
+        }
+        setStatus("error")
+        setTimeout(() => setStatus("idle"), 5000)
+      }
+    } catch (error) {
+      console.error("Form submission error:", error)
+      setStatus("error")
       setTimeout(() => setStatus("idle"), 5000)
-    }, 1000)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -82,7 +105,13 @@ export default function ContactPage() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form 
+                      onSubmit={handleSubmit} 
+                      action="https://formspree.io/f/xpwndkoe"
+                      method="POST"
+                      className="space-y-6"
+                      noValidate
+                    >
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="name">
