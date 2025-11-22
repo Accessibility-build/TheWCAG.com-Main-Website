@@ -120,7 +120,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <body className={`${inter.className} antialiased`}>
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-9WQ5PHRJ4K"
@@ -134,8 +134,6 @@ export default function RootLayout({
             gtag('config', 'G-9WQ5PHRJ4K');
           `}
         </Script>
-      </head>
-      <body className={`${inter.className} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
