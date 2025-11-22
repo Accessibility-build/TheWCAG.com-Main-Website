@@ -873,61 +873,63 @@ export default function ComparePage() {
 
   const renderComparisonTable = (items: typeof testingTools) => {
     return (
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr className="border-b-2">
-              <th className="text-left p-3 font-semibold sticky left-0 bg-background z-10">Tool</th>
-              <th className="text-left p-3 font-semibold">Type</th>
-              <th className="text-left p-3 font-semibold">Pricing</th>
-              <th className="text-left p-3 font-semibold">WCAG Support</th>
-              <th className="text-left p-3 font-semibold">Best For</th>
-              <th className="text-left p-3 font-semibold">Rating</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item, index) => (
-              <tr key={index} className="border-b hover:bg-muted/50">
-                <td className="p-3 font-medium sticky left-0 bg-background z-10">
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline flex items-center gap-1"
-                  >
-                    {item.name}
-                    <ExternalLink className="h-3 w-3" />
-                  </a>
-                </td>
-                <td className="p-3 text-muted-foreground">{item.type}</td>
-                <td className="p-3">
-                  <Badge variant={item.pricing === "Free" ? "default" : "secondary"}>
-                    {item.pricing}
-                  </Badge>
-                  <div className="text-xs text-muted-foreground mt-1">{item.price}</div>
-                </td>
-                <td className="p-3">
-                  <Badge variant="outline">{item.wcag}</Badge>
-                </td>
-                <td className="p-3 text-muted-foreground">{item.bestFor}</td>
-                <td className="p-3">
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-4 w-4 ${
-                          i < item.rating
-                            ? "fill-yellow-400 text-yellow-400"
-                            : "text-muted-foreground"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </td>
+      <div className="overflow-x-auto -mx-4 sm:mx-0">
+        <div className="inline-block min-w-full align-middle">
+          <table className="w-full text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr className="border-b-2">
+                <th className="text-left p-2 sm:p-3 font-semibold sticky left-0 bg-background z-10 min-w-[120px]">Tool</th>
+                <th className="text-left p-2 sm:p-3 font-semibold hidden sm:table-cell min-w-[100px]">Type</th>
+                <th className="text-left p-2 sm:p-3 font-semibold min-w-[100px]">Pricing</th>
+                <th className="text-left p-2 sm:p-3 font-semibold hidden md:table-cell min-w-[100px]">WCAG</th>
+                <th className="text-left p-2 sm:p-3 font-semibold hidden lg:table-cell min-w-[120px]">Best For</th>
+                <th className="text-left p-2 sm:p-3 font-semibold min-w-[80px]">Rating</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {items.map((item, index) => (
+                <tr key={index} className="border-b hover:bg-muted/50">
+                  <td className="p-2 sm:p-3 font-medium sticky left-0 bg-background z-10">
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline flex items-center gap-1 break-words"
+                    >
+                      <span className="break-words">{item.name}</span>
+                      <ExternalLink className="h-3 w-3 shrink-0" />
+                    </a>
+                  </td>
+                  <td className="p-2 sm:p-3 text-muted-foreground hidden sm:table-cell">{item.type}</td>
+                  <td className="p-2 sm:p-3">
+                    <Badge variant={item.pricing === "Free" ? "default" : "secondary"} className="text-xs">
+                      {item.pricing}
+                    </Badge>
+                    <div className="text-xs text-muted-foreground mt-1 hidden sm:block">{item.price}</div>
+                  </td>
+                  <td className="p-2 sm:p-3 hidden md:table-cell">
+                    <Badge variant="outline" className="text-xs">{item.wcag}</Badge>
+                  </td>
+                  <td className="p-2 sm:p-3 text-muted-foreground hidden lg:table-cell text-xs">{item.bestFor}</td>
+                  <td className="p-2 sm:p-3">
+                    <div className="flex items-center gap-0.5 sm:gap-1">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-3 w-3 sm:h-4 sm:w-4 ${
+                            i < item.rating
+                              ? "fill-yellow-400 text-yellow-400"
+                              : "text-muted-foreground"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }
@@ -991,7 +993,7 @@ export default function ComparePage() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8">
                 {aiTools.map((tool) => renderToolCard(tool))}
               </div>
 
@@ -1059,7 +1061,7 @@ export default function ComparePage() {
                 <CardContent>{renderComparisonTable(testingTools)}</CardContent>
               </Card>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {testingTools.map((tool) => renderToolCard(tool))}
               </div>
             </section>
@@ -1084,7 +1086,7 @@ export default function ComparePage() {
                 <CardContent>{renderComparisonTable(accessibilityServices)}</CardContent>
               </Card>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {accessibilityServices.map((service) => renderToolCard(service))}
               </div>
             </section>
@@ -1109,7 +1111,7 @@ export default function ComparePage() {
                 <CardContent>{renderComparisonTable(screenReaders)}</CardContent>
               </Card>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {screenReaders.map((reader) => renderToolCard(reader))}
               </div>
             </section>
@@ -1133,7 +1135,7 @@ export default function ComparePage() {
                 <CardContent>{renderComparisonTable(contrastTools)}</CardContent>
               </Card>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {contrastTools.map((tool) => renderToolCard(tool))}
               </div>
             </section>

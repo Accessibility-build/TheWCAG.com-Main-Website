@@ -347,32 +347,32 @@ export default function CompliancePage() {
                         <p className="text-muted-foreground leading-relaxed">{law.description}</p>
                       </div>
 
-                      <div className="grid md:grid-cols-2 gap-6">
+                      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         <div>
-                          <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                            <CheckCircle2 className="h-5 w-5 text-green-600" />
+                          <h3 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2">
+                            <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0" />
                             Requirements
                           </h3>
                           <ul className="space-y-2">
                             {law.requirements.map((req, index) => (
                               <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                <span className="text-primary mt-1">•</span>
-                                <span>{req}</span>
+                                <span className="text-primary mt-1 shrink-0">•</span>
+                                <span className="break-words">{req}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
                         <div>
-                          <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                            <Building2 className="h-5 w-5 text-blue-600" />
+                          <h3 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2">
+                            <Building2 className="h-5 w-5 text-blue-600 shrink-0" />
                             Who Must Comply
                           </h3>
                           <ul className="space-y-2">
                             {law.whoMustComply.map((entity, index) => (
                               <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                <span className="text-primary mt-1">•</span>
-                                <span>{entity}</span>
+                                <span className="text-primary mt-1 shrink-0">•</span>
+                                <span className="break-words">{entity}</span>
                               </li>
                             ))}
                           </ul>
@@ -428,32 +428,36 @@ export default function CompliancePage() {
                 <CardTitle>Quick Reference: WCAG Levels by Law</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
+                <div className="overflow-x-auto -mx-4 sm:mx-0">
+                <div className="inline-block min-w-full align-middle">
+                  <table className="w-full text-xs sm:text-sm">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left p-3 font-semibold">Law/Regulation</th>
-                        <th className="text-left p-3 font-semibold">Region</th>
-                        <th className="text-left p-3 font-semibold">WCAG Level Required</th>
-                        <th className="text-left p-3 font-semibold">Status</th>
+                        <th className="text-left p-2 sm:p-3 font-semibold sticky left-0 bg-background z-10 min-w-[150px]">Law/Regulation</th>
+                        <th className="text-left p-2 sm:p-3 font-semibold hidden sm:table-cell min-w-[120px]">Region</th>
+                        <th className="text-left p-2 sm:p-3 font-semibold min-w-[140px]">WCAG Level</th>
+                        <th className="text-left p-2 sm:p-3 font-semibold min-w-[80px]">Status</th>
                       </tr>
                     </thead>
                     <tbody>
                       {complianceLaws.map((law) => (
                         <tr key={law.id} className="border-b hover:bg-muted/50">
-                          <td className="p-3 font-medium">{law.name}</td>
-                          <td className="p-3 text-muted-foreground">{law.region}</td>
-                          <td className="p-3">
-                            <Badge variant="outline">{law.level}</Badge>
+                          <td className="p-2 sm:p-3 font-medium sticky left-0 bg-background z-10">
+                            <span className="break-words">{law.name}</span>
                           </td>
-                          <td className="p-3">
-                            <Badge variant="secondary">{law.status}</Badge>
+                          <td className="p-2 sm:p-3 text-muted-foreground hidden sm:table-cell">{law.region}</td>
+                          <td className="p-2 sm:p-3">
+                            <Badge variant="outline" className="text-xs">{law.level}</Badge>
+                          </td>
+                          <td className="p-2 sm:p-3">
+                            <Badge variant="secondary" className="text-xs">{law.status}</Badge>
                           </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
+              </div>
               </CardContent>
             </Card>
 
