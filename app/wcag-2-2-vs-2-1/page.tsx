@@ -13,6 +13,7 @@ import {
   Info,
   Sparkles,
   BookOpen,
+  Rocket,
 } from "lucide-react"
 
 export default function WCAGComparisonPage() {
@@ -353,6 +354,15 @@ export default function WCAGComparisonPage() {
                       <div className="text-left">
                         <div className="font-semibold">Compliance Laws</div>
                         <div className="text-xs text-muted-foreground">Legal requirements</div>
+                      </div>
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" className="justify-start h-auto py-4">
+                    <Link href="/wcag-3-0">
+                      <Rocket className="h-5 w-5 mr-2" />
+                      <div className="text-left">
+                        <div className="font-semibold">WCAG 3.0</div>
+                        <div className="text-xs text-muted-foreground">The future of accessibility</div>
                       </div>
                     </Link>
                   </Button>
