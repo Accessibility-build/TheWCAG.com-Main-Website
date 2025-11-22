@@ -1,6 +1,6 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowUpRight, Github, Twitter, Linkedin } from "lucide-react"
-import { Logo } from "@/components/logo"
 
 export function Footer() {
   return (
@@ -11,7 +11,14 @@ export function Footer() {
           <div className="lg:col-span-5 flex flex-col justify-between h-full">
             <div>
               <div className="mb-4 md:mb-6">
-                <Logo className="w-12 h-12 md:w-16 md:h-16 text-background" />
+                <Image
+                  src="/Logo.png"
+                  alt="TheWCAG.com Logo"
+                  width={64}
+                  height={64}
+                  className="w-12 h-12 md:w-16 md:h-16"
+                  priority
+                />
               </div>
               <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 md:mb-6 leading-[0.8]">
                 The
