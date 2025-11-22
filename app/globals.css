@@ -141,32 +141,44 @@
 /* Ensure container is centered by default and has proper max-widths */
 .container {
   margin-inline: auto;
-  padding-inline: 1rem;
   width: 100%;
+}
+
+/* Mobile: Full width with minimal padding for better utilization */
+@media (max-width: 639px) {
+  .container {
+    padding-inline: 1rem; /* Minimal padding on mobile for full width */
+    max-width: 100%;
+  }
 }
 
 @media (min-width: 640px) {
   .container {
+    padding-inline: 1.5rem;
     max-width: 640px;
   }
 }
 @media (min-width: 768px) {
   .container {
+    padding-inline: 2rem;
     max-width: 768px;
   }
 }
 @media (min-width: 1024px) {
   .container {
+    padding-inline: 2rem;
     max-width: 1024px;
   }
 }
 @media (min-width: 1280px) {
   .container {
+    padding-inline: 2rem;
     max-width: 1280px;
   }
 }
 @media (min-width: 1536px) {
   .container {
+    padding-inline: 2rem;
     max-width: 1536px;
   }
 }

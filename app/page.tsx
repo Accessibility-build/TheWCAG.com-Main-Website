@@ -113,11 +113,11 @@ export default function HomePage() {
         <Header />
         <main id="main-content" className="flex-1">
           {/* Hero Section */}
-          <section className="container py-6 md:py-12 px-4 md:px-6">
+          <section className="container py-6 md:py-12">
             <ScrollAnimation>
               <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 md:gap-6 auto-rows-auto md:auto-rows-[minmax(180px,auto)]">
                 {/* Main Title Card - Spans 8 cols */}
-                <div className="col-span-1 md:col-span-8 md:row-span-2 rounded-2xl md:rounded-3xl bg-primary text-primary-foreground p-6 sm:p-8 md:p-12 flex flex-col justify-between relative overflow-hidden group min-h-[360px] sm:min-h-[400px] md:min-h-0">
+                <div className="col-span-1 md:col-span-8 md:row-span-2 rounded-2xl md:rounded-3xl bg-primary text-primary-foreground p-5 sm:p-8 md:p-12 flex flex-col justify-between relative overflow-hidden group min-h-[360px] sm:min-h-[400px] md:min-h-0">
                   <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                     <Accessibility className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 -mr-8 -mt-8 sm:-mr-12 sm:-mt-12 md:-mr-16 md:-mt-16" />
                   </div>
@@ -125,12 +125,12 @@ export default function HomePage() {
                     <Badge className="bg-background/20 hover:bg-background/30 text-primary-foreground border-none mb-3 sm:mb-4 md:mb-6 w-fit text-xs sm:text-sm">
                       Updated for WCAG 2.2
                     </Badge>
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-3 sm:mb-4 md:mb-6 leading-[0.95] md:leading-[0.9]">
+                    <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-4 md:mb-6 leading-[0.95] md:leading-[0.9]">
                       The WCAG
                       <br />
                       Guide
                     </h1>
-                    <p className="text-base sm:text-lg md:text-2xl text-primary-foreground/90 max-w-2xl leading-relaxed">
+                    <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/90 max-w-2xl leading-relaxed">
                       Master web accessibility with our comprehensive, interactive reference for developers and
                       designers.
                     </p>
@@ -233,8 +233,8 @@ export default function HomePage() {
           <section className="container py-16 md:py-24">
             <ScrollAnimation>
               <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">The Four Principles</h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">The Four Principles</h2>
+                <p className="text-base sm:text-lg md:text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
                   WCAG is organized around four principles that form the foundation of web accessibility
                 </p>
               </div>
@@ -339,8 +339,8 @@ export default function HomePage() {
           <section className="container py-16 md:py-24">
             <ScrollAnimation>
               <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything You Need</h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Everything You Need</h2>
+                <p className="text-base sm:text-lg md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
                   Interactive tools, real code examples, and comprehensive resources
                 </p>
               </div>
@@ -395,7 +395,7 @@ export default function HomePage() {
           <section className="border-t bg-card">
             <div className="container py-16 md:py-24 text-center">
               <ScrollAnimation>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Build Accessible Experiences?</h2>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Ready to Build Accessible Experiences?</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
                   Start learning WCAG 2.2 with our beginner-friendly guides and practical examples
                 </p>

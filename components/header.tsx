@@ -195,7 +195,7 @@ export function Header() {
         scrolled ? "bg-background/80 backdrop-blur-md border-border/40 py-2" : "bg-transparent py-3 md:py-4",
       )}
     >
-      <div className="container flex items-center justify-between px-4 md:px-6">
+      <div className="container flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group" aria-label="TheWCAG.com Home">
           <div className="relative">
             <div className="absolute -inset-2 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

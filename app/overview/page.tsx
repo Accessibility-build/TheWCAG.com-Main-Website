@@ -44,8 +44,8 @@ export default function OverviewPage() {
           <div className="container py-8 md:py-12 max-w-5xl">
             {/* Page Header */}
             <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">WCAG Overview</h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+              <h1 className="text-4xl sm:text-5xl md:text-5xl font-bold mb-4">WCAG Overview</h1>
+              <p className="text-lg sm:text-xl md:text-xl text-muted-foreground leading-relaxed">
                 Web Content Accessibility Guidelines (WCAG) is an international standard developed by the W3C to make
                 web content accessible to people with disabilities.
               </p>
@@ -53,7 +53,7 @@ export default function OverviewPage() {
 
             {/* What is WCAG */}
             <section className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">What is WCAG?</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6">What is WCAG?</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   WCAG provides a single shared standard for web content accessibility that meets the needs of
@@ -71,7 +71,7 @@ export default function OverviewPage() {
 
             {/* History Timeline */}
             <section className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">WCAG History</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6">WCAG History</h2>
               <div className="space-y-6">
                 <Card>
                   <CardHeader>
@@ -211,7 +211,7 @@ export default function OverviewPage() {
 
             {/* POUR Principles */}
             <section className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">The POUR Principles</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6">The POUR Principles</h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 WCAG 2.2 is organized around four fundamental principles that form the foundation of web accessibility:
               </p>
@@ -347,7 +347,7 @@ export default function OverviewPage() {
 
             {/* Conformance Levels */}
             <section className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Conformance Levels</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6">Conformance Levels</h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 Each success criterion is assigned a level based on its impact on design and functionality:
               </p>
@@ -418,7 +418,7 @@ export default function OverviewPage() {
 
             {/* Legal Requirements */}
             <section className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Legal Requirements</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6">Legal Requirements</h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 Many countries and jurisdictions have adopted WCAG as part of their accessibility laws:
               </p>

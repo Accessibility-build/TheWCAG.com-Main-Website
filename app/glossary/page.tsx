@@ -218,7 +218,7 @@ export default function GlossaryPage() {
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <BookOpen className="h-8 w-8 text-primary" aria-hidden="true" />
-                <h1 className="text-4xl md:text-5xl font-bold">Accessibility Glossary</h1>
+                <h1 className="text-4xl sm:text-5xl md:text-5xl font-bold">Accessibility Glossary</h1>
               </div>
               <p className="text-lg text-muted-foreground">
                 Comprehensive definitions of web accessibility terms, WCAG terminology, and concepts.
