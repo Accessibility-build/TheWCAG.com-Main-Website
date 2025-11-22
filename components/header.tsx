@@ -1,10 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { Search, Sun, Moon, ArrowRight, ChevronDown } from "lucide-react"
+import { Search, ArrowRight, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { useTheme } from "next-themes"
 import { useState, useEffect, useRef } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { LogoText } from "@/components/logo"
@@ -12,7 +11,6 @@ import { cn } from "@/lib/utils"
 import { HamburgerIcon } from "@/components/hamburger-icon"
 
 export function Header() {
-  const { theme, setTheme } = useTheme()
   const [searchOpen, setSearchOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -175,7 +173,7 @@ export function Header() {
                     }}
                     role="menuitem"
                     tabIndex={focusedResourceIndex === index ? 0 : -1}
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors focus:bg-secondary focus:text-primary focus:outline-none"
+                    className="block px-4 py-2 text-sm text-foreground/90 hover:bg-primary/10 hover:text-foreground transition-colors focus:bg-primary/10 focus:text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20"
                     onClick={() => {
                       setResourcesOpen(false)
                       setFocusedResourceIndex(-1)
@@ -221,18 +219,7 @@ export function Header() {
             aria-label="Toggle search"
             className="rounded-full hover:bg-secondary/10 h-9 w-9 sm:h-10 sm:w-10"
           >
-            <Search className="h-4 w-4 sm:h-5 sm:w-5 text-foreground hover:text-primary transition-colors" />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="rounded-full hover:bg-secondary/10 h-9 w-9 sm:h-10 sm:w-10"
-          >
-            <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-foreground rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-4 w-4 sm:h-5 sm:w-5 text-foreground rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            <Search className="h-4 w-4 sm:h-5 sm:w-5 text-foreground transition-colors" />
           </Button>
 
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>

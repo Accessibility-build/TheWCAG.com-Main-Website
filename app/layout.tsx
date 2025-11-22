@@ -134,7 +134,7 @@ export default function RootLayout({
             gtag('config', 'G-9WQ5PHRJ4K');
           `}
         </Script>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           {children}
         </ThemeProvider>
         <Analytics />
