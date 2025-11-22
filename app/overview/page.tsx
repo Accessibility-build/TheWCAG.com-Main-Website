@@ -293,7 +293,7 @@ export default function OverviewPage() {
                       <div>
                         <CardTitle className="flex items-center gap-2 mb-2">
                           Level A
-                          <Badge className="bg-accent/20 text-accent-foreground border border-accent/40">A</Badge>
+                          <Badge className="bg-blue-600 text-white border border-blue-700">A</Badge>
                         </CardTitle>
                         <CardDescription className="leading-relaxed">
                           The minimum level of conformance. Must be satisfied for basic accessibility.
@@ -312,7 +312,7 @@ export default function OverviewPage() {
                       <div>
                         <CardTitle className="flex items-center gap-2 mb-2">
                           Level AA
-                          <Badge className="bg-secondary/20 text-secondary-foreground border border-secondary/40">
+                          <Badge className="bg-green-600 text-white border border-green-700">
                             AA
                           </Badge>
                         </CardTitle>
@@ -334,7 +334,7 @@ export default function OverviewPage() {
                       <div>
                         <CardTitle className="flex items-center gap-2 mb-2">
                           Level AAA
-                          <Badge className="bg-primary/20 text-primary-foreground border border-primary/40">AAA</Badge>
+                          <Badge className="bg-purple-600 text-white border border-purple-700">AAA</Badge>
                         </CardTitle>
                         <CardDescription className="leading-relaxed">
                           The highest level. Provides enhanced accessibility. May not be achievable for all content.
