@@ -396,7 +396,7 @@ export default function HomePage() {
             <div className="container py-16 md:py-24 text-center">
               <ScrollAnimation>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Ready to Build Accessible Experiences?</h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
+                <p className="text-base sm:text-lg md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
                   Start learning WCAG 2.2 with our beginner-friendly guides and practical examples
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
