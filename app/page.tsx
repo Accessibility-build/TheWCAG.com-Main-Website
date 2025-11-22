@@ -29,7 +29,7 @@ import {
 export const metadata: Metadata = {
   title: "TheWCAG.com - Complete WCAG 2.2 Accessibility Guidelines & Resources",
   description:
-    "Master web accessibility with TheWCAG.com - your comprehensive guide to WCAG 2.2. Interactive examples, code snippets, testing guides, and tools for developers and designers.",
+    "Master WCAG 2.2 with free guides, tools & interactive examples. 87+ success criteria, code snippets, testing guides & compliance checklist. Start building accessible websites today!",
   keywords: [
     "WCAG",
     "WCAG 2.2",

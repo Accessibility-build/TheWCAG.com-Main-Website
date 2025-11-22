@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Accessibility Myths Debunked - Common Misconceptions About WCAG | TheWCAG",
   description:
-    "Debunk common accessibility myths and misconceptions. Learn the truth about WCAG compliance, accessibility costs, implementation time, and more.",
+    "Debunk 12 common accessibility myths about costs, time & compliance. Learn the truth about WCAG, overlays & accessibility implementation. Get the facts now!",
   keywords: [
     "accessibility myths",
     "WCAG myths",

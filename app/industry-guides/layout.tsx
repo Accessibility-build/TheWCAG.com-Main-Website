@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Industry-Specific Accessibility Guides - WCAG for E-commerce, Education, Healthcare | TheWCAG",
   description:
-    "Accessibility guides tailored for specific industries: e-commerce, education, healthcare, government, and finance. Learn industry-specific WCAG requirements and best practices.",
+    "Industry-specific accessibility guides for e-commerce, education, healthcare, government & finance. Learn WCAG requirements & best practices for your sector. Get started!",
   keywords: [
     "e-commerce accessibility",
     "education accessibility",

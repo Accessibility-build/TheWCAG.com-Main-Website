@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "How to Make a Website Accessible - Complete Step-by-Step Guide | TheWCAG",
   description:
-    "Learn how to make your website accessible with our comprehensive step-by-step guide. From basic fixes to WCAG 2.2 compliance, we cover everything you need to know.",
+    "Complete 8-step guide to making your website accessible & WCAG 2.2 compliant. From audits to fixes, learn everything you need. Start improving accessibility today!",
   keywords: [
     "how to make website accessible",
     "make website accessible",

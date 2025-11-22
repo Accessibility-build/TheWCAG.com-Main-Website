@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Accessibility Tools - Free WCAG Testing & Analysis Tools | TheWCAG",
   description:
-    "Free accessibility tools and resources including color contrast checker, AI-powered audit helper, alt text generator, and more. Test your website's accessibility and improve WCAG 2.2 compliance with our comprehensive toolset.",
+    "Free accessibility tools: color contrast checker, AI audit helper, alt text generator & more. Test your site's WCAG 2.2 compliance instantly. Start improving accessibility today!",
   keywords: [
     "accessibility tools",
     "WCAG testing tools",

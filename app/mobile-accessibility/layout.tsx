@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Mobile Accessibility Guide - Making Mobile Apps & Websites Accessible | TheWCAG",
   description:
-    "Complete guide to mobile accessibility. Learn how to make mobile websites and apps accessible with touch targets, gestures, screen readers, and WCAG 2.2 mobile requirements.",
+    "Master mobile accessibility: touch targets (44x44px), gestures, screen readers & WCAG 2.2 mobile requirements. Make iOS & Android apps accessible today!",
   keywords: [
     "mobile accessibility",
     "mobile app accessibility",

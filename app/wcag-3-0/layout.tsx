@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "WCAG 3.0 - The Future of Web Accessibility Guidelines | TheWCAG",
   description:
-    "Learn about WCAG 3.0 (W3C Accessibility Guidelines), the next generation of accessibility standards. Understand the new outcomes-based approach, scoring system, and how it differs from WCAG 2.2.",
+    "Discover WCAG 3.0 - the future of accessibility standards. Learn outcomes-based approach, Bronze/Silver/Gold scoring & how it differs from WCAG 2.2. Stay ahead!",
   keywords: [
     "WCAG 3.0",
     "W3C Accessibility Guidelines",

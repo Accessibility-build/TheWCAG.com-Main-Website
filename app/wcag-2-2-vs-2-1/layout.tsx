@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "WCAG 2.2 vs 2.1 - What's New and Changed | TheWCAG",
   description:
-    "Compare WCAG 2.2 and WCAG 2.1. Learn about new success criteria, changes, and what you need to know to upgrade from WCAG 2.1 to WCAG 2.2 compliance.",
+    "Complete WCAG 2.2 vs 2.1 comparison: 9 new criteria, 1 removed, migration guide & backward compatibility. Upgrade to WCAG 2.2 compliance now!",
   keywords: [
     "WCAG 2.2 vs 2.1",
     "WCAG 2.2 changes",

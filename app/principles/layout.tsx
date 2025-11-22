@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "WCAG Principles - POUR: Perceivable, Operable, Understandable, Robust | TheWCAG",
   description:
-    "Explore the four foundational principles of WCAG 2.2: Perceivable, Operable, Understandable, and Robust (POUR). Learn how these principles guide web accessibility standards and success criteria.",
+    "Master WCAG 2.2 POUR principles: Perceivable, Operable, Understandable & Robust. Learn how these 4 principles guide 87+ success criteria. Start learning now!",
   keywords: [
     "WCAG principles",
     "POUR principles",

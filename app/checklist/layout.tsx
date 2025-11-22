@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "WCAG 2.2 Checklist - Interactive Accessibility Compliance Checklist | TheWCAG",
   description:
-    "Interactive WCAG 2.2 compliance checklist. Track your accessibility progress with our comprehensive checklist covering all Level A, AA, and AAA success criteria. Filter by level, principle, and save your progress.",
+    "Free interactive WCAG 2.2 compliance checklist. Track your accessibility progress with all 87+ success criteria. Filter by level, save progress, and achieve WCAG 2.2 AA compliance today!",
   keywords: [
     "WCAG checklist",
     "WCAG 2.2 checklist",

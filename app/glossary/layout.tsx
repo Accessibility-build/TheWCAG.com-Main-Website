@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Accessibility Glossary - Web Accessibility Terms & Definitions | TheWCAG",
   description:
-    "Comprehensive glossary of web accessibility terms, WCAG terminology, and definitions. Learn about ARIA, screen readers, assistive technologies, and accessibility concepts.",
+    "Complete accessibility glossary with 30+ terms & definitions. Learn ARIA, screen readers, assistive tech & WCAG terminology. Search & filter terms easily. Start learning!",
   keywords: [
     "accessibility glossary",
     "WCAG terms",
