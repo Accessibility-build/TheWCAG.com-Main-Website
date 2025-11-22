@@ -40,6 +40,7 @@ export function Header() {
     { href: "/best-practices", label: "Best Practices" },
     { href: "/accessibility-audit-guide", label: "Audit Guide" },
     { href: "/mobile-accessibility", label: "Mobile Accessibility" },
+    { href: "/lawsuits", label: "Accessibility Lawsuits" },
     { href: "/faq", label: "FAQ" },
     { href: "/glossary", label: "Glossary" },
     { href: "/wcag-2-2-vs-2-1", label: "WCAG 2.2 vs 2.1" },

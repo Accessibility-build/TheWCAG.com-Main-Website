@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { successCriteria } from '@/lib/wcag-data'
+import { getAllLawsuits } from '@/lib/lawsuits-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://thewcag.com'
@@ -216,6 +217,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/lawsuits`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
   ]
 
   // Principle pages
@@ -254,6 +261,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: criterion.level === 'A' ? 0.8 : criterion.level === 'AA' ? 0.7 : 0.6,
   }))
 
-  return [...staticPages, ...principlePages, ...criteriaPages]
+  // Lawsuit pages
+  const lawsuitPages: MetadataRoute.Sitemap = getAllLawsuits().map((lawsuit) => ({
+    url: `${baseUrl}/lawsuits/${lawsuit.slug}`,
+    lastModified: new Date(lawsuit.dateResolved || lawsuit.dateFiled),
+    changeFrequency: 'yearly',
+    priority: 0.7,
+  }))
+
+  return [...staticPages, ...principlePages, ...criteriaPages, ...lawsuitPages]
 }
 
