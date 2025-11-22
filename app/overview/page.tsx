@@ -56,9 +56,16 @@ export default function OverviewPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed mb-3">
                       The first version of WCAG, establishing 14 guidelines focused on making web content accessible.
                     </p>
+                    <Link
+                      href="/wcag-1-0"
+                      className="text-primary hover:underline inline-flex items-center font-medium"
+                    >
+                      Learn more about WCAG 1.0
+                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
+                    </Link>
                   </CardContent>
                 </Card>
 
@@ -73,10 +80,17 @@ export default function OverviewPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed mb-3">
                       A major overhaul introducing the POUR principles and testable success criteria. Became ISO/IEC
                       40500:2012.
                     </p>
+                    <Link
+                      href="/wcag-2-0"
+                      className="text-primary hover:underline inline-flex items-center font-medium"
+                    >
+                      Learn more about WCAG 2.0
+                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
+                    </Link>
                   </CardContent>
                 </Card>
 
@@ -91,10 +105,17 @@ export default function OverviewPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed mb-3">
                       Added 17 new success criteria focusing on mobile accessibility, people with low vision, and people
                       with cognitive and learning disabilities.
                     </p>
+                    <Link
+                      href="/wcag-2-1"
+                      className="text-primary hover:underline inline-flex items-center font-medium"
+                    >
+                      Learn more about WCAG 2.1
+                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
+                    </Link>
                   </CardContent>
                 </Card>
 
@@ -113,13 +134,23 @@ export default function OverviewPage() {
                       Added 9 new success criteria and removed 1 (4.1.1 Parsing). Focus on mobile accessibility,
                       cognitive disabilities, and low vision improvements.
                     </p>
-                    <Link
-                      href="/whats-new"
-                      className="text-primary hover:underline inline-flex items-center font-medium"
-                    >
-                      See what&apos;s new
-                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
-                    </Link>
+                    <div className="flex flex-wrap gap-3">
+                      <Link
+                        href="/wcag-2-2"
+                        className="text-primary hover:underline inline-flex items-center font-medium"
+                      >
+                        Learn more about WCAG 2.2
+                        <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
+                      </Link>
+                      <span className="text-muted-foreground">•</span>
+                      <Link
+                        href="/wcag-2-2-vs-2-1"
+                        className="text-primary hover:underline inline-flex items-center font-medium"
+                      >
+                        See what&apos;s new
+                        <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
+                      </Link>
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -134,10 +165,17 @@ export default function OverviewPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed mb-3">
                       The next generation of WCAG guidelines, currently in Working Draft stage with significant
                       structural changes planned.
                     </p>
+                    <Link
+                      href="/wcag-3-0"
+                      className="text-primary hover:underline inline-flex items-center font-medium"
+                    >
+                      Learn more about WCAG 3.0
+                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
+                    </Link>
                   </CardContent>
                 </Card>
               </div>
