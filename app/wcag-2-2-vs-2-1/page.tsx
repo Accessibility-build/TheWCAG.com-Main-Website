@@ -121,8 +121,8 @@ export default function WCAGComparisonPage() {
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary mt-1 shrink-0" />
                     <div>
-                      <strong>Backward Compatible:</strong> WCAG 2.2 builds on 2.1 and doesn't remove any existing
-                      criteria
+                      <strong>Backward Compatible:</strong> WCAG 2.2 builds on 2.1 and maintains all existing criteria
+                      (except one deprecated criterion)
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
@@ -192,6 +192,37 @@ export default function WCAGComparisonPage() {
               </div>
             </section>
 
+            {/* Deprecated Criteria */}
+            <Card className="mb-12 border-orange-500/20 bg-orange-500/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <AlertCircle className="h-5 w-5 text-orange-600" />
+                  Deprecated Success Criteria
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">4.1.1 - Parsing (Deprecated)</h3>
+                    <p className="text-muted-foreground mb-3">
+                      <strong className="text-foreground">Status:</strong> This success criterion has been deprecated in WCAG 2.2 and is no longer required for conformance.
+                    </p>
+                    <p className="text-muted-foreground mb-3">
+                      <strong className="text-foreground">Why it was deprecated:</strong> Modern HTML parsers automatically handle well-formed markup, making this criterion obsolete. The requirement was originally intended to ensure that assistive technologies could parse content correctly, but modern browsers and assistive technologies handle malformed HTML gracefully.
+                    </p>
+                    <p className="text-muted-foreground mb-3">
+                      <strong className="text-foreground">What this means:</strong> You no longer need to ensure that HTML elements have complete start and end tags, are nested according to their specifications, and don't contain duplicate attributes. However, it's still good practice to write valid HTML for maintainability and performance.
+                    </p>
+                    <div className="bg-background/50 p-4 rounded-lg border border-border mt-4">
+                      <p className="text-sm text-muted-foreground">
+                        <strong className="text-foreground">Note:</strong> While 4.1.1 is deprecated, you should still follow HTML best practices. Valid HTML improves code maintainability, performance, and reduces potential issues with assistive technologies.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Comparison Table */}
             <Card className="mb-12">
               <CardHeader>
@@ -211,12 +242,17 @@ export default function WCAGComparisonPage() {
                       <tr className="border-b hover:bg-muted/50">
                         <td className="p-3 font-medium">Total Success Criteria</td>
                         <td className="p-3">78</td>
-                        <td className="p-3">87</td>
+                        <td className="p-3">87 (9 new, 1 deprecated)</td>
                       </tr>
                       <tr className="border-b hover:bg-muted/50">
                         <td className="p-3 font-medium">New Criteria</td>
                         <td className="p-3">-</td>
                         <td className="p-3">9 new criteria</td>
+                      </tr>
+                      <tr className="border-b hover:bg-muted/50">
+                        <td className="p-3 font-medium">Deprecated Criteria</td>
+                        <td className="p-3">-</td>
+                        <td className="p-3">4.1.1 (Parsing)</td>
                       </tr>
                       <tr className="border-b hover:bg-muted/50">
                         <td className="p-3 font-medium">Focus Areas</td>
