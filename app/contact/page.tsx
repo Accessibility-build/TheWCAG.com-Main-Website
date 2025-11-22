@@ -39,9 +39,21 @@ export default function ContactPage() {
     setStatus("sending")
     
     try {
-      const form = e.currentTarget
-      const formDataToSend = new FormData(form)
-      
+      // Ensure all required fields are present
+      if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+        setStatus("error")
+        setTimeout(() => setStatus("idle"), 5000)
+        return
+      }
+
+      // Create FormData with proper field names for Formspree
+      const formDataToSend = new FormData()
+      formDataToSend.append("name", formData.name)
+      formDataToSend.append("email", formData.email)
+      formDataToSend.append("_replyto", formData.email) // Formspree uses this for auto-reply
+      formDataToSend.append("subject", formData.subject)
+      formDataToSend.append("message", formData.message)
+
       const response = await fetch("https://formspree.io/f/xpwndkoe", {
         method: "POST",
         body: formDataToSend,
@@ -50,16 +62,26 @@ export default function ContactPage() {
         },
       })
 
+      let data
+      try {
+        data = await response.json()
+      } catch (jsonError) {
+        // If response is not JSON, log the text response
+        const textResponse = await response.text()
+        console.error("Formspree non-JSON response:", textResponse)
+        data = {}
+      }
+
       if (response.ok) {
         setStatus("success")
         setFormData({ name: "", email: "", subject: "", message: "" })
-        form.reset()
         setTimeout(() => setStatus("idle"), 5000)
       } else {
-        const data = await response.json()
-        if (data.errors) {
-          console.error("Formspree errors:", data.errors)
-        }
+        console.error("Formspree error response:", {
+          status: response.status,
+          statusText: response.statusText,
+          data: data,
+        })
         setStatus("error")
         setTimeout(() => setStatus("idle"), 5000)
       }
@@ -183,8 +205,6 @@ export default function ContactPage() {
               <div className="lg:w-7/12 p-8 md:p-12 bg-card">
                 <form 
                   onSubmit={handleSubmit} 
-                  action="https://formspree.io/f/xpwndkoe"
-                  method="POST"
                   className="space-y-8 h-full flex flex-col justify-center"
                   noValidate
                 >
@@ -268,11 +288,19 @@ export default function ContactPage() {
                     )}
 
                     {status === "error" && (
-                      <div className="flex items-center gap-2 p-4 mb-4 bg-destructive/10 border border-destructive/20 rounded-lg animate-in fade-in slide-in-from-top-2">
-                        <AlertCircle className="h-5 w-5 text-destructive" />
-                        <p className="text-sm text-destructive font-medium">
-                          Something went wrong. Please try again.
-                        </p>
+                      <div className="flex items-start gap-2 p-4 mb-4 bg-destructive/10 border border-destructive/20 rounded-lg animate-in fade-in slide-in-from-top-2">
+                        <AlertCircle className="h-5 w-5 text-destructive mt-0.5 shrink-0" />
+                        <div className="flex-1">
+                          <p className="text-sm text-destructive font-medium mb-1">
+                            Something went wrong. Please try again.
+                          </p>
+                          <p className="text-xs text-destructive/70">
+                            If the problem persists, please email us directly at{" "}
+                            <a href="mailto:contact@thewcag.com" className="underline hover:text-destructive">
+                              contact@thewcag.com
+                            </a>
+                          </p>
+                        </div>
                       </div>
                     )}
 
