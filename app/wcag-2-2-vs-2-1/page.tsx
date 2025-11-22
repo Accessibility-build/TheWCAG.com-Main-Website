@@ -36,6 +36,14 @@ export default function WCAGComparisonPage() {
       category: "Navigation",
     },
     {
+      id: "2.4.13",
+      title: "Focus Appearance",
+      level: "AAA",
+      description:
+        "When the keyboard focus indicator is visible, an area of the focus indicator meets specific size and contrast requirements.",
+      category: "Navigation",
+    },
+    {
       id: "2.5.7",
       title: "Dragging Movements",
       level: "AA",

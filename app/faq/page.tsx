@@ -139,7 +139,7 @@ export default function FAQPage() {
         name: "Does mobile accessibility differ from desktop?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "While the same WCAG principles apply, mobile has specific considerations: touch target sizes (minimum 44x44px), orientation support, gesture alternatives, and mobile screen reader compatibility. WCAG 2.2 added criteria specifically for mobile accessibility.",
+          text: "While the same WCAG principles apply, mobile has specific considerations: touch target sizes (minimum 24x24px for Level AA, 44x44px for Level AAA), orientation support, gesture alternatives, and mobile screen reader compatibility. WCAG 2.2 added criteria specifically for mobile accessibility.",
         },
       },
       {

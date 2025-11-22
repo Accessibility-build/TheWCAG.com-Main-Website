@@ -21,7 +21,14 @@ This document tracks findings from the systematic verification process.
 7. 3.3.8 - Accessible Authentication (Minimum) - AA
 8. 3.3.9 - Accessible Authentication (Enhanced) - AAA
 
-**Note**: Need to verify if 2.4.13 "Focus Appearance" in `lib/wcag-data.tsx` is actually new in WCAG 2.2 or if it existed in 2.1.
+### ✅ Verified: 2.4.13 isNew Flag
+- **Issue**: Initial confusion about whether 2.4.13 "Focus Appearance" is one of the 9 new criteria
+- **Location**: `lib/wcag-data.tsx` (line ~3652), `app/wcag-2-2/page.tsx`, `app/wcag-2-2-vs-2-1/page.tsx`
+- **Verification**: Confirmed that 2.4.13 "Focus Appearance" IS one of the 9 new criteria in WCAG 2.2
+- **Fix**: Kept `isNew: true` and added 2.4.13 to new criteria lists in WCAG 2.2 pages
+- **Status**: ✅ Verified and Fixed
+- **Date**: January 2025
+- **Source**: https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/
 
 ---
 

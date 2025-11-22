@@ -102,7 +102,7 @@ export default function GlossaryPage() {
     {
       term: "Touch Target",
       definition:
-        "The interactive area of a button or link on touch devices. WCAG 2.5.5 requires a minimum size of 44x44 CSS pixels for touch targets.",
+        "The interactive area of a button or link on touch devices. WCAG 2.5.8 (Level AA) requires a minimum size of 24x24 CSS pixels, while WCAG 2.5.5 (Level AAA) requires 44x44 CSS pixels for touch targets.",
       category: "Mobile",
     },
     {

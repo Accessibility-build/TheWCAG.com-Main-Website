@@ -35,6 +35,7 @@ export default function WCAG22Page() {
   const newCriteria = [
     { id: "2.4.11", title: "Focus Not Obscured (Minimum)", level: "AA", focus: "Keyboard" },
     { id: "2.4.12", title: "Focus Not Obscured (Enhanced)", level: "AAA", focus: "Keyboard" },
+    { id: "2.4.13", title: "Focus Appearance", level: "AAA", focus: "Keyboard" },
     { id: "2.5.7", title: "Dragging Movements", level: "AA", focus: "Mobile" },
     { id: "2.5.8", title: "Target Size (Minimum)", level: "AA", focus: "Mobile" },
     { id: "3.2.6", title: "Consistent Help", level: "A", focus: "Cognitive" },

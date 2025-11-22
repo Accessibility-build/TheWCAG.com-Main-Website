@@ -3649,7 +3649,7 @@ function FocusableComponent() {
     principle: "operable",
     guideline: "Navigable",
     guidelineNumber: "2.4",
-    isNew: true,
+    isNew: true, // Verified: One of the 9 new criteria in WCAG 2.2
     description:
       "When the keyboard focus indicator is visible, an area of the focus indicator meets specific size and contrast requirements.",
     summary: "Focus indicators must meet enhanced size and contrast requirements for maximum visibility.",
@@ -5479,7 +5479,7 @@ function BiometricLogin() {
     isNew: false,
     description:
       "In content implemented using markup languages, elements have complete start and end tags, elements are nested according to their specifications, elements do not contain duplicate attributes, and any IDs are unique, except where the specifications allow these features.",
-    summary: "Ensure HTML is valid and error-free (Note: Obsolete in WCAG 2.2 but kept for reference).",
+    summary: "Ensure HTML is valid and error-free (Note: Deprecated in WCAG 2.2 but kept for reference).",
     whyItMatters: "Ensures browsers and assistive technologies can parse the code correctly.",
     whoBenefits: ["All users"],
   },
