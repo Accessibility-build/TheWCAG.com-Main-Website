@@ -97,8 +97,14 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   verification: {
-    // Add your verification codes here when available
-    // google: "your-google-verification-code",
+    // Google Search Console verification
+    // To verify your site:
+    // 1. Go to https://search.google.com/search-console
+    // 2. Add your property (thewcag.com)
+    // 3. Choose "HTML tag" verification method
+    // 4. Copy the content value from the meta tag
+    // 5. Replace "your-google-verification-code" below with that value
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "your-google-verification-code",
     // yandex: "your-yandex-verification-code",
     // bing: "your-bing-verification-code",
   },
