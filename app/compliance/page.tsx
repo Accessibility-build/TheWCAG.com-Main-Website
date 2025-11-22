@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -19,6 +20,32 @@ import {
 } from "lucide-react"
 
 export default function CompliancePage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Accessibility Compliance - Laws & Regulations Guide",
+    description:
+      "Comprehensive guide to digital accessibility laws and regulations including ADA, Section 508, EN 301 549, AODA, and European Accessibility Act.",
+    url: "https://thewcag.com/compliance",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Accessibility Compliance",
+          item: "https://thewcag.com/compliance",
+        },
+      ],
+    },
+  }
+
   const complianceLaws = [
     {
       id: "ada",
@@ -269,6 +296,7 @@ export default function CompliancePage() {
 
   return (
     <>
+      <StructuredData data={structuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -27,6 +28,32 @@ import {
 } from "lucide-react"
 
 export default function ComparePage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Accessibility Tools & Services Comparison",
+    description:
+      "Compare popular web accessibility tools, services, screen readers, and testing solutions. Find the best accessibility tools for your needs.",
+    url: "https://thewcag.com/compare",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Compare Tools",
+          item: "https://thewcag.com/compare",
+        },
+      ],
+    },
+  }
+
   // AI-Powered Tools (accessibility.build)
   const aiTools = [
     {
