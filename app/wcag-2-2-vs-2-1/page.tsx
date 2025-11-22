@@ -36,13 +36,6 @@ export default function WCAGComparisonPage() {
       category: "Navigation",
     },
     {
-      id: "2.4.13",
-      title: "Focus Not Obscured (Enhanced)",
-      level: "AAA",
-      description: "A mechanism is available to bypass blocks of content that are repeated on multiple Web pages.",
-      category: "Navigation",
-    },
-    {
       id: "2.5.7",
       title: "Dragging Movements",
       level: "AA",

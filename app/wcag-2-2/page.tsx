@@ -35,7 +35,6 @@ export default function WCAG22Page() {
   const newCriteria = [
     { id: "2.4.11", title: "Focus Not Obscured (Minimum)", level: "AA", focus: "Keyboard" },
     { id: "2.4.12", title: "Focus Not Obscured (Enhanced)", level: "AAA", focus: "Keyboard" },
-    { id: "2.4.13", title: "Focus Not Obscured (Enhanced)", level: "AAA", focus: "Navigation" },
     { id: "2.5.7", title: "Dragging Movements", level: "AA", focus: "Mobile" },
     { id: "2.5.8", title: "Target Size (Minimum)", level: "AA", focus: "Mobile" },
     { id: "3.2.6", title: "Consistent Help", level: "A", focus: "Cognitive" },
@@ -88,7 +87,7 @@ export default function WCAG22Page() {
               <p className="text-lg text-muted-foreground">
                 Published in October 2023, WCAG 2.2 is the current recommended version. It adds 9 new success criteria
                 and removes 1 deprecated criterion (4.1.1 Parsing), focusing on mobile accessibility, cognitive
-                disabilities, and low vision improvements.
+                disabilities, and low vision improvements. The 9 new criteria are: 2.4.11, 2.4.12, 2.5.7, 2.5.8, 3.2.6, 3.3.7, 3.3.8, and 3.3.9.
               </p>
             </div>
 
