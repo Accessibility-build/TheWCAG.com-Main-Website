@@ -27,7 +27,7 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "TheWCAG.com - Complete WCAG 2.2 Accessibility Guidelines & Resources",
+  title: "TheWCAG.com - Complete WCAG 2.2 Guidelines",
   description:
     "Master WCAG 2.2 with free guides, tools & interactive examples. 87+ success criteria, code snippets, testing guides & compliance checklist. Start building accessible websites today!",
   keywords: [
