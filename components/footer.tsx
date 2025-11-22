@@ -14,9 +14,9 @@ export function Footer() {
                 <Image
                   src="/Logo.png"
                   alt="TheWCAG.com Logo"
-                  width={64}
-                  height={64}
-                  className="w-12 h-12 md:w-16 md:h-16"
+                  width={128}
+                  height={128}
+                  className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32"
                   priority
                 />
               </div>

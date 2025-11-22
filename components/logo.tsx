@@ -18,8 +18,9 @@ export function LogoText({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <Logo className="w-8 h-8" />
-      <span className="font-bold text-xl tracking-tight">
-        The<span className="text-primary">WCAG</span>
+      <span className="text-xl tracking-tight">
+        <span className="font-light">The</span>
+        <span className="font-bold text-primary">WCAG</span>
       </span>
     </div>
   )
