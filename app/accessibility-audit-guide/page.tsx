@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -150,6 +151,7 @@ export default function AccessibilityAuditGuidePage() {
     description:
       "Complete 7-step guide to conducting comprehensive accessibility audits. Learn how to systematically evaluate your website for WCAG 2.2 compliance using automated tools, manual testing, and user testing methods.",
     url: "https://thewcag.com/accessibility-audit-guide",
+    dateModified: "2025-01-15",
     totalTime: "PT30H", // Estimated 30 hours total
     estimatedCost: {
       "@type": "MonetaryAmount",
@@ -194,11 +196,13 @@ export default function AccessibilityAuditGuidePage() {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-8 md:py-12 max-w-5xl">
+            <Breadcrumb items={[{ label: "Accessibility Audit Guide", href: "/accessibility-audit-guide" }]} />
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <FileSearch className="h-8 w-8 text-primary" aria-hidden="true" />
                 <h1 className="text-4xl md:text-5xl font-bold">Accessibility Audit Guide</h1>
               </div>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
               <p className="text-lg text-muted-foreground">
                 Complete guide to conducting comprehensive accessibility audits. Learn how to systematically evaluate
                 your website for WCAG 2.2 compliance.

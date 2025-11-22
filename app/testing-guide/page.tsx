@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -238,12 +239,14 @@ export default function TestingGuidePage() {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-8 md:py-12 max-w-5xl">
+            <Breadcrumb items={[{ label: "Testing Guide", href: "/testing-guide" }]} />
             {/* Header */}
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <TestTube className="h-8 w-8 text-primary" aria-hidden="true" />
                 <h1 className="text-4xl md:text-5xl font-bold">Accessibility Testing Guide</h1>
               </div>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
               <p className="text-lg text-muted-foreground">
                 Learn how to test your website for WCAG compliance using automated tools, manual testing, screen
                 readers, and user testing methods.

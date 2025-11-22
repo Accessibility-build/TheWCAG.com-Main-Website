@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -98,12 +99,14 @@ export default function WCAGComparisonPage() {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-8 md:py-12 max-w-5xl">
+            <Breadcrumb items={[{ label: "WCAG 2.2 vs 2.1", href: "/wcag-2-2-vs-2-1" }]} />
             {/* Header */}
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <GitCompare className="h-8 w-8 text-primary" aria-hidden="true" />
                 <h1 className="text-4xl md:text-5xl font-bold">WCAG 2.2 vs 2.1</h1>
               </div>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
               <p className="text-lg text-muted-foreground">
                 Learn what's new in WCAG 2.2, how it differs from WCAG 2.1, and what you need to know to upgrade.
               </p>

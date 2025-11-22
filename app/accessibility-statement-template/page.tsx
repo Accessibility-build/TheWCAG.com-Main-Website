@@ -154,13 +154,13 @@ This statement was created on [Date] and last updated on [Date].`
               <h2 className="text-3xl font-bold mb-6">Free Template</h2>
               <Card>
                 <CardHeader>
-                  <CardTitle>Accessibility Statement Template</CardTitle>
+                    <CardTitle>Accessibility Statement Template</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <pre className="bg-muted p-6 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
-                      <code>{template}</code>
-                    </pre>
+                  <pre className="bg-muted p-6 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
+                    <code>{template}</code>
+                  </pre>
                     <p className="text-sm text-muted-foreground">
                       Select and copy the template above, then customize it with your organization's information.
                     </p>

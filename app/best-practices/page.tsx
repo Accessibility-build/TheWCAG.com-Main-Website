@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -303,12 +304,14 @@ background: #ffffff;`,
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-8 md:py-12 max-w-6xl">
+            <Breadcrumb items={[{ label: "Best Practices", href: "/best-practices" }]} />
             {/* Header */}
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <Lightbulb className="h-8 w-8 text-primary" aria-hidden="true" />
                 <h1 className="text-4xl md:text-5xl font-bold">Accessibility Best Practices</h1>
               </div>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
               <p className="text-lg text-muted-foreground max-w-3xl">
                 Comprehensive guide to web accessibility best practices with real code examples. Learn what to do and
                 what to avoid for WCAG 2.2 compliance.
@@ -396,9 +399,10 @@ background: #ffffff;`,
             </Card>
 
             {/* Related Resources */}
-            <Card>
+            <Card className="mt-12">
               <CardHeader>
-                <CardTitle>Related Resources</CardTitle>
+                <CardTitle className="text-2xl">Related Resources</CardTitle>
+                <CardDescription>Continue learning with these related guides and resources.</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid sm:grid-cols-2 gap-4">

@@ -171,13 +171,13 @@ export default function OverviewPage() {
                         <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
                       </Link>
                       <span className="text-muted-foreground">•</span>
-                      <Link
+                    <Link
                         href="/wcag-2-2-vs-2-1"
-                        className="text-primary hover:underline inline-flex items-center font-medium"
-                      >
-                        See what&apos;s new
-                        <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
-                      </Link>
+                      className="text-primary hover:underline inline-flex items-center font-medium"
+                    >
+                      See what&apos;s new
+                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
+                    </Link>
                     </div>
                   </CardContent>
                 </Card>

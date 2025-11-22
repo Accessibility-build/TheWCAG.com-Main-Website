@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -17,6 +18,8 @@ import {
   Target,
   FileText,
   Search,
+  TestTube,
+  Lightbulb,
 } from "lucide-react"
 
 export default function GettingStartedPage() {
@@ -174,6 +177,7 @@ export default function GettingStartedPage() {
     description:
       "A beginner-friendly 6-step guide to understanding and implementing web accessibility. Learn the basics, audit your site, fix issues, and test your improvements.",
     url: "https://thewcag.com/getting-started",
+    dateModified: "2025-01-15",
     totalTime: "PT10H", // Estimated 10 hours total
     estimatedCost: {
       "@type": "MonetaryAmount",
@@ -215,12 +219,14 @@ export default function GettingStartedPage() {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-8 md:py-12 max-w-5xl">
+            <Breadcrumb items={[{ label: "Getting Started", href: "/getting-started" }]} />
             {/* Header */}
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <Rocket className="h-8 w-8 text-primary" aria-hidden="true" />
                 <h1 className="text-4xl md:text-5xl font-bold">Getting Started with Web Accessibility</h1>
               </div>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
               <p className="text-lg text-muted-foreground">
                 A step-by-step guide to making your website accessible and WCAG compliant. Perfect for beginners,
                 developers, and designers.

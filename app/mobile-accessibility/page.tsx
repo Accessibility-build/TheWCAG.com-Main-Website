@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -28,6 +29,7 @@ export default function MobileAccessibilityPage() {
     headline: "Mobile Accessibility Guide - Making Mobile Apps & Websites Accessible",
     description: "Complete guide to mobile accessibility with touch targets, gestures, screen readers, and WCAG 2.2 mobile requirements",
     url: "https://thewcag.com/mobile-accessibility",
+    dateModified: "2025-01-15",
   }
 
   const mobileRequirements = [
@@ -157,11 +159,13 @@ button {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-8 md:py-12 max-w-5xl">
+            <Breadcrumb items={[{ label: "Mobile Accessibility", href: "/mobile-accessibility" }]} />
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <Smartphone className="h-8 w-8 text-primary" aria-hidden="true" />
                 <h1 className="text-4xl md:text-5xl font-bold">Mobile Accessibility Guide</h1>
               </div>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
               <p className="text-lg text-muted-foreground">
                 Complete guide to making mobile websites and apps accessible. Learn about touch targets, gestures,
                 screen readers, and WCAG 2.2 mobile-specific requirements.

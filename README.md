@@ -45,7 +45,7 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 - Accessibility myths debunked (12 common misconceptions)
 - Comprehensive accessibility testing guide
 - Industry-specific guides (e-commerce, education, healthcare, government, finance)
-- Accessibility lawsuits database with 6+ detailed case studies
+- Accessibility lawsuits database with 11+ detailed case studies (including 5 new cases from 2025)
 - How to make a website accessible (step-by-step guide)
 - Accessibility best practices with code examples
 - Mobile accessibility guide
@@ -57,21 +57,32 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 - Light mode (dark mode removed for consistency)
 - Fully responsive design (mobile, tablet, desktop) - optimized for all screen sizes
 - Fast page loads with optimized performance
-- Intuitive navigation and search
+- Intuitive navigation with organized dropdown menus (Learn, Compliance, Resources)
+- Breadcrumb navigation on all content pages for easy navigation
 - Interactive glossary with search and filtering
 - Comparison tables for tools and services
-- Step-by-step guides for beginners
+- Step-by-step guides for beginners with HowTo structured data
 - Quick access sections for easy navigation
+- Related content sections linking to relevant guides and resources
 - Resources dropdown menu for easy access to all guides
 
 ### 🔍 SEO Optimized
-- Complete metadata for all pages
-- Structured data (JSON-LD) for rich snippets (FAQPage, WebSite, Organization, Article)
-- Dynamic sitemap generation with all pages
+- Complete metadata for all pages (optimized to 150-160 characters for better CTR)
+- Structured data (JSON-LD) for rich snippets:
+  - FAQPage schema (FAQ page)
+  - WebSite and Organization schemas (homepage)
+  - Article schema (content pages)
+  - HowTo schema (step-by-step guides)
+  - ItemList schema (checklist page)
+  - BreadcrumbList schema (all pages)
+- Dynamic sitemap generation with accurate lastModified dates (137+ pages)
 - Open Graph and Twitter Card support
-- Canonical URLs throughout
+- Canonical URLs throughout (absolute URLs)
+- Google Search Console verification support
 - SEO-focused pages targeting long-tail keywords
-- Internal linking structure for better crawlability
+- Enhanced internal linking structure with related content sections
+- Breadcrumb navigation on all content pages
+- "Last Updated" dates on all guide pages
 - Comprehensive FAQ with structured data
 - Glossary page for accessibility terminology
 - Comparison pages for tools and WCAG versions
@@ -180,8 +191,9 @@ TheWCAG/
 │   └── robots.ts           # Robots.txt
 ├── components/             # React components
 │   ├── ui/                # UI components (shadcn/ui)
-│   ├── header.tsx         # Site header (responsive)
-│   ├── footer.tsx         # Site footer (responsive)
+│   ├── header.tsx         # Site header (responsive with dropdown menus)
+│   ├── footer.tsx         # Site footer (responsive with large brand text)
+│   ├── breadcrumb.tsx     # Breadcrumb navigation component
 │   ├── hero-search.tsx    # Search component (mobile-optimized)
 │   └── ...
 ├── lib/                    # Utilities and data
@@ -276,29 +288,43 @@ See `middleware.ts` for security configuration.
 
 ## 📊 SEO Features
 
-- Dynamic metadata for all pages
-- Structured data (JSON-LD) for rich snippets (FAQPage, WebSite, Organization, Article, BreadcrumbList, CollectionPage)
-- Automatic sitemap generation (137+ pages)
-- Robots.txt configuration
-- Open Graph and Twitter Card metadata
-- Canonical URLs throughout
-- 15+ SEO-focused pages targeting long-tail keywords:
+- **Optimized Meta Descriptions**: All pages have meta descriptions optimized to 150-160 characters with compelling CTAs for better click-through rates
+- **Structured Data (JSON-LD)**: Comprehensive structured data implementation:
+  - FAQPage schema (FAQ page with 15+ questions)
+  - WebSite and Organization schemas (homepage)
+  - Article schema (all content pages with dateModified)
+  - HowTo schema (step-by-step guides: Getting Started, How to Make Website Accessible, Testing Guide, Audit Guide)
+  - ItemList schema (WCAG checklist with all 87+ criteria)
+  - BreadcrumbList schema (all pages for navigation context)
+- **Sitemap Optimization**: Dynamic sitemap generation with:
+  - Accurate lastModified dates based on content publication dates
+  - WCAG version dates (1.0: 1999, 2.0: 2008, 2.1: 2018, 2.2: 2023)
+  - Recent update dates for new content
+  - 137+ pages included
+- **Google Search Console**: Verification support via environment variable
+- **Robots.txt**: Properly configured for search engine crawling
+- **Open Graph and Twitter Cards**: Optimized metadata for social sharing
+- **Canonical URLs**: Absolute URLs throughout to prevent duplicate content
+- **Breadcrumb Navigation**: Visible breadcrumbs on all content pages for better UX and SEO
+- **Last Updated Dates**: Content freshness indicators on all guide pages
+- **Related Content Sections**: Internal linking with related articles, guides, and resources
+- **Enhanced Internal Linking**: Contextual links throughout content for better crawlability
+- **15+ SEO-Focused Pages**: Targeting long-tail keywords:
   - FAQ page with structured data
   - Glossary with search functionality
-  - Getting Started guide
+  - Getting Started guide (6-step process)
   - WCAG version pages (1.0, 2.0, 2.1, 2.2, 3.0)
   - WCAG 2.2 vs 2.1 comparison
-  - Accessibility myths debunked
-  - Comprehensive testing guide
-  - Industry-specific guides
-  - How to make a website accessible
-  - Best practices guide
+  - Accessibility myths debunked (12 myths)
+  - Comprehensive testing guide (6-step workflow)
+  - Industry-specific guides (5 industries)
+  - How to make a website accessible (8-step guide)
+  - Best practices guide (with code examples)
   - Mobile accessibility guide
-  - Audit guide
+  - Audit guide (7-step process)
   - Accessibility statement template
-  - Lawsuits database
-- Internal linking structure for better crawlability
-- Mobile-optimized content and navigation
+  - Lawsuits database (11+ cases including 2025 cases)
+- **Mobile-Optimized**: Fully responsive content and navigation
 
 ## ♿ Accessibility
 
@@ -338,7 +364,12 @@ The project builds successfully with:
 - ✅ 137+ static pages generated
 - ✅ All SEO pages included
 - ✅ WCAG version pages (1.0, 2.0, 2.1, 2.2, 3.0)
-- ✅ Accessibility lawsuits section (6+ cases)
+- ✅ Accessibility lawsuits section (11+ cases including 2025 updates)
+- ✅ Breadcrumb navigation on all content pages
+- ✅ Last Updated dates on all guide pages
+- ✅ Related content sections with internal links
+- ✅ Enhanced SEO with optimized meta descriptions (150-160 chars)
+- ✅ HowTo and ItemList structured data for rich snippets
 - ✅ Full responsive design verified
 - ✅ Accessibility compliance verified
 - ✅ Google Analytics integrated

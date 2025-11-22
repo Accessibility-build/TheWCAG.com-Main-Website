@@ -122,9 +122,9 @@ export function Header() {
   const createMenuKeyHandler = (
     isOpen: boolean,
     setIsOpen: (open: boolean) => void,
-    setFocusedIndex: (index: number) => void,
+    setFocusedIndex: React.Dispatch<React.SetStateAction<number>>,
     linksLength: number,
-    buttonRef: React.RefObject<HTMLButtonElement>,
+    buttonRef: React.RefObject<HTMLButtonElement | null>,
   ) => {
     return (e: React.KeyboardEvent) => {
       switch (e.key) {

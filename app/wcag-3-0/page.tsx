@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -118,6 +119,7 @@ export default function WCAG30Page() {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-8 md:py-12 max-w-6xl">
+            <Breadcrumb items={[{ label: "WCAG 3.0", href: "/wcag-3-0" }]} />
             {/* Header */}
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
@@ -127,6 +129,7 @@ export default function WCAG30Page() {
                   In Development
                 </Badge>
               </div>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
               <p className="text-lg text-muted-foreground max-w-3xl">
                 WCAG 3.0 (also known as W3C Accessibility Guidelines) is the next generation of accessibility
                 standards, currently in development. Learn about the new outcomes-based approach, scoring system, and
