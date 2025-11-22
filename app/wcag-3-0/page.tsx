@@ -146,29 +146,45 @@ export default function WCAG30Page() {
                 <div className="space-y-3">
                   <p className="text-muted-foreground">
                     <strong className="text-foreground">WCAG 3.0 is currently in active development</strong> by the W3C
-                    Web Accessibility Initiative (WAI). It is not yet a W3C Recommendation and should not be used for
-                    compliance purposes.
+                    Accessibility Guidelines Working Group. The latest Working Draft was published on{" "}
+                    <strong className="text-foreground">September 4, 2025</strong>. It is not yet a W3C Recommendation
+                    and should not be used for compliance purposes.
                   </p>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <Clock className="h-4 w-4 text-orange-600 mt-0.5 shrink-0" />
                       <span>
-                        <strong className="text-foreground">Timeline:</strong> Expected to reach W3C Recommendation
-                        status in 2025-2026 (subject to change)
+                        <strong className="text-foreground">Latest Draft:</strong>{" "}
+                        <a
+                          href="https://www.w3.org/TR/wcag-3.0/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline"
+                        >
+                          W3C Working Draft 04 September 2025
+                        </a>
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Info className="h-4 w-4 text-orange-600 mt-0.5 shrink-0" />
                       <span>
                         <strong className="text-foreground">For Compliance:</strong> Continue using WCAG 2.2 (or 2.1)
-                        until WCAG 3.0 is finalized
+                        until WCAG 3.0 is finalized and reaches W3C Recommendation status
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <TrendingUp className="h-4 w-4 text-orange-600 mt-0.5 shrink-0" />
                       <span>
-                        <strong className="text-foreground">Stay Updated:</strong> Monitor W3C WAI for official
-                        updates and changes
+                        <strong className="text-foreground">Stay Updated:</strong> Monitor the{" "}
+                        <a
+                          href="https://www.w3.org/TR/wcag-3.0/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline"
+                        >
+                          official W3C WCAG 3.0 specification
+                        </a>{" "}
+                        for updates and changes
                       </span>
                     </li>
                   </ul>
@@ -188,35 +204,51 @@ export default function WCAG30Page() {
                     <CardTitle>W3C Accessibility Guidelines</CardTitle>
                   </CardHeader>
                   <CardContent>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      WCAG 3.0 (W3C Accessibility Guidelines) represents a fundamental shift in how accessibility
+                      guidelines are structured and measured. According to the{" "}
+                      <a
+                        href="https://www.w3.org/TR/wcag-3.0/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline"
+                      >
+                        official W3C specification
+                      </a>
+                      , it provides a wide range of recommendations for making web content more accessible to users with
+                      disabilities.
+                    </p>
                     <p className="text-muted-foreground leading-relaxed">
-                      WCAG 3.0 represents a fundamental shift in how accessibility guidelines are structured and
-                      measured. Instead of the binary pass/fail system in WCAG 2.x, WCAG 3.0 introduces an
-                      outcomes-based approach with a scoring system that provides more nuanced accessibility
-                      measurement.
+                      Instead of the binary pass/fail system in WCAG 2.x, WCAG 3.0 introduces an outcomes-based
+                      approach with guidelines supported by requirements and assertions, with technology-specific methods
+                      to meet each requirement.
                     </p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle>Key Goals</CardTitle>
+                    <CardTitle>Scope & Coverage</CardTitle>
                   </CardHeader>
                   <CardContent>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      WCAG 3.0 addresses accessibility for a much broader range of content and technologies:
+                    </p>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                        <span>Address emerging technologies (XR, voice interfaces, AI)</span>
+                        <span>Web content on desktops, laptops, tablets, mobile devices, wearables, and IoT devices</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                        <span>Provide more flexible testing methods</span>
+                        <span>Static, dynamic, interactive, and streaming content</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                        <span>Better support for mobile and native apps</span>
+                        <span>Audiovisual media, virtual and augmented reality (VR/AR)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                        <span>More granular accessibility measurement</span>
+                        <span>Web tools: user agents, CMS, authoring tools, and testing tools</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -264,27 +296,58 @@ export default function WCAG30Page() {
               </Card>
             </section>
 
-            {/* Outcomes-Based Approach */}
+            {/* Structure and Approach */}
             <section className="mb-12">
               <h2 className="text-3xl font-bold mb-6 flex items-center gap-2">
                 <Target className="h-7 w-7 text-primary" />
-                Outcomes-Based Approach
+                Structure and Approach
               </h2>
               <Card className="mb-6">
                 <CardHeader>
-                  <CardTitle>What Are Outcomes?</CardTitle>
+                  <CardTitle>Guidelines, Requirements, and Methods</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4 leading-relaxed">
-                    Instead of success criteria, WCAG 3.0 uses <strong className="text-foreground">outcomes</strong>.
-                    Outcomes describe what users should be able to do, rather than prescribing specific technical
-                    requirements. Each outcome can be met through various methods, giving developers more flexibility.
+                    According to the{" "}
+                    <a
+                      href="https://www.w3.org/TR/wcag-3.0/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline"
+                    >
+                      official specification
+                    </a>
+                    , WCAG 3.0 is structured differently from WCAG 2.x:
                   </p>
+                  <ul className="space-y-3 text-sm text-muted-foreground mb-4">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <span>
+                        <strong className="text-foreground">Guidelines:</strong> Provide information on accessibility
+                        practices that address documented user needs of people with disabilities
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <span>
+                        <strong className="text-foreground">Requirements and Assertions:</strong> Determine whether the
+                        need has been met
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <span>
+                        <strong className="text-foreground">Technology-Specific Methods:</strong> Provide ways to meet
+                        each requirement or assertion
+                      </span>
+                    </li>
+                  </ul>
                   <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
                     <p className="text-sm text-muted-foreground">
-                      <strong className="text-foreground">Example:</strong> The "Text Alternatives" outcome can be met
-                      through alt text, ARIA labels, captions, or other methods—as long as the user can access the
-                      information.
+                      <strong className="text-foreground">Key Difference:</strong> WCAG 3.0 focuses on user outcomes
+                      rather than prescriptive technical requirements. Each guideline can be met through various
+                      technology-specific methods, giving developers more flexibility while ensuring accessibility needs
+                      are addressed.
                     </p>
                   </div>
                 </CardContent>
@@ -473,38 +536,47 @@ export default function WCAG30Page() {
                       <div className="w-0.5 h-16 bg-primary/30" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">2021-2023: Working Draft</h3>
+                      <h3 className="font-semibold text-lg mb-1">2021-2025: Working Draft</h3>
                       <p className="text-sm text-muted-foreground">
                         Initial working drafts published, public feedback collected, major structural changes
-                        implemented.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="flex flex-col items-center">
-                      <div className="w-3 h-3 rounded-full bg-primary" />
-                      <div className="w-0.5 h-16 bg-primary/30" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1">2024-2025: Candidate Recommendation</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Expected transition to Candidate Recommendation status. More stable specification, wider
-                        implementation testing.
+                        implemented. Latest Working Draft published on{" "}
+                        <strong className="text-foreground">September 4, 2025</strong>.
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="flex flex-col items-center">
                       <div className="w-3 h-3 rounded-full bg-primary/50" />
+                      <div className="w-0.5 h-16 bg-primary/30" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">2025-2026: W3C Recommendation (Expected)</h3>
+                      <h3 className="font-semibold text-lg mb-1">Future: Candidate Recommendation</h3>
                       <p className="text-sm text-muted-foreground">
-                        Final W3C Recommendation status. Official release for compliance use. Timeline subject to change
-                        based on development progress.
+                        Expected transition to Candidate Recommendation status. More stable specification, wider
+                        implementation testing. Timeline subject to change based on development progress.
                       </p>
                     </div>
                   </div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-3 h-3 rounded-full bg-primary/30" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-1">Future: W3C Recommendation</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Final W3C Recommendation status. Official release for compliance use. No official timeline
+                        available yet. The specification is expected to be updated regularly to keep pace with changing
+                        technology.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+                  <p className="text-sm text-muted-foreground">
+                    <strong className="text-foreground">Note:</strong> The specification is expected to be updated
+                    regularly with updates to and new methods, requirements, and guidelines that address new needs as
+                    technologies evolve. This is a significant change from WCAG 2.x, which was more static.
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -554,19 +626,47 @@ export default function WCAG30Page() {
                   </Button>
                 </div>
                 <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">Official Resources:</strong> For the latest WCAG 3.0
-                    developments, visit the{" "}
-                    <a
-                      href="https://www.w3.org/WAI/GL/WCAG3/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline"
-                    >
-                      W3C WAI WCAG 3.0 Working Group page
-                    </a>
-                    .
+                  <p className="text-sm text-muted-foreground mb-3">
+                    <strong className="text-foreground">Official Resources:</strong>
                   </p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>
+                      •{" "}
+                      <a
+                        href="https://www.w3.org/TR/wcag-3.0/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline"
+                      >
+                        W3C WCAG 3.0 Official Specification
+                      </a>{" "}
+                      (Latest Working Draft: September 4, 2025)
+                    </li>
+                    <li>
+                      •{" "}
+                      <a
+                        href="https://w3c.github.io/wcag3/guidelines/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline"
+                      >
+                        Latest Editor's Draft
+                      </a>{" "}
+                      (most up-to-date version)
+                    </li>
+                    <li>
+                      •{" "}
+                      <a
+                        href="https://github.com/w3c/wcag3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline"
+                      >
+                        GitHub Repository
+                      </a>{" "}
+                      (for feedback and issues)
+                    </li>
+                  </ul>
                 </div>
               </CardContent>
             </Card>
