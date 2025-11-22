@@ -19,6 +19,8 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 - **Interactive Examples** - Real-world code examples and implementations
 - **Practical Tools** - Accessibility testing tools and checkers
 - **Learning Resources** - Guides, checklists, and educational content
+- **SEO-Optimized Pages** - FAQ, Glossary, Getting Started, WCAG Comparison, and Myths pages
+- **Comprehensive Comparisons** - Tool comparisons, compliance law guides, and WCAG version comparisons
 - **Search Functionality** - Quick access to any criterion or topic
 - **Fully Accessible** - Built following WCAG guidelines itself
 - **Legal Pages** - Privacy Policy, Terms of Service, Accessibility Statement, and Contact page
@@ -41,10 +43,15 @@ TheWCAG.com provides a complete, user-friendly guide to WCAG 2.2 accessibility s
 
 ### 🔍 SEO Optimized
 - Complete metadata for all pages
-- Structured data (JSON-LD) for rich snippets
-- Dynamic sitemap generation
+- Structured data (JSON-LD) for rich snippets (FAQPage, WebSite, Organization, Article)
+- Dynamic sitemap generation with all pages
 - Open Graph and Twitter Card support
 - Canonical URLs throughout
+- SEO-focused pages targeting long-tail keywords
+- Internal linking structure for better crawlability
+- Comprehensive FAQ with structured data
+- Glossary page for accessibility terminology
+- Comparison pages for tools and WCAG versions
 
 ### 🔒 Production Ready
 - Security headers (CSP, HSTS, XSS protection)
@@ -172,12 +179,25 @@ TheWCAG/
 - `/accessibility` - Accessibility Statement
 - `/contact` - Contact Us page
 
+### SEO & Educational Pages
+- `/faq` - Frequently Asked Questions about WCAG and accessibility (15+ questions with structured data)
+- `/glossary` - Comprehensive accessibility glossary with 30+ terms and definitions
+- `/getting-started` - Step-by-step guide for beginners with 6-step process and quick wins
+- `/wcag-2-2-vs-2-1` - Detailed comparison of WCAG 2.2 vs 2.1 with migration guide
+- `/myths` - Accessibility myths debunked (12 common misconceptions)
+- `/compliance` - Comprehensive guide to accessibility laws (ADA, Section 508, EN 301 549, AODA, EAA, CVAA)
+- `/compare` - Detailed comparison of accessibility tools, services, screen readers, and testing solutions
+
 ### Dynamic Routes
 - `/principles/[principle]` - Individual principle pages (perceivable, operable, understandable, robust)
 - `/criteria/[id]` - Individual success criterion pages (e.g., `/criteria/1.1.1`)
 
 ### Tools
 - `/tools/contrast-checker` - Color contrast checker tool
+
+### Comparison & Compliance
+- `/compare` - Accessibility tools and services comparison (AI tools, testing tools, services, screen readers, contrast checkers)
+- `/compliance` - Accessibility laws and regulations guide (ADA, Section 508, EN 301 549, AODA, EAA, CVAA)
 
 ## 🔐 Security
 
