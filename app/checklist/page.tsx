@@ -96,6 +96,24 @@ export default function ChecklistPage() {
     {} as Record<string, typeof filteredCriteria>,
   )
 
+  // Create ItemList structured data for all success criteria
+  const itemListData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "WCAG 2.2 Success Criteria Checklist",
+    description:
+      "Complete list of all WCAG 2.2 success criteria for Level A, AA, and AAA compliance. Interactive checklist to track your accessibility progress.",
+    url: "https://thewcag.com/checklist",
+    numberOfItems: successCriteria.length,
+    itemListElement: successCriteria.map((criterion, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: `${criterion.number} ${criterion.title}`,
+      description: criterion.summary,
+      url: `https://thewcag.com/criteria/${criterion.number}`,
+    })),
+  }
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -127,6 +145,10 @@ export default function ChecklistPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListData) }}
       />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
