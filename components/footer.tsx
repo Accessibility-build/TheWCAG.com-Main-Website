@@ -110,6 +110,15 @@ export function Footer() {
                       <ArrowUpRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-all -translate-y-1 translate-x-1 group-hover:translate-y-0 group-hover:translate-x-0" />
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/getting-started"
+                      className="text-xl md:text-2xl font-light hover:text-primary transition-colors flex items-center group"
+                    >
+                      Getting Started
+                      <ArrowUpRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-all -translate-y-1 translate-x-1 group-hover:translate-y-0 group-hover:translate-x-0" />
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>

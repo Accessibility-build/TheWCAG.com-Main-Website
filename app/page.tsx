@@ -21,6 +21,9 @@ import {
   Sparkles,
   Accessibility,
   ShieldCheck,
+  Rocket,
+  HelpCircle,
+  TestTube,
 } from "lucide-react"
 
 export const metadata: Metadata = {
