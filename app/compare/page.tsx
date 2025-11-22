@@ -754,7 +754,7 @@ export default function ComparePage() {
     },
   ]
 
-  const renderToolCard = (item: typeof aiTools[0]) => {
+  const renderToolCard = (item: (typeof aiTools[0] | typeof testingTools[0] | typeof accessibilityServices[0] | typeof screenReaders[0] | typeof contrastTools[0]) & { unique?: string }) => {
     return (
       <Card key={item.name} className="h-full">
         <CardHeader>
