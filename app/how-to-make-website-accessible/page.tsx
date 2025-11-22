@@ -24,29 +24,8 @@ import {
 import { StructuredData } from "@/components/structured-data"
 
 export default function HowToMakeWebsiteAccessiblePage() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: "How to Make a Website Accessible",
-    description: "Complete step-by-step guide to making your website accessible and WCAG 2.2 compliant",
-    step: [
-      {
-        "@type": "HowToStep",
-        name: "Audit Your Current Website",
-        text: "Run automated accessibility testing tools and identify existing issues",
-      },
-      {
-        "@type": "HowToStep",
-        name: "Fix Critical Issues",
-        text: "Address missing alt text, color contrast, and keyboard navigation",
-      },
-      {
-        "@type": "HowToStep",
-        name: "Implement WCAG 2.2 Requirements",
-        text: "Follow WCAG 2.2 Level AA guidelines for full compliance",
-      },
-    ],
-  }
+  // HowTo structured data will be created after steps array is defined
+  // This will be done below after the steps array
 
   const steps = [
     {
@@ -290,9 +269,53 @@ button:focus {
     },
   ]
 
+  // Create HowTo structured data from steps
+  const howToStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Make a Website Accessible",
+    description:
+      "Complete step-by-step guide to making your website accessible and WCAG 2.2 compliant. Follow these 8 actionable steps to improve accessibility for all users.",
+    url: "https://thewcag.com/how-to-make-website-accessible",
+    totalTime: "PT20H", // Estimated 20 hours total
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "USD",
+      value: "0",
+    },
+    step: steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: step.number,
+      name: step.title,
+      text: `${step.description}. ${step.actions.join(". ")}`,
+      url: `https://thewcag.com/how-to-make-website-accessible#step-${step.number}`,
+      ...(step.time && {
+        totalTime: step.time.includes("hour") ? `PT${step.time.match(/\d+/)?.[0] || "1"}H` : undefined,
+      }),
+    })),
+    tool: [
+      {
+        "@type": "HowToTool",
+        name: "axe DevTools",
+      },
+      {
+        "@type": "HowToTool",
+        name: "WAVE",
+      },
+      {
+        "@type": "HowToTool",
+        name: "Screen Reader",
+      },
+      {
+        "@type": "HowToTool",
+        name: "WCAG 2.2 Checklist",
+      },
+    ],
+  }
+
   return (
     <>
-      <StructuredData data={structuredData} />
+      <StructuredData data={howToStructuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

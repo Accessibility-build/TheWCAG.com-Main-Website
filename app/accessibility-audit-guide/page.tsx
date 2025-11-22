@@ -23,13 +23,7 @@ import {
 import { StructuredData } from "@/components/structured-data"
 
 export default function AccessibilityAuditGuidePage() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: "Accessibility Audit Guide - How to Audit Website Accessibility",
-    description: "Complete guide to conducting accessibility audits with automated tools, manual testing, and user testing methods",
-    url: "https://thewcag.com/accessibility-audit-guide",
-  }
+  // HowTo structured data will be created after auditSteps array
 
   const auditSteps = [
     {
@@ -148,9 +142,53 @@ export default function AccessibilityAuditGuidePage() {
     { category: "Robust", criteria: 3, link: "/principles/robust" },
   ]
 
+  // Create HowTo structured data from auditSteps
+  const howToStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Conduct an Accessibility Audit",
+    description:
+      "Complete 7-step guide to conducting comprehensive accessibility audits. Learn how to systematically evaluate your website for WCAG 2.2 compliance using automated tools, manual testing, and user testing methods.",
+    url: "https://thewcag.com/accessibility-audit-guide",
+    totalTime: "PT30H", // Estimated 30 hours total
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "USD",
+      value: "0",
+    },
+    step: auditSteps.map((step) => ({
+      "@type": "HowToStep",
+      position: step.step,
+      name: step.title,
+      text: `${step.description}. ${step.tasks.join(". ")}`,
+      url: `https://thewcag.com/accessibility-audit-guide#step-${step.step}`,
+      ...(step.time && {
+        totalTime: step.time.includes("hour") ? `PT${step.time.match(/\d+/)?.[0] || "1"}H` : undefined,
+      }),
+    })),
+    tool: [
+      {
+        "@type": "HowToTool",
+        name: "axe DevTools",
+      },
+      {
+        "@type": "HowToTool",
+        name: "WAVE",
+      },
+      {
+        "@type": "HowToTool",
+        name: "Lighthouse",
+      },
+      {
+        "@type": "HowToTool",
+        name: "Screen Reader",
+      },
+    ],
+  }
+
   return (
     <>
-      <StructuredData data={structuredData} />
+      <StructuredData data={howToStructuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -165,8 +166,50 @@ export default function GettingStartedPage() {
     },
   ]
 
+  // Create HowTo structured data from steps
+  const howToStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Getting Started with Web Accessibility",
+    description:
+      "A beginner-friendly 6-step guide to understanding and implementing web accessibility. Learn the basics, audit your site, fix issues, and test your improvements.",
+    url: "https://thewcag.com/getting-started",
+    totalTime: "PT10H", // Estimated 10 hours total
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "USD",
+      value: "0",
+    },
+    step: steps.map((step) => ({
+      "@type": "HowToStep",
+      position: step.number,
+      name: step.title,
+      text: `${step.description}. ${step.details.join(". ")}`,
+      url: `https://thewcag.com/getting-started#step-${step.number}`,
+    })),
+    tool: [
+      {
+        "@type": "HowToTool",
+        name: "axe DevTools",
+      },
+      {
+        "@type": "HowToTool",
+        name: "WAVE",
+      },
+      {
+        "@type": "HowToTool",
+        name: "Screen Reader",
+      },
+      {
+        "@type": "HowToTool",
+        name: "WCAG Checklist",
+      },
+    ],
+  }
+
   return (
     <>
+      <StructuredData data={howToStructuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

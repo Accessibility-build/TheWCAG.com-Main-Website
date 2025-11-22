@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -202,8 +203,36 @@ export default function TestingGuidePage() {
     },
   ]
 
+  // Create HowTo structured data from testingWorkflow
+  const howToStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Test Website Accessibility",
+    description:
+      "Complete 6-step guide to testing your website for WCAG compliance. Learn how to use automated tools, manual testing, screen readers, and user testing methods to ensure accessibility.",
+    url: "https://thewcag.com/testing-guide",
+    totalTime: "PT5H", // Estimated 5 hours total
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "USD",
+      value: "0",
+    },
+    step: testingWorkflow.map((workflow) => ({
+      "@type": "HowToStep",
+      position: workflow.step,
+      name: workflow.title,
+      text: workflow.description,
+      url: `https://thewcag.com/testing-guide#step-${workflow.step}`,
+      tool: workflow.tools.map((tool) => ({
+        "@type": "HowToTool",
+        name: tool,
+      })),
+    })),
+  }
+
   return (
     <>
+      <StructuredData data={howToStructuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />
