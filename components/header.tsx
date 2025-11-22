@@ -36,12 +36,17 @@ export function Header() {
 
   const resourcesLinks = [
     { href: "/getting-started", label: "Getting Started" },
+    { href: "/how-to-make-website-accessible", label: "How to Make Website Accessible" },
+    { href: "/best-practices", label: "Best Practices" },
+    { href: "/accessibility-audit-guide", label: "Audit Guide" },
+    { href: "/mobile-accessibility", label: "Mobile Accessibility" },
     { href: "/faq", label: "FAQ" },
     { href: "/glossary", label: "Glossary" },
     { href: "/wcag-2-2-vs-2-1", label: "WCAG 2.2 vs 2.1" },
     { href: "/myths", label: "Accessibility Myths" },
     { href: "/testing-guide", label: "Testing Guide" },
     { href: "/industry-guides", label: "Industry Guides" },
+    { href: "/accessibility-statement-template", label: "Statement Template" },
   ]
 
   const [resourcesOpen, setResourcesOpen] = useState(false)
