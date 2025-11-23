@@ -15,14 +15,14 @@ export function SimpleExplanationSection({ criterion }: SimpleExplanationSection
   const paragraphs = explanation.split(/\n\n+/).filter(p => p.trim().length > 0)
 
   return (
-    <section className="mb-12" aria-labelledby="simple-explanation-heading">
-      <div className="flex items-center gap-3 mb-6">
-        <Lightbulb className="w-6 h-6 text-primary" aria-hidden="true" />
-        <h2 id="simple-explanation-heading" className="text-3xl font-bold">
+    <section className="mb-8 sm:mb-12" aria-labelledby="simple-explanation-heading">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-primary shrink-0" aria-hidden="true" />
+        <h2 id="simple-explanation-heading" className="text-2xl sm:text-3xl font-bold">
           Plain Language Explanation
         </h2>
       </div>
-      <Card className="p-8 bg-gradient-to-br from-primary/5 via-primary/3 to-transparent border-l-4 border-l-primary shadow-sm">
+      <Card className="p-4 sm:p-6 md:p-8 bg-gradient-to-br from-primary/5 via-primary/3 to-transparent border-l-4 border-l-primary shadow-sm">
         <div className="space-y-6">
           {paragraphs.length > 1 ? (
             // Multiple paragraphs - structure them nicely

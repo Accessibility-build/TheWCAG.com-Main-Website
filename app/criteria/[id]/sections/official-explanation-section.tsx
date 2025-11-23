@@ -17,18 +17,18 @@ export function OfficialExplanationSection({ criterion }: OfficialExplanationSec
   const intent = criterion.details?.intent
 
   return (
-    <section className="mb-12" aria-labelledby="official-explanation-heading">
-      <div className="flex items-center gap-3 mb-6">
-        <FileText className="w-6 h-6 text-primary" aria-hidden="true" />
-        <h2 id="official-explanation-heading" className="text-3xl font-bold">
+    <section className="mb-8 sm:mb-12" aria-labelledby="official-explanation-heading">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary shrink-0" aria-hidden="true" />
+        <h2 id="official-explanation-heading" className="text-2xl sm:text-3xl font-bold">
           Official WCAG Definition
         </h2>
       </div>
-      <Card className="p-8 border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
+      <Card className="p-4 sm:p-6 md:p-8 border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
         <div className="space-y-6">
-          <div className="flex items-center justify-between flex-wrap gap-2">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span className="px-3 py-1.5 bg-primary/10 text-primary rounded-md font-semibold border border-primary/20">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-2">
+            <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+              <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-primary/10 text-primary rounded-md font-semibold border border-primary/20 text-xs sm:text-sm">
                 WCAG 2.2 Official
               </span>
               <span className="text-foreground/80">Exact wording from W3C Web Content Accessibility Guidelines</span>
@@ -37,15 +37,15 @@ export function OfficialExplanationSection({ criterion }: OfficialExplanationSec
               href={`https://www.w3.org/WAI/WCAG22/Understanding/${criterion.number.replace(/\./g, "")}.html`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-primary hover:underline font-medium"
+              className="flex items-center gap-1.5 text-xs sm:text-sm text-primary hover:underline font-medium shrink-0"
             >
               View on W3C
-              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
             </a>
           </div>
           
-          <div className="prose prose-lg max-w-none">
-            <p className="text-lg leading-relaxed text-foreground font-medium">
+          <div className="prose prose-sm sm:prose-lg max-w-none">
+            <p className="text-base sm:text-lg leading-relaxed text-foreground font-medium">
               {officialText}
             </p>
           </div>
