@@ -22,10 +22,10 @@ export const metadata: Metadata = {
       "Learn how to create accessible input fields with proper labels, error messages, and validation.",
     type: "article",
     url: "https://thewcag.com/examples/accessible-input-fields",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Accessible Input Fields Example",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Accessible Input Fields Example - WCAG Form Implementation",
     description:
       "Learn how to create accessible input fields with proper labels, error messages, and validation.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/examples/accessible-input-fields",

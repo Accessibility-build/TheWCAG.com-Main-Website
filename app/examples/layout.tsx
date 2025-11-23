@@ -21,10 +21,10 @@ export const metadata: Metadata = {
       "Explore real-world examples of accessible web components and patterns with practical code examples.",
     type: "website",
     url: "https://thewcag.com/examples",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Accessibility Examples - Real-World WCAG Implementation",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Accessibility Examples - Real-World WCAG Implementation Examples",
     description:
       "Explore real-world examples of accessible web components and patterns with practical code examples.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/examples",

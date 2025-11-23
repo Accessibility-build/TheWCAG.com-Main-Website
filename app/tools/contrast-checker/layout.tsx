@@ -22,10 +22,10 @@ export const metadata: Metadata = {
       "Free WCAG contrast checker tool. Test color contrast ratios for WCAG 2.2 Level AA and AAA compliance. Get instant pass/fail results.",
     type: "website",
     url: "https://thewcag.com/tools/contrast-checker",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Contrast Checker - WCAG Color Contrast Tool",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Contrast Checker - Free WCAG Color Contrast Tool",
     description:
       "Free WCAG contrast checker tool. Test color contrast ratios for WCAG 2.2 compliance.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/tools/contrast-checker",

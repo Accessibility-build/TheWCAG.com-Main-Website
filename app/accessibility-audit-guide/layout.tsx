@@ -22,10 +22,10 @@ export const metadata: Metadata = {
       "Complete guide to conducting accessibility audits with automated tools, manual testing, and user testing methods.",
     type: "article",
     url: "https://thewcag.com/accessibility-audit-guide",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Accessibility Audit Guide",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Accessibility Audit Guide - How to Audit Website Accessibility",
     description: "Complete guide to conducting accessibility audits for WCAG 2.2 compliance.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/accessibility-audit-guide",

@@ -20,10 +20,10 @@ export const metadata: Metadata = {
       "Download WCAG accessibility checklists, templates, and explore additional resources for building accessible websites.",
     type: "website",
     url: "https://thewcag.com/resources",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Accessibility Resources - Checklists, Templates & Tools",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Accessibility Resources - Checklists, Templates & Tools",
     description:
       "Download WCAG accessibility checklists, templates, and explore additional resources for building accessible websites.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/resources",

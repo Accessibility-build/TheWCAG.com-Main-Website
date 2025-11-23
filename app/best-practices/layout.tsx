@@ -26,12 +26,12 @@ export const metadata: Metadata = {
       "Comprehensive guide to web accessibility best practices with detailed scenarios, code examples, and strategies that go beyond compliance to create exceptional user experiences.",
     type: "article",
     url: "https://thewcag.com/best-practices",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     publishedTime: "2025-01-01",
     modifiedTime: new Date().toISOString().split("T")[0],
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Web Accessibility Best Practices Guide - Beyond Compliance",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Web Accessibility Best Practices - Complete Guide 2025",
     description:
       "Learn accessibility best practices that go beyond compliance. Real-world scenarios, code examples, and strategies for exceptional user experiences.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/best-practices",

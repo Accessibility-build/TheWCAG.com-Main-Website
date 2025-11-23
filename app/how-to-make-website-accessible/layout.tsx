@@ -22,10 +22,10 @@ export const metadata: Metadata = {
       "Learn how to make your website accessible with our comprehensive step-by-step guide covering WCAG 2.2 compliance.",
     type: "article",
     url: "https://thewcag.com/how-to-make-website-accessible",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "How to Make a Website Accessible Guide",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "How to Make a Website Accessible - Complete Guide",
     description: "Step-by-step guide to making your website accessible and WCAG 2.2 compliant.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/how-to-make-website-accessible",

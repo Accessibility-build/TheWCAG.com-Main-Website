@@ -22,10 +22,10 @@ export const metadata: Metadata = {
       "Learn about WCAG 3.0, the next generation of accessibility standards with outcomes-based approach and scoring system.",
     type: "website",
     url: "https://thewcag.com/wcag-3-0",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "WCAG 3.0 - Future of Accessibility Guidelines",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "WCAG 3.0 - The Future of Web Accessibility Guidelines",
     description: "Learn about WCAG 3.0, the next generation of accessibility standards.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/wcag-3-0",

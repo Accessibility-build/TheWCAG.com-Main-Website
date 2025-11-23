@@ -18,10 +18,10 @@ export const metadata: Metadata = {
       "Discover the 9 new success criteria in WCAG 2.2 including focus appearance, dragging movements, and target size requirements.",
     type: "article",
     url: "https://thewcag.com/whats-new",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "What's New in WCAG 2.2",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "What's New in WCAG 2.2 - 9 New Success Criteria",
     description:
       "Discover the 9 new success criteria in WCAG 2.2 including focus appearance, dragging movements, and target size requirements.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/whats-new",

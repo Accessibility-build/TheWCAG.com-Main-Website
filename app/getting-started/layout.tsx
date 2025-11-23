@@ -20,10 +20,10 @@ export const metadata: Metadata = {
       "Step-by-step guide to getting started with web accessibility and WCAG compliance. Perfect for beginners, developers, and designers.",
     type: "website",
     url: "https://thewcag.com/getting-started",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Getting Started with Web Accessibility",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Getting Started with Web Accessibility - WCAG Guide for Beginners",
     description: "Step-by-step guide to getting started with web accessibility and WCAG compliance.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/getting-started",

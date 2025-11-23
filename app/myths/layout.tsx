@@ -19,10 +19,10 @@ export const metadata: Metadata = {
       "Debunk common accessibility myths and learn the truth about WCAG compliance, costs, and implementation.",
     type: "website",
     url: "https://thewcag.com/myths",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Accessibility Myths Debunked",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Accessibility Myths Debunked - Common Misconceptions About WCAG",
     description: "Debunk common accessibility myths and learn the truth about WCAG compliance.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/myths",

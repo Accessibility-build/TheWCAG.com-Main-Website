@@ -21,10 +21,10 @@ export const metadata: Metadata = {
       "Comprehensive guide to accessibility testing. Learn automated and manual testing methods for WCAG compliance.",
     type: "website",
     url: "https://thewcag.com/testing-guide",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Accessibility Testing Guide",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Accessibility Testing Guide - How to Test for WCAG Compliance",
     description: "Comprehensive guide to accessibility testing methods and tools.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/testing-guide",

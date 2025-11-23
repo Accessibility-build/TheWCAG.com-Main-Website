@@ -25,11 +25,11 @@ const pacifico = Pacifico({
 export const metadata: Metadata = {
   // <CHANGE> Updated metadata for WCAG guide
   title: {
-    default: "TheWCAG.com - Complete WCAG 2.2 Accessibility Guidelines",
-    template: "%s | TheWCAG.com",
+    default: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
+    template: "%s | TheWCAG",
   },
   description:
-    "Comprehensive guide to Web Content Accessibility Guidelines (WCAG) 2.2 with interactive examples, tools, and resources for developers, designers, and content creators. Learn accessibility best practices with code examples and testing guides.",
+    "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
   keywords: [
     "WCAG",
     "accessibility",
@@ -47,11 +47,11 @@ export const metadata: Metadata = {
     "screen reader",
     "keyboard navigation",
   ],
-  authors: [{ name: "TheWCAG.com" }],
-  creator: "TheWCAG.com",
-  publisher: "TheWCAG.com",
+  authors: [{ name: "TheWCAG - An accessibility Guide" }],
+  creator: "TheWCAG - An accessibility Guide",
+  publisher: "TheWCAG - An accessibility Guide",
   generator: "Next.js",
-  applicationName: "TheWCAG.com",
+  applicationName: "TheWCAG - An accessibility Guide",
   referrer: "origin-when-cross-origin",
   metadataBase: new URL("https://thewcag.com"),
   alternates: {
@@ -61,25 +61,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://thewcag.com",
-    title: "TheWCAG.com - Complete WCAG 2.2 Guidelines",
+    title: "TheWCAG - Complete WCAG 2.2 Guidelines",
     description:
-      "Master web accessibility with our comprehensive WCAG 2.2 guide. Interactive examples, tools, and resources for developers and designers.",
-    siteName: "TheWCAG.com",
+      "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
-        alt: "TheWCAG.com - WCAG 2.2 Accessibility Guidelines",
+        alt: "TheWCAG - An accessibility Guide",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "TheWCAG.com - Complete WCAG 2.2 Guidelines",
+    title: "TheWCAG - Complete WCAG 2.2 Guidelines",
     description:
-      "Master web accessibility with our comprehensive WCAG 2.2 guide. Interactive examples, tools, and resources.",
-    images: ["/og-image.png"],
+      "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
+    images: ["https://thewcag.com/Logo.png"],
     creator: "@thewcag",
   },
   robots: {

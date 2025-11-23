@@ -20,10 +20,10 @@ export const metadata: Metadata = {
       "Get answers to common questions about WCAG, web accessibility, compliance, and testing. Comprehensive FAQ for developers and designers.",
     type: "website",
     url: "https://thewcag.com/faq",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "WCAG FAQ - Frequently Asked Questions",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "WCAG FAQ - Frequently Asked Questions About Web Accessibility",
     description: "Get answers to common questions about WCAG and web accessibility.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/faq",

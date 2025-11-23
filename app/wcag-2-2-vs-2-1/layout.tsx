@@ -20,10 +20,10 @@ export const metadata: Metadata = {
       "Compare WCAG 2.2 and WCAG 2.1. Learn about new success criteria, changes, and migration guide.",
     type: "website",
     url: "https://thewcag.com/wcag-2-2-vs-2-1",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "WCAG 2.2 vs 2.1 Comparison",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "WCAG 2.2 vs 2.1 - What's New and Changed",
     description: "Compare WCAG 2.2 and WCAG 2.1. Learn about new success criteria and changes.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/wcag-2-2-vs-2-1",

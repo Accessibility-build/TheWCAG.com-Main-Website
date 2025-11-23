@@ -20,10 +20,10 @@ export const metadata: Metadata = {
       "Accessibility guides tailored for e-commerce, education, healthcare, government, and finance industries.",
     type: "website",
     url: "https://thewcag.com/industry-guides",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Industry-Specific Accessibility Guides",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Industry-Specific Accessibility Guides - WCAG for Different Sectors",
     description: "Accessibility guides tailored for specific industries and sectors.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/industry-guides",

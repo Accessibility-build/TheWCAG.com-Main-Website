@@ -23,10 +23,10 @@ export const metadata: Metadata = {
       "Free accessibility tools including color contrast checker, AI-powered audit helper, and more. Test your website's accessibility and improve WCAG 2.2 compliance.",
     type: "website",
     url: "https://thewcag.com/tools",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Accessibility Tools - Free WCAG Testing & Analysis Tools",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "Accessibility Tools - Free WCAG Testing & Analysis Tools",
     description:
       "Free accessibility tools including color contrast checker, AI-powered audit helper, and more.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/tools",

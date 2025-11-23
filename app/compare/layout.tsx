@@ -21,10 +21,10 @@ export const metadata: Metadata = {
       "Compare popular web accessibility tools, services, and solutions. Find the best tools for testing, compliance, and improving accessibility.",
     type: "website",
     url: "https://thewcag.com/compare",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Accessibility Tools & Services Comparison",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Accessibility Tools & Services Comparison",
     description:
       "Compare popular web accessibility tools, services, and solutions. Find the best tools for your needs.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/compare",

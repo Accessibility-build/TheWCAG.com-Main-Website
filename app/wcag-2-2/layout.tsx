@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     description: "Learn about WCAG 2.2, the current version published in October 2023 with 9 new success criteria.",
     type: "article",
     url: "https://thewcag.com/wcag-2-2",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "WCAG 2.2 - Current Web Content Accessibility Guidelines",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "WCAG 2.2 - Current Web Content Accessibility Guidelines",
     description: "Learn about WCAG 2.2, published in October 2023.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/wcag-2-2",

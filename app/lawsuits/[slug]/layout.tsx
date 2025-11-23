@@ -47,10 +47,10 @@ export async function generateMetadata({
       description,
       type: "article",
       url: `https://thewcag.com/lawsuits/${slug}`,
-      siteName: "TheWCAG",
+      siteName: "TheWCAG - An accessibility Guide",
       images: [
         {
-          url: "https://thewcag.com/og-image.png",
+          url: "https://thewcag.com/Logo.png",
           width: 1200,
           height: 630,
           alt: lawsuit.title,
@@ -63,7 +63,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["https://thewcag.com/og-image.png"],
+      images: ["https://thewcag.com/Logo.png"],
     },
     alternates: {
       canonical: `https://thewcag.com/lawsuits/${slug}`,

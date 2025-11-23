@@ -22,10 +22,10 @@ export const metadata: Metadata = {
       "Comprehensive guide to digital accessibility laws and regulations. Understand compliance requirements for ADA, Section 508, EN 301 549, AODA, and more.",
     type: "website",
     url: "https://thewcag.com/compliance",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Accessibility Compliance Laws & Regulations",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Accessibility Compliance - Laws & Regulations Guide",
     description:
       "Comprehensive guide to digital accessibility laws and regulations. Understand compliance requirements for your region.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/compliance",

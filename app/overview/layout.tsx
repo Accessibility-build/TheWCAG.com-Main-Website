@@ -23,10 +23,10 @@ export const metadata: Metadata = {
       "Learn about WCAG (Web Content Accessibility Guidelines) 2.2, the international standard for web accessibility.",
     type: "website",
     url: "https://thewcag.com/overview",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "WCAG Overview - Web Content Accessibility Guidelines",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "WCAG Overview - Understanding Web Content Accessibility Guidelines",
     description:
       "Learn about WCAG (Web Content Accessibility Guidelines) 2.2, the international standard for web accessibility.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/overview",

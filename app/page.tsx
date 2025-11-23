@@ -27,9 +27,9 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "TheWCAG.com - Complete WCAG 2.2 Guidelines",
+  title: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
   description:
-    "Master WCAG 2.2 with free guides, tools & interactive examples. 87+ success criteria, code snippets, testing guides & compliance checklist. Start building accessible websites today!",
+    "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
   keywords: [
     "WCAG",
     "WCAG 2.2",
@@ -44,27 +44,27 @@ export const metadata: Metadata = {
     "Section 508",
   ],
   openGraph: {
-    title: "TheWCAG.com - Complete WCAG 2.2 Accessibility Guidelines",
+    title: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
     description:
-      "Master web accessibility with our comprehensive WCAG 2.2 guide. Interactive examples, tools, and resources.",
+      "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
     url: "https://thewcag.com",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     type: "website",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
-        alt: "TheWCAG.com - WCAG 2.2 Accessibility Guidelines",
+        alt: "TheWCAG - An accessibility Guide",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "TheWCAG.com - Complete WCAG 2.2 Accessibility Guidelines",
+    title: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
     description:
-      "Master web accessibility with our comprehensive WCAG 2.2 guide. Interactive examples, tools, and resources.",
-    images: ["https://thewcag.com/og-image.png"],
+      "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com",
@@ -75,7 +75,7 @@ export default function HomePage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "TheWCAG.com",
+    name: "TheWCAG - An accessibility Guide",
     description: "Complete WCAG 2.2 Accessibility Guidelines with interactive examples and tools",
     url: "https://thewcag.com",
     potentialAction: {
@@ -88,17 +88,25 @@ export default function HomePage() {
     },
     publisher: {
       "@type": "Organization",
-      name: "TheWCAG.com",
+      name: "TheWCAG - An accessibility Guide",
       url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/Logo.png",
+      },
     },
   }
 
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "TheWCAG.com",
+    name: "TheWCAG - An accessibility Guide",
     url: "https://thewcag.com",
     description: "Comprehensive WCAG 2.2 accessibility guidelines and resources",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://thewcag.com/Logo.png",
+    },
     sameAs: [
       // Add social media links when available
     ],

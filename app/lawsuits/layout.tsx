@@ -20,10 +20,10 @@ export const metadata: Metadata = {
       "Explore recent accessibility lawsuits, legal cases, and settlements related to website accessibility and ADA compliance.",
     type: "website",
     url: "https://thewcag.com/lawsuits",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "Recent Accessibility Lawsuits",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Recent Accessibility Lawsuits - Legal Cases & Settlements",
     description: "Explore recent accessibility lawsuits and legal cases.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/lawsuits",

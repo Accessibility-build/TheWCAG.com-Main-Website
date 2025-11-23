@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     description: "Learn about WCAG 1.0, the first version of Web Content Accessibility Guidelines published in May 1999.",
     type: "article",
     url: "https://thewcag.com/wcag-1-0",
-    siteName: "TheWCAG",
+    siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/og-image.png",
+        url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
         alt: "WCAG 1.0 - First Web Accessibility Guidelines",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "WCAG 1.0 - The First Web Accessibility Guidelines",
     description: "Learn about WCAG 1.0, published in May 1999.",
-    images: ["https://thewcag.com/og-image.png"],
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/wcag-1-0",
