@@ -10,7 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle2, XCircle, Info, BookOpen, Code2 } from "lucide-react"
-import type { SuccessCriterion } from "@/lib/wcag-data"
+import type { SuccessCriterion } from "@/lib/wcag/types"
 
 interface CriterionDetailViewProps {
   criterion: SuccessCriterion
