@@ -132,7 +132,7 @@ export function TemplateDisplay({ template, className }: TemplateDisplayProps) {
       </div>
       <div
         ref={templateRef}
-        className="bg-muted/50 border border-border rounded-lg p-6 sm:p-8 md:p-10 space-y-2 min-h-[400px] max-h-[800px] overflow-y-auto"
+        className="bg-muted/50 border border-border rounded-lg p-6 sm:p-8 md:p-10 space-y-2 w-full"
       >
         <div className="max-w-none">
           {formatTemplate(template)}
