@@ -51,13 +51,17 @@ export default async function CriterionPage({ params }: CriterionPageProps) {
                 Home
               </Link>
             </li>
-            <li className="hidden sm:inline">/</li>
+            <li className="text-muted-foreground/50 px-1" aria-hidden="true">
+              /
+            </li>
             <li>
               <Link href="/principles" className="hover:text-foreground transition-colors">
                 Principles
               </Link>
             </li>
-            <li className="hidden sm:inline">/</li>
+            <li className="text-muted-foreground/50 px-1" aria-hidden="true">
+              /
+            </li>
             <li>
               <Link
                 href={`/principles/${criterion.principle}`}
@@ -66,7 +70,9 @@ export default async function CriterionPage({ params }: CriterionPageProps) {
                 {principleName}
               </Link>
             </li>
-            <li className="hidden sm:inline">/</li>
+            <li className="text-muted-foreground/50 px-1" aria-hidden="true">
+              /
+            </li>
             <li className="text-foreground font-medium truncate max-w-[200px] sm:max-w-none" aria-current="page">
               {criterion.number} {criterion.title}
             </li>
