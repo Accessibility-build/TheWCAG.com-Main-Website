@@ -82,10 +82,10 @@ export default async function LawsuitPage({
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-5xl">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-5xl px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
-            <nav aria-label="Breadcrumb" className="mb-6">
-              <ol className="flex items-center gap-2 text-sm text-muted-foreground">
+            <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
+              <ol className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
                 <li>
                   <Link href="/" className="hover:text-foreground">
                     Home
@@ -103,93 +103,93 @@ export default async function LawsuitPage({
             </nav>
 
             {/* Header */}
-            <div className="mb-8">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Scale className="h-6 w-6 text-primary" aria-hidden="true" />
-                    <h1 className="text-3xl md:text-4xl font-bold">{lawsuit.title}</h1>
+            <div className="mb-6 sm:mb-8">
+              <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4 mb-4">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                    <Scale className="h-5 w-5 sm:h-6 sm:w-6 text-primary shrink-0" aria-hidden="true" />
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">{lawsuit.title}</h1>
                   </div>
-                  <p className="text-lg text-muted-foreground">{lawsuit.summary}</p>
+                  <p className="text-sm sm:text-base md:text-lg text-muted-foreground">{lawsuit.summary}</p>
                 </div>
-                <Badge className={`${statusInfo.className} text-sm`}>
-                  <StatusIcon className="h-4 w-4 mr-1" />
+                <Badge className={`${statusInfo.className} text-xs sm:text-sm shrink-0`}>
+                  <StatusIcon className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                   {statusInfo.label}
                 </Badge>
               </div>
             </div>
 
             {/* Key Information */}
-            <Card className="mb-8">
+            <Card className="mb-6 sm:mb-8">
               <CardHeader>
-                <CardTitle>Case Information</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">Case Information</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <Users className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                      <div>
-                        <p className="text-sm font-semibold">Plaintiff</p>
-                        <p className="text-sm text-muted-foreground">{lawsuit.plaintiff}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
+                      <div className="min-w-0">
+                        <p className="text-xs sm:text-sm font-semibold">Plaintiff</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground break-words">{lawsuit.plaintiff}</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <FileText className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                      <div>
-                        <p className="text-sm font-semibold">Defendant</p>
-                        <p className="text-sm text-muted-foreground">{lawsuit.defendant}</p>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
+                      <div className="min-w-0">
+                        <p className="text-xs sm:text-sm font-semibold">Defendant</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground break-words">{lawsuit.defendant}</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <Calendar className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
                       <div>
-                        <p className="text-sm font-semibold">Date Filed</p>
-                        <p className="text-sm text-muted-foreground">{formatDate(lawsuit.dateFiled)}</p>
+                        <p className="text-xs sm:text-sm font-semibold">Date Filed</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{formatDate(lawsuit.dateFiled)}</p>
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {lawsuit.dateResolved && (
-                      <div className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
                         <div>
-                          <p className="text-sm font-semibold">Date Resolved</p>
-                          <p className="text-sm text-muted-foreground">{formatDate(lawsuit.dateResolved)}</p>
+                          <p className="text-xs sm:text-sm font-semibold">Date Resolved</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground">{formatDate(lawsuit.dateResolved)}</p>
                         </div>
                       </div>
                     )}
                     {lawsuit.settlementAmount && (
-                      <div className="flex items-start gap-3">
-                        <DollarSign className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <DollarSign className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
                         <div>
-                          <p className="text-sm font-semibold">Settlement Amount</p>
-                          <p className="text-sm text-muted-foreground">{lawsuit.settlementAmount}</p>
+                          <p className="text-xs sm:text-sm font-semibold">Settlement Amount</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground">{lawsuit.settlementAmount}</p>
                         </div>
                       </div>
                     )}
-                    <div className="flex items-start gap-3">
-                      <Scale className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                      <div>
-                        <p className="text-sm font-semibold">Jurisdiction</p>
-                        <p className="text-sm text-muted-foreground">{lawsuit.jurisdiction}</p>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <Scale className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
+                      <div className="min-w-0">
+                        <p className="text-xs sm:text-sm font-semibold">Jurisdiction</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground break-words">{lawsuit.jurisdiction}</p>
                       </div>
                     </div>
                     {lawsuit.caseNumber && (
-                      <div className="flex items-start gap-3">
-                        <FileText className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                        <div>
-                          <p className="text-sm font-semibold">Case Number</p>
-                          <p className="text-sm text-muted-foreground">{lawsuit.caseNumber}</p>
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
+                        <div className="min-w-0">
+                          <p className="text-xs sm:text-sm font-semibold">Case Number</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground break-words">{lawsuit.caseNumber}</p>
                         </div>
                       </div>
                     )}
                     {lawsuit.wcagLevel && (
-                      <div className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
                         <div>
-                          <p className="text-sm font-semibold">WCAG Level</p>
-                          <Badge variant="outline" className="mt-1">
+                          <p className="text-xs sm:text-sm font-semibold">WCAG Level</p>
+                          <Badge variant="outline" className="mt-1 text-xs">
                             Level {lawsuit.wcagLevel}
                           </Badge>
                         </div>
@@ -201,27 +201,27 @@ export default async function LawsuitPage({
             </Card>
 
             {/* Case Details */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">Case Details</h2>
+            <section className="mb-6 sm:mb-8">
+              <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Case Details</h2>
               <Card>
-                <CardContent className="pt-6">
+                <CardContent className="pt-4 sm:pt-6">
                   <div className="prose prose-sm max-w-none">
-                    <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{lawsuit.details}</p>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">{lawsuit.details}</p>
                   </div>
                 </CardContent>
               </Card>
             </section>
 
             {/* Accessibility Issues */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">Accessibility Issues Identified</h2>
+            <section className="mb-6 sm:mb-8">
+              <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Accessibility Issues Identified</h2>
               <Card>
-                <CardContent className="pt-6">
-                  <ul className="space-y-2">
+                <CardContent className="pt-4 sm:pt-6">
+                  <ul className="space-y-2 sm:space-y-3">
                     {lawsuit.issues.map((issue, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <AlertCircle className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                        <span className="text-muted-foreground">{issue}</span>
+                      <li key={index} className="flex items-start gap-2 sm:gap-3">
+                        <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-xs sm:text-sm text-muted-foreground">{issue}</span>
                       </li>
                     ))}
                   </ul>
@@ -230,15 +230,15 @@ export default async function LawsuitPage({
             </section>
 
             {/* Key Takeaways */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">Key Takeaways</h2>
+            <section className="mb-6 sm:mb-8">
+              <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Key Takeaways</h2>
               <Card>
-                <CardContent className="pt-6">
-                  <ul className="space-y-3">
+                <CardContent className="pt-4 sm:pt-6">
+                  <ul className="space-y-2 sm:space-y-3">
                     {lawsuit.keyTakeaways.map((takeaway, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <TrendingUp className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                        <span className="text-muted-foreground">{takeaway}</span>
+                      <li key={index} className="flex items-start gap-2 sm:gap-3">
+                        <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-xs sm:text-sm text-muted-foreground">{takeaway}</span>
                       </li>
                     ))}
                   </ul>
@@ -247,46 +247,46 @@ export default async function LawsuitPage({
             </section>
 
             {/* Impact */}
-            <Card className="mb-8 bg-primary/5 border-primary/20">
+            <Card className="mb-6 sm:mb-8 bg-primary/5 border-primary/20">
               <CardHeader>
-                <CardTitle>Impact</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">Impact</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground leading-relaxed">{lawsuit.impact}</p>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{lawsuit.impact}</p>
               </CardContent>
             </Card>
 
             {/* Official References & Related Links */}
-            <Card className="mb-8 border-primary/30 bg-primary/5">
+            <Card className="mb-6 sm:mb-8 border-primary/30 bg-primary/5">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <FileText className="h-5 w-5 text-primary" aria-hidden="true" />
+                <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                  <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" aria-hidden="true" />
                   Official References & Court Documents
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-xs sm:text-sm">
                   Links to official court documents, government records, and legal references for this case
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 {lawsuit.relatedLinks && lawsuit.relatedLinks.length > 0 ? (
-                  <ul className="space-y-3">
+                  <ul className="space-y-2 sm:space-y-3">
                     {lawsuit.relatedLinks.map((link, index) => (
                       <li key={index}>
                         <a
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-primary hover:underline inline-flex items-center gap-2 font-medium text-base group"
+                          className="text-primary hover:underline inline-flex items-center gap-2 font-medium text-sm sm:text-base group break-words"
                         >
-                          <FileText className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" aria-hidden="true" />
-                          {link.title}
-                          <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                          <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-primary group-hover:scale-110 transition-transform shrink-0" aria-hidden="true" />
+                          <span className="break-words">{link.title}</span>
+                          <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-0.5 transition-transform shrink-0" aria-hidden="true" />
                         </a>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <div className="text-sm text-muted-foreground p-4 bg-background/50 rounded-lg border border-dashed">
+                  <div className="text-xs sm:text-sm text-muted-foreground p-3 sm:p-4 bg-background/50 rounded-lg border border-dashed">
                     <p>Official court documents and references are not currently available for this case.</p>
                     <p className="mt-2 text-xs">
                       For official records, please search PACER (Public Access to Court Electronic Records) or contact the relevant court directly.
@@ -300,22 +300,22 @@ export default async function LawsuitPage({
             {relatedLawsuits.length > 0 && (
               <Card>
                 <CardHeader>
-                  <CardTitle>Related Cases</CardTitle>
+                  <CardTitle className="text-lg sm:text-xl">Related Cases</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     {relatedLawsuits.map((related) => (
                       <Link
                         key={related.slug}
                         href={`/lawsuits/${related.slug}`}
                         className="block p-3 rounded-lg border hover:bg-muted transition-colors"
                       >
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="flex-1">
-                            <h3 className="font-semibold mb-1">{related.title}</h3>
-                            <p className="text-sm text-muted-foreground line-clamp-2">{related.summary}</p>
+                        <div className="flex items-start justify-between gap-2 sm:gap-3">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-semibold text-sm sm:text-base mb-1">{related.title}</h3>
+                            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">{related.summary}</p>
                           </div>
-                          <ArrowRight className="h-5 w-5 text-muted-foreground shrink-0" aria-hidden="true" />
+                          <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground shrink-0" aria-hidden="true" />
                         </div>
                       </Link>
                     ))}
@@ -325,7 +325,7 @@ export default async function LawsuitPage({
             )}
 
             {/* Navigation */}
-            <div className="mt-8 flex items-center justify-between">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
               <Link
                 href="/lawsuits"
                 className="inline-flex items-center text-primary hover:underline font-medium"

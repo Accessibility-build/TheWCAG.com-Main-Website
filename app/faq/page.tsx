@@ -252,23 +252,23 @@ export default function FAQPage() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-4xl">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-4xl px-4 sm:px-6 lg:px-8">
             {/* Header */}
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-4">
-                <HelpCircle className="h-8 w-8 text-primary" aria-hidden="true" />
-                <h1 className="text-4xl sm:text-5xl md:text-5xl font-bold">Frequently Asked Questions</h1>
+            <div className="mb-8 sm:mb-12">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <HelpCircle className="h-6 w-6 sm:h-8 sm:w-8 text-primary shrink-0" aria-hidden="true" />
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Frequently Asked Questions</h1>
               </div>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-base sm:text-lg text-muted-foreground">
                 Get answers to common questions about WCAG, web accessibility, compliance, and best practices.
               </p>
             </div>
 
             {/* FAQ Categories */}
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-12">
               {faqs.map((category, categoryIndex) => (
-                <section key={categoryIndex} className="space-y-6">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold border-b pb-2">{category.category}</h2>
+                <section key={categoryIndex} className="space-y-4 sm:space-y-6">
+                  <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold border-b pb-2">{category.category}</h2>
                   <div className="space-y-4">
                     {category.questions.map((faq, faqIndex) => (
                       <Card key={faqIndex} className="hover:shadow-md transition-shadow">

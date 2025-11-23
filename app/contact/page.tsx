@@ -111,14 +111,14 @@ export default function ContactPage() {
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
           <div className="absolute top-40 -left-20 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl -z-10" />
 
-          <div className="container py-12 md:py-20 max-w-7xl mx-auto">
+          <div className="container py-8 sm:py-12 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header Section */}
-            <div className="mb-12 md:mb-20 text-center max-w-3xl mx-auto">
-              <div className="inline-flex items-center justify-center p-2 bg-primary/10 rounded-full mb-6 animate-in fade-in zoom-in duration-500">
-                <MessageSquare className="h-5 w-5 text-primary mr-2" aria-hidden="true" />
-                <span className="text-sm font-medium text-primary">Contact Us</span>
+            <div className="mb-8 sm:mb-12 md:mb-20 text-center max-w-3xl mx-auto">
+              <div className="inline-flex items-center justify-center p-2 bg-primary/10 rounded-full mb-4 sm:mb-6 animate-in fade-in zoom-in duration-500">
+                <MessageSquare className="h-4 w-4 sm:h-5 sm:w-5 text-primary mr-2" aria-hidden="true" />
+                <span className="text-xs sm:text-sm font-medium text-primary">Contact Us</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 leading-tight">
                 Let's Start a Conversation
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed text-balance">

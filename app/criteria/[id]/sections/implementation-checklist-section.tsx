@@ -50,44 +50,45 @@ export function ImplementationChecklistSection({
   }
 
   return (
-    <section className="mb-12" aria-labelledby="checklist-heading">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <CheckSquare className="w-6 h-6 text-primary" aria-hidden="true" />
-          <h2 id="checklist-heading" className="text-3xl font-bold">
+    <section className="mb-8 sm:mb-12" aria-labelledby="checklist-heading">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <CheckSquare className="w-5 h-5 sm:w-6 sm:h-6 text-primary shrink-0" aria-hidden="true" />
+          <h2 id="checklist-heading" className="text-xl sm:text-2xl md:text-3xl font-bold">
             Implementation Checklist
           </h2>
         </div>
         <button
           onClick={handlePrint}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/10 rounded-lg transition-colors"
+          className="flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-primary hover:bg-primary/10 rounded-lg transition-colors"
           aria-label="Print checklist"
         >
-          <Download className="w-4 h-4" aria-hidden="true" />
-          Print
+          <Download className="w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
+          <span className="hidden sm:inline">Print</span>
+          <span className="sm:hidden">Print</span>
         </button>
       </div>
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {checklist.map((category, categoryIndex) => {
           const Icon = categoryIcons[category.category] || CheckSquare
           const colorClass = categoryColors[category.category] || "text-primary"
           
           return (
-            <Card key={categoryIndex} className="p-6 border-2 border-primary/10">
-              <div className="flex items-center gap-3 mb-4">
-                <Icon className={`w-5 h-5 ${colorClass}`} aria-hidden="true" />
-                <h3 className="font-semibold text-lg">{category.category}</h3>
+            <Card key={categoryIndex} className="p-4 sm:p-6 border-2 border-primary/10">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${colorClass}`} aria-hidden="true" />
+                <h3 className="font-semibold text-base sm:text-lg">{category.category}</h3>
               </div>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {category.items.map((item, itemIndex) => {
                   const key = `${category.category}-${itemIndex}`
                   const isChecked = checkedItems.has(key)
                   
                   return (
-                    <li key={itemIndex} className="flex items-start gap-3">
+                    <li key={itemIndex} className="flex items-start gap-2 sm:gap-3">
                       <button
                         onClick={() => toggleItem(category.category, itemIndex)}
-                        className={`mt-0.5 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                        className={`mt-0.5 w-4 h-4 sm:w-5 sm:h-5 rounded border-2 flex items-center justify-center transition-colors shrink-0 ${
                           isChecked
                             ? "bg-primary border-primary text-white"
                             : "border-primary/30 hover:border-primary/60"
@@ -97,7 +98,7 @@ export function ImplementationChecklistSection({
                       >
                         {isChecked && (
                           <svg
-                            className="w-3 h-3"
+                            className="w-2.5 h-2.5 sm:w-3 sm:h-3"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -113,7 +114,7 @@ export function ImplementationChecklistSection({
                         )}
                       </button>
                       <span
-                        className={`flex-1 text-base leading-relaxed ${
+                        className={`flex-1 text-sm sm:text-base leading-relaxed ${
                           isChecked ? "text-muted-foreground line-through" : "text-foreground"
                         }`}
                       >
@@ -127,8 +128,8 @@ export function ImplementationChecklistSection({
           )
         })}
       </div>
-      <div className="mt-6 p-4 bg-muted/30 rounded-lg border border-primary/10">
-        <p className="text-sm text-muted-foreground">
+      <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-muted/30 rounded-lg border border-primary/10">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           <strong>Tip:</strong> Use this checklist during development and testing to ensure all 
           requirements for <strong>{criterionNumber} {criterionTitle}</strong> are met. 
           Check off items as you complete them.

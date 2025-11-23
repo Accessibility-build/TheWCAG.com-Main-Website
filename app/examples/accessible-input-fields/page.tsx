@@ -52,10 +52,10 @@ export default function AccessibleInputFieldsPage() {
 
   return (
     <CriteriaPageLayout>
-      <div className="container py-8 md:py-12 max-w-6xl">
+      <div className="container py-6 sm:py-8 md:py-12 max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
+        <div className="mb-8 sm:mb-12">
+          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
             <Link
               href="/examples"
               className="text-muted-foreground hover:text-foreground transition-colors"

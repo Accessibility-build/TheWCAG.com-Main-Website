@@ -154,25 +154,25 @@ export default function ChecklistPage() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-5xl">
-            <div className="mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">WCAG Compliance Checklist</h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-6 sm:mb-8">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">WCAG Compliance Checklist</h1>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Track your progress toward WCAG compliance with this interactive checklist
               </p>
             </div>
 
             {/* Progress Card */}
-            <Card className="mb-8">
+            <Card className="mb-6 sm:mb-8">
               <CardHeader>
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
                   <div>
-                    <CardTitle className="text-2xl">Your Progress</CardTitle>
-                    <CardDescription>
+                    <CardTitle className="text-xl sm:text-2xl">Your Progress</CardTitle>
+                    <CardDescription className="text-sm sm:text-base">
                       {completedCriteria} of {totalCriteria} criteria completed
                     </CardDescription>
                   </div>
-                  <div className="text-4xl font-bold text-primary">{progressPercent}%</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-primary">{progressPercent}%</div>
                 </div>
               </CardHeader>
               <CardContent>
@@ -193,17 +193,17 @@ export default function ChecklistPage() {
             </Card>
 
             {/* Filters */}
-            <Card className="mb-8">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Filter className="h-5 w-5" aria-hidden="true" />
+            <Card className="mb-6 sm:mb-8">
+              <CardHeader className="pb-3 sm:pb-4">
+                <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                  <Filter className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
                   Filters
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   {/* First Row: Dropdown Filters */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <label htmlFor="filter-level" className="text-sm font-semibold text-foreground block">
                         Conformance Level
@@ -283,7 +283,7 @@ export default function ChecklistPage() {
             </Card>
 
             {/* Checklist */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {Object.entries(criteriaByPrinciple).map(([principle, criteria]) => {
                 const principleData = principles[principle as keyof typeof principles]
                 const principleCompleted = criteria.filter((c) => checkedItems.has(c.id)).length
@@ -293,15 +293,15 @@ export default function ChecklistPage() {
                 return (
                   <Card key={principle}>
                     <CardHeader>
-                      <div className="flex items-center justify-between mb-2">
-                        <CardTitle className="capitalize">{principleData.title}</CardTitle>
-                        <Badge variant="outline">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 mb-2">
+                        <CardTitle className="text-lg sm:text-xl capitalize">{principleData.title}</CardTitle>
+                        <Badge variant="outline" className="text-xs sm:text-sm">
                           {principleCompleted}/{principleTotal}
                         </Badge>
                       </div>
-                      <CardDescription>{principleData.description}</CardDescription>
+                      <CardDescription className="text-sm sm:text-base">{principleData.description}</CardDescription>
                       <div 
-                        className="w-full h-3 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden mt-3 border border-gray-400 dark:border-gray-600 shadow-inner"
+                        className="w-full h-2.5 sm:h-3 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden mt-3 border border-gray-400 dark:border-gray-600 shadow-inner"
                         role="progressbar"
                         aria-valuenow={principlePercent}
                         aria-valuemin={0}
@@ -314,22 +314,22 @@ export default function ChecklistPage() {
                         />
                       </div>
                     </CardHeader>
-                    <CardContent className="space-y-2">
+                    <CardContent className="space-y-2 sm:space-y-3">
                       {criteria.map((criterion) => (
                         <div
                           key={criterion.id}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                          className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:bg-muted/50 transition-colors"
                         >
                           <Checkbox
                             id={criterion.id}
                             checked={checkedItems.has(criterion.id)}
                             onCheckedChange={() => toggleItem(criterion.id)}
-                            className="mt-1"
+                            className="mt-1 shrink-0"
                           />
-                          <div className="flex-1">
+                          <div className="flex-1 min-w-0">
                             <label htmlFor={criterion.id} className="cursor-pointer">
-                              <div className="flex items-start justify-between gap-3 mb-1">
-                                <p className="font-medium">
+                              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3 mb-1">
+                                <p className="font-medium text-sm sm:text-base">
                                   {criterion.number} {criterion.title}
                                 </p>
                                 <div className="flex items-center gap-2 shrink-0">
@@ -337,11 +337,11 @@ export default function ChecklistPage() {
                                   <LevelBadge level={criterion.level} />
                                 </div>
                               </div>
-                              <p className="text-sm text-muted-foreground">{criterion.summary}</p>
+                              <p className="text-xs sm:text-sm text-muted-foreground">{criterion.summary}</p>
                             </label>
                             <Link
                               href={`/criteria/${criterion.number}`}
-                              className="text-sm text-primary hover:underline inline-flex items-center mt-1"
+                              className="text-xs sm:text-sm text-primary hover:underline inline-flex items-center mt-1"
                             >
                               View details →
                             </Link>

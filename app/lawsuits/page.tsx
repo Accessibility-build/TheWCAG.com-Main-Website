@@ -52,7 +52,7 @@ export default function LawsuitsPage() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-6xl">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-6xl px-4 sm:px-6 lg:px-8">
             {/* Header */}
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
@@ -98,7 +98,7 @@ export default function LawsuitsPage() {
             </div>
 
             {/* Statistics */}
-            <div className="grid md:grid-cols-3 gap-6 mb-8 sm:mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
               <Card>
                 <CardHeader>
                   <CardTitle className="text-lg flex items-center gap-2">
@@ -180,8 +180,8 @@ export default function LawsuitsPage() {
             </Card>
 
             {/* Recent Lawsuits */}
-            <section className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Recent Cases</h2>
+            <section className="mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Recent Cases</h2>
               <div className="space-y-6">
                 {recentLawsuits.map((lawsuit) => {
                   const statusInfo = statusConfig[lawsuit.status]
@@ -189,9 +189,9 @@ export default function LawsuitsPage() {
                   return (
                     <Card key={lawsuit.slug} className="hover:shadow-md transition-shadow">
                       <CardHeader>
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <CardTitle className="text-xl mb-2">
+                        <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
+                          <div className="flex-1 min-w-0">
+                            <CardTitle className="text-lg sm:text-xl mb-2">
                               <Link
                                 href={`/lawsuits/${lawsuit.slug}`}
                                 className="hover:text-primary transition-colors"
@@ -199,16 +199,16 @@ export default function LawsuitsPage() {
                                 {lawsuit.title}
                               </Link>
                             </CardTitle>
-                            <CardDescription className="text-base mb-3">{lawsuit.summary}</CardDescription>
+                            <CardDescription className="text-sm sm:text-base mb-3">{lawsuit.summary}</CardDescription>
                           </div>
-                          <Badge className={statusInfo.className}>
+                          <Badge className={`${statusInfo.className} shrink-0`}>
                             <StatusIcon className="h-3 w-3 mr-1" />
                             {statusInfo.label}
                           </Badge>
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <div className="grid md:grid-cols-2 gap-4 mb-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
                           <div className="flex items-start gap-2 text-sm">
                             <Calendar className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
                             <div>
@@ -242,7 +242,7 @@ export default function LawsuitsPage() {
                             </div>
                           </div>
                         </div>
-                        <div className="flex flex-wrap gap-2 mb-4">
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                           {lawsuit.issues.slice(0, 3).map((issue, index) => (
                             <Badge key={index} variant="outline" className="text-xs">
                               {issue}
@@ -256,10 +256,10 @@ export default function LawsuitsPage() {
                         </div>
                         <Link
                           href={`/lawsuits/${lawsuit.slug}`}
-                          className="inline-flex items-center text-primary hover:underline font-medium"
+                          className="inline-flex items-center text-sm sm:text-base text-primary hover:underline font-medium"
                         >
                           Read full case details
-                          <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
+                          <ArrowRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true" />
                         </Link>
                       </CardContent>
                     </Card>
@@ -271,48 +271,48 @@ export default function LawsuitsPage() {
             {/* Learn More */}
             <Card>
               <CardHeader>
-                <CardTitle>Learn More About Accessibility Compliance</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">Learn More About Accessibility Compliance</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <Link
                     href="/compliance"
-                    className="p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-3"
+                    className="p-3 sm:p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-2 sm:gap-3"
                   >
-                    <Scale className="h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-semibold">Accessibility Laws</div>
-                      <div className="text-sm text-muted-foreground">Learn about ADA, Section 508, and more</div>
+                    <Scale className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                    <div className="min-w-0">
+                      <div className="font-semibold text-sm sm:text-base">Accessibility Laws</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Learn about ADA, Section 508, and more</div>
                     </div>
                   </Link>
                   <Link
                     href="/getting-started"
-                    className="p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-3"
+                    className="p-3 sm:p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-2 sm:gap-3"
                   >
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-semibold">Getting Started</div>
-                      <div className="text-sm text-muted-foreground">Begin your accessibility journey</div>
+                    <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                    <div className="min-w-0">
+                      <div className="font-semibold text-sm sm:text-base">Getting Started</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Begin your accessibility journey</div>
                     </div>
                   </Link>
                   <Link
                     href="/checklist"
-                    className="p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-3"
+                    className="p-3 sm:p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-2 sm:gap-3"
                   >
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-semibold">WCAG Checklist</div>
-                      <div className="text-sm text-muted-foreground">Ensure compliance with our checklist</div>
+                    <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                    <div className="min-w-0">
+                      <div className="font-semibold text-sm sm:text-base">WCAG Checklist</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Ensure compliance with our checklist</div>
                     </div>
                   </Link>
                   <Link
                     href="/accessibility-audit-guide"
-                    className="p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-3"
+                    className="p-3 sm:p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-2 sm:gap-3"
                   >
-                    <AlertCircle className="h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-semibold">Audit Guide</div>
-                      <div className="text-sm text-muted-foreground">Learn how to audit your website</div>
+                    <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                    <div className="min-w-0">
+                      <div className="font-semibold text-sm sm:text-base">Audit Guide</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Learn how to audit your website</div>
                     </div>
                   </Link>
                 </div>

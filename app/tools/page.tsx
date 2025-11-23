@@ -193,18 +193,18 @@ export default function ToolsPage() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-6xl">
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Accessibility Tools</h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-8 sm:mb-12">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">Accessibility Tools</h1>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Professional tools and resources to help you test, validate, and improve web accessibility compliance
               </p>
             </div>
 
             {/* Our Tool */}
-            <section className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-3xl font-bold">Our Tools</h2>
+            <section className="mb-8 sm:mb-12">
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Our Tools</h2>
                 <Badge variant="outline" className="text-sm">Built by TheWCAG</Badge>
               </div>
               <Card className="mb-6">

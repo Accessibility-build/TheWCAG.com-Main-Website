@@ -35,29 +35,29 @@ export function ResourcesSection({
   }, {} as Record<string, typeof officialResources>)
 
   return (
-    <section className="mb-12" aria-labelledby="resources-heading">
-      <div className="flex items-center gap-3 mb-6">
-        <FileText className="w-6 h-6 text-primary" aria-hidden="true" />
-        <h2 id="resources-heading" className="text-3xl font-bold">
+    <section className="mb-8 sm:mb-12" aria-labelledby="resources-heading">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary shrink-0" aria-hidden="true" />
+        <h2 id="resources-heading" className="text-xl sm:text-2xl md:text-3xl font-bold">
           Official Resources
         </h2>
       </div>
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {Object.entries(groupedResources).map(([type, resources]) => {
           const Icon = typeIcons[type as keyof typeof typeIcons] || FileText
           const colorClass = typeColors[type as keyof typeof typeColors] || "text-muted-foreground"
           
           return (
             <div key={type}>
-              <div className="flex items-center gap-2 mb-4">
-                <Icon className={`w-5 h-5 ${colorClass}`} aria-hidden="true" />
-                <h3 className="font-semibold text-lg">{type}</h3>
+              <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${colorClass}`} aria-hidden="true" />
+                <h3 className="font-semibold text-base sm:text-lg">{type}</h3>
               </div>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                 {resources.map((resource, index) => (
                   <Card
                     key={index}
-                    className="p-5 border-2 border-primary/10 hover:border-primary/30 transition-all hover:shadow-md group"
+                    className="p-4 sm:p-5 border-2 border-primary/10 hover:border-primary/30 transition-all hover:shadow-md group"
                   >
                     <a
                       href={resource.url}
@@ -65,16 +65,16 @@ export function ResourcesSection({
                       rel="noopener noreferrer"
                       className="block"
                     >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <h4 className="font-medium text-base mb-1 text-foreground group-hover:text-primary transition-colors">
+                      <div className="flex items-start justify-between gap-3 sm:gap-4">
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-medium text-sm sm:text-base mb-1 text-foreground group-hover:text-primary transition-colors">
                             {resource.title}
                           </h4>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-xs sm:text-sm text-muted-foreground truncate">
                             {resource.url.replace(/^https?:\/\//, "").split("/")[0]}
                           </p>
                         </div>
-                        <ExternalLink className="w-4 h-4 text-primary shrink-0 mt-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
+                        <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-primary shrink-0 mt-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
                       </div>
                     </a>
                   </Card>
@@ -84,8 +84,8 @@ export function ResourcesSection({
           )
         })}
       </div>
-      <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20">
-        <p className="text-sm text-muted-foreground">
+      <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-primary/5 rounded-lg border border-primary/20">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           <strong>Note:</strong> These are official W3C resources for{" "}
           <strong>{criterionNumber}</strong>. For the most up-to-date information and 
           detailed technical guidance, always refer to the official W3C documentation.

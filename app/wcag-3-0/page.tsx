@@ -118,13 +118,13 @@ export default function WCAG30Page() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-6xl">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-6xl px-4 sm:px-6 lg:px-8">
             <Breadcrumb items={[{ label: "WCAG 3.0", href: "/wcag-3-0" }]} />
             {/* Header */}
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-4">
-                <Rocket className="h-8 w-8 text-primary" aria-hidden="true" />
-                <h1 className="text-4xl md:text-5xl font-bold">WCAG 3.0</h1>
+            <div className="mb-8 sm:mb-12">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <Rocket className="h-6 w-6 sm:h-8 sm:w-8 text-primary shrink-0" aria-hidden="true" />
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">WCAG 3.0</h1>
                 <Badge variant="secondary" className="text-sm">
                   In Development
                 </Badge>

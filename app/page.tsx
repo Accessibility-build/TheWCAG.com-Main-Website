@@ -113,7 +113,7 @@ export default function HomePage() {
         <Header />
         <main id="main-content" className="flex-1">
           {/* Hero Section */}
-          <section className="container py-6 md:py-12">
+          <section className="container py-6 md:py-12 px-4 sm:px-6 lg:px-8">
             <ScrollAnimation>
               <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 md:gap-6 auto-rows-auto md:auto-rows-[minmax(180px,auto)]">
                 {/* Main Title Card - Spans 8 cols */}
@@ -230,7 +230,7 @@ export default function HomePage() {
           </section>
 
           {/* POUR Principles */}
-          <section className="container py-16 md:py-24">
+          <section className="container py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8">
             <ScrollAnimation>
               <div className="text-center mb-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">The Four Principles</h2>
@@ -336,7 +336,7 @@ export default function HomePage() {
           </section>
 
           {/* Features */}
-          <section className="container py-16 md:py-24">
+          <section className="container py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8">
             <ScrollAnimation>
               <div className="text-center mb-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Everything You Need</h2>
@@ -393,7 +393,7 @@ export default function HomePage() {
 
           {/* CTA Section */}
           <section className="border-t bg-card">
-            <div className="container py-16 md:py-24 text-center">
+            <div className="container py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 text-center">
               <ScrollAnimation>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Ready to Build Accessible Experiences?</h2>
                 <p className="text-base sm:text-lg md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">

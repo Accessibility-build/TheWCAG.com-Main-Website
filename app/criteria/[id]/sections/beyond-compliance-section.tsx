@@ -8,25 +8,25 @@ interface BeyondComplianceSectionProps {
 
 export function BeyondComplianceSection({ beyondCompliance }: BeyondComplianceSectionProps) {
   return (
-    <section className="mb-12" aria-labelledby="beyond-compliance-heading">
-      <div className="flex items-center gap-3 mb-6">
-        <Sparkles className="w-6 h-6 text-primary" aria-hidden="true" />
-        <h2 id="beyond-compliance-heading" className="text-3xl font-bold">
+    <section className="mb-8 sm:mb-12" aria-labelledby="beyond-compliance-heading">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-primary shrink-0" aria-hidden="true" />
+        <h2 id="beyond-compliance-heading" className="text-xl sm:text-2xl md:text-3xl font-bold">
           Going Beyond Compliance
         </h2>
       </div>
-      <Card className="p-8 border-2 border-primary/20 bg-gradient-to-br from-primary/5 via-primary/10 to-transparent">
-        <p className="text-muted-foreground mb-6 text-lg">
+      <Card className="p-4 sm:p-6 md:p-8 border-2 border-primary/20 bg-gradient-to-br from-primary/5 via-primary/10 to-transparent">
+        <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 sm:mb-6">
           While meeting the minimum requirements ensures compliance, consider these enhancements for a better user experience:
         </p>
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {beyondCompliance.map((item, index) => (
             <div
               key={index}
-              className="flex items-start gap-4 p-5 bg-background rounded-lg border border-primary/20 hover:border-primary/40 transition-colors"
+              className="flex items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-background rounded-lg border border-primary/20 hover:border-primary/40 transition-colors"
             >
-              <ArrowRight className="w-5 h-5 text-primary mt-1 shrink-0" aria-hidden="true" />
-              <span className="text-foreground leading-relaxed flex-1">{item}</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-1 shrink-0" aria-hidden="true" />
+              <span className="text-sm sm:text-base text-foreground leading-relaxed flex-1">{item}</span>
             </div>
           ))}
         </div>

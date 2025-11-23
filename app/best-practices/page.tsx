@@ -303,13 +303,13 @@ background: #ffffff;`,
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-6xl">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-6xl px-4 sm:px-6 lg:px-8">
             <Breadcrumb items={[{ label: "Best Practices", href: "/best-practices" }]} />
             {/* Header */}
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-4">
-                <Lightbulb className="h-8 w-8 text-primary" aria-hidden="true" />
-                <h1 className="text-4xl md:text-5xl font-bold">Accessibility Best Practices</h1>
+            <div className="mb-8 sm:mb-12">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <Lightbulb className="h-6 w-6 sm:h-8 sm:w-8 text-primary shrink-0" aria-hidden="true" />
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Accessibility Best Practices</h1>
               </div>
               <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
               <p className="text-lg text-muted-foreground max-w-3xl">

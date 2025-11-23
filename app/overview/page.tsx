@@ -41,19 +41,19 @@ export default function OverviewPage() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-5xl">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-5xl px-4 sm:px-6 lg:px-8">
             {/* Page Header */}
-            <div className="mb-12">
-              <h1 className="text-4xl sm:text-5xl md:text-5xl font-bold mb-4">WCAG Overview</h1>
-              <p className="text-lg sm:text-xl md:text-xl text-muted-foreground leading-relaxed">
+            <div className="mb-8 sm:mb-12">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">WCAG Overview</h1>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Web Content Accessibility Guidelines (WCAG) is an international standard developed by the W3C to make
                 web content accessible to people with disabilities.
               </p>
             </div>
 
             {/* What is WCAG */}
-            <section className="mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6">What is WCAG?</h2>
+            <section className="mb-12 sm:mb-16">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">What is WCAG?</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   WCAG provides a single shared standard for web content accessibility that meets the needs of
@@ -70,8 +70,8 @@ export default function OverviewPage() {
             </section>
 
             {/* History Timeline */}
-            <section className="mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold mb-6">WCAG History</h2>
+            <section className="mb-12 sm:mb-16">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">WCAG History</h2>
               <div className="space-y-6">
                 <Card>
                   <CardHeader>

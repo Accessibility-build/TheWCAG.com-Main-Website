@@ -46,13 +46,13 @@ export default function WhatsNewPage() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-5xl">
-            <div className="mb-12">
-              <div className="inline-flex items-center gap-2 mb-4">
-                <Sparkles className="h-6 w-6 text-primary" aria-hidden="true" />
+          <div className="container py-6 sm:py-8 md:py-12 max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-8 sm:mb-12">
+              <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
+                <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-primary" aria-hidden="true" />
                 <NewBadge />
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">What&apos;s New in WCAG 2.2</h1>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">What&apos;s New in WCAG 2.2</h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 WCAG 2.2 was published on October 5, 2023, introducing 9 new success criteria and removing 1 outdated
                 criterion.

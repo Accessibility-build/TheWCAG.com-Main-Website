@@ -118,10 +118,10 @@ export default function ExamplesPage() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-5xl">
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Code Examples</h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-8 sm:mb-12">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">Code Examples</h1>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Production-ready accessible components with full code examples and explanations
               </p>
             </div>

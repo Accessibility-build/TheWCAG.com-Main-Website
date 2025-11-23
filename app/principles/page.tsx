@@ -41,38 +41,38 @@ export default function PrinciplesPage() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-8 md:py-12 max-w-5xl">
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">WCAG Principles</h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+          <div className="container py-6 sm:py-8 md:py-12 max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-8 sm:mb-12">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">WCAG Principles</h1>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Explore the four foundational principles of web accessibility and their guidelines
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <Card className="border-2">
                 <CardHeader>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                      <Eye className="h-7 w-7 text-primary" aria-hidden="true" />
+                  <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <Eye className="h-6 w-6 sm:h-7 sm:w-7 text-primary" aria-hidden="true" />
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-2xl mb-2">Perceivable</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-xl sm:text-2xl mb-2">Perceivable</CardTitle>
+                      <CardDescription className="text-sm sm:text-base leading-relaxed">
                         {principles.perceivable.description}
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-3 sm:mb-4">
                     {principles.perceivable.guidelines.map((guideline) => (
                       <Link
                         key={guideline.number}
                         href={`/principles/perceivable#${guideline.number}`}
-                        className="flex items-center justify-between p-3 rounded-lg border hover:bg-muted transition-colors"
+                        className="flex items-center justify-between p-2 sm:p-3 rounded-lg border hover:bg-muted transition-colors"
                       >
-                        <span className="font-medium text-sm">
+                        <span className="font-medium text-xs sm:text-sm">
                           {guideline.number} {guideline.title}
                         </span>
                         <ArrowRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
@@ -91,27 +91,27 @@ export default function PrinciplesPage() {
 
               <Card className="border-2">
                 <CardHeader>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
-                      <Keyboard className="h-7 w-7 text-secondary" aria-hidden="true" />
+                  <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                      <Keyboard className="h-6 w-6 sm:h-7 sm:w-7 text-secondary" aria-hidden="true" />
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-2xl mb-2">Operable</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-xl sm:text-2xl mb-2">Operable</CardTitle>
+                      <CardDescription className="text-sm sm:text-base leading-relaxed">
                         {principles.operable.description}
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-3 sm:mb-4">
                     {principles.operable.guidelines.map((guideline) => (
                       <Link
                         key={guideline.number}
                         href={`/principles/operable#${guideline.number}`}
-                        className="flex items-center justify-between p-3 rounded-lg border hover:bg-muted transition-colors"
+                        className="flex items-center justify-between p-2 sm:p-3 rounded-lg border hover:bg-muted transition-colors"
                       >
-                        <span className="font-medium text-sm">
+                        <span className="font-medium text-xs sm:text-sm">
                           {guideline.number} {guideline.title}
                         </span>
                         <ArrowRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
@@ -130,27 +130,27 @@ export default function PrinciplesPage() {
 
               <Card className="border-2">
                 <CardHeader>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                      <Lightbulb className="h-7 w-7 text-accent" aria-hidden="true" />
+                  <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+                      <Lightbulb className="h-6 w-6 sm:h-7 sm:w-7 text-accent" aria-hidden="true" />
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-2xl mb-2">Understandable</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-xl sm:text-2xl mb-2">Understandable</CardTitle>
+                      <CardDescription className="text-sm sm:text-base leading-relaxed">
                         {principles.understandable.description}
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-3 sm:mb-4">
                     {principles.understandable.guidelines.map((guideline) => (
                       <Link
                         key={guideline.number}
                         href={`/principles/understandable#${guideline.number}`}
-                        className="flex items-center justify-between p-3 rounded-lg border hover:bg-muted transition-colors"
+                        className="flex items-center justify-between p-2 sm:p-3 rounded-lg border hover:bg-muted transition-colors"
                       >
-                        <span className="font-medium text-sm">
+                        <span className="font-medium text-xs sm:text-sm">
                           {guideline.number} {guideline.title}
                         </span>
                         <ArrowRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
@@ -169,27 +169,27 @@ export default function PrinciplesPage() {
 
               <Card className="border-2">
                 <CardHeader>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                      <Wrench className="h-7 w-7 text-primary" aria-hidden="true" />
+                  <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <Wrench className="h-6 w-6 sm:h-7 sm:w-7 text-primary" aria-hidden="true" />
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-2xl mb-2">Robust</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-xl sm:text-2xl mb-2">Robust</CardTitle>
+                      <CardDescription className="text-sm sm:text-base leading-relaxed">
                         {principles.robust.description}
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-3 sm:mb-4">
                     {principles.robust.guidelines.map((guideline) => (
                       <Link
                         key={guideline.number}
                         href={`/principles/robust#${guideline.number}`}
-                        className="flex items-center justify-between p-3 rounded-lg border hover:bg-muted transition-colors"
+                        className="flex items-center justify-between p-2 sm:p-3 rounded-lg border hover:bg-muted transition-colors"
                       >
-                        <span className="font-medium text-sm">
+                        <span className="font-medium text-xs sm:text-sm">
                           {guideline.number} {guideline.title}
                         </span>
                         <ArrowRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
