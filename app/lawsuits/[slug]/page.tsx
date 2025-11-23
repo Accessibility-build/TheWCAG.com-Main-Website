@@ -69,10 +69,50 @@ export default async function LawsuitPage({
       "@type": "Organization",
       name: "TheWCAG.com",
       url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
     },
     datePublished: lawsuit.dateFiled,
     dateModified: lawsuit.dateResolved || lawsuit.dateFiled,
     articleSection: "Accessibility Lawsuits",
+    keywords: [
+      lawsuit.title,
+      "accessibility lawsuit",
+      "ADA lawsuit",
+      lawsuit.defendant,
+      "website accessibility case",
+      lawsuit.jurisdiction,
+      lawsuit.wcagLevel ? `WCAG ${lawsuit.wcagLevel}` : "",
+    ].filter(Boolean),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://thewcag.com/lawsuits/${lawsuit.slug}`,
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Accessibility Lawsuits",
+          item: "https://thewcag.com/lawsuits",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: lawsuit.title,
+          item: `https://thewcag.com/lawsuits/${lawsuit.slug}`,
+        },
+      ],
+    },
   }
 
   return (
@@ -256,45 +296,167 @@ export default async function LawsuitPage({
               </CardContent>
             </Card>
 
-            {/* Official References & Related Links */}
-            <Card className="mb-6 sm:mb-8 border-primary/30 bg-primary/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
-                  <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" aria-hidden="true" />
-                  Official References & Court Documents
-                </CardTitle>
-                <CardDescription className="text-xs sm:text-sm">
-                  Links to official court documents, government records, and legal references for this case
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {lawsuit.relatedLinks && lawsuit.relatedLinks.length > 0 ? (
-                  <ul className="space-y-2 sm:space-y-3">
-                    {lawsuit.relatedLinks.map((link, index) => (
-                      <li key={index}>
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-primary hover:underline inline-flex items-center gap-2 font-medium text-sm sm:text-base group break-words"
-                        >
-                          <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-primary group-hover:scale-110 transition-transform shrink-0" aria-hidden="true" />
-                          <span className="break-words">{link.title}</span>
-                          <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-0.5 transition-transform shrink-0" aria-hidden="true" />
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
+            {/* Official References & Court Documents */}
+            {(lawsuit.officialLinks && lawsuit.officialLinks.length > 0) || (lawsuit.unofficialLinks && lawsuit.unofficialLinks.length > 0) || (lawsuit.relatedLinks && lawsuit.relatedLinks.length > 0) ? (
+              <>
+                {/* Official Links */}
+                {((lawsuit.officialLinks && lawsuit.officialLinks.length > 0) || (lawsuit.relatedLinks && lawsuit.relatedLinks.length > 0 && !lawsuit.officialLinks)) && (
+                  <Card className="mb-6 sm:mb-8 border-primary/30 bg-primary/5">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                        <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" aria-hidden="true" />
+                        Official References & Court Documents
+                      </CardTitle>
+                      <CardDescription className="text-xs sm:text-sm">
+                        Links to official court documents, government records (.gov), and official organization sources
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      {lawsuit.officialLinks && lawsuit.officialLinks.length > 0 ? (
+                        <ul className="space-y-2 sm:space-y-3">
+                          {lawsuit.officialLinks.map((link, index) => (
+                            <li key={index}>
+                              <a
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:underline inline-flex items-center gap-2 font-medium text-sm sm:text-base group break-words"
+                              >
+                                <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-primary group-hover:scale-110 transition-transform shrink-0" aria-hidden="true" />
+                                <span className="break-words">{link.title}</span>
+                                <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-0.5 transition-transform shrink-0" aria-hidden="true" />
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : lawsuit.relatedLinks && lawsuit.relatedLinks.length > 0 ? (
+                        <ul className="space-y-2 sm:space-y-3">
+                          {lawsuit.relatedLinks
+                            .filter((link) => {
+                              const url = link.url.toLowerCase()
+                              return (
+                                url.includes(".gov") ||
+                                url.includes(".uscourts.gov") ||
+                                url.includes("nfb.org") ||
+                                url.includes("nad.org") ||
+                                url.includes("ada.gov") ||
+                                url.includes("justice.gov") ||
+                                link.title.toLowerCase().includes("official")
+                              )
+                            })
+                            .map((link, index) => (
+                              <li key={index}>
+                                <a
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-primary hover:underline inline-flex items-center gap-2 font-medium text-sm sm:text-base group break-words"
+                                >
+                                  <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-primary group-hover:scale-110 transition-transform shrink-0" aria-hidden="true" />
+                                  <span className="break-words">{link.title}</span>
+                                  <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-0.5 transition-transform shrink-0" aria-hidden="true" />
+                                </a>
+                              </li>
+                            ))}
+                        </ul>
+                      ) : (
+                        <div className="text-xs sm:text-sm text-muted-foreground p-3 sm:p-4 bg-background/50 rounded-lg border border-dashed">
+                          <p>Official court documents and references are not currently available for this case.</p>
+                          <p className="mt-2 text-xs">
+                            For official records, please search PACER (Public Access to Court Electronic Records) or contact the relevant court directly.
+                          </p>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Unofficial Links */}
+                {((lawsuit.unofficialLinks && lawsuit.unofficialLinks.length > 0) || (lawsuit.relatedLinks && lawsuit.relatedLinks.length > 0)) && (
+                  <Card className="mb-6 sm:mb-8 border-secondary/30 bg-secondary/5">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                        <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-secondary shrink-0" aria-hidden="true" />
+                        Unofficial References & Public Sources
+                      </CardTitle>
+                      <CardDescription className="text-xs sm:text-sm">
+                        Links to public legal databases, news articles, and other non-government sources referencing this case
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      {lawsuit.unofficialLinks && lawsuit.unofficialLinks.length > 0 ? (
+                        <ul className="space-y-2 sm:space-y-3">
+                          {lawsuit.unofficialLinks.map((link, index) => (
+                            <li key={index}>
+                              <a
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-secondary hover:underline inline-flex items-center gap-2 font-medium text-sm sm:text-base group break-words"
+                              >
+                                <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-secondary group-hover:scale-110 transition-transform shrink-0" aria-hidden="true" />
+                                <span className="break-words">{link.title}</span>
+                                <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-0.5 transition-transform shrink-0" aria-hidden="true" />
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : lawsuit.relatedLinks && lawsuit.relatedLinks.length > 0 ? (
+                        <ul className="space-y-2 sm:space-y-3">
+                          {lawsuit.relatedLinks
+                            .filter((link) => {
+                              const url = link.url.toLowerCase()
+                              return (
+                                !url.includes(".gov") &&
+                                !url.includes(".uscourts.gov") &&
+                                !url.includes("nfb.org") &&
+                                !url.includes("nad.org") &&
+                                !url.includes("ada.gov") &&
+                                !url.includes("justice.gov") &&
+                                !link.title.toLowerCase().includes("official")
+                              )
+                            })
+                            .map((link, index) => (
+                              <li key={index}>
+                                <a
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-secondary hover:underline inline-flex items-center gap-2 font-medium text-sm sm:text-base group break-words"
+                                >
+                                  <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-secondary group-hover:scale-110 transition-transform shrink-0" aria-hidden="true" />
+                                  <span className="break-words">{link.title}</span>
+                                  <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-0.5 transition-transform shrink-0" aria-hidden="true" />
+                                </a>
+                              </li>
+                            ))}
+                        </ul>
+                      ) : null}
+                    </CardContent>
+                  </Card>
+                )}
+              </>
+            ) : (
+              <Card className="mb-6 sm:mb-8 border-primary/30 bg-primary/5">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                    <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" aria-hidden="true" />
+                    Official References & Court Documents
+                  </CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">
+                    Links to official court documents, government records, and legal references for this case
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
                   <div className="text-xs sm:text-sm text-muted-foreground p-3 sm:p-4 bg-background/50 rounded-lg border border-dashed">
                     <p>Official court documents and references are not currently available for this case.</p>
                     <p className="mt-2 text-xs">
-                      For official records, please search PACER (Public Access to Court Electronic Records) or contact the relevant court directly.
+                      For official records, please search PACER (Public Access to Court Electronic Records) using the case number or contact the relevant court directly. You may also find information on public legal databases like Justia or CourtListener.
                     </p>
                   </div>
-                )}
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            )}
 
             {/* Related Cases */}
             {relatedLawsuits.length > 0 && (

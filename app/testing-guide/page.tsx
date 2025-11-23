@@ -208,15 +208,48 @@ export default function TestingGuidePage() {
   const howToStructuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Test Website Accessibility",
+    name: "How to Test Website Accessibility - Complete Testing Guide",
     description:
       "Complete 6-step guide to testing your website for WCAG compliance. Learn how to use automated tools, manual testing, screen readers, and user testing methods to ensure accessibility.",
     url: "https://thewcag.com/testing-guide",
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
+    },
+    author: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+    },
     totalTime: "PT5H", // Estimated 5 hours total
     estimatedCost: {
       "@type": "MonetaryAmount",
       currency: "USD",
       value: "0",
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Testing Guide",
+          item: "https://thewcag.com/testing-guide",
+        },
+      ],
     },
     step: testingWorkflow.map((workflow) => ({
       "@type": "HowToStep",

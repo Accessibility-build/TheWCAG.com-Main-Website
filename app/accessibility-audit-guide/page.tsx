@@ -147,16 +147,48 @@ export default function AccessibilityAuditGuidePage() {
   const howToStructuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Conduct an Accessibility Audit",
+    name: "How to Conduct an Accessibility Audit - Complete Guide",
     description:
       "Complete 7-step guide to conducting comprehensive accessibility audits. Learn how to systematically evaluate your website for WCAG 2.2 compliance using automated tools, manual testing, and user testing methods.",
     url: "https://thewcag.com/accessibility-audit-guide",
-    dateModified: "2025-01-15",
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
+    },
+    author: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+    },
     totalTime: "PT30H", // Estimated 30 hours total
     estimatedCost: {
       "@type": "MonetaryAmount",
       currency: "USD",
       value: "0",
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Accessibility Audit Guide",
+          item: "https://thewcag.com/accessibility-audit-guide",
+        },
+      ],
     },
     step: auditSteps.map((step) => ({
       "@type": "HowToStep",

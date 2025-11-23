@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Recent Accessibility Lawsuits - Legal Cases & Settlements | TheWCAG",
   description:
-    "Explore recent accessibility lawsuits, legal cases, and settlements related to website accessibility, ADA compliance, and digital accessibility. Learn from real-world cases and their outcomes.",
+    "Explore recent accessibility lawsuits, legal cases & settlements. Learn from real-world ADA compliance cases, WCAG violations, and digital accessibility legal outcomes.",
   keywords: [
     "accessibility lawsuits",
     "ADA lawsuits",

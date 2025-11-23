@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Accessibility Examples - Real-World WCAG Implementation Examples | TheWCAG",
   description:
-    "Explore real-world examples of accessible web components and patterns. Learn how to implement WCAG success criteria with practical code examples for forms, navigation, media, and more.",
+    "Explore real-world accessible web components & patterns. Learn WCAG implementation with practical code examples for forms, navigation, media & more. Start building accessible UI today!",
   keywords: [
     "accessibility examples",
     "WCAG examples",

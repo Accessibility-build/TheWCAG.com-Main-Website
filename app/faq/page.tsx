@@ -21,6 +21,18 @@ export default function FAQPage() {
   const faqData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    name: "WCAG FAQ - Frequently Asked Questions About Web Accessibility",
+    description: "Get instant answers to 15+ common WCAG & accessibility questions. Learn about compliance, testing, ADA requirements & WCAG 2.2.",
+    url: "https://thewcag.com/faq",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
+    },
     mainEntity: [
       {
         "@type": "Question",

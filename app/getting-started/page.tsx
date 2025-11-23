@@ -173,16 +173,48 @@ export default function GettingStartedPage() {
   const howToStructuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "Getting Started with Web Accessibility",
+    name: "Getting Started with Web Accessibility - Beginner's Guide",
     description:
       "A beginner-friendly 6-step guide to understanding and implementing web accessibility. Learn the basics, audit your site, fix issues, and test your improvements.",
     url: "https://thewcag.com/getting-started",
-    dateModified: "2025-01-15",
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
+    },
+    author: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+    },
     totalTime: "PT10H", // Estimated 10 hours total
     estimatedCost: {
       "@type": "MonetaryAmount",
       currency: "USD",
       value: "0",
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Getting Started",
+          item: "https://thewcag.com/getting-started",
+        },
+      ],
     },
     step: steps.map((step) => ({
       "@type": "HowToStep",

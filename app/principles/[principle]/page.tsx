@@ -67,9 +67,28 @@ export default async function PrinciplePage({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `${principleData.title} - WCAG 2.2`,
+    name: `${principleData.title} - WCAG 2.2 Principle`,
     description: principleData.description,
     url: `https://thewcag.com/principles/${principle}`,
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
+    },
+    mainEntity: {
+      "@type": "Thing",
+      name: principleData.title,
+      description: principleData.description,
+      about: {
+        "@type": "Thing",
+        name: "Web Content Accessibility Guidelines",
+        alternateName: "WCAG 2.2",
+      },
+    },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [

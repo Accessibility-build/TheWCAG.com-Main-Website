@@ -274,16 +274,48 @@ button:focus {
   const howToStructuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Make a Website Accessible",
+    name: "How to Make a Website Accessible - Complete Step-by-Step Guide",
     description:
       "Complete step-by-step guide to making your website accessible and WCAG 2.2 compliant. Follow these 8 actionable steps to improve accessibility for all users.",
     url: "https://thewcag.com/how-to-make-website-accessible",
-    dateModified: "2025-01-15",
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
+    },
+    author: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+    },
     totalTime: "PT20H", // Estimated 20 hours total
     estimatedCost: {
       "@type": "MonetaryAmount",
       currency: "USD",
       value: "0",
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "How to Make Website Accessible",
+          item: "https://thewcag.com/how-to-make-website-accessible",
+        },
+      ],
     },
     step: steps.map((step, index) => ({
       "@type": "HowToStep",

@@ -5,16 +5,31 @@ import { SkipLink } from "@/components/skip-link"
 import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Code2, FormInput, Menu, PlayCircle, Table, GripVertical, AlertCircle } from "lucide-react"
+import { ArrowRight, Code2, FormInput, Menu, PlayCircle, Table, GripVertical, AlertCircle, CheckCircle2, Clock } from "lucide-react"
 
 export default function ExamplesPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Accessibility Examples",
+    name: "Accessibility Examples - Real-World WCAG Implementation",
     description:
       "Explore real-world examples of accessible web components and patterns with practical code examples for forms, navigation, media, and more.",
     url: "https://thewcag.com/examples",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Accessibility Code Examples",
+      description: "Collection of accessible web component examples",
+      numberOfItems: 20,
+    },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
@@ -138,13 +153,27 @@ export default function ExamplesPage() {
                     <div className="grid md:grid-cols-2 gap-4">
                       {category.items.map((item) => {
                         const ItemCard = item.href ? Link : "div"
+                        const isAvailable = !!item.href
                         return (
                           <ItemCard key={item.title} href={item.href || "#"} className={item.href ? "block" : ""}>
-                            <Card className={`hover:shadow-md transition-shadow ${item.href ? "cursor-pointer" : ""}`}>
+                            <Card className={`hover:shadow-md transition-shadow ${item.href ? "cursor-pointer" : "opacity-90"}`}>
                               <CardHeader>
-                                <CardTitle className="text-lg flex items-center justify-between">
-                                  {item.title}
-                                  {item.href && <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />}
+                                <CardTitle className="text-lg flex items-center justify-between gap-2">
+                                  <span>{item.title}</span>
+                                  <div className="flex items-center gap-2 shrink-0">
+                                    {isAvailable ? (
+                                      <Badge variant="default" className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-1 text-xs">
+                                        <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
+                                        Available
+                                      </Badge>
+                                    ) : (
+                                      <Badge variant="secondary" className="flex items-center gap-1 text-xs">
+                                        <Clock className="h-3 w-3" aria-hidden="true" />
+                                        Coming Soon
+                                      </Badge>
+                                    )}
+                                    {item.href && <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />}
+                                  </div>
                                 </CardTitle>
                                 <CardDescription className="leading-relaxed">{item.description}</CardDescription>
                               </CardHeader>
@@ -157,7 +186,6 @@ export default function ExamplesPage() {
                                       </Badge>
                                     ))}
                                   </div>
-                                  {!item.href && <Code2 className="h-4 w-4 text-muted-foreground" aria-hidden="true" />}
                                 </div>
                               </CardContent>
                             </Card>

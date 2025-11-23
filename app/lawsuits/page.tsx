@@ -28,9 +28,41 @@ export default function LawsuitsPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Recent Accessibility Lawsuits",
-    description: "A collection of recent accessibility lawsuits, legal cases, and settlements related to website accessibility and ADA compliance.",
+    name: "Recent Accessibility Lawsuits - Legal Cases & Settlements",
+    description: "A comprehensive collection of recent accessibility lawsuits, legal cases, and settlements related to website accessibility and ADA compliance.",
     url: "https://thewcag.com/lawsuits",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Accessibility Lawsuits",
+      description: "Collection of digital accessibility legal cases",
+      numberOfItems: allLawsuits.length,
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Accessibility Lawsuits",
+          item: "https://thewcag.com/lawsuits",
+        },
+      ],
+    },
   }
 
   const statusConfig = {

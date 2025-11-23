@@ -8,7 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Content update dates
   const wcag22Published = new Date('2023-10-05') // WCAG 2.2 publication date
   const siteLaunch = new Date('2024-01-01') // Approximate site launch
-  const recentUpdate = new Date() // Recent updates
+  const recentUpdate = new Date('2025-01-15') // Recent major updates (best practices, lawsuits, examples)
+  const january2025 = new Date('2025-01-01') // January 2025 updates
   const wcag21Published = new Date('2018-06-05') // WCAG 2.1 publication
   const wcag20Published = new Date('2008-12-11') // WCAG 2.0 publication
   const wcag10Published = new Date('1999-05-05') // WCAG 1.0 publication
@@ -77,9 +78,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/examples`,
-      lastModified: siteLaunch,
+      lastModified: recentUpdate,
       changeFrequency: 'monthly',
-      priority: 0.6,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/examples/accessible-input-fields`,
@@ -228,7 +229,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/lawsuits`,
       lastModified: recentUpdate,
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
       priority: 0.8,
     },
   ]

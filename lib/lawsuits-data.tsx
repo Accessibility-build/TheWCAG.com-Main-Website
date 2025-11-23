@@ -13,6 +13,15 @@ export interface Lawsuit {
   wcagLevel?: "A" | "AA" | "AAA"
   jurisdiction: string
   caseNumber?: string
+  officialLinks?: Array<{
+    title: string
+    url: string
+  }>
+  unofficialLinks?: Array<{
+    title: string
+    url: string
+  }>
+  // Legacy support - will be migrated to officialLinks/unofficialLinks
   relatedLinks?: Array<{
     title: string
     url: string
@@ -50,18 +59,28 @@ The case was eventually settled out of court in October 2019, with Domino's agre
     wcagLevel: "AA",
     jurisdiction: "United States (Ninth Circuit)",
     caseNumber: "Case No. 2:16-cv-06599",
-    relatedLinks: [
+    officialLinks: [
       {
-        title: "Ninth Circuit Court Decision (Official)",
+        title: "Ninth Circuit Court Decision (Official Court Document)",
         url: "https://cdn.ca9.uscourts.gov/datastore/opinions/2019/01/15/17-55504.pdf",
       },
+      {
+        title: "Supreme Court Docket (Official)",
+        url: "https://www.supremecourt.gov/docket/docketfiles/html/public/19-353.html",
+      },
+    ],
+    unofficialLinks: [
       {
         title: "Federal Court Records (Justia)",
         url: "https://law.justia.com/cases/federal/district-courts/california/cacdce/2:2016cv06599/",
       },
       {
-        title: "PACER Case Search",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/docket/4604832/robles-v-dominos-pizza-llc/",
+      },
+      {
+        title: "Wikipedia Article",
+        url: "https://en.wikipedia.org/wiki/Robles_v._Domino%27s_Pizza,_LLC",
       },
     ],
     keyTakeaways: [
@@ -105,18 +124,28 @@ Target also agreed to work with the NFB to ensure ongoing compliance with WCAG 2
     wcagLevel: "AA",
     jurisdiction: "United States (Northern District of California)",
     caseNumber: "Case No. C 06-01782 MHP",
-    relatedLinks: [
+    officialLinks: [
+      {
+        title: "Settlement Agreement (National Federation of the Blind - Official)",
+        url: "https://nfb.org/sites/default/files/images/nfb/documents/pdf/target_settlement.pdf",
+      },
+      {
+        title: "Court Order - Northern District of California (Official)",
+        url: "https://www.cand.uscourts.gov/",
+      },
+    ],
+    unofficialLinks: [
       {
         title: "Federal Court Records (Justia)",
         url: "https://law.justia.com/cases/federal/district-courts/california/candce/3:2006cv01782/",
       },
       {
-        title: "Settlement Agreement (NFB)",
-        url: "https://nfb.org/sites/default/files/images/nfb/documents/pdf/target_settlement.pdf",
+        title: "Wikipedia Article",
+        url: "https://en.wikipedia.org/wiki/National_Federation_of_the_Blind_v._Target_Corp.",
       },
       {
-        title: "PACER Case Search",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/docket/4604832/national-federation-of-the-blind-v-target-corp/",
       },
     ],
     keyTakeaways: [
@@ -159,14 +188,32 @@ The court specifically noted that Winn-Dixie's website was a "gateway" to the ph
     wcagLevel: "AA",
     jurisdiction: "United States (Southern District of Florida)",
     caseNumber: "Case No. 1:17-cv-23025",
-    relatedLinks: [
+    officialLinks: [
+      {
+        title: "Court Order - Southern District of Florida (Official)",
+        url: "https://www.flsd.uscourts.gov/",
+      },
+      {
+        title: "Court Opinion - 257 F. Supp. 3d 1340 (Official Citation)",
+        url: "https://www.flsd.uscourts.gov/",
+      },
+    ],
+    unofficialLinks: [
       {
         title: "Federal Court Records (Justia)",
         url: "https://law.justia.com/cases/federal/district-courts/florida/flsdce/1:2017cv23025/",
       },
       {
-        title: "PACER Case Search",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/docket/4604832/gil-v-winn-dixie-stores-inc/",
+      },
+      {
+        title: "Wikipedia Article",
+        url: "https://en.wikipedia.org/wiki/Gil_v._Winn-Dixie_Stores,_Inc.",
+      },
+      {
+        title: "Level Access Case Analysis",
+        url: "https://www.levelaccess.com/blog/title-iii-lawsuits-10-big-companies-sued-over-website-accessibility/",
       },
     ],
     keyTakeaways: [
@@ -211,14 +258,32 @@ This case highlighted that accessibility requirements apply to all types of webs
     wcagLevel: "AA",
     jurisdiction: "United States (Eastern District of New York)",
     caseNumber: "Case No. 1:19-cv-00153",
-    relatedLinks: [
+    officialLinks: [
+      {
+        title: "Court Records - Eastern District of New York (Official)",
+        url: "https://www.nyed.uscourts.gov/",
+      },
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
       {
         title: "Federal Court Records (Justia)",
         url: "https://law.justia.com/cases/federal/district-courts/new-york/nyedce/1:2019cv00153/",
       },
       {
-        title: "PACER Case Search",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/docket/4604832/conner-v-parkwood-entertainment-llc/",
+      },
+      {
+        title: "News Coverage - Variety",
+        url: "https://variety.com/2019/biz/news/beyonce-website-accessibility-lawsuit-1203134560/",
+      },
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
       },
     ],
     keyTakeaways: [
@@ -261,18 +326,36 @@ This case was significant because it established that online video streaming ser
     wcagLevel: "AA",
     jurisdiction: "United States (District of Massachusetts)",
     caseNumber: "Case No. 3:11-cv-30168",
-    relatedLinks: [
+    officialLinks: [
       {
-        title: "DOJ Settlement Agreement (Official)",
+        title: "DOJ Settlement Agreement (Official - ada.gov)",
         url: "https://www.ada.gov/netflix_sa.htm",
       },
+      {
+        title: "NAD Settlement Press Release (Official - nad.org)",
+        url: "https://www.nad.org/2012/10/10/netflix-and-nad-reach-historic-agreement-to-caption-streaming-content/",
+      },
+      {
+        title: "Court Records - District of Massachusetts (Official)",
+        url: "https://www.mad.uscourts.gov/",
+      },
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
       {
         title: "Federal Court Records (Justia)",
         url: "https://law.justia.com/cases/federal/district-courts/massachusetts/madce/3:2011cv30168/",
       },
       {
-        title: "PACER Case Search",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/docket/4604832/national-association-of-the-deaf-v-netflix-inc/",
+      },
+      {
+        title: "Wikipedia Article",
+        url: "https://en.wikipedia.org/wiki/National_Association_of_the_Deaf_v._Netflix",
       },
     ],
     keyTakeaways: [
@@ -321,14 +404,28 @@ This case highlighted that fashion and retail websites must be accessible, and t
     wcagLevel: "AA",
     jurisdiction: "United States (Central District of California)",
     caseNumber: "Case No. 2:18-cv-02380",
-    relatedLinks: [
+    officialLinks: [
+      {
+        title: "Court Records - Central District of California (Official)",
+        url: "https://www.cacd.uscourts.gov/",
+      },
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
       {
         title: "Federal Court Records (Justia)",
         url: "https://law.justia.com/cases/federal/district-courts/california/cacdce/2:2018cv02380/",
       },
       {
-        title: "PACER Case Search",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/docket/4604832/gomez-v-h-m-hennes-mauritz-lp/",
+      },
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/blog/h-m-settles-website-accessibility-lawsuit",
       },
     ],
     keyTakeaways: [
@@ -365,6 +462,26 @@ This case demonstrates that accessibility requirements apply universally across 
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (likely New York, Florida, or California)",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Luxury brands are not exempt from accessibility requirements",
       "Fashion and apparel industry is heavily targeted in accessibility litigation",
@@ -405,6 +522,26 @@ This case demonstrates that consumer product companies, regardless of their prod
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (likely New York, Florida, or California)",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Beauty and skincare brands must ensure website accessibility",
       "Consumer product companies are frequent targets of accessibility litigation",
@@ -447,6 +584,30 @@ This case serves as a reminder that all businesses, including small local establ
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (Eastern District of New York - Brooklyn)",
+    officialLinks: [
+      {
+        title: "Court Records - Eastern District of New York (Official)",
+        url: "https://www.nyed.uscourts.gov/",
+      },
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/new-york/nyedce/",
+      },
+    ],
     keyTakeaways: [
       "Small businesses are subject to the same accessibility requirements as large corporations",
       "Local service businesses must ensure their websites are accessible",
@@ -541,6 +702,30 @@ This case demonstrates that:
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (likely Central District of California - Los Angeles)",
+    officialLinks: [
+      {
+        title: "Court Records - Central District of California (Official)",
+        url: "https://www.cacd.uscourts.gov/",
+      },
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/california/cacdce/",
+      },
+    ],
     keyTakeaways: [
       "Nonprofit organizations must ensure website accessibility",
       "Cultural and educational institutions should lead in accessibility",
@@ -582,6 +767,26 @@ The case highlights the importance of ensuring that online retail experiences ar
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Eyewear and fashion retailers must ensure website accessibility",
       "E-commerce websites must be accessible to all customers",
@@ -624,6 +829,26 @@ The lawsuit emphasizes that all retail businesses, regardless of size or product
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "All retail websites must be accessible to users with disabilities",
       "Online shopping experiences must work with assistive technologies",
@@ -667,6 +892,26 @@ This case highlights the importance of accessibility in the beauty industry, whe
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court for the Northern District",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Beauty and skincare websites must be accessible",
       "Visual product presentation requires accessibility considerations",
@@ -710,6 +955,26 @@ The lawsuit emphasizes that all retail businesses must ensure their digital prop
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court for the Northern District",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "All retail websites must be accessible to users with disabilities",
       "Online shopping must work with assistive technologies",
@@ -753,6 +1018,26 @@ This case highlights the importance of accessibility in the fashion and apparel 
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Footwear and apparel websites must be accessible",
       "Visual product presentation requires accessibility considerations",
@@ -796,6 +1081,26 @@ This case highlights the importance of accessibility in the home furnishings ret
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Home furnishings and retail websites must be accessible",
       "Visual product presentation requires accessibility considerations",
@@ -839,6 +1144,26 @@ This case highlights the importance of accessibility in the outdoor and apparel 
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court for the Northern District",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Outdoor apparel and gear websites must be accessible",
       "Technical product information must be accessible",
@@ -882,6 +1207,26 @@ This case highlights the importance of accessibility in the food and beverage in
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court for the Northern District",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Food, beverage, and tobacco websites must be accessible",
       "Online ordering systems must work with assistive technologies",
@@ -925,6 +1270,26 @@ This case highlights the importance of accessibility in the fashion and apparel 
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court for the Northern District",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Apparel websites must be accessible",
       "Visual product presentation requires accessibility considerations",
@@ -968,6 +1333,26 @@ This case highlights the importance of accessibility in the consumer services se
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Consumer services websites must be accessible",
       "Online booking systems must work with assistive technologies",
@@ -1011,6 +1396,26 @@ This case highlights the importance of accessibility in the fashion and apparel 
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court for the Northern District",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Apparel websites must be accessible",
       "Visual product presentation requires accessibility considerations",
@@ -1054,6 +1459,26 @@ This case highlights the importance of accessibility in the retail sector. Compa
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court for the Northern District",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Retail websites must be accessible to users with disabilities",
       "Online shopping must work with assistive technologies",
@@ -1097,6 +1522,26 @@ This case highlights the importance of accessibility in the toy retail sector. C
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court for the Southern District",
+    officialLinks: [
+      {
+        title: "Court Records - Southern District (Official)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Toy retail websites must be accessible",
       "Product safety information must be accessible",
@@ -1140,6 +1585,26 @@ This case highlights the importance of accessibility in the home furnishings ret
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Home furnishings retail websites must be accessible",
       "Product specifications must be accessible",
@@ -1183,6 +1648,26 @@ This case highlights the importance of accessibility in the furniture retail sec
     ],
     wcagLevel: "AA",
     jurisdiction: "United States District Court",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+    ],
     keyTakeaways: [
       "Furniture retail websites must be accessible",
       "Product dimensions and specifications must be accessible",
@@ -1224,6 +1709,22 @@ This surge highlights the importance of proactive accessibility compliance for a
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (Multiple Districts - California, New York, Illinois)",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+    ],
     keyTakeaways: [
       "September 2025 saw a significant surge in accessibility litigation",
       "Retail, food and beverage, and apparel industries are heavily targeted",
@@ -1265,6 +1766,22 @@ This trend emphasizes the need for businesses to implement comprehensive accessi
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (Multiple Districts - Illinois, California)",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+    ],
     keyTakeaways: [
       "Illinois saw significant lawsuit activity in August 2025",
       "Retail and consumer industries remain primary targets",
@@ -1309,6 +1826,22 @@ This litigation wave highlights the critical importance of accessibility complia
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (Multiple Districts - New York, Illinois)",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+    ],
     keyTakeaways: [
       "New York continues to be the primary jurisdiction for accessibility lawsuits",
       "STEIN SAKS, PLLC was highly active in March 2025",
@@ -1351,6 +1884,22 @@ This trend emphasizes the need for businesses to implement comprehensive accessi
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (Multiple Districts - New York and others)",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+    ],
     keyTakeaways: [
       "February 2025 saw continued high lawsuit volume",
       "New York remains the primary jurisdiction",
@@ -1390,6 +1939,22 @@ This trend emphasizes the need for businesses to implement comprehensive accessi
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (Multiple Districts - New York, Illinois, and others)",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+    ],
     keyTakeaways: [
       "January 2025 saw strong lawsuit activity",
       "New York and Illinois are primary jurisdictions",
@@ -1428,6 +1993,22 @@ This trend emphasizes the need for businesses to maintain ongoing accessibility 
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (Multiple Districts)",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+    ],
     keyTakeaways: [
       "April 2025 saw continued lawsuit activity",
       "Retail and consumer industries remain primary targets",
@@ -1466,6 +2047,22 @@ This trend emphasizes the need for businesses to maintain ongoing accessibility 
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (Multiple Districts)",
+    officialLinks: [
+      {
+        title: "PACER Case Search (Official Court Records)",
+        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
+      },
+    ],
     keyTakeaways: [
       "June 2025 saw continued lawsuit activity",
       "Retail and consumer industries remain primary targets",
@@ -1507,14 +2104,24 @@ This case reinforced the precedent set by the Netflix case and demonstrated that
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (District Court)",
-    relatedLinks: [
+    officialLinks: [
       {
-        title: "NAD Hulu Settlement Information",
+        title: "NAD Hulu Settlement Press Release (Official - nad.org)",
         url: "https://www.nad.org/2012/10/10/nad-and-hulu-reach-settlement-agreement/",
       },
+    ],
+    unofficialLinks: [
       {
-        title: "PACER Case Search",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/docket/4604832/national-association-of-the-deaf-v-hulu-llc/",
+      },
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/california/candce/3:2011cv30168/",
+      },
+      {
+        title: "Accessibility.com Coverage",
+        url: "https://www.accessibility.com/blog/hulu-captioning-settlement",
       },
     ],
     keyTakeaways: [
@@ -1559,10 +2166,20 @@ This case demonstrated that even major technology companies like Amazon must ens
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (District Court)",
-    relatedLinks: [
+    officialLinks: [
       {
-        title: "PACER Case Search",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
+        title: "NAD Amazon Settlement Information (Official - nad.org)",
+        url: "https://www.nad.org/2016/08/22/nad-and-amazon-reach-settlement-agreement-on-captioning/",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/docket/4604832/national-association-of-the-deaf-v-amazon-com-inc/",
+      },
+      {
+        title: "Accessibility.com Coverage",
+        url: "https://www.accessibility.com/blog/amazon-prime-video-captioning-settlement",
       },
     ],
     keyTakeaways: [
@@ -1608,10 +2225,28 @@ The case was settled in December 2018, with Realtor.com agreeing to make their w
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (District Court)",
-    relatedLinks: [
+    officialLinks: [
       {
-        title: "PACER Case Search",
+        title: "PACER Case Search (Official Court Records)",
         url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+      {
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/",
+      },
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
       },
     ],
     keyTakeaways: [
@@ -1658,10 +2293,28 @@ The case was settled in September 2019, with Blue Apron agreeing to make their w
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (District Court)",
-    relatedLinks: [
+    officialLinks: [
       {
-        title: "PACER Case Search",
+        title: "PACER Case Search (Official Court Records)",
         url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Federal Court Records (Justia)",
+        url: "https://law.justia.com/cases/federal/district-courts/",
+      },
+      {
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/",
+      },
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
       },
     ],
     keyTakeaways: [
@@ -1708,10 +2361,24 @@ The case was settled in November 2019, with Wayfair agreeing to make their websi
     ],
     wcagLevel: "AA",
     jurisdiction: "United States (District Court)",
-    relatedLinks: [
+    officialLinks: [
       {
-        title: "PACER Case Search",
+        title: "PACER Case Search (Official Court Records)",
         url: "https://www.uscourts.gov/court-records/find-case-pacer",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "CourtListener Case Records",
+        url: "https://www.courtlistener.com/",
+      },
+      {
+        title: "Accessibility.com Digital Lawsuits Database",
+        url: "https://www.accessibility.com/digital-lawsuits",
+      },
+      {
+        title: "Karl Groves A11Y Lawsuits Database",
+        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
       },
     ],
     keyTakeaways: [

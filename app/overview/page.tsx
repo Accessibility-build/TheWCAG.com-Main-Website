@@ -10,11 +10,32 @@ import { ArrowRight, CheckCircle2, Eye, Keyboard, Lightbulb, Wrench } from "luci
 export default function OverviewPage() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "WCAG Overview",
+    "@type": "Article",
+    headline: "WCAG Overview - Understanding Web Content Accessibility Guidelines",
     description:
       "Learn about WCAG (Web Content Accessibility Guidelines) 2.2, the international standard for web accessibility. Understand the POUR principles, success criteria, and how to make your website accessible to everyone.",
     url: "https://thewcag.com/overview",
+    author: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/logo.png",
+      },
+    },
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    about: {
+      "@type": "Thing",
+      name: "Web Content Accessibility Guidelines",
+      alternateName: "WCAG 2.2",
+    },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
