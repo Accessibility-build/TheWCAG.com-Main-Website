@@ -63,7 +63,7 @@ export function HeroSearch() {
           <span className="whitespace-nowrap">Quick Find</span>
         </Label>
       </div>
-      <div className="relative group w-full">
+      <div className="relative group w-full" role="combobox" aria-expanded={showResults} aria-haspopup="listbox">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors z-10" aria-hidden="true" />
         <Input
           id="hero-search"
@@ -86,6 +86,10 @@ export function HeroSearch() {
               router.push(`/criteria/${firstResult.criterion.id}`)
               setShowResults(false)
               setQuery("")
+            } else if (e.key === "ArrowDown" && showResults && searchResults.length > 0) {
+              e.preventDefault()
+              const firstResult = containerRef.current?.querySelector('a[role="option"]') as HTMLElement
+              firstResult?.focus()
             }
           }}
           placeholder="Search criteria (e.g. 1.4.3)..."
@@ -94,6 +98,7 @@ export function HeroSearch() {
           aria-expanded={showResults}
           aria-haspopup="listbox"
           aria-autocomplete="list"
+          aria-controls={showResults ? "search-results-hero" : undefined}
         />
         {query && (
           <Button
@@ -109,8 +114,12 @@ export function HeroSearch() {
         )}
       </div>
       {/* Search Results Dropdown */}
-      {showResults && searchResults.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-lg shadow-lg z-50 max-h-[400px] overflow-hidden">
+      {showResults && (
+        <div 
+          id="search-results-hero"
+          className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-lg shadow-lg z-50 overflow-hidden"
+          role="presentation"
+        >
           <SearchResults
             results={searchResults}
             query={query}

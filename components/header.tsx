@@ -459,7 +459,7 @@ export function Header() {
               searchOpen ? "w-64 opacity-100 mr-2" : "w-0 opacity-0 overflow-hidden",
             )}
           >
-            <div className="relative w-full">
+            <div className="relative w-full" role="combobox" aria-expanded={showResults} aria-haspopup="listbox">
               <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" aria-hidden="true" />
               <Input
                 ref={searchInputRef}
@@ -472,12 +472,23 @@ export function Header() {
                     setShowResults(true)
                   }
                 }}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape" && showResults) {
+                    setShowResults(false)
+                    setSearchQuery("")
+                  } else if (e.key === "ArrowDown" && showResults && searchResults.length > 0) {
+                    e.preventDefault()
+                    const firstResult = searchContainerRef.current?.querySelector('a[role="option"]') as HTMLElement
+                    firstResult?.focus()
+                  }
+                }}
                 className="h-9 w-full pl-9 pr-9 text-sm rounded-full bg-secondary/10 border-transparent focus-visible:bg-background focus-visible:border-primary/20 transition-all"
                 autoFocus={searchOpen}
                 aria-label="Search WCAG criteria"
                 aria-expanded={showResults}
                 aria-haspopup="listbox"
                 aria-autocomplete="list"
+                aria-controls={showResults ? "search-results-desktop" : undefined}
               />
               {searchQuery && (
                 <Button
@@ -497,8 +508,12 @@ export function Header() {
               )}
             </div>
             {/* Search Results Dropdown */}
-            {showResults && searchResults.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-lg shadow-lg z-50 max-h-[400px] overflow-hidden">
+            {showResults && (
+              <div 
+                id="search-results-desktop"
+                className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-lg shadow-lg z-50 overflow-hidden"
+                role="presentation"
+              >
                 <SearchResults
                   results={searchResults}
                   query={searchQuery}
