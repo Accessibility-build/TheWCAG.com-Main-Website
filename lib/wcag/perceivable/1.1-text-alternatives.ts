@@ -155,7 +155,7 @@ const ImageComponent = ({ src, alt, isDecorative }) => (
         solution: "Each image needs unique alt text that reflects its specific purpose and context on the page.",
       },
     ],
-    exampleComponent: "ImageAltTextExample",
+    exampleComponent: "image-alt-text-example",
     keyTerms: [
       {
         term: "Text Alternative",
