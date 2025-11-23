@@ -157,7 +157,7 @@ export function NewsletterSubscription({ variant = "default", className }: Newsl
             role="status"
           >
             <CheckCircle2 className="h-3 w-3 shrink-0" aria-hidden="true" />
-            Successfully subscribed! Check your email.
+            Thank you! Your email has been received.
           </p>
         )}
       </div>
@@ -266,7 +266,7 @@ export function NewsletterSubscription({ variant = "default", className }: Newsl
             role="status"
           >
             <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
-            Successfully subscribed! Please check your email to confirm.
+            Thank you! Your email has been received and added to our newsletter list.
           </p>
         )}
       </form>
