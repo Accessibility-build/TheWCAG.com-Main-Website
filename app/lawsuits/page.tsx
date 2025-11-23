@@ -54,19 +54,51 @@ export default function LawsuitsPage() {
         <main id="main-content" className="flex-1">
           <div className="container py-8 md:py-12 max-w-6xl">
             {/* Header */}
-            <div className="mb-12">
+            <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
                 <Scale className="h-8 w-8 text-primary" aria-hidden="true" />
                 <h1 className="text-4xl md:text-5xl font-bold">Recent Accessibility Lawsuits</h1>
               </div>
-              <p className="text-lg text-muted-foreground max-w-3xl">
+              <p className="text-lg text-muted-foreground max-w-3xl mb-6">
                 Explore real-world accessibility lawsuits, legal cases, and settlements. Learn from these cases to
                 understand the legal requirements for digital accessibility and avoid similar issues.
               </p>
+              
+              {/* Important Disclaimer */}
+              <Card className="border-amber-500/30 bg-amber-50 dark:bg-amber-950/20 mb-8">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" aria-hidden="true" />
+                    <div className="space-y-2">
+                      <h3 className="font-semibold text-amber-900 dark:text-amber-100">Important Disclaimer</h3>
+                      <div className="text-sm text-amber-800 dark:text-amber-200 space-y-2">
+                        <p>
+                          <strong>This is not a comprehensive or accurate count of all accessibility lawsuits.</strong> The cases shown here represent only a small sample of documented cases and are provided for educational and informational purposes only.
+                        </p>
+                        <p>
+                          <strong>Please do not treat this information as a source of legal authority or security.</strong> The data presented here may contain inaccuracies, omissions, or outdated information. Settlement amounts, case statuses, and other details should be verified through official court records.
+                        </p>
+                        <p>
+                          <strong>Before using any information from this page in legal documents, research, or professional work, you must:</strong>
+                        </p>
+                        <ul className="list-disc list-inside ml-2 space-y-1">
+                          <li>Conduct your own independent research and verification</li>
+                          <li>Consult official court records (PACER, court websites, or legal databases)</li>
+                          <li>Verify all case numbers, dates, and settlement amounts through primary sources</li>
+                          <li>Consult with qualified legal professionals for legal advice</li>
+                        </ul>
+                        <p className="pt-2 border-t border-amber-300 dark:border-amber-800">
+                          This information is provided "as is" without warranty of any kind. TheWCAG.com is not responsible for any errors, omissions, or consequences arising from the use of this information.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Statistics */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="grid md:grid-cols-3 gap-6 mb-8 sm:mb-12">
               <Card>
                 <CardHeader>
                   <CardTitle className="text-lg flex items-center gap-2">

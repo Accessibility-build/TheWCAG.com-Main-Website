@@ -256,31 +256,45 @@ export default async function LawsuitPage({
               </CardContent>
             </Card>
 
-            {/* Related Links */}
-            {lawsuit.relatedLinks && lawsuit.relatedLinks.length > 0 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle>Related Links</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
+            {/* Official References & Related Links */}
+            <Card className="mb-8 border-primary/30 bg-primary/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="h-5 w-5 text-primary" aria-hidden="true" />
+                  Official References & Court Documents
+                </CardTitle>
+                <CardDescription>
+                  Links to official court documents, government records, and legal references for this case
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {lawsuit.relatedLinks && lawsuit.relatedLinks.length > 0 ? (
+                  <ul className="space-y-3">
                     {lawsuit.relatedLinks.map((link, index) => (
                       <li key={index}>
                         <a
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-primary hover:underline inline-flex items-center gap-2"
+                          className="text-primary hover:underline inline-flex items-center gap-2 font-medium text-base group"
                         >
+                          <FileText className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" aria-hidden="true" />
                           {link.title}
-                          <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                          <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                         </a>
                       </li>
                     ))}
                   </ul>
-                </CardContent>
-              </Card>
-            )}
+                ) : (
+                  <div className="text-sm text-muted-foreground p-4 bg-background/50 rounded-lg border border-dashed">
+                    <p>Official court documents and references are not currently available for this case.</p>
+                    <p className="mt-2 text-xs">
+                      For official records, please search PACER (Public Access to Court Electronic Records) or contact the relevant court directly.
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
 
             {/* Related Cases */}
             {relatedLawsuits.length > 0 && (
