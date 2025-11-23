@@ -1,0 +1,4 @@
+# This directory contains dynamic example components for WCAG criteria
+# Components are loaded dynamically via: import(`@/components/criteria-examples/${componentName}`)
+# If a component doesn't exist, the ExampleComponentSection will gracefully handle it
+

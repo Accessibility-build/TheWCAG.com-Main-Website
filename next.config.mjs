@@ -16,6 +16,19 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  // Suppress warnings for dynamic imports in criteria-examples directory
+  // These components are loaded conditionally and missing components are handled gracefully
+  webpack: (config, { isServer }) => {
+    // Ignore module resolution warnings for dynamic imports in criteria-examples
+    config.ignoreWarnings = [
+      ...(config.ignoreWarnings || []),
+      {
+        module: /criteria-examples/,
+        message: /Can't resolve/,
+      },
+    ]
+    return config
+  },
   // Production optimizations
   compress: true,
   poweredByHeader: false,
