@@ -13,8 +13,12 @@ export const adaptableCriteria: SuccessCriterion[] = [
     isNew: false,
     description:
       "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.",
+    officialDefinition:
+      "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.",
     summary:
       "Use proper HTML elements (headings, lists, tables) so assistive technologies understand the page structure.",
+    detailedSummary:
+      "What This Means: This success criterion requires that information, structure, and relationships that are visually apparent (like headings, lists, tables, form field groupings) must also be programmatically determinable. This means using semantic HTML elements and ARIA attributes so assistive technologies can understand and communicate the structure to users.\n\nWhy It's Important: Screen readers and other assistive technologies rely on programmatic structure, not visual appearance, to understand content. When information is only conveyed visually (like using styled divs instead of headings), assistive technology users miss critical structural information. This makes navigation difficult and content relationships unclear.\n\nIn Practice: Use semantic HTML elements like <h1>-<h6> for headings, <ul>/<ol> and <li> for lists, <table> with <thead> and <th> for tables, <label> for form fields, and <fieldset> for grouped form fields. When semantic HTML isn't sufficient, use ARIA attributes to convey structure and relationships. The key is ensuring that anything visually apparent has a programmatic equivalent.",
     whyItMatters: "Screen readers rely on semantic HTML to navigate and understand content relationships.",
     whoBenefits: ["Blind users", "Users with cognitive disabilities", "Keyboard users"],
     details: {
@@ -149,6 +153,85 @@ function Article() {
         solution: "Use <fieldset> and <legend> to group related form fields. This helps screen readers understand relationships.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Programmatically Determined",
+        definition: "Determined by software from author-supplied data that is provided in a way that different user agents, including assistive technologies, can extract and present this information to users in different modalities.",
+        context: "Information must be available in the code/markup, not just visually apparent, so assistive technologies can access it.",
+      },
+      {
+        term: "Semantic HTML",
+        definition: "HTML elements that convey meaning about the content they contain, such as <h1> for headings, <ul> for lists, <table> for tables.",
+        context: "Semantic HTML provides programmatic structure that assistive technologies can understand.",
+      },
+      {
+        term: "Structure",
+        definition: "The way parts of content are organized in relation to each other, such as headings, lists, tables, and form groupings.",
+        context: "Structure must be programmatically determinable, not just visually apparent.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.3.2",
+        title: "Meaningful Sequence",
+        relationship: "Complements",
+      },
+      {
+        number: "2.4.6",
+        title: "Headings and Labels",
+        relationship: "Related to",
+      },
+      {
+        number: "4.1.2",
+        title: "Name, Role, Value",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Use <h1>-<h6> elements for all headings",
+          "Use <ul>, <ol>, and <li> for all lists",
+          "Use <table> with <thead>, <tbody>, and <th> for tables",
+          "Use <label> elements associated with form inputs",
+          "Use <fieldset> and <legend> for grouped form fields",
+          "Use semantic HTML5 elements (<article>, <section>, <nav>)",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test with screen reader to verify structure is announced",
+          "Check accessibility tree in browser DevTools",
+          "Verify all visual relationships have programmatic equivalents",
+          "Ensure proper heading hierarchy (don't skip levels)",
+          "Test with multiple assistive technologies",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Info and Relationships",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html",
+        type: "Understanding",
+      },
+      {
+        title: "H42: Using h1-h6 to identify headings",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H42",
+        type: "Techniques",
+      },
+      {
+        title: "H48: Using ol, ul and dl for lists or groups of links",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H48",
+        type: "Techniques",
+      },
+      {
+        title: "H51: Using table markup to present tabular information",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H51",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-3-2",
@@ -161,7 +244,11 @@ function Article() {
     isNew: false,
     description:
       "When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.",
+    officialDefinition:
+      "When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.",
     summary: "Ensure the DOM order matches the visual order so content makes sense when read linearly.",
+    detailedSummary:
+      "What This Means: This success criterion requires that when the order of content affects its meaning (like step-by-step instructions, sequential processes, or content that builds on previous information), the programmatic order in the DOM must match the logical reading order. Screen readers and keyboard navigation follow DOM order, not visual layout.\n\nWhy It's Important: Screen readers read content in the order it appears in the HTML/DOM, not the visual order created by CSS. If CSS is used to visually reorder content (like using flexbox row-reverse), the DOM order might not match the visual order, causing screen reader users to hear content in a confusing or incorrect sequence. This is especially problematic for instructions, forms, or any sequential content.\n\nIn Practice: Ensure that the HTML structure follows the logical reading order. Use CSS for visual styling and layout, but avoid using CSS properties that change the visual order in ways that don't match the DOM order. When content must be visually reordered, restructure the HTML to match the desired reading order. Test with keyboard navigation and screen readers to verify the sequence makes sense.",
     whyItMatters: "Screen readers and keyboard navigation follow DOM order, not visual layout.",
     whoBenefits: ["Blind users", "Keyboard users", "Users with cognitive disabilities"],
     details: {
@@ -294,6 +381,75 @@ function Steps() {
         solution: "Ensure tab order follows visual layout. Use tabindex sparingly and only when necessary, keeping it logical.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Reading Sequence",
+        definition: "The order in which content is read or navigated, typically following the DOM order in HTML.",
+        context: "Screen readers and keyboard navigation follow the reading sequence, which must match the logical order when sequence affects meaning.",
+      },
+      {
+        term: "Programmatically Determined",
+        definition: "Determined by software from author-supplied data that is provided in a way that different user agents, including assistive technologies, can extract and present this information to users in different modalities.",
+        context: "The reading sequence must be programmatically determinable from the markup, not just visually apparent.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.3.1",
+        title: "Info and Relationships",
+        relationship: "Complements",
+      },
+      {
+        number: "2.4.3",
+        title: "Focus Order",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Structure HTML in logical reading order",
+          "Avoid using CSS to reorder content when order matters",
+          "Use proper semantic elements that maintain order",
+          "Ensure sequential content (steps, instructions) is in correct DOM order",
+        ],
+      },
+      {
+        category: "CSS",
+        items: [
+          "Avoid flex-direction: row-reverse or column-reverse when order matters",
+          "Avoid CSS Grid order changes that affect meaning",
+          "Use CSS for visual styling, not content reordering",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test with keyboard navigation (Tab key) to verify order",
+          "Test with screen reader to verify reading sequence",
+          "Verify DOM order matches visual order for sequential content",
+          "Check that instructions read in correct sequence",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Meaningful Sequence",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html",
+        type: "Understanding",
+      },
+      {
+        title: "G57: Ordering the content in a meaningful sequence",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G57",
+        type: "Techniques",
+      },
+      {
+        title: "C6: Positioning content based on structural markup",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/css/C6",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-3-3",
@@ -306,7 +462,11 @@ function Steps() {
     isNew: false,
     description:
       "Instructions provided for understanding and operating content do not rely solely on sensory characteristics of components such as shape, color, visual location, orientation, or sound.",
+    officialDefinition:
+      "Instructions provided for understanding and operating content do not rely solely on sensory characteristics of components such as shape, color, size, visual location, orientation, or sound.",
     summary: "Don't rely on shape, size, or location alone for instructions (e.g., 'click the round button').",
+    detailedSummary:
+      "What This Means: This success criterion requires that instructions for understanding or operating content must not rely solely on sensory characteristics that some users cannot perceive. Instructions should not depend only on shape, color, size, visual location, orientation, or sound cues. Instead, they should use accessible names, labels, or text descriptions.\n\nWhy It's Important: Users who are blind cannot see shapes, colors, sizes, or visual locations. Users who are deaf cannot hear sound cues. Users with cognitive disabilities may have difficulty remembering or distinguishing sensory characteristics. When instructions rely solely on these characteristics, these users cannot follow the instructions effectively.\n\nIn Practice: Instead of saying 'click the round button' or 'use the button on the right', say 'click the Submit button' or 'use the button labeled Submit'. Instead of 'listen for the beep', provide a text alternative like 'wait for the confirmation message'. Ensure all interactive elements have accessible names (labels, aria-label, or visible text) so instructions can reference them by name rather than appearance.",
     whyItMatters: "Blind users cannot see shapes or locations. Deaf users cannot hear sound cues.",
     whoBenefits: ["Blind users", "Deaf users", "Users with cognitive disabilities"],
     details: {
@@ -430,6 +590,77 @@ function Form() {
         solution: "Use names or labels. Instead of location-based instructions, use 'use the Navigation button' or 'click the Home link'.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Sensory Characteristics",
+        definition: "Characteristics of components that can be perceived by users through their senses, such as shape, color, size, visual location, orientation, or sound.",
+        context: "Instructions should not rely solely on sensory characteristics that some users cannot perceive.",
+      },
+      {
+        term: "Accessible Name",
+        definition: "The name of a user interface element that can be programmatically determined and used by assistive technologies.",
+        context: "Instructions should reference elements by their accessible names rather than sensory characteristics.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.4.1",
+        title: "Use of Color",
+        relationship: "Related to",
+      },
+      {
+        number: "2.4.6",
+        title: "Headings and Labels",
+        relationship: "Complements",
+      },
+      {
+        number: "4.1.2",
+        title: "Name, Role, Value",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Review all instructions for sensory characteristics",
+          "Replace shape/location references with element names",
+          "Replace color references with labels or text",
+          "Replace sound cues with text alternatives",
+          "Ensure all interactive elements have accessible names",
+        ],
+      },
+      {
+        category: "HTML",
+        items: [
+          "Add proper labels to all form elements",
+          "Use aria-label for icon-only buttons",
+          "Ensure buttons and links have descriptive text",
+          "Provide text alternatives for sound-based instructions",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test instructions with screen reader",
+          "Verify all elements can be identified by name",
+          "Check that instructions don't rely on visual layout",
+          "Ensure instructions work without color, shape, or location cues",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Sensory Characteristics",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.html",
+        type: "Understanding",
+      },
+      {
+        title: "G96: Providing textual identification of items that otherwise rely only on sensory information to be understood",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G96",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-3-4",
@@ -442,7 +673,11 @@ function Form() {
     isNew: false,
     description:
       "Content does not restrict its view and operation to a single display orientation, such as portrait or landscape, unless a specific display orientation is essential.",
+    officialDefinition:
+      "Content does not restrict its view and operation to a single display orientation, such as portrait or landscape, unless a specific display orientation is essential.",
     summary: "Content must work in both portrait and landscape orientations.",
+    detailedSummary:
+      "What This Means: This success criterion requires that content must be viewable and operable in both portrait and landscape orientations. Content should not be locked to a single orientation unless the orientation is essential to the function (like a piano keyboard app that requires landscape orientation).\n\nWhy It's Important: Some users have their devices mounted in fixed positions, such as on wheelchairs, and cannot physically rotate their devices. Other users may prefer a specific orientation for comfort or accessibility reasons. Locking content to a single orientation prevents these users from accessing the content effectively.\n\nIn Practice: Design responsive layouts that adapt to both portrait and landscape orientations. Use CSS media queries to adjust layouts for different orientations. Ensure all functionality, navigation, forms, and interactive elements work in both orientations. Text should remain readable and buttons accessible regardless of orientation. Only lock orientation when it's truly essential to the function, and provide a clear explanation of why.",
     whyItMatters: "Some users have their devices mounted in a fixed orientation (e.g., on a wheelchair).",
     whoBenefits: ["Users with motor disabilities", "Mobile users"],
     details: {
@@ -577,6 +812,70 @@ function ResponsiveLayout() {
         solution: "Ensure text remains readable and interactive elements remain accessible in both orientations. Use responsive design techniques.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Display Orientation",
+        definition: "The orientation of the display relative to the user, either portrait (taller than wide) or landscape (wider than tall).",
+        context: "Content must work in both orientations unless orientation is essential to the function.",
+      },
+      {
+        term: "Essential",
+        definition: "If removed, would fundamentally change the information or functionality of the content, and information and functionality cannot be achieved in another way that would conform.",
+        context: "Orientation can only be locked if it's essential to the function, such as a piano keyboard app.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.4.10",
+        title: "Reflow",
+        relationship: "Related to responsive design",
+      },
+      {
+        number: "1.4.12",
+        title: "Text Spacing",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Avoid viewport meta tags that lock orientation",
+          "Use responsive design principles",
+          "Ensure content adapts to different screen sizes",
+        ],
+      },
+      {
+        category: "CSS",
+        items: [
+          "Use CSS media queries for orientation changes",
+          "Design flexible layouts that work in both orientations",
+          "Test layouts in both portrait and landscape",
+          "Ensure text remains readable in both orientations",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test content in both portrait and landscape",
+          "Verify all functionality works in both orientations",
+          "Check that interactive elements are accessible in both orientations",
+          "Only lock orientation if truly essential to function",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Orientation",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/orientation.html",
+        type: "Understanding",
+      },
+      {
+        title: "C24: Using CSS media queries to unblock rendering of non-essential content",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/css/C24",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-3-5",
@@ -589,7 +888,11 @@ function ResponsiveLayout() {
     isNew: false,
     description:
       "The purpose of each input field collecting information about the user can be programmatically determined when the field serves a purpose identified in the Input Purposes for User Interface Components section.",
+    officialDefinition:
+      "The purpose of each input field collecting information about the user can be programmatically determined when: (Level AA) The input field serves a purpose identified in the Input Purposes for User Interface Components section; and the content is implemented using technologies with support for identifying the expected meaning for form input data.",
     summary: "Use HTML autocomplete attributes on form fields collecting user data.",
+    detailedSummary:
+      "What This Means: This success criterion requires that form fields collecting information about users must have their purpose programmatically identified using HTML autocomplete attributes. This allows browsers and assistive technologies to understand what type of information each field expects, enabling auto-fill functionality and better user experience.\n\nWhy It's Important: Users with cognitive disabilities may have difficulty remembering information like addresses, phone numbers, or names. Users with motor disabilities may find typing difficult. By identifying input purposes, browsers can auto-fill forms using saved information, significantly reducing the cognitive and physical effort required. This also helps prevent input errors and speeds up form completion.\n\nIn Practice: Add appropriate autocomplete attributes to all form fields that collect user information. Use standard HTML autocomplete values like 'name', 'email', 'tel', 'address-line1', 'postal-code', 'country', etc. For password fields, use 'current-password' for login forms and 'new-password' for registration/change password forms. The autocomplete attribute should match the actual purpose of the field.",
     whyItMatters:
       "Allows browsers and assistive tools to auto-fill forms, helping users with memory or motor impairments.",
     whoBenefits: ["Users with cognitive disabilities", "Users with motor disabilities"],
@@ -718,6 +1021,71 @@ function ContactForm() {
         solution: "Use autocomplete='current-password' for login forms and 'new-password' for registration/change password forms.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Input Purpose",
+        definition: "The type of data the input field is intended to collect, such as name, email, telephone number, or address.",
+        context: "Input purposes must be programmatically determinable using autocomplete attributes.",
+      },
+      {
+        term: "Autocomplete Attribute",
+        definition: "An HTML attribute that indicates the type of data expected in an input field, enabling browsers and assistive technologies to auto-fill forms.",
+        context: "Standard autocomplete values are defined in the HTML specification and include values like 'name', 'email', 'tel', 'address-line1', etc.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.3.2",
+        title: "Labels or Instructions",
+        relationship: "Complements",
+      },
+      {
+        number: "4.1.2",
+        title: "Name, Role, Value",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add autocomplete attribute to all user information fields",
+          "Use standard HTML autocomplete values",
+          "Use 'name' for full name fields",
+          "Use 'email' for email address fields",
+          "Use 'tel' for telephone number fields",
+          "Use 'address-line1', 'address-line2', 'postal-code', 'country' for address fields",
+          "Use 'current-password' for login password fields",
+          "Use 'new-password' for registration/change password fields",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Review all form fields collecting user information",
+          "Verify autocomplete values match field purposes",
+          "Test auto-fill functionality in browsers",
+          "Ensure autocomplete doesn't conflict with form validation",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Identify Input Purpose",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html",
+        type: "Understanding",
+      },
+      {
+        title: "H98: Using HTML 5.2 autocomplete attributes",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H98",
+        type: "Techniques",
+      },
+      {
+        title: "Input Purposes for User Interface Components",
+        url: "https://www.w3.org/TR/WCAG22/#input-purposes",
+        type: "Other",
+      },
+    ],
   },
   {
     id: "1-3-6",
@@ -730,7 +1098,11 @@ function ContactForm() {
     isNew: false,
     description:
       "In content implemented using markup languages, the purpose of User Interface Components, icons, and regions can be programmatically determined.",
+    officialDefinition:
+      "In content implemented using markup languages, the purpose of User Interface Components, icons, and regions can be programmatically determined.",
     summary: "Use ARIA landmarks and personalization semantics to identify regions and components.",
+    detailedSummary:
+      "What This Means: This success criterion requires that the purpose of user interface components, icons, and regions must be programmatically determinable. This enables personalization tools to understand what each component does and adapt the interface to meet individual user needs, such as replacing icons with text labels or changing visual presentations.\n\nWhy It's Important: Users with cognitive disabilities may benefit from personalized interfaces where icons are replaced with text, colors are changed, or layouts are modified. By making component purposes programmatically determinable, personalization tools can automatically adapt the interface without requiring manual configuration. This supports users who need different presentations to understand and use the interface effectively.\n\nIn Practice: Use semantic HTML elements, ARIA roles, and data attributes to identify component purposes. For icons, use aria-label, aria-labelledby, or data-purpose attributes. For regions, use ARIA landmarks (navigation, main, complementary, etc.) or semantic HTML5 elements. Ensure that the purpose of each interactive component is clearly identified so personalization tools can understand and modify them appropriately.",
     whyItMatters: "Enables users to personalize the interface (e.g., swap icons for text) based on their needs.",
     whoBenefits: ["Users with cognitive disabilities"],
     details: {
@@ -845,6 +1217,69 @@ function Navigation() {
       {
         failure: "Inconsistent purpose identification across the site.",
         solution: "Establish consistent patterns for identifying component purposes. Use the same approach for similar components throughout the site.",
+      },
+    ],
+    keyTerms: [
+      {
+        term: "Purpose",
+        definition: "The function or role of a user interface component, icon, or region that can be programmatically determined.",
+        context: "Component purposes must be identifiable so personalization tools can adapt the interface.",
+      },
+      {
+        term: "Personalization",
+        definition: "The ability for users to customize the presentation or behavior of content to meet their individual needs.",
+        context: "By identifying component purposes, personalization tools can replace icons with text, change colors, or modify layouts.",
+      },
+      {
+        term: "Programmatically Determined",
+        definition: "Determined by software from author-supplied data that is provided in a way that different user agents, including assistive technologies, can extract and present this information to users in different modalities.",
+        context: "Component purposes must be available in the markup, not just visually apparent.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.3.1",
+        title: "Info and Relationships",
+        relationship: "Complements",
+      },
+      {
+        number: "4.1.2",
+        title: "Name, Role, Value",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Use semantic HTML elements to identify component purposes",
+          "Add ARIA roles to identify component types",
+          "Use aria-label or aria-labelledby for icon purposes",
+          "Use data-purpose attributes for additional purpose identification",
+          "Use ARIA landmarks for region identification",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Identify purpose of all interactive components",
+          "Identify purpose of all icons",
+          "Identify purpose of all page regions",
+          "Test with personalization tools if available",
+          "Ensure consistent purpose identification patterns",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Identify Purpose",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html",
+        type: "Understanding",
+      },
+      {
+        title: "G197: Using labels, names, and text alternatives consistently for content that has the same functionality",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G197",
+        type: "Techniques",
       },
     ],
   },

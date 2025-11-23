@@ -135,6 +135,71 @@ function SearchForm() {
         solution: "Dropdowns should open on click/activation, not on focus. Focus should only highlight the element.",
       },
     ],
+    officialDefinition:
+      "When any user interface component receives focus, it does not initiate a change of context.",
+    detailedSummary:
+      "What This Means: This success criterion requires that simply focusing on an element (like tabbing to it with the keyboard) does not trigger unexpected actions like navigation, form submission, or other context changes. Users must explicitly activate elements (click, press Enter, etc.) for actions to occur.\n\nWhy It's Important: Unexpected context changes when focusing on elements can be disorienting and disruptive, especially for keyboard users and users with cognitive disabilities. When users tab through a page, they expect to be able to review all interactive elements before activating them. Auto-navigation or auto-submission on focus prevents users from having control over when actions occur.\n\nIn Practice: Remove any onfocus handlers that cause navigation, form submission, or other context changes. Focus should only highlight elements visually. Actions should only occur when users explicitly activate elements (click, press Enter, etc.). Dropdown menus should open on click/activation, not on focus. Form fields should not submit forms when focused.",
+    keyTerms: [
+      {
+        term: "Focus",
+        definition: "The state in which a user interface component receives keyboard input focus, typically indicated by a visual focus indicator.",
+        context: "Focusing on an element should not trigger actions; only activation should.",
+      },
+      {
+        term: "Change of Context",
+        definition: "Major changes to content that, if made without user awareness, can disorient users who are unable to see the entire page simultaneously.",
+        context: "Context changes should not occur automatically when elements receive focus.",
+      },
+      {
+        term: "Activation",
+        definition: "The explicit action by a user to trigger a component's function (e.g., clicking, pressing Enter).",
+        context: "Actions should only occur on explicit activation, not on focus.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.2.2",
+        title: "On Input",
+        relationship: "Related to",
+      },
+      {
+        number: "2.4.7",
+        title: "Focus Visible",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "JavaScript",
+        items: [
+          "Remove onfocus handlers that cause navigation",
+          "Remove onfocus handlers that submit forms",
+          "Ensure focus only highlights elements",
+          "Use onclick or onkeydown for actions",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test keyboard navigation",
+          "Verify no auto-navigation on focus",
+          "Check dropdown behavior",
+          "Test form submission behavior",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding On Focus",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html",
+        type: "Understanding",
+      },
+      {
+        title: "G107: Using 'activate' rather than 'focus' as a trigger for changes of context",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G107",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "3-2-2",
@@ -272,6 +337,65 @@ function PageSelector() {
       {
         failure: "Form controls that trigger context changes without warning.",
         solution: "Either remove automatic context changes, or provide clear, visible warnings before users interact with the control.",
+      },
+    ],
+    officialDefinition:
+      "Changing the setting of any user interface component does not automatically cause a change of context unless the user has been advised of the behavior before using the component.",
+    detailedSummary:
+      "What This Means: This success criterion requires that changing the setting of a user interface component (like selecting an option from a dropdown, checking a checkbox, or changing a radio button) does not automatically cause a change of context (like navigation or form submission) unless users have been clearly warned about this behavior before they interact with the component.\n\nWhy It's Important: Unexpected context changes when users interact with form controls can be disorienting and cause users to lose their place or accidentally trigger actions they didn't intend. Users should be in control of when navigation or other major changes occur. If a control will cause a context change, users must be clearly informed beforehand.\n\nIn Practice: Remove automatic navigation or form submission when users change form control settings. If automatic context changes are necessary, provide clear, visible warnings before users interact with the control. For example, a language selector dropdown should not automatically navigate to a new page unless users are clearly warned. Instead, provide a 'Go' button or clearly indicate that selection will navigate.",
+    keyTerms: [
+      {
+        term: "Change of Setting",
+        definition: "The act of changing the value or state of a user interface component (e.g., selecting an option, checking a box).",
+        context: "Changing settings should not automatically cause context changes unless users are warned.",
+      },
+      {
+        term: "Change of Context",
+        definition: "Major changes to content that, if made without user awareness, can disorient users.",
+        context: "Context changes should not occur automatically when users change component settings.",
+      },
+      {
+        term: "User Interface Component",
+        definition: "A part of the content that is perceived by users as a single control for a distinct function.",
+        context: "Changing settings of UI components should not automatically trigger context changes.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.2.1",
+        title: "On Focus",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "JavaScript",
+        items: [
+          "Remove automatic navigation on form control changes",
+          "Remove auto-submission on checkbox/radio changes",
+          "Provide clear warnings if context changes are necessary",
+          "Use explicit buttons for actions",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test all form controls for unexpected behavior",
+          "Verify warnings are clear and visible",
+          "Check that users are informed before context changes",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding On Input",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/on-input.html",
+        type: "Understanding",
+      },
+      {
+        title: "G80: Providing a submit button to initiate a change of context",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G80",
+        type: "Techniques",
       },
     ],
   },
@@ -421,6 +545,65 @@ nav ul {
       {
         failure: "Navigation structure that changes based on page type.",
         solution: "Maintain consistent navigation structure across all pages. Don't change navigation based on page content or type.",
+      },
+    ],
+    officialDefinition:
+      "Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user.",
+    detailedSummary:
+      "What This Means: This success criterion requires that navigation elements (menus, links, buttons) that appear on multiple pages within a website appear in the same relative order and location each time they are repeated. This makes the site predictable and easier to navigate.\n\nWhy It's Important: Consistent navigation helps users learn the site structure and navigate more efficiently. Users with cognitive disabilities, blind users using screen readers, and all users benefit from predictable navigation. When navigation changes between pages, users must relearn the layout on every page, increasing cognitive load and making navigation difficult.\n\nIn Practice: Use consistent navigation components across all pages. Keep navigation items in the same order (e.g., Home, About, Services, Contact). Keep navigation in the same location (top, side, bottom). Use the same navigation structure and styling. Only change navigation when users explicitly request it (e.g., through a settings option).",
+    keyTerms: [
+      {
+        term: "Navigational Mechanisms",
+        definition: "UI components that enable users to navigate within a set of web pages (e.g., menus, navigation bars, breadcrumbs).",
+        context: "Navigational mechanisms must appear in the same relative order across pages.",
+      },
+      {
+        term: "Relative Order",
+        definition: "The sequence in which navigation items appear relative to each other.",
+        context: "Navigation items must maintain the same relative order across all pages.",
+      },
+      {
+        term: "Set of Web Pages",
+        definition: "A collection of web pages that share the same navigation structure.",
+        context: "Within a set of pages, navigation must be consistent.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.2.4",
+        title: "Consistent Identification",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Use consistent navigation components",
+          "Keep navigation items in same order",
+          "Maintain same navigation location",
+          "Use consistent navigation structure",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test navigation across all pages",
+          "Verify consistent order and location",
+          "Check navigation structure consistency",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Consistent Navigation",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html",
+        type: "Understanding",
+      },
+      {
+        title: "G61: Presenting repeated components in the same relative order each time they appear",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G61",
+        type: "Techniques",
       },
     ],
   },
@@ -578,6 +761,66 @@ function IconButton({ icon, label, onClick }) {
         solution: "Use consistent styling for buttons with the same function. Apply the same CSS classes or component styles.",
       },
     ],
+    officialDefinition:
+      "Components that have the same functionality within a set of Web pages are identified consistently.",
+    detailedSummary:
+      "What This Means: This success criterion requires that components with the same functionality use consistent labels, icons, and text across all pages within a website. This makes the interface predictable and reduces cognitive load by allowing users to recognize and understand components based on consistent presentation.\n\nWhy It's Important: When the same functionality appears with different labels or icons on different pages, users must relearn what each component does on every page. This increases cognitive load and makes the interface difficult to use, especially for users with cognitive disabilities. Consistent identification helps users predict component behavior and navigate more efficiently.\n\nIn Practice: Use the same labels, icons, and text for components with the same functionality. For example, if a search function appears on multiple pages, it should always use the same label ('Search'), the same icon, and the same styling. Create a design system or component library to ensure consistency. Document component usage patterns and apply them consistently across all pages.",
+    keyTerms: [
+      {
+        term: "Component",
+        definition: "A part of the content that is perceived by users as a single control for a distinct function.",
+        context: "Components with the same functionality must be identified consistently.",
+      },
+      {
+        term: "Consistent Identification",
+        definition: "Using the same labels, icons, and text to identify components with the same functionality.",
+        context: "Consistent identification helps users recognize and understand components across pages.",
+      },
+      {
+        term: "Same Functionality",
+        definition: "Components that perform the same action or provide the same feature.",
+        context: "Components with the same functionality must use consistent identification.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.2.3",
+        title: "Consistent Navigation",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Use consistent labels for same functionality",
+          "Use consistent icons for same functionality",
+          "Maintain consistent component styling",
+          "Create component library or design system",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Review all pages for component consistency",
+          "Test component identification",
+          "Document component usage patterns",
+          "Verify consistent visual design",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Consistent Identification",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification.html",
+        type: "Understanding",
+      },
+      {
+        title: "G197: Using labels, names, and text alternatives consistently for content that has the same functionality",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G197",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "3-2-5",
@@ -731,6 +974,70 @@ function PageSelector() {
         solution: "Require explicit user action for navigation. Add 'Go' buttons or require Enter key presses.",
       },
     ],
+    officialDefinition:
+      "Changes of context are initiated only by user request or a mechanism is available to turn off such changes.",
+    detailedSummary:
+      "What This Means: This success criterion requires that context changes (like page navigation, focus changes, or content updates) only occur when users explicitly request them, OR that users can disable automatic context changes. This gives users control over when major changes happen.\n\nWhy It's Important: Automatic context changes can be disorienting and disruptive, especially for users with cognitive disabilities or those using screen readers. When content changes unexpectedly, users can lose their place, become confused, or accidentally trigger actions they didn't intend. By requiring explicit user request or providing controls to disable automatic changes, users maintain control over their experience.\n\nIn Practice: Remove automatic navigation, form submission, or content updates. If automatic updates are necessary (like live data feeds), provide controls to pause or disable them. Require explicit user action (button clicks, Enter key presses) for navigation and form submission. Make disabling automatic updates easy and discoverable. Provide clear settings for controlling automatic behaviors.",
+    keyTerms: [
+      {
+        term: "Change of Context",
+        definition: "Major changes to content that, if made without user awareness, can disorient users.",
+        context: "Context changes should only occur on user request or be controllable by users.",
+      },
+      {
+        term: "User Request",
+        definition: "An explicit action by a user to trigger a change (e.g., clicking a button, pressing Enter).",
+        context: "Context changes should only occur when users explicitly request them.",
+      },
+      {
+        term: "Mechanism to Turn Off",
+        definition: "A control that allows users to disable automatic context changes.",
+        context: "If automatic context changes are necessary, users must be able to disable them.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.2.1",
+        title: "On Focus",
+        relationship: "Related to",
+      },
+      {
+        number: "3.2.2",
+        title: "On Input",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "JavaScript",
+        items: [
+          "Remove automatic context changes",
+          "Add controls to disable automatic updates",
+          "Require explicit user action for navigation",
+          "Require explicit user action for form submission",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test that context changes only occur on user request",
+          "Verify automatic updates can be disabled",
+          "Check that disabling actually prevents changes",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Change on Request",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/change-on-request.html",
+        type: "Understanding",
+      },
+      {
+        title: "G198: Providing a way for the user to turn the time limit off",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G198",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "3-2-6",
@@ -868,6 +1175,65 @@ function Layout({ children }) {
       {
         failure: "Help that's only available on some pages.",
         solution: "Include help mechanisms on all pages, or at least ensure they appear in consistent locations when present.",
+      },
+    ],
+    officialDefinition:
+      "If a Web page contains help mechanisms, they are in the same relative order on each Web page.",
+    detailedSummary:
+      "What This Means: This success criterion requires that help mechanisms (like help links, contact information, FAQ links, or support options) appear in the same relative order and location across all pages where they appear. This makes help easily findable and reduces cognitive load.\n\nWhy It's Important: Consistent help location helps users quickly find assistance when needed. When help mechanisms appear in different locations or orders on different pages, users must search for them each time, increasing cognitive load and frustration. This is especially important for users with cognitive disabilities or memory impairments who rely on consistent patterns to navigate.\n\nIn Practice: Place help mechanisms in the same location (e.g., top navigation, footer) on all pages. Keep help mechanisms in the same relative order (e.g., always show Help before Contact, or maintain alphabetical order). Use consistent layout templates to ensure help appears in the same location. Include help mechanisms on all pages when possible, or at least ensure they appear in consistent locations when present.",
+    keyTerms: [
+      {
+        term: "Help Mechanisms",
+        definition: "UI components that provide assistance to users (e.g., help links, contact information, FAQ links, support options).",
+        context: "Help mechanisms must appear in the same relative order across pages.",
+      },
+      {
+        term: "Relative Order",
+        definition: "The sequence in which help mechanisms appear relative to each other.",
+        context: "Help mechanisms must maintain the same relative order across all pages.",
+      },
+      {
+        term: "Consistent Location",
+        definition: "The same position on the page where help mechanisms appear.",
+        context: "Help mechanisms must appear in consistent locations across pages.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.2.3",
+        title: "Consistent Navigation",
+        relationship: "Related to",
+      },
+      {
+        number: "3.2.4",
+        title: "Consistent Identification",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Place help in consistent location",
+          "Keep help in same relative order",
+          "Use consistent layout templates",
+          "Include help on all pages when possible",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Review all pages for help consistency",
+          "Test help discoverability",
+          "Verify consistent location and order",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Consistent Help",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html",
+        type: "Understanding",
       },
     ],
   },

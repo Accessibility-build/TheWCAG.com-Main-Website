@@ -13,7 +13,11 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
     isNew: false,
     description:
       "For prerecorded audio-only and video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such: Prerecorded Audio-only: An alternative for time-based media is provided. Prerecorded Video-only: Either an alternative for time-based media or an audio track is provided.",
+    officialDefinition:
+      "For prerecorded audio-only and prerecorded video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such: (Level A) Prerecorded Audio-only: An alternative for time-based media is provided that presents equivalent information for prerecorded audio-only content. Prerecorded Video-only: Either an alternative for time-based media or an audio track is provided that presents equivalent information for prerecorded video-only content.",
     summary: "Provide transcripts for audio-only content and descriptions or transcripts for video-only content.",
+    detailedSummary:
+      "What This Means: This success criterion requires that prerecorded audio-only content (like podcasts or audio interviews) must have a text transcript, and prerecorded video-only content (like silent animations or video without audio) must have either a text description or an audio track that describes the visual content. This ensures that users who cannot hear audio or see video can still access the information.\n\nWhy It's Important: Users who are deaf or hard of hearing cannot access information presented only in audio. Similarly, users who are blind cannot access information presented only in video. By providing text alternatives or audio descriptions, we make time-based media accessible to everyone, regardless of their sensory abilities.\n\nIn Practice: For audio-only content, provide a complete text transcript that includes all dialogue, speaker identification when relevant, and descriptions of important sounds. For video-only content, provide either a text description that covers all important visual information or an audio track that narrates what's happening visually. The alternative must convey equivalent information to what's in the original media.",
     whyItMatters:
       "Users who are deaf or hard of hearing need text alternatives for audio. Blind users need audio descriptions for video.",
     whoBenefits: ["Deaf users", "Hard of hearing users", "Blind users"],
@@ -108,6 +112,103 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
         solution: "Ensure transcripts are complete and accurate, including all spoken words, speaker identification when relevant, and descriptions of important non-speech sounds.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Alternative for Time-based Media",
+        definition: "Document including correctly sequenced text descriptions of time-based visual and auditory information and providing a means for achieving the outcomes of any time-based interaction.",
+        context: "For audio-only content, this is typically a transcript. For video-only content, this can be a text description or audio track describing the visuals.",
+      },
+      {
+        term: "Prerecorded",
+        definition: "Information that is not live. Prerecorded content has been recorded and stored before being presented to users.",
+        context: "This criterion applies only to prerecorded media, not live broadcasts or streams.",
+      },
+      {
+        term: "Audio-only",
+        definition: "A time-based presentation that contains only audio (no video and no interaction).",
+        context: "Examples include podcasts, audio interviews, music tracks, and audio recordings.",
+      },
+      {
+        term: "Video-only",
+        definition: "A time-based presentation that contains only video (no audio and no interaction).",
+        context: "Examples include silent animations, video demonstrations without narration, and visual-only presentations.",
+      },
+      {
+        term: "Media Alternative for Text",
+        definition: "Media that presents no more information than is already presented in text (directly or via text alternatives).",
+        context: "If media is an alternative for text that's already on the page, it must be clearly labeled as such and doesn't need additional alternatives.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.1.1",
+        title: "Non-text Content",
+        relationship: "Complements",
+      },
+      {
+        number: "1.2.2",
+        title: "Captions (Prerecorded)",
+        relationship: "Often implemented together with",
+      },
+      {
+        number: "1.2.3",
+        title: "Audio Description or Media Alternative (Prerecorded)",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Create complete transcripts for all prerecorded audio-only content",
+          "Include all dialogue and speaker identification in transcripts",
+          "Describe important sounds and non-speech audio in transcripts",
+          "For video-only content, create text descriptions covering all visual information",
+          "Ensure alternatives are equivalent to the original media content",
+          "Make alternatives easily accessible and clearly labeled",
+        ],
+      },
+      {
+        category: "HTML",
+        items: [
+          "Link to transcripts using clear, descriptive link text",
+          "Place transcript links near the media player",
+          "Use semantic HTML for transcript content",
+          "Provide transcripts in accessible formats (HTML preferred)",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Verify transcript accuracy by comparing with original media",
+          "Test that alternatives are easy to find and access",
+          "Ensure alternatives are properly formatted and readable",
+          "Check that alternatives convey equivalent information",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Audio-only and Video-only (Prerecorded)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html",
+        type: "Understanding",
+      },
+      {
+        title: "G158: Providing an alternative for time-based media for audio-only content",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G158",
+        type: "Techniques",
+      },
+      {
+        title: "G159: Providing an alternative for time-based media for video-only content",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G159",
+        type: "Techniques",
+      },
+      {
+        title: "H96: Using the track element to provide audio descriptions",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H96",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-2-2",
@@ -120,7 +221,11 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
     isNew: false,
     description:
       "Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such.",
+    officialDefinition:
+      "Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such.",
     summary: "Provide captions for all prerecorded videos with sound.",
+    detailedSummary:
+      "What This Means: This success criterion requires that all prerecorded video content with audio must have synchronized captions. Captions are text versions of the spoken words and important sounds that appear on screen in sync with the audio. They must include all dialogue, speaker identification when necessary, and descriptions of meaningful sound effects.\n\nWhy It's Important: Users who are deaf or hard of hearing cannot access information presented through audio. Captions make video content accessible by providing a text representation of all audio information. This allows deaf and hard of hearing users to understand dialogue, follow the narrative, and catch important sound cues that contribute to understanding the content.\n\nIn Practice: Captions should be synchronized with the audio track, appear on screen in a readable format, and include all spoken dialogue. They should also identify speakers when multiple people are talking and describe important non-speech sounds like [door slams], [music playing], or [phone ringing]. Captions can be provided as closed captions (user can toggle on/off) or open captions (always visible), and should be available through the video player controls.",
     whyItMatters: "Users who are deaf or hard of hearing rely on captions to understand spoken content in videos.",
     whoBenefits: ["Deaf users", "Hard of hearing users", "Non-native speakers"],
     details: {
@@ -216,6 +321,93 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
         solution: "Ensure captions have sufficient contrast against the video background and are appropriately sized. Consider providing caption styling options.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Captions",
+        definition: "Synchronized visual and/or text alternative for both speech and non-speech audio information needed to understand the media content.",
+        context: "Captions are specifically designed for users who are deaf or hard of hearing and include all audio information, not just dialogue.",
+      },
+      {
+        term: "Synchronized Media",
+        definition: "Audio or video synchronized with another format for presenting information and/or with time-based interactive components, unless the media is a media alternative for text that is clearly labeled as such.",
+        context: "This includes videos with audio tracks, where captions must be synchronized with the audio.",
+      },
+      {
+        term: "Prerecorded",
+        definition: "Information that is not live. Prerecorded content has been recorded and stored before being presented to users.",
+        context: "This criterion applies to prerecorded content only. Live content is covered by 1.2.4.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.2.1",
+        title: "Audio-only and Video-only (Prerecorded)",
+        relationship: "Often implemented together with",
+      },
+      {
+        number: "1.2.4",
+        title: "Captions (Live)",
+        relationship: "Similar requirement for",
+      },
+      {
+        number: "1.2.3",
+        title: "Audio Description or Media Alternative (Prerecorded)",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add <track> element with kind='captions' to video elements",
+          "Specify src, srclang, and label attributes for caption tracks",
+          "Use WebVTT (.vtt) format for caption files",
+          "Provide multiple language options if content is multilingual",
+        ],
+      },
+      {
+        category: "Content",
+        items: [
+          "Create accurate captions that match all dialogue",
+          "Include speaker identification when multiple speakers",
+          "Describe important sound effects and non-speech audio",
+          "Ensure captions are synchronized with audio timing",
+          "Format captions for readability (proper line breaks, punctuation)",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test captions with video player to ensure they display correctly",
+          "Verify caption accuracy by comparing with original audio",
+          "Ensure captions can be toggled on/off in video player",
+          "Check that captions are readable (good contrast, appropriate size)",
+          "Verify captions don't obscure important visual content",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Captions (Prerecorded)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html",
+        type: "Understanding",
+      },
+      {
+        title: "G93: Providing open (always visible) captions",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G93",
+        type: "Techniques",
+      },
+      {
+        title: "G87: Providing closed captions",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G87",
+        type: "Techniques",
+      },
+      {
+        title: "H95: Using the track element to provide captions",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H95",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-2-3",
@@ -228,7 +420,11 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
     isNew: false,
     description:
       "An alternative for time-based media or audio description of the prerecorded video content is provided for synchronized media, except when the media is a media alternative for text and is clearly labeled as such.",
+    officialDefinition:
+      "An alternative for time-based media or audio description of the prerecorded video content is provided for synchronized media, except when the media is a media alternative for text and is clearly labeled as such.",
     summary: "Provide a transcript or audio description for prerecorded video content.",
+    detailedSummary:
+      "What This Means: This success criterion requires that prerecorded video content must have either a text transcript (media alternative) that includes descriptions of visual information, or an audio description track that narrates important visual details. This ensures that blind users can access visual information that isn't conveyed through the audio track alone.\n\nWhy It's Important: Videos often contain important visual information that isn't mentioned in the audio track. For example, a character might find a key, read a sign, or perform an action silently. Blind users would miss this information without audio descriptions or a detailed transcript. This criterion ensures that all important visual information is accessible through alternative formats.\n\nIn Practice: You can meet this requirement in two ways: (1) Provide an audio description track that narrates visual information during pauses in dialogue, or (2) Provide a complete text transcript that includes descriptions of all important visual elements in addition to dialogue and sounds. The alternative must cover all visual information that's important for understanding the content.",
     whyItMatters: "Blind users need descriptions of visual information in videos that isn't conveyed through audio.",
     whoBenefits: ["Blind users", "Users with low vision", "Deaf-blind users"],
     details: {
@@ -263,6 +459,91 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
       ],
       automated: ["Cannot be automated."],
     },
+    keyTerms: [
+      {
+        term: "Audio Description",
+        definition: "Narration added to the soundtrack to describe important visual details that cannot be understood from the main soundtrack alone.",
+        context: "Audio descriptions are inserted during natural pauses in dialogue to describe visual information without interfering with the original audio.",
+      },
+      {
+        term: "Media Alternative for Text",
+        definition: "Media that presents no more information than is already presented in text (directly or via text alternatives).",
+        context: "A complete text transcript that includes visual descriptions serves as a media alternative.",
+      },
+      {
+        term: "Synchronized Media",
+        definition: "Audio or video synchronized with another format for presenting information and/or with time-based interactive components.",
+        context: "This criterion applies to video content with audio tracks where visual information needs to be described.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.2.1",
+        title: "Audio-only and Video-only (Prerecorded)",
+        relationship: "Complements",
+      },
+      {
+        number: "1.2.5",
+        title: "Audio Description (Prerecorded)",
+        relationship: "Similar requirement at higher level",
+      },
+      {
+        number: "1.2.2",
+        title: "Captions (Prerecorded)",
+        relationship: "Often implemented together with",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Identify all important visual information in video content",
+          "Create audio description track or detailed transcript with visual descriptions",
+          "Ensure descriptions cover actions, scene changes, on-screen text, and important visual elements",
+          "For audio description, insert narration during natural pauses in dialogue",
+          "For transcripts, include visual descriptions alongside dialogue and sounds",
+        ],
+      },
+      {
+        category: "HTML",
+        items: [
+          "Add <track> element with kind='descriptions' for audio description",
+          "Link to transcript with visual descriptions if using text alternative",
+          "Ensure alternatives are easily accessible near video player",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test by watching video with eyes closed to identify missing information",
+          "Verify all important visual information is covered in alternative",
+          "Ensure audio descriptions don't interfere with original audio",
+          "Check that alternatives are clearly labeled and easy to find",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Audio Description or Media Alternative (Prerecorded)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-alternative-prerecorded.html",
+        type: "Understanding",
+      },
+      {
+        title: "G69: Providing an alternative for time-based media",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G69",
+        type: "Techniques",
+      },
+      {
+        title: "G78: Providing a second, user-selectable, audio track that includes audio descriptions",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G78",
+        type: "Techniques",
+      },
+      {
+        title: "H96: Using the track element to provide audio descriptions",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H96",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-2-4",
@@ -274,7 +555,11 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
     guidelineNumber: "1.2",
     isNew: false,
     description: "Captions are provided for all live audio content in synchronized media.",
+    officialDefinition:
+      "Captions are provided for all live audio content in synchronized media.",
     summary: "Provide captions for live videos with sound.",
+    detailedSummary:
+      "What This Means: This success criterion requires that all live video content with audio must have real-time captions. Unlike prerecorded content, live captions must be generated and synchronized in real-time as the event is happening. This typically requires human captioners (CART services) or advanced speech-to-text technology.\n\nWhy It's Important: Live events like webinars, news broadcasts, sports events, and live streams are inaccessible to deaf and hard of hearing users without real-time captions. Unlike prerecorded content where captions can be prepared in advance, live content requires immediate captioning to ensure equal access to information as it happens.\n\nIn Practice: Live captions should appear with minimal delay (ideally within a few seconds of the spoken words), be synchronized with the audio, and include all dialogue and important sounds. They can be provided through professional CART (Communication Access Real-time Translation) services, AI-powered speech-to-text systems, or a combination of both. The captions should be clearly visible and accessible through the streaming platform.",
     whyItMatters: "Users who are deaf or hard of hearing need real-time access to live audio content.",
     whoBenefits: ["Deaf users", "Hard of hearing users"],
     details: {
@@ -311,6 +596,74 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
       ],
       automated: ["Cannot be automated."],
     },
+    keyTerms: [
+      {
+        term: "Live",
+        definition: "Information captured from a real-world event and transmitted to the user with no more than a broadcast delay.",
+        context: "Live content is happening in real-time and cannot be edited or captioned in advance.",
+      },
+      {
+        term: "CART",
+        definition: "Communication Access Real-time Translation. A service that provides real-time captioning by a trained professional.",
+        context: "CART services are commonly used for live events to provide accurate, real-time captions.",
+      },
+      {
+        term: "Real-time Captions",
+        definition: "Captions that are generated and displayed as the event is happening, with minimal delay.",
+        context: "Live captions must keep up with the pace of the live event, typically appearing within seconds of the spoken words.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.2.2",
+        title: "Captions (Prerecorded)",
+        relationship: "Similar requirement for",
+      },
+      {
+        number: "1.2.9",
+        title: "Audio-only (Live)",
+        relationship: "Related requirement for live content",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Arrange for live captioning service (CART or AI-powered)",
+          "Ensure captions appear with minimal delay (within seconds)",
+          "Include all dialogue and important sounds in live captions",
+          "Provide speaker identification when multiple speakers",
+          "Test caption accuracy and synchronization before going live",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Set up captioning infrastructure before live event",
+          "Test caption display and visibility on streaming platform",
+          "Have backup captioning method in case primary fails",
+          "Monitor caption quality during live event",
+          "Ensure captions are accessible and can be toggled on/off",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Captions (Live)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/captions-live.html",
+        type: "Understanding",
+      },
+      {
+        title: "G9: Creating captions for live synchronized media",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G9",
+        type: "Techniques",
+      },
+      {
+        title: "G150: Providing text based alternatives for live audio-only content",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G150",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-2-5",
@@ -322,9 +675,83 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
     guidelineNumber: "1.2",
     isNew: false,
     description: "Audio description is provided for all prerecorded video content in synchronized media.",
+    officialDefinition:
+      "Audio description is provided for all prerecorded video content in synchronized media.",
     summary: "Provide audio descriptions for all prerecorded videos.",
+    detailedSummary:
+      "What This Means: This success criterion requires that all prerecorded video content must have an audio description track. Audio descriptions narrate important visual information during natural pauses in the original audio, ensuring that blind users can understand visual elements that aren't mentioned in the dialogue or soundtrack.\n\nWhy It's Important: Videos contain visual information that's essential for understanding the content but may not be conveyed through audio alone. Actions, scene changes, on-screen text, facial expressions, and other visual cues are often critical to comprehension. Without audio descriptions, blind users miss this information, making the content incomplete or confusing.\n\nIn Practice: Audio descriptions should be inserted during natural pauses in dialogue or soundtrack. They should describe all important visual information including actions, scene changes, on-screen text, character expressions, and other visual elements that contribute to understanding. The descriptions should be clear, concise, and synchronized with the video. They can be provided as a separate audio track that users can enable, or integrated into the main audio track.",
     whyItMatters: "Blind users need to hear descriptions of important visual details in videos.",
     whoBenefits: ["Blind users", "Users with low vision"],
+    keyTerms: [
+      {
+        term: "Audio Description",
+        definition: "Narration added to the soundtrack to describe important visual details that cannot be understood from the main soundtrack alone.",
+        context: "Audio descriptions are inserted during natural pauses in dialogue to describe visual information without interfering with the original audio.",
+      },
+      {
+        term: "Prerecorded",
+        definition: "Information that is not live. Prerecorded content has been recorded and stored before being presented to users.",
+        context: "This criterion applies to prerecorded content only, allowing time for creating quality audio descriptions.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.2.3",
+        title: "Audio Description or Media Alternative (Prerecorded)",
+        relationship: "Higher level requirement",
+      },
+      {
+        number: "1.2.7",
+        title: "Extended Audio Description (Prerecorded)",
+        relationship: "Enhanced version for complex content",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Identify all important visual information in video",
+          "Create audio description script covering actions, scenes, and visual elements",
+          "Record audio descriptions during natural pauses in original audio",
+          "Ensure descriptions don't interfere with dialogue or important sounds",
+          "Synchronize audio descriptions with video timing",
+        ],
+      },
+      {
+        category: "HTML",
+        items: [
+          "Add <track> element with kind='descriptions' to video",
+          "Provide user control to enable/disable audio descriptions",
+          "Ensure audio description track is properly labeled",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test audio descriptions with blind users for clarity",
+          "Verify all important visual information is covered",
+          "Check that descriptions fit within natural pauses",
+          "Ensure audio descriptions are synchronized correctly",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Audio Description (Prerecorded)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html",
+        type: "Understanding",
+      },
+      {
+        title: "G78: Providing a second, user-selectable, audio track that includes audio descriptions",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G78",
+        type: "Techniques",
+      },
+      {
+        title: "H96: Using the track element to provide audio descriptions",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H96",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-2-6",
@@ -336,7 +763,11 @@ export const timeBasedMediaCriteria: SuccessCriterion[] = [
     guidelineNumber: "1.2",
     isNew: false,
     description: "Sign language interpretation is provided for all prerecorded audio content in synchronized media.",
+    officialDefinition:
+      "Sign language interpretation is provided for all prerecorded audio content in synchronized media.",
     summary: "Provide sign language interpretation for prerecorded videos.",
+    detailedSummary:
+      "What This Means: This success criterion requires that prerecorded video content must have sign language interpretation available. Sign language is the primary language for many deaf users and provides better comprehension than text captions alone. The interpretation should be clearly visible and synchronized with the video content.\n\nWhy It's Important: While captions provide text access to audio content, sign language is the native language for many deaf users. Some deaf users have better comprehension in sign language than in written text, especially for complex concepts, emotional content, or when the user's first language is sign language. Providing sign language interpretation ensures the best possible access for this user group.\n\nIn Practice: Sign language interpretation can be provided as a picture-in-picture video overlay, a separate video track, or a dedicated area on the screen. The interpreter should be clearly visible, well-lit, and positioned so they don't obscure important visual content. The interpretation should be synchronized with the video and cover all important audio information.",
     whyItMatters: "Some deaf users prefer sign language over text captions for comprehension.",
     whoBenefits: ["Deaf users", "Sign language users"],
     details: {
@@ -405,6 +836,71 @@ function VideoWithSignLanguage() {
       ],
       automated: ["Tools can detect track elements but cannot verify sign language quality"],
     },
+    keyTerms: [
+      {
+        term: "Sign Language",
+        definition: "A language that uses manual communication and body language to convey meaning, used primarily by deaf communities.",
+        context: "Common sign languages include American Sign Language (ASL), British Sign Language (BSL), and others specific to different regions.",
+      },
+      {
+        term: "Sign Language Interpretation",
+        definition: "Translation of spoken or written content into sign language, typically performed by a qualified sign language interpreter.",
+        context: "Sign language interpretation provides an alternative to captions for deaf users whose primary language is sign language.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.2.2",
+        title: "Captions (Prerecorded)",
+        relationship: "Alternative to",
+      },
+      {
+        number: "1.2.5",
+        title: "Audio Description (Prerecorded)",
+        relationship: "Often provided together with",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Arrange for qualified sign language interpreter",
+          "Record sign language interpretation synchronized with video",
+          "Ensure interpreter is clearly visible and well-lit",
+          "Position interpreter so they don't obscure important content",
+          "Provide interpretation for all important audio information",
+        ],
+      },
+      {
+        category: "HTML",
+        items: [
+          "Add sign language track or picture-in-picture overlay",
+          "Provide user control to show/hide sign language",
+          "Ensure sign language is properly labeled and accessible",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test sign language visibility and clarity",
+          "Verify interpretation covers all important content",
+          "Ensure sign language doesn't interfere with video viewing",
+          "Consider providing multiple sign languages for international content",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Sign Language (Prerecorded)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/sign-language-prerecorded.html",
+        type: "Understanding",
+      },
+      {
+        title: "G54: Providing sign language interpretation for synchronized media",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G54",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-2-7",
@@ -417,7 +913,11 @@ function VideoWithSignLanguage() {
     isNew: false,
     description:
       "Where pauses in foreground audio are insufficient to allow audio descriptions to convey the sense of the video, extended audio description is provided for all prerecorded video content in synchronized media.",
+    officialDefinition:
+      "Where pauses in foreground audio are insufficient to allow audio descriptions to convey the sense of the video, extended audio description is provided for all prerecorded video content in synchronized media.",
     summary: "Provide extended audio descriptions when natural pauses aren't long enough.",
+    detailedSummary:
+      "What This Means: This success criterion requires extended audio descriptions for videos where standard audio descriptions cannot fit into natural pauses in the audio. Extended audio descriptions pause the video playback to insert longer, more detailed descriptions of complex visual scenes, then resume playback. This ensures that blind users receive all important visual information even in fast-paced or visually complex content.\n\nWhy It's Important: Some videos have very little dialogue or fast-paced action where natural pauses are too short for adequate audio descriptions. Standard audio descriptions might miss important visual details because they must fit into brief pauses. Extended audio descriptions solve this by pausing the video, providing detailed descriptions, then resuming, ensuring nothing is missed.\n\nIn Practice: Extended audio descriptions work by temporarily pausing the video at appropriate points to insert longer descriptions. The video then resumes after the description is complete. This technique is particularly important for educational content, complex narratives, or videos with rapid visual changes where standard descriptions would be insufficient.",
     whyItMatters: "Ensures blind users get all necessary visual information even in fast-paced videos.",
     whoBenefits: ["Blind users", "Users with low vision"],
     details: {
@@ -478,6 +978,71 @@ function VideoWithExtendedDescription() {
       ],
       automated: ["Tools can detect track elements but cannot verify description quality or timing"],
     },
+    keyTerms: [
+      {
+        term: "Extended Audio Description",
+        definition: "Audio description that is added to an audiovisual presentation by pausing the video so that there is time to add additional description.",
+        context: "Extended descriptions pause the video to allow for longer, more detailed descriptions of complex visual scenes.",
+      },
+      {
+        term: "Foreground Audio",
+        definition: "The primary audio track containing dialogue, narration, and important sounds that are essential to understanding the content.",
+        context: "When foreground audio has insufficient pauses, extended audio description is needed.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.2.5",
+        title: "Audio Description (Prerecorded)",
+        relationship: "Enhanced version for complex content",
+      },
+      {
+        number: "1.2.3",
+        title: "Audio Description or Media Alternative (Prerecorded)",
+        relationship: "Higher level requirement",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Identify videos where standard audio description is insufficient",
+          "Create extended audio description script with detailed visual descriptions",
+          "Determine appropriate pause points in video for extended descriptions",
+          "Record extended descriptions that pause and resume video playback",
+          "Ensure extended descriptions cover all important visual information",
+        ],
+      },
+      {
+        category: "HTML",
+        items: [
+          "Implement video pausing mechanism for extended descriptions",
+          "Add extended audio description track to video element",
+          "Provide user control to enable/disable extended descriptions",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test extended descriptions with blind users for completeness",
+          "Verify video pauses and resumes correctly",
+          "Ensure extended descriptions don't disrupt narrative flow",
+          "Check that all complex visual information is adequately described",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Extended Audio Description (Prerecorded)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/extended-audio-description-prerecorded.html",
+        type: "Understanding",
+      },
+      {
+        title: "G8: Providing a movie with extended audio descriptions",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G8",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-2-8",
@@ -490,7 +1055,11 @@ function VideoWithExtendedDescription() {
     isNew: false,
     description:
       "An alternative for time-based media is provided for all prerecorded synchronized media and for all prerecorded video-only media.",
+    officialDefinition:
+      "An alternative for time-based media is provided for all prerecorded synchronized media and for all prerecorded video-only media.",
     summary: "Provide a full text transcript for all prerecorded video content.",
+    detailedSummary:
+      "What This Means: This success criterion requires a complete text transcript for all prerecorded video content. The transcript must include all dialogue, speaker identification, sound effects, and descriptions of important visual information. This provides a comprehensive text alternative that users can read at their own pace, search, and access with assistive technologies.\n\nWhy It's Important: While captions and audio descriptions provide synchronized access to video content, a complete transcript offers additional benefits. Users can read at their own pace, search for specific content, copy and paste text, and use assistive technologies more effectively. This is especially valuable for deaf-blind users, users with cognitive disabilities, and anyone who prefers reading over watching/listening.\n\nIn Practice: The transcript should be a complete, searchable text document that includes all audio information (dialogue, sounds, music descriptions) and all important visual information (actions, scene descriptions, on-screen text). It should be well-formatted, easy to read, and easily accessible from the video page. Timestamps are helpful but not required.",
     whyItMatters: "Allows users to read the content at their own pace and search the text.",
     whoBenefits: ["Deaf-blind users", "Users with cognitive disabilities", "All users"],
     details: {
@@ -569,6 +1138,78 @@ function VideoWithTranscript() {
       ],
       automated: ["Tools can detect links but cannot verify transcript completeness or quality"],
     },
+    keyTerms: [
+      {
+        term: "Alternative for Time-based Media",
+        definition: "Document including correctly sequenced text descriptions of time-based visual and auditory information and providing a means for achieving the outcomes of any time-based interaction.",
+        context: "A complete transcript serves as an alternative for time-based media, providing all information in text format.",
+      },
+      {
+        term: "Prerecorded Synchronized Media",
+        definition: "Audio or video that is prerecorded and synchronized with another format for presenting information.",
+        context: "This includes videos with audio tracks that need complete transcripts.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.2.1",
+        title: "Audio-only and Video-only (Prerecorded)",
+        relationship: "Similar requirement at higher level",
+      },
+      {
+        number: "1.2.2",
+        title: "Captions (Prerecorded)",
+        relationship: "Complements",
+      },
+      {
+        number: "1.2.3",
+        title: "Audio Description or Media Alternative (Prerecorded)",
+        relationship: "Enhanced version",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Create complete transcript including all dialogue",
+          "Include speaker identification when multiple speakers",
+          "Describe all important sound effects and audio cues",
+          "Include descriptions of all important visual information",
+          "Format transcript for readability with proper structure",
+          "Add timestamps if helpful (optional but recommended)",
+        ],
+      },
+      {
+        category: "HTML",
+        items: [
+          "Link to transcript with clear, descriptive link text",
+          "Place transcript link prominently near video player",
+          "Provide transcript in accessible format (HTML preferred)",
+          "Make transcript searchable and downloadable",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Verify transcript completeness by comparing with video",
+          "Test transcript accessibility with screen readers",
+          "Ensure transcript is easy to find and access",
+          "Check that transcript includes all necessary information",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Media Alternative (Prerecorded)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/media-alternative-prerecorded.html",
+        type: "Understanding",
+      },
+      {
+        title: "G69: Providing an alternative for time-based media",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G69",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "1-2-9",
@@ -581,7 +1222,11 @@ function VideoWithTranscript() {
     isNew: false,
     description:
       "An alternative for time-based media that presents equivalent information for live audio-only content is provided.",
+    officialDefinition:
+      "An alternative for time-based media that presents equivalent information for live audio-only content is provided.",
     summary: "Provide a live transcript or captions for live audio-only content.",
+    detailedSummary:
+      "What This Means: This success criterion requires real-time text alternatives for live audio-only content, such as live radio broadcasts, webinars, live podcasts, or audio streams. The alternative must be provided as the content is happening, presenting equivalent information to what's in the audio.\n\nWhy It's Important: Live audio-only content is completely inaccessible to deaf and hard of hearing users without real-time text alternatives. Unlike prerecorded content where transcripts can be prepared in advance, live content requires immediate captioning or transcription to ensure equal access. This is especially critical for news, emergency broadcasts, educational webinars, and other time-sensitive audio content.\n\nIn Practice: Live audio-only content needs real-time captions or transcripts that update as the audio plays. This typically requires professional captioning services, advanced speech-to-text technology, or a combination of both. The text alternative should appear with minimal delay, be synchronized with the audio, and include all spoken content and important sounds. It should be clearly visible and accessible through the audio player interface.",
     whyItMatters: "Ensures deaf and hard of hearing users can access live audio broadcasts.",
     whoBenefits: ["Deaf users", "Hard of hearing users"],
     details: {
@@ -670,5 +1315,77 @@ function LiveAudioWithCaptions() {
       ],
       automated: ["Tools cannot verify real-time caption accuracy or synchronization"],
     },
+    keyTerms: [
+      {
+        term: "Live Audio-only",
+        definition: "Audio content that is captured and transmitted in real-time, such as live radio broadcasts, webinars, or live audio streams.",
+        context: "Live content requires real-time captioning or transcription as it happens.",
+      },
+      {
+        term: "Real-time Alternative",
+        definition: "Text alternative that is generated and updated as the live content is happening, with minimal delay.",
+        context: "Real-time alternatives must keep up with the pace of live audio content.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.2.1",
+        title: "Audio-only and Video-only (Prerecorded)",
+        relationship: "Similar requirement for live content",
+      },
+      {
+        number: "1.2.4",
+        title: "Captions (Live)",
+        relationship: "Related requirement for live synchronized media",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Arrange for real-time captioning or transcription service",
+          "Ensure text alternative updates in real-time with minimal delay",
+          "Include all spoken content and important sounds",
+          "Provide speaker identification when multiple speakers",
+          "Test caption accuracy and synchronization before going live",
+        ],
+      },
+      {
+        category: "HTML",
+        items: [
+          "Implement live caption display area with aria-live region",
+          "Update caption text in real-time via WebSocket or similar",
+          "Ensure captions are clearly visible and readable",
+          "Provide caption display controls if needed",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Set up live captioning infrastructure before broadcast",
+          "Test real-time captioning system thoroughly",
+          "Have backup captioning method in case primary fails",
+          "Monitor caption quality during live broadcast",
+          "Ensure captions are accessible and properly formatted",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Audio-only (Live)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/audio-only-live.html",
+        type: "Understanding",
+      },
+      {
+        title: "G150: Providing text based alternatives for live audio-only content",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G150",
+        type: "Techniques",
+      },
+      {
+        title: "G9: Creating captions for live synchronized media",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G9",
+        type: "Techniques",
+      },
+    ],
   },
 ]

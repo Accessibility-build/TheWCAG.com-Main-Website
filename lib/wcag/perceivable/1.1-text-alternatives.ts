@@ -13,8 +13,12 @@ export const textAlternativesCriteria: SuccessCriterion[] = [
     isNew: false,
     description:
       "All non-text content that is presented to the user has a text alternative that serves the equivalent purpose.",
+    officialDefinition:
+      "All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below.",
     summary:
       "Provide text alternatives for all images, icons, and other non-text content so screen readers can convey the information.",
+    detailedSummary:
+      "What This Means: This success criterion requires that all non-text content (images, icons, charts, graphs, audio, video, etc.) must have a text alternative that conveys the same information or serves the same purpose as the non-text content. This ensures that users who cannot see or hear the content can still access the information through assistive technologies like screen readers.\n\nWhy It's Important: Without text alternatives, users who are blind, have low vision, or use screen readers cannot access information that is only presented visually. Similarly, users who are deaf or hard of hearing cannot access information presented only in audio. Text alternatives make content accessible across different sensory modalities.\n\nIn Practice: For images, this typically means using the alt attribute in HTML. Informative images need descriptive alt text, decorative images should have empty alt attributes, and functional images (like buttons) need alt text that describes their function. Complex images may need longer descriptions provided through aria-describedby or nearby text. Audio content needs transcripts, and video content needs captions and audio descriptions.",
     whyItMatters:
       "Screen reader users cannot access information presented only in images, videos, or audio without text alternatives.",
     whoBenefits: ["Blind users", "Users with low vision", "Users with cognitive disabilities"],
@@ -152,5 +156,110 @@ const ImageComponent = ({ src, alt, isDecorative }) => (
       },
     ],
     exampleComponent: "ImageAltTextExample",
+    keyTerms: [
+      {
+        term: "Text Alternative",
+        definition: "Text that is programmatically associated with non-text content or referred to from text that is programmatically associated with non-text content. Text alternatives serve as a replacement for the non-text content when it cannot be rendered in the user's preferred modality.",
+        context: "Text alternatives are the primary mechanism for making non-text content accessible. They can be rendered as visual text, spoken by screen readers, displayed as Braille, or presented in other formats based on user needs.",
+      },
+      {
+        term: "Non-text Content",
+        definition: "Any content that is not a sequence of characters that can be programmatically determined or where the sequence is not expressing something in human language. This includes images, icons, charts, graphs, audio, video, and other media.",
+        context: "Understanding what constitutes non-text content helps determine when text alternatives are required.",
+      },
+      {
+        term: "Equivalent Purpose",
+        definition: "The text alternative must serve the same purpose as the non-text content. For example, if an image is a button, the alt text should describe the action, not the appearance.",
+        context: "The alternative must convey the same information or function, not just describe what the content looks like.",
+      },
+      {
+        term: "Decorative Content",
+        definition: "Content that is used only for visual formatting, is not presented to users, or does not convey information that is not already available in text.",
+        context: "Decorative images should have empty alt attributes (alt='') so assistive technologies ignore them.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "1.2.1",
+        title: "Audio-only and Video-only (Prerecorded)",
+        relationship: "Often implemented together with",
+      },
+      {
+        number: "1.2.3",
+        title: "Audio Description or Media Alternative (Prerecorded)",
+        relationship: "Related to",
+      },
+      {
+        number: "1.3.1",
+        title: "Info and Relationships",
+        relationship: "Complements",
+      },
+      {
+        number: "1.4.5",
+        title: "Images of Text",
+        relationship: "Similar requirement for",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add alt attribute to all <img> elements",
+          "Use descriptive alt text for informative images",
+          "Use empty alt='' for decorative images",
+          "Use aria-label or aria-labelledby for complex images",
+          "Provide aria-describedby for images needing longer descriptions",
+          "Use <figure> and <figcaption> for images with captions",
+        ],
+      },
+      {
+        category: "Content",
+        items: [
+          "Write concise, descriptive alt text (typically under 150 characters)",
+          "Describe function, not appearance, for functional images",
+          "Ensure alt text matches the image's purpose in context",
+          "Provide transcripts for audio-only content",
+          "Provide captions for video content",
+          "Provide audio descriptions for video when visual information is important",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test with screen readers (NVDA, JAWS, VoiceOver)",
+          "Verify all images have appropriate alt attributes",
+          "Check that decorative images are properly marked",
+          "Ensure functional images describe actions, not appearance",
+          "Verify complex images have extended descriptions when needed",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Non-text Content",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html",
+        type: "Understanding",
+      },
+      {
+        title: "Techniques for Non-text Content",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/#non-text-content",
+        type: "Techniques",
+      },
+      {
+        title: "G94: Providing short text alternative for non-text content",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G94",
+        type: "Techniques",
+      },
+      {
+        title: "H37: Using alt attributes on img elements",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H37",
+        type: "Techniques",
+      },
+      {
+        title: "F30: Failure of Success Criterion 1.1.1 and 1.2.1",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/failures/F30",
+        type: "Testing",
+      },
+    ],
   },
 ]

@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Note: Workspace root warning is informational only - build succeeds
+  // The warning occurs because there's a package-lock.json in parent directory
+  // This doesn't affect functionality and can be safely ignored
   // Production: Don't ignore TypeScript errors
   typescript: {
     ignoreBuildErrors: false,

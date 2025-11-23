@@ -120,6 +120,81 @@ function ImageViewer({ image }) {
         solution: "Provide buttons, form inputs, or keyboard shortcuts that achieve the same result. See also 2.5.7 Dragging Movements.",
       },
     ],
+    officialDefinition:
+      "All functionality that uses multipoint or path-based gestures for operation can be operated with a single pointer without a path-based gesture, unless a multipoint or path-based gesture is essential.",
+    detailedSummary:
+      "What This Means: This success criterion requires that any functionality that uses complex gestures (like pinch-to-zoom, two-finger swipe, or path-based gestures like drawing) must also be available through simple single-pointer interactions. A single pointer means a single point of contact, such as one finger, one mouse click, or one stylus tap.\n\nWhy It's Important: Users with motor disabilities, tremors, or limited dexterity may not be able to perform complex gestures like pinch-to-zoom or multi-touch swipes. Some users may be using assistive technologies that only support single-pointer input. Additionally, some devices or input methods may not support complex gestures. By providing simple alternatives, you ensure all users can access functionality.\n\nIn Practice: For pinch-to-zoom functionality, provide zoom in/out buttons or a zoom slider. For swipe-based carousels, add previous/next buttons or arrow keys. For path-based gestures (like drawing), provide alternative controls when the gesture isn't essential to the function. The key is that users should be able to accomplish the same task with a simple click, tap, or keyboard interaction.",
+    keyTerms: [
+      {
+        term: "Multipoint Gesture",
+        definition: "A gesture that requires more than one point of contact, such as pinch-to-zoom or two-finger swipe.",
+        context: "These gestures must have single-pointer alternatives unless they are essential to the function.",
+      },
+      {
+        term: "Path-Based Gesture",
+        definition: "A gesture that requires following a specific path, such as swiping in a particular direction or drawing a shape.",
+        context: "Path-based gestures must have alternatives unless the path itself is essential (like in a drawing app).",
+      },
+      {
+        term: "Single Pointer",
+        definition: "A single point of contact, such as one finger, one mouse click, or one stylus tap.",
+        context: "All functionality must be operable with a single pointer, even if complex gestures are also supported.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.5.7",
+        title: "Dragging Movements",
+        relationship: "Related to",
+      },
+      {
+        number: "2.1.1",
+        title: "Keyboard",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add button alternatives for gesture-based functionality",
+          "Provide keyboard alternatives for all gestures",
+          "Ensure single-click/tap alternatives exist",
+          "Make alternatives clearly visible and accessible",
+        ],
+      },
+      {
+        category: "JavaScript",
+        items: [
+          "Support both gesture and single-pointer events",
+          "Ensure alternatives provide same functionality",
+          "Test with mouse, keyboard, and single touch",
+          "Document essential gestures clearly",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Identify all gesture-based functionality",
+          "Verify single-pointer alternatives exist",
+          "Test alternatives provide same functionality",
+          "Ensure alternatives are discoverable",
+          "Document when gestures are essential",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Pointer Gestures",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html",
+        type: "Understanding",
+      },
+      {
+        title: "G215: Providing controls to achieve the same result as path based or multipoint gestures",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G215",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "2-5-2",
@@ -260,6 +335,81 @@ function DeleteButton() {
         solution: "Add undo functionality or confirmation dialogs for destructive actions. Allow users to cancel before action completes.",
       },
     ],
+    officialDefinition:
+      "For functionality that can be operated using a single pointer, at least one of the following is true: (No Down-Event) The down-event of the pointer is not used to execute any part of the function; (Abort or Undo) Completion of the function is on the up-event, and a mechanism is available to abort the function before completion or to undo the function after completion; (Up Reversal) The up-event reverses any outcome of the preceding down-event; (Essential) Completing the function on the down-event is essential.",
+    detailedSummary:
+      "What This Means: This success criterion requires that actions triggered by pointer input (mouse, touch, stylus) should not activate on the 'down' event alone. Instead, actions should trigger on the 'up' event, allowing users to cancel by moving the pointer away before releasing. Alternatively, if actions must trigger on down, there must be a way to abort or undo them.\n\nWhy It's Important: Users with motor disabilities, tremors, or limited dexterity may have difficulty with precise pointer control. If an action triggers immediately when they press down, they may accidentally activate functionality they didn't intend. By requiring actions to trigger on the up event, users can move the pointer away to cancel if they realize they've pressed the wrong element.\n\nIn Practice: Use click events (which trigger on up) instead of mousedown, touchstart, or pointerdown events for actions. For destructive actions like delete, provide undo functionality. Ensure users can move the pointer away before releasing to cancel actions. The key is that users should have a way to prevent accidental activations.",
+    keyTerms: [
+      {
+        term: "Down-Event",
+        definition: "The event that fires when a pointer is pressed down (mousedown, touchstart, pointerdown).",
+        context: "Actions should not trigger solely on down-events to allow cancellation.",
+      },
+      {
+        term: "Up-Event",
+        definition: "The event that fires when a pointer is released (mouseup, touchend, pointerup).",
+        context: "Actions should trigger on up-events, allowing users to cancel by moving away before releasing.",
+      },
+      {
+        term: "Pointer Cancellation",
+        definition: "The ability to cancel an action by moving the pointer away before releasing it.",
+        context: "This prevents accidental activations, especially important for users with motor disabilities.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.3.4",
+        title: "Error Prevention (Legal, Financial, Data)",
+        relationship: "Related to",
+      },
+      {
+        number: "2.5.1",
+        title: "Pointer Gestures",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Use click events instead of mousedown/touchstart",
+          "Ensure actions trigger on mouseup/touchend",
+          "Provide undo for destructive actions",
+          "Test cancellation by moving pointer away",
+        ],
+      },
+      {
+        category: "JavaScript",
+        items: [
+          "Avoid triggering actions on down events",
+          "Use click handlers for standard actions",
+          "Implement undo functionality for destructive actions",
+          "Test with various pointer devices",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test all interactive elements",
+          "Verify actions don't trigger on down alone",
+          "Check cancellation works correctly",
+          "Test with touch devices",
+          "Verify undo options for destructive actions",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Pointer Cancellation",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html",
+        type: "Understanding",
+      },
+      {
+        title: "G218: Providing a mechanism to undo or cancel an action",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G218",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "2-5-3",
@@ -385,6 +535,72 @@ function Button() {
       {
         failure: "Form labels that don't match accessible names.",
         solution: "Ensure <label> text matches the accessible name. If using aria-labelledby, ensure referenced text matches visible label.",
+      },
+    ],
+    officialDefinition:
+      "For user interface components with labels that include text or images of text, the name contains the text that is presented visually.",
+    detailedSummary:
+      "What This Means: This success criterion requires that the accessible name (the name used by assistive technologies like screen readers and speech recognition) must contain the visible label text. The accessible name can include additional text, but it must start with or contain the visible label.\n\nWhy It's Important: Users of speech recognition software see the visible label and speak it to interact with elements. If the accessible name doesn't match what they see, speech recognition won't work. For example, if a button shows 'Submit Form' but the accessible name is 'Send', users saying 'Submit Form' won't activate it. This creates a barrier for users who rely on speech recognition.\n\nIn Practice: When using aria-label, ensure it contains the visible text. For icon-only buttons, the accessible name should match what users would naturally say to activate it. The visible label text should appear at the start of the accessible name. If using aria-labelledby, ensure the referenced text matches the visible label.",
+    keyTerms: [
+      {
+        term: "Accessible Name",
+        definition: "The name of a user interface component that is exposed to assistive technologies, determined by accessible name computation.",
+        context: "The accessible name must contain the visible label text for speech recognition to work.",
+      },
+      {
+        term: "Visible Label",
+        definition: "The text or image of text that is visually presented to users as the label for a component.",
+        context: "Speech recognition users see and speak the visible label, so it must match the accessible name.",
+      },
+      {
+        term: "Label in Name",
+        definition: "The requirement that the accessible name contains the visible label text.",
+        context: "This ensures speech recognition users can activate elements by saying what they see.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "4.1.2",
+        title: "Name, Role, Value",
+        relationship: "Complements",
+      },
+      {
+        number: "2.4.6",
+        title: "Headings and Labels",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Ensure aria-label contains visible text",
+          "Use visible text as accessible name when possible",
+          "Verify icon buttons have matching accessible names",
+          "Check form labels match accessible names",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test with speech recognition software",
+          "Verify accessible names contain visible labels",
+          "Check all interactive elements",
+          "Test icon-only buttons",
+          "Use accessibility testing tools",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Label in Name",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html",
+        type: "Understanding",
+      },
+      {
+        title: "G208: Including the text of the visible label as part of the accessible name",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G208",
+        type: "Techniques",
       },
     ],
   },
@@ -520,6 +736,72 @@ function UndoButton() {
       {
         failure: "Motion-activated features without clear alternatives.",
         solution: "Always provide UI controls alongside motion controls. Make alternatives prominent and easy to find.",
+      },
+    ],
+    officialDefinition:
+      "Functionality that can be operated by device motion or user motion can also be operated by user interface components and responding to the motion can be disabled to prevent accidental actuation, except when: (Supported Interface) The motion is used to operate functionality through an accessibility supported interface; (Essential) The motion is essential for the function and invalidating it would impact the function.",
+    detailedSummary:
+      "What This Means: This success criterion requires that any functionality triggered by device motion (like shaking, tilting, or rotating the device) must also be available through standard user interface controls (buttons, menus, etc.). Additionally, motion controls must be able to be disabled to prevent accidental activation.\n\nWhy It's Important: Users with motor disabilities may not be able to move their device. Devices may be mounted in fixed positions (like on wheelchairs or desks). Some users may experience motion sickness or have conditions that make device movement difficult. By requiring UI alternatives, you ensure all users can access functionality regardless of their ability to move the device.\n\nIn Practice: If you implement shake-to-undo, also provide an Undo button. If you use tilt-to-scroll, provide scroll buttons or keyboard alternatives. Make motion controls optional and easily disableable through settings. The key is that motion should enhance functionality, not be the only way to access it.",
+    keyTerms: [
+      {
+        term: "Device Motion",
+        definition: "Motion of the device itself, such as shaking, tilting, or rotating the device.",
+        context: "Motion-activated functionality must have UI control alternatives.",
+      },
+      {
+        term: "User Motion",
+        definition: "Motion of the user relative to the device, such as moving the device through space.",
+        context: "User motion controls must also have UI alternatives and be disableable.",
+      },
+      {
+        term: "Accidental Actuation",
+        definition: "Unintended activation of functionality due to device movement.",
+        context: "Motion controls must be disableable to prevent accidental activations.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.5.1",
+        title: "Pointer Gestures",
+        relationship: "Related to",
+      },
+      {
+        number: "2.1.1",
+        title: "Keyboard",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "JavaScript",
+        items: [
+          "Provide UI controls for all motion-activated functionality",
+          "Implement settings to disable motion controls",
+          "Ensure alternatives provide same functionality",
+          "Test with device in fixed position",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Identify all motion-activated functionality",
+          "Verify UI alternatives exist",
+          "Test alternatives provide same functionality",
+          "Check motion controls can be disabled",
+          "Test with mounted or fixed devices",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Motion Actuation",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/motion-actuation.html",
+        type: "Understanding",
+      },
+      {
+        title: "G213: Provide conventional controls and an application setting for motion activated input",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G213",
+        type: "Techniques",
       },
     ],
   },
@@ -671,6 +953,72 @@ function IconButton({ icon, onClick }) {
         solution: "Ensure adequate spacing between targets (at least 8px). Consider increasing spacing on touch devices.",
       },
     ],
+    officialDefinition:
+      "The size of the target for pointer inputs is at least 44 by 44 CSS pixels except when: (Equivalent) The target is available through an equivalent link or control on the same page that is at least 44 by 44 CSS pixels; (Inline) The target is in a sentence or block of text; (User Agent Control) The size of the target is determined by the user agent and is not modified by the author; (Essential) A particular presentation of the target is essential to the information being conveyed.",
+    detailedSummary:
+      "What This Means: This success criterion requires that touch targets (interactive elements like buttons, links, form controls) are at least 44x44 CSS pixels in size. This is larger than the Level AA requirement of 24x24 pixels, making targets easier to tap for users with motor disabilities.\n\nWhy It's Important: Larger targets are easier to tap accurately, especially for users with motor disabilities, tremors, or limited dexterity. Small targets increase the likelihood of mis-taps and user frustration. On mobile devices, larger targets are essential for comfortable interaction. Even on desktop, larger targets benefit users with motor impairments.\n\nIn Practice: Use CSS to ensure buttons, links, and form controls are at least 44x44 pixels. Padding counts toward the size, so you can have a small icon (like 24x24) with 10px padding on all sides to reach 44x44. The key is that the clickable/tappable area must be large enough, even if the visual element is smaller.",
+    keyTerms: [
+      {
+        term: "Target Size",
+        definition: "The size of the interactive area of a user interface component that can be activated by a pointer.",
+        context: "At Level AAA, targets must be at least 44x44 CSS pixels for optimal accessibility.",
+      },
+      {
+        term: "CSS Pixels",
+        definition: "The unit of measurement in CSS, which may differ from physical pixels on high-DPI displays.",
+        context: "Target size is measured in CSS pixels, not physical pixels.",
+      },
+      {
+        term: "Pointer Input",
+        definition: "Input from a pointing device such as a mouse, touch screen, or stylus.",
+        context: "Target size requirements apply to all pointer inputs, not just touch.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.5.8",
+        title: "Target Size (Minimum)",
+        relationship: "Stricter version",
+      },
+      {
+        number: "2.4.7",
+        title: "Focus Visible",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "CSS",
+        items: [
+          "Ensure targets are at least 44x44 CSS pixels",
+          "Use padding to increase target size",
+          "Use min-width and min-height",
+          "Test target sizes on various devices",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Measure all interactive elements",
+          "Verify minimum size is met",
+          "Test on touch devices",
+          "Check spacing between targets",
+          "Test with users if possible",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Target Size",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/target-size.html",
+        type: "Understanding",
+      },
+      {
+        title: "G209: Provide sufficient contrast ratio for focus indicators",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G209",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "2-5-6",
@@ -806,6 +1154,64 @@ function SortableList({ items }) {
       {
         failure: "Unnecessary restrictions on input methods.",
         solution: "Remove restrictions unless absolutely essential. Allow users to use their preferred input method.",
+      },
+    ],
+    officialDefinition:
+      "Web content does not restrict use of input modalities available on a platform except where the restriction is essential, required to ensure the security of the content, or required to respect user settings.",
+    detailedSummary:
+      "What This Means: This success criterion requires that web content doesn't prevent users from switching between different input methods (mouse, keyboard, touch, voice, etc.) unless the restriction is essential for security or functionality. Users should be able to use whatever input method works best for them at any given time.\n\nWhy It's Important: Users may need to switch input methods for various reasons: fatigue, task requirements, device capabilities, or accessibility needs. Some users may start with one method and need to switch mid-task. Restricting input methods limits user choice and can create barriers for users with disabilities who rely on specific input methods.\n\nIn Practice: Don't disable keyboard input on touch devices. Don't disable touch input on desktop. Allow users to switch between mouse, keyboard, and touch at any time. The only acceptable restrictions are for essential security (like password fields) or when the restriction is essential to the function itself. Even then, provide alternatives when possible.",
+    keyTerms: [
+      {
+        term: "Input Modality",
+        definition: "A method of input, such as mouse, keyboard, touch, voice, or other input device.",
+        context: "Users should be able to switch between input modalities freely.",
+      },
+      {
+        term: "Concurrent Input",
+        definition: "The ability to use multiple input methods simultaneously or switch between them.",
+        context: "Web content should support concurrent input methods unless restricted for essential reasons.",
+      },
+      {
+        term: "Essential Restriction",
+        definition: "A restriction on input methods that is necessary for the function or security of the content.",
+        context: "Only essential restrictions are acceptable, and they should be clearly indicated.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.1.1",
+        title: "Keyboard",
+        relationship: "Complements",
+      },
+      {
+        number: "2.5.1",
+        title: "Pointer Gestures",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "General",
+        items: [
+          "Test all functionality with mouse",
+          "Test all functionality with keyboard",
+          "Test all functionality with touch",
+          "Verify users can switch input methods",
+          "Remove unnecessary restrictions",
+          "Document essential restrictions",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Concurrent Input Mechanisms",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/concurrent-input-mechanisms.html",
+        type: "Understanding",
+      },
+      {
+        title: "G213: Provide conventional controls and an application setting for motion activated input",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G213",
+        type: "Techniques",
       },
     ],
   },
@@ -949,6 +1355,80 @@ function SortableList({ items }) {
       {
         failure: "Sliders that only work by dragging.",
         solution: "Add number input fields or increment/decrement buttons. Allow users to type values directly.",
+      },
+    ],
+    officialDefinition:
+      "All functionality that uses a dragging movement for operation can be achieved by a single pointer without dragging, unless a dragging movement is essential.",
+    detailedSummary:
+      "What This Means: This success criterion requires that any functionality using drag-and-drop interactions must also be available through alternative methods that don't require dragging. Users should be able to achieve the same result with a single click, tap, or keyboard interaction.\n\nWhy It's Important: Dragging requires precise motor control and sustained movement, which can be difficult or impossible for users with motor disabilities, tremors, or limited dexterity. Some assistive technologies may not support dragging movements. By providing alternatives, you ensure all users can access functionality.\n\nIn Practice: For sortable lists, provide up/down buttons or arrow keys. For sliders, add number input fields or increment/decrement buttons. For file uploads, always provide a file input button in addition to drag-and-drop. The key is that users should be able to accomplish the same task without dragging. Dragging can still be available as an optional enhancement.",
+    keyTerms: [
+      {
+        term: "Dragging Movement",
+        definition: "A pointer movement where the pointer is pressed down, moved while pressed, and released at a different location.",
+        context: "Dragging movements must have single-pointer alternatives unless essential to the function.",
+      },
+      {
+        term: "Single Pointer",
+        definition: "A single point of contact, such as one finger, one mouse click, or one stylus tap.",
+        context: "Alternatives to dragging must work with a single pointer action (click, tap, etc.).",
+      },
+      {
+        term: "Essential Dragging",
+        definition: "Dragging that is essential to the function, such as drawing in a drawing application.",
+        context: "Essential dragging is exempt but should be clearly indicated.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.5.1",
+        title: "Pointer Gestures",
+        relationship: "Related to",
+      },
+      {
+        number: "2.1.1",
+        title: "Keyboard",
+        relationship: "Complements",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add button alternatives for drag-and-drop",
+          "Provide form inputs for sliders",
+          "Ensure alternatives are keyboard accessible",
+          "Make alternatives clearly visible",
+        ],
+      },
+      {
+        category: "JavaScript",
+        items: [
+          "Support both drag and single-click interactions",
+          "Implement alternative controls",
+          "Test alternatives provide same functionality",
+          "Ensure keyboard support",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Identify all drag-and-drop functionality",
+          "Verify single-pointer alternatives exist",
+          "Test alternatives work correctly",
+          "Ensure alternatives are discoverable",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Dragging Movements",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html",
+        type: "Understanding",
+      },
+      {
+        title: "G215: Providing controls to achieve the same result as path based or multipoint gestures",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G215",
+        type: "Techniques",
       },
     ],
   },
@@ -1102,6 +1582,73 @@ function Link({ href, children }) {
       {
         failure: "Form controls that are too small to tap easily.",
         solution: "Ensure checkboxes, radio buttons, and other form controls have adequate target size. Use padding to increase clickable area.",
+      },
+    ],
+    officialDefinition:
+      "The size of the target for pointer inputs is at least 24 by 24 CSS pixels, except when: (Spacing) The target offset is at least 24 CSS pixels to every adjacent target; (Equivalent) The target is available through an equivalent link or control on the same page that is at least 24 by 24 CSS pixels; (Inline) The target is in a sentence or block of text; (User Agent Control) The size of the target is determined by the user agent and is not modified by the author; (Essential) A particular presentation of the target is essential to the information being conveyed.",
+    detailedSummary:
+      "What This Means: This success criterion requires that touch targets (interactive elements like buttons, links, form controls) are at least 24x24 CSS pixels in size. This ensures targets are large enough to be easily tappable, especially on touch devices. Padding counts toward the size, so small icons with adequate padding can meet the requirement.\n\nWhy It's Important: Small targets are difficult to tap accurately, especially for users with motor disabilities, tremors, or limited dexterity. On mobile devices, small targets increase the likelihood of mis-taps and user frustration. Even on desktop, larger targets benefit users with motor impairments or those using touch screens.\n\nIn Practice: Use CSS to ensure buttons, links, and form controls are at least 24x24 CSS pixels. You can use padding to increase the clickable area without changing the visual size of the element. For example, a 16x16 icon with 4px padding on all sides creates a 24x24 target. Ensure adequate spacing (at least 8px) between targets to prevent mis-taps.",
+    keyTerms: [
+      {
+        term: "Target Size",
+        definition: "The size of the interactive area of a user interface component that can be activated by a pointer.",
+        context: "At Level AA, targets must be at least 24x24 CSS pixels for adequate accessibility.",
+      },
+      {
+        term: "CSS Pixels",
+        definition: "The unit of measurement in CSS, which may differ from physical pixels on high-DPI displays.",
+        context: "Target size is measured in CSS pixels, accounting for device pixel ratio.",
+      },
+      {
+        term: "Target Offset",
+        definition: "The distance between adjacent targets, measured from edge to edge.",
+        context: "If targets are smaller than 24x24, they must have at least 24px spacing between them.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.5.5",
+        title: "Target Size",
+        relationship: "Stricter version",
+      },
+      {
+        number: "2.4.7",
+        title: "Focus Visible",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "CSS",
+        items: [
+          "Ensure targets are at least 24x24 CSS pixels",
+          "Use padding to increase target size",
+          "Use min-width and min-height",
+          "Ensure adequate spacing between targets",
+          "Test on various devices and screen sizes",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Measure all interactive elements",
+          "Verify minimum size is met",
+          "Test on touch devices",
+          "Check spacing between targets",
+          "Test with users if possible",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Target Size (Minimum)",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+        type: "Understanding",
+      },
+      {
+        title: "G209: Provide sufficient contrast ratio for focus indicators",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G209",
+        type: "Techniques",
       },
     ],
   },

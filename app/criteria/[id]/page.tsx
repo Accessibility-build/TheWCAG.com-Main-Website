@@ -9,15 +9,20 @@ import Link from "next/link"
 // Section components
 import { OfficialExplanationSection } from "./sections/official-explanation-section"
 import { SimpleExplanationSection } from "./sections/simple-explanation-section"
+import { BenefitsBreakdownSection } from "./sections/benefits-breakdown-section"
+import { KeyTermsSection } from "./sections/key-terms-section"
 import { RealWorldExamplesSection } from "./sections/real-world-examples-section"
 import { AffectedUsersSection } from "./sections/affected-users-section"
+import { ImplementationChecklistSection } from "./sections/implementation-checklist-section"
 import { TestingSection } from "./sections/testing-section"
 import { ComplianceRequirementsSection } from "./sections/compliance-requirements-section"
 import { BeyondComplianceSection } from "./sections/beyond-compliance-section"
 import { ExampleComponentSection } from "./sections/example-component-section"
 import { MythsSection } from "./sections/myths-section"
 import { CommonFailuresSection } from "./sections/common-failures-section"
-import { CodeExamplesSection } from "./code-examples-section"
+import { RelatedCriteriaSection } from "./sections/related-criteria-section"
+import { ResourcesSection } from "./sections/resources-section"
+import { ImplementationCTASection } from "./sections/implementation-cta-section"
 
 interface CriterionPageProps {
   params: Promise<{ id: string }>
@@ -104,12 +109,20 @@ export default async function CriterionPage({ params }: CriterionPageProps) {
         </header>
 
         {/* Official Explanation Section */}
-        {criterion.description && (
-          <OfficialExplanationSection description={criterion.description} />
-        )}
+        <OfficialExplanationSection criterion={criterion} />
 
         {/* Simple English Explanation */}
-        {criterion.summary && <SimpleExplanationSection summary={criterion.summary} />}
+        <SimpleExplanationSection criterion={criterion} />
+
+        {/* Benefits Breakdown */}
+        {criterion.whoBenefits && criterion.whoBenefits.length > 0 && (
+          <BenefitsBreakdownSection whoBenefits={criterion.whoBenefits} />
+        )}
+
+        {/* Key Terms */}
+        {criterion.keyTerms && criterion.keyTerms.length > 0 && (
+          <KeyTermsSection keyTerms={criterion.keyTerms} />
+        )}
 
         {/* Real World Examples */}
         {criterion.examples && criterion.examples.length > 0 && (
@@ -119,6 +132,15 @@ export default async function CriterionPage({ params }: CriterionPageProps) {
         {/* Affected Users */}
         {criterion.whoBenefits && criterion.whoBenefits.length > 0 && (
           <AffectedUsersSection whoBenefits={criterion.whoBenefits} />
+        )}
+
+        {/* Implementation Checklist */}
+        {criterion.implementationChecklist && criterion.implementationChecklist.length > 0 && (
+          <ImplementationChecklistSection
+            checklist={criterion.implementationChecklist}
+            criterionNumber={criterion.number}
+            criterionTitle={criterion.title}
+          />
         )}
 
         {/* Testing Section */}
@@ -151,26 +173,24 @@ export default async function CriterionPage({ params }: CriterionPageProps) {
           <CommonFailuresSection failures={criterion.commonFailures} />
         )}
 
-        {/* Code Examples */}
-        {criterion.codeExamples && (
-          <CodeExamplesSection codeExamples={criterion.codeExamples} />
+        {/* Related Criteria */}
+        {criterion.relatedCriteria && criterion.relatedCriteria.length > 0 && (
+          <RelatedCriteriaSection relatedCriteria={criterion.relatedCriteria} />
         )}
 
-        {/* Disclaimer for Code Examples */}
-        {criterion.codeExamples && (
-          <div className="mt-8 p-6 bg-amber-500/10 border border-amber-500/20 rounded-lg">
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              <strong className="font-semibold text-foreground">Note:</strong> Code examples are
-              provided as general guidance. Implementation may vary based on your specific
-              technology stack, libraries, plugins, themes, and design patterns. For custom
-              solutions or remediation assistance, please{" "}
-              <Link href="/contact" className="text-primary hover:underline">
-                contact us
-              </Link>{" "}
-              through our contact form or email.
-            </p>
-          </div>
+        {/* Resources */}
+        {criterion.officialResources && criterion.officialResources.length > 0 && (
+          <ResourcesSection
+            officialResources={criterion.officialResources}
+            criterionNumber={criterion.number}
+          />
         )}
+
+        {/* Implementation CTA (replaces code examples) */}
+        <ImplementationCTASection
+          criterionNumber={criterion.number}
+          criterionTitle={criterion.title}
+        />
 
         {/* Navigation to Related Criteria */}
         <div className="mt-12 pt-8 border-t">

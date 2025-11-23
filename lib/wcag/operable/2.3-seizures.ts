@@ -13,7 +13,11 @@ export const seizuresCriteria: SuccessCriterion[] = [
     isNew: false,
     description:
       "Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.",
+    officialDefinition:
+      "Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.",
     summary: "No content should flash more than 3 times per second.",
+    detailedSummary:
+      "What This Means: This success criterion requires that web pages must not contain content that flashes more than 3 times in any one-second period, unless the flash is below the general flash threshold (a relative luminance change of less than 10%) or the red flash threshold (for red flashing content). This prevents content that could trigger photosensitive epileptic seizures.\n\nWhy It's Important: Flashing content, especially at certain frequencies, can trigger seizures in users with photosensitive epilepsy. This is a serious health and safety issue. By limiting flashing to 3 times per second or ensuring flashes are below the threshold, we protect users from potential harm.\n\nIn Practice: Avoid animations or content that flashes more than 3 times per second. If flashing is necessary, ensure the relative luminance change is less than 10% (general flash threshold) or below the red flash threshold for red content. Test animations and video content for flashing patterns. Use tools like PEAT (Photosensitive Epilepsy Analysis Tool) to verify compliance. Consider using static content or slower animations instead of fast flashing.",
     whyItMatters: "Flashing content can trigger seizures in users with photosensitive epilepsy.",
     whoBenefits: ["Users with epilepsy"],
     details: {
@@ -119,6 +123,76 @@ export const seizuresCriteria: SuccessCriterion[] = [
         solution: "Adjust animation timing to ensure flashes occur at most 3 times per second. Use opacity transitions instead of on/off flashes.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Flash",
+        definition: "A pair of opposing changes in relative luminance that can cause seizures in some users if it is large enough and in the right frequency range.",
+        context: "Content must not flash more than 3 times per second, or must be below the general flash and red flash thresholds.",
+      },
+      {
+        term: "General Flash Threshold",
+        definition: "A flash that is below a relative luminance change of 10%.",
+        context: "If content flashes more than 3 times per second, it must be below the general flash threshold.",
+      },
+      {
+        term: "Red Flash Threshold",
+        definition: "A specific threshold for red flashing content that is lower than the general flash threshold.",
+        context: "Red flashing content has a stricter threshold due to increased seizure risk.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.3.2",
+        title: "Three Flashes",
+        relationship: "Stricter version",
+      },
+      {
+        number: "2.2.2",
+        title: "Pause, Stop, Hide",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "CSS",
+        items: [
+          "Ensure animations flash at most 3 times per second",
+          "Use smooth transitions instead of abrupt flashes",
+          "Test animation timing with PEAT tool",
+          "Avoid fast on/off flashing effects",
+        ],
+      },
+      {
+        category: "Content",
+        items: [
+          "Review all video content for flashing",
+          "Check animations and transitions",
+          "Verify flashing is below thresholds if exceeding 3 per second",
+          "Consider using static content instead",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Use PEAT (Photosensitive Epilepsy Analysis Tool) to test",
+          "Count flashes per second in animations",
+          "Verify compliance with flash thresholds",
+          "Test with actual users when possible",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Three Flashes or Below Threshold",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html",
+        type: "Understanding",
+      },
+      {
+        title: "G19: Ensuring that no component of the content flashes more than three times in any 1-second period",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G19",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "2-3-2",
@@ -130,7 +204,11 @@ export const seizuresCriteria: SuccessCriterion[] = [
     guidelineNumber: "2.3",
     isNew: false,
     description: "Web pages do not contain anything that flashes more than three times in any one second period.",
+    officialDefinition:
+      "Web pages do not contain anything that flashes more than three times in any one second period.",
     summary: "Strictly no flashing more than 3 times per second (no exceptions).",
+    detailedSummary:
+      "What This Means: This success criterion is a stricter version of 2.3.1 (Level A). At Level AAA, content must not flash more than 3 times per second with no exceptions, even if the flash is below the general flash threshold. This provides maximum safety for users with photosensitive epilepsy.\n\nWhy It's Important: Photosensitive epilepsy can be triggered by flashing content at certain frequencies. At the AAA level, we aim for maximum safety by completely eliminating fast flashing content, regardless of luminance changes. This ensures the highest level of protection for users with photosensitive epilepsy.\n\nIn Practice: Ensure absolutely no content flashes more than 3 times per second. This includes animations, video content, transitions, and any other visual effects. Test all content thoroughly using tools like PEAT (Photosensitive Epilepsy Analysis Tool). Use slower animations, smooth transitions, or static content instead of fast flashing effects.",
     whyItMatters: "Provides maximum safety for users with photosensitive epilepsy.",
     whoBenefits: ["Users with epilepsy"],
     details: {
@@ -256,6 +334,38 @@ function SafeContent() {
         solution: "Use slower flash rates (2 per second or less) or eliminate flashing entirely. Consider user safety over technical compliance.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Flash",
+        definition: "A pair of opposing changes in relative luminance that can cause seizures in some users if it is large enough and in the right frequency range.",
+        context: "At Level AAA, content must not flash more than 3 times per second with no exceptions.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.3.1",
+        title: "Three Flashes or Below Threshold",
+        relationship: "Stricter version",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "General",
+        items: [
+          "Ensure no content flashes more than 3 times per second",
+          "Test all animations and video content",
+          "Use PEAT tool to verify compliance",
+          "Eliminate fast flashing effects",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Three Flashes",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/three-flashes.html",
+        type: "Understanding",
+      },
+    ],
   },
   {
     id: "2-3-3",
@@ -268,7 +378,11 @@ function SafeContent() {
     isNew: false,
     description:
       "Motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or the information being conveyed.",
+    officialDefinition:
+      "Motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or the information being conveyed.",
     summary: "Users can disable motion animations triggered by interaction.",
+    detailedSummary:
+      "What This Means: This success criterion requires that motion animations that are triggered by user interactions (like hover effects, transitions, or parallax scrolling) must be able to be disabled by users, unless the animation is essential to the functionality or information being conveyed. This typically means respecting the prefers-reduced-motion CSS media query.\n\nWhy It's Important: Motion animations can cause vestibular disorders (dizziness, nausea, vertigo) in some users. Users with vestibular disorders may experience discomfort or be unable to use content with motion animations. By allowing users to disable these animations, we ensure the content is accessible to everyone.\n\nIn Practice: Use the prefers-reduced-motion media query to detect user preferences and disable motion animations when requested. Provide settings to disable animations. For essential animations (like those that convey important information), ensure they can still be understood when motion is reduced. Test with users who have vestibular disorders to verify accessibility.",
     whyItMatters: "Motion can cause vestibular disorders (dizziness, nausea).",
     whoBenefits: ["Users with vestibular disorders"],
     details: {
@@ -413,6 +527,69 @@ function Component() {
       {
         failure: "No way to disable motion animations triggered by interaction.",
         solution: "Respect prefers-reduced-motion for all animations. Provide controls to disable motion if the media query isn't sufficient.",
+      },
+    ],
+    keyTerms: [
+      {
+        term: "Motion Animation",
+        definition: "Animation that creates the illusion of movement, such as sliding, scrolling, parallax effects, or transitions.",
+        context: "Motion animations triggered by interaction must be disableable unless essential.",
+      },
+      {
+        term: "prefers-reduced-motion",
+        definition: "A CSS media query that indicates the user prefers reduced motion, typically set in operating system accessibility settings.",
+        context: "Animations should respect prefers-reduced-motion to allow users to disable motion.",
+      },
+      {
+        term: "Vestibular Disorders",
+        definition: "Conditions affecting the inner ear and balance system, which can cause dizziness, nausea, or vertigo when exposed to motion.",
+        context: "Motion animations can trigger vestibular disorders, so they must be disableable.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.2.2",
+        title: "Pause, Stop, Hide",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "CSS",
+        items: [
+          "Use @media (prefers-reduced-motion: reduce) to disable animations",
+          "Disable transitions when motion is reduced",
+          "Provide static alternatives to animated content",
+        ],
+      },
+      {
+        category: "JavaScript",
+        items: [
+          "Check prefers-reduced-motion in JavaScript",
+          "Disable JavaScript animations when motion is reduced",
+          "Respect user motion preferences",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test with prefers-reduced-motion enabled",
+          "Verify animations can be disabled",
+          "Ensure functionality works without motion",
+          "Test with users who have vestibular disorders",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Animation from Interactions",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html",
+        type: "Understanding",
+      },
+      {
+        title: "G207: Ensuring that animation is triggered by a user interaction or can be disabled",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G207",
+        type: "Techniques",
       },
     ],
   },

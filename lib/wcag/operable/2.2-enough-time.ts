@@ -13,7 +13,11 @@ export const enoughTimeCriteria: SuccessCriterion[] = [
     isNew: false,
     description:
       "For each time limit that is set by the content, at least one of the following is true: Turn off, Adjust, Extend, Real-time Exception, Essential Exception, 20 Hour Exception.",
+    officialDefinition:
+      "For each time limit that is set by the content, at least one of the following is true: (Level A) Turn off: The user is allowed to turn off the time limit before encountering it; or Adjust: The user is allowed to adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting; or Extend: The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action (for example, 'press the space bar'), and the user is allowed to extend the time limit at least ten times; or Real-time Exception: The time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible; or Essential Exception: The time limit is essential and extending it would invalidate the activity; or 20 Hour Exception: The time limit is longer than 20 hours.",
     summary: "Users must be able to turn off, adjust, or extend time limits.",
+    detailedSummary:
+      "What This Means: This success criterion requires that any time limit set by content must allow users to either turn it off, adjust it (to at least 10x the default), or extend it (with at least 20 seconds warning and ability to extend at least 10 times). Exceptions exist for real-time events (like auctions), essential time limits (where extending would invalidate the activity), and time limits longer than 20 hours.\n\nWhy It's Important: Users with disabilities may need more time to read content, fill out forms, or complete tasks. Cognitive disabilities, motor disabilities, or low vision can all require additional time. If time limits cannot be controlled, these users are excluded from accessing the content or completing tasks.\n\nIn Practice: For session timeouts, provide warnings before expiration and allow users to extend. For form timeouts, allow users to adjust or extend the time limit. For timed tests or activities, provide options to turn off or adjust timing. Only use fixed time limits when they're essential to the function (like real-time events) or when the limit is longer than 20 hours.",
     whyItMatters: "Users with disabilities may need more time to read or interact with content.",
     whoBenefits: ["Users with cognitive disabilities", "Users with motor disabilities", "Users with low vision"],
     details: {
@@ -149,6 +153,63 @@ function SessionManager() {
         solution: "Provide controls to turn off or adjust time limits. Only keep essential time limits that cannot be changed, and clearly mark them as such.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Time Limit",
+        definition: "Any limit that is set by the content and that requires the user to perform an action within a specified period of time.",
+        context: "Time limits must be controllable by users unless they meet specific exception criteria.",
+      },
+      {
+        term: "Extend",
+        definition: "To increase the time limit, typically with a warning before expiration and a simple action to extend.",
+        context: "Users must be able to extend time limits at least 10 times, with at least 20 seconds warning.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.2.2",
+        title: "Pause, Stop, Hide",
+        relationship: "Complements",
+      },
+      {
+        number: "2.2.3",
+        title: "No Timing",
+        relationship: "Higher level requirement",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "JavaScript",
+        items: [
+          "Provide mechanism to turn off time limits",
+          "Allow users to adjust time limits (at least 10x default)",
+          "Show warnings before time expires (at least 20 seconds)",
+          "Allow users to extend time limits (at least 10 times)",
+          "Save work automatically to prevent data loss",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Identify all time limits in content",
+          "Provide user controls for time limits",
+          "Test that time limits can be controlled",
+          "Verify exceptions are valid (real-time, essential, 20+ hours)",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Timing Adjustable",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html",
+        type: "Understanding",
+      },
+      {
+        title: "G198: Providing a way for the user to turn the time limit off",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G198",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "2-2-2",
@@ -161,7 +222,11 @@ function SessionManager() {
     isNew: false,
     description:
       "For moving, blinking, scrolling, or auto-updating information, all of the following are true: Moving, blinking, scrolling: Can be paused, stopped, or hidden. Auto-updating: Can be paused, stopped, or hidden.",
+    officialDefinition:
+      "For moving, blinking, scrolling, or auto-updating information that (1) starts automatically, (2) lasts more than five seconds, and (3) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it unless the movement, blinking, or scrolling is part of an activity where it is essential; and for any auto-updating information that (1) starts automatically and (2) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it or to control the frequency of the update unless the auto-updating is part of an activity where it is essential.",
     summary: "Users must be able to pause, stop, or hide moving or auto-updating content.",
+    detailedSummary:
+      "What This Means: This success criterion requires that moving, blinking, scrolling, or auto-updating content that starts automatically and lasts more than 5 seconds must have controls to pause, stop, or hide it. This applies to carousels, news tickers, auto-updating feeds, animated banners, and similar content. The controls must be easy to find and use.\n\nWhy It's Important: Moving or blinking content can be distracting, especially for users with attention disorders or cognitive disabilities. It can also cause motion sickness or vestibular disorders for some users. Auto-updating content can be disruptive and make it difficult to read or interact with other content. By providing controls, users can manage their experience according to their needs.\n\nIn Practice: Add pause/play buttons to carousels and sliders. Provide stop controls for auto-updating content like news tickers or live feeds. Ensure controls are clearly visible and keyboard accessible. Content that lasts 5 seconds or less, or that is essential to the activity, is exempt from this requirement.",
     whyItMatters: "Moving content can be distracting or cause nausea for some users.",
     whoBenefits: ["Users with attention disorders", "Users with vestibular disorders"],
     details: {
@@ -292,6 +357,70 @@ function Carousel() {
         solution: "Provide controls to pause animations, or respect prefers-reduced-motion. Consider using static images with play buttons instead.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Moving, Blinking, Scrolling",
+        definition: "Content that changes position, flashes, or scrolls automatically, typically for more than 5 seconds.",
+        context: "Such content must have controls to pause, stop, or hide it unless it's essential to the activity.",
+      },
+      {
+        term: "Auto-updating",
+        definition: "Content that updates automatically without user interaction, such as live feeds, stock tickers, or news updates.",
+        context: "Auto-updating content must have controls to pause, stop, or hide it, or to control update frequency.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.2.1",
+        title: "Timing Adjustable",
+        relationship: "Complements",
+      },
+      {
+        number: "2.3.1",
+        title: "Three Flashes or Below Threshold",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add pause/play buttons to carousels and sliders",
+          "Add stop controls to scrolling content",
+          "Provide controls for auto-updating content",
+          "Ensure controls are keyboard accessible",
+          "Label controls clearly",
+        ],
+      },
+      {
+        category: "CSS",
+        items: [
+          "Respect prefers-reduced-motion media query",
+          "Allow animations to be paused",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Identify all moving/auto-updating content",
+          "Verify controls are present and functional",
+          "Test that content actually pauses/stops",
+          "Check controls are easy to find",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Pause, Stop, Hide",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+        type: "Understanding",
+      },
+      {
+        title: "G4: Allowing the content to be paused and restarted from where it was paused",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G4",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "2-2-3",
@@ -304,7 +433,11 @@ function Carousel() {
     isNew: false,
     description:
       "Timing is not an essential part of the event or activity presented by the content, except for non-interactive synchronized media and real-time events.",
+    officialDefinition:
+      "Timing is not an essential part of the event or activity presented by the content, except for non-interactive synchronized media and real-time events.",
     summary: "No time limits on content interaction.",
+    detailedSummary:
+      "What This Means: This success criterion is a stricter version of 2.2.1 (Level A). At Level AAA, no time limits should be imposed on user interactions, except for non-interactive synchronized media (like videos that play automatically) and real-time events (like auctions or live games where timing is essential). Users must be able to take as long as they need to read, understand, and interact with content.\n\nWhy It's Important: Time limits create pressure and can prevent users with disabilities from completing tasks. Users with cognitive disabilities may need more time to process information. Users with motor disabilities may need more time to interact. By removing time limits entirely (except where essential), we ensure that all users can complete tasks at their own pace without pressure.\n\nIn Practice: Remove all time limits from forms, reading content, and interactive activities. Allow users to take as long as needed. Only keep time limits for real-time events (like auctions) or non-interactive media (like videos). For session management, use very long timeouts (20+ hours) or provide clear warnings with easy extension options.",
     whyItMatters: "Removes pressure and ensures all users can complete tasks at their own pace.",
     whoBenefits: ["Users with cognitive disabilities", "Users with motor disabilities"],
     details: {
@@ -416,6 +549,44 @@ function Form() {
         solution: "Remove time limits on reading or viewing content. Users should be able to take as long as needed.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Non-interactive Synchronized Media",
+        definition: "Time-based media that does not require user interaction, such as automatically playing videos.",
+        context: "Time limits for non-interactive synchronized media are acceptable exceptions.",
+      },
+      {
+        term: "Real-time Events",
+        definition: "Events where timing is essential to the activity, such as auctions, live games, or real-time competitions.",
+        context: "Time limits for real-time events are acceptable exceptions.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.2.1",
+        title: "Timing Adjustable",
+        relationship: "Stricter version",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "General",
+        items: [
+          "Remove all time limits from user interactions",
+          "Allow users to take as long as needed",
+          "Save progress automatically",
+          "Only keep time limits for real-time events or non-interactive media",
+          "Test that users can complete tasks without time pressure",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding No Timing",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/no-timing.html",
+        type: "Understanding",
+      },
+    ],
   },
   {
     id: "2-2-4",
@@ -428,7 +599,11 @@ function Form() {
     isNew: false,
     description:
       "Interruptions can be postponed or suppressed by the user, except interruptions involving an emergency.",
+    officialDefinition:
+      "Interruptions can be postponed or suppressed by the user, except interruptions involving an emergency.",
     summary: "Users can postpone or suppress interruptions (like alerts).",
+    detailedSummary:
+      "What This Means: This success criterion requires that interruptions like alerts, notifications, updates, or other content that appears automatically must be able to be postponed or suppressed by users. This allows users to control when they receive interruptions, helping them stay focused on their current task. Only emergency interruptions (like critical security alerts) are exempt.\n\nWhy It's Important: Users with attention disorders or cognitive disabilities can be easily distracted by interruptions. Unexpected alerts or notifications can disrupt their focus and make it difficult to complete tasks. By allowing users to postpone or suppress interruptions, we give them control over their experience and help them maintain focus.\n\nIn Practice: Provide controls to postpone or suppress alerts and notifications. Allow users to set preferences for when they receive interruptions. Provide 'Do not disturb' modes or quiet hours. Only show emergency interruptions immediately, and clearly mark them as emergencies. For non-emergency interruptions, provide options to 'Remind me later' or 'Dismiss'.",
     whyItMatters: "Helps users with attention disorders stay focused.",
     whoBenefits: ["Users with attention disorders", "Users with cognitive disabilities"],
     details: {
@@ -556,6 +731,52 @@ function NotificationSettings() {
         solution: "Make interruption controls prominent and easy to access. Provide clear labels and keyboard accessibility.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Interruptions",
+        definition: "Content that appears automatically and disrupts the user's current activity, such as alerts, notifications, or updates.",
+        context: "Interruptions must be able to be postponed or suppressed by users, except for emergencies.",
+      },
+      {
+        term: "Emergency",
+        definition: "A situation that poses an immediate risk to health, safety, property, or environment.",
+        context: "Emergency interruptions are exempt from the requirement to be postponable or suppressible.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.2.2",
+        title: "Pause, Stop, Hide",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add postpone/dismiss buttons to interruptions",
+          "Provide settings to suppress interruptions",
+          "Ensure controls are keyboard accessible",
+          "Label controls clearly",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Identify all automatic interruptions",
+          "Provide controls to postpone or suppress",
+          "Test that interruptions can be controlled",
+          "Verify settings persist across sessions",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Interruptions",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/interruptions.html",
+        type: "Understanding",
+      },
+    ],
   },
   {
     id: "2-2-5",
@@ -568,7 +789,11 @@ function NotificationSettings() {
     isNew: false,
     description:
       "When an authenticated session expires, the user can continue the activity without loss of data after re-authenticating.",
+    officialDefinition:
+      "When an authenticated session expires, the user can continue the activity without loss of data after re-authenticating.",
     summary: "If a session expires, users can log back in and continue where they left off without losing data.",
+    detailedSummary:
+      "What This Means: This success criterion requires that when a user's authenticated session expires (times out), they must be able to re-authenticate (log back in) and continue their work without losing any data they had entered. All form data, progress, and work must be preserved and restored after re-authentication.\n\nWhy It's Important: Users with disabilities may take longer to complete tasks, making them more likely to encounter session timeouts. If data is lost when a session expires, these users lose their work and must start over, which is frustrating and may prevent them from completing tasks. By preserving data across session expiration, we ensure users don't lose their progress.\n\nIn Practice: Save all user input and progress automatically, either to the server or local storage. When a session expires, show a clear message and allow re-authentication. After re-authentication, restore all saved data so users can continue exactly where they left off. Test by letting a session expire and verifying that all data is preserved and restored after logging back in.",
     whyItMatters: "Prevents data loss for users who take longer to complete tasks.",
     whoBenefits: ["All users", "Users with motor disabilities", "Users with cognitive disabilities"],
     details: {
@@ -706,6 +931,57 @@ function FormWithAutoSave() {
         solution: "Auto-save data as users type. Restore all data automatically after re-authentication. Provide clear messaging about data preservation.",
       },
     ],
+    keyTerms: [
+      {
+        term: "Authenticated Session",
+        definition: "A period during which a user is logged in and authenticated to access protected content or functionality.",
+        context: "When authenticated sessions expire, users must be able to re-authenticate without losing data.",
+      },
+      {
+        term: "Re-authenticating",
+        definition: "The process of logging back in after a session has expired.",
+        context: "Users must be able to re-authenticate and continue their work without data loss.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.2.1",
+        title: "Timing Adjustable",
+        relationship: "Complements",
+      },
+      {
+        number: "2.2.6",
+        title: "Timeouts",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "JavaScript",
+        items: [
+          "Implement auto-save functionality for all user input",
+          "Save data to localStorage or server-side storage",
+          "Restore data after re-authentication",
+          "Preserve form state and progress",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test session expiration scenarios",
+          "Verify all data is preserved",
+          "Test re-authentication flow",
+          "Ensure users can continue where they left off",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Re-authenticating",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/re-authenticating.html",
+        type: "Understanding",
+      },
+    ],
   },
   {
     id: "2-2-6",
@@ -718,7 +994,11 @@ function FormWithAutoSave() {
     isNew: false,
     description:
       "Users are warned of the duration of any user inactivity that could cause data loss, unless the data is preserved for more than 20 hours when the user does not take any actions.",
+    officialDefinition:
+      "Users are warned of the duration of any user inactivity that could cause data loss, unless the data is preserved for more than 20 hours when the user does not take any actions.",
     summary: "Warn users about timeouts to prevent data loss.",
+    detailedSummary:
+      "What This Means: This success criterion requires that users must be warned about inactivity timeouts that could cause data loss. The warning should inform users how long they have before the timeout occurs. This allows users to take action to prevent data loss. If data is preserved for more than 20 hours of inactivity, warnings are not required.\n\nWhy It's Important: Users with cognitive disabilities or attention disorders may need to take breaks or may become distracted. Without warnings about upcoming timeouts, they may lose their work unexpectedly. By providing clear warnings, users can save their work, extend their session, or take other actions to prevent data loss.\n\nIn Practice: Show warnings before inactivity timeouts occur. Provide clear information about how much time remains and what will happen if the timeout occurs. Allow users to extend the session or save their work. Warnings should be prominent and easy to understand. If data is automatically preserved for more than 20 hours, warnings are not needed.",
     whyItMatters: "Helps users manage their time and avoid losing work.",
     whoBenefits: ["Users with cognitive disabilities", "Users with attention disorders"],
     details: {
@@ -852,6 +1132,58 @@ function TimeoutWarning({ onExtend, onSave }) {
       {
         failure: "Timeout warnings appear too late or are unclear.",
         solution: "Show warnings well in advance (at least 20 seconds). Use clear, actionable language. Provide prominent buttons to extend the session.",
+      },
+    ],
+    keyTerms: [
+      {
+        term: "User Inactivity",
+        definition: "A period during which the user does not interact with the content, such as not moving the mouse, typing, or clicking.",
+        context: "Users must be warned about inactivity timeouts that could cause data loss.",
+      },
+      {
+        term: "Timeout",
+        definition: "An automatic termination of a session or activity after a period of inactivity.",
+        context: "Timeouts that could cause data loss must be preceded by warnings to users.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "2.2.1",
+        title: "Timing Adjustable",
+        relationship: "Complements",
+      },
+      {
+        number: "2.2.5",
+        title: "Re-authenticating",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "JavaScript",
+        items: [
+          "Show warnings before inactivity timeouts",
+          "Display countdown timer showing time remaining",
+          "Allow users to extend session from warning",
+          "Auto-save data before timeout",
+          "Provide clear messaging about timeout consequences",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test timeout warning functionality",
+          "Verify warnings appear with sufficient time",
+          "Check that users can extend sessions",
+          "Verify warnings are accessible",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Timeouts",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/timeouts.html",
+        type: "Understanding",
       },
     ],
   },

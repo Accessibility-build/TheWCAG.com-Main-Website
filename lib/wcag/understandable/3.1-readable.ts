@@ -130,6 +130,66 @@ function Layout({ language = 'en' }) {
         solution: "Ensure lang attribute matches the primary language of the page content. Update it if content language changes.",
       },
     ],
+    officialDefinition:
+      "The default human language of each Web page can be programmatically determined.",
+    detailedSummary:
+      "What This Means: This success criterion requires that the default human language of each web page is programmatically identified. This is typically done using the lang attribute on the <html> element. The language code should match the primary language of the page content.\n\nWhy It's Important: Screen readers and other assistive technologies need to know the language of the content to use the correct pronunciation rules and language-specific features. Without the lang attribute, screen readers may mispronounce words or use incorrect language rules, making content difficult or impossible to understand for users who rely on audio output.\n\nIn Practice: Add the lang attribute to the <html> element with a valid language code (ISO 639-1 or BCP 47). For example, <html lang='en'> for English, <html lang='es'> for Spanish, or <html lang='fr'> for French. Use more specific codes when appropriate (e.g., 'en-US' for American English vs 'en-GB' for British English). The lang attribute must be present on every page and must match the primary language of the content.",
+    keyTerms: [
+      {
+        term: "Default Human Language",
+        definition: "The primary language in which the content of a web page is written.",
+        context: "The default language must be programmatically determinable through the lang attribute.",
+      },
+      {
+        term: "Programmatically Determined",
+        definition: "Determined by software from author-supplied data provided in a way that different user agents, including assistive technologies, can extract and present this information to users.",
+        context: "The language must be identifiable by assistive technologies through the lang attribute.",
+      },
+      {
+        term: "Language Code",
+        definition: "A code that identifies a human language, typically using ISO 639-1 or BCP 47 standards.",
+        context: "Valid language codes must be used in the lang attribute (e.g., 'en', 'es', 'fr').",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.1.2",
+        title: "Language of Parts",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add lang attribute to <html> element",
+          "Use valid language codes (ISO 639-1 or BCP 47)",
+          "Ensure lang matches page's primary language",
+          "Set lang on all pages",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Verify lang attribute is present",
+          "Test with screen readers",
+          "Check language code validity",
+          "Ensure consistency across pages",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Language of Page",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html",
+        type: "Understanding",
+      },
+      {
+        title: "H57: Using the language attribute on the HTML element",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H57",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "3-1-2",
@@ -261,6 +321,66 @@ function Quote({ text, language }) {
         solution: "Use correct language codes. Verify codes match the actual language of the text.",
       },
     ],
+    officialDefinition:
+      "The human language of each passage or phrase in the content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediate surrounding text.",
+    detailedSummary:
+      "What This Means: This success criterion requires that any text in a different language from the page's default language be marked up with the appropriate language attribute. This allows screen readers to switch to the correct language pronunciation when encountering foreign text. Proper names, technical terms, words of indeterminate language, and words that have become part of the vernacular are exempt.\n\nWhy It's Important: When content contains text in multiple languages, screen readers need to know which parts are in which language to pronounce them correctly. Without proper language markup, a screen reader might pronounce French text using English pronunciation rules, or Spanish text using French rules, making it incomprehensible to users.\n\nIn Practice: Use the lang attribute on elements containing text in a different language. For inline text, use <span lang='fr'> for French, <span lang='es'> for Spanish, etc. For block-level content, add lang to container elements like <div lang='fr'>. The lang attribute should match the actual language of the text, not just the page default.",
+    keyTerms: [
+      {
+        term: "Language of Parts",
+        definition: "The human language of specific passages or phrases within content that differ from the default page language.",
+        context: "Language changes within a page must be programmatically determinable through lang attributes.",
+      },
+      {
+        term: "Proper Names",
+        definition: "Names of people, places, organizations, or other entities that are exempt from language markup requirements.",
+        context: "Proper names don't require lang attributes even if they're from a different language.",
+      },
+      {
+        term: "Vernacular",
+        definition: "Words or phrases that have become part of the everyday language of the surrounding text.",
+        context: "Words that have been adopted into the local language don't require separate language markup.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.1.1",
+        title: "Language of Page",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add lang attribute to foreign text elements",
+          "Use <span lang='xx'> for inline language changes",
+          "Use lang on container elements for block-level changes",
+          "Ensure language codes are correct",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Identify all text in languages other than page default",
+          "Mark up language changes appropriately",
+          "Test with screen readers",
+          "Verify correct pronunciation",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Language of Parts",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html",
+        type: "Understanding",
+      },
+      {
+        title: "H58: Using language attributes to identify changes in the human language",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H58",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "3-1-3",
@@ -385,6 +505,74 @@ function TermWithTooltip({ term, definition }) {
         solution: "Make definitions easily accessible. Use visible tooltips, inline explanations, or clearly labeled glossary links.",
       },
     ],
+    officialDefinition:
+      "A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon.",
+    detailedSummary:
+      "What This Means: This success criterion requires that words or phrases used in unusual or restricted ways (including idioms, jargon, and technical terms) have definitions or explanations available. Users should be able to access these definitions to understand the content.\n\nWhy It's Important: Users with cognitive disabilities, non-native speakers, and those unfamiliar with specialized terminology may struggle to understand content that uses unusual words, idioms, or jargon. Providing definitions helps ensure that all users can understand the content, regardless of their background or cognitive abilities.\n\nIn Practice: Use <dfn> elements for defined terms, <abbr> elements with title attributes for abbreviations, tooltips for inline definitions, or links to glossaries. Provide definitions on first use of unusual terms. Idioms should be explained or rephrased in plain language. Technical terms should have clear explanations accessible to users.",
+    keyTerms: [
+      {
+        term: "Unusual Words",
+        definition: "Words or phrases used in a restricted or specialized way that may not be familiar to all users.",
+        context: "Unusual words must have definitions or explanations available to help users understand them.",
+      },
+      {
+        term: "Idioms",
+        definition: "Expressions whose meanings cannot be understood from the individual words (e.g., 'hit the nail on the head').",
+        context: "Idioms should be explained or rephrased in plain language for clarity.",
+      },
+      {
+        term: "Jargon",
+        definition: "Specialized terminology used within a particular field or profession.",
+        context: "Jargon should be explained or defined to ensure all users can understand the content.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.1.4",
+        title: "Abbreviations",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Use <dfn> elements for defined terms",
+          "Use <abbr> with title for abbreviations",
+          "Provide tooltips for technical terms",
+          "Link to glossary when appropriate",
+        ],
+      },
+      {
+        category: "Content",
+        items: [
+          "Identify unusual words and idioms",
+          "Provide definitions on first use",
+          "Explain technical terms clearly",
+          "Rephrase idioms in plain language",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test definitions are accessible",
+          "Verify definitions are clear",
+          "Check with users if possible",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Unusual Words",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/unusual-words.html",
+        type: "Understanding",
+      },
+      {
+        title: "G101: Providing the definition of a word or phrase used in an unusual or restricted way",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G101",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "3-1-4",
@@ -503,6 +691,69 @@ function Content() {
       {
         failure: "Inconsistent abbreviation markup.",
         solution: "Use consistent markup for all abbreviations. Establish a pattern and follow it throughout the site.",
+      },
+    ],
+    officialDefinition:
+      "A mechanism for identifying the expanded form or meaning of abbreviations is available.",
+    detailedSummary:
+      "What This Means: This success criterion requires that abbreviations have their expanded forms or meanings available to users. This is typically done using the <abbr> element with a title attribute containing the full expansion, or by expanding the abbreviation inline on first use.\n\nWhy It's Important: Abbreviations can be confusing for users who are unfamiliar with them, including non-native speakers and users with cognitive disabilities. Providing expanded forms helps ensure that all users can understand the content. Screen readers can announce the expanded form when the abbreviation is marked up properly.\n\nIn Practice: Use <abbr title='Full Expanded Form'>ABBR</abbr> to mark abbreviations. Expand abbreviations inline on first use (e.g., 'Frequently Asked Questions (FAQ)'). The title attribute provides the expansion for screen readers and tooltips. Common abbreviations that are widely understood (like 'etc.', 'i.e.') may not require expansion, but it's still good practice to provide it.",
+    keyTerms: [
+      {
+        term: "Abbreviation",
+        definition: "A shortened form of a word, phrase, or name.",
+        context: "Abbreviations must have expanded forms available to help users understand them.",
+      },
+      {
+        term: "Expanded Form",
+        definition: "The full form of an abbreviation (e.g., 'FAQ' expands to 'Frequently Asked Questions').",
+        context: "Expanded forms should be provided through <abbr> elements with title attributes or inline expansion.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.1.3",
+        title: "Unusual Words",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Use <abbr> elements for abbreviations",
+          "Include title attribute with expanded form",
+          "Expand abbreviations on first use",
+          "Mark abbreviations consistently",
+        ],
+      },
+      {
+        category: "Content",
+        items: [
+          "Identify all abbreviations",
+          "Provide expanded forms",
+          "Expand on first use",
+          "Consider glossary entries",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test with screen readers",
+          "Verify expanded forms are announced",
+          "Check consistency of markup",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Abbreviations",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/abbreviations.html",
+        type: "Understanding",
+      },
+      {
+        title: "H28: Providing definitions for abbreviations by using the abbr element",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/html/H28",
+        type: "Techniques",
       },
     ],
   },
@@ -630,6 +881,67 @@ function SimpleContent() {
         solution: "Use plain language. Choose simple, common words over complex ones. Break long sentences into shorter ones.",
       },
     ],
+    officialDefinition:
+      "When text requires reading ability more advanced than the lower secondary education level after removal of proper names and titles, supplemental content, or a version that does not require reading ability more advanced than the lower secondary education level, is available.",
+    detailedSummary:
+      "What This Means: This success criterion requires that text is written at a reading level no higher than lower secondary education (approximately 7th-9th grade), OR that a simplified version is provided that meets this requirement. The simplified version must contain the same essential information as the original.\n\nWhy It's Important: Complex text with advanced vocabulary and sentence structures can be difficult or impossible for users with reading disabilities, lower literacy levels, or cognitive disabilities to understand. By writing at an appropriate reading level or providing simplified versions, content becomes accessible to a wider audience.\n\nIn Practice: Write using plain language principles: short sentences, common words, clear structure. Use reading level analysis tools to check complexity. If content must be complex, provide a clearly accessible simplified version. The simplified version should be easy to find and contain all essential information. Proper names, titles, and technical terms are exempt from reading level calculations.",
+    keyTerms: [
+      {
+        term: "Lower Secondary Education Level",
+        definition: "Approximately 7th to 9th grade reading level, typically ages 12-15.",
+        context: "Text should be written at this reading level or a simplified version should be provided.",
+      },
+      {
+        term: "Reading Ability",
+        definition: "The level of reading skill required to understand text, measured by factors like sentence length, vocabulary complexity, and sentence structure.",
+        context: "Reading ability requirements should not exceed lower secondary education level.",
+      },
+      {
+        term: "Simplified Version",
+        definition: "An alternative version of content written at a lower reading level that contains the same essential information.",
+        context: "Simplified versions must be easily accessible and contain all essential information from the original.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.1.3",
+        title: "Unusual Words",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "Content",
+        items: [
+          "Write at appropriate reading level",
+          "Use plain language",
+          "Keep sentences short and clear",
+          "Use common vocabulary",
+          "Provide simplified versions when needed",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test reading level with analysis tools",
+          "Verify simplified versions are accessible",
+          "Ensure simplified versions contain essential information",
+          "Test with users if possible",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Reading Level",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html",
+        type: "Understanding",
+      },
+      {
+        title: "G103: Providing visual illustrations, pictures, and symbols to help explain ideas, events, and processes",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G103",
+        type: "Techniques",
+      },
+    ],
   },
   {
     id: "3-1-6",
@@ -748,6 +1060,72 @@ function Content() {
       {
         failure: "Inconsistent or unclear pronunciation notation.",
         solution: "Use standard notation consistently. Consider using phonetic spelling (DEZ-ert) or IPA notation (/ˈdezərt/).",
+      },
+    ],
+    officialDefinition:
+      "A mechanism is available for identifying specific pronunciation of words where meaning of the words, in context, is ambiguous without knowing the pronunciation.",
+    detailedSummary:
+      "What This Means: This success criterion requires that words with ambiguous pronunciation (words that can be pronounced differently with different meanings, like 'desert' vs 'desert', 'record' vs 'record') have pronunciation guidance available. This helps screen readers pronounce them correctly and prevents misunderstanding.\n\nWhy It's Important: Screen readers may mispronounce words with multiple possible pronunciations, which can change the meaning and make content confusing or incorrect. For example, 'I live in the desert' could be misunderstood if 'desert' is pronounced as 'de-ZERT' (to abandon) instead of 'DEZ-ert' (dry area). Providing pronunciation guidance ensures screen readers pronounce words correctly.\n\nIn Practice: Use title attributes, phonetic spelling, or IPA (International Phonetic Alphabet) notation to provide pronunciation. For example: <span title='pronounced: DEZ-ert'>desert</span> or using IPA: <span title='IPA: /ˈdezərt/'>desert</span>. Only words where meaning is ambiguous without pronunciation need guidance. Common words with clear pronunciation don't require it.",
+    keyTerms: [
+      {
+        term: "Pronunciation",
+        definition: "The way in which a word is spoken or pronounced.",
+        context: "Pronunciation guidance must be provided for words where meaning depends on pronunciation.",
+      },
+      {
+        term: "Ambiguous Pronunciation",
+        definition: "Words that can be pronounced in multiple ways with different meanings (e.g., 'desert' can mean to abandon or a dry area).",
+        context: "Only words with ambiguous pronunciation require pronunciation guidance.",
+      },
+      {
+        term: "Phonetic Spelling",
+        definition: "A way of representing pronunciation using familiar letters and symbols (e.g., 'DEZ-ert' for desert).",
+        context: "Phonetic spelling can be used to provide pronunciation guidance in an accessible way.",
+      },
+    ],
+    relatedCriteria: [
+      {
+        number: "3.1.1",
+        title: "Language of Page",
+        relationship: "Related to",
+      },
+    ],
+    implementationChecklist: [
+      {
+        category: "HTML",
+        items: [
+          "Add title attributes with pronunciation",
+          "Use phonetic spelling or IPA notation",
+          "Ensure pronunciation is accessible",
+        ],
+      },
+      {
+        category: "Content",
+        items: [
+          "Identify ambiguous words",
+          "Provide pronunciation guidance",
+          "Use consistent notation",
+        ],
+      },
+      {
+        category: "General",
+        items: [
+          "Test with screen readers",
+          "Verify pronunciation is announced",
+          "Check notation consistency",
+        ],
+      },
+    ],
+    officialResources: [
+      {
+        title: "Understanding Pronunciation",
+        url: "https://www.w3.org/WAI/WCAG22/Understanding/pronunciation.html",
+        type: "Understanding",
+      },
+      {
+        title: "G102: Providing the expansion or explanation of an abbreviation",
+        url: "https://www.w3.org/WAI/WCAG22/Techniques/general/G102",
+        type: "Techniques",
       },
     ],
   },

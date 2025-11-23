@@ -8,10 +8,12 @@ interface ExampleComponentSectionProps {
 
 async function loadExampleComponent(componentName: string) {
   try {
+    // Dynamic import with error handling - component may not exist
     const Component = await import(`@/components/criteria-examples/${componentName}`)
     return Component.default || Component[componentName]
   } catch (error) {
-    console.warn(`Example component ${componentName} not found`)
+    // Component doesn't exist - this is expected for most criteria
+    // Silently return null - the section won't render if component is null
     return null
   }
 }
