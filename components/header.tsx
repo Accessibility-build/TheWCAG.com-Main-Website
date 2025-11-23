@@ -10,11 +10,18 @@ import * as Dialog from "@radix-ui/react-dialog"
 import { LogoText } from "@/components/logo"
 import { cn } from "@/lib/utils"
 import { HamburgerIcon } from "@/components/hamburger-icon"
+import { searchCriteria } from "@/lib/search"
+import { SearchResults } from "@/components/search-results"
 
 export function Header() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [searchResults, setSearchResults] = useState<ReturnType<typeof searchCriteria>>([])
+  const [showResults, setShowResults] = useState(false)
+  const searchInputRef = useRef<HTMLInputElement>(null)
+  const searchContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +30,53 @@ export function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Handle search query changes
+  useEffect(() => {
+    if (searchQuery.trim().length > 0) {
+      const results = searchCriteria(searchQuery)
+      setSearchResults(results)
+      setShowResults(true)
+    } else {
+      setSearchResults([])
+      setShowResults(false)
+    }
+  }, [searchQuery])
+
+  // Close search results when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setShowResults(false)
+      }
+    }
+
+    if (showResults) {
+      document.addEventListener("mousedown", handleClickOutside)
+      return () => document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [showResults])
+
+  // Handle keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd/Ctrl + K to open search
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault()
+        setSearchOpen(true)
+        setTimeout(() => searchInputRef.current?.focus(), 100)
+      }
+      // Escape to close search
+      if (e.key === "Escape" && searchOpen) {
+        setSearchOpen(false)
+        setSearchQuery("")
+        setShowResults(false)
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [searchOpen])
 
   // Main navigation links - only the most important ones
   const navLinks = [
@@ -399,29 +453,80 @@ export function Header() {
         <div className="flex items-center gap-1 sm:gap-2">
           {/* Desktop Search - Inline expansion */}
           <div
+            ref={searchContainerRef}
             className={cn(
-              "hidden lg:flex items-center overflow-hidden transition-all duration-300 ease-in-out",
-              searchOpen ? "w-48 sm:w-64 opacity-100 mr-2" : "w-0 opacity-0",
+              "hidden lg:block relative transition-all duration-300 ease-in-out",
+              searchOpen ? "w-64 opacity-100 mr-2" : "w-0 opacity-0 overflow-hidden",
             )}
           >
             <div className="relative w-full">
-              <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" aria-hidden="true" />
               <Input
+                ref={searchInputRef}
                 type="search"
-                placeholder="Search..."
-                className="h-9 w-full pl-9 text-sm rounded-full bg-secondary/10 border-transparent focus-visible:bg-background focus-visible:border-primary/20"
+                placeholder="Search criteria (e.g. 1.4.3)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => {
+                  if (searchQuery.trim().length > 0) {
+                    setShowResults(true)
+                  }
+                }}
+                className="h-9 w-full pl-9 pr-9 text-sm rounded-full bg-secondary/10 border-transparent focus-visible:bg-background focus-visible:border-primary/20 transition-all"
                 autoFocus={searchOpen}
-                onBlur={() => !searchOpen && setSearchOpen(false)}
+                aria-label="Search WCAG criteria"
+                aria-expanded={showResults}
+                aria-haspopup="listbox"
+                aria-autocomplete="list"
               />
+              {searchQuery && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => {
+                    setSearchQuery("")
+                    setShowResults(false)
+                    searchInputRef.current?.focus()
+                  }}
+                  aria-label="Clear search"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 rounded-full hover:bg-secondary/20"
+                >
+                  <X className="h-3 w-3" />
+                </Button>
+              )}
             </div>
+            {/* Search Results Dropdown */}
+            {showResults && searchResults.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-lg shadow-lg z-50 max-h-[400px] overflow-hidden">
+                <SearchResults
+                  results={searchResults}
+                  query={searchQuery}
+                  onSelect={() => {
+                    setSearchOpen(false)
+                    setShowResults(false)
+                    setSearchQuery("")
+                  }}
+                />
+              </div>
+            )}
           </div>
 
           {/* Search Button */}
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setSearchOpen(!searchOpen)}
+            onClick={() => {
+              setSearchOpen(!searchOpen)
+              if (!searchOpen) {
+                setTimeout(() => searchInputRef.current?.focus(), 100)
+              } else {
+                setSearchQuery("")
+                setShowResults(false)
+              }
+            }}
             aria-label="Toggle search"
+            aria-expanded={searchOpen}
             className="rounded-full hover:bg-secondary/10 h-9 w-9 sm:h-10 sm:w-10"
           >
             <Search className="h-4 w-4 sm:h-5 sm:w-5 text-foreground transition-colors" />
@@ -445,13 +550,41 @@ export function Header() {
                     <LogoText />
                   </div>
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" aria-hidden="true" />
                     <Input
                       type="search"
                       placeholder="Search WCAG criteria..."
-                      className="pl-10 h-12 text-base rounded-xl bg-secondary/10 border-transparent"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-10 pr-10 h-12 text-base rounded-xl bg-secondary/10 border-transparent"
+                      aria-label="Search WCAG criteria"
                     />
+                    {searchQuery && (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setSearchQuery("")}
+                        aria-label="Clear search"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full hover:bg-secondary/20"
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    )}
                   </div>
+                  {/* Mobile Search Results */}
+                  {searchQuery.trim().length > 0 && (
+                    <div className="mt-4 max-h-[300px] overflow-y-auto">
+                      <SearchResults
+                        results={searchCriteria(searchQuery)}
+                        query={searchQuery}
+                        onSelect={() => {
+                          setMobileMenuOpen(false)
+                          setSearchQuery("")
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
                 <nav className="flex-1 overflow-y-auto p-6">
                   <ul className="flex flex-col gap-2">
@@ -546,17 +679,29 @@ export function Header() {
       </div>
 
       {/* Mobile Search Dialog */}
-      <Dialog.Root open={searchOpen} onOpenChange={setSearchOpen}>
+      <Dialog.Root open={searchOpen} onOpenChange={(open) => {
+        setSearchOpen(open)
+        if (!open) {
+          setSearchQuery("")
+          setShowResults(false)
+        }
+      }}>
         <Dialog.Portal>
           <Dialog.Overlay className="lg:hidden fixed inset-0 bg-black/50 z-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-          <Dialog.Content className="lg:hidden fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] rounded-xl mx-4">
+          <Dialog.Content className="lg:hidden fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] rounded-xl mx-4 max-h-[80vh] overflow-hidden flex flex-col">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" aria-hidden="true" />
               <Input
                 type="search"
                 placeholder="Search WCAG criteria..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="h-12 w-full pl-12 pr-12 text-base rounded-xl bg-secondary/10 border-border focus-visible:bg-background focus-visible:border-primary/20"
                 autoFocus
+                aria-label="Search WCAG criteria"
+                aria-expanded={showResults}
+                aria-haspopup="listbox"
+                aria-autocomplete="list"
               />
               <Dialog.Close asChild>
                 <Button
@@ -569,6 +714,20 @@ export function Header() {
                 </Button>
               </Dialog.Close>
             </div>
+            {/* Mobile Search Results */}
+            {searchQuery.trim().length > 0 && (
+              <div className="mt-4 flex-1 overflow-y-auto min-h-0">
+                <SearchResults
+                  results={searchCriteria(searchQuery)}
+                  query={searchQuery}
+                  onSelect={() => {
+                    setSearchOpen(false)
+                    setSearchQuery("")
+                    setShowResults(false)
+                  }}
+                />
+              </div>
+            )}
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

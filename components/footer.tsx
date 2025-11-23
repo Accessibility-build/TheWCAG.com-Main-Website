@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight, Github, Twitter, Linkedin } from "lucide-react"
+import { NewsletterSubscription } from "@/components/newsletter-subscription"
 
 export function Footer() {
   return (
@@ -131,6 +132,14 @@ export function Footer() {
             </div>
 
             <div className="space-y-6 md:space-y-8">
+              <div>
+                <h3 className="text-base md:text-lg font-medium mb-4 md:mb-6 text-primary">Newsletter</h3>
+                <p className="text-sm text-background/70 mb-4 leading-relaxed">
+                  Stay updated with the latest accessibility insights and WCAG updates.
+                </p>
+                <NewsletterSubscription variant="footer" />
+              </div>
+
               <div>
                 <h3 className="text-base md:text-lg font-medium mb-4 md:mb-6 text-primary">Compliance Goal</h3>
                 <div className="bg-background/10 p-5 md:p-6 rounded-2xl backdrop-blur-sm border border-background/10">

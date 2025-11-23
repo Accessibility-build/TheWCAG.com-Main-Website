@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { HeroSearch } from "@/components/hero-search"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { StructuredData } from "@/components/structured-data"
+import { NewsletterSubscription } from "@/components/newsletter-subscription"
 import {
   Search,
   Eye,
@@ -414,6 +415,30 @@ export default function HomePage() {
                   <Button size="lg" variant="outline" asChild>
                     <Link href="/checklist">View Checklist</Link>
                   </Button>
+                </div>
+              </ScrollAnimation>
+            </div>
+          </section>
+
+          {/* Newsletter Section */}
+          <section className="border-t bg-muted/30">
+            <div className="container py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+              <ScrollAnimation>
+                <div className="max-w-2xl mx-auto">
+                  <div className="text-center mb-8">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
+                      Stay Updated with Accessibility Insights
+                    </h2>
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                      Subscribe to our newsletter for the latest WCAG updates, accessibility best practices, and practical tips delivered to your inbox.
+                    </p>
+                  </div>
+                  <div className="bg-card border rounded-xl p-6 sm:p-8 shadow-sm">
+                    <NewsletterSubscription variant="default" />
+                  </div>
+                  <p className="text-xs sm:text-sm text-muted-foreground text-center mt-4">
+                    We respect your privacy. Unsubscribe at any time.
+                  </p>
                 </div>
               </ScrollAnimation>
             </div>
