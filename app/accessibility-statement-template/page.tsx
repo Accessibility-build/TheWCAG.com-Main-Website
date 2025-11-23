@@ -10,12 +10,10 @@ import {
   CheckCircle2,
   AlertCircle,
   Shield,
-  ArrowRight,
   BookOpen,
-  Code,
-  Info,
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
+import { TemplateDisplay } from "@/components/accessibility-statement-template-display"
 
 export default function AccessibilityStatementTemplatePage() {
   const structuredData = {
@@ -151,20 +149,18 @@ This statement was created on [Date] and last updated on [Date].`
             </Card>
 
             <section className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Free Template</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Free Template</h2>
               <Card>
                 <CardHeader>
+                  <div className="flex items-center justify-between">
                     <CardTitle>Accessibility Statement Template</CardTitle>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Use the copy button to copy the entire template, then customize it with your organization's information.
+                  </p>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
-                  <pre className="bg-muted p-6 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
-                    <code>{template}</code>
-                  </pre>
-                    <p className="text-sm text-muted-foreground">
-                      Select and copy the template above, then customize it with your organization's information.
-                    </p>
-                  </div>
+                  <TemplateDisplay template={template} />
                 </CardContent>
               </Card>
             </section>
