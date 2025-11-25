@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
 import { successCriteria } from '@/lib/wcag-data'
 import { getAllLawsuits } from '@/lib/lawsuits-data'
+import { getPublishedBlogPosts } from '@/lib/blog/storage'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://thewcag.com'
   
   // Content update dates
@@ -386,6 +387,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...principlePages, ...criteriaPages, ...lawsuitPages]
+  // Blog pages
+  const blogPosts = await getPublishedBlogPosts()
+  const blogPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: recentUpdate,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
+  ]
+
+  return [...staticPages, ...principlePages, ...criteriaPages, ...lawsuitPages, ...blogPages]
 }
 
