@@ -120,19 +120,13 @@ export default function AccessibilityRemediationServicePage() {
             />
 
             {/* Hero Section */}
-            <div className="mb-12 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 text-green-600 border border-green-500/20 mb-6 text-sm font-medium">
-                <Wrench className="w-4 h-4" />
-                Service: Accessibility Remediation
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <Wrench className="h-8 w-8 text-primary" aria-hidden="true" />
+                <h1 className="text-4xl md:text-5xl font-bold">Accessibility Remediation Service</h1>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
-                Accessibility Remediation Service
-              </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-                We fix what's broken. Let us clean up your accessibility mess and make your site actually usable by humans.
-                <span className="block mt-2 font-semibold text-foreground">
-                  No more excuses, just working code.
-                </span>
+              <p className="text-lg text-muted-foreground max-w-3xl mb-6">
+                We fix what's broken. Let us clean up your accessibility mess and make your site actually usable by humans. No more excuses, just working code.
               </p>
             </div>
 

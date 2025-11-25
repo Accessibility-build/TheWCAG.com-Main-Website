@@ -122,19 +122,13 @@ export default function AccessibilityAuditServicePage() {
             />
 
             {/* Hero Section */}
-            <div className="mb-12 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-600 border border-blue-500/20 mb-6 text-sm font-medium">
-                <Search className="w-4 h-4" />
-                Service: Accessibility Audit
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <Search className="h-8 w-8 text-primary" aria-hidden="true" />
+                <h1 className="text-4xl md:text-5xl font-bold">Accessibility Audit Service</h1>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
-                Accessibility Audit Service
-              </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-                We'll find every accessibility issue on your site. Yes, even the ones you didn't know existed. 
-                <span className="block mt-2 font-semibold text-foreground">
-                  No stone left unturned, no button left untested.
-                </span>
+              <p className="text-lg text-muted-foreground max-w-3xl mb-6">
+                We'll find every accessibility issue on your site. Yes, even the ones you didn't know existed. No stone left unturned, no button left untested.
               </p>
             </div>
 

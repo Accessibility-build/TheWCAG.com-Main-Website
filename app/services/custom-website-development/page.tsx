@@ -128,19 +128,13 @@ export default function CustomWebsiteDevelopmentPage() {
             />
 
             {/* Hero Section */}
-            <div className="mb-12 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 border border-purple-500/20 mb-6 text-sm font-medium">
-                <Monitor className="w-4 h-4" />
-                Service: Custom Website Development
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <Monitor className="h-8 w-8 text-primary" aria-hidden="true" />
+                <h1 className="text-4xl md:text-5xl font-bold">Custom Website Development</h1>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
-                Custom Website Development
-              </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-                Beautiful, accessible websites built from scratch. Because starting right is easier than fixing later.
-                <span className="block mt-2 font-semibold text-foreground">
-                  No shortcuts, no compromises, just good, accessible code.
-                </span>
+              <p className="text-lg text-muted-foreground max-w-3xl mb-6">
+                Beautiful, accessible websites built from scratch. Because starting right is easier than fixing later. No shortcuts, no compromises, just good, accessible code.
               </p>
             </div>
 

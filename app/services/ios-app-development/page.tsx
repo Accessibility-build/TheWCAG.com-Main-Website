@@ -127,19 +127,13 @@ export default function IOSAppDevelopmentPage() {
             />
 
             {/* Hero Section */}
-            <div className="mb-12 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 text-orange-600 border border-orange-500/20 mb-6 text-sm font-medium">
-                <Smartphone className="w-4 h-4" />
-                Service: iOS App Development
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <Code className="h-8 w-8 text-primary" aria-hidden="true" />
+                <h1 className="text-4xl md:text-5xl font-bold">iOS App Development</h1>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
-                iOS App Development
-              </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-                Native iOS apps that follow Apple's accessibility guidelines. Because everyone deserves great apps.
-                <span className="block mt-2 font-semibold text-foreground">
-                  Swift, SwiftUI, VoiceOver support, and App Store ready.
-                </span>
+              <p className="text-lg text-muted-foreground max-w-3xl mb-6">
+                Native iOS apps that follow Apple's accessibility guidelines. Because everyone deserves great apps. Swift, SwiftUI, VoiceOver support, and App Store ready.
               </p>
             </div>
 
