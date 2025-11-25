@@ -19,6 +19,7 @@ import {
 import { getAllLawsuits, getLawsuitsByStatus, getRecentLawsuits } from "@/lib/lawsuits-data"
 import { StructuredData } from "@/components/structured-data"
 import { LitigationTrends } from "@/components/litigation-trends"
+import { LawsuitArchiveTable } from "@/components/lawsuit-archive-table"
 
 export default function LawsuitsPage() {
   const allLawsuits = getAllLawsuits()
@@ -301,22 +302,11 @@ export default function LawsuitsPage() {
               </div>
             </section>
 
-            {/* Navigation Links */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-              <Link href="/lawsuits/archive" className="group">
-                <div className="p-6 rounded-lg border hover:border-primary hover:shadow-lg transition-all">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2">Case Archive</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Search historical accessibility lawsuits from 2006 onwards
-                      </p>
-                    </div>
-                    <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </div>
-                </div>
-              </Link>
-            </div>
+            {/* Learn More */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg sm:text-xl">Learn More About Accessibility Compliance</CardTitle>
+              </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <Link
@@ -362,11 +352,23 @@ export default function LawsuitsPage() {
                 </div>
               </CardContent>
             </Card>
-          </div>
 
-          {/* Litigation Trends Section */}
-          <div className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t">
-            <LitigationTrends />
+            {/* Historical Lawsuit Archive Section */}
+            <div className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t">
+              <div className="mb-8 sm:mb-12">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Historical Lawsuit Archive</h2>
+                <p className="text-base sm:text-lg text-muted-foreground max-w-3xl leading-relaxed">
+                  Browse our comprehensive archive of historical accessibility lawsuits and settlements from 2000 to 2017.
+                  This archive includes detailed case information with citations to original sources.
+                </p>
+              </div>
+              <LawsuitArchiveTable />
+            </div>
+
+            {/* Litigation Trends Section */}
+            <div className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t">
+              <LitigationTrends />
+            </div>
           </div>
         </main>
         <Footer />
