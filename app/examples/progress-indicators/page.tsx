@@ -1,14 +1,40 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { CriteriaPageLayout } from "@/components/criteria-page-layout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { CheckCircle2, ExternalLink } from "lucide-react"
 import { ExampleSection } from "@/components/examples/ExampleSection"
 import { AccessibilityNotes } from "@/components/examples/AccessibilityNotes"
 
 export default function ProgressIndicatorsPage() {
+  const [dynamicProgress, setDynamicProgress] = useState(0)
+  const [isRunning, setIsRunning] = useState(false)
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    if (isRunning && dynamicProgress < 100) {
+      interval = setInterval(() => {
+        setDynamicProgress((prev) => {
+          if (prev >= 100) {
+            setIsRunning(false)
+            return 100
+          }
+          return prev + 10
+        })
+      }, 800)
+    }
+    return () => clearInterval(interval)
+  }, [isRunning, dynamicProgress])
+
+  const startProgress = () => {
+    setDynamicProgress(0)
+    setIsRunning(true)
+  }
+
   return (
     <CriteriaPageLayout>
       <div className="container py-6 sm:py-8 md:py-12 max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -107,6 +133,80 @@ export default function ProgressIndicatorsPage() {
                 <div className="h-full bg-primary transition-all" style={{ width: "75%" }} />
               </div>
               <span className="text-sm text-muted-foreground">75% complete</span>
+            </div>
+          </div>
+        </ExampleSection>
+
+        {/* Dynamic Progress with aria-live */}
+        <ExampleSection
+          title="Dynamic Progress with Live Updates"
+          description="For real-time progress updates, use <code>aria-live=&amp;quot;polite&amp;quot;</code> to announce changes without interrupting the user. Update <code>aria-valuenow</code> and <code>aria-valuetext</code> as progress changes. Use <code>aria-valuetext</code> to provide more descriptive updates than just the percentage."
+          sectionId="dynamic-progress"
+          code={`const [progress, setProgress] = useState(0)
+
+<div>
+  <div
+    role="progressbar"
+    aria-valuenow={progress}
+    aria-valuemin={0}
+    aria-valuemax={100}
+    aria-valuetext={\`\${progress}% complete\`}
+    aria-label="File upload progress"
+  >
+    <div style={{ width: \`\${progress}%\` }} />
+  </div>
+  <div aria-live="polite" aria-atomic="true" className="sr-only">
+    {progress < 100 ? \`\${progress}% complete\` : "Upload complete"}
+  </div>
+  <div aria-live="polite" className="text-sm">
+    {progress < 100 ? \`\${progress}% complete\` : "Upload complete"}
+  </div>
+</div>`}
+          testingGuide={{
+            keyboard: ["Click button to start progress simulation"],
+            screenReader: [
+              "Progress updates announced via aria-live",
+              "aria-valuetext provides descriptive progress",
+              "Completion is announced clearly",
+            ],
+            visual: ["Watch progress bar fill", "Status text updates in real-time"],
+          }}
+        >
+          <div className="space-y-4 max-w-md">
+            <div>
+              <label className="text-sm font-medium block mb-2">File Upload Simulation</label>
+              <div
+                role="progressbar"
+                aria-valuenow={dynamicProgress}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuetext={dynamicProgress < 100 ? `${dynamicProgress}% complete` : "Upload complete"}
+                aria-label="File upload progress"
+                className="w-full h-3 bg-muted rounded-full overflow-hidden"
+              >
+                <div
+                  className="h-full bg-primary transition-all duration-300"
+                  style={{ width: `${dynamicProgress}%` }}
+                />
+              </div>
+              {/* Screen reader only announcement */}
+              <div aria-live="polite" aria-atomic="true" className="sr-only">
+                {dynamicProgress > 0 && (dynamicProgress < 100 ? `${dynamicProgress}% complete` : "Upload complete")}
+              </div>
+              {/* Visual status */}
+              <div className="flex items-center justify-between mt-2">
+                <span className="text-sm text-muted-foreground" aria-live="polite">
+                  {dynamicProgress < 100 ? `${dynamicProgress}% complete` : "Upload complete ✓"}
+                </span>
+                <Button
+                  onClick={startProgress}
+                  disabled={isRunning}
+                  size="sm"
+                  variant="outline"
+                >
+                  {isRunning ? "Running..." : "Start Upload"}
+                </Button>
+              </div>
             </div>
           </div>
         </ExampleSection>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { CriteriaPageLayout } from "@/components/criteria-page-layout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,6 +12,18 @@ import { AccessibilityNotes } from "@/components/examples/AccessibilityNotes"
 
 export default function TooltipsPage() {
   const [showTooltip, setShowTooltip] = useState(false)
+
+  // Allow tooltip to be dismissed with Escape key (WCAG 1.4.13)
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && showTooltip) {
+        setShowTooltip(false)
+      }
+    }
+
+    document.addEventListener("keydown", handleEscape)
+    return () => document.removeEventListener("keydown", handleEscape)
+  }, [showTooltip])
 
   return (
     <CriteriaPageLayout>
@@ -123,7 +135,18 @@ export default function TooltipsPage() {
           title="ARIA Tooltip"
           description="Use <code>role=&amp;quot;tooltip&amp;quot;</code> on the tooltip element. Associate it with the trigger using <code>aria-describedby</code> on the trigger pointing to the tooltip's id. The tooltip should appear on both hover and focus. Use <code>aria-live=&amp;quot;polite&amp;quot;</code> if the tooltip appears dynamically. Ensure the tooltip is keyboard accessible and doesn't block other content."
           sectionId="aria-tooltip"
-          code={`<button
+          code={`// Add Escape key handler
+useEffect(() => {
+  const handleEscape = (e: KeyboardEvent) => {
+    if (e.key === "Escape" && showTooltip) {
+      setShowTooltip(false)
+    }
+  }
+  document.addEventListener("keydown", handleEscape)
+  return () => document.removeEventListener("keydown", handleEscape)
+}, [showTooltip])
+
+<button
   aria-describedby="tooltip1"
   onFocus={() => setShowTooltip(true)}
   onBlur={() => setShowTooltip(false)}
@@ -136,14 +159,20 @@ export default function TooltipsPage() {
   id="tooltip1"
   role="tooltip"
   className={showTooltip ? "visible" : "hidden"}
+  aria-hidden={!showTooltip}
 >
   This is helpful information
 </div>`}
           testingGuide={{
-            keyboard: ["Tab to trigger element", "Tooltip appears on focus", "Tooltip is readable"],
+            keyboard: [
+              "Tab to trigger element - tooltip appears on focus",
+              "Press Escape to dismiss tooltip (WCAG 1.4.13)",
+              "Tab away to close tooltip",
+            ],
             screenReader: [
               "Tooltip content is announced via aria-describedby",
               "Content is available when needed",
+              "Tooltip can be dismissed without losing focus",
             ],
           }}
         >

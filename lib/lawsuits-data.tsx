@@ -3643,6 +3643,319 @@ This case is currently in progress, and specific details about the allegations a
     impact:
       "This case demonstrates ongoing enforcement of ADA requirements at the local government level. It highlights that county and state agencies must ensure their services and facilities are accessible to individuals with disabilities.",
   },
+
+  // NEW 2022-2025 CASES
+  {
+    slug: "doj-v-uber-disability-discrimination-2025",
+    title: "DOJ v. Uber - Disability Discrimination Lawsuit",
+    defendant: "Uber Technologies, Inc.",
+    plaintiff: "United States Department of Justice",
+    dateFiled: "2025-09-11",
+    status: "ongoing",
+    summary:
+      "DOJ lawsuit alleging Uber violated ADA by discriminating against passengers with disabilities through wait time fees and service refusals.",
+    details: `The U.S. Department of Justice filed a lawsuit against Uber Technologies in September 2025, accusing the ride-hailing company of violating federal law by discriminating against people with physical disabilities.
+
+The DOJ's civil rights division claims that Uber and its drivers "routinely refuse to serve individuals with disabilities, including individuals who travel with service animals or who use stowable wheelchairs." The lawsuit alleges that Uber drivers have charged illegal cleaning fees for service animal shedding and imposed cancellation fees after denying service.
+
+This case follows a 2022 settlement where Uber paid millions to more than 65,000 affected users after being sued in 2021 for overcharging passengers with disabilities through wait time fees. Under that two-year agreement in July 2022, Uber committed to waive wait time fees for riders who certify they need more time to get in an Uber car because of a disability.
+
+The DOJ is seeking $125 million in damages for affected individuals and an injunction to prevent further violations. This case highlights the ongoing challenges passengers with disabilities face when using ride-sharing platforms.`,
+    issues: [
+      "Service refusal to passengers with disabilities",
+      "Illegal wait time fees for passengers needing extra time",
+      "Discriminatory cleaning fees for service animals",
+      "Cancellation fees after denying service",
+      "Inadequate wheelchair accessible vehicle availability",
+      "Driver training on disability accommodations",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court",
+    category: "transportation",
+    settlementAmount: "$125 million (sought in damages)",
+    officialLinks: [
+      {
+        title: "DOJ Press Release",
+        url: "https://www.justice.gov/opa/pr/justice-department-sues-uber-discriminating-against-passengers-disabilities",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "CBS News Coverage",
+        url: "https://www.cbsnews.com/news/uber-passengers-with-disabilities-justice-department-ada-lawsuit/",
+      },
+      {
+        title: "TechCrunch Article",
+        url: "https://techcrunch.com/2025/09/11/justice-department-sues-uber-for-allegedly-discriminating-against-people-with-disabilities/",
+      },
+    ],
+    keyTakeaways: [
+      "Ride-sharing platforms must accommodate passengers with disabilities equally",
+      "Wait time fees cannot discriminate against those needing extra time due to disability",
+      "Service animals cannot be refused or charged cleaning fees",
+      "Previous settlements don't prevent future DOJ enforcement actions",
+      "Platforms responsible for driver compliance with ADA",
+    ],
+    impact:
+      "This lawsuit represents one of the largest disability discrimination cases against a ride-sharing platform, with $125 million in potential damages. It sets a precedent that technology platforms cannot use automated systems that disadvantage people with disabilities, and that companies are responsible for ensuring their drivers comply with ADA requirements.",
+  },
+  {
+    slug: "malone-v-disney-das-policy-2024",
+    title: "Malone v. Disney - Disability Access Service Class Action",
+    defendant: "Walt Disney Parks and Resorts U.S., Inc.",
+    plaintiff: "Trisha Malone and others",
+    dateFiled: "2024-06-20",
+    status: "ongoing",
+    summary:
+      "Class action lawsuit alleging Disney's revised Disability Access Service policies discriminate against individuals with physical disabilities.",
+    details: `A class action lawsuit was filed against Walt Disney Parks and Resorts in 2024 alleging that Disney's Disability Access Service (DAS) policies and practices systematically discriminate against individuals with physical disabilities and violate their rights to equal access, privacy, and dignity.
+
+The plaintiff, Trisha Malone, claims that Disney's DAS policies violate the Americans with Disabilities Act (ADA) and the Unruh Civil Rights Act by imposing discriminatory eligibility criteria and requiring unnecessary public disclosure of sensitive medical information.
+
+The revised policy, introduced on June 18, 2024, limited DAS accommodations to guests with developmental disabilities, such as autism, while excluding individuals with physical disabilities. Previously, DAS was available to a broader range of disabled guests, including those with mobility impairments, chronic pain conditions, and other physical disabilities that made prolonged waiting in line difficult.
+
+Disney recommended "location return time accommodations" which were designed for guests using wheelchairs or mobility scooters as alternatives for those no longer qualifying for DAS passes. However, plaintiffs argue these alternatives do not provide equal access.
+
+The lawsuit is ongoing, with plaintiffs seeking damages and policy revisions to ensure compliance with disability laws. Disney's terms of service include forced arbitration clauses which may complicate class action proceedings.`,
+    issues: [
+      "Discriminatory DAS eligibility criteria",
+      "Exclusion of guests with physical disabilities",
+      "Inadequate alternative accommodations",
+      "Privacy violations through medical information disclosure",
+      "Unequal access to theme park attractions",
+      "Disparate treatment based on disability type",
+    ],
+    jurisdiction: "California State Court",
+    category: "physical",
+    officialLinks: [
+      {
+        title: "Disney DAS Program Information",
+        url: "https://disneyland.disney.go.com/guest-services/disability-access-service/",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Disability Scoop Coverage",
+        url: "https://www.disabilityscoop.com/2024/05/20/disney-implements-overhaul-of-disability-access-at-parks/30887/",
+      },
+      {
+        title: "FindLaw Analysis",
+        url: "https://www.findlaw.com/legalblogs/law-and-life/disney-faces-lawsuit-for-altering-disability-accommodations/",
+      },
+    ],
+    keyTakeaways: [
+      "Theme parks cannot limit accessibility accommodations to specific disability types",
+      "Alternative accommodations must provide equal access, not just any access",
+      "Medical information disclosure requirements must be justified and minimal",
+      "Policy changes affecting disability access require careful ADA compliance review",
+      "Forced arbitration clauses may limit class action accessibility lawsuits",
+    ],
+    impact:
+      "This case could significantly impact how theme parks and entertainment venues structure their disability accommodation programs. It raises important questions about whether businesses can limit accommodations based on disability type and whether alternative accommodations satisfy ADA requirements for equal access.",
+  },
+  {
+    slug: "target-website-accessibility-2023",
+    title: "Website Accessibility Class Action v. Target Corporation",
+    defendant: "Target Corporation",
+    plaintiff: "Blind and visually impaired consumers",
+    dateFiled: "2023-01-01",
+    caseNumber: "0:23-cv-03080",
+    status: "ongoing",
+    summary:
+      "Class action lawsuit claiming Target's website is not accessible to consumers who are blind or have low vision.",
+    details: `Target Corporation is facing a class action lawsuit filed in the U.S. District Court for the District of Minnesota, claiming its website is not accessible to consumers who are blind or have low vision.
+
+The lawsuit alleges that Target.com violates the Americans with Disabilities Act by failing to be compatible with screen reading software and other assistive technologies used by blind and visually impaired individuals. Plaintiffs claim they encounter numerous barriers when attempting to browse products, make purchases, and access services on Target's website.
+
+This is one of many web accessibility lawsuits filed against major retailers in 2023, reflecting the continued trend of litigation targeting e-commerce platforms. The case highlights that even major corporations with significant resources continue to face accessibility compliance challenges.
+
+Target was previously involved in a landmark accessibility case in 2008 (National Federation of the Blind v. Target Corp.) which resulted in a settlement requiring accessibility improvements. The current lawsuit suggests ongoing compliance issues despite past litigation.`,
+    issues: [
+      "Website incompatible with screen readers",
+      "Inaccessible navigation and menus",
+      "Images lacking alternative text",
+      "Form fields not properly labeled",
+      "Checkout process not accessible",
+      "Lack of keyboard navigation support",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court for the District of Minnesota",
+    category: "digital",
+    unofficialLinks: [
+      {
+        title: "Top Class Actions Coverage",
+        url: "https://topclassactions.com/disability-class-action-lawsuit/target-class-action-claims-website-not-equally-accessible-to-blind-low-vision-customers/",
+      },
+      {
+        title: "Pinsent Masons Analysis",
+        url: "https://www.pinsentmasons.com/out-law/news/target-sued-over-web-accessibility",
+      },
+    ],
+    relatedLinks: [
+      {
+        title: "W3C - Target Case Study (2008)",
+        url: "https://www.w3.org/WAI/business-case/archive/target-case-study",
+      },
+    ],
+    keyTakeaways: [
+      "Major retailers remain vulnerable to accessibility lawsuits despite past settlements",
+      "E-commerce platforms must maintain ongoing WCAG compliance",
+      "Previous accessibility litigation doesn't prevent future lawsuits",
+      "Screen reader compatibility is essential for e-commerce accessibility",
+      "Regular accessibility audits are necessary to maintain compliance",
+    ],
+    impact:
+      "This case demonstrates that web accessibility compliance is an ongoing responsibility, not a one-time fix. Even companies that have previously settled accessibility lawsuits can face new litigation if they fail to maintain accessible websites. It reinforces the importance of building accessibility into development processes and conducting regular audits.",
+  },
+  {
+    slug: "morgan-stanley-website-accessibility-2022",
+    title: "Website Accessibility Class Action v. Morgan Stanley",
+    defendant: "Morgan Stanley",
+    plaintiff: "Blind and visually impaired individuals",
+    dateFiled: "2022-06-01",
+    status: "settled",
+    summary:
+      "Class action alleging Morgan Stanley's website was not accessible to blind and visually impaired users.",
+    details: `Morgan Stanley faced a class action lawsuit in 2022 alleging the company failed to design, construct and maintain its website so that it was fully accessible for individuals who are blind or visually impaired.
+
+The lawsuit claimed that Morgan Stanley's website violated the Americans with Disabilities Act by not being compatible with screen reading software and other assistive technologies. Plaintiffs alleged they encountered barriers when attempting to access financial services, account information, and other resources on the Morgan Stanley website.
+
+This case was part of a wave of accessibility lawsuits against financial services companies in 2022, reflecting increased scrutiny of banking and investment websites. Financial institutions have faced particular attention because accessible banking services are essential for individuals with disabilities to manage their finances independently.
+
+The case was settled with terms that typically include website remediation to WCAG 2.0 or 2.1 standards and monetary compensation to affected class members. Specific settlement terms were not publicly disclosed.`,
+    issues: [
+      "Website incompatible with screen readers",
+      "Inaccessible account management features",
+      "Financial tools not accessible to blind users",
+      "Lack of alternative text for images and graphs",
+      "Forms and input fields improperly labeled",
+      "Complex navigation not keyboard accessible",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court",
+    category: "digital",
+    unofficialLinks: [
+      {
+        title: "Top Class Actions Article",
+        url: "https://topclassactions.com/lawsuit-settlements/lawsuit-news/morgan-stanley-ally-financial-class-actions-claim-websites-not-accessible-to-blind-visually-impaired/",
+      },
+    ],
+    keyTakeaways: [
+      "Financial services websites must be accessible to ensure equal access to banking",
+      "Investment platforms need to make complex financial tools accessible",
+      "Screen reader compatibility is critical for financial services websites",
+      "WCAG 2.0/2.1 Level AA is the expected standard for financial institution websites",
+      "Financial services industry faces significant accessibility litigation risk",
+    ],
+    impact:
+      "This lawsuit reinforces that financial institutions cannot exclude individuals with disabilities from accessing online banking and investment services. It demonstrates that the financial services industry must prioritize accessibility to avoid litigation and ensure compliance with the ADA.",
+  },
+  {
+    slug: "ally-financial-website-accessibility-2022",
+    title: "Website Accessibility Class Action v. Ally Financial",
+    defendant: "Ally Financial Inc.",
+    plaintiff: "Blind and visually impaired individuals",
+    dateFiled: "2022-06-01",
+    status: "settled",
+    summary:
+      "Class action lawsuit alleging Ally Financial's website was not accessible to individuals who are blind or visually impaired.",
+    details: `Ally Financial Inc. faced a class action lawsuit in 2022 alleging the company failed to design and maintain its website to be fully accessible for individuals who are blind or visually impaired.
+
+The lawsuit claimed that Ally Financial's website violated the Americans with Disabilities Act by creating barriers for screen reader users and others who rely on assistive technologies. Plaintiffs alleged they could not independently access online banking services, loan applications, and other financial products offered through the website.
+
+As one of the largest online-only banks in the United States, Ally Financial's accessibility is particularly important since customers rely entirely on digital channels to access banking services. The lawsuit highlighted that inaccessible digital banking platforms effectively deny service to blind and visually impaired customers.
+
+The case was settled with terms that typically include commitments to remediate the website to meet WCAG accessibility standards. Specific settlement details were not publicly disclosed, but such settlements generally include monetary compensation to class members and ongoing accessibility compliance monitoring.`,
+    issues: [
+      "Banking website incompatible with assistive technologies",
+      "Online loan applications not accessible",
+      "Account management features inaccessible to blind users",
+      "Lack of proper heading structure and landmarks",
+      "Images and graphics without alternative text",
+      "Forms with improper labeling and error handling",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court",
+    category: "digital",
+    unofficialLinks: [
+      {
+        title: "Top Class Actions Article",
+        url: "https://topclassactions.com/lawsuit-settlements/lawsuit-news/morgan-stanley-ally-financial-class-actions-claim-websites-not-accessible-to-blind-visually-impaired/",
+      },
+    ],
+    keyTakeaways: [
+      "Online-only banks have heightened accessibility obligations",
+      "Digital-first financial services must be accessible from inception",
+      "Banking accessibility affects financial independence for people with disabilities",
+      "WCAG compliance is essential for online banking platforms",
+      "Financial services companies face significant litigation exposure for inaccessible websites",
+    ],
+    impact:
+      "This case emphasizes that online-only financial institutions cannot rely on physical branch alternatives to excuse inaccessible digital platforms. For banks that operate primarily or exclusively online, website accessibility is not optional—it's a fundamental requirement to ensure equal access to financial services.",
+  },
+  {
+    slug: "gil-v-winn-dixie-2017-2021",
+    title: "Gil v. Winn-Dixie Stores - Website Accessibility Trial",
+    defendant: "Winn-Dixie Stores, Inc.",
+    plaintiff: "Juan Carlos Gil",
+    dateFiled: "2016-01-01",
+    dateResolved: "2021-04-07",
+    status: "dismissed",
+    summary:
+      "Landmark trial verdict requiring website accessibility, later reversed by Eleventh Circuit holding websites alone are not public accommodations under ADA.",
+    details: `Gil v. Winn-Dixie Stores is believed to be the first Americans with Disabilities Act (ADA) accessibility lawsuit to go to trial in Florida, where Juan Carlos Gil, a blind plaintiff, initially prevailed in his claim that Winn-Dixie's website was inaccessible to the visually impaired.
+
+Juan Carlos Gil heard ads for the Winn-Dixie website where he could access prescription refills and coupons online, but when he tried using the website with his screen reader, he found that 90% of the tabs on the site didn't work. Gil filed suit alleging that Winn-Dixie's website was incompatible with screen reading software that assists the visually impaired, in violation of Title III of the ADA.
+
+Initial District Court Ruling (2017):
+The district court rejected the theory that a website can never be a public accommodation as defined by the ADA. The court ordered Winn-Dixie to adopt and implement a Web Accessibility Policy conforming with WCAG 2.0 criteria, require third-party vendors to conform to WCAG 2.0, and conduct mandatory yearly web accessibility training.
+
+Eleventh Circuit Reversal (2021):
+After years of appeals, the Eleventh Circuit issued its ruling on April 7, 2021, holding that websites alone are not covered as places of public accommodation under Title III of the ADA. The circuit court vacated the 2017 trial court ruling and concluded that websites are not a public accommodation and that Winn-Dixie's website did not create an "intangible barrier" to its physical store services.
+
+The reversal created a circuit split, with the Eleventh Circuit taking a narrower view of ADA Title III coverage for websites compared to other circuits. Despite the reversal, many businesses continue to face website accessibility litigation in other jurisdictions.`,
+    issues: [
+      "Website incompatibility with screen readers",
+      "90% of website tabs non-functional with assistive technology",
+      "Prescription refill services inaccessible to blind users",
+      "Digital coupons unavailable to screen reader users",
+      "WCAG 2.0 compliance requirements",
+      "Definition of 'public accommodation' under ADA Title III",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court, Southern District of Florida / Eleventh Circuit Court of Appeals",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "Eleventh Circuit Opinion",
+        url: "https://www.ca11.uscourts.gov/opinions/ops/201713467.pdf",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Law Office of Lainey Feingold Analysis",
+        url: "https://www.lflegal.com/2017/06/winn-dixie/",
+      },
+      {
+        title: "National Law Review - Eleventh Circuit Analysis",
+        url: "https://natlawreview.com/article/eleventh-circuit-finally-breaks-its-silence-website-accessibility-was-its-decision",
+      },
+      {
+        title: "Medium Article on Case Impact",
+        url: "https://medium.com/accessibility-made-accessible/a-lawsuit-that-should-change-the-way-we-approach-web-accessibility-47c62894b3a0",
+      },
+    ],
+    keyTakeaways: [
+      "First major ADA website accessibility case to go to trial",
+      "Eleventh Circuit created circuit split on website coverage under ADA Title III",
+      "Websites alone may not be covered by ADA in Eleventh Circuit jurisdiction",
+      "Other circuits continue to find websites are covered by ADA",
+      "Despite reversal, WCAG 2.0 remains industry standard for accessibility",
+      "Trial court's initial ruling influenced many subsequent settlements",
+    ],
+    impact:
+      "Gil v. Winn-Dixie remains one of the most significant and controversial website accessibility cases. While the initial trial verdict inspired many businesses to improve accessibility, the Eleventh Circuit's reversal created legal uncertainty. The case demonstrates the ongoing debate about whether standalone websites constitute places of public accommodation under the ADA. Despite the reversal, most businesses outside the Eleventh Circuit continue to face significant litigation risk for inaccessible websites, and WCAG compliance remains the industry standard.",
+  },
 ]
 
 export interface LawsuitCategory {

@@ -154,6 +154,7 @@ export default function AccordionsPage() {
           sectionId="aria-accordion"
           code={`<div>
   <button
+    id="header1"
     role="button"
     aria-expanded={isExpanded}
     aria-controls="panel1"
@@ -163,6 +164,7 @@ export default function AccordionsPage() {
   </button>
   <div
     id="panel1"
+    role="region"
     aria-labelledby="header1"
     hidden={!isExpanded}
   >
@@ -178,6 +180,7 @@ export default function AccordionsPage() {
             {["item1", "item2", "item3"].map((id) => (
               <div key={id} className="border rounded-lg">
                 <button
+                  id={`header-${id}`}
                   className="w-full p-4 font-semibold text-left flex items-center justify-between hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
                   aria-expanded={expandedItems.has(id)}
                   aria-controls={`panel-${id}`}
@@ -197,13 +200,11 @@ export default function AccordionsPage() {
                 </button>
                 <div
                   id={`panel-${id}`}
+                  role="region"
                   aria-labelledby={`header-${id}`}
                   hidden={!expandedItems.has(id)}
                   className="p-4 pt-0 text-sm text-muted-foreground"
                 >
-                  <p id={`header-${id}`} className="sr-only">
-                    Accordion Item {id.replace("item", "")}
-                  </p>
                   This is the content for accordion item {id.replace("item", "")}. It expands and collapses when the
                   header is activated.
                 </div>
