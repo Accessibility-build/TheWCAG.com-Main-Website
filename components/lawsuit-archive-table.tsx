@@ -241,7 +241,7 @@ export function LawsuitArchiveTable() {
           </Card>
         ) : (
           paginatedLawsuits.map((lawsuit, index) => {
-            const matchingDetailedLawsuit = findMatchingDetailedLawsuit(lawsuit.defendant, lawsuit.year)
+            const matchingDetailedLawsuit = findMatchingDetailedLawsuit(lawsuit.defendant, lawsuit.year, lawsuit.plaintiff)
             const key = `${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`
             
             if (matchingDetailedLawsuit) {
@@ -322,7 +322,7 @@ export function LawsuitArchiveTable() {
 
       {/* Desktop Table Layout */}
       <div className="hidden md:block border rounded-lg overflow-hidden bg-background">
-        <Table>
+          <Table>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-20 px-3 py-3">
@@ -373,7 +373,7 @@ export function LawsuitArchiveTable() {
                 </TableRow>
               ) : (
                 paginatedLawsuits.map((lawsuit, index) => {
-                  const matchingDetailedLawsuit = findMatchingDetailedLawsuit(lawsuit.defendant, lawsuit.year)
+                  const matchingDetailedLawsuit = findMatchingDetailedLawsuit(lawsuit.defendant, lawsuit.year, lawsuit.plaintiff)
                   
                   if (matchingDetailedLawsuit) {
                     return (
@@ -437,41 +437,41 @@ export function LawsuitArchiveTable() {
                   }
 
                   return (
-                    <TableRow key={`${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`}>
+                  <TableRow key={`${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`}>
                       <TableCell className="font-medium px-3 py-3 text-xs sm:text-sm">{lawsuit.year}</TableCell>
                       <TableCell className="px-3 py-3 text-xs sm:text-sm">{lawsuit.plaintiff}</TableCell>
                       <TableCell className="px-3 py-3 text-xs sm:text-sm">{lawsuit.defendant}</TableCell>
                       <TableCell className="px-3 py-3">
-                        {isValidUrl(lawsuit.citation) ? (
-                          isDeprecatedUrl(lawsuit.citation) ? (
-                            <span className="text-muted-foreground text-xs sm:text-sm">
-                              {lawsuit.citationText} <span className="text-xs">(deprecated)</span>
-                            </span>
-                          ) : (
-                            <a
-                              href={lawsuit.citation}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-primary hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"
-                              aria-label={`View citation for ${lawsuit.plaintiff} v. ${lawsuit.defendant} (opens in new window)`}
-                            >
-                              {lawsuit.citationText}
-                              <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
-                            </a>
-                          )
+                      {isValidUrl(lawsuit.citation) ? (
+                        isDeprecatedUrl(lawsuit.citation) ? (
+                          <span className="text-muted-foreground text-xs sm:text-sm">
+                            {lawsuit.citationText} <span className="text-xs">(deprecated)</span>
+                          </span>
                         ) : (
-                          isCaseNumber(lawsuit.citation) ? (
-                            <span className="text-muted-foreground text-xs sm:text-sm">
-                              {lawsuit.citationText}
-                            </span>
-                          ) : (
-                            <span className="text-muted-foreground text-xs sm:text-sm">
-                              {lawsuit.citationText}
-                            </span>
-                          )
-                        )}
-                      </TableCell>
-                    </TableRow>
+                          <a
+                            href={lawsuit.citation}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"
+                            aria-label={`View citation for ${lawsuit.plaintiff} v. ${lawsuit.defendant} (opens in new window)`}
+                          >
+                            {lawsuit.citationText}
+                              <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
+                          </a>
+                        )
+                      ) : (
+                        isCaseNumber(lawsuit.citation) ? (
+                          <span className="text-muted-foreground text-xs sm:text-sm">
+                            {lawsuit.citationText}
+                          </span>
+                        ) : (
+                          <span className="text-muted-foreground text-xs sm:text-sm">
+                            {lawsuit.citationText}
+                          </span>
+                        )
+                      )}
+                    </TableCell>
+                  </TableRow>
                   )
                 })
               )}
