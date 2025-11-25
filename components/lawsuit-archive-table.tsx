@@ -477,7 +477,6 @@ export function LawsuitArchiveTable() {
               )}
             </TableBody>
           </Table>
-        </div>
       </div>
 
       {/* Pagination */}
