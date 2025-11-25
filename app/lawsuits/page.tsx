@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import { getAllLawsuits, getLawsuitsByStatus, getRecentLawsuits } from "@/lib/lawsuits-data"
 import { StructuredData } from "@/components/structured-data"
+import { LitigationTrends } from "@/components/litigation-trends"
 
 export default function LawsuitsPage() {
   const allLawsuits = getAllLawsuits()
@@ -350,6 +351,11 @@ export default function LawsuitsPage() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Litigation Trends Section */}
+          <div className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t">
+            <LitigationTrends />
           </div>
         </main>
         <Footer />
