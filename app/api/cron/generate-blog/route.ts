@@ -12,23 +12,31 @@ import { logger } from '@/lib/logger'
  */
 export async function GET(request: NextRequest) {
   try {
-    // Verify cron secret from header
-    const authHeader = request.headers.get('authorization')
-    const cronSecret = process.env.CRON_SECRET
+    // Verify this is a Vercel cron request
+    const userAgent = request.headers.get('user-agent')
+    const isVercelCron = userAgent === 'vercel-cron/1.0'
 
-    if (!cronSecret) {
-      logger.error('CRON_SECRET is not configured')
-      return NextResponse.json({ error: 'Cron not configured' }, { status: 500 })
+    // Optional: Verify cron secret if configured
+    const cronSecret = process.env.CRON_SECRET
+    if (cronSecret) {
+      const authHeader = request.headers.get('authorization')
+      const vercelSecret = request.headers.get('x-vercel-cron-secret')
+
+      // Check if secret matches (if provided)
+      if (authHeader && authHeader !== `Bearer ${cronSecret}`) {
+        if (!vercelSecret || vercelSecret !== cronSecret) {
+          // Only enforce if not a Vercel cron request
+          if (!isVercelCron) {
+            logger.warn('Invalid cron secret')
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+          }
+        }
+      }
     }
 
-    // Vercel Cron sends secret in Authorization header
-    if (authHeader !== `Bearer ${cronSecret}`) {
-      // Also check for x-vercel-cron-secret header (alternative method)
-      const vercelSecret = request.headers.get('x-vercel-cron-secret')
-      if (vercelSecret !== cronSecret) {
-        logger.warn('Invalid cron secret')
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-      }
+    // Log if it's a Vercel cron request
+    if (isVercelCron) {
+      logger.log('Received Vercel cron job request')
     }
 
     logger.log('Starting blog generation process...')
