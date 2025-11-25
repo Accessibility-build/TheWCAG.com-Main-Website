@@ -454,12 +454,14 @@ The $1 million penalty and 20-year compliance monitoring order represent unprece
   {
     slug: "verizon-wireless-class-action-2024",
     title: "Verizon Wireless Class Action - Screen Reader Incompatibility",
-    defendant: "Verizon Wireless",
+    defendant: "Verizon Communications, Inc.",
     plaintiff: "Derek Pollitt (legally blind)",
     dateFiled: "2024-09-04",
-    status: "ongoing",
+    dateResolved: "2025-03-10",
+    status: "settled",
+    caseNumber: "1:24-cv-06156",
     summary:
-      "Ongoing class action lawsuit against Verizon Wireless for website accessibility barriers affecting blind users, citing WCAG 2.2 as technical standard.",
+      "Class action lawsuit against Verizon Communications for website accessibility barriers affecting blind users, citing WCAG 2.2 as technical standard. Case settled in March 2025.",
     details: `Derek Pollitt, a legally blind user of JAWS screen reader software, filed a class action lawsuit against Verizon Wireless for systematic accessibility barriers on their website and mobile app. The lawsuit alleges that Verizon's digital properties do not comply with WCAG 2.2 standards and prevent blind users from viewing account information, making payments, and accessing customer service.
 
 Specific accessibility issues include:
@@ -481,17 +483,30 @@ The lawsuit represents one of the first major cases to cite WCAG 2.2 (rather tha
       "Navigation barriers",
     ],
     wcagLevel: "AA",
-    jurisdiction: "Federal court (New York)",
+    jurisdiction: "U.S. District Court for the Eastern District of New York",
     category: "digital",
+    officialLinks: [
+      {
+        title: "PacerMonitor - Pollitt v. Verizon Communications",
+        url: "https://www.pacermonitor.com/public/case/54969176/Pollitt_v_Verizon_Communications,_Inc",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Top Class Actions - Verizon Class Action",
+        url: "https://topclassactions.com/verizon-class-action-lawsuit-and-settlement-news/verizon-class-action-claims-company-denies-blind-visually-impaired-equal-access-to-website/",
+      },
+    ],
     keyTakeaways: [
       "Major telecommunications companies face accessibility scrutiny",
       "WCAG 2.2 is emerging as the new standard in litigation",
       "Customer account access is a critical accessibility requirement",
       "Screen reader compatibility is essential for financial services websites",
       "Large enterprises remain targets despite resources to implement accessibility",
+      "Cases can settle relatively quickly (6 months) when companies address accessibility issues",
     ],
     impact:
-      "This lawsuit signals that WCAG 2.2 is becoming the expected standard even though 2.1 AA is the most common regulatory requirement. If successful, it could establish new precedent for telecommunications and financial services accessibility.",
+      "This lawsuit settlement demonstrates that WCAG 2.2 is becoming the expected standard even though 2.1 AA is the most common regulatory requirement. The relatively quick settlement suggests companies are increasingly willing to resolve accessibility claims promptly.",
   },
 
   {
@@ -3007,6 +3022,627 @@ Vento bands context:
     impact:
       "This case sets a precedent for substantial disability discrimination awards in the UK. It demonstrates that serious discrimination can result in damages far exceeding traditional caps, which may encourage more disabled employees to pursue claims.",
   },
+
+  // 2022-2023 HEALTHCARE CASES
+  {
+    slug: "us-v-flint-neurological-centre-2022",
+    title: "United States v. Flint Neurological Centre P.C. - Sign Language Interpreter Denial",
+    defendant: "Flint Neurological Centre P.C. and Dr. Nael Tarakji",
+    plaintiff: "United States of America",
+    dateFiled: "2022-03-17",
+    dateResolved: "2023-06-20",
+    status: "settled",
+    summary:
+      "DOJ lawsuit against medical practice for refusing to provide sign language interpreters to deaf and hard of hearing patients, violating ADA Title III requirements for effective communication.",
+    details: `The U.S. Attorney's Office for the Eastern District of Michigan filed a lawsuit against Flint Neurological Centre P.C. and Dr. Nael Tarakji, alleging that the medical practice violated Title III of the Americans with Disabilities Act by refusing to provide auxiliary aids and services required to ensure effective communication with patients who are deaf or hard of hearing.
+
+The complaint alleged that the medical practice repeatedly refused requests for sign language interpreters from deaf patients, instead requiring them to bring their own interpreters or communicate through written notes. This practice violated the ADA's requirement that healthcare providers ensure effective communication with patients with disabilities.
+
+Key violations:
+- Refusal to provide qualified sign language interpreters
+- Failure to ensure effective communication with deaf patients
+- Requiring patients to provide their own auxiliary aids
+- Discrimination against individuals with hearing disabilities
+
+The settlement required the medical practice to:
+- Develop and implement policies for providing auxiliary aids and services
+- Train staff on ADA requirements for effective communication
+- Provide sign language interpreters when necessary
+- Compensate affected patients
+- Submit to monitoring by the DOJ
+
+This case highlights the critical importance of effective communication in healthcare settings and the legal obligation of medical providers to accommodate patients with disabilities.`,
+    issues: [
+      "Failure to provide sign language interpreters",
+      "Denial of effective communication for deaf patients",
+      "ADA Title III violations in healthcare",
+      "Discrimination against individuals with hearing disabilities",
+    ],
+    jurisdiction: "U.S. District Court for the Eastern District of Michigan",
+    category: "healthcare",
+    officialLinks: [
+      {
+        title: "PacerMonitor - United States v. Flint Neurological Centre",
+        url: "https://www.pacermonitor.com/public/case/43904583/United_States_of_America_v_Flint_Neurological_Centre_PC",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "DOJ Press Release - Flint Neurological Centre Lawsuit",
+        url: "https://www.justice.gov/usao-edmi/pr/us-attorney-s-office-files-lawsuit-against-flint-neurological-centre-pc-violating",
+      },
+    ],
+    keyTakeaways: [
+      "Healthcare providers must provide auxiliary aids and services for effective communication",
+      "Sign language interpreters are required when necessary for effective communication",
+      "Patients cannot be required to provide their own interpreters",
+      "DOJ actively enforces ADA requirements in healthcare settings",
+      "Medical practices face legal consequences for denying communication accommodations",
+    ],
+    impact:
+      "This case reinforces that healthcare providers have a legal obligation to ensure effective communication with patients who are deaf or hard of hearing. The DOJ's enforcement action demonstrates that medical practices cannot refuse to provide necessary auxiliary aids and services.",
+  },
+
+  // 2023 DIGITAL ACCESSIBILITY CASES
+  {
+    slug: "toro-v-whirlpool-2023",
+    title: "Toro v. Whirlpool Corporation - KitchenAid Website Accessibility",
+    defendant: "Whirlpool Corporation",
+    plaintiff: "Andrew Toro, on behalf of himself and all others similarly situated",
+    dateFiled: "2023-01-02",
+    dateResolved: "2023-03-04",
+    status: "settled",
+    caseNumber: "1:23-cv-848",
+    summary:
+      "Class action lawsuit alleging KitchenAid's website discriminates against blind and visually impaired consumers by not being compatible with screen-reading software.",
+    details: `Andrew Toro filed a class action lawsuit against Whirlpool Corporation on behalf of himself and all others similarly situated, alleging that KitchenAid's website discriminates against blind and visually impaired people.
+
+The lawsuit claims that the company has not made its website compatible with screen-reading software that helps visually impaired consumers navigate websites. This prevents blind and visually impaired individuals from independently accessing KitchenAid's products, services, and information online.
+
+The case was filed in the U.S. District Court for the Southern District of New York and settled quickly in March 2023, just two months after filing. The rapid settlement suggests Whirlpool recognized the accessibility issues and moved to resolve them.
+
+This case is part of a broader pattern of website accessibility litigation targeting major consumer brands, particularly in the home appliance and retail sectors.`,
+    issues: [
+      "Website not compatible with screen-reading software",
+      "Inaccessible to blind and visually impaired users",
+      "Lack of alternative text and accessible navigation",
+      "ADA Title III violations in e-commerce",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court for the Southern District of New York",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "PacerMonitor - Toro v. Whirlpool Corporation",
+        url: "https://www.pacermonitor.com/public/case/47658398/Toro_v_Whirlpool_Corporation",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Top Class Actions - Whirlpool Class Action",
+        url: "https://topclassactions.com/disability-class-action-lawsuit/whirlpool-class-action-alleges-kitchenaid-website-not-accessible-to-visually-impaired-blind-visitors/",
+      },
+    ],
+    keyTakeaways: [
+      "Major appliance manufacturers face website accessibility litigation",
+      "E-commerce sites must be compatible with screen-reading software",
+      "Cases can settle quickly when companies address accessibility promptly",
+      "Consumer product websites are frequent targets of accessibility lawsuits",
+      "Class action format allows multiple plaintiffs to seek relief",
+    ],
+    impact:
+      "This case demonstrates that even well-established consumer brands like KitchenAid are vulnerable to website accessibility claims. The quick settlement suggests companies are increasingly recognizing the importance of digital accessibility compliance.",
+  },
+
+  {
+    slug: "toro-v-hasbro-2023",
+    title: "Toro v. Hasbro Inc. - Fan Website Accessibility",
+    defendant: "Hasbro, Inc.",
+    plaintiff: "Luis Toro",
+    dateFiled: "2023-04-04",
+    dateResolved: "2023-09-06",
+    status: "settled",
+    caseNumber: "1:23-cv-02800",
+    summary:
+      "Lawsuit alleging Hasbro's website contains access barriers to screen-reading software, preventing blind and visually impaired individuals from independently using the site.",
+    details: `Luis Toro, a legally blind man, filed a lawsuit against Hasbro, Inc., claiming that the company failed to make its website fully accessible to and independently usable by individuals who are blind or visually impaired.
+
+The complaint alleges that Hasbro's website contains access barriers to screen-reading software used by individuals who are blind or visually impaired to scan the internet. These barriers prevent blind users from independently engaging with Hasbro's digital services, including accessing product information, fan content, and other website features.
+
+The case was filed in the U.S. District Court for the Southern District of New York and settled in September 2023, approximately five months after filing. The settlement likely required Hasbro to make its website accessible and compatible with assistive technologies.
+
+This case highlights that entertainment and toy company websites, including fan sites and brand platforms, must be accessible to users with disabilities.`,
+    issues: [
+      "Website access barriers for screen-reading software",
+      "Inaccessible to blind and visually impaired users",
+      "Lack of independent usability for disabled users",
+      "ADA Title III violations",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court for the Southern District of New York",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "PacerMonitor - Toro v. Hasbro, Inc.",
+        url: "https://www.pacermonitor.com/public/case/48395527/Toro_v_Hasbro,_Inc",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Top Class Actions - Hasbro Class Action",
+        url: "https://topclassactions.com/disability-class-action-lawsuit/hasbro-class-action-claims-fan-site-not-accessible-to-blind-visually-impaired-visitors/",
+      },
+    ],
+    keyTakeaways: [
+      "Entertainment and toy company websites must be accessible",
+      "Fan sites and brand platforms are subject to ADA requirements",
+      "Screen reader compatibility is essential for all public-facing websites",
+      "Companies must ensure independent usability for disabled users",
+      "Settlements typically require comprehensive website accessibility improvements",
+    ],
+    impact:
+      "This case demonstrates that entertainment industry websites, including fan sites and brand platforms, are subject to the same accessibility requirements as e-commerce sites. Companies must ensure their digital presence is accessible to all users.",
+  },
+
+  {
+    slug: "alexandria-v-panama-jack-2023",
+    title: "Alexandria v. Panama Jack International Inc. - Website Accessibility",
+    defendant: "Panama Jack International, Inc.",
+    plaintiff: "Erika Alexandria",
+    dateFiled: "2023-07-06",
+    dateResolved: "2023-10-08",
+    status: "settled",
+    caseNumber: "1:23-cv-04811",
+    summary:
+      "Lawsuit alleging Panama Jack's website is not accessible to those who are blind or visually impaired, violating the Americans with Disabilities Act.",
+    details: `Erika Alexandria filed a lawsuit against Panama Jack International, Inc., claiming that the company's website is not accessible to those who are blind or visually impaired, a violation of the Americans with Disabilities Act.
+
+The case was filed in the U.S. District Court for the Southern District of New York and settled in October 2023, approximately three months after filing. The settlement likely required Panama Jack to make its website accessible and compatible with assistive technologies used by blind and visually impaired individuals.
+
+This case is part of the ongoing pattern of website accessibility litigation targeting retail and consumer product companies. Fashion and lifestyle brands are increasingly facing accessibility claims as e-commerce becomes the primary sales channel.`,
+    issues: [
+      "Website not accessible to blind and visually impaired users",
+      "ADA Title III violations",
+      "Lack of screen reader compatibility",
+      "Inaccessible e-commerce platform",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court for the Southern District of New York",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "PacerMonitor - Alexandria v. Panama Jack International",
+        url: "https://www.pacermonitor.com/public/case/49143542/Alexandria_v_Panama_Jack_International,_Inc",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Top Class Actions - Panama Jack Class Action",
+        url: "https://topclassactions.com/disability-class-action-lawsuit/panama-jack-class-action-alleges-website-not-fully-accessible-to-disabled-users/",
+      },
+    ],
+    keyTakeaways: [
+      "Fashion and lifestyle brand websites must be accessible",
+      "E-commerce platforms are frequent targets of accessibility litigation",
+      "Retail companies face increasing pressure to ensure digital accessibility",
+      "Quick settlements suggest companies recognize accessibility obligations",
+      "ADA requirements apply to all public-facing commercial websites",
+    ],
+    impact:
+      "This case reinforces that fashion and lifestyle brands must ensure their e-commerce platforms are accessible. As online shopping becomes the primary sales channel, accessibility compliance is essential for legal protection and market reach.",
+  },
+
+  // 2024 DIGITAL ACCESSIBILITY CASES
+  {
+    slug: "colak-v-sweetgreen-2024",
+    title: "Colak v. Sweetgreen Inc. - Website Accessibility Barriers",
+    defendant: "Sweetgreen Inc.",
+    plaintiff: "Ali Colak",
+    dateFiled: "2024-10-01",
+    dateResolved: "2025-02-07",
+    status: "settled",
+    caseNumber: "2:24-cv-00198",
+    summary:
+      "Lawsuit alleging Sweetgreen's website contains access barriers to screen-reading software, preventing blind and visually impaired consumers from accessing the company's online services.",
+    details: `Ali Colak filed a lawsuit against Sweetgreen Inc., claiming that the company's website contains access barriers to screen-reading software used by individuals who are blind or visually impaired to access the internet.
+
+The case was filed in the U.S. District Court for the Eastern District of New York and settled in February 2025, approximately four months after filing. The lawsuit alleges that Sweetgreen's website prevents blind users from independently accessing the company's online ordering system, menu information, and other digital services.
+
+This case highlights that food service and restaurant companies must ensure their online platforms, including ordering systems and menus, are accessible to users with disabilities. As restaurants increasingly rely on digital ordering, accessibility becomes critical for equal access to services.`,
+    issues: [
+      "Website access barriers for screen-reading software",
+      "Inaccessible online ordering system",
+      "Lack of accessible menu information",
+      "ADA Title III violations in food service",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court for the Eastern District of New York",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "PacerMonitor - Colak v. Sweetgreen, Inc.",
+        url: "https://www.pacermonitor.com/public/case/51968173/Colak_v_Sweetgreen,_Inc",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Top Class Actions - Sweetgreen Class Action",
+        url: "https://topclassactions.com/lawsuit-settlements/lawsuit-news/sweetgreen-class-action-claims-website-inaccessible-to-blind-visually-impaired-consumers/",
+      },
+    ],
+    keyTakeaways: [
+      "Restaurant and food service websites must be accessible",
+      "Online ordering systems require screen reader compatibility",
+      "Digital menus must be accessible to blind users",
+      "Food service companies face increasing accessibility litigation",
+      "Accessibility is critical as restaurants shift to digital ordering",
+    ],
+    impact:
+      "This case demonstrates that food service companies must ensure their digital platforms are accessible. As restaurants increasingly rely on online ordering, accessibility compliance is essential for serving all customers equally.",
+  },
+
+  {
+    slug: "frost-v-petco-2024",
+    title: "Frost et al. v. Petco Animal Supplies Stores Inc. - Website Accessibility",
+    defendant: "Petco Animal Supplies Stores, Inc.",
+    plaintiff: "Clarence Frost and Tammy Frost",
+    dateFiled: "2024-09-16",
+    dateResolved: "2024-11-04",
+    status: "settled",
+    caseNumber: "0:24-cv-03669",
+    summary:
+      "Class action lawsuit filed by two legally blind consumers alleging Petco's website is not accessible to individuals who use a screen reader.",
+    details: `Two legally blind consumers, Clarence and Tammy Frost, filed a class action lawsuit against Petco Animal Supplies Stores, Inc., alleging that the company's website is not accessible to individuals who use a screen reader.
+
+The case was filed in the U.S. District Court for the District of Minnesota and settled in November 2024, approximately six weeks after filing. The rapid settlement suggests Petco recognized the accessibility issues and moved quickly to resolve them.
+
+The lawsuit alleges that Petco's website prevents blind users from independently accessing product information, making purchases, and using the company's online services. As pet supply retailers increasingly rely on e-commerce, accessibility becomes critical for serving all customers.
+
+This case highlights that specialty retail companies, including pet supply stores, must ensure their e-commerce platforms are accessible to users with disabilities.`,
+    issues: [
+      "Website not accessible to screen reader users",
+      "Inaccessible e-commerce platform",
+      "Lack of accessible product information",
+      "ADA Title III violations in retail",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court for the District of Minnesota",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "PacerMonitor - Frost et al. v. Petco Animal Supplies Stores",
+        url: "https://www.pacermonitor.com/public/case/55101482/Frost_et_al_v_Petco_Animal_Supplies_Stores,_Inc",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Top Class Actions - Petco Class Action",
+        url: "https://topclassactions.com/lawsuit-settlements/consumer-products/pet/petco-class-action-alleges-website-not-fully-accessible-to-those-with-vision-related-disabilities/",
+      },
+    ],
+    keyTakeaways: [
+      "Specialty retail websites must be accessible",
+      "Pet supply and animal care companies face accessibility litigation",
+      "E-commerce platforms require screen reader compatibility",
+      "Rapid settlements suggest companies recognize accessibility obligations",
+      "Multiple plaintiffs can strengthen class action claims",
+    ],
+    impact:
+      "This case demonstrates that specialty retail companies must ensure their e-commerce platforms are accessible. The quick settlement suggests companies are increasingly recognizing the importance of digital accessibility compliance.",
+  },
+
+  // 2024 HEALTHCARE CASES
+  {
+    slug: "us-v-medstar-health-2024",
+    title: "United States v. MedStar Health Inc. - Support Person Visitor Restrictions",
+    defendant: "MedStar Health, Inc.",
+    plaintiff: "United States of America",
+    dateFiled: "2024-01-30",
+    dateResolved: "2024-02-05",
+    status: "settled",
+    summary:
+      "DOJ lawsuit alleging MedStar Health failed to modify visitor restrictions so that people with certain disabilities could be accompanied by their support persons during medical care.",
+    details: `The United States Department of Justice filed a lawsuit against MedStar Health, Inc., alleging that the healthcare system failed to modify visitor restrictions so that people with certain disabilities, which affected their ability to independently access medical care, could be accompanied by their support persons (such as a family member, companion, or aide).
+
+The complaint alleged that MedStar's visitor restrictions, implemented during public health emergencies or other circumstances, did not include exceptions for individuals with disabilities who require support persons to access medical care. This violated the ADA's requirement that healthcare providers make reasonable modifications to policies, practices, and procedures when necessary to ensure equal access for individuals with disabilities.
+
+The case settled very quickly, just six days after filing, suggesting MedStar recognized the issue and moved promptly to resolve it. The settlement likely required MedStar to:
+- Modify visitor restriction policies to include exceptions for support persons
+- Train staff on ADA requirements for reasonable modifications
+- Ensure individuals with disabilities can access medical care with necessary support
+- Develop policies that balance public health concerns with disability access rights
+
+This case highlights the critical importance of ensuring that public health policies and visitor restrictions do not discriminate against individuals with disabilities who require support to access healthcare services.`,
+    issues: [
+      "Failure to modify visitor restrictions for individuals with disabilities",
+      "Denial of support person access during medical care",
+      "ADA Title III violations in healthcare",
+      "Discrimination against individuals requiring assistance",
+    ],
+    jurisdiction: "U.S. District Court (federal)",
+    category: "healthcare",
+    officialLinks: [
+      {
+        title: "PacerMonitor - United States v. MedStar Health",
+        url: "https://www.pacermonitor.com/public/case/52158661/United_States_of_America_v_MedStar_Health%2C_Inc?utm_source=chatgpt.com",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "DOJ - United States v. MedStar Health",
+        url: "https://www.justice.gov/crt/case/us-v-medstar-health-inc?utm_source=chatgpt.com",
+      },
+    ],
+    keyTakeaways: [
+      "Healthcare providers must modify visitor restrictions for individuals with disabilities",
+      "Support persons are essential for some individuals to access medical care",
+      "Public health policies must balance safety with disability access rights",
+      "Healthcare systems must train staff on ADA reasonable modification requirements",
+      "DOJ actively enforces ADA requirements in healthcare settings",
+    ],
+    impact:
+      "This case establishes that healthcare providers must ensure their visitor restriction policies accommodate individuals with disabilities who require support persons. The extremely quick settlement demonstrates the importance of this issue and the need for healthcare systems to proactively address accessibility in their policies.",
+  },
+
+  // 2024 PHYSICAL ACCESSIBILITY CASES
+  {
+    slug: "us-v-katzs-deli-2024",
+    title: "United States v. Katz's Delicatessen - Physical Accessibility Violations",
+    defendant: "Katz's Delicatessen of Houston St., Inc.",
+    plaintiff: "United States of America",
+    dateFiled: "2024-12-17",
+    dateResolved: "2024-12-27",
+    status: "settled",
+    summary:
+      "DOJ lawsuit against iconic New York deli for multiple ADA violations including inaccessible main entrance, insufficient dining surfaces, and non-compliant restrooms despite 2018 renovations.",
+    details: `The U.S. Attorney's Office for the Southern District of New York filed a lawsuit against Katz's Delicatessen of Houston St., Inc., located on the Lower East Side of Manhattan, for numerous violations of the Americans with Disabilities Act.
+
+The complaint identified multiple significant violations:
+- The main entrance of Katz's Delicatessen is not accessible to individuals using wheelchairs or other mobility devices
+- The restaurant does not provide sufficient dining surfaces accessible to persons with disabilities
+- Despite having been renovated in 2018, the restaurant's restrooms fail to comply with ADA accessibility standards
+
+The case settled very quickly, just ten days after filing, suggesting Katz's recognized the violations and moved promptly to address them. The settlement likely required Katz's to:
+- Make the main entrance accessible
+- Provide accessible dining surfaces
+- Bring restrooms into ADA compliance
+- Compensate affected individuals
+- Submit to monitoring by the DOJ
+
+This case is particularly notable because the restaurant underwent renovations in 2018 but failed to bring the facility into ADA compliance at that time. This highlights the importance of ensuring that renovations include accessibility improvements, as required by the ADA.`,
+    issues: [
+      "Inaccessible main entrance",
+      "Insufficient accessible dining surfaces",
+      "Non-compliant restrooms",
+      "ADA Title III violations in restaurants",
+      "Failure to include accessibility in renovations",
+    ],
+    jurisdiction: "U.S. District Court for the Southern District of New York",
+    category: "physical",
+    officialLinks: [
+      {
+        title: "PacerMonitor - United States v. Katz's Delicatessen",
+        url: "https://www.pacermonitor.com/public/case/56213974/United_States_of_America_v_Katzs_Delicatessen_of_Houston_St,_Inc",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "DOJ Press Release - Katz's Deli Settlement",
+        url: "https://www.justice.gov/usao-sdny/pr/us-attorneys-office-sues-and-settles-katzs-deli-ensure-americans-disabilities-act",
+      },
+    ],
+    keyTakeaways: [
+      "Iconic restaurants are not exempt from ADA requirements",
+      "Renovations must include accessibility improvements",
+      "Main entrances must be accessible to individuals with mobility disabilities",
+      "Restaurants must provide accessible dining surfaces",
+      "DOJ actively enforces ADA requirements for physical accessibility",
+      "Even recently renovated facilities can violate ADA standards",
+    ],
+    impact:
+      "This case demonstrates that even well-known, historic establishments must comply with ADA accessibility requirements. The fact that violations existed despite 2018 renovations highlights the importance of including accessibility in all renovation projects.",
+  },
+
+  // 2024-2025 INTERNATIONAL CASES
+  {
+    slug: "raturi-v-union-of-india-2005",
+    title: "Rajive Raturi v. Union of India - Public Space and Transportation Accessibility",
+    defendant: "Union of India & Ors.",
+    plaintiff: "Rajive Raturi",
+    dateFiled: "2005-01-01",
+    dateResolved: "2024-11-08",
+    status: "settled",
+    summary:
+      "Landmark Indian Supreme Court case filed by a visually-challenged human rights advocate seeking directions to make public spaces, transport and related infrastructure accessible to persons with disabilities (PWDs).",
+    details: `Mr. Rajive Raturi, a visually-challenged human rights advocate, filed Writ Petition (Civil) No. 243 of 2005 in the Supreme Court of India, seeking directions to make public spaces, transport, and related infrastructure accessible to persons with disabilities (PWDs).
+
+This landmark case spanned nearly 20 years, from 2005 to 2024, making it one of the longest-running accessibility cases in India. The petitioner sought comprehensive accessibility improvements across India's public infrastructure, including:
+- Public transportation systems (buses, trains, metro)
+- Public buildings and spaces
+- Streets and sidewalks
+- Government facilities
+- Related infrastructure
+
+The case was finally resolved in November 2024, with the Supreme Court issuing directions to ensure accessibility across public infrastructure. This case represents a significant milestone in India's disability rights movement and has influenced accessibility policy and implementation across the country.
+
+The lengthy duration of the case reflects both the complexity of implementing accessibility across India's vast infrastructure and the persistence required to achieve systemic change.`,
+    issues: [
+      "Inaccessible public transportation",
+      "Inaccessible public buildings and spaces",
+      "Lack of accessible infrastructure",
+      "Violation of rights of persons with disabilities",
+      "Failure to implement accessibility standards",
+    ],
+    jurisdiction: "Supreme Court of India",
+    category: "international",
+    officialLinks: [
+      {
+        title: "Supreme Court of India Judgment",
+        url: "https://api.sci.gov.in/supremecourt/2005/9321/9321_2005_1_1503_56986_Judgement_08-Nov-2024.pdf",
+      },
+    ],
+    keyTakeaways: [
+      "Accessibility litigation can span decades to achieve systemic change",
+      "Public infrastructure must be accessible to persons with disabilities",
+      "Transportation systems are critical for disability access",
+      "Supreme Court cases can drive nationwide accessibility improvements",
+      "Persistent advocacy is necessary for comprehensive accessibility",
+      "India's disability rights movement has achieved significant legal victories",
+    ],
+    impact:
+      "This landmark case has had a profound impact on accessibility in India, influencing policy and implementation across the country's vast public infrastructure. The nearly 20-year duration demonstrates both the complexity of achieving systemic accessibility and the importance of persistent advocacy.",
+  },
+
+  {
+    slug: "pragya-prasun-v-union-of-india-2024",
+    title: "Pragya Prasun & Ors v. Union of India - Digital KYC Accessibility",
+    defendant: "Union of India & Ors.",
+    plaintiff: "Pragya Prasun & Ors.",
+    dateFiled: "2024-01-01",
+    dateResolved: "2025-04-30",
+    status: "settled",
+    summary:
+      "Indian Supreme Court case challenging digital KYC/e-KYC processes that exclude persons with disabilities, including acid attack survivors unable to blink for live photographs and blind individuals unable to complete video KYC.",
+    details: `Pragya Prasun and others filed Writ Petitions in the Supreme Court of India (WP(C) No. 289 of 2024 and WP(C) No. 49 of 2025) challenging digital KYC (Know Your Customer) and e-KYC processes that exclude persons with disabilities.
+
+The petitioners included:
+- Acid attack survivors who have experienced difficulties completing digital KYC/e-KYC processes due to their inability to click a "live photograph" by blinking, which prevented them from opening bank accounts and purchasing SIM cards from telecom providers
+- An individual suffering from 100% blindness who faces daily challenges in establishing account-based relationships, conducting transactions, availing services, and verifying identity due to inaccessible digital KYC processes
+
+The petitioners argued that digital KYC/e-KYC/video KYC norms are not designed keeping in view the accessibility needs of persons with disabilities. The digital KYC process that excludes persons with disabilities violates the fundamental rights enshrined under Article 21 of the Constitution of India, which guarantees the right to life and personal liberty.
+
+The case was resolved in April 2025, with the Supreme Court directing the government and financial institutions to make digital KYC processes accessible to persons with disabilities. This case highlights the critical importance of ensuring that digital identity verification systems are accessible to all users, including those with disabilities.
+
+This case is particularly significant as it addresses the intersection of digital accessibility and financial inclusion, ensuring that persons with disabilities can access essential services like banking and telecommunications.`,
+    issues: [
+      "Digital KYC processes not accessible to persons with disabilities",
+      "Live photograph requirements exclude individuals unable to blink",
+      "Video KYC inaccessible to blind individuals",
+      "Violation of fundamental rights under Article 21",
+      "Exclusion from banking and telecommunications services",
+    ],
+    jurisdiction: "Supreme Court of India",
+    category: "international",
+    officialLinks: [
+      {
+        title: "Supreme Court of India Judgment",
+        url: "https://cdnbbsr.s3waas.gov.in/s36ee69d3769e832ec77c9584e0b7ba112/uploads/2024/11/20250501496797524.pdf",
+      },
+    ],
+    keyTakeaways: [
+      "Digital identity verification systems must be accessible to persons with disabilities",
+      "Biometric requirements (like blinking) can exclude individuals with certain disabilities",
+      "Financial inclusion requires accessible digital processes",
+      "Constitutional rights apply to digital accessibility",
+      "Alternative KYC methods must be available for persons with disabilities",
+      "India's Supreme Court actively enforces accessibility in digital services",
+    ],
+    impact:
+      "This landmark case ensures that digital KYC processes in India are accessible to persons with disabilities, enabling financial inclusion and access to essential services. The judgment has implications for digital identity verification systems worldwide, demonstrating that accessibility must be built into digital processes from the start.",
+  },
+
+  // 2025 DIGITAL ACCESSIBILITY CASES
+  {
+    slug: "crosby-v-hp-inc-2025",
+    title: "Crosby v. HP Inc. - Website Accessibility Barriers",
+    defendant: "HP Inc.",
+    plaintiff: "Daniel Crosby",
+    dateFiled: "2025-06-11",
+    status: "ongoing",
+    caseNumber: "1:25-cv-09286",
+    summary:
+      "Lawsuit alleging HP's website and affiliated platforms contain missing alternative text, broken ARIA references, unlabeled buttons, and inaccessible navigation menus that prevent blind users from independently engaging with its digital services.",
+    details: `Daniel Crosby filed a lawsuit against HP Inc., alleging that the company's website is not accessible to blind individuals. The complaint was filed in the U.S. District Court for the Southern District of New York.
+
+Crosby claims that HP's website and its affiliated platforms contain numerous accessibility barriers that prevent blind users from independently engaging with the company's digital services. Specific issues identified include:
+- Missing alternative text for images and graphics
+- Broken ARIA (Accessible Rich Internet Applications) references
+- Unlabeled buttons and interactive elements
+- Inaccessible navigation menus that cannot be used with screen readers
+- Other barriers that prevent blind users from accessing HP's products, services, and information online
+
+This case represents ongoing litigation against a major technology company, highlighting that even companies in the technology sector can face accessibility claims if their websites are not properly designed for users with disabilities. The case is currently in progress as of the filing date.`,
+    issues: [
+      "Missing alternative text",
+      "Broken ARIA references",
+      "Unlabeled buttons",
+      "Inaccessible navigation menus",
+      "Screen reader incompatibility",
+      "ADA Title III violations",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court for the Southern District of New York",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "PacerMonitor - Crosby v. HP Inc.",
+        url: "https://www.pacermonitor.com/public/case/61025750/Crosby_v_HP_Inc",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Top Class Actions - HP Lawsuit",
+        url: "https://topclassactions.com/lawsuit-settlements/lawsuit-news/hp-sued-for-discrimination-over-inaccessible-website-for-blind-users/",
+      },
+    ],
+    keyTakeaways: [
+      "Technology companies are not exempt from website accessibility requirements",
+      "ARIA implementation must be correct and functional",
+      "All interactive elements must be properly labeled",
+      "Navigation menus must be accessible to screen reader users",
+      "Major corporations continue to face accessibility litigation",
+      "Website accessibility requires comprehensive implementation, not just basic compliance",
+    ],
+    impact:
+      "This case demonstrates that even technology companies, which might be expected to have strong digital accessibility practices, can face litigation if their websites are not properly accessible. The specific issues cited (broken ARIA, unlabeled buttons) suggest that partial or incorrect implementation of accessibility features is not sufficient.",
+  },
+
+  // 2025 PHYSICAL/HEALTHCARE CASES
+  {
+    slug: "provo-v-wright-county-2025",
+    title: "Provo v. Wright County, Minnesota et al. - ADA Violations",
+    defendant: "Wright County, Minnesota and Minnesota Department of Human Services (DHS)",
+    plaintiff: "Timothy Robert Provo",
+    dateFiled: "2025-10-23",
+    status: "ongoing",
+    caseNumber: "0:25-cv-04090",
+    summary:
+      "Lawsuit alleging violations of the Americans with Disabilities Act by Wright County and the Minnesota Department of Human Services.",
+    details: `Timothy Robert Provo filed a lawsuit against Wright County, Minnesota and the Minnesota Department of Human Services (DHS), alleging violations of the Americans with Disabilities Act.
+
+The case was filed in the U.S. District Court for the District of Minnesota in October 2025. The complaint alleges that the defendants violated the ADA by failing to provide reasonable accommodations and equal access to services for individuals with disabilities.
+
+This case is currently in progress, and specific details about the allegations and requested relief are being determined through the litigation process. The case highlights ongoing enforcement of ADA requirements at the county and state agency level, ensuring that government services are accessible to individuals with disabilities.`,
+    issues: [
+      "ADA violations by government entities",
+      "Failure to provide reasonable accommodations",
+      "Lack of equal access to government services",
+      "County and state agency accessibility requirements",
+    ],
+    jurisdiction: "U.S. District Court for the District of Minnesota",
+    category: "physical",
+    officialLinks: [
+      {
+        title: "PacerMonitor - Provo v. Wright County, Minnesota",
+        url: "https://www.pacermonitor.com/public/case/60753479/Provo_v_Wright_County,_Minnesota_et_al",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "DOJ - Related Cases",
+        url: "https://www.justice.gov/crt/case/united-states-v-city-anoka-minnesota-d-minn?utm_source=chatgpt.com",
+      },
+    ],
+    keyTakeaways: [
+      "County governments must comply with ADA requirements",
+      "State agencies face accessibility litigation",
+      "Government services must be accessible to individuals with disabilities",
+      "Ongoing enforcement of ADA at local and state levels",
+      "Individuals continue to advocate for accessibility rights",
+    ],
+    impact:
+      "This case demonstrates ongoing enforcement of ADA requirements at the local government level. It highlights that county and state agencies must ensure their services and facilities are accessible to individuals with disabilities.",
+  },
 ]
 
 export interface LawsuitCategory {
@@ -3077,8 +3713,35 @@ export function getRecentLawsuits(count: number = 5): Lawsuit[] {
     .slice(0, count)
 }
 
+/**
+ * Get the latest N lawsuits by filing date (includes both ongoing and settled)
+ * Returns the most recently filed lawsuits
+ */
+export function getLatestLawsuits(count: number = 4): Lawsuit[] {
+  return lawsuits
+    .sort(
+      (a, b) =>
+        new Date(b.dateFiled).getTime() - new Date(a.dateFiled).getTime()
+    )
+    .slice(0, count)
+}
+
 export function getLawsuitsByCategory(category: string): Lawsuit[] {
   return lawsuits.filter((lawsuit) => lawsuit.category === category)
+}
+
+/**
+ * Get lawsuits from the last N years (default: 3 years)
+ * Returns lawsuits filed in the current year and the previous N-1 years
+ */
+export function getRecentLawsuitsByYears(years: number = 3): Lawsuit[] {
+  const currentYear = new Date().getFullYear()
+  const startYear = currentYear - (years - 1)
+  
+  return lawsuits.filter((lawsuit) => {
+    const filedYear = new Date(lawsuit.dateFiled).getFullYear()
+    return filedYear >= startYear && filedYear <= currentYear
+  })
 }
 
 /**

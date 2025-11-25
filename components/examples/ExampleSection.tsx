@@ -40,7 +40,10 @@ export function ExampleSection({
         <div className="mb-6">
           <Card className="bg-muted/30 border-primary/20">
             <CardContent className="pt-6">
-              <p className="text-base leading-relaxed text-left" dangerouslySetInnerHTML={{ __html: description }} />
+              <div 
+                className="text-base leading-relaxed text-left [&_code]:bg-muted [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded-md [&_code]:text-sm [&_code]:font-mono [&_code]:text-primary [&_code]:border [&_code]:border-border [&_code]:font-semibold [&_code]:inline [&_code]:whitespace-nowrap" 
+                dangerouslySetInnerHTML={{ __html: description }} 
+              />
             </CardContent>
           </Card>
         </div>
@@ -73,10 +76,10 @@ export function ExampleSection({
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <div>
+            <div className="min-w-0 flex-1">
               <CardTitle className="flex items-center gap-2">
-                <Code2 className="h-4 w-4 text-primary" aria-hidden="true" />
-                Code Implementation
+                <Code2 className="h-4 w-4 text-primary flex-shrink-0" aria-hidden="true" />
+                <span className="truncate">Code Implementation</span>
               </CardTitle>
               <CardDescription className="mt-1">Accessible {title.toLowerCase()} implementation</CardDescription>
             </div>
@@ -84,7 +87,7 @@ export function ExampleSection({
               variant="outline"
               size="sm"
               onClick={() => setExpanded(!expanded)}
-              className="gap-2"
+              className="gap-2 flex-shrink-0"
               aria-expanded={expanded}
             >
               {expanded ? (
@@ -102,7 +105,7 @@ export function ExampleSection({
           </div>
         </CardHeader>
         {expanded && (
-          <CardContent>
+          <CardContent className="overflow-x-auto">
             <CodeBlock code={code} id={sectionId} />
           </CardContent>
         )}

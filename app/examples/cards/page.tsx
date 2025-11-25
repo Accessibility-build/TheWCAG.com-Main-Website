@@ -42,7 +42,7 @@ export default function CardsPage() {
         {/* Semantic Card */}
         <ExampleSection
           title="Semantic Card"
-          description="Cards should use proper heading hierarchy. The card title should be a heading element (<code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, etc.) appropriate to the page structure. Use semantic HTML elements and ensure the card content is readable in a logical order. If the card is clickable, use a link or button, not a div with onClick."
+          description="Cards should use proper heading hierarchy. The card title should be a heading element (<code>&amp;lt;h2&amp;gt;</code>, <code>&amp;lt;h3&amp;gt;</code>, etc.) appropriate to the page structure. Use semantic HTML elements and ensure the card content is readable in a logical order. If the card is clickable, use a link or button, not a div with onClick."
           sectionId="semantic-card"
           code={`<article>
   <h3>Card Title</h3>

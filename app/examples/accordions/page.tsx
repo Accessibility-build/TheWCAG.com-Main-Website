@@ -103,7 +103,7 @@ export default function AccordionsPage() {
         {/* Native Details/Summary */}
         <ExampleSection
           title="Native Details/Summary"
-          description="The HTML5 <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements provide built-in accordion functionality with native accessibility. The <code>open</code> attribute controls expanded state. This is the simplest and most accessible approach when styling allows."
+          description="The HTML5 <code>&amp;lt;details&amp;gt;</code> and <code>&amp;lt;summary&amp;gt;</code> elements provide built-in accordion functionality with native accessibility. The <code>open</code> attribute controls expanded state. This is the simplest and most accessible approach when styling allows."
           sectionId="native-accordion"
           code={`<details>
   <summary>Accordion Header</summary>
@@ -150,7 +150,7 @@ export default function AccordionsPage() {
         {/* ARIA Accordion */}
         <ExampleSection
           title="ARIA Accordion"
-          description="For custom accordions, use <code>role=&quot;button&quot;</code> on the header with <code>aria-expanded</code> to indicate state. Use <code>aria-controls</code> to link header to content panel. The content panel should have <code>aria-labelledby</code> pointing back to the header. Use <code>hidden</code> attribute or CSS to hide collapsed content."
+          description="For custom accordions, use <code>role=&amp;quot;button&amp;quot;</code> on the header with <code>aria-expanded</code> to indicate state. Use <code>aria-controls</code> to link header to content panel. The content panel should have <code>aria-labelledby</code> pointing back to the header. Use <code>hidden</code> attribute or CSS to hide collapsed content."
           sectionId="aria-accordion"
           code={`<div>
   <button

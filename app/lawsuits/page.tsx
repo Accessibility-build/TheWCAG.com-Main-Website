@@ -6,26 +6,29 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import {
   Scale,
-  Calendar,
-  DollarSign,
   AlertCircle,
   CheckCircle2,
-  Clock,
-  XCircle,
-  ArrowRight,
-  ExternalLink,
   TrendingUp,
 } from "lucide-react"
-import { getAllLawsuits, getLawsuitsByStatus, getRecentLawsuits } from "@/lib/lawsuits-data"
+import { getAllLawsuits, getLawsuitsByStatus, getRecentLawsuitsByYears } from "@/lib/lawsuits-data"
 import { StructuredData } from "@/components/structured-data"
 import { LitigationTrends } from "@/components/litigation-trends"
 import { LawsuitArchiveTable } from "@/components/lawsuit-archive-table"
+import { PaginatedLawsuitsList } from "@/components/paginated-lawsuits-list"
 
 export default function LawsuitsPage() {
+  // Get lawsuits from the last 3 years (current year, last year, and year before)
+  const recentLawsuits = getRecentLawsuitsByYears(3)
   const allLawsuits = getAllLawsuits()
-  const recentLawsuits = getRecentLawsuits(6)
-  const settledLawsuits = getLawsuitsByStatus("settled")
-  const ongoingLawsuits = getLawsuitsByStatus("ongoing")
+  
+  // Calculate statistics from recent lawsuits only
+  const settledLawsuits = recentLawsuits.filter((l) => l.status === "settled")
+  const ongoingLawsuits = recentLawsuits.filter((l) => l.status === "ongoing")
+  
+  // Get current year and previous years for display
+  const currentYear = new Date().getFullYear()
+  const lastYear = currentYear - 1
+  const yearBeforeLast = currentYear - 2
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -44,9 +47,9 @@ export default function LawsuitsPage() {
     },
     mainEntity: {
       "@type": "ItemList",
-      name: "Accessibility Lawsuits",
-      description: "Collection of digital accessibility legal cases",
-      numberOfItems: allLawsuits.length,
+      name: "Recent Accessibility Lawsuits",
+      description: "Collection of recent digital accessibility legal cases from the last 3 years",
+      numberOfItems: recentLawsuits.length,
     },
     breadcrumb: {
       "@type": "BreadcrumbList",
@@ -67,17 +70,6 @@ export default function LawsuitsPage() {
     },
   }
 
-  const statusConfig = {
-    settled: { label: "Settled", icon: CheckCircle2, className: "bg-green-600 text-white" },
-    ongoing: { label: "Ongoing", icon: Clock, className: "bg-blue-600 text-white" },
-    dismissed: { label: "Dismissed", icon: XCircle, className: "bg-gray-600 text-white" },
-    won: { label: "Won", icon: CheckCircle2, className: "bg-green-600 text-white" },
-  }
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
-  }
 
   return (
     <>
@@ -141,8 +133,10 @@ export default function LawsuitsPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold">{allLawsuits.length}</div>
-                  <p className="text-sm text-muted-foreground mt-1">Documented cases</p>
+                  <div className="text-3xl font-bold">{recentLawsuits.length}</div>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Cases from {yearBeforeLast}, {lastYear}, and {currentYear}
+                  </p>
                 </CardContent>
               </Card>
               <Card>
@@ -213,93 +207,15 @@ export default function LawsuitsPage() {
               </CardContent>
             </Card>
 
-            {/* Recent Lawsuits */}
+            {/* Recent Lawsuits with Pagination */}
             <section className="mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Recent Cases</h2>
-              <div className="space-y-6">
-                {recentLawsuits.map((lawsuit) => {
-                  const statusInfo = statusConfig[lawsuit.status]
-                  const StatusIcon = statusInfo.icon
-                  return (
-                    <Card key={lawsuit.slug} className="hover:shadow-md transition-shadow">
-                      <CardHeader>
-                        <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
-                          <div className="flex-1 min-w-0">
-                            <CardTitle className="text-lg sm:text-xl mb-2">
-                              <Link
-                                href={`/lawsuits/${lawsuit.slug}`}
-                                className="hover:text-primary transition-colors"
-                              >
-                                {lawsuit.title}
-                              </Link>
-                            </CardTitle>
-                            <CardDescription className="text-sm sm:text-base mb-3">{lawsuit.summary}</CardDescription>
-                          </div>
-                          <Badge className={`${statusInfo.className} shrink-0`}>
-                            <StatusIcon className="h-3 w-3 mr-1" />
-                            {statusInfo.label}
-                          </Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
-                          <div className="flex items-start gap-2 text-sm">
-                            <Calendar className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
-                            <div>
-                              <span className="text-muted-foreground">Filed: </span>
-                              <span className="font-medium">{formatDate(lawsuit.dateFiled)}</span>
-                            </div>
-                          </div>
-                          {lawsuit.dateResolved && (
-                            <div className="flex items-start gap-2 text-sm">
-                              <CheckCircle2 className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
-                              <div>
-                                <span className="text-muted-foreground">Resolved: </span>
-                                <span className="font-medium">{formatDate(lawsuit.dateResolved)}</span>
-                              </div>
-                            </div>
-                          )}
-                          {lawsuit.settlementAmount && (
-                            <div className="flex items-start gap-2 text-sm">
-                              <DollarSign className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
-                              <div>
-                                <span className="text-muted-foreground">Settlement: </span>
-                                <span className="font-medium">{lawsuit.settlementAmount}</span>
-                              </div>
-                            </div>
-                          )}
-                          <div className="flex items-start gap-2 text-sm">
-                            <Scale className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
-                            <div>
-                              <span className="text-muted-foreground">Jurisdiction: </span>
-                              <span className="font-medium">{lawsuit.jurisdiction}</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
-                          {lawsuit.issues.slice(0, 3).map((issue, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
-                              {issue}
-                            </Badge>
-                          ))}
-                          {lawsuit.issues.length > 3 && (
-                            <Badge variant="outline" className="text-xs">
-                              +{lawsuit.issues.length - 3} more
-                            </Badge>
-                          )}
-                        </div>
-                        <Link
-                          href={`/lawsuits/${lawsuit.slug}`}
-                          className="inline-flex items-center text-sm sm:text-base text-primary hover:underline font-medium"
-                        >
-                          Read full case details
-                          <ArrowRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true" />
-                        </Link>
-                      </CardContent>
-                    </Card>
-                  )
-                })}
-              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
+                Recent Cases ({yearBeforeLast} - {currentYear})
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Showing lawsuits filed in the last 3 years ({yearBeforeLast}, {lastYear}, and {currentYear}).
+              </p>
+              <PaginatedLawsuitsList lawsuits={recentLawsuits} />
             </section>
 
             {/* Learn More */}

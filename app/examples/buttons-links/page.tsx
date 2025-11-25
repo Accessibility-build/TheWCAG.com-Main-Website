@@ -120,7 +120,7 @@ export default function ButtonsLinksPage() {
         {/* Semantic Buttons */}
         <ExampleSection
           title="Semantic Buttons"
-          description="Use the <code>&lt;button&gt;</code> element for actions that don't navigate (submit, toggle, etc.). Use <code>&lt;a&gt;</code> for navigation. Buttons should have clear, descriptive text. If a button only has an icon, provide an <code>aria-label</code>. The <code>type</code> attribute is important: <code>type=&quot;button&quot;</code> for general actions, <code>type=&quot;submit&quot;</code> for form submission, <code>type=&quot;reset&quot;</code> for form reset."
+          description="Use the <code>&amp;lt;button&amp;gt;</code> element for actions that don't navigate (submit, toggle, etc.). Use <code>&amp;lt;a&amp;gt;</code> for navigation. Buttons should have clear, descriptive text. If a button only has an icon, provide an <code>aria-label</code>. The <code>type</code> attribute is important: <code>type=&amp;quot;button&amp;quot;</code> for general actions, <code>type=&amp;quot;submit&amp;quot;</code> for form submission, <code>type=&amp;quot;reset&amp;quot;</code> for form reset."
           sectionId="semantic-buttons"
           code={`<button type="button" onClick={handleClick}>
   Click Me
@@ -158,7 +158,7 @@ export default function ButtonsLinksPage() {
         {/* Icon Buttons */}
         <ExampleSection
           title="Icon Buttons"
-          description="Icon-only buttons must have accessible labels via <code>aria-label</code> or <code>aria-labelledby</code>. The label should describe the action, not just say 'button'. For toggle buttons, use <code>aria-pressed</code> to indicate state. If the button has both icon and text, the text is usually sufficient, but ensure the icon is decorative (<code>aria-hidden=&quot;true&quot;</code>) or meaningful."
+          description="Icon-only buttons must have accessible labels via <code>aria-label</code> or <code>aria-labelledby</code>. The label should describe the action, not just say 'button'. For toggle buttons, use <code>aria-pressed</code> to indicate state. If the button has both icon and text, the text is usually sufficient, but ensure the icon is decorative (<code>aria-hidden=&amp;quot;true&amp;quot;</code>) or meaningful."
           sectionId="icon-buttons"
           code={`{/* Icon button with aria-label */}
 <button aria-label="Close dialog">
@@ -206,7 +206,7 @@ export default function ButtonsLinksPage() {
         {/* Button States */}
         <ExampleSection
           title="Button States"
-          description="Buttons can have various states that must be communicated: disabled, loading, pressed, expanded. Use <code>disabled</code> attribute (not just styling) for disabled buttons. For loading states, use <code>aria-busy=&quot;true&quot;</code> and provide text or aria-label indicating loading. Toggle buttons should use <code>aria-pressed</code>. Expanded/collapsed states use <code>aria-expanded</code>."
+          description="Buttons can have various states that must be communicated: disabled, loading, pressed, expanded. Use <code>disabled</code> attribute (not just styling) for disabled buttons. For loading states, use <code>aria-busy=&amp;quot;true&amp;quot;</code> and provide text or aria-label indicating loading. Toggle buttons should use <code>aria-pressed</code>. Expanded/collapsed states use <code>aria-expanded</code>."
           sectionId="button-states"
           code={`<button disabled aria-disabled="true">
   Disabled Button
@@ -273,7 +273,7 @@ export default function ButtonsLinksPage() {
         {/* Link vs Button */}
         <ExampleSection
           title="Link vs Button: When to Use Which"
-          description="Use <code>&lt;a&gt;</code> for navigation (changing URL, going to another page). Use <code>&lt;button&gt;</code> for actions (submitting forms, toggling, opening dialogs). If it changes the URL, it's a link. If it performs an action on the current page, it's a button. Never use a link styled as a button for actions - this breaks expectations and accessibility."
+          description="Use <code>&amp;lt;a&amp;gt;</code> for navigation (changing URL, going to another page). Use <code>&amp;lt;button&amp;gt;</code> for actions (submitting forms, toggling, opening dialogs). If it changes the URL, it's a link. If it performs an action on the current page, it's a button. Never use a link styled as a button for actions - this breaks expectations and accessibility."
           sectionId="link-vs-button"
           code={`{/* Navigation - use link */}
 <a href="/about">About Us</a>

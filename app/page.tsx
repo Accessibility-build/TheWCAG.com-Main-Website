@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { HeroSearch } from "@/components/hero-search"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { StructuredData } from "@/components/structured-data"
-import { getRecentLawsuits } from "@/lib/lawsuits-data"
+import { getLatestLawsuits } from "@/lib/lawsuits-data"
 import { ogImages } from "@/lib/og-image"
 import {
   Search,
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-  const recentLawsuits = getRecentLawsuits(2)
+  const latestLawsuits = getLatestLawsuits(4)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -141,16 +141,16 @@ export default function HomePage() {
       <StructuredData data={structuredData} />
       <StructuredData data={organizationData} />
       <SkipLink />
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col overflow-x-hidden">
         <Header />
-        <main id="main-content" className="flex-1">
+        <main id="main-content" className="flex-1 overflow-x-hidden">
           {/* Hero Section */}
           <section className="container py-6 md:py-12 px-4 sm:px-6 lg:px-8">
             <ScrollAnimation>
               <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 md:gap-6 auto-rows-auto md:auto-rows-[minmax(180px,auto)]">
                 {/* Main Title Card - Spans 8 cols */}
                 <div className="col-span-1 md:col-span-8 md:row-span-2 rounded-2xl md:rounded-3xl bg-primary text-primary-foreground p-5 sm:p-8 md:p-12 flex flex-col justify-between relative overflow-hidden group min-h-[360px] sm:min-h-[400px] md:min-h-0">
-                  <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity overflow-hidden">
                     <Accessibility className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 -mr-8 -mt-8 sm:-mr-12 sm:-mt-12 md:-mr-16 md:-mt-16" />
                   </div>
                   <div className="relative z-10">
@@ -649,40 +649,44 @@ export default function HomePage() {
                 </div>
               </ScrollAnimation>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                {recentLawsuits.map((lawsuit, index) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+                {latestLawsuits.map((lawsuit, index) => (
                   <ScrollAnimation key={lawsuit.slug} threshold={0.1 + index * 0.1}>
-                    <Link href={`/lawsuits/${lawsuit.slug}`} className="group block">
-                      <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
-                        <CardHeader>
-                          <div className="flex items-start justify-between gap-3 mb-3">
-                            <div className="flex items-center gap-2">
-                              <Scale className="h-5 w-5 text-primary flex-shrink-0" />
-                              <Badge variant={lawsuit.status === 'settled' ? 'default' : lawsuit.status === 'ongoing' ? 'secondary' : 'outline'} className="text-xs">
+                    <Link href={`/lawsuits/${lawsuit.slug}`} className="group block h-full">
+                      <Card className="h-full flex flex-col hover:shadow-lg transition-all hover:border-primary/50">
+                        <CardHeader className="flex-1 flex flex-col">
+                          <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
+                            <div className="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+                              <Scale className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                              <Badge variant={lawsuit.status === 'settled' ? 'default' : lawsuit.status === 'ongoing' ? 'secondary' : 'outline'} className="text-xs whitespace-nowrap">
                                 {lawsuit.status.charAt(0).toUpperCase() + lawsuit.status.slice(1)}
                               </Badge>
                             </div>
-                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <div className="flex items-center gap-1 text-xs text-muted-foreground flex-shrink-0">
                               <Calendar className="h-3 w-3" />
-                              {new Date(lawsuit.dateResolved || lawsuit.dateFiled).toLocaleDateString('en-US', { 
-                                year: 'numeric', 
-                                month: 'short' 
-                              })}
+                              <span className="whitespace-nowrap">
+                                {new Date(lawsuit.dateResolved || lawsuit.dateFiled).toLocaleDateString('en-US', { 
+                                  year: 'numeric', 
+                                  month: 'short' 
+                                })}
+                              </span>
                             </div>
                           </div>
-                          <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
+                          <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-2 mb-2 sm:mb-3">
                             {lawsuit.title}
                           </CardTitle>
-                          <CardDescription className="line-clamp-3">
+                          <CardDescription className="line-clamp-3 text-sm sm:text-base flex-1">
                             {lawsuit.summary}
                           </CardDescription>
                         </CardHeader>
-                        <CardContent>
-                          <div className="flex items-center justify-between">
-                            <div className="text-sm text-muted-foreground">
-                              <span className="font-medium">Defendant:</span> {lawsuit.defendant}
+                        <CardContent className="pt-0 mt-auto">
+                          <div className="flex flex-col gap-2">
+                            <div className="text-xs sm:text-sm text-muted-foreground">
+                              <span className="font-medium">Defendant:</span> <span className="break-words">{lawsuit.defendant}</span>
                             </div>
-                            <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                            <div className="flex items-center justify-end">
+                              <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                            </div>
                           </div>
                         </CardContent>
                       </Card>

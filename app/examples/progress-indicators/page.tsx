@@ -38,7 +38,7 @@ export default function ProgressIndicatorsPage() {
         {/* Native Progress */}
         <ExampleSection
           title="Native Progress"
-          description="The HTML5 <code>&lt;progress&gt;</code> element provides built-in accessibility. Use <code>value</code> and <code>max</code> attributes for determinate progress, or omit <code>value</code> for indeterminate progress. Always provide an <code>aria-label</code> or visible label describing what is progressing."
+          description="The HTML5 <code>&amp;lt;progress&amp;gt;</code> element provides built-in accessibility. Use <code>value</code> and <code>max</code> attributes for determinate progress, or omit <code>value</code> for indeterminate progress. Always provide an <code>aria-label</code> or visible label describing what is progressing."
           sectionId="native-progress"
           code={`<label htmlFor="upload-progress">Upload Progress</label>
 <progress
@@ -78,7 +78,7 @@ export default function ProgressIndicatorsPage() {
         {/* ARIA Progressbar */}
         <ExampleSection
           title="ARIA Progressbar"
-          description="For custom progress bars, use <code>role=&quot;progressbar&quot;</code> with <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code>. Use <code>aria-label</code> or <code>aria-labelledby</code> to describe what is progressing. For indeterminate progress, omit <code>aria-valuenow</code>."
+          description="For custom progress bars, use <code>role=&amp;quot;progressbar&amp;quot;</code> with <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code>. Use <code>aria-label</code> or <code>aria-labelledby</code> to describe what is progressing. For indeterminate progress, omit <code>aria-valuenow</code>."
           sectionId="aria-progressbar"
           code={`<div
   role="progressbar"

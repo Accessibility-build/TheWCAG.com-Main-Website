@@ -152,7 +152,7 @@ export default function FormsPage() {
         {/* ARIA Form */}
         <ExampleSection
           title="ARIA Form (Custom)"
-          description="For custom styled forms that don't use native form elements, use ARIA roles and properties. Use <code>role=&quot;form&quot;</code> on the container, <code>role=&quot;textbox&quot;</code>, <code>role=&quot;combobox&quot;</code>, etc. for inputs. Always provide <code>aria-label</code> or <code>aria-labelledby</code> for each input. This approach is more complex and should only be used when semantic HTML forms are not feasible."
+          description="For custom styled forms that don't use native form elements, use ARIA roles and properties. Use <code>role=&amp;quot;form&amp;quot;</code> on the container, <code>role=&amp;quot;textbox&amp;quot;</code>, <code>role=&amp;quot;combobox&amp;quot;</code>, etc. for inputs. Always provide <code>aria-label</code> or <code>aria-labelledby</code> for each input. This approach is more complex and should only be used when semantic HTML forms are not feasible."
           sectionId="aria-form"
           code={`<div role="form" aria-label="Contact form">
   <div>
@@ -211,7 +211,7 @@ export default function FormsPage() {
         {/* Semantic Form */}
         <ExampleSection
           title="Semantic Form"
-          description="Use native HTML5 form elements with proper <code>&lt;label&gt;</code> associations. The <code>for</code> attribute on labels should match the <code>id</code> on inputs. Use <code>fieldset</code> and <code>legend</code> to group related fields. Required fields should be indicated with <code>aria-required=&quot;true&quot;</code> and visual indicators (asterisk)."
+          description="Use native HTML5 form elements with proper <code>&amp;lt;label&amp;gt;</code> associations. The <code>for</code> attribute on labels should match the <code>id</code> on inputs. Use <code>fieldset</code> and <code>legend</code> to group related fields. Required fields should be indicated with <code>aria-required=&amp;quot;true&amp;quot;</code> and visual indicators (asterisk)."
           sectionId="semantic-form"
           code={`<form noValidate>
   <fieldset>
@@ -284,7 +284,7 @@ export default function FormsPage() {
         {/* Multi-step Form */}
         <ExampleSection
           title="Multi-step Form"
-          description="Multi-step forms (wizards) require careful focus management. When moving between steps, focus should move to the first field of the new step. Use <code>aria-current=&quot;step&quot;</code> to indicate the current step. Provide a progress indicator and ensure users can navigate back to previous steps. All validation should occur before allowing progression to the next step."
+          description="Multi-step forms (wizards) require careful focus management. When moving between steps, focus should move to the first field of the new step. Use <code>aria-current=&amp;quot;step&amp;quot;</code> to indicate the current step. Provide a progress indicator and ensure users can navigate back to previous steps. All validation should occur before allowing progression to the next step."
           sectionId="multistep-form"
           code={`<div role="region" aria-label="Multi-step form">
   <nav aria-label="Progress">
@@ -384,7 +384,7 @@ export default function FormsPage() {
         {/* Inline Validation */}
         <ExampleSection
           title="Inline Validation"
-          description="Real-time validation provides immediate feedback. Use <code>aria-live=&quot;polite&quot;</code> for validation messages so screen readers announce them without interrupting. Validate on blur (when user leaves field) rather than on every keystroke to avoid overwhelming users. Show success states as well as errors. Use <code>aria-invalid</code> to indicate error state and <code>aria-describedby</code> to associate error messages with fields."
+          description="Real-time validation provides immediate feedback. Use <code>aria-live=&amp;quot;polite&amp;quot;</code> for validation messages so screen readers announce them without interrupting. Validate on blur (when user leaves field) rather than on every keystroke to avoid overwhelming users. Show success states as well as errors. Use <code>aria-invalid</code> to indicate error state and <code>aria-describedby</code> to associate error messages with fields."
           sectionId="inline-validation"
           code={`<div className="space-y-2">
   <label htmlFor="email">Email</label>
@@ -449,7 +449,7 @@ export default function FormsPage() {
         {/* Fieldset Groups */}
         <ExampleSection
           title="Fieldset Groups"
-          description="Use <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> to group related form fields. This is especially important for radio buttons and checkboxes, but also useful for grouping any related inputs. The legend describes the group and is announced by screen readers when entering the fieldset. This provides crucial context for understanding the relationship between fields."
+          description="Use <code>&amp;lt;fieldset&amp;gt;</code> and <code>&amp;lt;legend&amp;gt;</code> to group related form fields. This is especially important for radio buttons and checkboxes, but also useful for grouping any related inputs. The legend describes the group and is announced by screen readers when entering the fieldset. This provides crucial context for understanding the relationship between fields."
           sectionId="fieldset-groups"
           code={`<fieldset>
   <legend>Shipping Address</legend>

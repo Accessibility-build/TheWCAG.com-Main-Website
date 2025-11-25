@@ -46,7 +46,7 @@ export default function PaginationPage() {
         {/* Semantic Pagination */}
         <ExampleSection
           title="Semantic Pagination"
-          description="Use <code>&lt;nav aria-label=&quot;Pagination&quot;&gt;</code> to identify the pagination region. Use an ordered list for page numbers. The current page should have <code>aria-current=&quot;page&quot;</code> and not be a link. Previous/Next buttons should have clear labels. Provide screen reader text indicating current page and total pages."
+          description="Use <code>&amp;lt;nav aria-label=&amp;quot;Pagination&amp;quot;&amp;gt;</code> to identify the pagination region. Use an ordered list for page numbers. The current page should have <code>aria-current=&amp;quot;page&amp;quot;</code> and not be a link. Previous/Next buttons should have clear labels. Provide screen reader text indicating current page and total pages."
           sectionId="semantic-pagination"
           code={`<nav aria-label="Pagination">
   <ol>

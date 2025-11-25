@@ -38,7 +38,7 @@ export default function ListsPage() {
         {/* Semantic Lists */}
         <ExampleSection
           title="Semantic Lists"
-          description="Use <code>&lt;ul&gt;</code> for unordered lists, <code>&lt;ol&gt;</code> for ordered lists, and <code>&lt;dl&gt;</code> for description lists. Screen readers announce list structure, including the number of items. Never use divs styled to look like lists - use actual list elements."
+          description="Use <code>&amp;lt;ul&amp;gt;</code> for unordered lists, <code>&amp;lt;ol&amp;gt;</code> for ordered lists, and <code>&amp;lt;dl&amp;gt;</code> for description lists. Screen readers announce list structure, including the number of items. Never use divs styled to look like lists - use actual list elements."
           sectionId="semantic-lists"
           code={`{/* Unordered list */}
 <ul>

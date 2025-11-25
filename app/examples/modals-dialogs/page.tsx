@@ -227,7 +227,7 @@ export default function ModalsDialogsPage() {
         {/* Native Dialog */}
         <ExampleSection
           title="Native Dialog (HTML5)"
-          description="The HTML5 <code>&lt;dialog&gt;</code> element provides built-in accessibility features. Use <code>showModal()</code> to open and <code>close()</code> to close. The dialog automatically traps focus and handles Escape key. Use <code>&lt;form method=&quot;dialog&quot;&gt;</code> to close dialog on form submission. Always provide a visible close button."
+          description="The HTML5 <code>&amp;lt;dialog&amp;gt;</code> element provides built-in accessibility features. Use <code>showModal()</code> to open and <code>close()</code> to close. The dialog automatically traps focus and handles Escape key. Use <code>&amp;lt;form method=&amp;quot;dialog&amp;quot;&amp;gt;</code> to close dialog on form submission. Always provide a visible close button."
           sectionId="native-dialog"
           code={`<button onClick={() => dialogRef.current?.showModal()}>
   Open Dialog
@@ -289,7 +289,7 @@ export default function ModalsDialogsPage() {
         {/* ARIA Dialog */}
         <ExampleSection
           title="ARIA Dialog (Custom)"
-          description="For custom dialogs, use <code>role=&quot;dialog&quot;</code> or <code>role=&quot;alertdialog&quot;</code>. Set <code>aria-modal=&quot;true&quot;</code> to indicate modal behavior. Trap focus within the dialog using JavaScript. Provide <code>aria-labelledby</code> pointing to the dialog title. Use <code>aria-describedby</code> for additional description. Ensure backdrop is properly handled."
+          description="For custom dialogs, use <code>role=&amp;quot;dialog&amp;quot;</code> or <code>role=&amp;quot;alertdialog&amp;quot;</code>. Set <code>aria-modal=&amp;quot;true&amp;quot;</code> to indicate modal behavior. Trap focus within the dialog using JavaScript. Provide <code>aria-labelledby</code> pointing to the dialog title. Use <code>aria-describedby</code> for additional description. Ensure backdrop is properly handled."
           sectionId="aria-dialog"
           code={`<div
   role="dialog"
@@ -332,7 +332,7 @@ export default function ModalsDialogsPage() {
         {/* Alert Dialog */}
         <ExampleSection
           title="Alert Dialog"
-          description="Alert dialogs use <code>role=&quot;alertdialog&quot;</code> for critical messages requiring immediate attention. They should have a clear, concise message and typically one or two action buttons. The alertdialog role causes screen readers to interrupt current reading to announce the message. Use for confirmations, warnings, or critical errors."
+          description="Alert dialogs use <code>role=&amp;quot;alertdialog&amp;quot;</code> for critical messages requiring immediate attention. They should have a clear, concise message and typically one or two action buttons. The alertdialog role causes screen readers to interrupt current reading to announce the message. Use for confirmations, warnings, or critical errors."
           sectionId="alert-dialog"
           code={`<div
   role="alertdialog"

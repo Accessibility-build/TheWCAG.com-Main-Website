@@ -117,7 +117,7 @@ export default function DropdownsSelectsPage() {
         {/* Native Select */}
         <ExampleSection
           title="Native Select"
-          description="The native <code>&lt;select&gt;</code> element provides built-in accessibility. Always associate with a <code>&lt;label&gt;</code>. Use <code>&lt;optgroup&gt;</code> to group related options. The first option should typically be a placeholder with empty value. Native selects work with all assistive technologies without additional ARIA."
+          description="The native <code>&amp;lt;select&amp;gt;</code> element provides built-in accessibility. Always associate with a <code>&amp;lt;label&amp;gt;</code>. Use <code>&amp;lt;optgroup&amp;gt;</code> to group related options. The first option should typically be a placeholder with empty value. Native selects work with all assistive technologies without additional ARIA."
           sectionId="native-select"
           code={`<label htmlFor="country">Country</label>
 <select id="country" name="country">
@@ -166,7 +166,7 @@ export default function DropdownsSelectsPage() {
         {/* Custom Select with ARIA */}
         <ExampleSection
           title="Custom Select (ARIA Combobox)"
-          description="For custom styled selects, use the ARIA combobox pattern. Use <code>role=&quot;combobox&quot;</code> on the input/button, <code>aria-expanded</code> to indicate open state, <code>aria-controls</code> to link to the listbox, and <code>aria-autocomplete</code> if applicable. The listbox should have <code>role=&quot;listbox&quot;</code> with <code>role=&quot;option&quot;</code> for each item."
+          description="For custom styled selects, use the ARIA combobox pattern. Use <code>role=&amp;quot;combobox&amp;quot;</code> on the input/button, <code>aria-expanded</code> to indicate open state, <code>aria-controls</code> to link to the listbox, and <code>aria-autocomplete</code> if applicable. The listbox should have <code>role=&amp;quot;listbox&amp;quot;</code> with <code>role=&amp;quot;option&amp;quot;</code> for each item."
           sectionId="custom-select"
           code={`<div>
   <label htmlFor="custom-select">Select Option</label>

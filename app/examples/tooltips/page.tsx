@@ -121,7 +121,7 @@ export default function TooltipsPage() {
         {/* ARIA Tooltip */}
         <ExampleSection
           title="ARIA Tooltip"
-          description="Use <code>role=&quot;tooltip&quot;</code> on the tooltip element. Associate it with the trigger using <code>aria-describedby</code> on the trigger pointing to the tooltip's id. The tooltip should appear on both hover and focus. Use <code>aria-live=&quot;polite&quot;</code> if the tooltip appears dynamically. Ensure the tooltip is keyboard accessible and doesn't block other content."
+          description="Use <code>role=&amp;quot;tooltip&amp;quot;</code> on the tooltip element. Associate it with the trigger using <code>aria-describedby</code> on the trigger pointing to the tooltip's id. The tooltip should appear on both hover and focus. Use <code>aria-live=&amp;quot;polite&amp;quot;</code> if the tooltip appears dynamically. Ensure the tooltip is keyboard accessible and doesn't block other content."
           sectionId="aria-tooltip"
           code={`<button
   aria-describedby="tooltip1"

@@ -113,7 +113,7 @@ export default function NavigationPage() {
         {/* Semantic Navigation */}
         <ExampleSection
           title="Semantic Navigation"
-          description="Use the <code>&lt;nav&gt;</code> element with an <code>aria-label</code> to identify navigation regions. Use semantic list structure (<code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code>) for menu items. This provides built-in semantics that screen readers understand. The <code>aria-current=&quot;page&quot;</code> attribute indicates the current page in navigation."
+          description="Use the <code>&amp;lt;nav&amp;gt;</code> element with an <code>aria-label</code> to identify navigation regions. Use semantic list structure (<code>&amp;lt;ul&amp;gt;</code> and <code>&amp;lt;li&amp;gt;</code>) for menu items. This provides built-in semantics that screen readers understand. The <code>aria-current=&amp;quot;page&amp;quot;</code> attribute indicates the current page in navigation."
           sectionId="semantic-nav"
           code={`<nav aria-label="Main navigation">
   <ul>
@@ -162,7 +162,7 @@ export default function NavigationPage() {
         {/* ARIA Navigation */}
         <ExampleSection
           title="ARIA Navigation (Custom)"
-          description="When you need custom navigation that doesn't use semantic HTML, use <code>role=&quot;navigation&quot;</code> with <code>aria-label</code> to identify the navigation region. Use <code>role=&quot;list&quot;</code> and <code>role=&quot;listitem&quot;</code> for menu items. Ensure keyboard navigation is implemented manually. This approach should only be used when semantic HTML navigation is not feasible."
+          description="When you need custom navigation that doesn't use semantic HTML, use <code>role=&amp;quot;navigation&amp;quot;</code> with <code>aria-label</code> to identify the navigation region. Use <code>role=&amp;quot;list&amp;quot;</code> and <code>role=&amp;quot;listitem&amp;quot;</code> for menu items. Ensure keyboard navigation is implemented manually. This approach should only be used when semantic HTML navigation is not feasible."
           sectionId="aria-nav"
           code={`<nav role="navigation" aria-label="Main navigation">
   <ul role="list">
@@ -203,7 +203,7 @@ export default function NavigationPage() {
         {/* Breadcrumbs */}
         <ExampleSection
           title="Breadcrumbs"
-          description="Breadcrumbs provide navigation context and help users understand their location. Use <code>&lt;nav aria-label=&quot;Breadcrumb&quot;&gt;</code> with an ordered list (<code>&lt;ol&gt;</code>). The last item represents the current page and should not be a link. Use <code>aria-current=&quot;page&quot;</code> on the current page item. Separators between items should be hidden from screen readers using <code>aria-hidden=&quot;true&quot;</code>."
+          description="Breadcrumbs provide navigation context and help users understand their location. Use <code>&amp;lt;nav aria-label=&amp;quot;Breadcrumb&amp;quot;&amp;gt;</code> with an ordered list (<code>&amp;lt;ol&amp;gt;</code>). The last item represents the current page and should not be a link. Use <code>aria-current=&amp;quot;page&amp;quot;</code> on the current page item. Separators between items should be hidden from screen readers using <code>aria-hidden=&amp;quot;true&amp;quot;</code>."
           sectionId="breadcrumbs"
           code={`<nav aria-label="Breadcrumb">
   <ol className="flex items-center gap-2">
@@ -296,7 +296,7 @@ export default function NavigationPage() {
         {/* Mega Menu */}
         <ExampleSection
           title="Mega Menu"
-          description="Mega menus are large dropdown menus with multiple columns of links. Use proper ARIA attributes: <code>aria-expanded</code> on the trigger button, <code>aria-controls</code> to link trigger to menu, and <code>aria-haspopup=&quot;true&quot;</code>. The menu should be keyboard accessible with Arrow keys for navigation and Escape to close. Focus management is critical - trap focus within the menu when open."
+          description="Mega menus are large dropdown menus with multiple columns of links. Use proper ARIA attributes: <code>aria-expanded</code> on the trigger button, <code>aria-controls</code> to link trigger to menu, and <code>aria-haspopup=&amp;quot;true&amp;quot;</code>. The menu should be keyboard accessible with Arrow keys for navigation and Escape to close. Focus management is critical - trap focus within the menu when open."
           sectionId="mega-menu"
           code={`<button
   aria-expanded={isOpen}
@@ -502,7 +502,7 @@ export default function NavigationPage() {
         {/* Tabs Navigation */}
         <ExampleSection
           title="Tabs Navigation"
-          description="Tabs use the ARIA tabs pattern. Each tab panel should have a corresponding tab button. Use <code>role=&quot;tablist&quot;</code>, <code>role=&quot;tab&quot;</code>, and <code>role=&quot;tabpanel&quot;</code>. The active tab should have <code>aria-selected=&quot;true&quot;</code> and others should have <code>aria-selected=&quot;false&quot;</code>. Use <code>aria-controls</code> to link tabs to panels. Keyboard navigation: Arrow keys move between tabs, Enter/Space activates, Home/End jump to first/last tab."
+          description="Tabs use the ARIA tabs pattern. Each tab panel should have a corresponding tab button. Use <code>role=&amp;quot;tablist&amp;quot;</code>, <code>role=&amp;quot;tab&amp;quot;</code>, and <code>role=&amp;quot;tabpanel&amp;quot;</code>. The active tab should have <code>aria-selected=&amp;quot;true&amp;quot;</code> and others should have <code>aria-selected=&amp;quot;false&amp;quot;</code>. Use <code>aria-controls</code> to link tabs to panels. Keyboard navigation: Arrow keys move between tabs, Enter/Space activates, Home/End jump to first/last tab."
           sectionId="tabs-nav"
           code={`<div role="tablist" aria-label="Content sections">
   <button
