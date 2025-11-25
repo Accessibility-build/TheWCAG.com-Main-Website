@@ -323,139 +323,161 @@ export function LawsuitArchiveTable() {
       {/* Desktop Table Layout */}
       <div className="hidden md:block border rounded-lg overflow-hidden bg-background">
         <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-24 px-4 py-3 sm:px-6 sm:py-4">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-auto p-0 font-semibold hover:bg-transparent text-xs sm:text-sm"
-                  onClick={() => handleSort("year")}
-                  aria-label={getSortLabel("year")}
-                >
-                  Year
-                  <span className="ml-2">{getSortIcon("year")}</span>
-                </Button>
-              </TableHead>
-              <TableHead className="px-4 py-3 sm:px-6 sm:py-4">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-auto p-0 font-semibold hover:bg-transparent text-xs sm:text-sm"
-                  onClick={() => handleSort("plaintiff")}
-                  aria-label={getSortLabel("plaintiff")}
-                >
-                  Plaintiff(s)
-                  <span className="ml-2">{getSortIcon("plaintiff")}</span>
-                </Button>
-              </TableHead>
-              <TableHead className="px-4 py-3 sm:px-6 sm:py-4">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-auto p-0 font-semibold hover:bg-transparent text-xs sm:text-sm"
-                  onClick={() => handleSort("defendant")}
-                  aria-label={getSortLabel("defendant")}
-                >
-                  Defendant(s)
-                  <span className="ml-2">{getSortIcon("defendant")}</span>
-                </Button>
-              </TableHead>
-              <TableHead className="w-64 px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">Citation</TableHead>
-              <TableHead className="w-32 px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm text-center">Details</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {paginatedLawsuits.length === 0 ? (
+            <TableHeader>
               <TableRow>
-                <TableCell colSpan={5} className="text-center py-8 sm:py-12 text-muted-foreground px-4 sm:px-6">
-                  No lawsuits found matching your filters.
-                </TableCell>
+                <TableHead className="w-20 px-3 py-3">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-auto p-0 font-semibold hover:bg-transparent text-xs sm:text-sm"
+                    onClick={() => handleSort("year")}
+                    aria-label={getSortLabel("year")}
+                  >
+                    Year
+                    <span className="ml-2">{getSortIcon("year")}</span>
+                  </Button>
+                </TableHead>
+                <TableHead className="px-3 py-3 min-w-[120px]">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-auto p-0 font-semibold hover:bg-transparent text-xs sm:text-sm"
+                    onClick={() => handleSort("plaintiff")}
+                    aria-label={getSortLabel("plaintiff")}
+                  >
+                    Plaintiff(s)
+                    <span className="ml-2">{getSortIcon("plaintiff")}</span>
+                  </Button>
+                </TableHead>
+                <TableHead className="px-3 py-3 min-w-[150px]">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-auto p-0 font-semibold hover:bg-transparent text-xs sm:text-sm"
+                    onClick={() => handleSort("defendant")}
+                    aria-label={getSortLabel("defendant")}
+                  >
+                    Defendant(s)
+                    <span className="ml-2">{getSortIcon("defendant")}</span>
+                  </Button>
+                </TableHead>
+                <TableHead className="px-3 py-3 min-w-[200px] text-xs sm:text-sm">Citation</TableHead>
               </TableRow>
-            ) : (
-              paginatedLawsuits.map((lawsuit, index) => {
-                const matchingDetailedLawsuit = findMatchingDetailedLawsuit(lawsuit.defendant, lawsuit.year)
-                const rowContent = (
-                  <>
-                    <TableCell className="font-medium px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.year}</TableCell>
-                    <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.plaintiff}</TableCell>
-                    <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.defendant}</TableCell>
-                    <TableCell className="px-4 py-3 sm:px-6 sm:py-4">
-                      {isValidUrl(lawsuit.citation) ? (
-                        isDeprecatedUrl(lawsuit.citation) ? (
-                          <span className="text-muted-foreground text-xs sm:text-sm">
-                            {lawsuit.citationText} <span className="text-xs">(deprecated)</span>
-                          </span>
-                        ) : (
-                          <a
-                            href={lawsuit.citation}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"
-                            aria-label={`View citation for ${lawsuit.plaintiff} v. ${lawsuit.defendant} (opens in new window)`}
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            {lawsuit.citationText}
-                            <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
-                          </a>
-                        )
-                      ) : (
-                        isCaseNumber(lawsuit.citation) ? (
-                          <span className="text-muted-foreground text-xs sm:text-sm">
-                            {lawsuit.citationText}
-                          </span>
-                        ) : (
-                          <span className="text-muted-foreground text-xs sm:text-sm">
-                            {lawsuit.citationText}
-                          </span>
-                        )
-                      )}
-                    </TableCell>
-                    <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-center">
-                      {matchingDetailedLawsuit ? (
-                        <span className="text-primary inline-flex items-center gap-1 text-xs sm:text-sm">
-                          <FileText className="h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true" />
-                          <span className="sr-only sm:not-sr-only">Read more</span>
-                        </span>
-                      ) : (
-                        <span className="text-muted-foreground text-xs">—</span>
-                      )}
-                    </TableCell>
-                  </>
-                )
-
-                if (matchingDetailedLawsuit) {
-                  return (
-                    <TableRow
-                      key={`${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`}
-                      className="cursor-pointer hover:bg-accent transition-colors"
-                      onClick={() => {
-                        window.location.href = `/lawsuits/${matchingDetailedLawsuit.slug}`
-                      }}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          e.preventDefault()
+            </TableHeader>
+            <TableBody>
+              {paginatedLawsuits.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={4} className="text-center py-8 sm:py-12 text-muted-foreground px-4 sm:px-6">
+                    No lawsuits found matching your filters.
+                  </TableCell>
+                </TableRow>
+              ) : (
+                paginatedLawsuits.map((lawsuit, index) => {
+                  const matchingDetailedLawsuit = findMatchingDetailedLawsuit(lawsuit.defendant, lawsuit.year)
+                  
+                  if (matchingDetailedLawsuit) {
+                    return (
+                      <TableRow
+                        key={`${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`}
+                        className="cursor-pointer hover:bg-muted/30 transition-colors border-l-2 border-l-transparent hover:border-l-primary group"
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault()
+                            window.location.href = `/lawsuits/${matchingDetailedLawsuit.slug}`
+                          }
+                        }}
+                        onClick={() => {
                           window.location.href = `/lawsuits/${matchingDetailedLawsuit.slug}`
-                        }
-                      }}
-                      aria-label={`View details for ${lawsuit.plaintiff} v. ${lawsuit.defendant}`}
-                    >
-                      {rowContent}
+                        }}
+                        aria-label={`View details for ${lawsuit.plaintiff} v. ${lawsuit.defendant}`}
+                      >
+                        <TableCell className="font-medium px-3 py-3 text-xs sm:text-sm">
+                          <div className="flex items-center gap-2">
+                            {lawsuit.year}
+                            <FileText className="h-3 w-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity shrink-0" aria-hidden="true" />
+                          </div>
+                        </TableCell>
+                        <TableCell className="px-3 py-3 text-xs sm:text-sm">{lawsuit.plaintiff}</TableCell>
+                        <TableCell className="px-3 py-3 text-xs sm:text-sm">{lawsuit.defendant}</TableCell>
+                        <TableCell className="px-3 py-3">
+                          {isValidUrl(lawsuit.citation) ? (
+                            isDeprecatedUrl(lawsuit.citation) ? (
+                              <span className="text-muted-foreground text-xs sm:text-sm">
+                                {lawsuit.citationText} <span className="text-xs">(deprecated)</span>
+                              </span>
+                            ) : (
+                              <a
+                                href={lawsuit.citation}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"
+                                aria-label={`View citation for ${lawsuit.plaintiff} v. ${lawsuit.defendant} (opens in new window)`}
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                {lawsuit.citationText}
+                                <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
+                              </a>
+                            )
+                          ) : (
+                            isCaseNumber(lawsuit.citation) ? (
+                              <span className="text-muted-foreground text-xs sm:text-sm">
+                                {lawsuit.citationText}
+                              </span>
+                            ) : (
+                              <span className="text-muted-foreground text-xs sm:text-sm">
+                                {lawsuit.citationText}
+                              </span>
+                            )
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    )
+                  }
+
+                  return (
+                    <TableRow key={`${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`}>
+                      <TableCell className="font-medium px-3 py-3 text-xs sm:text-sm">{lawsuit.year}</TableCell>
+                      <TableCell className="px-3 py-3 text-xs sm:text-sm">{lawsuit.plaintiff}</TableCell>
+                      <TableCell className="px-3 py-3 text-xs sm:text-sm">{lawsuit.defendant}</TableCell>
+                      <TableCell className="px-3 py-3">
+                        {isValidUrl(lawsuit.citation) ? (
+                          isDeprecatedUrl(lawsuit.citation) ? (
+                            <span className="text-muted-foreground text-xs sm:text-sm">
+                              {lawsuit.citationText} <span className="text-xs">(deprecated)</span>
+                            </span>
+                          ) : (
+                            <a
+                              href={lawsuit.citation}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"
+                              aria-label={`View citation for ${lawsuit.plaintiff} v. ${lawsuit.defendant} (opens in new window)`}
+                            >
+                              {lawsuit.citationText}
+                              <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
+                            </a>
+                          )
+                        ) : (
+                          isCaseNumber(lawsuit.citation) ? (
+                            <span className="text-muted-foreground text-xs sm:text-sm">
+                              {lawsuit.citationText}
+                            </span>
+                          ) : (
+                            <span className="text-muted-foreground text-xs sm:text-sm">
+                              {lawsuit.citationText}
+                            </span>
+                          )
+                        )}
+                      </TableCell>
                     </TableRow>
                   )
-                }
-
-                return (
-                  <TableRow key={`${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`}>
-                    {rowContent}
-                  </TableRow>
-                )
-              })
-            )}
-          </TableBody>
-        </Table>
+                })
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </div>
 
       {/* Pagination */}
