@@ -213,12 +213,11 @@ export function AccessibilityQuiz() {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        variant="outline"
         size="lg"
-        className="h-11 sm:h-12 md:h-14 px-5 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
+        className="h-12 sm:h-14 md:h-16 px-8 sm:px-10 md:px-12 text-base sm:text-lg md:text-xl font-bold shadow-xl hover:shadow-2xl transition-all bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
       >
-        <Sparkles className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-        How Much Do You Know About Accessibility?
+        <Sparkles className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
+        Take the Quiz Now
       </Button>
 
       <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>

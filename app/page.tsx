@@ -168,7 +168,6 @@ export default function HomePage() {
                         <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                       </Link>
                     </Button>
-                    <AccessibilityQuiz />
                     <Button
                       size="lg"
                       variant="outline"
@@ -455,6 +454,28 @@ export default function HomePage() {
                 </div>
               </ScrollAnimation>
             </div>
+          </section>
+          {/* Quiz CTA Section */}
+          <section id="quiz" className="container py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+            <ScrollAnimation>
+              <div className="max-w-4xl mx-auto text-center">
+                <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-3xl p-8 sm:p-12 md:p-16 border-2 border-primary/20 shadow-xl">
+                  <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/20 mb-6 sm:mb-8">
+                    <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 text-primary" aria-hidden="true" />
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+                    Test Your Accessibility Knowledge
+                  </h2>
+                  <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
+                    How much do you really know about web accessibility? Take our quick quiz and find out!
+                  </p>
+                  <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 max-w-xl mx-auto">
+                    It's fun, interactive, and you might learn something new. No pressure—just a friendly challenge! 😊
+                  </p>
+                  <AccessibilityQuiz />
+                </div>
+              </div>
+            </ScrollAnimation>
           </section>
         </main>
         <Footer />

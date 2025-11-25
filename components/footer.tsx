@@ -187,6 +187,22 @@ export function Footer() {
                       Contact Us
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/services" className="hover:text-background transition-colors">
+                      Services
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-base md:text-lg font-medium mb-4 text-primary">Interactive</h3>
+                <ul className="space-y-2 text-sm text-background/60">
+                  <li>
+                    <Link href="/#quiz" className="hover:text-background transition-colors">
+                      Accessibility Quiz
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -159,6 +159,58 @@ export default function AccessibilityRemediationServicePage() {
               </div>
             </div>
 
+            {/* Tech Stack Section */}
+            <div className="mb-12 sm:mb-16 bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-2xl p-6 sm:p-8 md:p-12 border-2 border-primary/20">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 mb-6">
+                  <Code className="w-8 h-8 text-primary" />
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
+                  We Fix Issues on Any Platform
+                </h2>
+                <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
+                  WordPress, Drupal, Wix, custom websites, or any other tech stack—we can fix accessibility issues on your platform.
+                  <span className="block mt-2 font-semibold text-foreground">
+                    We work with your existing technology, not against it.
+                  </span>
+                </p>
+                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Our team is experienced with all major platforms and frameworks. We understand the unique challenges of each technology 
+                  and know how to implement accessibility fixes properly within your existing codebase.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
+                {[
+                  "WordPress",
+                  "Drupal",
+                  "Wix",
+                  "Shopify",
+                  "Squarespace",
+                  "Custom Websites",
+                  "React Apps",
+                  "Next.js",
+                  "Vue.js",
+                  "Angular",
+                  "PHP",
+                  "Python",
+                  "Node.js",
+                  "Laravel",
+                  "Django",
+                  "Ruby on Rails",
+                ].map((tech) => (
+                  <div
+                    key={tech}
+                    className="flex items-center justify-center p-3 sm:p-4 rounded-lg bg-background border border-primary/10 hover:border-primary/30 transition-colors"
+                  >
+                    <span className="text-sm sm:text-base font-medium text-center">{tech}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-center text-sm sm:text-base text-muted-foreground mt-6">
+                Need remediation on a different platform? <Link href="/contact" className="text-primary hover:underline font-semibold">Contact us</Link>—we can work with any technology.
+              </p>
+            </div>
+
             {/* What We Fix List */}
             <div className="mb-12 sm:mb-16">
               <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Common Issues We Fix</h2>
