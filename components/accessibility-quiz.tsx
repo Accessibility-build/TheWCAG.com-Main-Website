@@ -85,7 +85,7 @@ const questions: Question[] = [
       "Only on mobile"
     ],
     correctAnswer: 1,
-    explanation: "Yes! All interactive elements need clear, accessible labels (visible or via aria-label). Icons alone aren't enough—users need to know what buttons do."
+    explanation: "Yes! All interactive elements need clear, accessible labels (visible or via aria-label). Icons alone aren't enough, users need to know what buttons do."
   },
   {
     id: 7,
@@ -109,7 +109,7 @@ const questions: Question[] = [
       "Only for developers"
     ],
     correctAnswer: 1,
-    explanation: "Nope! Accessibility benefits everyone—people on slow connections, mobile users, people in bright sunlight, and yes, people with disabilities too!"
+    explanation: "Nope! Accessibility benefits everyone, people on slow connections, mobile users, people in bright sunlight, and yes, people with disabilities too!"
   }
 ]
 
@@ -128,7 +128,7 @@ const getResultMessage = (score: number, total: number) => {
     return {
       icon: Sparkles,
       title: "Pretty Good! ✨",
-      message: "Nice work! You know the basics. There's always more to learn though—dive into our resources to become an accessibility pro!",
+      message: "Nice work! You know the basics. There's always more to learn though, dive into our resources to become an accessibility pro!",
       color: "text-blue-600",
       bgColor: "bg-blue-500/10"
     }
@@ -152,7 +152,7 @@ const getResultMessage = (score: number, total: number) => {
     return {
       icon: Frown,
       title: "Beginner Mode Activated 🎓",
-      message: "No worries! Everyone's a beginner at some point. The fact that you took this quiz shows you're curious—that's awesome! Let's learn together!",
+      message: "No worries! Everyone's a beginner at some point. The fact that you took this quiz shows you're curious, that's awesome! Let's learn together!",
       color: "text-purple-600",
       bgColor: "bg-purple-500/10"
     }

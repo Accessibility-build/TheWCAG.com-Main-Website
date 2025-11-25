@@ -798,7 +798,7 @@ function closeModal() {
                 </CardHeader>
                 <CardContent className="space-y-4 text-base sm:text-lg leading-relaxed">
                   <p>
-                    Meeting WCAG 2.2 compliance is essential—it's the law in many jurisdictions and ensures your
+                    Meeting WCAG 2.2 compliance is essential, it's the law in many jurisdictions and ensures your
                     website is accessible to people with disabilities. But compliance is just the starting point.
                   </p>
                   <p>

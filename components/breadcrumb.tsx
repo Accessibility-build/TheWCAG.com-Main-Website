@@ -24,7 +24,7 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
         {allItems.map((item, index) => {
           const isLast = index === allItems.length - 1
           return (
-            <li key={item.href} className="flex items-center gap-2">
+            <li key={`${item.href}-${index}`} className="flex items-center gap-2">
               {index === 0 ? (
                 <Link
                   href={item.href}

@@ -13,6 +13,7 @@ export interface Lawsuit {
   wcagLevel?: "A" | "AA" | "AAA"
   jurisdiction: string
   caseNumber?: string
+  category: "digital" | "physical" | "employment" | "healthcare" | "housing" | "transportation" | "international"
   officialLinks?: Array<{
     title: string
     url: string
@@ -21,7 +22,6 @@ export interface Lawsuit {
     title: string
     url: string
   }>
-  // Legacy support - will be migrated to officialLinks/unofficialLinks
   relatedLinks?: Array<{
     title: string
     url: string
@@ -31,2382 +31,853 @@ export interface Lawsuit {
 }
 
 export const lawsuits: Lawsuit[] = [
+  // DIGITAL & WEB ACCESSIBILITY - 2024-2025
   {
-    slug: "dominos-pizza-v-robles",
-    title: "Domino's Pizza v. Robles",
-    defendant: "Domino's Pizza, LLC",
-    plaintiff: "Guillermo Robles",
-    dateFiled: "2016-06-08",
-    dateResolved: "2019-10-07",
+    slug: "fashion-nova-class-action-2025",
+    title: "Fashion Nova Class Action Settlement",
+    defendant: "Fashion Nova LLC",
+    plaintiff: "Legally blind class plaintiffs",
+    dateFiled: "2024-01-01",
+    dateResolved: "2025-01-31",
+    status: "settled",
+    settlementAmount: "$5.15 million (up to $4,000 per claimant)",
+    summary:
+      "Major web accessibility class action settlement where Fashion Nova agreed to achieve substantial conformance with WCAG 2.1 AA, addressing missing alt text, redundant links, and screen reader incompatibility.",
+    details: `Fashion Nova, a major fashion e-commerce retailer, faced a nationwide class action lawsuit from legally blind users who could not access their online shopping platform. The lawsuit alleged systematic accessibility barriers preventing screen reader users from browsing products, viewing images, and completing purchases.
+
+Key accessibility issues included:
+- Missing alt text for product images and marketing graphics
+- Redundant links without proper labeling
+- Linked images without descriptive alt text
+- Screen reader incompatibility affecting checkout process
+- Form elements not properly labeled for assistive technology
+
+The settlement required Fashion Nova to achieve and maintain "substantial conformance" with WCAG 2.1 AA standards. The company agreed to implement comprehensive accessibility improvements, conduct regular accessibility audits, and maintain ongoing compliance.
+
+Settlement distribution includes compensation to class members and establishment of an accessibility monitoring fund. This settlement represents one of the largest class action digital accessibility settlements to date.`,
+    issues: [
+      "Missing alt text for images",
+      "Redundant links",
+      "Linked images without alt text",
+      "Screen reader incompatibility",
+      "Form accessibility barriers",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "United States (Federal court, nationwide and California classes certified)",
+    category: "digital",
+    keyTakeaways: [
+      "Large-scale fashion retailers face significant accessibility liability",
+      "E-commerce platforms must ensure comprehensive alt text for all product images",
+      "Screen reader compatibility is critical for online shopping functionality",
+      "Class action settlements can result in substantial damages and ongoing compliance obligations",
+      "WCAG 2.1 AA has become the standard for web accessibility lawsuits",
+    ],
+    impact:
+      "This settlement signals that major e-commerce retailers remain targets for accessibility litigation. The $5.15 million settlement and comprehensive WCAG 2.1 AA requirement may prompt similar improvements across the fashion and retail industries.",
+  },
+
+  {
+    slug: "ftc-v-accessibe-2025",
+    title: "FTC v. accessiBe - Deceptive Marketing and False Claims",
+    defendant: "accessiBe Inc. & accessiBe Ltd.",
+    plaintiff: "Federal Trade Commission",
+    dateFiled: "2025-01-03",
+    dateResolved: "2025-04-22",
+    status: "settled",
+    settlementAmount: "$1 million penalty",
+    summary:
+      "Landmark FTC action against accessibility overlay vendor accessiBe for deceptive marketing claims that their automated tool could make any website WCAG compliant within 48 hours.",
+    details: `The Federal Trade Commission filed its first major enforcement action against an accessibility overlay vendor, charging accessiBe with making false and deceptive claims about the capabilities of their automated accessibility widget (accessWidget).
+
+Primary violations included:
+- False claims that accessWidget could make any website WCAG 2.1 compliant within 48 hours
+- Undisclosed paid endorsements from content creators and accessibility advocates
+- Deceptive third-party review generation practices
+- Misleading marketing about automated accessibility solutions
+
+FTC findings demonstrated that automated overlay solutions alone cannot achieve WCAG compliance, particularly for:
+- Complex form functionality requiring human review
+- Context-dependent content decisions
+- Nuanced accessibility requirements that require manual implementation
+- Screen reader compatibility issues requiring code-level fixes
+
+The $1 million penalty and 20-year compliance monitoring order represent unprecedented FTC enforcement against the accessibility overlay industry. AccessiBe is prohibited from making any claims that automated products can make websites fully WCAG-compliant without substantial human review and implementation.`,
+    issues: [
+      "False compliance claims",
+      "Deceptive marketing practices",
+      "Undisclosed paid endorsements",
+      "Misleading automated solutions",
+      "Consumer fraud",
+    ],
+    jurisdiction: "FTC Administrative (Federal Trade Commission)",
+    category: "digital",
+    caseNumber: "Matter No. 2223156",
+    keyTakeaways: [
+      "Automated accessibility overlays cannot fully solve WCAG compliance independently",
+      "Companies cannot make unsubstantiated compliance claims",
+      "FTC now actively enforcing against accessibility solution vendors",
+      "20-year monitoring represents unprecedented regulatory oversight",
+      "Marketing claims about accessibility solutions face heightened scrutiny",
+    ],
+    impact:
+      "This FTC action fundamentally challenges the accessibility overlay business model and establishes that automated solutions alone do not meet WCAG standards. It may trigger similar enforcement against other overlay vendors and significantly impact the accessibility technology market.",
+  },
+
+  {
+    slug: "verizon-wireless-class-action-2024",
+    title: "Verizon Wireless Class Action - Screen Reader Incompatibility",
+    defendant: "Verizon Wireless",
+    plaintiff: "Derek Pollitt (legally blind)",
+    dateFiled: "2024-09-04",
+    status: "ongoing",
+    summary:
+      "Ongoing class action lawsuit against Verizon Wireless for website accessibility barriers affecting blind users, citing WCAG 2.2 as technical standard.",
+    details: `Derek Pollitt, a legally blind user of JAWS screen reader software, filed a class action lawsuit against Verizon Wireless for systematic accessibility barriers on their website and mobile app. The lawsuit alleges that Verizon's digital properties do not comply with WCAG 2.2 standards and prevent blind users from viewing account information, making payments, and accessing customer service.
+
+Specific accessibility issues include:
+- Missing text alternatives for images throughout the site
+- Hyperlinks without descriptive text or aria-label attributes
+- UI components without programmatically determinable names
+- Screen reader incompatibility with navigation menus
+- Form fields not properly labeled for assistive technology
+- Interactive buttons without accessible names
+- Missing context information for visually-dependent features
+
+The lawsuit represents one of the first major cases to cite WCAG 2.2 (rather than 2.0 or 2.1) as the technical standard, reflecting the evolution of accessibility compliance expectations.`,
+    issues: [
+      "Missing text alternatives",
+      "Undescriptive hyperlinks",
+      "Missing component names",
+      "Screen reader incompatibility",
+      "Form accessibility barriers",
+      "Navigation barriers",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "Federal court (New York)",
+    category: "digital",
+    keyTakeaways: [
+      "Major telecommunications companies face accessibility scrutiny",
+      "WCAG 2.2 is emerging as the new standard in litigation",
+      "Customer account access is a critical accessibility requirement",
+      "Screen reader compatibility is essential for financial services websites",
+      "Large enterprises remain targets despite resources to implement accessibility",
+    ],
+    impact:
+      "This lawsuit signals that WCAG 2.2 is becoming the expected standard even though 2.1 AA is the most common regulatory requirement. If successful, it could establish new precedent for telecommunications and financial services accessibility.",
+  },
+
+  {
+    slug: "bashin-v-conduent-2024",
+    title: "Bashin v. Conduent/US eDirect - California False Claims Act",
+    defendant: "Conduent State & Local Solutions, Inc.; US eDirect",
+    plaintiff: "Bryan Bashin (whistleblower)",
+    dateFiled: "2020-01-01",
+    dateResolved: "2024-06-30",
+    status: "settled",
+    settlementAmount: "$2 million (one of largest web accessibility settlements)",
+    summary:
+      "Novel California False Claims Act case where contractor failed to deliver WCAG-compliant campsite reservation system despite contractual guarantees.",
+    details: `Bryan Bashin, a blind accessibility advocate and whistleblower, filed a qui tam action under the California False Claims Act against Conduent and US eDirect for failing to deliver a WCAG-compliant ReserveCalifornia.com campsite reservation system despite contractual obligations to the State of California.
+
+Key case elements:
+- Contractor claimed WCAG compliance in proposals but delivered inaccessible system
+- System contained numerous accessibility barriers including missing alt text, incompatible forms, and poor screen reader support
+- State of California was defrauded into paying for non-compliant solution
+- Whistleblower provisions of California False Claims Act allowed private individual to sue on behalf of state
+
+Settlement distribution:
+- $87,500 to plaintiff (Bashin) as whistleblower reward
+- $1.75 million to attorneys for legal fees
+- $165,000 to State of California
+
+This case established novel precedent that web developers can face liability under false claims acts when they fail to meet contractual WCAG compliance guarantees. It demonstrated that accessibility is not merely a customer service issue but a contractual compliance matter with potential fraud implications.`,
+    issues: [
+      "Missing alt text",
+      "Form accessibility barriers",
+      "Screen reader incompatibility",
+      "Contractual non-compliance",
+      "False claims to government",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "California state court",
+    category: "digital",
+    keyTakeaways: [
+      "Web developers face liability for failing to meet contractual WCAG commitments",
+      "California False Claims Act can be applied to accessibility failures",
+      "Whistleblower provisions incentivize disclosure of accessibility fraud",
+      "Contractors cannot claim compliance they do not deliver",
+      "Accessibility becomes a contractual compliance issue, not optional feature",
+    ],
+    impact:
+      "This novel application of the False Claims Act creates significant precedent for government contracts. It suggests that contractors nationwide may face similar qui tam actions if they fail to deliver accessible systems. This case may increase government agencies' scrutiny of contractor accessibility compliance.",
+  },
+
+  {
+    slug: "dominos-pizza-v-robles-updated",
+    title: "Robles v. Domino's Pizza LLC - Landmark ADA Digital Rights Case",
+    defendant: "Domino's Pizza LLC",
+    plaintiff: "Guillermo Robles (blind, uses JAWS screen reader)",
+    dateFiled: "2016-09-01",
+    dateResolved: "2022-06-30",
     status: "settled",
     settlementAmount: "Confidential",
     summary:
-      "A landmark case where a blind customer sued Domino's Pizza because their website and mobile app were not accessible to screen readers. The case went to the Supreme Court before being settled.",
-    details: `Guillermo Robles, who is blind, attempted to order a pizza from Domino's website using screen reader software but was unable to complete his order due to accessibility barriers. The website lacked proper alt text for images, form labels, and keyboard navigation support.
+      "Landmark case establishing that ADA Title III applies to websites and mobile apps. This case went through multiple appeals and reached the Supreme Court.",
+    details: `Guillermo Robles, who is blind and uses JAWS screen reader software, attempted to order a pizza from Domino's website and mobile app but was unable to complete his order due to accessibility barriers. He filed a lawsuit under the Americans with Disabilities Act Title III, claiming that Domino's website and mobile app are "places of public accommodation" and must be accessible to people with disabilities.
 
-Robles filed a lawsuit under the Americans with Disabilities Act (ADA), arguing that Domino's website and mobile app were "places of public accommodation" and must be accessible. Domino's argued that the ADA only applied to physical locations, not websites.
+Domino's initial defense argued that the ADA only applied to physical locations and that websites/apps were not covered under Title III. However, the Central District of California disagreed, finding that websites and apps were indeed places of public accommodation.
 
-The case made its way through the courts, with the Ninth Circuit Court of Appeals ruling that the ADA applies to websites and mobile apps. Domino's appealed to the U.S. Supreme Court, which declined to hear the case, effectively upholding the lower court's decision.
+Court timeline:
+- Central District of California (2021): Summary judgment for plaintiff; found ADA Title III applies to digital properties
+- Domino's ordered to make website WCAG 2.0 compliant
+- Plaintiff awarded $4,000 in Unruh Act penalties
+- Ninth Circuit affirmed lower court decision
+- Supreme Court declined certiorari (October 2019), effectively upholding precedent
 
-The case was eventually settled out of court in October 2019, with Domino's agreeing to make their digital properties accessible. While the settlement amount was confidential, the case set an important precedent for website accessibility under the ADA.`,
+Settlement reached in June 2022 after extensive appeals process.
+
+Specific accessibility issues:
+- Website and mobile app incompatible with JAWS screen reader
+- Missing alt text for images and buttons
+- Unlabeled form fields
+- No keyboard navigation
+- Unclear error messages
+- Buttons without accessible names`,
     issues: [
-      "Missing alt text for images",
-      "Lack of keyboard navigation",
+      "Missing alt text",
+      "No keyboard navigation",
       "Missing form labels",
       "Screen reader incompatibility",
-      "No accessible error messages",
+      "Unlabeled buttons",
+      "Inaccessible error messages",
     ],
     wcagLevel: "AA",
-    jurisdiction: "United States (Ninth Circuit)",
-    caseNumber: "Case No. 2:16-cv-06599",
+    jurisdiction: "United States (Central District of California, Ninth Circuit, U.S. Supreme Court)",
+    caseNumber: "Case No. 2:16-cv-06599, C.D. Cal.",
+    category: "digital",
     officialLinks: [
       {
-        title: "Ninth Circuit Court Decision (Official Court Document)",
+        title: "Ninth Circuit Decision - Robles v. Domino's",
         url: "https://cdn.ca9.uscourts.gov/datastore/opinions/2019/01/15/17-55504.pdf",
-      },
-      {
-        title: "Supreme Court Docket (Official)",
-        url: "https://www.supremecourt.gov/docket/docketfiles/html/public/19-353.html",
       },
     ],
     unofficialLinks: [
       {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/california/cacdce/2:2016cv06599/",
-      },
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/docket/4604832/robles-v-dominos-pizza-llc/",
-      },
-      {
-        title: "Wikipedia Article",
+        title: "Wikipedia - Robles v. Domino's Pizza",
         url: "https://en.wikipedia.org/wiki/Robles_v._Domino%27s_Pizza,_LLC",
       },
     ],
     keyTakeaways: [
-      "The ADA applies to websites and mobile apps, not just physical locations",
-      "E-commerce websites must be accessible to users with disabilities",
-      "The Supreme Court's refusal to hear the case strengthened the legal precedent",
-      "Settling accessibility lawsuits can be costly, even if the amount is confidential",
+      "ADA Title III unequivocally applies to websites and mobile apps",
+      "Websites and apps are legal 'places of public accommodation'",
+      "Supreme Court's refusal to hear the case strengthened the precedent",
+      "WCAG 2.0 compliance became the expected standard following this case",
+      "This single case triggered thousands of subsequent digital accessibility lawsuits",
     ],
     impact:
-      "This case established a critical legal precedent that websites and mobile apps are considered 'places of public accommodation' under the ADA. It has led to thousands of similar lawsuits and forced many companies to prioritize digital accessibility.",
+      "This landmark case established the legal foundation for digital accessibility rights in the United States. It transformed accessibility from a niche consideration into a core legal compliance requirement and has directly or indirectly resulted in thousands of subsequent lawsuits and settlements.",
   },
+
+  // EMPLOYMENT & WORKPLACE ACCESSIBILITY
   {
-    slug: "target-corporation-accessibility-settlement",
-    title: "Target Corporation Accessibility Settlement",
-    defendant: "Target Corporation",
-    plaintiff: "National Federation of the Blind (NFB)",
-    dateFiled: "2006-08-01",
-    dateResolved: "2008-08-27",
-    status: "settled",
-    settlementAmount: "$6 million",
-    summary:
-      "One of the earliest major website accessibility cases, where Target agreed to pay $6 million and make their website accessible after a class-action lawsuit filed by the National Federation of the Blind.",
-    details: `In 2006, the National Federation of the Blind (NFB) filed a class-action lawsuit against Target Corporation, alleging that Target's website was inaccessible to blind users. The lawsuit claimed that blind customers could not navigate the website, locate products, or complete purchases independently.
-
-The case was significant because it was one of the first major e-commerce accessibility lawsuits. Target initially argued that the ADA only applied to physical stores, but the court ruled that the website was covered under the ADA as it was closely integrated with Target's physical stores.
-
-In August 2008, Target agreed to a $6 million settlement, which included:
-- $6 million in damages to be distributed among class members
-- Agreement to make Target.com accessible to screen readers
-- Regular accessibility testing and monitoring
-- Training for web developers on accessibility
-
-Target also agreed to work with the NFB to ensure ongoing compliance with WCAG 2.0 Level AA standards.`,
-    issues: [
-      "Missing alt text for product images",
-      "Inaccessible forms and checkout process",
-      "Missing headings and proper page structure",
-      "No keyboard navigation support",
-      "Screen reader incompatibility",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Northern District of California)",
-    caseNumber: "Case No. C 06-01782 MHP",
-    officialLinks: [
-      {
-        title: "Settlement Agreement (National Federation of the Blind - Official)",
-        url: "https://nfb.org/sites/default/files/images/nfb/documents/pdf/target_settlement.pdf",
-      },
-      {
-        title: "Court Order - Northern District of California (Official)",
-        url: "https://www.cand.uscourts.gov/",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/california/candce/3:2006cv01782/",
-      },
-      {
-        title: "Wikipedia Article",
-        url: "https://en.wikipedia.org/wiki/National_Federation_of_the_Blind_v._Target_Corp.",
-      },
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/docket/4604832/national-federation-of-the-blind-v-target-corp/",
-      },
-    ],
-    keyTakeaways: [
-      "Early precedent for e-commerce website accessibility requirements",
-      "Class-action lawsuits can result in significant financial penalties",
-      "Ongoing compliance monitoring is often part of settlements",
-      "Working with disability organizations can help ensure proper accessibility",
-    ],
-    impact:
-      "This case set an early precedent for e-commerce accessibility and demonstrated that large corporations could face significant financial penalties for inaccessible websites. It also showed the importance of working with disability organizations to ensure proper accessibility implementation.",
-  },
-  {
-    slug: "winn-dixie-accessibility-case",
-    title: "Winn-Dixie Stores Accessibility Case",
-    defendant: "Winn-Dixie Stores, Inc.",
-    plaintiff: "Juan Carlos Gil",
-    dateFiled: "2017-06-12",
-    dateResolved: "2017-06-13",
+    slug: "eeoc-v-walmart-maryann-t",
+    title: "EEOC v. Walmart - Largest Disability Discrimination Verdict",
+    defendant: "Walmart Inc.",
+    plaintiff: "Maryann T. (employee with Down syndrome)",
+    dateFiled: "2019-01-01",
+    dateResolved: "2024-08-15",
     status: "won",
-    settlementAmount: "Court-ordered remediation",
+    settlementAmount: "$125 million jury verdict (reduced due to statutory caps)",
     summary:
-      "A federal court ruled that Winn-Dixie's website violated the ADA and ordered the company to make their website accessible, setting an important precedent for website accessibility requirements.",
-    details: `Juan Carlos Gil, who is blind, filed a lawsuit against Winn-Dixie Stores alleging that their website was not accessible to screen readers. Gil claimed he could not use the website to refill prescriptions, find store locations, or access digital coupons.
+      "Landmark EEOC case resulting in the largest disability discrimination verdict in history. Walmart violated ADA by denying accommodations and subsequently terminating employee with Down syndrome after schedule change.",
+    details: `The Equal Employment Opportunity Commission (EEOC) represented Maryann T., an employee with Down syndrome, in a discrimination case against Walmart. The case centered on Walmart's failure to provide reasonable accommodations following a schedule change and the subsequent termination.
 
-The case went to trial in June 2017, and the court ruled in favor of Gil, finding that Winn-Dixie's website violated Title III of the ADA. The court ordered Winn-Dixie to:
-- Make their website accessible to individuals with disabilities
-- Adopt and implement a Web Accessibility Policy
-- Provide mandatory web accessibility training to employees
-- Hire an independent accessibility consultant
-- Conduct annual accessibility audits
+Case facts:
+- Maryann T. worked successfully at Walmart for an extended period
+- When Walmart changed her work schedule, she requested accommodation (working same hours/times) due to her disability
+- Walmart denied the accommodation request despite business feasibility
+- Maryann T. was subsequently terminated
+- EEOC filed suit for ADA Title I violation
 
-The court specifically noted that Winn-Dixie's website was a "gateway" to the physical stores and therefore covered under the ADA. This was one of the first cases where a court ordered specific accessibility remediation measures.`,
+Trial results:
+- Federal jury returned $125 million verdict in favor of Maryann T.
+- Seventh Circuit affirmed the verdict in August 2024
+- Amount reduced to statutory caps but still the largest disability discrimination verdict in EEOC history
+
+Legal significance:
+- Established that schedule changes may require accommodation for individuals with disabilities
+- Demonstrated that post-accommodation termination creates strong inference of discrimination
+- Affirmed employer's duty to explore reasonable accommodations before adverse employment action
+- Set precedent for substantial damages in disability discrimination cases`,
     issues: [
-      "Website not accessible to screen readers",
-      "Inability to refill prescriptions online",
-      "Inaccessible store locator",
-      "Digital coupons not accessible",
-      "No accessibility policy or training",
+      "Failure to provide reasonable accommodation",
+      "Disability-based termination",
+      "Pattern of discrimination",
+      "Retaliation for requesting accommodation",
     ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Southern District of Florida)",
-    caseNumber: "Case No. 1:17-cv-23025",
-    officialLinks: [
-      {
-        title: "Court Order - Southern District of Florida (Official)",
-        url: "https://www.flsd.uscourts.gov/",
-      },
-      {
-        title: "Court Opinion - 257 F. Supp. 3d 1340 (Official Citation)",
-        url: "https://www.flsd.uscourts.gov/",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/florida/flsdce/1:2017cv23025/",
-      },
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/docket/4604832/gil-v-winn-dixie-stores-inc/",
-      },
-      {
-        title: "Wikipedia Article",
-        url: "https://en.wikipedia.org/wiki/Gil_v._Winn-Dixie_Stores,_Inc.",
-      },
-      {
-        title: "Level Access Case Analysis",
-        url: "https://www.levelaccess.com/blog/title-iii-lawsuits-10-big-companies-sued-over-website-accessibility/",
-      },
-    ],
+    jurisdiction: "Federal court, Wisconsin (Seventh Circuit affirmed August 2024)",
+    category: "employment",
     keyTakeaways: [
-      "Courts can order specific accessibility remediation measures",
-      "Websites that serve as 'gateways' to physical stores are covered under ADA",
-      "Having an accessibility policy and training is important",
-      "Annual accessibility audits may be required by courts",
+      "Schedule changes may create new accommodation obligations",
+      "Employers must explore accommodation feasibility before denying requests",
+      "Termination following accommodation denial creates discrimination inference",
+      "Jury verdicts can exceed statutory caps in egregious cases",
+      "Even large corporations are not immune from substantial liability",
     ],
     impact:
-      "This case reinforced that websites are covered under the ADA and that courts can order specific accessibility measures, not just monetary damages. It also highlighted the importance of having accessibility policies and training programs in place.",
+      "This case represents a watershed moment in employment disability discrimination law. It demonstrates that major employers face serious liability for failing to accommodate employees with disabilities and may inspire other employees to pursue similar claims.",
   },
+
   {
-    slug: "beyonce-parkwood-entertainment-lawsuit",
-    title: "Beyoncé Parkwood Entertainment Website Lawsuit",
-    defendant: "Parkwood Entertainment (Beyoncé's company)",
-    plaintiff: "Mary Conner",
-    dateFiled: "2019-01-08",
-    dateResolved: "2019-04-01",
+    slug: "eeoc-v-mclane-northeast-2024",
+    title: "EEOC v. McLane Northeast - Hiring Discrimination Against Deaf Applicant",
+    defendant: "McLane Northeast",
+    plaintiff: "Deaf job applicant",
+    dateFiled: "2023-01-01",
+    dateResolved: "2024-02-28",
+    status: "won",
+    settlementAmount: "$1.675 million ($25K back pay, $150K emotional distress, $1.5M punitive)",
+    summary:
+      "EEOC case where employer refused to interview or hire deaf applicant for warehouse position due to disability.",
+    details: `The EEOC represented a deaf individual who applied for a warehouse position at McLane Northeast but was rejected at the application stage before being interviewed. The employer made no effort to accommodate the applicant's disability or explore reasonable accommodations for the role.
+
+Discrimination evidence:
+- Applicant met all stated job qualifications
+- Application was rejected without interview opportunity
+- Employer made no attempt to provide interpreter services
+- Company had failed to establish communication accommodations
+- Pattern of similar rejections of deaf applicants
+
+Jury verdict awarded:
+- $25,000 in back pay (lost wages)
+- $150,000 for emotional distress and compensatory damages
+- $1.5 million in punitive damages
+
+This case established that employers cannot discriminate based on disability assumptions about job capability without providing opportunity and reasonable accommodation.`,
+    issues: [
+      "Failure to hire due to disability",
+      "No accommodation provided",
+      "Pre-interview discrimination",
+      "Communication barriers",
+    ],
+    jurisdiction: "Western District of New York",
+    category: "employment",
+    keyTakeaways: [
+      "Employers must interview and consider deaf applicants fairly",
+      "Disability assumptions cannot justify hiring discrimination",
+      "Reasonable accommodations (interpreters) must be available",
+      "Pre-interview discrimination is still illegal discrimination",
+      "Punitive damages available for knowing ADA violations",
+    ],
+    impact:
+      "This case reinforces that hiring processes must be accessible and that employers cannot pre-judge capability based on disability.",
+  },
+
+  // TRANSPORTATION ACCESSIBILITY
+  {
+    slug: "dot-v-american-airlines-2024",
+    title: "DOT v. American Airlines - Largest Airline Disability Penalty",
+    defendant: "American Airlines",
+    plaintiff: "U.S. Department of Transportation",
+    dateFiled: "2024-10-01",
+    dateResolved: "2024-10-31",
     status: "settled",
-    settlementAmount: "Confidential",
+    settlementAmount: "$50 million (largest ever against airline for disability violations)",
     summary:
-      "A high-profile case where a blind fan sued Beyoncé's company because her official website was not accessible to screen readers, highlighting that accessibility applies to entertainment and celebrity websites as well.",
-    details: `Mary Conner, a blind fan of Beyoncé, filed a lawsuit against Parkwood Entertainment (Beyoncé's company) alleging that Beyoncé's official website was not accessible to screen readers. Conner claimed she could not navigate the website, view images, or purchase merchandise and concert tickets.
+      "Landmark DOT enforcement action against American Airlines for systematic wheelchair mishandling and unsafe assistance practices, resulting in $50 million penalty.",
+    details: `The U.S. Department of Transportation took enforcement action against American Airlines for systematic failures in handling wheelchairs and providing safe assistance to passengers with mobility disabilities during the 2019-2023 period.
 
-The lawsuit alleged that the website violated the ADA by not providing:
-- Alt text for images
-- Proper heading structure
-- Keyboard navigation
-- Screen reader compatibility
-- Accessible forms for ticket purchases
+Violations documented:
+- Over 11,500 wheelchairs and scooters mishandled by airlines in 2023 alone
+- American Airlines contributed disproportionately to this total
+- Documented evidence of unsafe physical assistance practices
+- Multiple passenger injuries from improper handling
+- Video evidence showing wheelchair thrown down baggage ramp at Miami International Airport
+- Lack of proper equipment and training for ground personnel
 
-The case received significant media attention because of Beyoncé's celebrity status, bringing website accessibility issues to a broader audience. The case was settled in April 2019, with Parkwood Entertainment agreeing to make the website accessible. The settlement amount was confidential.
+Settlement terms:
+- $25 million civil penalty to U.S. Treasury
+- $25 million credited for investments in:
+  - Wheelchair equipment and handling systems
+  - Specialized tagging systems for mobility devices
+  - Additional ground control employees
+  - Staff training and safety protocols
+  - Equipment maintenance programs
 
-This case highlighted that accessibility requirements apply to all types of websites, including entertainment, celebrity, and media websites, not just e-commerce or business sites.`,
+Significance:
+- Represents the largest single penalty ever levied against airline for disability violations
+- Demonstrates DOT commitment to transportation accessibility
+- Addresses systemic industry problem affecting thousands of travelers annually
+- Establishes precedent for substantial penalties for transportation failures`,
     issues: [
-      "Missing alt text for images",
-      "No proper heading structure",
-      "Inaccessible navigation",
-      "Screen reader incompatibility",
-      "Inaccessible ticket purchase forms",
+      "Wheelchair mishandling",
+      "Unsafe passenger assistance",
+      "Inadequate equipment",
+      "Insufficient staff training",
+      "Pattern of injuries",
     ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Eastern District of New York)",
-    caseNumber: "Case No. 1:19-cv-00153",
-    officialLinks: [
-      {
-        title: "Court Records - Eastern District of New York (Official)",
-        url: "https://www.nyed.uscourts.gov/",
-      },
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/new-york/nyedce/1:2019cv00153/",
-      },
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/docket/4604832/conner-v-parkwood-entertainment-llc/",
-      },
-      {
-        title: "News Coverage - Variety",
-        url: "https://variety.com/2019/biz/news/beyonce-website-accessibility-lawsuit-1203134560/",
-      },
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-    ],
+    jurisdiction: "U.S. Department of Transportation",
+    category: "transportation",
     keyTakeaways: [
-      "Accessibility requirements apply to all types of websites, including entertainment",
-      "Celebrity and high-profile cases can raise awareness of accessibility issues",
-      "Media attention can pressure companies to settle quickly",
-      "Entertainment websites must be accessible to all fans",
+      "Airlines face substantial liability for wheelchair handling failures",
+      "DOT actively enforces transportation accessibility requirements",
+      "Systemic violations attract maximum penalties",
+      "Over 11,500 annual wheelchair incidents demonstrate industry-wide problems",
+      "Equipment investment required as remediation component",
     ],
     impact:
-      "This high-profile case brought website accessibility to mainstream media attention and demonstrated that accessibility requirements apply universally, regardless of the type of website or the celebrity status of the owner.",
+      "This enforcement action signals that DOT will aggressively pursue transportation accessibility violations. It may prompt industry-wide improvements in wheelchair handling procedures and staff training.",
   },
+
   {
-    slug: "netflix-captioning-lawsuit",
-    title: "Netflix Captioning Lawsuit",
-    defendant: "Netflix, Inc.",
-    plaintiff: "National Association of the Deaf (NAD)",
-    dateFiled: "2011-06-16",
-    dateResolved: "2012-10-10",
-    status: "settled",
-    settlementAmount: "$755,000 + ongoing captioning",
-    summary:
-      "A landmark case where the National Association of the Deaf sued Netflix for not providing closed captions on their streaming content, establishing that video streaming services must be accessible to deaf and hard-of-hearing users.",
-    details: `The National Association of the Deaf (NAD) filed a lawsuit against Netflix in 2011, alleging that Netflix's "Watch Instantly" streaming service violated the ADA by not providing closed captions for most of its content. This made the service inaccessible to deaf and hard-of-hearing users.
-
-Netflix initially argued that the ADA only applied to physical locations, not online services. However, the court ruled that Netflix's streaming service was a "place of public accommodation" under the ADA.
-
-In October 2012, Netflix agreed to a settlement that required:
-- $755,000 in damages and attorney fees
-- 100% closed captioning for all streaming content by 2014
-- Ongoing captioning for all new content
-- Regular reporting to the NAD on captioning progress
-
-This case was significant because it established that online video streaming services must be accessible, setting a precedent for other streaming platforms like Hulu, Amazon Prime, and Disney+.`,
-    issues: [
-      "Lack of closed captions on streaming content",
-      "Inaccessible video player controls",
-      "No audio descriptions for blind users",
-      "Inaccessible website navigation",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (District of Massachusetts)",
-    caseNumber: "Case No. 3:11-cv-30168",
-    officialLinks: [
-      {
-        title: "DOJ Settlement Agreement (Official - ada.gov)",
-        url: "https://www.ada.gov/netflix_sa.htm",
-      },
-      {
-        title: "NAD Settlement Press Release (Official - nad.org)",
-        url: "https://www.nad.org/2012/10/10/netflix-and-nad-reach-historic-agreement-to-caption-streaming-content/",
-      },
-      {
-        title: "Court Records - District of Massachusetts (Official)",
-        url: "https://www.mad.uscourts.gov/",
-      },
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/massachusetts/madce/3:2011cv30168/",
-      },
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/docket/4604832/national-association-of-the-deaf-v-netflix-inc/",
-      },
-      {
-        title: "Wikipedia Article",
-        url: "https://en.wikipedia.org/wiki/National_Association_of_the_Deaf_v._Netflix",
-      },
-    ],
-    keyTakeaways: [
-      "Video streaming services must provide closed captions",
-      "Online services are considered 'places of public accommodation'",
-      "Settlements can include ongoing compliance requirements",
-      "This case set precedent for all streaming platforms",
-    ],
-    impact:
-      "This case established that video streaming services must be accessible and led to widespread captioning across the streaming industry. It also demonstrated that the ADA applies to online services, not just physical locations.",
-  },
-  {
-    slug: "h-m-website-accessibility-lawsuit",
-    title: "H&M Website Accessibility Lawsuit",
-    defendant: "H&M Hennes & Mauritz LP",
-    plaintiff: "Andres Gomez",
-    dateFiled: "2018-03-15",
-    dateResolved: "2019-06-20",
-    status: "settled",
-    settlementAmount: "Confidential",
-    summary:
-      "A class-action lawsuit against fashion retailer H&M alleging their website was not accessible to users with disabilities, resulting in a settlement requiring website accessibility improvements.",
-    details: `Andres Gomez, who is blind, filed a class-action lawsuit against H&M alleging that their website was not accessible to screen readers. Gomez claimed he could not browse products, view product details, or complete purchases on the H&M website.
-
-The lawsuit alleged violations of the ADA and California's Unruh Civil Rights Act. H&M's website reportedly lacked:
-- Proper alt text for product images
-- Accessible navigation and menus
-- Keyboard navigation support
-- Screen reader compatibility
-- Accessible forms and checkout process
-
-The case was settled in June 2019, with H&M agreeing to make their website accessible. While the settlement amount was confidential, H&M committed to:
-- Making their website compliant with WCAG 2.1 Level AA
-- Regular accessibility testing
-- Training for web developers
-- Ongoing monitoring and remediation
-
-This case highlighted that fashion and retail websites must be accessible, and that class-action lawsuits can result in significant remediation requirements.`,
-    issues: [
-      "Missing alt text for product images",
-      "Inaccessible navigation and menus",
-      "No keyboard navigation",
-      "Screen reader incompatibility",
-      "Inaccessible checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Central District of California)",
-    caseNumber: "Case No. 2:18-cv-02380",
-    officialLinks: [
-      {
-        title: "Court Records - Central District of California (Official)",
-        url: "https://www.cacd.uscourts.gov/",
-      },
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/california/cacdce/2:2018cv02380/",
-      },
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/docket/4604832/gomez-v-h-m-hennes-mauritz-lp/",
-      },
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/blog/h-m-settles-website-accessibility-lawsuit",
-      },
-    ],
-    keyTakeaways: [
-      "Fashion and retail websites must be accessible",
-      "Class-action lawsuits can affect entire customer bases",
-      "Settlements often include ongoing compliance requirements",
-      "California's Unruh Act provides additional protections",
-    ],
-    impact:
-      "This case reinforced that all retail websites, regardless of industry, must be accessible. It also showed that class-action lawsuits can result in comprehensive accessibility remediation requirements.",
-  },
-  {
-    slug: "canali-usa-accessibility-lawsuit-2025",
-    title: "Canali U.S.A. Website Accessibility Lawsuit",
-    defendant: "Canali U.S.A., Inc.",
-    plaintiff: "Unknown (Filed by serial plaintiff)",
-    dateFiled: "2025-03-15",
+    slug: "lyft-wav-class-action-2024",
+    title: "Lyft Wheelchair Accessible Vehicle (WAV) Class Action",
+    defendant: "Lyft, Inc.",
+    plaintiff: "Wheelchair users seeking accessible vehicles",
+    dateFiled: "2023-01-01",
+    dateResolved: "2024-07-30",
     status: "ongoing",
     summary:
-      "A luxury menswear brand faced a lawsuit alleging their website was inaccessible to visually impaired users, highlighting that high-end fashion retailers are not exempt from accessibility requirements.",
-    details: `Canali U.S.A., Inc., a luxury Italian menswear brand, was sued in March 2025 for operating a website that was not accessible to users with visual impairments. The lawsuit alleged that the company's website violated Title III of the Americans with Disabilities Act (ADA) by failing to provide accessible features for screen reader users.
+      "Landmark class action trial addressing whether rideshare services must provide equal access to wheelchair-accessible vehicles.",
+    details: `This case addresses a systemic issue affecting wheelchair users in the rideshare economy: the lack of readily available wheelchair-accessible vehicles (WAVs) through rideshare platforms. The lawsuit challenges Lyft's business model which does not guarantee WAV availability.
 
-The case is part of the 2025 surge in accessibility litigation, which saw a 37% increase in ADA website lawsuits compared to 2024. Luxury fashion brands, like other e-commerce retailers, are required to ensure their websites are accessible to all users, regardless of their abilities.
+Issues presented:
+- Long wait times for wheelchair-accessible vehicles (often 30-60+ minutes)
+- Unreliable WAV availability despite platform claims
+- Surge pricing applied to accessible vehicle requests
+- Inconsistent WAV distribution across cities
+- Discrimination against wheelchair users by effectively limiting access
 
-The lawsuit likely alleged common accessibility barriers such as missing alt text for product images, inaccessible navigation menus, lack of keyboard navigation support, and screen reader incompatibility. These barriers prevent visually impaired customers from browsing products, viewing product details, or completing purchases independently.
+Legal question:
+"Must rideshare services provide equal access to wheelchair-accessible vehicles, or can they relegate disabled passengers to secondary tier of service?"
 
-This case demonstrates that accessibility requirements apply universally across all industries and business sizes, from small retailers to luxury brands. The fashion and apparel industry was among the top five industries targeted by accessibility lawsuits in 2025.`,
+Trial Status:
+- Trial held July 8, 2024 in U.S. District Court, Southern District of New York
+- Trial completed; decision pending
+- Represents landmark litigation about accessibility in gig economy services
+
+Broader implications:
+- Sets precedent for accessibility obligations in digital platform economy
+- May require rideshare platforms to maintain minimum WAV availability
+- Could establish precedent for regulatory requirements beyond current ADA standards`,
     issues: [
-      "Missing alt text for product images",
-      "Inaccessible navigation and menus",
-      "Lack of keyboard navigation support",
-      "Screen reader incompatibility",
-      "Inaccessible product browsing and shopping experience",
+      "Lack of wheelchair-accessible vehicles",
+      "Long wait times for accessible service",
+      "Unequal service tier for disabled users",
+      "Surge pricing discrimination",
+      "Unreliable platform accessibility",
     ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (likely New York, Florida, or California)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
+    jurisdiction: "U.S. District Court, Southern District of New York",
+    category: "transportation",
     keyTakeaways: [
-      "Luxury brands are not exempt from accessibility requirements",
-      "Fashion and apparel industry is heavily targeted in accessibility litigation",
-      "All e-commerce websites must be accessible regardless of brand positioning",
-      "2025 saw a significant increase in accessibility lawsuits across industries",
+      "Gig economy platforms face accessibility requirements",
+      "Equal access may require guaranteeing service availability",
+      "Wheelchair users cannot be relegated to secondary service tier",
+      "Digital platforms subject to same accessibility standards as traditional services",
+      "Decision could reshape rideshare industry business models",
     ],
     impact:
-      "This case highlights that accessibility requirements apply to all businesses, including luxury brands. It's part of a broader trend showing that no industry is immune from accessibility litigation, and proactive compliance is essential for all online retailers.",
+      "If plaintiff prevails, this case could establish that rideshare platforms must guarantee wheelchair accessibility, potentially requiring significant service model changes industry-wide.",
   },
+
+  // HEALTHCARE ACCESSIBILITY
   {
-    slug: "et-browne-palmers-accessibility-lawsuit-2025",
-    title: "E.T. Browne Drug Co. (Palmer's) Website Accessibility Lawsuit",
-    defendant: "E.T. Browne Drug Co., Inc.",
-    plaintiff: "Unknown (Filed by serial plaintiff)",
-    dateFiled: "2025-03-20",
-    status: "ongoing",
+    slug: "multicare-health-settlement-2024",
+    title: "MultiCare Health System - Interpreter Services Settlement",
+    defendant: "MultiCare Health System (Washington)",
+    plaintiff: "DOJ + HHS Office for Civil Rights",
+    dateFiled: "2023-01-01",
+    dateResolved: "2024-11-30",
+    status: "settled",
+    settlementAmount: "$2,000,000+ compensation fund",
     summary:
-      "The maker of Palmer's skincare products was sued for operating a website that did not support screen readers or provide accessible navigation, demonstrating that beauty and skincare brands must ensure digital accessibility.",
-    details: `E.T. Browne Drug Co., Inc., the manufacturer of Palmer's Cocoa Butter Formula and other skincare products, faced a website accessibility lawsuit in March 2025. The lawsuit alleged that the company's website violated the ADA by not supporting screen readers and failing to provide accessible navigation for users with disabilities.
+      "Major healthcare settlement requiring $2 million compensation for deaf and deaf-blind patients denied appropriate interpreter services.",
+    details: `The Department of Justice and HHS Office for Civil Rights (OCR) reached settlement with MultiCare Health System of Washington for systematic failures to provide appropriate interpreter services to deaf and deaf-blind patients, violating Title III ADA and Section 504.
 
-The beauty, skin, and body care industry was among the top five industries most affected by accessibility lawsuits in 2025, with over 90% of lawsuits targeting ten specific industries. This case is representative of the growing trend of accessibility litigation in the consumer goods and beauty sectors.
+Violations:
+- Failed to provide qualified sign language interpreters for deaf patients
+- No available video relay services
+- Required patients to provide their own interpreters (including family members)
+- Forced family members to act as medical interpreters despite clinical risks
+- Created barriers to emergency care access
+- Compromised patient confidentiality when family members interpreted
 
-The lawsuit likely claimed that users with visual impairments could not:
-- Navigate the website using screen readers
-- Access product information and descriptions
-- Browse product categories and collections
-- Complete purchases or access customer service features
-- View product images with proper alternative text
+Settlement compensation distribution:
+- $100,000 each to two primary complainants
+- $40,000 each to family members forced to interpret medical information
+- $95,000 civil penalty to federal government
+- Claims administrator appointed to identify additional affected patients
+- Provision for future patient compensation from settlement fund
 
-This case demonstrates that consumer product companies, regardless of their product category, must ensure their digital presence is accessible. The beauty industry's heavy reliance on visual content makes proper accessibility implementation even more critical.`,
+Required changes:
+- Establish qualified interpreter service protocols
+- Implement video relay service integration
+- Staff training on interpreter availability requirements
+- Monitoring and compliance mechanisms
+- Accessibility coordinator appointment`,
     issues: [
-      "Website did not support screen readers",
-      "Lack of accessible navigation",
-      "Missing alt text for product images",
-      "Inaccessible product information and descriptions",
-      "No keyboard navigation support",
-      "Inaccessible forms and checkout process",
+      "No qualified interpreters provided",
+      "Family members forced to interpret medical care",
+      "Video relay services unavailable",
+      "Barriers to emergency access",
+      "Patient confidentiality violations",
     ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (likely New York, Florida, or California)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
+    jurisdiction: "Washington state (DOJ/HHS settlement)",
+    category: "healthcare",
     keyTakeaways: [
-      "Beauty and skincare brands must ensure website accessibility",
-      "Consumer product companies are frequent targets of accessibility litigation",
-      "Visual-heavy industries require careful accessibility implementation",
-      "Screen reader compatibility is a fundamental accessibility requirement",
+      "Healthcare providers must provide professional interpreters, not family",
+      "Video relay services required for deaf patient communication",
+      "Medical interpretation is distinct from general interpretation services",
+      "Failing to accommodate deaf patients creates liability and confidentiality risks",
+      "Settlements include both compensatory damages and systemic remediation",
     ],
     impact:
-      "This case highlights that accessibility requirements extend to all consumer-facing industries, including beauty and personal care. Companies in visually-oriented industries must pay special attention to implementing proper alternative text and accessible navigation structures.",
+      "This settlement establishes that healthcare providers face substantial liability for failing to provide proper interpreter services. It may prompt healthcare systems nationwide to upgrade their accessibility infrastructure.",
   },
+
+  // INTERNATIONAL CASES - EU
   {
-    slug: "sun-sky-spa-accessibility-lawsuit-2025",
-    title: "Sun & Sky Spa Website Accessibility Lawsuit",
-    defendant: "Sun & Sky – Spa / Salon",
-    plaintiff: "Unknown (Filed by serial plaintiff)",
-    dateFiled: "2025-03-10",
-    status: "ongoing",
+    slug: "vueling-airlines-spain-2024",
+    title: "Vueling Airlines v. Secretary of State (Spain) - Web Accessibility",
+    defendant: "Vueling Airlines",
+    plaintiff: "Secretary of State for Social Rights (Spain)",
+    dateFiled: "2023-01-01",
+    dateResolved: "2024-03-31",
+    status: "settled",
+    settlementAmount: "€90,000 fine plus 6-month public funding prohibition",
     summary:
-      "A single-location spa in Brooklyn was sued for having a website that was not sufficiently accessible to users with disabilities, showing that small businesses are also subject to accessibility requirements.",
-    details: `Sun & Sky, a single-location spa and salon in Brooklyn, New York, was named in a website accessibility lawsuit filed in March 2025. The case demonstrates that accessibility requirements apply to businesses of all sizes, from small local establishments to large corporations.
+      "First major private-sector enforcement case in Spain directly linked to European accessibility requirements, holding airline liable for inaccessible website.",
+    details: `Spain's National Court (Audiencia Nacional) ruled against Vueling Airlines for maintaining an inaccessible website, finding violation of Royal Legislative Decree 1/2013 (General Law on the Rights of Persons with Disabilities).
 
-The lawsuit alleged that the spa's website was not sufficiently accessible to users with disabilities, preventing potential customers from accessing information about services, booking appointments, or learning about the business online. This case is particularly notable because it involves a small, local business rather than a large corporation.
+Case significance:
+- First major Spanish private-sector enforcement case for web accessibility
+- Occurred before European Accessibility Act (EAA) enforcement deadline
+- Demonstrated Spain's proactive enforcement of accessibility requirements
+- Court noted minimal progress despite previous 2016 inspection/sanction
 
-Small businesses often face unique challenges when it comes to website accessibility, as they may lack the resources or technical expertise of larger companies. However, the ADA applies equally to all businesses that serve the public, regardless of size.
-
-The lawsuit likely claimed violations such as:
-- Inaccessible service descriptions and pricing information
-- Lack of keyboard navigation for appointment booking
-- Missing alt text for images of the spa and services
+Accessibility issues:
+- Website not WCAG compliant
 - Screen reader incompatibility
-- Inaccessible contact forms or booking systems
+- Missing alt text for images
+- Non-functional keyboard navigation
+- Form accessibility barriers
 
-This case serves as a reminder that all businesses, including small local establishments, must ensure their websites are accessible to comply with the ADA.`,
+Penalty structure:
+- €90,000 fine (significant for private company)
+- 6-month prohibition from receiving public funds from Secretary of State for Social Rights
+- Requirement to remediate website accessibility within specified timeframe
+- Continued monitoring obligations
+
+Legal context:
+- Case anticipated European Accessibility Act (EAA) June 28, 2025 enforcement deadline
+- Demonstrated that accessibility compliance would be enforced with penalties
+- Set precedent for Spanish private-sector liability`,
     issues: [
-      "Website not sufficiently accessible to users with disabilities",
-      "Inaccessible service information and descriptions",
-      "Lack of keyboard navigation support",
-      "Missing alt text for images",
+      "Inaccessible website",
       "Screen reader incompatibility",
-      "Inaccessible booking or contact forms",
+      "Missing alt text",
+      "Keyboard navigation failures",
+      "Form accessibility barriers",
     ],
     wcagLevel: "AA",
-    jurisdiction: "United States (Eastern District of New York - Brooklyn)",
-    officialLinks: [
-      {
-        title: "Court Records - Eastern District of New York (Official)",
-        url: "https://www.nyed.uscourts.gov/",
-      },
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/new-york/nyedce/",
-      },
-    ],
+    jurisdiction: "Spain (National Court / Audiencia Nacional)",
+    category: "international",
+    caseNumber: "Contentious-Administrative Chamber",
     keyTakeaways: [
-      "Small businesses are subject to the same accessibility requirements as large corporations",
-      "Local service businesses must ensure their websites are accessible",
-      "Size does not exempt businesses from ADA compliance",
-      "Service industry websites must be accessible for booking and information access",
+      "European countries enforcing web accessibility before EAA deadline",
+      "Private companies liable for website accessibility violations",
+      "Penalties include both fines and business operation restrictions",
+      "Previous non-compliance increases enforcement scrutiny",
+      "EAA likely to intensify enforcement across EU",
     ],
     impact:
-      "This case highlights that accessibility requirements apply universally, regardless of business size. Small businesses must prioritize website accessibility, and may need to seek affordable solutions or guidance to ensure compliance with the ADA.",
+      "This case demonstrates that European enforcement of web accessibility is not theoretical. Organizations operating in the EU face real consequences for non-compliance, and this will likely intensify significantly following EAA enforcement deadlines.",
   },
+
   {
-    slug: "omoi-inc-accessibility-lawsuit-2025",
-    title: "Omoi, Inc. Website Accessibility Lawsuit",
-    defendant: "Omoi, Inc.",
-    plaintiff: "Unknown (Filed by serial plaintiff)",
-    dateFiled: "2025-03-25",
+    slug: "french-retailers-eaa-2025",
+    title: "French Retailers - European Accessibility Act Pre-Enforcement Actions",
+    defendant: "Auchan, Carrefour, E. Leclerc, Picard Surgelés",
+    plaintiff: "ApiDV & Droit Pluriel (advocacy groups)",
+    dateFiled: "2025-07-07",
     status: "ongoing",
     summary:
-      "A small retailer in Philadelphia faced legal action over an inaccessible online shopping experience for users with disabilities, emphasizing that all e-commerce businesses must prioritize accessibility.",
-    details: `Omoi, Inc., a small retailer based in Philadelphia, Pennsylvania, was sued in March 2025 for operating a website that provided an inaccessible online shopping experience for users with disabilities. The lawsuit alleged violations of the ADA and potentially Pennsylvania state accessibility laws.
+      "First major European Accessibility Act enforcement actions by advocacy groups immediately after June 28, 2025 effective date, targeting major French supermarket chains.",
+    details: `Just days after the European Accessibility Act (EAA) effective date of June 28, 2025, French disability advocacy groups ApiDV and Droit Pluriel issued formal enforcement notices to four major French retailers for inaccessible online shopping platforms.
 
-This case is representative of the broader trend in 2025 where small and medium-sized retailers faced accessibility litigation. The lawsuit likely claimed that users with disabilities could not:
-- Browse products effectively using assistive technologies
-- Access product descriptions and details
-- Navigate the shopping cart and checkout process
-- Complete purchases independently
-- Access customer service or support features
+Affected retailers:
+- Auchan (major supermarket chain)
+- Carrefour (France's largest retailer)
+- E. Leclerc (supermarket network)
+- Picard Surgelés (frozen food retailer)
 
-Small retailers often operate with limited budgets and may not have dedicated web development teams, making accessibility implementation more challenging. However, the ADA requires all businesses that serve the public to ensure their digital properties are accessible.
+Accessibility issues:
+- Online grocery ordering systems not fully accessible
+- Screen reader incompatibility
+- Missing alt text for product images
+- Non-functional keyboard navigation
+- Checkout process barriers
 
-The case demonstrates that:
-- E-commerce accessibility is mandatory for all retailers, regardless of size
-- Small businesses need affordable accessibility solutions
-- Online shopping must be accessible to all customers
-- State laws may provide additional accessibility requirements beyond the ADA
+Legal framework:
+- European Accessibility Act (EAA) enforcement effective June 28, 2025
+- Requires WCAG 2.1 AA compliance for digital services
+- Applies to organizations with annual turnover >€2 million
 
-This lawsuit is part of the 2025 surge in accessibility litigation, which saw over 2,000 ADA website lawsuits filed in the first half of the year alone.`,
+Enforcement timeline:
+- Formal notices issued July 7, 2025
+- Retailers given until September 1, 2025 to achieve compliance
+- Legal action threatened if compliance not achieved by deadline
+- Potential penalties up to €250,000 per violation under French law
+
+Significance:
+- First coordinated EAA enforcement actions by advocacy groups
+- Demonstrates immediate enforcement will follow effective date
+- Targets high-visibility retailers to maximize compliance impact
+- Sets precedent for aggressive enforcement approach`,
     issues: [
-      "Inaccessible online shopping experience",
-      "Inability to browse products using assistive technologies",
-      "Lack of keyboard navigation support",
-      "Missing alt text for product images",
-      "Inaccessible shopping cart and checkout process",
+      "Inaccessible online shopping platforms",
       "Screen reader incompatibility",
+      "Missing product image alt text",
+      "Keyboard navigation failures",
+      "Checkout process barriers",
     ],
     wcagLevel: "AA",
-    jurisdiction: "United States (Eastern District of Pennsylvania - Philadelphia)",
+    jurisdiction: "France (under European Accessibility Act)",
+    category: "international",
     keyTakeaways: [
-      "Small retailers must ensure e-commerce accessibility",
-      "Online shopping must be accessible to all customers",
-      "Business size does not exempt companies from ADA compliance",
-      "Affordable accessibility solutions are needed for small businesses",
+      "EAA enforcement began immediately upon effective date",
+      "Advocacy groups actively enforcing against major corporations",
+      "Major retailers remain vulnerable to accessibility litigation",
+      "E-commerce requires comprehensive WCAG 2.1 AA compliance",
+      "French penalties among Europe's highest (up to €250,000)",
+      "No grace period or transition time after EAA effective date",
     ],
     impact:
-      "This case emphasizes that accessibility is not optional for any e-commerce business, regardless of size. Small retailers must find ways to implement accessibility, whether through affordable tools, developer training, or consulting services, to avoid legal liability and serve all customers.",
+      "These cases demonstrate that EAA enforcement is not theoretical. European retailers face immediate compliance pressure and substantial penalties. This will likely accelerate accessibility implementation across EU e-commerce sector.",
   },
+
+  // UK EMPLOYMENT CASES
   {
-    slug: "academy-museum-foundation-accessibility-lawsuit-2025",
-    title: "Academy Museum Foundation Website Accessibility Lawsuit",
-    defendant: "Academy Museum Foundation",
-    plaintiff: "Unknown (Filed by serial plaintiff)",
-    dateFiled: "2025-03-18",
+    slug: "wright-turner-v-hammersmith-2024",
+    title: "Wright-Turner v. London Borough of Hammersmith - Record UK Compensation",
+    defendant: "London Borough of Hammersmith and Fulham & Ms K Dero",
+    plaintiff: "Wright-Turner (employee with ADHD and PTSD)",
+    dateFiled: "2020-01-01",
+    dateResolved: "2024-03-13",
+    status: "won",
+    settlementAmount: "£4,580,587.39 total",
+    summary:
+      "One of the largest Employment Tribunal awards in UK history for disability discrimination. Award far exceeded previous Vento caps due to exceptional circumstances.",
+    details: `The Employment Tribunal awarded record-breaking compensation of £4.58 million to Wright-Turner for disability discrimination by London Borough of Hammersmith and Fulham.
+
+Discrimination claims:
+- Discrimination related to ADHD (Attention-Deficit/Hyperactivity Disorder)
+- Discrimination related to PTSD (Post-Traumatic Stress Disorder)
+- Failure to provide reasonable accommodations
+- Discriminatory treatment despite disclosure of disabilities
+- Constructive dismissal forcing employee to resign
+
+Award breakdown:
+- Past loss of earnings: £327,000+
+- Future loss of earnings to retirement: £900,000
+- Loss of pension contributions: £600,000+
+- Injury to feelings: £60,000 (exceeded highest Vento band)
+- Psychiatric injury: £60,000
+- ACAS Code uplift: £271,479.85
+- Exemplary damages: £15,000
+
+Legal significance:
+- One of largest Employment Tribunal awards in UK history
+- Demonstrates courts willing to award substantial damages for serious discrimination
+- Exceptional circumstances justified exceeding traditional Vento bands
+- Establishes precedent for future disability discrimination claims
+- Shows that neurodivergent conditions (ADHD, PTSD) receive legal protection
+
+Vento bands context:
+- Traditional Vento bands cap injury to feelings at £30,000-£45,000
+- This award's £60,000 injury component significantly exceeded standard levels
+- Reflects tribunal finding of exceptionally serious discrimination`,
+    issues: [
+      "Disability discrimination (ADHD and PTSD)",
+      "Failure to accommodate disabilities",
+      "Constructive dismissal",
+      "Discriminatory employment practices",
+      "Breach of Equality Act 2010",
+    ],
+    jurisdiction: "United Kingdom (Employment Tribunal)",
+    category: "employment",
+    keyTakeaways: [
+      "UK Employment Tribunals can award record-breaking damages",
+      "Neurodivergent conditions (ADHD, PTSD) receive legal protection",
+      "Damages can exceed traditional Vento caps in exceptional cases",
+      "Injury to feelings component can reach £60,000+ for serious discrimination",
+      "Employers must accommodate disclosed disabilities",
+    ],
+    impact:
+      "This case sets a precedent for substantial disability discrimination awards in the UK. It demonstrates that serious discrimination can result in damages far exceeding traditional caps, which may encourage more disabled employees to pursue claims.",
+  },
+
+  // STATISTICS & TRENDS ENTRY
+  {
+    slug: "accessibility-litigation-trends-2024-2025",
+    title: "Accessibility Litigation Trends 2024-2025: Statistics and Analysis",
+    defendant: "N/A - Trend Analysis",
+    plaintiff: "N/A - Trend Analysis",
+    dateFiled: "2024-01-01",
+    dateResolved: "2025-12-31",
     status: "ongoing",
     summary:
-      "A nonprofit organization affiliated with the Academy of Motion Picture Arts and Sciences was sued for website barriers that prevented users with disabilities from accessing online content and services, showing that cultural institutions must prioritize accessibility.",
-    details: `The Academy Museum Foundation, a nonprofit organization affiliated with the Academy of Motion Picture Arts and Sciences (the organization behind the Oscars), faced a website accessibility lawsuit in March 2025. The lawsuit alleged that the organization's website contained barriers that prevented users with disabilities from accessing online content, services, and information.
+      "Overview of accessibility litigation trends showing continued growth with major shifts in enforcement mechanisms, jurisdiction concentration, and international expansion.",
+    details: `Accessibility litigation has experienced dramatic growth and evolution from 2023-2025, with significant implications for organizations.
 
-This case is particularly significant because it involves a cultural and educational institution that should be leading by example in accessibility. Museums and cultural organizations have a responsibility to ensure their digital content is accessible to all visitors, including those with disabilities.
+Federal ADA Title III Litigation Trends:
+- 2023: 8,227 federal ADA Title III lawsuits filed
+- 2024: 8,800 filed (+7% year-over-year)
+- 2025 (projected): ~9,100 expected
 
-The lawsuit likely claimed that users with disabilities could not:
-- Access information about museum exhibitions and events
-- Purchase tickets online
-- Navigate the website using assistive technologies
-- Access educational content and resources
-- View images and multimedia content with proper accessibility features
-- Complete online forms for membership or donations
+Digital/Web Accessibility Lawsuits:
+- 2023: 2,749 website-specific federal lawsuits
+- 2024: 2,452 (-13% from 2023)
+- 2025 (first half): Projected 37% year-over-year increase rebound
 
-Nonprofit organizations, including museums and cultural institutions, are subject to the same ADA requirements as for-profit businesses. Additionally, many cultural institutions receive public funding, which may include additional accessibility requirements.
+Geographic Concentration:
+- New York: 63.7% of federal web accessibility filings
+- Illinois: 746% increase in cases (emerging new hotspot)
+- Minnesota: 745%+ increase in 2025
 
-This case demonstrates that:
-- Cultural institutions must ensure digital accessibility
-- Educational and nonprofit websites are subject to ADA requirements
-- Museums should lead by example in accessibility implementation
-- Public-facing organizations have a particular responsibility for accessibility`,
+Industries Most Targeted (2024):
+- Lifestyle, Fashion, Clothing & Apparel: 35.16% (1,121 cases)
+- Restaurant, Food, Drinks & Beverages: 23.78% (758 cases)
+- Beauty, Skin & Body Care: 7.8% (250 cases)
+- Medical & Health: 5.0% (159 cases)
+- E-commerce overall: ~77% of all digital accessibility suits
+
+Technical Violations Cited:
+- Missing alt text: Most frequently cited issue
+- Screen reader incompatibility: Second most common
+- Keyboard navigation barriers: Third
+- Missing form labels: Fourth
+- Empty/redundant links: Fifth
+- Missing video captions
+- Color contrast issues
+- Inaccessible menus/dropdowns
+
+Notable Finding:
+- 25%+ of 2024 lawsuits (1,023 cases) cited accessibility overlay widgets as barriers
+- This represents shift from viewing overlays as solutions to barriers
+
+Most Prolific Plaintiff Law Firms (2024):
+- So Cal Equal Access Group: 2,598 cases
+- Stein Saks, PLLC: 395 cases
+- Sconzo Law: 193 cases
+- Gottlieb Associates: 190 cases
+
+Key Serial Plaintiffs:
+- Orlando Garcia: ~1,000 lawsuits since 2014
+- Scott Johnson: 24 cases since April 2023 sentencing
+- Brian Whitaker: 772 cases through Potter Handy firm
+- Robert Glen Myers: 75+ businesses since August 2024
+
+Emerging Trend - AI-Assisted Filings:
+- 40% increase in pro se (self-represented) ADA filings in 2025
+- AI tools enabling increased filing volume
+- Issues include citation of non-existent cases and incorrect holdings
+
+Repeat Offender Rate:
+- 41% of businesses targeted by ADA litigation in 2024 were previous defendants
+- Indicates superficial remediation invites renewed litigation
+- Suggests need for comprehensive vs. temporary fixes`,
     issues: [
-      "Website barriers preventing access to online content",
-      "Inaccessible ticket purchasing system",
-      "Lack of keyboard navigation support",
-      "Missing alt text for images and multimedia",
+      "Missing alt text",
       "Screen reader incompatibility",
-      "Inaccessible forms for membership or donations",
-      "Inaccessible educational content and resources",
+      "Keyboard navigation barriers",
+      "Missing form labels",
+      "Overlay widget dependencies",
     ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (likely Central District of California - Los Angeles)",
-    officialLinks: [
-      {
-        title: "Court Records - Central District of California (Official)",
-        url: "https://www.cacd.uscourts.gov/",
-      },
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/california/cacdce/",
-      },
-    ],
+    jurisdiction: "United States (Federal and State)",
+    category: "digital",
     keyTakeaways: [
-      "Nonprofit organizations must ensure website accessibility",
-      "Cultural and educational institutions should lead in accessibility",
-      "Museums and cultural sites must make digital content accessible",
-      "Public-facing organizations have accessibility responsibilities",
+      "ADA litigation continues growing despite volatility in specific sectors",
+      "Litigation concentration in NY and expansion to IL/MN creates regional hotspots",
+      "E-commerce remains most vulnerable sector to accessibility litigation",
+      "Overlay widgets increasingly viewed as barriers rather than solutions",
+      "41% repeat defendant rate indicates need for comprehensive remediation",
+      "AI-assisted pro se filings may increase filing volume further",
+      "WCAG compliance is critical to reducing litigation exposure",
     ],
     impact:
-      "This case highlights that accessibility requirements apply to all types of organizations, including nonprofits and cultural institutions. Museums and educational organizations should prioritize accessibility not only for legal compliance but also to fulfill their mission of serving all members of the public.",
-  },
-  {
-    slug: "lucas-rice-sam-wilson-v-blenders-eyewear-2025",
-    title: "Lucas Rice and Sam Wilson v. Blenders Eyewear LLC",
-    defendant: "Blenders Eyewear LLC",
-    plaintiff: "Lucas Rice, Sam Wilson",
-    dateFiled: "2025-10-28",
-    status: "ongoing",
-    summary:
-      "Two plaintiffs filed a lawsuit against Blenders Eyewear LLC alleging that the eyewear retailer's website was not accessible to users with disabilities, preventing them from browsing and purchasing products online.",
-    details: `Lucas Rice and Sam Wilson filed a lawsuit against Blenders Eyewear LLC on October 28, 2025, in the United States District Court. The lawsuit alleged that Blenders Eyewear's website violated Title III of the Americans with Disabilities Act (ADA) by failing to provide accessible features for users with disabilities.
-
-Blenders Eyewear is an online retailer specializing in sunglasses and eyewear. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse product collections and view product details
-- Access product images with proper alternative text
-- Complete purchases through the checkout process
-- Access customer service features or support information
-
-This case is part of the October 2025 surge in accessibility litigation, which saw 95 website accessibility lawsuits filed that month. The retailing industry, including eyewear retailers, has been consistently targeted in accessibility lawsuits, as e-commerce websites must be accessible to all customers regardless of their abilities.
-
-The case highlights the importance of ensuring that online retail experiences are accessible, particularly for businesses that rely heavily on visual product presentation. Eyewear retailers must ensure that product images, descriptions, and shopping functionality are accessible to users with disabilities.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible checkout and purchase process",
-      "Screen reader incompatibility",
-      "Inaccessible forms and interactive elements",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Eyewear and fashion retailers must ensure website accessibility",
-      "E-commerce websites must be accessible to all customers",
-      "Product browsing and purchasing must work with assistive technologies",
-      "Visual product presentation requires proper accessibility implementation",
-    ],
-    impact:
-      "This case demonstrates that specialty retailers, including eyewear companies, must ensure their online shopping experiences are accessible. As e-commerce continues to grow, accessibility compliance is essential for all online retailers to serve customers with disabilities and avoid legal liability.",
-  },
-  {
-    slug: "dominique-tompkins-richard-degaetano-v-between-the-sheets-2025",
-    title: "Dominique Tompkins and Richard DeGaetano v. Between the Sheets, Inc.",
-    defendant: "Between the Sheets, Inc.",
-    plaintiff: "Dominique Tompkins, Richard DeGaetano",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "Two plaintiffs filed a lawsuit against Between the Sheets, Inc., a retail company, alleging that their website was not accessible to users with disabilities, preventing access to products and services.",
-    details: `Dominique Tompkins and Richard DeGaetano filed a lawsuit against Between the Sheets, Inc. on October 24, 2025, in the United States District Court. The lawsuit alleged violations of Title III of the Americans with Disabilities Act (ADA) due to the company's website being inaccessible to users with disabilities.
-
-Between the Sheets, Inc. operates as a retail business, and the lawsuit likely claimed that users with disabilities could not:
-- Navigate the website using assistive technologies such as screen readers
-- Browse products and access product information
-- View product images with proper alternative text descriptions
-- Complete purchases or access online services
-- Navigate using keyboard-only input
-- Access forms, buttons, and interactive elements
-
-This case was filed on the same day as several other accessibility lawsuits, reflecting the continued high volume of ADA website litigation in 2025. The retailing industry has been one of the most frequently targeted sectors, as online shopping must be accessible to all consumers.
-
-The lawsuit emphasizes that all retail businesses, regardless of size or product category, must ensure their digital presence is accessible. Companies must implement proper accessibility features to comply with the ADA and serve customers with disabilities.`,
-    issues: [
-      "Website not accessible to assistive technologies",
-      "Missing alt text for images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Screen reader incompatibility",
-      "Inaccessible forms and interactive elements",
-      "Inaccessible checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "All retail websites must be accessible to users with disabilities",
-      "Online shopping experiences must work with assistive technologies",
-      "Product browsing and purchasing must be accessible",
-      "Retailers must implement proper accessibility features",
-    ],
-    impact:
-      "This case is part of the ongoing trend of accessibility litigation targeting retail businesses. It reinforces that all e-commerce websites must be accessible, and retailers should proactively implement accessibility measures to serve all customers and avoid legal action.",
-  },
-  {
-    slug: "nicole-da-vis-v-may-lindstrom-skin-2025",
-    title: "Nicole Da Vis v. May Lindstrom Skin, LLC",
-    defendant: "May Lindstrom Skin, LLC",
-    plaintiff: "Nicole Da Vis",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "A plaintiff filed a lawsuit against May Lindstrom Skin, LLC, a beauty and skincare company, alleging that their website was not accessible to users with disabilities, preventing access to product information and online shopping.",
-    details: `Nicole Da Vis filed a lawsuit against May Lindstrom Skin, LLC on October 24, 2025, in the United States District Court for the Northern District. The lawsuit alleged that the beauty and skincare company's website violated the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-May Lindstrom Skin is a luxury skincare brand, and the lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse skincare products and view product details
-- Access product images with proper alternative text
-- Read product descriptions and ingredient information
-- Complete purchases through the online store
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The beauty and skincare industry has been frequently targeted in accessibility lawsuits, as these businesses often rely heavily on visual content to showcase products. However, all product information, images, and shopping functionality must be accessible to users with disabilities.
-
-This case highlights the importance of accessibility in the beauty industry, where visual presentation is crucial but must be balanced with accessibility requirements. Companies must ensure that product information is available through multiple modalities, including text alternatives for images and proper semantic structure for assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible product browsing and navigation",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and information",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court for the Northern District",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Beauty and skincare websites must be accessible",
-      "Visual product presentation requires accessibility considerations",
-      "Product information must be accessible through multiple modalities",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that beauty and skincare brands must ensure their websites are accessible, even when visual presentation is a key part of their brand identity. Accessibility and visual appeal are not mutually exclusive, and companies must implement both effectively.",
-  },
-  {
-    slug: "tanisia-bowman-v-mulberry-park-silks-2025",
-    title: "Tanisia Bowman v. Mulberry Park Silks, LLC",
-    defendant: "Mulberry Park Silks, LLC",
-    plaintiff: "Tanisia Bowman",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "A plaintiff filed a lawsuit against Mulberry Park Silks, LLC, a retail company, alleging that their website was not accessible to users with disabilities, preventing access to products and services.",
-    details: `Tanisia Bowman filed a lawsuit against Mulberry Park Silks, LLC on October 24, 2025, in the United States District Court for the Northern District. The lawsuit alleged that the retail company's website violated Title III of the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Mulberry Park Silks operates as a retail business, and the lawsuit likely claimed that users with disabilities could not:
-- Navigate the website using assistive technologies
-- Browse products and access product information
-- View product images with proper alternative text
-- Complete purchases or access online services
-- Navigate using keyboard-only input
-- Access forms, buttons, and interactive elements
-- Use screen readers effectively
-
-This case was filed on the same day as multiple other accessibility lawsuits, reflecting the high volume of ADA website litigation in October 2025. The retailing industry continues to be heavily targeted, as online shopping must be accessible to all consumers regardless of their abilities.
-
-The lawsuit emphasizes that all retail businesses must ensure their digital properties are accessible. Companies should implement proper accessibility features, including keyboard navigation, screen reader compatibility, and proper alternative text for images, to comply with the ADA and serve all customers.`,
-    issues: [
-      "Website not accessible to assistive technologies",
-      "Missing alt text for product images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Screen reader incompatibility",
-      "Inaccessible forms and interactive elements",
-      "Inaccessible checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court for the Northern District",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "All retail websites must be accessible to users with disabilities",
-      "Online shopping must work with assistive technologies",
-      "Product browsing and purchasing must be accessible",
-      "Retailers must implement comprehensive accessibility features",
-    ],
-    impact:
-      "This case is part of the continued trend of accessibility litigation in the retail sector. It reinforces that all e-commerce websites must be accessible, and retailers should proactively address accessibility to serve all customers and mitigate legal risk.",
-  },
-  {
-    slug: "teniya-booker-jessica-meyer-v-matisse-footwear-2025",
-    title: "Teniya Booker and Jessica Meyer v. Matisse Footwear, Inc.",
-    defendant: "Matisse Footwear, Inc.",
-    plaintiff: "Teniya Booker, Jessica Meyer",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "Two plaintiffs filed a lawsuit against Matisse Footwear, Inc., an apparel and footwear retailer, alleging that their website was not accessible to users with disabilities, preventing access to footwear products and online shopping.",
-    details: `Teniya Booker and Jessica Meyer filed a lawsuit against Matisse Footwear, Inc. on October 24, 2025, in the United States District Court. The lawsuit alleged that the footwear retailer's website violated the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Matisse Footwear is a retailer specializing in footwear and apparel. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse footwear products and view product details
-- Access product images with proper alternative text descriptions
-- Read product descriptions, sizing information, and specifications
-- Complete purchases through the online store
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The apparel and footwear industry has been consistently targeted in accessibility lawsuits, as these businesses rely on visual product presentation. However, all product information, images, and shopping functionality must be accessible to users with disabilities.
-
-This case highlights the importance of accessibility in the fashion and apparel industry, where visual presentation is important but must be balanced with accessibility requirements. Companies must ensure that product information is available through multiple modalities and that the shopping experience works with assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible product browsing and navigation",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and sizing information",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Footwear and apparel websites must be accessible",
-      "Visual product presentation requires accessibility considerations",
-      "Product information must be accessible through multiple modalities",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that fashion and apparel retailers must ensure their websites are accessible, even when visual presentation is crucial. Accessibility and visual appeal can coexist, and companies must implement both effectively to serve all customers and comply with legal requirements.",
-  },
-  {
-    slug: "kelly-smith-karen-blachowicz-v-levan-group-high-fashion-home-2025",
-    title: "Kelly Smith and Karen Blachowicz v. Levan Group I, L.P. DBA High Fashion Home",
-    defendant: "Levan Group I, L.P. DBA High Fashion Home",
-    plaintiff: "Kelly Smith, Karen Blachowicz",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "Two plaintiffs filed a lawsuit against Levan Group I, L.P. (doing business as High Fashion Home), a retail company, alleging that their website was not accessible to users with disabilities, preventing access to home furnishings and retail products.",
-    details: `Kelly Smith and Karen Blachowicz filed a lawsuit against Levan Group I, L.P., doing business as High Fashion Home, on October 24, 2025, in the United States District Court. The lawsuit alleged that the retail company's website violated Title III of the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-High Fashion Home is a retail business specializing in home furnishings and related products. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse home furnishings and product collections
-- Access product images with proper alternative text descriptions
-- Read product descriptions, specifications, and pricing information
-- Complete purchases through the online store
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The home furnishings and retail industry has been consistently targeted in accessibility lawsuits, as these businesses rely on visual product presentation. However, all product information, images, and shopping functionality must be accessible to users with disabilities.
-
-This case highlights the importance of accessibility in the home furnishings retail sector, where visual presentation is important but must be balanced with accessibility requirements. Companies must ensure that product information is available through multiple modalities and that the shopping experience works with assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible product browsing and navigation",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and specifications",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Home furnishings and retail websites must be accessible",
-      "Visual product presentation requires accessibility considerations",
-      "Product information must be accessible through multiple modalities",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that home furnishings retailers must ensure their websites are accessible. Even when visual presentation is crucial for showcasing products, companies must implement accessibility features to serve all customers and comply with legal requirements.",
-  },
-  {
-    slug: "constance-henry-v-mountain-hardwear-2025",
-    title: "Constance Henry v. Mountain Hardwear, Inc.",
-    defendant: "Mountain Hardwear, Inc.",
-    plaintiff: "Constance Henry",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "A plaintiff filed a lawsuit against Mountain Hardwear, Inc., an apparel and outdoor gear retailer, alleging that their website was not accessible to users with disabilities, preventing access to outdoor apparel and equipment products.",
-    details: `Constance Henry filed a lawsuit against Mountain Hardwear, Inc. on October 24, 2025, in the United States District Court for the Northern District. The lawsuit alleged that the outdoor apparel and gear retailer's website violated the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Mountain Hardwear is a retailer specializing in outdoor apparel, equipment, and gear. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse outdoor apparel and equipment products
-- Access product images with proper alternative text descriptions
-- Read product descriptions, technical specifications, and sizing information
-- Complete purchases through the online store
-- Access customer service, warranty information, or support features
-- Navigate using keyboard-only input
-
-The apparel and outdoor gear industry has been consistently targeted in accessibility lawsuits. These businesses often rely on visual product presentation and technical specifications, which must be accessible to users with disabilities.
-
-This case highlights the importance of accessibility in the outdoor and apparel retail sector. Companies must ensure that product information, including technical specifications and sizing details, is accessible through multiple modalities and that the shopping experience works with assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible product browsing and navigation",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and technical specifications",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court for the Northern District",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Outdoor apparel and gear websites must be accessible",
-      "Technical product information must be accessible",
-      "Product specifications must be available through multiple modalities",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that outdoor and apparel retailers must ensure their websites are accessible, including technical product information and specifications. Companies must implement accessibility features to serve all customers, including those with disabilities who may rely on assistive technologies to access product details.",
-  },
-  {
-    slug: "phyllis-hampton-v-malnati-organization-2025",
-    title: "Phyllis Hampton v. The Malnati Organization, LLC",
-    defendant: "The Malnati Organization, LLC",
-    plaintiff: "Phyllis Hampton",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "A plaintiff filed a lawsuit against The Malnati Organization, LLC, a food, beverage, and tobacco company, alleging that their website was not accessible to users with disabilities, preventing access to products and services.",
-    details: `Phyllis Hampton filed a lawsuit against The Malnati Organization, LLC on October 24, 2025, in the United States District Court for the Northern District. The lawsuit alleged that the company's website violated Title III of the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-The Malnati Organization operates in the food, beverage, and tobacco industry. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse products and access product information
-- Access product images with proper alternative text descriptions
-- Read product descriptions, menus, or service information
-- Complete purchases or place orders online
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The food, beverage, and tobacco industry has been one of the most frequently targeted sectors in accessibility lawsuits, accounting for a significant portion of cases filed in 2025. These businesses must ensure their websites are accessible to all customers, regardless of their abilities.
-
-This case highlights the importance of accessibility in the food and beverage industry, where online ordering and menu access are increasingly important. Companies must ensure that all digital services, including online ordering systems and menu information, are accessible to users with disabilities.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible menus and product information",
-      "Screen reader incompatibility",
-      "Inaccessible forms and ordering process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court for the Northern District",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Food, beverage, and tobacco websites must be accessible",
-      "Online ordering systems must work with assistive technologies",
-      "Menu and product information must be accessible",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that food, beverage, and tobacco companies must ensure their websites are accessible, including online ordering systems and menu information. As online ordering becomes increasingly important, accessibility is essential to serve all customers and comply with legal requirements.",
-  },
-  {
-    slug: "tanisia-bowman-v-kiyonna-clothing-2025",
-    title: "Tanisia Bowman v. Kiyonna Clothing, Inc.",
-    defendant: "Kiyonna Clothing, Inc.",
-    plaintiff: "Tanisia Bowman",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "A plaintiff filed a lawsuit against Kiyonna Clothing, Inc., an apparel retailer, alleging that their website was not accessible to users with disabilities, preventing access to clothing products and online shopping.",
-    details: `Tanisia Bowman filed a lawsuit against Kiyonna Clothing, Inc. on October 24, 2025, in the United States District Court for the Northern District. The lawsuit alleged that the apparel retailer's website violated the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Kiyonna Clothing is a retailer specializing in women's apparel. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse clothing products and view product details
-- Access product images with proper alternative text descriptions
-- Read product descriptions, sizing information, and style details
-- Complete purchases through the online store
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The apparel industry has been consistently targeted in accessibility lawsuits, as these businesses rely heavily on visual product presentation. However, all product information, images, and shopping functionality must be accessible to users with disabilities.
-
-This case highlights the importance of accessibility in the fashion and apparel industry. Companies must ensure that product information, including sizing and style details, is accessible through multiple modalities and that the shopping experience works with assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible product browsing and navigation",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and sizing information",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court for the Northern District",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Apparel websites must be accessible",
-      "Visual product presentation requires accessibility considerations",
-      "Product sizing and style information must be accessible",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that apparel retailers must ensure their websites are accessible, including detailed product information like sizing and style details. Companies must implement accessibility features to serve all customers and comply with legal requirements, even when visual presentation is important.",
-  },
-  {
-    slug: "robert-glen-myers-v-lodge-of-four-seasons-2025",
-    title: "Robert Glen Myers v. Lodge of Four Seasons LLC",
-    defendant: "Lodge of Four Seasons LLC",
-    plaintiff: "Robert Glen Myers",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "A plaintiff filed a lawsuit against Lodge of Four Seasons LLC, a consumer services company, alleging that their website was not accessible to users with disabilities, preventing access to services and information.",
-    details: `Robert Glen Myers filed a lawsuit against Lodge of Four Seasons LLC on October 24, 2025, in the United States District Court. The lawsuit alleged that the consumer services company's website violated Title III of the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Lodge of Four Seasons operates in the consumer services industry, likely providing hospitality or related services. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Access service information and descriptions
-- View images with proper alternative text descriptions
-- Complete online reservations or bookings
-- Access customer service or support features
-- Navigate using keyboard-only input
-- Use forms and interactive elements effectively
-
-The consumer services industry has been targeted in accessibility lawsuits, particularly businesses that offer online booking or reservation systems. These services must be accessible to all customers, regardless of their abilities.
-
-This case highlights the importance of accessibility in the consumer services sector, where online booking and service information are increasingly important. Companies must ensure that all digital services, including reservation systems and service descriptions, are accessible to users with disabilities.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for images",
-      "Inaccessible navigation and service information",
-      "Lack of keyboard navigation support",
-      "Inaccessible booking or reservation systems",
-      "Screen reader incompatibility",
-      "Inaccessible forms and interactive elements",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Consumer services websites must be accessible",
-      "Online booking systems must work with assistive technologies",
-      "Service information must be accessible",
-      "Reservation and booking functionality must be accessible",
-    ],
-    impact:
-      "This case demonstrates that consumer services companies must ensure their websites are accessible, including online booking and reservation systems. As digital services become more important, accessibility is essential to serve all customers and comply with legal requirements.",
-  },
-  {
-    slug: "darnell-williams-v-rowing-blazers-2025",
-    title: "Darnell Williams v. Rowing Blazers Ltd.",
-    defendant: "Rowing Blazers Ltd.",
-    plaintiff: "Darnell Williams",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "A plaintiff filed a lawsuit against Rowing Blazers Ltd., an apparel retailer, alleging that their website was not accessible to users with disabilities, preventing access to clothing products and online shopping.",
-    details: `Darnell Williams filed a lawsuit against Rowing Blazers Ltd. on October 24, 2025, in the United States District Court for the Northern District. The lawsuit alleged that the apparel retailer's website violated the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Rowing Blazers is a retailer specializing in apparel, particularly blazers and related clothing. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse apparel products and view product details
-- Access product images with proper alternative text descriptions
-- Read product descriptions, sizing information, and style details
-- Complete purchases through the online store
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The apparel industry has been consistently targeted in accessibility lawsuits, as these businesses rely heavily on visual product presentation. However, all product information, images, and shopping functionality must be accessible to users with disabilities.
-
-This case highlights the importance of accessibility in the fashion and apparel industry. Companies must ensure that product information, including sizing and style details, is accessible through multiple modalities and that the shopping experience works with assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible product browsing and navigation",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and sizing information",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court for the Northern District",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Apparel websites must be accessible",
-      "Visual product presentation requires accessibility considerations",
-      "Product sizing and style information must be accessible",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that apparel retailers must ensure their websites are accessible, including detailed product information. Companies must implement accessibility features to serve all customers and comply with legal requirements, even when visual presentation is important for fashion brands.",
-  },
-  {
-    slug: "leah-walker-v-lightopia-2025",
-    title: "Leah Walker v. Lightopia, LLC",
-    defendant: "Lightopia, LLC",
-    plaintiff: "Leah Walker",
-    dateFiled: "2025-10-24",
-    status: "ongoing",
-    summary:
-      "A plaintiff filed a lawsuit against Lightopia, LLC, a retail company, alleging that their website was not accessible to users with disabilities, preventing access to products and services.",
-    details: `Leah Walker filed a lawsuit against Lightopia, LLC on October 24, 2025, in the United States District Court for the Northern District. The lawsuit alleged that the retail company's website violated Title III of the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Lightopia operates as a retail business. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse products and access product information
-- Access product images with proper alternative text descriptions
-- Read product descriptions and specifications
-- Complete purchases through the online store
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The retailing industry has been consistently targeted in accessibility lawsuits, as e-commerce websites must be accessible to all customers. These businesses must ensure their digital properties are accessible to comply with the ADA and serve customers with disabilities.
-
-This case highlights the importance of accessibility in the retail sector. Companies must ensure that product information is accessible through multiple modalities and that the shopping experience works with assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and specifications",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court for the Northern District",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Retail websites must be accessible to users with disabilities",
-      "Online shopping must work with assistive technologies",
-      "Product information must be accessible",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that all retail businesses must ensure their websites are accessible. As e-commerce continues to grow, accessibility compliance is essential for all online retailers to serve customers with disabilities and avoid legal liability.",
-  },
-  {
-    slug: "james-murphy-v-low-tech-toy-club-2025",
-    title: "James Murphy v. Low Tech Toy Club, LLC",
-    defendant: "Low Tech Toy Club, LLC",
-    plaintiff: "James Murphy",
-    dateFiled: "2025-10-23",
-    status: "ongoing",
-    summary:
-      "A plaintiff filed a lawsuit against Low Tech Toy Club, LLC, a retail company, alleging that their website was not accessible to users with disabilities, preventing access to toy products and online shopping.",
-    details: `James Murphy filed a lawsuit against Low Tech Toy Club, LLC on October 23, 2025, in the United States District Court for the Southern District. The lawsuit alleged that the retail company's website violated the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Low Tech Toy Club operates as a retail business specializing in toys. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse toy products and view product details
-- Access product images with proper alternative text descriptions
-- Read product descriptions, age recommendations, and safety information
-- Complete purchases through the online store
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The retailing industry has been consistently targeted in accessibility lawsuits, and toy retailers are no exception. These businesses must ensure their digital properties are accessible to comply with the ADA and serve customers with disabilities, including parents and caregivers who may use assistive technologies.
-
-This case highlights the importance of accessibility in the toy retail sector. Companies must ensure that product information, including age recommendations and safety information, is accessible through multiple modalities and that the shopping experience works with assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and safety information",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court for the Southern District",
-    officialLinks: [
-      {
-        title: "Court Records - Southern District (Official)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Toy retail websites must be accessible",
-      "Product safety information must be accessible",
-      "Online shopping must work with assistive technologies",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that toy retailers must ensure their websites are accessible, including important product information like age recommendations and safety details. Companies must implement accessibility features to serve all customers, including parents and caregivers who may rely on assistive technologies.",
-  },
-  {
-    slug: "christopher-jackson-christopher-walters-v-surya-carpet-2025",
-    title: "Christopher Jackson and Christopher Walters v. Surya Carpet Inc.",
-    defendant: "Surya Carpet Inc.",
-    plaintiff: "Christopher Jackson, Christopher Walters",
-    dateFiled: "2025-10-21",
-    status: "ongoing",
-    summary:
-      "Two plaintiffs filed a lawsuit against Surya Carpet Inc., a retail company, alleging that their website was not accessible to users with disabilities, preventing access to carpet and home furnishings products.",
-    details: `Christopher Jackson and Christopher Walters filed a lawsuit against Surya Carpet Inc. on October 21, 2025, in the United States District Court. The lawsuit alleged that the retail company's website violated Title III of the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Surya Carpet operates as a retail business specializing in carpets and home furnishings. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse carpet and home furnishings products
-- Access product images with proper alternative text descriptions
-- Read product descriptions, specifications, and pricing information
-- Complete purchases through the online store
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The retailing industry has been consistently targeted in accessibility lawsuits, and home furnishings retailers are no exception. These businesses must ensure their digital properties are accessible to comply with the ADA and serve customers with disabilities.
-
-This case highlights the importance of accessibility in the home furnishings retail sector. Companies must ensure that product information, including specifications and pricing, is accessible through multiple modalities and that the shopping experience works with assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and specifications",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Home furnishings retail websites must be accessible",
-      "Product specifications must be accessible",
-      "Online shopping must work with assistive technologies",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that home furnishings retailers must ensure their websites are accessible, including detailed product specifications. Companies must implement accessibility features to serve all customers and comply with legal requirements.",
-  },
-  {
-    slug: "holger-fiallo-jessica-meyer-v-renegade-furniture-group-2025",
-    title: "Holger Fiallo and Jessica Meyer v. Renegade Furniture Group, Inc.",
-    defendant: "Renegade Furniture Group, Inc.",
-    plaintiff: "Holger Fiallo, Jessica Meyer",
-    dateFiled: "2025-10-21",
-    status: "ongoing",
-    summary:
-      "Two plaintiffs filed a lawsuit against Renegade Furniture Group, Inc., a retail company, alleging that their website was not accessible to users with disabilities, preventing access to furniture products and online shopping.",
-    details: `Holger Fiallo and Jessica Meyer filed a lawsuit against Renegade Furniture Group, Inc. on October 21, 2025, in the United States District Court. The lawsuit alleged that the retail company's website violated the Americans with Disabilities Act (ADA) by not being accessible to users with disabilities.
-
-Renegade Furniture Group operates as a retail business specializing in furniture. The lawsuit likely claimed that users with visual impairments or other disabilities could not:
-- Navigate the website using screen readers or other assistive technologies
-- Browse furniture products and view product details
-- Access product images with proper alternative text descriptions
-- Read product descriptions, dimensions, and specifications
-- Complete purchases through the online store
-- Access customer service or support features
-- Navigate using keyboard-only input
-
-The retailing industry has been consistently targeted in accessibility lawsuits, and furniture retailers are no exception. These businesses must ensure their digital properties are accessible to comply with the ADA and serve customers with disabilities.
-
-This case highlights the importance of accessibility in the furniture retail sector. Companies must ensure that product information, including dimensions and specifications, is accessible through multiple modalities and that the shopping experience works with assistive technologies.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for product images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and dimensions",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States District Court",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-    ],
-    keyTakeaways: [
-      "Furniture retail websites must be accessible",
-      "Product dimensions and specifications must be accessible",
-      "Online shopping must work with assistive technologies",
-      "E-commerce functionality must work with assistive technologies",
-    ],
-    impact:
-      "This case demonstrates that furniture retailers must ensure their websites are accessible, including detailed product information like dimensions and specifications. Companies must implement accessibility features to serve all customers and comply with legal requirements.",
-  },
-  {
-    slug: "september-2025-retail-accessibility-surge",
-    title: "September 2025 Retail Accessibility Lawsuits",
-    defendant: "Multiple Retail Defendants",
-    plaintiff: "Multiple Plaintiffs (Manning Law, APC)",
-    dateFiled: "2025-09-01",
-    status: "ongoing",
-    summary:
-      "September 2025 saw 169 website accessibility lawsuits filed, with Manning Law, APC leading with 42 lawsuits in California. The Food, Beverage & Tobacco, Consumer Durables & Apparel, and Retailing industries were most targeted, comprising 71.01% of cases.",
-    details: `September 2025 marked a significant surge in website accessibility litigation, with 169 lawsuits filed across the United States. Manning Law, APC was the most active law firm, filing 42 lawsuits in California alone. The month saw a concentration of cases in specific industries and jurisdictions.
-
-Key statistics from September 2025:
-- Total lawsuits filed: 169
-- Leading law firm: Manning Law, APC (42 lawsuits in California)
-- Most targeted industries: Food, Beverage & Tobacco, Consumer Durables & Apparel, Retailing (71.01% combined)
-- Geographic distribution: New York (34%), Illinois (27%), California (significant portion)
-- Overlay tool usage: Only 1% of litigated websites used third-party accessibility overlay tools
-
-The high volume of lawsuits in September 2025 reflects the continued trend of accessibility litigation targeting retail and consumer-facing businesses. The concentration of cases in specific industries suggests that certain sectors are particularly vulnerable to accessibility claims.
-
-This surge highlights the importance of proactive accessibility compliance for all businesses with an online presence. Companies in the retail, food and beverage, and apparel sectors should prioritize accessibility to avoid legal action.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible forms and checkout processes",
-      "Screen reader incompatibility",
-      "Missing form labels and error messages",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Multiple Districts - California, New York, Illinois)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "September 2025 saw a significant surge in accessibility litigation",
-      "Retail, food and beverage, and apparel industries are heavily targeted",
-      "California saw significant lawsuit activity from Manning Law, APC",
-      "Proactive accessibility compliance is essential to avoid litigation",
-    ],
-    impact:
-      "The September 2025 surge in accessibility lawsuits demonstrates the ongoing legal risk for businesses with inaccessible websites. The concentration of cases in specific industries and jurisdictions highlights the need for comprehensive accessibility programs across all sectors.",
-  },
-  {
-    slug: "august-2025-accessibility-litigation-trend",
-    title: "August 2025 Accessibility Litigation Trend",
-    defendant: "Multiple Defendants",
-    plaintiff: "Multiple Plaintiffs (Equal Access Law Group, PLLC)",
-    dateFiled: "2025-08-01",
-    status: "ongoing",
-    summary:
-      "August 2025 saw 81 website accessibility lawsuits filed, with Equal Access Law Group, PLLC leading with 39 lawsuits in Illinois. Consumer Durables & Apparel, Food, Beverage & Tobacco, and Retailing industries were most targeted, comprising 71.6% of cases.",
-    details: `August 2025 continued the trend of high-volume accessibility litigation, with 81 lawsuits filed across the United States. Equal Access Law Group, PLLC was the most active law firm, filing 39 lawsuits in Illinois. The month saw continued focus on retail and consumer-facing industries.
-
-Key statistics from August 2025:
-- Total lawsuits filed: 81
-- Leading law firm: Equal Access Law Group, PLLC (39 lawsuits in Illinois)
-- Most targeted industries: Consumer Durables & Apparel, Food, Beverage & Tobacco, Retailing (71.6% combined)
-- Geographic distribution: Illinois (51%), California (18%)
-- Overlay tool usage: 4% of litigated websites used third-party accessibility overlay tools
-
-The concentration of lawsuits in Illinois during August 2025 reflects the state's plaintiff-friendly legal environment for accessibility claims. The continued focus on retail and consumer industries demonstrates that these sectors remain primary targets for accessibility litigation.
-
-This trend emphasizes the need for businesses to implement comprehensive accessibility programs, particularly in retail, food and beverage, and apparel sectors. Companies should prioritize WCAG 2.1 Level AA compliance to mitigate legal risk.`,
-    issues: [
-      "Website not accessible to assistive technologies",
-      "Missing alt text for product images",
-      "Inaccessible navigation and browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible forms and interactive elements",
-      "Screen reader incompatibility",
-      "Missing semantic HTML structure",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Multiple Districts - Illinois, California)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "Illinois saw significant lawsuit activity in August 2025",
-      "Retail and consumer industries remain primary targets",
-      "Equal Access Law Group, PLLC was highly active in Illinois",
-      "Accessibility overlay tools do not prevent litigation",
-    ],
-    impact:
-      "The August 2025 litigation trend demonstrates that accessibility lawsuits continue to target retail and consumer-facing businesses. The high activity in Illinois highlights the importance of understanding state-specific legal environments and implementing proactive accessibility measures.",
-  },
-  {
-    slug: "march-2025-stein-saks-litigation-wave",
-    title: "March 2025 STEIN SAKS Litigation Wave",
-    defendant: "Multiple Defendants",
-    plaintiff: "Multiple Plaintiffs (STEIN SAKS, PLLC)",
-    dateFiled: "2025-03-01",
-    status: "ongoing",
-    summary:
-      "March 2025 saw 116 website accessibility lawsuits filed, with STEIN SAKS, PLLC leading with 30 lawsuits in New York. Consumer Durables & Apparel (34%), Retailing (21%), and Food, Beverage & Tobacco (18%) industries were most targeted, comprising 74.13% of cases.",
-    details: `March 2025 marked another significant month for website accessibility litigation, with 116 lawsuits filed across the United States. STEIN SAKS, PLLC was the most active law firm, filing 30 lawsuits in New York alone. The month saw a strong concentration of cases in specific industries and New York state.
-
-Key statistics from March 2025:
-- Total lawsuits filed: 116
-- Leading law firm: STEIN SAKS, PLLC (30 lawsuits in New York)
-- Most targeted industries: Consumer Durables & Apparel (34%), Retailing (21%), Food, Beverage & Tobacco (18%)
-- Combined industry percentage: 74.13% of all cases
-- Geographic distribution: New York (56%), Illinois (25%)
-- Overlay tool usage: Only 1% of litigated websites used third-party accessibility overlay tools
-- Seven plaintiffs were responsible for 44% of the lawsuits
-
-The dominance of New York in March 2025 accessibility litigation reflects the state's plaintiff-friendly legal environment and high concentration of businesses. The strong focus on retail, apparel, and food industries demonstrates that these sectors are particularly vulnerable to accessibility claims.
-
-This litigation wave highlights the critical importance of accessibility compliance for businesses operating in New York and in the retail, apparel, and food sectors. Companies should prioritize WCAG 2.1 Level AA compliance and regular accessibility audits to mitigate legal risk.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for images and products",
-      "Inaccessible navigation and menus",
-      "Lack of keyboard navigation support",
-      "Inaccessible forms and checkout processes",
-      "Screen reader incompatibility",
-      "Missing proper heading structure",
-      "Inaccessible product browsing and filtering",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Multiple Districts - New York, Illinois)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "New York continues to be the primary jurisdiction for accessibility lawsuits",
-      "STEIN SAKS, PLLC was highly active in March 2025",
-      "Retail, apparel, and food industries are heavily targeted",
-      "A small number of plaintiffs file a disproportionate number of lawsuits",
-      "Accessibility overlay tools do not prevent litigation",
-    ],
-    impact:
-      "The March 2025 litigation wave demonstrates the ongoing legal risk for businesses with inaccessible websites, particularly in New York and in retail, apparel, and food sectors. The concentration of cases filed by a few law firms and plaintiffs highlights the systematic nature of accessibility litigation and the importance of proactive compliance.",
-  },
-  {
-    slug: "february-2025-accessibility-litigation-continued",
-    title: "February 2025 Accessibility Litigation Continued",
-    defendant: "Multiple Defendants",
-    plaintiff: "Multiple Plaintiffs (STEIN SAKS, PLLC)",
-    dateFiled: "2025-02-01",
-    status: "ongoing",
-    summary:
-      "February 2025 saw 116 website accessibility lawsuits filed, with STEIN SAKS, PLLC leading with 31 lawsuits in New York. Consumer Durables & Apparel, Food, Beverage & Tobacco, and Retailing industries were most targeted, with New York accounting for 49% of filings.",
-    details: `February 2025 continued the high-volume trend of website accessibility litigation, with 116 lawsuits filed across the United States. STEIN SAKS, PLLC was again the most active law firm, filing 31 lawsuits in New York. The month saw continued focus on retail and consumer-facing industries.
-
-Key statistics from February 2025:
-- Total lawsuits filed: 116
-- Leading law firm: STEIN SAKS, PLLC (31 lawsuits in New York)
-- Most targeted industries: Consumer Durables & Apparel, Food, Beverage & Tobacco, Retailing
-- Geographic distribution: New York (49%), other states
-- Eight plaintiffs were responsible for 42% of the lawsuits
-
-The consistent pattern of high lawsuit volume in February 2025, particularly in New York, reflects the ongoing legal risk for businesses with inaccessible websites. The continued focus on retail, food and beverage, and apparel industries demonstrates that these sectors remain primary targets for accessibility litigation.
-
-This trend emphasizes the need for businesses to implement comprehensive accessibility programs, particularly in retail, food and beverage, and apparel sectors. Companies should prioritize WCAG 2.1 Level AA compliance and regular accessibility audits to mitigate legal risk.`,
-    issues: [
-      "Website not accessible to assistive technologies",
-      "Missing alt text for images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible forms and checkout processes",
-      "Screen reader incompatibility",
-      "Missing proper semantic structure",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Multiple Districts - New York and others)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "February 2025 saw continued high lawsuit volume",
-      "New York remains the primary jurisdiction",
-      "Retail and consumer industries are heavily targeted",
-      "A small number of plaintiffs file many lawsuits",
-    ],
-    impact:
-      "The February 2025 litigation trend demonstrates that accessibility lawsuits continue at a high volume, particularly in New York. Businesses in retail, food and beverage, and apparel sectors should prioritize accessibility compliance to avoid legal action.",
-  },
-  {
-    slug: "january-2025-accessibility-litigation-start",
-    title: "January 2025 Accessibility Litigation Start",
-    defendant: "Multiple Defendants",
-    plaintiff: "Multiple Plaintiffs",
-    dateFiled: "2025-01-01",
-    status: "ongoing",
-    summary:
-      "January 2025 saw 104 website accessibility lawsuits filed, with Consumer Durables & Apparel, Food, Beverage & Tobacco, and Retailing industries most targeted. New York accounted for 48% of filings, followed by Illinois at 31%.",
-    details: `January 2025 marked the beginning of another year of high-volume website accessibility litigation, with 104 lawsuits filed across the United States. The month set the tone for the year with continued focus on retail and consumer-facing industries.
-
-Key statistics from January 2025:
-- Total lawsuits filed: 104
-- Most targeted industries: Consumer Durables & Apparel, Food, Beverage & Tobacco, Retailing
-- Geographic distribution: New York (48%), Illinois (31%)
-
-The strong start to 2025 in accessibility litigation reflects the ongoing legal risk for businesses with inaccessible websites. The concentration of cases in New York and Illinois, along with the focus on retail and consumer industries, demonstrates consistent patterns from previous years.
-
-This trend emphasizes the need for businesses to implement comprehensive accessibility programs from the start of the year. Companies should prioritize WCAG 2.1 Level AA compliance and regular accessibility audits to mitigate legal risk throughout the year.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for images",
-      "Inaccessible navigation and browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible forms and interactive elements",
-      "Screen reader incompatibility",
-      "Missing proper accessibility features",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Multiple Districts - New York, Illinois, and others)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "January 2025 saw strong lawsuit activity",
-      "New York and Illinois are primary jurisdictions",
-      "Retail and consumer industries are heavily targeted",
-      "Proactive accessibility compliance is essential",
-    ],
-    impact:
-      "The January 2025 litigation start demonstrates that accessibility lawsuits continue to be a significant legal risk for businesses. Companies should prioritize accessibility compliance from the beginning of the year to avoid legal action and serve all customers effectively.",
-  },
-  {
-    slug: "april-2025-accessibility-litigation-continued",
-    title: "April 2025 Accessibility Litigation Continued",
-    defendant: "Multiple Defendants",
-    plaintiff: "Multiple Plaintiffs",
-    dateFiled: "2025-04-01",
-    status: "ongoing",
-    summary:
-      "April 2025 saw 82 website accessibility lawsuits filed, with Consumer Durables & Apparel, Food, Beverage & Tobacco, and Retailing industries most targeted. The month saw continued focus on retail and consumer-facing businesses.",
-    details: `April 2025 continued the trend of website accessibility litigation, with 82 lawsuits filed across the United States. While the volume was slightly lower than previous months, the focus remained on retail and consumer-facing industries.
-
-Key statistics from April 2025:
-- Total lawsuits filed: 82
-- Most targeted industries: Consumer Durables & Apparel, Food, Beverage & Tobacco, Retailing
-
-The continued litigation in April 2025 demonstrates that accessibility lawsuits remain a consistent legal risk for businesses with inaccessible websites. The focus on retail and consumer industries shows that these sectors continue to be primary targets for accessibility claims.
-
-This trend emphasizes the need for businesses to maintain ongoing accessibility compliance programs. Companies should prioritize WCAG 2.1 Level AA compliance and regular accessibility audits to mitigate legal risk throughout the year.`,
-    issues: [
-      "Website not accessible to assistive technologies",
-      "Missing alt text for images",
-      "Inaccessible navigation and product browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible forms and checkout processes",
-      "Screen reader incompatibility",
-      "Missing proper semantic HTML",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Multiple Districts)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "April 2025 saw continued lawsuit activity",
-      "Retail and consumer industries remain primary targets",
-      "Ongoing accessibility compliance is essential",
-      "Regular audits can help prevent litigation",
-    ],
-    impact:
-      "The April 2025 litigation trend demonstrates that accessibility lawsuits continue throughout the year. Businesses should maintain ongoing accessibility programs to avoid legal action and serve all customers effectively.",
-  },
-  {
-    slug: "june-2025-accessibility-litigation-mid-year",
-    title: "June 2025 Accessibility Litigation Mid-Year",
-    defendant: "Multiple Defendants",
-    plaintiff: "Multiple Plaintiffs",
-    dateFiled: "2025-06-01",
-    status: "ongoing",
-    summary:
-      "June 2025 saw 57 website accessibility lawsuits filed, with Food, Beverage & Tobacco, Consumer Durables & Apparel, and Retailing industries most targeted. The month saw continued focus on retail and consumer-facing businesses.",
-    details: `June 2025 continued the mid-year trend of website accessibility litigation, with 57 lawsuits filed across the United States. While the volume was lower than some previous months, the focus remained on retail and consumer-facing industries.
-
-Key statistics from June 2025:
-- Total lawsuits filed: 57
-- Most targeted industries: Food, Beverage & Tobacco, Consumer Durables & Apparel, Retailing
-
-The continued litigation in June 2025 demonstrates that accessibility lawsuits remain a consistent legal risk throughout the year. The focus on retail, food and beverage, and apparel industries shows that these sectors continue to be primary targets for accessibility claims.
-
-This trend emphasizes the need for businesses to maintain ongoing accessibility compliance programs throughout the year. Companies should prioritize WCAG 2.1 Level AA compliance and regular accessibility audits to mitigate legal risk.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Missing alt text for images",
-      "Inaccessible navigation and browsing",
-      "Lack of keyboard navigation support",
-      "Inaccessible forms and interactive elements",
-      "Screen reader incompatibility",
-      "Missing proper accessibility features",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (Multiple Districts)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "June 2025 saw continued lawsuit activity",
-      "Retail and consumer industries remain primary targets",
-      "Mid-year accessibility compliance is essential",
-      "Regular audits can help prevent litigation",
-    ],
-    impact:
-      "The June 2025 litigation trend demonstrates that accessibility lawsuits continue throughout the year. Businesses should maintain ongoing accessibility programs to avoid legal action and serve all customers effectively, regardless of the time of year.",
-  },
-  {
-    slug: "hulu-captioning-accessibility-lawsuit",
-    title: "Hulu Captioning Accessibility Lawsuit",
-    defendant: "Hulu, LLC",
-    plaintiff: "National Association of the Deaf (NAD)",
-    dateFiled: "2011-06-16",
-    dateResolved: "2012-10-10",
-    status: "settled",
-    settlementAmount: "Confidential + ongoing captioning",
-    summary:
-      "The National Association of the Deaf sued Hulu for not providing closed captions on their streaming content, establishing that video streaming services must be accessible to deaf and hard-of-hearing users.",
-    details: `Following the Netflix captioning lawsuit, the National Association of the Deaf (NAD) filed a similar lawsuit against Hulu in 2011, alleging that Hulu's streaming service violated the Americans with Disabilities Act (ADA) by not providing closed captions for most of its content.
-
-The lawsuit claimed that Hulu's "Watch Instantly" service was inaccessible to deaf and hard-of-hearing users because most content lacked closed captions. This made it impossible for these users to access the same content available to hearing users.
-
-Hulu, like Netflix before it, initially argued that the ADA only applied to physical locations. However, the court ruled that Hulu's streaming service was a "place of public accommodation" under the ADA, similar to the Netflix case.
-
-In October 2012, Hulu agreed to a settlement that required:
-- Confidential monetary settlement
-- 100% closed captioning for all streaming content
-- Ongoing captioning for all new content
-- Regular reporting to the NAD on captioning progress
-
-This case reinforced the precedent set by the Netflix case and demonstrated that all video streaming services must provide closed captions to be accessible to deaf and hard-of-hearing users.`,
-    issues: [
-      "Lack of closed captions on streaming content",
-      "Inaccessible video player controls",
-      "No audio descriptions for blind users",
-      "Inaccessible website navigation",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (District Court)",
-    officialLinks: [
-      {
-        title: "NAD Hulu Settlement Press Release (Official - nad.org)",
-        url: "https://www.nad.org/2012/10/10/nad-and-hulu-reach-settlement-agreement/",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/docket/4604832/national-association-of-the-deaf-v-hulu-llc/",
-      },
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/california/candce/3:2011cv30168/",
-      },
-      {
-        title: "Accessibility.com Coverage",
-        url: "https://www.accessibility.com/blog/hulu-captioning-settlement",
-      },
-    ],
-    keyTakeaways: [
-      "Video streaming services must provide closed captions",
-      "Online services are considered 'places of public accommodation'",
-      "Settlements can include ongoing compliance requirements",
-      "This case reinforced the Netflix precedent",
-    ],
-    impact:
-      "This case reinforced that video streaming services must be accessible and led to widespread captioning across the streaming industry. It demonstrated that the ADA applies to online services, not just physical locations, and that all streaming platforms must provide closed captions.",
-  },
-  {
-    slug: "amazon-prime-video-accessibility-case",
-    title: "Amazon Prime Video Accessibility Case",
-    defendant: "Amazon.com, Inc.",
-    plaintiff: "National Association of the Deaf (NAD)",
-    dateFiled: "2015-03-15",
-    dateResolved: "2016-08-20",
-    status: "settled",
-    settlementAmount: "Confidential + ongoing captioning",
-    summary:
-      "The National Association of the Deaf sued Amazon for not providing adequate closed captions on Amazon Prime Video content, continuing the trend of accessibility litigation against streaming services.",
-    details: `The National Association of the Deaf (NAD) filed a lawsuit against Amazon.com, Inc. in 2015, alleging that Amazon Prime Video violated the Americans with Disabilities Act (ADA) by not providing adequate closed captions for its streaming content.
-
-The lawsuit claimed that many titles on Amazon Prime Video lacked closed captions or had incomplete or inaccurate captions, making the service inaccessible to deaf and hard-of-hearing users. This was particularly problematic as Amazon Prime Video was becoming a major player in the streaming market.
-
-Amazon, like Netflix and Hulu before it, was required to ensure that its streaming service was accessible to users with disabilities. The case followed the legal precedents established by the Netflix and Hulu captioning lawsuits.
-
-In August 2016, Amazon agreed to a settlement that required:
-- Confidential monetary settlement
-- Comprehensive closed captioning for all Prime Video content
-- Ongoing captioning for all new content
-- Quality standards for caption accuracy and timing
-- Regular accessibility audits and reporting
-
-This case demonstrated that even major technology companies like Amazon must ensure their streaming services are accessible. It also highlighted the importance of caption quality, not just presence.`,
-    issues: [
-      "Lack of closed captions on Prime Video content",
-      "Incomplete or inaccurate captions",
-      "Inaccessible video player controls",
-      "No audio descriptions for blind users",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (District Court)",
-    officialLinks: [
-      {
-        title: "NAD Amazon Settlement Information (Official - nad.org)",
-        url: "https://www.nad.org/2016/08/22/nad-and-amazon-reach-settlement-agreement-on-captioning/",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/docket/4604832/national-association-of-the-deaf-v-amazon-com-inc/",
-      },
-      {
-        title: "Accessibility.com Coverage",
-        url: "https://www.accessibility.com/blog/amazon-prime-video-captioning-settlement",
-      },
-    ],
-    keyTakeaways: [
-      "Major technology companies must ensure streaming accessibility",
-      "Caption quality is as important as caption presence",
-      "Ongoing compliance monitoring is often required",
-      "Streaming services must be accessible to all users",
-    ],
-    impact:
-      "This case reinforced that all streaming services, regardless of the company size or market position, must provide accessible content. It also emphasized the importance of caption quality and ongoing compliance monitoring for streaming platforms.",
-  },
-  {
-    slug: "realtor-com-accessibility-lawsuit",
-    title: "Realtor.com Website Accessibility Lawsuit",
-    defendant: "Move, Inc. (Realtor.com)",
-    plaintiff: "Juan Carlos Gil",
-    dateFiled: "2017-08-10",
-    dateResolved: "2018-12-15",
-    status: "settled",
-    settlementAmount: "Confidential",
-    summary:
-      "A blind user sued Realtor.com alleging that the real estate website was not accessible to screen readers, preventing him from searching for homes and accessing property information independently.",
-    details: `Juan Carlos Gil, who is blind, filed a lawsuit against Move, Inc., the operator of Realtor.com, in August 2017. Gil alleged that Realtor.com's website was not accessible to screen readers, preventing him from searching for homes, viewing property listings, and accessing property information.
-
-The lawsuit claimed that Realtor.com violated Title III of the Americans with Disabilities Act (ADA) by not providing accessible features for users with disabilities. Gil stated that he could not:
-- Navigate the website using screen reader software
-- Search for properties by location, price, or other criteria
-- Access property descriptions and details
-- View property images with proper alternative text
-- Use the website's interactive features
-
-Realtor.com is one of the largest real estate websites in the United States, making accessibility critical for users with disabilities who want to search for homes independently. The case highlighted the importance of accessibility in the real estate industry, where online property searches have become the primary method for finding homes.
-
-The case was settled in December 2018, with Realtor.com agreeing to make their website accessible. While the settlement amount was confidential, Realtor.com committed to implementing accessibility improvements and ensuring ongoing compliance with WCAG 2.0 Level AA standards.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Inaccessible property search functionality",
-      "Missing alt text for property images",
-      "Lack of keyboard navigation support",
-      "Inaccessible forms and interactive elements",
-      "Screen reader incompatibility",
-      "Missing proper heading structure",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (District Court)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/",
-      },
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "Real estate websites must be accessible to users with disabilities",
-      "Property search functionality must work with assistive technologies",
-      "Online real estate services are covered under the ADA",
-      "Large real estate platforms must prioritize accessibility",
-    ],
-    impact:
-      "This case demonstrated that real estate websites must be accessible, as online property searches have become essential for home buyers. It highlighted the importance of accessibility in industries where digital services have replaced traditional in-person interactions.",
-  },
-  {
-    slug: "blue-apron-accessibility-lawsuit",
-    title: "Blue Apron Website Accessibility Lawsuit",
-    defendant: "Blue Apron, LLC",
-    plaintiff: "Andres Gomez",
-    dateFiled: "2018-05-20",
-    dateResolved: "2019-09-10",
-    status: "settled",
-    settlementAmount: "Confidential",
-    summary:
-      "A blind user sued Blue Apron alleging that the meal kit delivery service's website was not accessible to screen readers, preventing him from browsing meal options and placing orders independently.",
-    details: `Andres Gomez, who is blind, filed a lawsuit against Blue Apron, LLC in May 2018, alleging that the meal kit delivery service's website was not accessible to screen readers. Gomez claimed he could not browse meal options, view recipe details, or place orders independently due to accessibility barriers.
-
-The lawsuit alleged that Blue Apron's website violated Title III of the Americans with Disabilities Act (ADA) by not providing accessible features for users with disabilities. Gomez stated that he could not:
-- Navigate the website using screen reader software
-- Browse meal kit options and recipes
-- Access meal descriptions and ingredient lists
-- View meal images with proper alternative text
-- Complete the ordering and checkout process
-- Manage his subscription or account settings
-
-Blue Apron is a popular meal kit delivery service that relies heavily on its website for customer interactions. The case highlighted the importance of accessibility for online food and meal services, where customers must be able to browse, select, and order products independently.
-
-The case was settled in September 2019, with Blue Apron agreeing to make their website accessible. While the settlement amount was confidential, Blue Apron committed to implementing accessibility improvements and ensuring ongoing compliance with WCAG 2.1 Level AA standards.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Inaccessible meal browsing and selection",
-      "Missing alt text for meal images",
-      "Lack of keyboard navigation support",
-      "Inaccessible forms and checkout process",
-      "Screen reader incompatibility",
-      "Inaccessible subscription management",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (District Court)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "Federal Court Records (Justia)",
-        url: "https://law.justia.com/cases/federal/district-courts/",
-      },
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/",
-      },
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "Meal kit and food delivery websites must be accessible",
-      "Online ordering systems must work with assistive technologies",
-      "Subscription services must be accessible to all users",
-      "Food service websites are covered under the ADA",
-    ],
-    impact:
-      "This case demonstrated that meal kit and food delivery services must ensure their websites are accessible, as these services rely entirely on online platforms for customer interactions. It highlighted the importance of accessibility for subscription-based e-commerce services.",
-  },
-  {
-    slug: "wayfair-accessibility-lawsuit",
-    title: "Wayfair Website Accessibility Lawsuit",
-    defendant: "Wayfair, Inc.",
-    plaintiff: "Andres Gomez",
-    dateFiled: "2018-07-15",
-    dateResolved: "2019-11-20",
-    status: "settled",
-    settlementAmount: "Confidential",
-    summary:
-      "A blind user sued Wayfair alleging that the furniture and home goods retailer's website was not accessible to screen readers, preventing him from browsing products and making purchases independently.",
-    details: `Andres Gomez, who is blind, filed a lawsuit against Wayfair, Inc. in July 2018, alleging that the furniture and home goods retailer's website was not accessible to screen readers. Gomez claimed he could not browse furniture and home decor products, view product details, or complete purchases independently due to accessibility barriers.
-
-The lawsuit alleged that Wayfair's website violated Title III of the Americans with Disabilities Act (ADA) by not providing accessible features for users with disabilities. Gomez stated that he could not:
-- Navigate the website using screen reader software
-- Browse furniture and home goods by category
-- Access product descriptions, dimensions, and specifications
-- View product images with proper alternative text
-- Complete the checkout and purchase process
-- Access customer service or support features
-
-Wayfair is one of the largest online furniture and home goods retailers, making accessibility critical for users with disabilities who want to shop for home furnishings independently. The case highlighted the importance of accessibility in the furniture retail industry, where online shopping has become the primary method for many consumers.
-
-The case was settled in November 2019, with Wayfair agreeing to make their website accessible. While the settlement amount was confidential, Wayfair committed to implementing accessibility improvements and ensuring ongoing compliance with WCAG 2.1 Level AA standards.`,
-    issues: [
-      "Website not accessible to screen readers",
-      "Inaccessible product browsing and filtering",
-      "Missing alt text for product images",
-      "Lack of keyboard navigation support",
-      "Inaccessible product descriptions and specifications",
-      "Screen reader incompatibility",
-      "Inaccessible forms and checkout process",
-    ],
-    wcagLevel: "AA",
-    jurisdiction: "United States (District Court)",
-    officialLinks: [
-      {
-        title: "PACER Case Search (Official Court Records)",
-        url: "https://www.uscourts.gov/court-records/find-case-pacer",
-      },
-    ],
-    unofficialLinks: [
-      {
-        title: "CourtListener Case Records",
-        url: "https://www.courtlistener.com/",
-      },
-      {
-        title: "Accessibility.com Digital Lawsuits Database",
-        url: "https://www.accessibility.com/digital-lawsuits",
-      },
-      {
-        title: "Karl Groves A11Y Lawsuits Database",
-        url: "https://karlgroves.github.io/a11y-lawsuits/lawsuits.html",
-      },
-    ],
-    keyTakeaways: [
-      "Furniture and home goods websites must be accessible",
-      "Product browsing and filtering must work with assistive technologies",
-      "Large e-commerce platforms must prioritize accessibility",
-      "Online furniture shopping must be accessible to all users",
-    ],
-    impact:
-      "This case demonstrated that large e-commerce retailers must ensure their websites are accessible, regardless of their market position. It highlighted the importance of accessibility for furniture and home goods retailers, where detailed product information is essential for purchasing decisions.",
+      "The data demonstrates that accessibility litigation remains a significant business risk. Organizations in targeted industries face continued exposure, and the emergence of new hotspots suggests geographic expansion of enforcement focus.",
   },
 ]
 
-export function getLawsuitBySlug(slug: string): Lawsuit | undefined {
-  return lawsuits.find((lawsuit) => lawsuit.slug === slug)
+export interface LawsuitCategory {
+  name: string
+  description: string
+  count: number
 }
 
+export const categories: LawsuitCategory[] = [
+  {
+    name: "Digital & Web Accessibility",
+    description: "Website and app accessibility lawsuits under ADA Title III",
+    count: lawsuits.filter((l) => l.category === "digital").length,
+  },
+  {
+    name: "Employment",
+    description: "Workplace discrimination and accommodation failures (ADA Title I)",
+    count: lawsuits.filter((l) => l.category === "employment").length,
+  },
+  {
+    name: "Physical Accessibility",
+    description: "Building, facility, and public accommodation barriers",
+    count: lawsuits.filter((l) => l.category === "physical").length,
+  },
+  {
+    name: "Transportation",
+    description: "Airline, transit, and rideshare accessibility",
+    count: lawsuits.filter((l) => l.category === "transportation").length,
+  },
+  {
+    name: "Healthcare",
+    description: "Hospital, medical facility, and health service accessibility",
+    count: lawsuits.filter((l) => l.category === "healthcare").length,
+  },
+  {
+    name: "Housing",
+    description: "Residential and housing accessibility violations",
+    count: lawsuits.filter((l) => l.category === "housing").length,
+  },
+  {
+    name: "International",
+    description: "Accessibility enforcement actions outside United States",
+    count: lawsuits.filter((l) => l.category === "international").length,
+  },
+]
+
+// Helper functions
 export function getAllLawsuits(): Lawsuit[] {
   return lawsuits
+}
+
+export function getLawsuitBySlug(slug: string): Lawsuit | undefined {
+  return lawsuits.find((lawsuit) => lawsuit.slug === slug)
 }
 
 export function getLawsuitsByStatus(status: Lawsuit["status"]): Lawsuit[] {
   return lawsuits.filter((lawsuit) => lawsuit.status === status)
 }
 
-export function getRecentLawsuits(limit: number = 5): Lawsuit[] {
+export function getRecentLawsuits(count: number = 5): Lawsuit[] {
   return lawsuits
-    .sort((a, b) => new Date(b.dateFiled).getTime() - new Date(a.dateFiled).getTime())
-    .slice(0, limit)
+    .filter((lawsuit) => lawsuit.dateResolved)
+    .sort(
+      (a, b) =>
+        new Date(b.dateResolved || 0).getTime() -
+        new Date(a.dateResolved || 0).getTime()
+    )
+    .slice(0, count)
 }
 
+export function getLawsuitsByCategory(category: string): Lawsuit[] {
+  return lawsuits.filter((lawsuit) => lawsuit.category === category)
+}

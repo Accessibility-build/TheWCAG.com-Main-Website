@@ -23,7 +23,7 @@ export default function AndroidAppDevelopmentPage() {
     "@type": "Service",
     name: "Android App Development Service",
     description:
-      "Native Android apps that work for everyone. Material Design, accessibility built-in, performance optimized, and Play Store ready. Accessibility isn't optional—it's how good apps are built.",
+      "Native Android apps that work for everyone. Material Design, accessibility built-in, performance optimized, and Play Store ready. Accessibility isn't optional, it's how good apps are built.",
     url: "https://thewcag.com/services/android-app-development",
     provider: {
       "@type": "Organization",
@@ -136,7 +136,7 @@ export default function AndroidAppDevelopmentPage() {
                 Android App Development
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-                Native Android apps that work for everyone. Accessibility isn't optional—it's how good apps are built.
+                Native Android apps that work for everyone. Accessibility isn't optional, it's how good apps are built.
                 <span className="block mt-2 font-semibold text-foreground">
                   Material Design, TalkBack support, and performance that doesn't suck.
                 </span>

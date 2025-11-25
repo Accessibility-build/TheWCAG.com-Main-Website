@@ -273,7 +273,7 @@ export default function GettingStartedPage() {
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Web accessibility ensures that your website can be used by everyone, including people with
-                  disabilities. It's not just the right thing to do—it's often required by law and makes good business
+                  disabilities. It's not just the right thing to do, it's often required by law and makes good business
                   sense.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4">

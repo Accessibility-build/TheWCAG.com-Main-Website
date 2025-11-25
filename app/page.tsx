@@ -470,7 +470,7 @@ export default function HomePage() {
                     How much do you really know about web accessibility? Take our quick quiz and find out!
                   </p>
                   <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 max-w-xl mx-auto">
-                    It's fun, interactive, and you might learn something new. No pressure—just a friendly challenge! 😊
+                    It's fun, interactive, and you might learn something new. No pressure, just a friendly challenge!
                   </p>
                   <AccessibilityQuiz />
                 </div>

@@ -65,13 +65,13 @@ export default function CustomWebsiteDevelopmentPage() {
   const features = [
     {
       title: "WCAG 2.2 AA Compliant",
-      description: "Built with accessibility from day one. No retrofitting, no excuses—just accessible code.",
+      description: "Built with accessibility from day one. No retrofitting, no excuses, just accessible code.",
       icon: ShieldCheck,
       color: "bg-green-500/10 text-green-600",
     },
     {
       title: "Modern Tech Stack",
-      description: "We use the latest frameworks and tools. React, Next.js, TypeScript—whatever fits your needs.",
+      description: "We use the latest frameworks and tools. React, Next.js, TypeScript. Whatever fits your needs.",
       icon: Code,
       color: "bg-blue-500/10 text-blue-600",
     },
@@ -139,7 +139,7 @@ export default function CustomWebsiteDevelopmentPage() {
               <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
                 Beautiful, accessible websites built from scratch. Because starting right is easier than fixing later.
                 <span className="block mt-2 font-semibold text-foreground">
-                  No shortcuts, no compromises—just good, accessible code.
+                  No shortcuts, no compromises, just good, accessible code.
                 </span>
               </p>
             </div>
@@ -168,57 +168,93 @@ export default function CustomWebsiteDevelopmentPage() {
             </div>
 
             {/* Tech Stack Section */}
-            <div className="mb-12 sm:mb-16 bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-2xl p-6 sm:p-8 md:p-12 border-2 border-primary/20">
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 mb-6">
-                  <Code className="w-8 h-8 text-primary" />
+            <div className="mb-12 sm:mb-16">
+              <div className="bg-gradient-to-br from-primary/5 via-background to-background rounded-2xl p-6 sm:p-8 md:p-12 border border-primary/10">
+                <div className="text-center mb-10 sm:mb-12">
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
+                    We Build With Your Preferred Tech Stack
+                  </h2>
+                  <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-2">
+                    Need a WordPress site? Drupal? Wix? Custom React app?
+                  </p>
+                  <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+                    We build accessible websites using whatever technology stack fits your needs and preferences.
+                  </p>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
-                  We Build With Any Tech Stack You Need
-                </h2>
-                <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-                  Need a WordPress site? Drupal? Wix? Custom React app? We build accessible websites using 
-                  <span className="block mt-2 font-semibold text-foreground">
-                    whatever technology stack fits your needs and preferences.
-                  </span>
-                </p>
-                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Whether you want a content management system, a custom-built application, or something in between, 
-                  we'll build it accessibly from the ground up. We're platform-agnostic and technology-flexible.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
-                {[
-                  "WordPress",
-                  "Drupal",
-                  "Wix",
-                  "Shopify",
-                  "Squarespace",
-                  "Custom Development",
-                  "React",
-                  "Next.js",
-                  "Vue.js",
-                  "Angular",
-                  "PHP",
-                  "Python",
-                  "Node.js",
-                  "Laravel",
-                  "Django",
-                  "Ruby on Rails",
-                  "ASP.NET",
-                  "Java",
-                ].map((tech) => (
-                  <div
-                    key={tech}
-                    className="flex items-center justify-center p-3 sm:p-4 rounded-lg bg-background border border-primary/10 hover:border-primary/30 transition-colors"
-                  >
-                    <span className="text-sm sm:text-base font-medium text-center">{tech}</span>
+
+                <div className="mb-8">
+                  <h3 className="text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">CMS Platforms</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    {[
+                      "WordPress",
+                      "Drupal",
+                      "Wix",
+                      "Shopify",
+                      "Squarespace",
+                      "Custom CMS",
+                    ].map((tech) => (
+                      <div
+                        key={tech}
+                        className="flex items-center justify-center p-3 sm:p-4 rounded-lg bg-card border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all"
+                      >
+                        <span className="text-xs sm:text-sm font-semibold text-center">{tech}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+
+                <div className="mb-8">
+                  <h3 className="text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">Frontend Technologies</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    {[
+                      "React",
+                      "Next.js",
+                      "Vue.js",
+                      "Angular",
+                      "TypeScript",
+                      "Svelte",
+                      "Astro",
+                      "Remix",
+                    ].map((tech) => (
+                      <div
+                        key={tech}
+                        className="flex items-center justify-center p-3 sm:p-4 rounded-lg bg-card border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all"
+                      >
+                        <span className="text-xs sm:text-sm font-semibold text-center">{tech}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <h3 className="text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">Backend & Languages</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    {[
+                      "Node.js",
+                      "PHP",
+                      "Python",
+                      "Laravel",
+                      "Django",
+                      "Ruby on Rails",
+                      "ASP.NET",
+                      "Java",
+                    ].map((tech) => (
+                      <div
+                        key={tech}
+                        className="flex items-center justify-center p-3 sm:p-4 rounded-lg bg-card border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all"
+                      >
+                        <span className="text-xs sm:text-sm font-semibold text-center">{tech}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="text-center pt-4 border-t border-primary/10">
+                  <p className="text-sm sm:text-base text-muted-foreground">
+                    Have a specific technology in mind? <Link href="/contact" className="text-primary hover:underline font-semibold">Let's discuss</Link> your project.
+                  </p>
+                </div>
               </div>
-              <p className="text-center text-sm sm:text-base text-muted-foreground mt-6">
-                Have a specific technology in mind? <Link href="/contact" className="text-primary hover:underline font-semibold">Let's discuss</Link>—we can build with any stack.
-              </p>
             </div>
 
             {/* What We Build */}
@@ -361,7 +397,7 @@ export default function CustomWebsiteDevelopmentPage() {
                 Ready to Build Something Great?
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Let's build your accessible website the right way—from the ground up. No retrofitting, no compromises.
+                Let's build your accessible website the right way, from the ground up. No retrofitting, no compromises.
               </p>
               <Link href="/contact">
                 <Button size="lg">

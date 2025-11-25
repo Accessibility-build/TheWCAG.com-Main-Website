@@ -19,13 +19,13 @@ export default function MythsPage() {
     {
       myth: "Accessibility only benefits a small number of users",
       truth:
-        "Over 1 billion people worldwide have disabilities. Additionally, accessible design benefits everyone—mobile users, older adults, people with temporary injuries, and users in challenging environments. Good accessibility improves UX for all users.",
+        "Over 1 billion people worldwide have disabilities. Additionally, accessible design benefits everyone, mobile users, older adults, people with temporary injuries, and users in challenging environments. Good accessibility improves UX for all users.",
       impact: "High",
     },
     {
       myth: "Accessibility makes websites ugly and boring",
       truth:
-        "Accessible websites can be beautiful and modern. Accessibility is about proper structure, semantic HTML, and inclusive design—not about limiting creativity. Many award-winning, beautiful websites are fully accessible.",
+        "Accessible websites can be beautiful and modern. Accessibility is about proper structure, semantic HTML, and inclusive design, not about limiting creativity. Many award-winning, beautiful websites are fully accessible.",
       impact: "Medium",
     },
     {
@@ -178,7 +178,7 @@ export default function MythsPage() {
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary mt-1 shrink-0" />
                     <span className="text-muted-foreground">
-                      <strong className="text-foreground">Manual testing is essential</strong>—automated tools alone aren't enough
+                      <strong className="text-foreground">Manual testing is essential</strong>, automated tools alone aren't enough
                     </span>
                   </li>
                   <li className="flex items-start gap-3">

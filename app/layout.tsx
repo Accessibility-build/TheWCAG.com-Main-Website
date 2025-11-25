@@ -148,7 +148,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="light">
       <head>
         {/* Resource hints for external services - Non-blocking */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
@@ -172,7 +172,7 @@ export default function RootLayout({
             gtag('config', 'G-9WQ5PHRJ4K');
           `}
         </Script>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light" disableTransitionOnChange>
           {children}
         </ThemeProvider>
         <Analytics />
