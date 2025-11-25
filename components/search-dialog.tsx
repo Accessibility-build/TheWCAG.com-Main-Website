@@ -76,19 +76,31 @@ export function SearchDialog({ open, onOpenChange, trigger }: SearchDialogProps)
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <Dialog.Content className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-0 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-h-[85vh] flex flex-col">
-          {/* Dialog Header with Title */}
-          <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-2 border-b border-border">
-            <Dialog.Title className="text-lg sm:text-xl font-semibold text-foreground mb-1">
-              Search TheWCAG
-            </Dialog.Title>
-            <Dialog.Description id="search-dialog-description" className="text-sm sm:text-base text-muted-foreground">
-              Search for WCAG criteria, guides, examples, lawsuits, and more
-            </Dialog.Description>
+          {/* Dialog Header with Title and Close Button */}
+          <div className="flex items-start justify-between gap-4 px-4 sm:px-6 pt-4 sm:pt-6 pb-2 border-b border-border">
+            <div className="flex-1 min-w-0">
+              <Dialog.Title className="text-lg sm:text-xl font-semibold text-foreground mb-1">
+                Search TheWCAG
+              </Dialog.Title>
+              <Dialog.Description id="search-dialog-description" className="text-sm sm:text-base text-muted-foreground">
+                Search for WCAG criteria, guides, examples, lawsuits, and more
+              </Dialog.Description>
+            </div>
+            <Dialog.Close asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg hover:bg-secondary/20 shrink-0 mt-0.5"
+                aria-label="Close search dialog"
+              >
+                <X className="h-4 w-4 sm:h-5 sm:w-5" />
+              </Button>
+            </Dialog.Close>
           </div>
           
-          {/* Search Input Header */}
-          <div className="flex items-center gap-2 p-4 sm:p-6 border-b border-border">
-            <div className="relative flex-1">
+          {/* Search Input */}
+          <div className="px-4 sm:px-6 pb-4 sm:pb-6 border-b border-border">
+            <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" aria-hidden="true" />
               <Input
                 ref={inputRef}
@@ -114,16 +126,6 @@ export function SearchDialog({ open, onOpenChange, trigger }: SearchDialogProps)
                 </Button>
               )}
             </div>
-            <Dialog.Close asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-10 w-10 sm:h-12 sm:w-12 rounded-lg hover:bg-secondary/20 shrink-0"
-                aria-label="Close search dialog"
-              >
-                <X className="h-5 w-5 sm:h-6 sm:w-6" />
-              </Button>
-            </Dialog.Close>
           </div>
 
           {/* Search Results */}
