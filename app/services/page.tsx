@@ -129,32 +129,23 @@ export default function ServicesPage() {
             />
 
             {/* Hero Section */}
-            <div className="mb-12 sm:mb-16 md:mb-20 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 mb-6 text-sm font-medium">
-                <CheckCircle2 className="w-4 h-4" />
-                Professional Accessibility Services
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <ShieldCheck className="h-8 w-8 text-primary" aria-hidden="true" />
+                <h1 className="text-4xl md:text-5xl font-bold">Accessibility Solutions for Your Business</h1>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-                Accessibility Solutions for Your Business
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-                Whether you're starting a new project or improving an existing one, we provide comprehensive accessibility solutions to ensure your digital products work for everyone.
-                <span className="block mt-2 font-semibold text-foreground">
-                  Our team of experts is ready to help you build accessible, compliant products.
-                </span>
-              </p>
-              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-                From WCAG 2.2 audits to custom development, we deliver professional solutions that meet your accessibility needs.
+              <p className="text-lg text-muted-foreground max-w-3xl mb-6">
+                Comprehensive accessibility services to ensure your digital products work for everyone. From WCAG 2.2 audits to custom development, we deliver professional solutions tailored to your needs.
               </p>
             </div>
 
             {/* Services Grid */}
             <div className="mb-12 sm:mb-16">
-              <div className="text-center mb-8 sm:mb-12">
+              <div className="mb-8 sm:mb-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
                   Our Services
                 </h2>
-                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
                   Comprehensive accessibility solutions tailored to your project needs.
                 </p>
               </div>
