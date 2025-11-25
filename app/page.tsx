@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge"
 import { HeroSearch } from "@/components/hero-search"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { StructuredData } from "@/components/structured-data"
-import { AccessibilityQuiz } from "@/components/accessibility-quiz"
 import { getRecentLawsuits } from "@/lib/lawsuits-data"
 import {
   Search,
@@ -712,27 +711,13 @@ export default function HomePage() {
                 <p className="text-base sm:text-lg md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
                   Start learning WCAG 2.2 with our beginner-friendly guides and practical examples
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" asChild>
                     <Link href="/learn">Start Learning</Link>
                   </Button>
                   <Button size="lg" variant="outline" asChild>
                     <Link href="/checklist">View Checklist</Link>
                   </Button>
-                </div>
-                
-                {/* Inline Quiz Element */}
-                <div className="max-w-md mx-auto">
-                  <div className="bg-linear-to-br from-primary/5 to-background rounded-xl p-4 sm:p-6 border border-primary/20">
-                    <div className="flex items-center justify-center gap-2 mb-3">
-                      <Sparkles className="w-4 h-4 text-primary" aria-hidden="true" />
-                      <h3 className="text-sm sm:text-base font-semibold">Test Your Knowledge</h3>
-                    </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-4">
-                      Quick quiz - just for fun!
-                    </p>
-                    <AccessibilityQuiz />
-                  </div>
                 </div>
               </ScrollAnimation>
             </div>
