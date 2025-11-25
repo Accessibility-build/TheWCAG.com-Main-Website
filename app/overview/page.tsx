@@ -26,11 +26,15 @@ export default function OverviewPage() {
       url: "https://thewcag.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://thewcag.com/logo.png",
+        url: "https://thewcag.com/Logo.png",
       },
     },
     datePublished: "2024-01-01",
     dateModified: new Date().toISOString().split("T")[0],
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://thewcag.com/overview",
+    },
     about: {
       "@type": "Thing",
       name: "Web Content Accessibility Guidelines",
@@ -495,9 +499,12 @@ export default function OverviewPage() {
               <Card className="bg-primary/5 border-primary/20">
                 <CardHeader>
                   <CardTitle className="text-2xl">Ready to Get Started?</CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
+                  <CardDescription className="text-base leading-relaxed mb-2">
                     Explore the principles, check specific criteria, or jump into our learning resources.
                   </CardDescription>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Start with our <Link href="/getting-started" className="text-primary hover:underline font-medium">Getting Started guide</Link> for a step-by-step introduction, or dive into specific <Link href="/principles" className="text-primary hover:underline font-medium">principles</Link> and <Link href="/criteria/1.1.1" className="text-primary hover:underline font-medium">criteria</Link> that interest you.
+                  </p>
                 </CardHeader>
                 <CardContent className="flex flex-col sm:flex-row gap-3">
                   <Link

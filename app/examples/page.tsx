@@ -21,14 +21,14 @@ export default function ExamplesPage() {
       url: "https://thewcag.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://thewcag.com/logo.png",
+        url: "https://thewcag.com/Logo.png",
       },
     },
     mainEntity: {
       "@type": "ItemList",
       name: "Accessibility Code Examples",
       description: "Collection of accessible web component examples",
-      numberOfItems: 20,
+      numberOfItems: 12,
     },
     breadcrumb: {
       "@type": "BreadcrumbList",
@@ -51,6 +51,36 @@ export default function ExamplesPage() {
 
   const examples = [
     {
+      category: "Data Display",
+      icon: Table,
+      items: [
+        {
+          title: "Tables",
+          description: "Semantic HTML and ARIA table patterns with sorting and responsive layouts",
+          criteria: ["1.3.1", "1.3.2", "2.1.1", "4.1.3"],
+          href: "/examples/tables",
+        },
+        {
+          title: "Pagination",
+          description: "Keyboard accessible page navigation with proper ARIA",
+          criteria: ["2.1.1", "2.4.3"],
+          href: "/examples/pagination",
+        },
+        {
+          title: "Lists",
+          description: "Semantic lists with proper structure and ARIA patterns",
+          criteria: ["1.3.1"],
+          href: "/examples/lists",
+        },
+        {
+          title: "Cards",
+          description: "Accessible card components with proper heading hierarchy",
+          criteria: ["1.3.1", "2.1.1"],
+          href: "/examples/cards",
+        },
+      ],
+    },
+    {
       category: "Forms",
       icon: FormInput,
       items: [
@@ -61,19 +91,16 @@ export default function ExamplesPage() {
           href: "/examples/accessible-input-fields",
         },
         {
-          title: "Date Picker",
-          description: "Keyboard accessible date selection with ARIA",
-          criteria: ["2.1.1", "4.1.2"],
+          title: "Forms",
+          description: "Complete form patterns with validation, multi-step, and fieldset groups",
+          criteria: ["3.3.1", "3.3.2", "3.3.3", "4.1.2"],
+          href: "/examples/forms",
         },
         {
-          title: "Autocomplete",
-          description: "Predictive text input with screen reader support",
-          criteria: ["3.2.2", "4.1.3"],
-        },
-        {
-          title: "Form Validation",
-          description: "Clear error identification and suggestions",
-          criteria: ["3.3.1", "3.3.3", "3.3.4"],
+          title: "Dropdowns & Selects",
+          description: "Native and custom select components with ARIA combobox pattern",
+          criteria: ["2.1.1", "4.1.2", "4.1.3"],
+          href: "/examples/dropdowns-selects",
         },
       ],
     },
@@ -81,10 +108,54 @@ export default function ExamplesPage() {
       category: "Navigation",
       icon: Menu,
       items: [
-        { title: "Skip Links", description: "Bypass repetitive navigation blocks", criteria: ["2.4.1"] },
-        { title: "Accessible Menu", description: "Keyboard navigable dropdown menus", criteria: ["2.1.1", "4.1.2"] },
-        { title: "Breadcrumbs", description: "Navigation path with proper landmarks", criteria: ["2.4.8", "4.1.2"] },
-        { title: "Tabs Component", description: "ARIA tabs with keyboard support", criteria: ["2.1.1", "4.1.2"] },
+        {
+          title: "Navigation",
+          description: "Semantic nav, breadcrumbs, skip links, and tabs patterns",
+          criteria: ["2.1.1", "2.4.1", "2.4.8", "4.1.2"],
+          href: "/examples/navigation",
+        },
+      ],
+    },
+    {
+      category: "Interactive",
+      icon: GripVertical,
+      items: [
+        {
+          title: "Buttons & Links",
+          description: "Semantic buttons, icon buttons, states, and when to use which",
+          criteria: ["2.1.1", "2.4.4", "4.1.2"],
+          href: "/examples/buttons-links",
+        },
+        {
+          title: "Modals & Dialogs",
+          description: "Focus management, keyboard trapping, and ARIA dialog patterns",
+          criteria: ["2.1.2", "2.4.3", "4.1.2"],
+          href: "/examples/modals-dialogs",
+        },
+        {
+          title: "Accordions",
+          description: "Native details/summary and ARIA accordion patterns",
+          criteria: ["2.1.1", "4.1.2"],
+          href: "/examples/accordions",
+        },
+        {
+          title: "Tooltips",
+          description: "Hover and focus accessible help text with ARIA patterns",
+          criteria: ["1.3.1", "1.4.13", "2.1.1"],
+          href: "/examples/tooltips",
+        },
+      ],
+    },
+    {
+      category: "Feedback",
+      icon: AlertCircle,
+      items: [
+        {
+          title: "Progress Indicators",
+          description: "Native progress and ARIA progressbar patterns with status announcements",
+          criteria: ["4.1.3"],
+          href: "/examples/progress-indicators",
+        },
       ],
     },
     {
@@ -99,29 +170,6 @@ export default function ExamplesPage() {
         },
         { title: "Responsive Images", description: "Accessible images across devices", criteria: ["1.1.1", "1.4.5"] },
         { title: "SVG Accessibility", description: "Accessible vector graphics", criteria: ["1.1.1", "4.1.2"] },
-      ],
-    },
-    {
-      category: "Interactive",
-      icon: GripVertical,
-      items: [
-        {
-          title: "Modal Dialogs",
-          description: "Focus management and keyboard trapping",
-          criteria: ["2.1.2", "2.4.3", "4.1.2"],
-        },
-        { title: "Tooltips", description: "Hover and focus accessible help text", criteria: ["1.3.1", "1.4.13"] },
-        { title: "Accordions", description: "Expandable content with ARIA", criteria: ["4.1.2", "2.1.1"] },
-        { title: "Drag and Drop Alternatives", description: "Keyboard alternatives to dragging", criteria: ["2.5.7"] },
-      ],
-    },
-    {
-      category: "Data",
-      icon: Table,
-      items: [
-        { title: "Data Tables", description: "Properly structured tables with headers", criteria: ["1.3.1", "1.3.2"] },
-        { title: "Sortable Tables", description: "Accessible sorting controls", criteria: ["2.1.1", "4.1.3"] },
-        { title: "Pagination", description: "Keyboard accessible page navigation", criteria: ["2.1.1", "2.4.3"] },
       ],
     },
   ]
@@ -152,11 +200,12 @@ export default function ExamplesPage() {
                     </h2>
                     <div className="grid md:grid-cols-2 gap-4">
                       {category.items.map((item) => {
-                        const ItemCard = item.href ? Link : "div"
-                        const isAvailable = !!item.href
+                        const isAvailable = "href" in item && !!item.href
+                        const ItemCard = isAvailable ? Link : "div"
+                        const itemHref = "href" in item ? item.href : "#"
                         return (
-                          <ItemCard key={item.title} href={item.href || "#"} className={item.href ? "block" : ""}>
-                            <Card className={`hover:shadow-md transition-shadow ${item.href ? "cursor-pointer" : "opacity-90"}`}>
+                          <ItemCard key={item.title} href={itemHref} className={isAvailable ? "block" : ""}>
+                            <Card className={`hover:shadow-md transition-shadow ${isAvailable ? "cursor-pointer" : "opacity-90"}`}>
                               <CardHeader>
                                 <CardTitle className="text-lg flex items-center justify-between gap-2">
                                   <span>{item.title}</span>
@@ -172,7 +221,7 @@ export default function ExamplesPage() {
                                         Coming Soon
                                       </Badge>
                                     )}
-                                    {item.href && <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />}
+                                    {isAvailable && <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />}
                                   </div>
                                 </CardTitle>
                                 <CardDescription className="leading-relaxed">{item.description}</CardDescription>
@@ -198,17 +247,15 @@ export default function ExamplesPage() {
               })}
             </div>
 
-            {/* Coming Soon Notice */}
+            {/* Additional Resources */}
             <Card className="mt-12 bg-muted/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <AlertCircle className="h-5 w-5 text-primary" aria-hidden="true" />
-                  Full Examples Coming Soon
+                  <Code2 className="h-5 w-5 text-primary" aria-hidden="true" />
+                  Additional Resources
                 </CardTitle>
                 <CardDescription className="text-base leading-relaxed">
-                  We're building a comprehensive library of copy-paste ready accessible components. In the meantime,
-                  check out the code examples on individual criterion pages or explore the W3C WAI-ARIA Authoring
-                  Practices Guide for detailed patterns.
+                  Explore more accessibility patterns and examples from the W3C WAI-ARIA Authoring Practices Guide.
                 </CardDescription>
               </CardHeader>
               <CardContent>

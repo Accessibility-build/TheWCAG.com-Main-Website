@@ -1,9 +1,9 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "WCAG Overview - Understanding Web Content Accessibility Guidelines | TheWCAG",
+  title: "WCAG Overview - Web Accessibility Guidelines | TheWCAG",
   description:
-    "Master WCAG 2.2 - the international web accessibility standard. Learn POUR principles, 87+ success criteria & how to make sites accessible. Start your accessibility journey today!",
+    "Master WCAG 2.2 - the international web accessibility standard. Learn POUR principles, 87+ success criteria & how to make sites accessible. Start your journey.",
   keywords: [
     "WCAG",
     "WCAG 2.2",
@@ -16,6 +16,12 @@ export const metadata: Metadata = {
     "W3C WCAG",
     "ADA compliance",
     "Section 508",
+    "WCAG overview",
+    "web content accessibility guidelines",
+    "WCAG principles",
+    "accessibility levels",
+    "WCAG success criteria",
+    "WCAG conformance",
   ],
   openGraph: {
     title: "WCAG Overview - Understanding Web Content Accessibility Guidelines",

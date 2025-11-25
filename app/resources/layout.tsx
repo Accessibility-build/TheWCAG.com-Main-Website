@@ -1,9 +1,9 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility Resources - Checklists, Templates & Tools | TheWCAG",
+  title: "Accessibility Resources - Checklists & Tools | TheWCAG",
   description:
-    "Download WCAG accessibility checklists, templates, and explore additional resources. Find browser extensions, testing tools, documentation, and guides to help you build accessible websites.",
+    "Download WCAG accessibility checklists, templates, and explore additional resources. Find browser extensions, testing tools, documentation, and guides for accessible sites.",
   keywords: [
     "accessibility resources",
     "WCAG checklist",
@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     "accessibility testing tools",
     "WCAG compliance checklist",
     "accessibility browser extensions",
+    "accessibility downloads",
+    "WCAG 2.2 checklist PDF",
+    "accessibility templates download",
+    "VPAT template",
+    "accessibility reference guide",
+    "a11y tools list",
   ],
   openGraph: {
     title: "Accessibility Resources - Checklists, Templates & Tools",
@@ -39,6 +45,17 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://thewcag.com/resources",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 }
 

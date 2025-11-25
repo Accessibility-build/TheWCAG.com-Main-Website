@@ -5,11 +5,13 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { logger } from "@/lib/logger"
+import { StructuredData } from "@/components/structured-data"
 import { 
   Mail, 
   MessageSquare, 
@@ -27,6 +29,42 @@ import {
 } from "lucide-react"
 
 export default function ContactPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact TheWCAG.com",
+    description:
+      "Get in touch with TheWCAG.com for questions about WCAG compliance, accessibility guidance, or feedback. We're here to help you build accessible websites.",
+    url: "https://thewcag.com/contact",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/Logo.png",
+      },
+    },
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thewcag.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Contact",
+          item: "https://thewcag.com/contact",
+        },
+      ],
+    },
+  }
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -102,6 +140,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <StructuredData data={structuredData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col bg-background selection:bg-primary/20">
         <Header />
@@ -112,6 +151,12 @@ export default function ContactPage() {
           <div className="absolute top-40 -left-20 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl -z-10" />
 
           <div className="container py-8 sm:py-12 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Breadcrumb
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Contact", href: "/contact" },
+              ]}
+            />
             {/* Header Section */}
             <div className="mb-8 sm:mb-12 md:mb-20 text-center max-w-3xl mx-auto">
               <div className="inline-flex items-center justify-center p-2 bg-primary/10 rounded-full mb-4 sm:mb-6 animate-in fade-in zoom-in duration-500">
@@ -121,9 +166,12 @@ export default function ContactPage() {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 leading-tight">
                 Let's Start a Conversation
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed text-balance">
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed text-balance mb-3">
                 Have a question about accessibility? Need help with WCAG compliance? 
                 Or just want to say hello? We're here to help you build a more inclusive web.
+              </p>
+              <p className="text-sm sm:text-base text-muted-foreground/80 leading-relaxed">
+                Whether you're looking for clarification on a specific criterion, need guidance on implementation, or have feedback on our resources, we'd love to hear from you.
               </p>
             </div>
 

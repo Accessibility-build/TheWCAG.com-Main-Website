@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "About Us - Making the Web Accessible for Everyone | TheWCAG",
   description:
-    "TheWCAG.com is an independent educational resource dedicated to simplifying web accessibility guidelines for developers, designers, and content creators. Learn about our mission to make the web accessible for everyone.",
+    "TheWCAG.com is an independent educational resource dedicated to simplifying web accessibility guidelines for developers, designers, and content creators. Learn our mission.",
   keywords: [
     "about TheWCAG",
     "web accessibility education",
@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     "accessibility training",
     "web accessibility",
     "a11y education",
+    "accessibility mission",
+    "WCAG guide",
+    "accessibility community",
+    "web accessibility help",
   ],
   openGraph: {
     title: "About Us - Making the Web Accessible for Everyone",
@@ -38,6 +42,17 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://thewcag.com/about",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 }
 

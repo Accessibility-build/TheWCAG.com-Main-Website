@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Learn Web Accessibility - WCAG 2.2 Learning Resources & Guides | TheWCAG",
+  title: "Learn Web Accessibility - WCAG 2.2 Guides | TheWCAG",
   description:
-    "Master web accessibility with free role-based guides for developers, designers & content creators. Learn WCAG 2.2 principles, best practices & start building accessible websites today!",
+    "Master web accessibility with free role-based guides for developers, designers & content creators. Learn WCAG 2.2 principles, best practices & build accessible websites.",
   keywords: [
     "learn accessibility",
     "web accessibility training",
@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "accessibility for designers",
     "WCAG training",
     "accessibility best practices",
+    "accessibility certification",
+    "web accessibility tutorial",
+    "how to learn accessibility",
+    "accessibility resources",
+    "a11y training",
   ],
   openGraph: {
     title: "Learn Web Accessibility - WCAG 2.2 Learning Resources & Guides",
@@ -42,6 +47,17 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://thewcag.com/learn",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 }
 

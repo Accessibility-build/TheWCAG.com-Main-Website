@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -16,6 +17,17 @@ export default function LearnPage() {
     description:
       "Learn web accessibility with role-based guides, tutorials, and resources for developers, designers, and content creators.",
     url: "https://thewcag.com/learn",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/Logo.png",
+      },
+    },
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
@@ -43,16 +55,30 @@ export default function LearnPage() {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-6 sm:py-8 md:py-12 max-w-5xl px-4 sm:px-6 lg:px-8">
+            <Breadcrumb
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Learn", href: "/learn" },
+              ]}
+            />
             <div className="mb-8 sm:mb-12">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">Learn Accessibility</h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Start your accessibility journey with guides tailored to your role
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-4">
+                Start your accessibility journey with guides tailored to your role. Whether you're a developer, designer, content creator, or QA tester, we have resources to help you build accessible digital experiences.
+              </p>
+              <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                Accessibility is a journey, not a destination. Start with the basics, practice with real examples, and gradually build your expertise.
               </p>
             </div>
 
             {/* Quick Start by Role */}
             <section className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Get Started by Role</h2>
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold mb-2">Get Started by Role</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Accessibility is a team effort. Find learning paths and resources specific to your role to understand how you can contribute to building accessible products.
+                </p>
+              </div>
               <div className="grid md:grid-cols-2 gap-6">
                 <Card>
                   <CardHeader>
@@ -223,7 +249,12 @@ export default function LearnPage() {
 
             {/* Learning Path */}
             <section className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Beginner's Learning Path</h2>
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold mb-2">Beginner's Learning Path</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Follow this structured learning path to build your accessibility knowledge step by step. Each step builds on the previous one, giving you a solid foundation.
+                </p>
+              </div>
               <div className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -315,7 +346,15 @@ export default function LearnPage() {
 
             {/* Additional Resources */}
             <section id="glossary" className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Glossary</h2>
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold mb-2">Key Terms</h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Understanding accessibility terminology is essential for effective communication and implementation. Here are some key terms you'll encounter:
+                </p>
+                <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                  For a complete glossary with search functionality, visit our <Link href="/glossary" className="text-primary hover:underline">full glossary page</Link>.
+                </p>
+              </div>
               <Card>
                 <CardContent className="pt-6">
                   <dl className="space-y-4">
@@ -361,7 +400,12 @@ export default function LearnPage() {
 
             {/* Certification */}
             <section>
-              <h2 className="text-3xl font-bold mb-6">Professional Certification</h2>
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold mb-2">Professional Certification</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Consider pursuing professional certification to validate your accessibility expertise. These certifications are recognized industry-wide and can advance your career.
+                </p>
+              </div>
               <div className="grid md:grid-cols-2 gap-6">
                 <Card>
                   <CardHeader>
@@ -406,6 +450,55 @@ export default function LearnPage() {
                       Learn More
                       <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
                     </a>
+                  </CardContent>
+                </Card>
+              </div>
+            </section>
+
+            {/* Related Content */}
+            <section className="mt-16">
+              <h2 className="text-2xl font-bold mb-6">Continue Learning</h2>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Getting Started</CardTitle>
+                    <CardDescription>Step-by-step guide for beginners to start with accessibility</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/getting-started">
+                        Start Guide
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Code Examples</CardTitle>
+                    <CardDescription>Real-world accessible component examples with code</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/examples">
+                        View Examples
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Best Practices</CardTitle>
+                    <CardDescription>Accessibility best practices and implementation tips</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/best-practices">
+                        Read More
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
                   </CardContent>
                 </Card>
               </div>

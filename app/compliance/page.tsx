@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -27,6 +28,22 @@ export default function CompliancePage() {
     description:
       "Comprehensive guide to digital accessibility laws and regulations including ADA, Section 508, EN 301 549, AODA, and European Accessibility Act.",
     url: "https://thewcag.com/compliance",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/Logo.png",
+      },
+    },
+    author: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+    },
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
@@ -302,15 +319,24 @@ export default function CompliancePage() {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-6 sm:py-8 md:py-12 max-w-6xl px-4 sm:px-6 lg:px-8">
+            <Breadcrumb
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Compliance", href: "/compliance" },
+              ]}
+            />
             {/* Header */}
             <div className="mb-8 sm:mb-12">
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                 <Scale className="h-6 w-6 sm:h-8 sm:w-8 text-primary shrink-0" aria-hidden="true" />
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Accessibility Compliance</h1>
               </div>
-              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mb-4">
                 Navigating accessibility laws and regulations for digital compliance. Understand the requirements,
                 deadlines, and penalties for major accessibility laws around the world.
+              </p>
+              <p className="text-sm text-muted-foreground/80 leading-relaxed max-w-3xl">
+                Many countries have adopted WCAG standards into their legal frameworks. Understanding these requirements helps ensure your digital products comply with applicable laws and regulations.
               </p>
             </div>
 

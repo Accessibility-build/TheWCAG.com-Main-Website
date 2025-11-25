@@ -1,10 +1,12 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Download, FileText, BookOpen, ExternalLink, Chrome, Video } from "lucide-react"
+import { Download, FileText, BookOpen, ExternalLink, Chrome, Video, ArrowRight } from "lucide-react"
 
 export default function ResourcesPage() {
   const structuredData = {
@@ -14,6 +16,17 @@ export default function ResourcesPage() {
     description:
       "Download WCAG accessibility checklists, templates, and explore additional resources. Find browser extensions, testing tools, documentation, and guides.",
     url: "https://thewcag.com/resources",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/Logo.png",
+      },
+    },
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
@@ -41,16 +54,30 @@ export default function ResourcesPage() {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-6 sm:py-8 md:py-12 max-w-5xl px-4 sm:px-6 lg:px-8">
+            <Breadcrumb
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Resources", href: "/resources" },
+              ]}
+            />
             <div className="mb-8 sm:mb-12">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">Resources</h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Download checklists, templates, and explore additional accessibility resources
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-4">
+                Download checklists, templates, and explore additional accessibility resources to help you build and maintain accessible websites.
+              </p>
+              <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                Whether you're just starting your accessibility journey or looking to deepen your knowledge, these resources provide practical tools, guides, and references to support your work.
               </p>
             </div>
 
             {/* Downloadable Resources */}
             <section className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Downloadable Resources</h2>
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold mb-2">Downloadable Resources</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Access printable checklists, templates, and reference guides to help you track compliance and document your accessibility efforts.
+                </p>
+              </div>
               <div className="grid md:grid-cols-2 gap-6">
                 <Card>
                   <CardHeader>
@@ -124,7 +151,12 @@ export default function ResourcesPage() {
 
             {/* Browser Extensions */}
             <section className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Browser Extensions</h2>
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold mb-2">Browser Extensions</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Install these browser extensions to quickly test accessibility during development. They provide real-time feedback and help catch issues early in your workflow.
+                </p>
+              </div>
               <div className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -196,7 +228,12 @@ export default function ResourcesPage() {
 
             {/* External Resources */}
             <section>
-              <h2 className="text-3xl font-bold mb-6">External Resources</h2>
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold mb-2">External Resources</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Explore these trusted external resources for additional learning materials, official documentation, and community-driven accessibility content.
+                </p>
+              </div>
               <div className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -288,6 +325,55 @@ export default function ResourcesPage() {
                       </div>
                     </div>
                   </CardHeader>
+                </Card>
+              </div>
+            </section>
+
+            {/* Related Content */}
+            <section className="mt-16">
+              <h2 className="text-2xl font-bold mb-6">Related Resources</h2>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Testing Guide</CardTitle>
+                    <CardDescription>Learn how to test your website for accessibility compliance</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/testing-guide">
+                        Read Guide
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Accessibility Checklist</CardTitle>
+                    <CardDescription>Interactive checklist to track your WCAG compliance progress</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/checklist">
+                        View Checklist
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Code Examples</CardTitle>
+                    <CardDescription>Browse accessible component examples and patterns</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/examples">
+                        View Examples
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
                 </Card>
               </div>
             </section>

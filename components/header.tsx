@@ -162,6 +162,48 @@ export function Header() {
     }
   }, [learnOpen, complianceOpen, resourcesOpen])
 
+  // Close menus when focus moves outside (keyboard navigation)
+  useEffect(() => {
+    const handleFocusOut = (event: FocusEvent) => {
+      // Use setTimeout to allow focus to settle on the new element
+      setTimeout(() => {
+        const activeElement = document.activeElement
+        
+        // Check Learn menu
+        if (learnOpen && learnRef.current) {
+          const isWithinLearn = learnRef.current.contains(activeElement)
+          if (!isWithinLearn) {
+            setLearnOpen(false)
+            setFocusedLearnIndex(-1)
+          }
+        }
+        
+        // Check Compliance menu
+        if (complianceOpen && complianceRef.current) {
+          const isWithinCompliance = complianceRef.current.contains(activeElement)
+          if (!isWithinCompliance) {
+            setComplianceOpen(false)
+            setFocusedComplianceIndex(-1)
+          }
+        }
+        
+        // Check Resources menu
+        if (resourcesOpen && resourcesRef.current) {
+          const isWithinResources = resourcesRef.current.contains(activeElement)
+          if (!isWithinResources) {
+            setResourcesOpen(false)
+            setFocusedResourceIndex(-1)
+          }
+        }
+      }, 0)
+    }
+
+    if (learnOpen || complianceOpen || resourcesOpen) {
+      document.addEventListener("focusin", handleFocusOut)
+      return () => document.removeEventListener("focusin", handleFocusOut)
+    }
+  }, [learnOpen, complianceOpen, resourcesOpen])
+
   useEffect(() => {
     if (learnOpen && focusedLearnIndex >= 0 && learnLinksRef.current[focusedLearnIndex]) {
       learnLinksRef.current[focusedLearnIndex]?.focus()

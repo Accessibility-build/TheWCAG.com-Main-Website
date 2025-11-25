@@ -30,7 +30,7 @@ export default function FAQPage() {
       url: "https://thewcag.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://thewcag.com/logo.png",
+        url: "https://thewcag.com/Logo.png",
       },
     },
     mainEntity: [

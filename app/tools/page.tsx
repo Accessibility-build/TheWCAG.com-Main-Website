@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -30,6 +31,17 @@ export default function ToolsPage() {
     description:
       "Free accessibility tools and resources including color contrast checker, AI-powered audit helper, alt text generator, and more.",
     url: "https://thewcag.com/tools",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/Logo.png",
+      },
+    },
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
@@ -194,18 +206,32 @@ export default function ToolsPage() {
         <Header />
         <main id="main-content" className="flex-1">
           <div className="container py-6 sm:py-8 md:py-12 max-w-6xl px-4 sm:px-6 lg:px-8">
+            <Breadcrumb
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Tools", href: "/tools" },
+              ]}
+            />
             <div className="mb-8 sm:mb-12">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">Accessibility Tools</h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Professional tools and resources to help you test, validate, and improve web accessibility compliance
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-4">
+                Professional tools and resources to help you test, validate, and improve web accessibility compliance. Use these tools throughout your development process to catch and fix issues early.
+              </p>
+              <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                Remember: automated tools can catch many issues, but manual testing with assistive technologies and real users is essential for true accessibility.
               </p>
             </div>
 
             {/* Our Tool */}
             <section className="mb-8 sm:mb-12">
-              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Our Tools</h2>
-                <Badge variant="outline" className="text-sm">Built by TheWCAG</Badge>
+              <div className="mb-4 sm:mb-6">
+                <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Our Tools</h2>
+                  <Badge variant="outline" className="text-sm">Built by TheWCAG</Badge>
+                </div>
+                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                  Free accessibility tools built specifically to help you meet WCAG 2.2 requirements.
+                </p>
               </div>
               <Card className="mb-6">
                 <CardHeader>
@@ -239,7 +265,7 @@ export default function ToolsPage() {
             <section className="mb-12">
               <div className="mb-6">
                 <h2 className="text-3xl font-bold mb-2">Tools from Accessibility.build</h2>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed mb-2">
                   Professional accessibility testing tools from{" "}
                   <a 
                     href="https://www.accessibility.build" 
@@ -250,6 +276,10 @@ export default function ToolsPage() {
                     accessibility.build
                     <ExternalLink className="h-3 w-3" />
                   </a>
+                  . These AI-powered tools provide comprehensive analysis and intelligent recommendations.
+                </p>
+                <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                  These tools use advanced AI to understand context and provide actionable, tailored recommendations for your specific content.
                 </p>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
@@ -298,7 +328,12 @@ export default function ToolsPage() {
 
             {/* Other External Tools */}
             <section>
-              <h2 className="text-3xl font-bold mb-6">Other Recommended Tools</h2>
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold mb-2">Other Recommended Tools</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Explore these additional tools organized by category. Each tool serves different purposes in the accessibility testing and development workflow.
+                </p>
+              </div>
               <div className="space-y-6">
                 {otherTools.map((category) => {
                   const CategoryIcon = category.icon
@@ -339,6 +374,55 @@ export default function ToolsPage() {
                     </Card>
                   )
                 })}
+              </div>
+            </section>
+
+            {/* Related Content */}
+            <section className="mt-16">
+              <h2 className="text-2xl font-bold mb-6">Next Steps</h2>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Testing Guide</CardTitle>
+                    <CardDescription>Learn how to test your website for accessibility</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/testing-guide">
+                        Read Guide
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Checklist</CardTitle>
+                    <CardDescription>Track your WCAG compliance progress</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/checklist">
+                        View Checklist
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Compare Tools</CardTitle>
+                    <CardDescription>Compare different accessibility testing tools</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/compare">
+                        Compare
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
             </section>
           </div>

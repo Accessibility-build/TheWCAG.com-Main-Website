@@ -1,9 +1,9 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility Compliance - Laws & Regulations Guide | TheWCAG",
+  title: "Accessibility Compliance - Laws & Regulations | TheWCAG",
   description:
-    "Complete guide to accessibility laws: ADA, Section 508, EN 301 549, AODA & European Accessibility Act. Understand legal requirements & avoid costly lawsuits. Get compliant now!",
+    "Complete guide to accessibility laws: ADA, Section 508, EN 301 549, AODA & European Accessibility Act. Understand legal requirements, deadlines & avoid lawsuits.",
   keywords: [
     "accessibility compliance",
     "ADA compliance",
@@ -15,6 +15,13 @@ export const metadata: Metadata = {
     "digital accessibility regulations",
     "WCAG compliance",
     "accessibility requirements",
+    "accessibility legal requirements",
+    "ADA website compliance",
+    "Section 508 compliance",
+    "accessibility regulations",
+    "digital accessibility laws",
+    "WCAG legal requirements",
+    "accessibility compliance guide",
   ],
   openGraph: {
     title: "Accessibility Compliance - Laws & Regulations Guide",

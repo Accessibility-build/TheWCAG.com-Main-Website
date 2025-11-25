@@ -10,6 +10,7 @@ import { HeroSearch } from "@/components/hero-search"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { StructuredData } from "@/components/structured-data"
 import { NewsletterSubscription } from "@/components/newsletter-subscription"
+import { AccessibilityQuiz } from "@/components/accessibility-quiz"
 import {
   Search,
   Eye,
@@ -69,6 +70,17 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://thewcag.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 }
 
@@ -156,6 +168,7 @@ export default function HomePage() {
                         <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                       </Link>
                     </Button>
+                    <AccessibilityQuiz />
                     <Button
                       size="lg"
                       variant="outline"

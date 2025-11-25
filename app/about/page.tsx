@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
+import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ShieldCheck, Scale, Heart, Users } from "lucide-react"
@@ -14,6 +15,17 @@ export default function AboutPage() {
     description:
       "TheWCAG.com is an independent educational resource dedicated to simplifying web accessibility guidelines for developers, designers, and content creators.",
     url: "https://thewcag.com/about",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/Logo.png",
+      },
+    },
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
@@ -43,13 +55,22 @@ export default function AboutPage() {
           {/* Hero Section */}
           <section className="relative py-20 md:py-32 overflow-hidden">
             <div className="container relative z-10">
+              <Breadcrumb
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "About", href: "/about" },
+                ]}
+              />
               <div className="max-w-3xl">
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-balance">
                   Making the web accessible for <span className="text-primary">everyone</span>.
                 </h1>
-                <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mb-8">
+                <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mb-4">
                   TheWCAG.com is an independent educational resource dedicated to simplifying web accessibility
                   guidelines for developers, designers, and content creators.
+                </p>
+                <p className="text-lg text-muted-foreground/80 leading-relaxed max-w-2xl">
+                  We believe accessibility should be approachable, practical, and integrated into every web project from the start.
                 </p>
               </div>
             </div>

@@ -49,7 +49,7 @@ export default function BestPracticesPage() {
       url: "https://thewcag.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://thewcag.com/logo.png",
+        url: "https://thewcag.com/Logo.png",
       },
     },
     datePublished: "2025-01-01",
