@@ -301,11 +301,22 @@ export default function LawsuitsPage() {
               </div>
             </section>
 
-            {/* Learn More */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg sm:text-xl">Learn More About Accessibility Compliance</CardTitle>
-              </CardHeader>
+            {/* Navigation Links */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+              <Link href="/lawsuits/archive" className="group">
+                <div className="p-6 rounded-lg border hover:border-primary hover:shadow-lg transition-all">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2">Case Archive</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Search historical accessibility lawsuits from 2006 onwards
+                      </p>
+                    </div>
+                    <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </div>
+                </div>
+              </Link>
+            </div>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <Link
