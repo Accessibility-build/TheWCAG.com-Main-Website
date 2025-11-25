@@ -76,21 +76,30 @@ export function SearchDialog({ open, onOpenChange, trigger }: SearchDialogProps)
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <Dialog.Content className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-0 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-h-[85vh] flex flex-col">
-          <Dialog.Title className="sr-only">Search TheWCAG</Dialog.Title>
+          {/* Dialog Header with Title */}
+          <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-2 border-b border-border">
+            <Dialog.Title className="text-lg sm:text-xl font-semibold text-foreground mb-1">
+              Search TheWCAG
+            </Dialog.Title>
+            <Dialog.Description id="search-dialog-description" className="text-sm sm:text-base text-muted-foreground">
+              Search for WCAG criteria, guides, examples, lawsuits, and more
+            </Dialog.Description>
+          </div>
           
           {/* Search Input Header */}
           <div className="flex items-center gap-2 p-4 sm:p-6 border-b border-border">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" aria-hidden="true" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" aria-hidden="true" />
               <Input
                 ref={inputRef}
-                type="search"
+                type="text"
                 placeholder="Search anything (criteria, guides, examples, lawsuits)..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 className="w-full pl-10 pr-10 h-12 sm:h-14 text-base sm:text-lg bg-background border-input focus-visible:ring-2 focus-visible:ring-primary/20"
                 aria-label="Search TheWCAG site"
+                aria-describedby="search-dialog-description"
               />
               {query && (
                 <Button
@@ -131,7 +140,7 @@ export function SearchDialog({ open, onOpenChange, trigger }: SearchDialogProps)
               <div className="p-8 sm:p-12 text-center">
                 <Search className="h-12 w-12 sm:h-16 sm:w-16 text-muted-foreground mx-auto mb-4" aria-hidden="true" />
                 <p className="text-base sm:text-lg font-medium text-foreground mb-2">
-                  Search TheWCAG
+                  Start typing to search
                 </p>
                 <p className="text-sm sm:text-base text-muted-foreground mb-4">
                   Search for WCAG criteria, guides, examples, lawsuits, and more
