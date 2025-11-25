@@ -10,6 +10,7 @@ import { HeroSearch } from "@/components/hero-search"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { StructuredData } from "@/components/structured-data"
 import { getRecentLawsuits } from "@/lib/lawsuits-data"
+import { ogImages } from "@/lib/og-image"
 import {
   Search,
   Eye,
@@ -63,10 +64,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://thewcag.com/Logo.png",
+        url: ogImages.home(),
         width: 1200,
         height: 630,
-        alt: "TheWCAG - An accessibility Guide",
+        alt: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
       },
     ],
   },
@@ -75,7 +76,7 @@ export const metadata: Metadata = {
     title: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
     description:
       "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
-    images: ["https://thewcag.com/Logo.png"],
+    images: [ogImages.home()],
   },
   alternates: {
     canonical: "https://thewcag.com",

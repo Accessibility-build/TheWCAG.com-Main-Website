@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { ogImages } from "@/lib/og-image"
 
 export const metadata: Metadata = {
   title: "About Us - Making the Web Accessible for Everyone | TheWCAG",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "TheWCAG - An accessibility Guide",
     images: [
       {
-        url: "https://thewcag.com/Logo.png",
+        url: ogImages.about(),
         width: 1200,
         height: 630,
         alt: "About TheWCAG - Making the Web Accessible",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     title: "About Us - Making the Web Accessible for Everyone",
     description:
       "TheWCAG.com is an independent educational resource dedicated to simplifying web accessibility guidelines.",
-    images: ["https://thewcag.com/Logo.png"],
+    images: [ogImages.about()],
   },
   alternates: {
     canonical: "https://thewcag.com/about",

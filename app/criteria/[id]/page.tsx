@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
 import { getCriterionById } from "@/lib/wcag-data"
+import { getCriterionOGImage } from "@/lib/og-image"
 import { CriteriaPageLayout } from "@/components/criteria-page-layout"
 import { LevelBadge } from "@/components/level-badge"
 import { Button } from "@/components/ui/button"
@@ -59,7 +60,7 @@ export async function generateMetadata({ params }: CriterionPageProps): Promise<
       url: `https://thewcag.com/criteria/${criterion.number}`,
       images: [
         {
-          url: "https://thewcag.com/Logo.png",
+          url: getCriterionOGImage(criterion.number, criterion.title, criterion.level as 'A' | 'AA' | 'AAA'),
           width: 1200,
           height: 630,
           alt: `${criterion.number} ${criterion.title}`,
@@ -70,7 +71,7 @@ export async function generateMetadata({ params }: CriterionPageProps): Promise<
       card: "summary_large_image",
       title: `${criterion.number} ${criterion.title} - WCAG 2.2 Guide`,
       description: criterion.summary,
-      images: ["https://thewcag.com/Logo.png"],
+      images: [getCriterionOGImage(criterion.number, criterion.title, criterion.level as 'A' | 'AA' | 'AAA')],
     },
     alternates: {
       canonical: `https://thewcag.com/criteria/${criterion.number}`,

@@ -22,6 +22,7 @@ import {
 import { getLawsuitBySlug, getAllLawsuits } from "@/lib/lawsuits-data"
 import { notFound } from "next/navigation"
 import { StructuredData } from "@/components/structured-data"
+import { getLawsuitOGImage } from "@/lib/og-image"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       modifiedTime: lawsuit.dateResolved || lawsuit.dateFiled,
       images: [
         {
-          url: "https://thewcag.com/Logo.png",
+          url: getLawsuitOGImage(lawsuit.title, lawsuit.summary),
           width: 1200,
           height: 630,
           alt: lawsuit.title,
@@ -64,7 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: "summary_large_image",
       title: lawsuit.title,
       description: lawsuit.summary,
-      images: ["https://thewcag.com/Logo.png"],
+      images: [getLawsuitOGImage(lawsuit.title, lawsuit.summary)],
     },
     alternates: {
       canonical: `https://thewcag.com/lawsuits/${lawsuit.slug}`,
