@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
@@ -21,6 +22,55 @@ import {
 import { getLawsuitBySlug, getAllLawsuits } from "@/lib/lawsuits-data"
 import { notFound } from "next/navigation"
 import { StructuredData } from "@/components/structured-data"
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const lawsuit = getLawsuitBySlug(slug)
+
+  if (!lawsuit) {
+    return {
+      title: "Lawsuit Not Found | TheWCAG",
+    }
+  }
+
+  return {
+    title: `${lawsuit.title} - Accessibility Lawsuit | TheWCAG`,
+    description: lawsuit.summary,
+    keywords: [
+      "accessibility lawsuit",
+      "ADA lawsuit",
+      "web accessibility case",
+      lawsuit.defendant,
+      lawsuit.title,
+      lawsuit.jurisdiction,
+    ],
+    openGraph: {
+      title: `${lawsuit.title} - Accessibility Lawsuit`,
+      description: lawsuit.summary,
+      type: "article",
+      url: `https://thewcag.com/lawsuits/${lawsuit.slug}`,
+      publishedTime: lawsuit.dateFiled,
+      modifiedTime: lawsuit.dateResolved || lawsuit.dateFiled,
+      images: [
+        {
+          url: "https://thewcag.com/Logo.png",
+          width: 1200,
+          height: 630,
+          alt: lawsuit.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: lawsuit.title,
+      description: lawsuit.summary,
+      images: ["https://thewcag.com/Logo.png"],
+    },
+    alternates: {
+      canonical: `https://thewcag.com/lawsuits/${lawsuit.slug}`,
+    },
+  }
+}
 
 export default async function LawsuitPage({
   params,

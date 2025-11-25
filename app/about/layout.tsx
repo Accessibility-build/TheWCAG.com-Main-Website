@@ -14,7 +14,6 @@ export const metadata: Metadata = {
     "a11y education",
     "accessibility mission",
     "WCAG guide",
-    "accessibility community",
     "web accessibility help",
   ],
   openGraph: {

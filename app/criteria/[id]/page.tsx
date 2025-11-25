@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import { Metadata } from "next"
 import { getCriterionById } from "@/lib/wcag-data"
 import { CriteriaPageLayout } from "@/components/criteria-page-layout"
 import { LevelBadge } from "@/components/level-badge"
@@ -26,6 +27,55 @@ import { ImplementationCTASection } from "./sections/implementation-cta-section"
 
 interface CriterionPageProps {
   params: Promise<{ id: string }>
+}
+
+export async function generateMetadata({ params }: CriterionPageProps): Promise<Metadata> {
+  const { id } = await params
+  const criterionId = id.replace(/\./g, "-")
+  const criterion = getCriterionById(criterionId)
+
+  if (!criterion) {
+    return {
+      title: "Criterion Not Found | TheWCAG",
+    }
+  }
+
+  return {
+    title: `${criterion.number} ${criterion.title} - WCAG 2.2 Guide | TheWCAG`,
+    description: criterion.summary,
+    keywords: [
+      `WCAG ${criterion.number}`,
+      criterion.title,
+      "accessibility criterion",
+      "WCAG 2.2",
+      "web accessibility",
+      criterion.level,
+      criterion.principle
+    ],
+    openGraph: {
+      title: `${criterion.number} ${criterion.title} - WCAG 2.2 Guide`,
+      description: criterion.summary,
+      type: "article",
+      url: `https://thewcag.com/criteria/${criterion.number}`,
+      images: [
+        {
+          url: "https://thewcag.com/Logo.png",
+          width: 1200,
+          height: 630,
+          alt: `${criterion.number} ${criterion.title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${criterion.number} ${criterion.title} - WCAG 2.2 Guide`,
+      description: criterion.summary,
+      images: ["https://thewcag.com/Logo.png"],
+    },
+    alternates: {
+      canonical: `https://thewcag.com/criteria/${criterion.number}`,
+    },
+  }
 }
 
 export default async function CriterionPage({ params }: CriterionPageProps) {

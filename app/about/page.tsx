@@ -5,7 +5,7 @@ import { SkipLink } from "@/components/skip-link"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ShieldCheck, Scale, Heart, Users } from "lucide-react"
+import { ArrowRight, ShieldCheck, Scale, Heart, Users, Search, Code, Smartphone, Monitor, CheckCircle2, Target, Zap } from "lucide-react"
 
 export default function AboutPage() {
   const structuredData = {
@@ -66,6 +66,7 @@ export default function AboutPage() {
                   Making the web accessible for <span className="text-primary">everyone</span>.
                 </h1>
                 <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mb-4">
+                  We are a team of experts working to maintain accessibility standards and help others achieve the same. 
                   TheWCAG.com is an independent educational resource dedicated to simplifying web accessibility
                   guidelines for developers, designers, and content creators.
                 </p>
@@ -174,32 +175,140 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Team / Contribution */}
+          {/* Our Expertise / Team Section */}
           <section className="py-20">
-            <div className="container max-w-4xl text-center">
-              <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Users className="h-8 w-8 text-secondary" />
+            <div className="container">
+              <div className="max-w-3xl mx-auto text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Who We Are</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  We are a dedicated team of accessibility experts, developers, and designers united by a single goal: 
+                  to make the digital world accessible to everyone. With years of experience in WCAG compliance, 
+                  assistive technologies, and inclusive design, we bridge the gap between complex regulations and practical implementation.
+                </p>
               </div>
-              <h2 className="text-3xl font-bold mb-4">Community Driven</h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                This project is maintained by a dedicated group of accessibility advocates, developers, and designers
-                who want to make the web a better place.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg">
-                  <Link href="/checklist">
-                    Start Your Audit
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                    Contribute on GitHub
-                  </a>
-                </Button>
+              
+              <div className="grid md:grid-cols-3 gap-8">
+                 <div className="text-center p-6 rounded-xl bg-background border shadow-sm">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
+                      <Target className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Certified Experts</h3>
+                    <p className="text-muted-foreground">
+                      Our team holds industry-recognized certifications in web accessibility and stays up-to-date with the latest WCAG updates.
+                    </p>
+                 </div>
+                 <div className="text-center p-6 rounded-xl bg-background border shadow-sm">
+                    <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center mx-auto mb-4">
+                      <Users className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">User-Centric Approach</h3>
+                    <p className="text-muted-foreground">
+                      We prioritize real-user experiences, testing with assistive technologies to ensure genuine usability beyond just compliance.
+                    </p>
+                 </div>
+                 <div className="text-center p-6 rounded-xl bg-background border shadow-sm">
+                    <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto mb-4">
+                      <Code className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Technical Excellence</h3>
+                    <p className="text-muted-foreground">
+                      From complex web applications to native mobile apps, we provide robust technical solutions that integrate seamlessly with your stack.
+                    </p>
+                 </div>
               </div>
             </div>
           </section>
+
+          {/* How We Help / Services Summary */}
+          <section className="py-20 bg-muted/30">
+             <div className="container">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                  <div className="max-w-2xl">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Help</h2>
+                    <p className="text-lg text-muted-foreground">
+                      Whether you need a one-time audit or ongoing support, we offer a range of services to help you achieve and maintain accessibility.
+                    </p>
+                  </div>
+                  <Button asChild variant="outline">
+                    <Link href="/services">
+                      View All Services
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <Link href="/services/accessibility-audit" className="group block">
+                    <div className="h-full p-6 rounded-xl bg-background border transition-all hover:shadow-md hover:border-primary/50">
+                      <div className="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Search className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">Audits & Testing</h3>
+                      <p className="text-sm text-muted-foreground">Comprehensive WCAG compliance audits with detailed reporting.</p>
+                    </div>
+                  </Link>
+
+                  <Link href="/services/accessibility-remediation" className="group block">
+                    <div className="h-full p-6 rounded-xl bg-background border transition-all hover:shadow-md hover:border-primary/50">
+                      <div className="w-10 h-10 rounded-lg bg-green-500/10 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                         <ShieldCheck className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">Remediation</h3>
+                      <p className="text-sm text-muted-foreground">Expert code fixes to resolve accessibility issues in your existing codebase.</p>
+                    </div>
+                  </Link>
+
+                  <Link href="/services/custom-website-development" className="group block">
+                    <div className="h-full p-6 rounded-xl bg-background border transition-all hover:shadow-md hover:border-primary/50">
+                      <div className="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Monitor className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">Web Development</h3>
+                      <p className="text-sm text-muted-foreground">Accessible-first websites built to modern standards.</p>
+                    </div>
+                  </Link>
+
+                  <Link href="/services/android-app-development" className="group block">
+                    <div className="h-full p-6 rounded-xl bg-background border transition-all hover:shadow-md hover:border-primary/50">
+                      <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Smartphone className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">App Development</h3>
+                      <p className="text-sm text-muted-foreground">Native iOS and Android apps built for accessibility.</p>
+                    </div>
+                  </Link>
+                </div>
+             </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="py-20">
+             <div className="container max-w-4xl">
+               <div className="bg-neutral-900 text-neutral-50 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-xl">
+                 <div className="absolute top-0 left-0 w-full h-full bg-white/5 -skew-y-6 scale-150 origin-top-left pointer-events-none" />
+                 <div className="relative z-10">
+                   <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Build a More Inclusive Web?</h2>
+                   <p className="text-lg text-neutral-200 mb-8 max-w-2xl mx-auto">
+                     Whether you need help fixing compliance issues or want to start a new project on the right foot, our team is here to guide you.
+                   </p>
+                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                     <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
+                       <Link href="/contact">
+                         Get in Touch
+                         <ArrowRight className="ml-2 h-4 w-4" />
+                       </Link>
+                     </Button>
+                     <Button asChild size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-neutral-900">
+                       <Link href="/checklist">
+                         Explore Checklist
+                       </Link>
+                     </Button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+          </section>
+
         </main>
         <Footer />
       </div>
