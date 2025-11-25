@@ -1811,6 +1811,42 @@ export interface ArchiveLawsuit {
     }
   ]
   
+  // Helper function to check if citation is a valid URL
+  export function isValidUrl(citation: string): boolean {
+    if (!citation || citation.trim() === '') return false
+    try {
+      const url = new URL(citation)
+      return url.protocol === 'http:' || url.protocol === 'https:'
+    } catch {
+      return false
+    }
+  }
+
+  // List of known deprecated/broken URLs
+  // These are URLs that have been verified as broken or no longer accessible
+  // To add a deprecated URL, add it to this array
+  // You can verify if a URL is broken by checking it manually or using a link checker
+  const deprecatedUrls = new Set<string>([
+    // Add URLs here that are known to be broken
+    // Example: "http://www.sedbtac.org/ed/whats_new/articles.php?id=2520",
+    // Example: "http://www.icdri.org/legal/swa_amicus_brief.htm",
+    // Note: Add actual broken URLs here after verification
+  ])
+
+  // Helper function to check if a URL is deprecated
+  export function isDeprecatedUrl(citation: string): boolean {
+    if (!isValidUrl(citation)) return false
+    return deprecatedUrls.has(citation)
+  }
+
+  // Helper function to check if citation is a case number (not a URL)
+  export function isCaseNumber(citation: string): boolean {
+    if (!citation) return false
+    // Check if it starts with "Case" or "Case No." and contains case number pattern
+    const casePattern = /^Case\s*(No\.?)?\s*\d+[:.]\d{2}-cv-\d+/i
+    return casePattern.test(citation.trim())
+  }
+
   // Helper functions
   export function getAllArchiveLawsuits(): ArchiveLawsuit[] {
     return archiveLawsuits

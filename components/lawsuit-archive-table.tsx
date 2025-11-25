@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo, useEffect } from "react"
-import { getAllArchiveLawsuits, type ArchiveLawsuit } from "@/lib/lawsuit-archive"
+import { getAllArchiveLawsuits, type ArchiveLawsuit, isValidUrl, isDeprecatedUrl, isCaseNumber } from "@/lib/lawsuit-archive"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -288,16 +288,38 @@ export function LawsuitArchiveTable() {
                     <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.plaintiff}</TableCell>
                     <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.defendant}</TableCell>
                     <TableCell className="px-4 py-3 sm:px-6 sm:py-4">
-                      <a
-                        href={lawsuit.citation}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"
-                        aria-label={`View citation for ${lawsuit.plaintiff} v. ${lawsuit.defendant} (opens in new window)`}
-                      >
-                        {lawsuit.citationText}
-                        <ExternalLink className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
-                      </a>
+                      {isValidUrl(lawsuit.citation) ? (
+                        // It's a valid URL - check if it's deprecated
+                        isDeprecatedUrl(lawsuit.citation) ? (
+                          <span className="text-muted-foreground text-xs sm:text-sm">
+                            {lawsuit.citationText} <span className="text-xs">(deprecated)</span>
+                          </span>
+                        ) : (
+                          <a
+                            href={lawsuit.citation}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"
+                            aria-label={`View citation for ${lawsuit.plaintiff} v. ${lawsuit.defendant} (opens in new window)`}
+                          >
+                            {lawsuit.citationText}
+                            <ExternalLink className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
+                          </a>
+                        )
+                      ) : (
+                        // Not a URL - check if it's a case number
+                        isCaseNumber(lawsuit.citation) ? (
+                          // Case number - show as plain text without deprecated label
+                          <span className="text-muted-foreground text-xs sm:text-sm">
+                            {lawsuit.citationText}
+                          </span>
+                        ) : (
+                          // Other non-URL text - show as plain text
+                          <span className="text-muted-foreground text-xs sm:text-sm">
+                            {lawsuit.citationText}
+                          </span>
+                        )
+                      )}
                     </TableCell>
                   </TableRow>
                 ))

@@ -2,16 +2,37 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { SearchResult } from "@/lib/search"
+import { SearchResult, type SearchResultType } from "@/lib/search"
 import { LevelBadge } from "@/components/level-badge"
-import { Search, ArrowRight } from "lucide-react"
+import { Search, ArrowRight, FileText, Scale, Code2, Layers, Wrench, BookOpen, ExternalLink } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 
 interface SearchResultsProps {
   results: SearchResult[]
   query: string
   onSelect?: () => void
   className?: string
+}
+
+// Icon mapping for different result types
+const typeIcons: Record<SearchResultType, React.ComponentType<{ className?: string }>> = {
+  criterion: FileText,
+  page: BookOpen,
+  lawsuit: Scale,
+  example: Code2,
+  principle: Layers,
+  tool: Wrench,
+}
+
+// Type labels for display
+const typeLabels: Record<SearchResultType, string> = {
+  criterion: 'WCAG Criterion',
+  page: 'Page',
+  lawsuit: 'Lawsuit',
+  example: 'Example',
+  principle: 'Principle',
+  tool: 'Tool',
 }
 
 export function SearchResults({ results, query, onSelect, className }: SearchResultsProps) {
@@ -25,9 +46,9 @@ export function SearchResults({ results, query, onSelect, className }: SearchRes
 
   React.useEffect(() => {
     if (focusedIndex >= 0 && resultsRef.current) {
-      const links = resultsRef.current.querySelectorAll('a')
+      const links = resultsRef.current.querySelectorAll('a[role="option"]')
       if (links[focusedIndex]) {
-        links[focusedIndex].focus()
+        (links[focusedIndex] as HTMLElement).focus()
       }
     }
   }, [focusedIndex])
@@ -35,24 +56,35 @@ export function SearchResults({ results, query, onSelect, className }: SearchRes
   if (results.length === 0) {
     return (
       <div 
-        className={cn("p-6 sm:p-8 text-center", className)}
+        className={cn("p-4 sm:p-5 text-center", className)}
         role="status"
         aria-live="polite"
         aria-atomic="true"
       >
-        <Search className="h-8 w-8 sm:h-10 sm:w-10 text-muted-foreground mx-auto mb-3" aria-hidden="true" />
-        <p className="text-sm sm:text-base text-foreground font-medium mb-1">
+        <Search className="h-6 w-6 sm:h-7 sm:w-7 text-muted-foreground mx-auto mb-2.5" aria-hidden="true" />
+        <p className="text-sm sm:text-sm text-foreground font-medium mb-1">
           No results found
         </p>
-        <p className="text-xs sm:text-sm text-muted-foreground mb-2">
+        <p className="text-xs sm:text-xs text-muted-foreground mb-1.5">
           No results found for &quot;{query}&quot;
         </p>
         <p className="text-xs text-muted-foreground">
-          Try searching by criterion number (e.g., 1.4.3) or keyword
+          Try searching by criterion number (e.g., 1.4.3), keyword, or topic
         </p>
       </div>
     )
   }
+
+  // Group results by type for better organization
+  const groupedResults = results.reduce((acc, result) => {
+    if (!acc[result.type]) {
+      acc[result.type] = []
+    }
+    acc[result.type].push(result)
+    return acc
+  }, {} as Record<SearchResultType, SearchResult[]>)
+
+  const typeOrder: SearchResultType[] = ['criterion', 'page', 'principle', 'example', 'lawsuit', 'tool']
 
   return (
     <div
@@ -73,88 +105,194 @@ export function SearchResults({ results, query, onSelect, className }: SearchRes
           {results.length} {results.length === 1 ? 'result' : 'results'} found
         </p>
       </div>
-      <div className="max-h-[400px] overflow-y-auto">
-        <ul className="p-2 space-y-1" role="group">
-          {results.map((result, index) => {
-            const criterion = result.criterion
-            const href = `/criteria/${criterion.id}`
-            const isFocused = focusedIndex === index
-            
-            return (
-              <li key={criterion.id} role="none">
-                <Link
-                  href={href}
-                  onClick={onSelect}
-                  role="option"
-                  aria-selected={isFocused}
-                  id={`${resultsId}-option-${index}`}
-                  className={cn(
-                    "block p-3 sm:p-4 rounded-lg border transition-all duration-200",
-                    "hover:border-primary/50 hover:bg-accent/50 hover:shadow-sm",
-                    "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background",
-                    "active:bg-accent active:scale-[0.98]",
-                    isFocused 
-                      ? "bg-accent border-primary/30 shadow-sm" 
-                      : "border-border/50 bg-background"
-                  )}
-                  onKeyDown={(e) => {
-                    if (e.key === "ArrowDown") {
-                      e.preventDefault()
-                      setFocusedIndex((prev) => (prev < results.length - 1 ? prev + 1 : 0))
-                    } else if (e.key === "ArrowUp") {
-                      e.preventDefault()
-                      setFocusedIndex((prev) => (prev > 0 ? prev - 1 : results.length - 1))
-                    } else if (e.key === "Escape") {
-                      e.preventDefault()
-                      onSelect?.()
-                    } else if (e.key === "Home") {
-                      e.preventDefault()
-                      setFocusedIndex(0)
-                    } else if (e.key === "End") {
-                      e.preventDefault()
-                      setFocusedIndex(results.length - 1)
-                    }
-                  }}
-                  aria-label={`${criterion.number} ${criterion.title}, ${criterion.level} level, ${criterion.principle} principle`}
-                >
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="flex-shrink-0 mt-0.5">
-                      <LevelBadge level={criterion.level} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-2">
-                        <span className="text-sm sm:text-base font-semibold text-foreground">
-                          {criterion.number}
-                        </span>
-                        <span className="text-sm sm:text-base font-medium text-foreground break-words">
-                          {criterion.title}
-                        </span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 mb-2 leading-relaxed">
-                        {criterion.summary}
-                      </p>
-                      <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                        <span className="capitalize">
-                          {criterion.principle}
-                        </span>
-                        <span aria-hidden="true">•</span>
-                        <span>
-                          {criterion.guidelineNumber} {criterion.guideline}
-                        </span>
-                      </div>
-                    </div>
-                    <ArrowRight 
-                      className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground flex-shrink-0 mt-1 transition-transform group-hover:translate-x-1" 
-                      aria-hidden="true" 
-                    />
+      <div 
+        className="max-h-72 sm:max-h-80 overflow-y-auto overscroll-contain"
+        style={{ 
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'rgba(0, 0, 0, 0.2) transparent'
+        }}
+      >
+        <div className="p-1.5 sm:p-2 space-y-1.5 sm:space-y-2" role="group">
+          {typeOrder
+            .filter((type) => {
+              const typeResults = groupedResults[type]
+              return typeResults && typeResults.length > 0
+            })
+            .map((type) => {
+              const typeResults = groupedResults[type]
+              if (!typeResults || typeResults.length === 0) return null
+
+              const TypeIcon = typeIcons[type]
+              const typeLabel = typeLabels[type]
+
+              return (
+                <div key={type} className="space-y-1">
+                {results.length > 5 && (
+                  <div className="px-1.5 sm:px-2 py-1 text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-1.5">
+                    <TypeIcon className="h-3 w-3" aria-hidden="true" />
+                    <span>{typeLabel}s</span>
+                    <span className="text-xs font-normal">({typeResults.length})</span>
                   </div>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
+                )}
+                {typeResults.map((result, index) => {
+                  const globalIndex = results.indexOf(result)
+                  const isFocused = focusedIndex === globalIndex
+                  
+                  return (
+                    <div key={`${result.type}-${result.url}`} role="none">
+                      <Link
+                        href={result.url}
+                        onClick={onSelect}
+                        role="option"
+                        aria-selected={isFocused}
+                        id={`${resultsId}-option-${globalIndex}`}
+                        className={cn(
+                          "block px-2.5 py-2 sm:px-3 sm:py-2.5 rounded-md border transition-colors duration-150 text-xs sm:text-sm",
+                          "hover:border-primary hover:bg-muted",
+                          "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background",
+                          "active:bg-muted active:scale-[0.98]",
+                          isFocused 
+                            ? "bg-muted border-primary" 
+                            : "border-border/40 bg-background"
+                        )}
+                        onKeyDown={(e) => {
+                          if (e.key === "ArrowDown") {
+                            e.preventDefault()
+                            setFocusedIndex((prev) => (prev < results.length - 1 ? prev + 1 : 0))
+                          } else if (e.key === "ArrowUp") {
+                            e.preventDefault()
+                            setFocusedIndex((prev) => (prev > 0 ? prev - 1 : results.length - 1))
+                          } else if (e.key === "Escape") {
+                            e.preventDefault()
+                            onSelect?.()
+                          } else if (e.key === "Home") {
+                            e.preventDefault()
+                            setFocusedIndex(0)
+                          } else if (e.key === "End") {
+                            e.preventDefault()
+                            setFocusedIndex(results.length - 1)
+                          }
+                        }}
+                        aria-label={getAriaLabel(result)}
+                      >
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          {/* Icon and Type Badge */}
+                              <div className="flex-shrink-0 flex flex-col items-center gap-1.5 mt-0.5">
+                            <div className={cn(
+                              "p-1.5 rounded-md",
+                              result.type === 'criterion' ? "bg-primary/10" :
+                              result.type === 'lawsuit' ? "bg-red-500/10" :
+                              result.type === 'example' ? "bg-blue-500/10" :
+                              result.type === 'principle' ? "bg-purple-500/10" :
+                              result.type === 'tool' ? "bg-green-500/10" :
+                              "bg-muted"
+                            )}>
+                              <TypeIcon className={cn(
+                                "h-3.5 w-3.5",
+                                result.type === 'criterion' ? "text-primary" :
+                                result.type === 'lawsuit' ? "text-red-500" :
+                                result.type === 'example' ? "text-blue-500" :
+                                result.type === 'principle' ? "text-purple-500" :
+                                result.type === 'tool' ? "text-green-500" :
+                                "text-muted-foreground"
+                              )} aria-hidden="true" />
+                            </div>
+                            {result.type === 'criterion' && 'criterion' in result && (
+                              <LevelBadge level={result.criterion.level} />
+                            )}
+                          </div>
+
+                          {/* Content */}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex flex-col sm:flex-row sm:items-start gap-0.5 sm:gap-1.5 mb-1.5">
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                <span className="text-xs sm:text-sm font-semibold text-foreground break-words">
+                                  {result.title}
+                                </span>
+                                <Badge 
+                                  variant="outline" 
+                                  className="text-[10px] sm:text-xs shrink-0"
+                                >
+                                  {typeLabel}
+                                </Badge>
+                                {'category' in result && result.category && (
+                                  <Badge 
+                                    variant="secondary" 
+                                    className="text-[10px] sm:text-xs shrink-0"
+                                  >
+                                    {result.category}
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                            <p className="text-[11px] sm:text-xs text-muted-foreground line-clamp-2 mb-1.5 leading-relaxed">
+                              {result.description}
+                            </p>
+                            {result.type === 'criterion' && 'criterion' in result && (
+                              <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
+                                <span className="capitalize">
+                                  {result.criterion.principle}
+                                </span>
+                                <span aria-hidden="true">•</span>
+                                <span>
+                                  {result.criterion.guidelineNumber} {result.criterion.guideline}
+                                </span>
+                              </div>
+                            )}
+                            {result.type === 'lawsuit' && 'lawsuit' in result && (
+                              <div className="flex flex-wrap items-center gap-1.5 text-[11px] text-muted-foreground mt-0.5">
+                                <span>{result.lawsuit.defendant}</span>
+                                <span aria-hidden="true">•</span>
+                                <span>{result.lawsuit.status}</span>
+                                {result.lawsuit.dateFiled && (
+                                  <>
+                                    <span aria-hidden="true">•</span>
+                                    <span>{new Date(result.lawsuit.dateFiled).getFullYear()}</span>
+                                  </>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                          <ArrowRight 
+                            className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground flex-shrink-0 mt-1 transition-transform group-hover:translate-x-1" 
+                            aria-hidden="true" 
+                          />
+                        </div>
+                      </Link>
+                    </div>
+                  )
+                })}
+                </div>
+              )
+            })}
+        </div>
       </div>
     </div>
   )
 }
 
+function getAriaLabel(result: SearchResult): string {
+  switch (result.type) {
+    case 'criterion':
+      if ('criterion' in result) {
+        return `${result.title}, ${result.criterion.level} level, ${result.criterion.principle} principle`
+      }
+      return result.title
+    case 'lawsuit':
+      if ('lawsuit' in result) {
+        return `${result.title}, ${result.lawsuit.status} lawsuit, ${result.lawsuit.defendant}`
+      }
+      return result.title
+    case 'example':
+      return `${result.title} example${'category' in result && result.category ? `, ${result.category} category` : ''}`
+    case 'principle':
+      return `${result.title} principle`
+    case 'tool':
+      return `${result.title} tool`
+    case 'page':
+      return `${result.title}${'category' in result && result.category ? `, ${result.category}` : ''}`
+    default:
+      return result.title
+  }
+}
