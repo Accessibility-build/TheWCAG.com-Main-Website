@@ -43,7 +43,6 @@ export function Header() {
     { href: "/principles", label: "Principles" },
     { href: "/checklist", label: "Checklist" },
     { href: "/tools", label: "Tools" },
-    { href: "/blog", label: "Blog" },
   ]
 
   // Learn submenu

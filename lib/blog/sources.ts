@@ -109,18 +109,30 @@ export function getNewsAPIConfig(): NewsAPIConfig | null {
     return null
   }
 
-  // More specific query focusing on accessibility
+  // Comprehensive query covering all accessibility topics
   const query = [
     'web accessibility',
-    'WCAG guidelines',
+    'website accessibility',
+    'WCAG',
     'WCAG 2.2',
+    'WCAG guidelines',
+    'WCAG compliance',
     'ADA compliance',
-    'ADA guidelines',
+    'ADA website',
+    'ADA lawsuit',
     'accessibility lawsuit',
     'digital accessibility',
-    'accessibility standards',
     'Section 508',
+    'accessible website',
     'accessible design',
+    'screen reader',
+    'keyboard navigation',
+    'ARIA',
+    'accessibility standards',
+    'accessibility audit',
+    'accessibility testing',
+    'inclusive design',
+    'a11y',
   ].join(' OR ')
 
   return {

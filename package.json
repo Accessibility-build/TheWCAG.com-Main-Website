@@ -10,7 +10,10 @@
     "build:check": "npm run generate-blog:build && next build && echo '✅ Build successful!'",
     "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true next build",
-    "generate-blog:build": "tsx scripts/generate-blog-build.ts"
+    "generate-blog:build": "tsx scripts/generate-blog-build.ts",
+    "test:news-api": "tsx scripts/test-news-api.ts",
+    "test:rss": "tsx scripts/test-rss-feeds.ts",
+    "test:articles": "npm run test:rss && echo '' && npm run test:news-api"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

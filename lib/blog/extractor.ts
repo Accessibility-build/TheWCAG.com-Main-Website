@@ -7,12 +7,12 @@ import { logger } from '@/lib/logger'
 const parser = new Parser()
 
 /**
- * Check if a date is within the last 48 hours
+ * Check if a date is within the last 72 hours (expanded for News API)
  */
 function isWithinLast48Hours(date: Date): boolean {
   const now = new Date()
   const hoursDiff = (now.getTime() - date.getTime()) / (1000 * 60 * 60)
-  return hoursDiff <= 48 && hoursDiff >= 0
+  return hoursDiff <= 72 && hoursDiff >= 0 // Expanded to 72 hours for better results
 }
 
 /**
@@ -145,16 +145,18 @@ async function extractFromNewsAPI(config: NonNullable<ReturnType<typeof getNewsA
   }
 
   try {
+    // Expand to 72 hours to get more articles (News API may have limited recent content)
     const fromDate = new Date()
-    fromDate.setHours(fromDate.getHours() - 48)
+    fromDate.setHours(fromDate.getHours() - 72)
 
     const url = new URL('https://newsapi.org/v2/everything')
     url.searchParams.set('apiKey', config.apiKey)
     url.searchParams.set('q', config.query)
     url.searchParams.set('language', config.language)
-    url.searchParams.set('sortBy', config.sortBy)
+    url.searchParams.set('sortBy', 'relevancy') // Use relevancy for better matches
     url.searchParams.set('from', fromDate.toISOString())
-    url.searchParams.set('pageSize', '20') // Reduced to get more relevant results
+    url.searchParams.set('pageSize', '50') // Get more results to filter from
+    url.searchParams.set('qInTitle', 'accessibility OR WCAG OR ADA') // Also search in titles
 
     const response = await fetch(url.toString(), {
       next: { revalidate: 0 },
@@ -176,38 +178,46 @@ async function extractFromNewsAPI(config: NonNullable<ReturnType<typeof getNewsA
       }
 
       try {
-        // First check if title/description is accessibility-related
-        const articleText = `${article.title} ${article.description || ''}`.toLowerCase()
-        if (!isAccessibilityRelated(articleText)) {
-          logger.log(`Skipping non-accessibility article: ${article.title}`)
-          continue
-        }
-
+        // For News API, fetch full content first to properly validate
         const htmlContent = await fetchArticleContent(article.url)
-        if (!htmlContent) {
-          // Fallback to description if available and accessibility-related
-          if (article.description && isAccessibilityRelated(article.description)) {
-            articles.push({
-              title: article.title,
-              url: article.url,
-              source: article.source?.name || 'News API',
-              publishedDate: publishedDate.toISOString(),
-              content: article.description,
-              excerpt: article.description.substring(0, 200),
-            })
-          }
+        
+        let articleContent = ''
+        let articleExcerpt = article.description || ''
+
+        if (htmlContent) {
+          const processed = processArticleContent(htmlContent, article.url, article.title)
+          articleContent = processed.content
+          articleExcerpt = processed.excerpt || article.description || ''
+        } else {
+          // Fallback to description if we can't fetch content
+          articleContent = article.description || ''
+        }
+
+        if (!articleContent || articleContent.length < 100) {
           continue
         }
 
-        const { content, excerpt } = processArticleContent(htmlContent, article.url, article.title)
-
-        if (!content || content.length < 100) {
+        // Check if content is accessibility-related (check full content)
+        const fullText = `${article.title} ${article.description || ''} ${articleContent}`.toLowerCase()
+        
+        // Require primary accessibility terms to appear
+        const primaryTerms = ['accessibility', 'wcag', 'ada', 'section 508', 'a11y', 'accessible']
+        const termMatches = primaryTerms.filter((term) => fullText.includes(term.toLowerCase()))
+        
+        // Must have at least 2 primary terms OR 1 primary term with supporting context
+        const supportingTerms = ['website', 'web', 'digital', 'compliance', 'guidelines', 'standards', 'lawsuit', 'screen reader', 'keyboard']
+        const hasSupportingContext = supportingTerms.some((term) => fullText.includes(term.toLowerCase()))
+        
+        const hasEnoughTerms = termMatches.length >= 2 || (termMatches.length >= 1 && hasSupportingContext)
+        
+        if (!hasEnoughTerms) {
+          logger.log(`Skipping article - insufficient accessibility focus: ${article.title} (terms: ${termMatches.join(', ')})`)
           continue
         }
 
-        // Double-check content is accessibility-related
-        if (!isAccessibilityRelated(content)) {
-          logger.log(`Skipping article after content check: ${article.title}`)
+        // Final check: ensure it's actually about accessibility, not just mentions it
+        if (!isAccessibilityRelated(fullText)) {
+          logger.log(`Skipping article - not accessibility-related: ${article.title}`)
           continue
         }
 
@@ -216,8 +226,8 @@ async function extractFromNewsAPI(config: NonNullable<ReturnType<typeof getNewsA
           url: article.url,
           source: article.source?.name || 'News API',
           publishedDate: publishedDate.toISOString(),
-          content,
-          excerpt: excerpt || article.description?.substring(0, 200) || '',
+          content: articleContent,
+          excerpt: articleExcerpt.substring(0, 200),
         })
       } catch (error) {
         logger.error(`Failed to process News API article: ${article.url}`, error)
