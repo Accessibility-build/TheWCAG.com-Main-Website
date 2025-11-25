@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { SearchResult, type SearchResultType } from "@/lib/search"
+import { SearchResult, type SearchResultType, type CriterionSearchResult, type LawsuitSearchResult, type ExampleSearchResult, type PageSearchResult } from "@/lib/search"
 import { LevelBadge } from "@/components/level-badge"
 import { Search, ArrowRight, FileText, Scale, Code2, Layers, Wrench, BookOpen, ExternalLink } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -273,26 +273,36 @@ export function SearchResults({ results, query, onSelect, className }: SearchRes
 }
 
 function getAriaLabel(result: SearchResult): string {
+  const baseTitle = result.title
+  
   switch (result.type) {
-    case 'criterion':
-      if ('criterion' in result) {
-        return `${result.title}, ${result.criterion.level} level, ${result.criterion.principle} principle`
+    case 'criterion': {
+      const criterionResult = result as CriterionSearchResult
+      if (criterionResult.criterion) {
+        return `${baseTitle}, ${criterionResult.criterion.level} level, ${criterionResult.criterion.principle} principle`
       }
-      return result.title
-    case 'lawsuit':
-      if ('lawsuit' in result) {
-        return `${result.title}, ${result.lawsuit.status} lawsuit, ${result.lawsuit.defendant}`
+      return baseTitle
+    }
+    case 'lawsuit': {
+      const lawsuitResult = result as LawsuitSearchResult
+      if (lawsuitResult.lawsuit) {
+        return `${baseTitle}, ${lawsuitResult.lawsuit.status} lawsuit, ${lawsuitResult.lawsuit.defendant}`
       }
-      return result.title
-    case 'example':
-      return `${result.title} example${'category' in result && result.category ? `, ${result.category} category` : ''}`
+      return baseTitle
+    }
+    case 'example': {
+      const exampleResult = result as ExampleSearchResult
+      return `${baseTitle} example${exampleResult.category ? `, ${exampleResult.category} category` : ''}`
+    }
     case 'principle':
-      return `${result.title} principle`
+      return `${baseTitle} principle`
     case 'tool':
-      return `${result.title} tool`
-    case 'page':
-      return `${result.title}${'category' in result && result.category ? `, ${result.category}` : ''}`
+      return `${baseTitle} tool`
+    case 'page': {
+      const pageResult = result as PageSearchResult
+      return `${baseTitle}${pageResult.category ? `, ${pageResult.category}` : ''}`
+    }
     default:
-      return result.title
+      return baseTitle
   }
 }
