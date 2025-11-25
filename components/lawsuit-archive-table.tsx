@@ -242,40 +242,47 @@ export function LawsuitArchiveTable() {
         ) : (
           paginatedLawsuits.map((lawsuit, index) => {
             const matchingDetailedLawsuit = findMatchingDetailedLawsuit(lawsuit.defendant, lawsuit.year)
-            const cardElement = matchingDetailedLawsuit ? (
-              <Link
-                href={`/lawsuits/${matchingDetailedLawsuit.slug}`}
-                className="block"
-                aria-label={`View details for ${lawsuit.plaintiff} v. ${lawsuit.defendant}`}
-              >
-                <Card className="hover:bg-accent transition-colors cursor-pointer">
-                  <CardContent className="p-4 space-y-2">
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-xs font-medium text-muted-foreground">{lawsuit.year}</span>
-                          <FileText className="h-3 w-3 text-primary shrink-0" aria-hidden="true" />
-                        </div>
-                        <h3 className="font-semibold text-sm mb-1 line-clamp-1">
-                          {lawsuit.plaintiff} v. {lawsuit.defendant}
-                        </h3>
-                        <div className="text-xs text-muted-foreground space-y-1">
-                          <p className="line-clamp-1">
-                            <span className="font-medium">Citation:</span>{" "}
-                            {isValidUrl(lawsuit.citation) && !isDeprecatedUrl(lawsuit.citation) ? (
-                              <span className="text-primary">{lawsuit.citationText}</span>
-                            ) : (
-                              <span>{lawsuit.citationText}</span>
-                            )}
-                          </p>
+            const key = `${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`
+            
+            if (matchingDetailedLawsuit) {
+              return (
+                <Link
+                  key={key}
+                  href={`/lawsuits/${matchingDetailedLawsuit.slug}`}
+                  className="block"
+                  aria-label={`View details for ${lawsuit.plaintiff} v. ${lawsuit.defendant}`}
+                >
+                  <Card className="hover:bg-accent transition-colors cursor-pointer">
+                    <CardContent className="p-4 space-y-2">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-xs font-medium text-muted-foreground">{lawsuit.year}</span>
+                            <FileText className="h-3 w-3 text-primary shrink-0" aria-hidden="true" />
+                          </div>
+                          <h3 className="font-semibold text-sm mb-1 line-clamp-1">
+                            {lawsuit.plaintiff} v. {lawsuit.defendant}
+                          </h3>
+                          <div className="text-xs text-muted-foreground space-y-1">
+                            <p className="line-clamp-1">
+                              <span className="font-medium">Citation:</span>{" "}
+                              {isValidUrl(lawsuit.citation) && !isDeprecatedUrl(lawsuit.citation) ? (
+                                <span className="text-primary">{lawsuit.citationText}</span>
+                              ) : (
+                                <span>{lawsuit.citationText}</span>
+                              )}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ) : (
-              <Card>
+                    </CardContent>
+                  </Card>
+                </Link>
+              )
+            }
+            
+            return (
+              <Card key={key}>
                 <CardContent className="p-4 space-y-2">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1 min-w-0">
@@ -309,7 +316,6 @@ export function LawsuitArchiveTable() {
                 </CardContent>
               </Card>
             )
-            return <div key={`${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`}>{cardElement}</div>
           })
         )}
       </div>
