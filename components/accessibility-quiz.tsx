@@ -213,195 +213,203 @@ export function AccessibilityQuiz() {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        size="lg"
-        className="h-12 sm:h-14 md:h-16 px-8 sm:px-10 md:px-12 text-base sm:text-lg md:text-xl font-bold shadow-xl hover:shadow-2xl transition-all bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
+        size="sm"
+        className="h-8 sm:h-9 px-4 sm:px-5 text-xs sm:text-sm font-medium shadow-md hover:shadow-lg transition-all bg-primary text-primary-foreground hover:bg-primary/90 w-full"
       >
-        <Sparkles className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
-        Take the Quiz Now
+        <Sparkles className="mr-1.5 h-3 w-3 sm:h-4 sm:w-4" />
+        Take Quiz
       </Button>
 
       <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-          <Dialog.Content className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg md:p-8 max-h-[90vh] overflow-y-auto">
+          <Dialog.Content className="fixed left-[50%] top-[50%] z-50 w-full max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-3 border bg-background p-4 sm:p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-h-[95vh] overflow-hidden flex flex-col">
             <Dialog.Title className="sr-only">Accessibility Quiz</Dialog.Title>
             
-            {!showResult ? (
-              <>
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-2">
-                      How Much Do You Know About Accessibility?
-                    </h2>
-                    <p className="text-sm text-muted-foreground">
-                      Question {currentQuestion + 1} of {questions.length}
-                    </p>
-                  </div>
-                  <Dialog.Close asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-8 w-8"
-                      aria-label="Close quiz"
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
-                  </Dialog.Close>
-                </div>
-
-                <div className="mb-6">
-                  <div className="w-full bg-muted rounded-full h-2 mb-2">
-                    <div
-                      className="bg-primary h-2 rounded-full transition-all duration-300"
-                      style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-                    />
-                  </div>
-                </div>
-
-                <Card className="mb-6">
-                  <CardHeader>
-                    <CardTitle id={`question-${questions[currentQuestion].id}`} className="text-xl sm:text-2xl">
-                      {questions[currentQuestion].question}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3" role="radiogroup" aria-labelledby={`question-${questions[currentQuestion].id}`}>
-                      {questions[currentQuestion].options.map((option, index) => (
-                        <button
-                          key={index}
-                          onClick={() => handleAnswerSelect(index)}
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter" || e.key === " ") {
-                              e.preventDefault()
-                              handleAnswerSelect(index)
-                            }
-                          }}
-                          className={`w-full text-left p-4 rounded-lg border-2 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
-                            selectedAnswer === index
-                              ? "border-primary bg-primary/5"
-                              : "border-border hover:border-primary/50 hover:bg-muted/50"
-                          }`}
-                          aria-pressed={selectedAnswer === index}
-                          role="radio"
-                          aria-checked={selectedAnswer === index}
-                        >
-                          <span className="font-medium">{option}</span>
-                        </button>
-                      ))}
+            <div className="overflow-y-auto flex-1 pr-1 -mr-1">
+              {!showResult ? (
+                <>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1 pr-2">
+                      <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-1">
+                        How Much Do You Know About Accessibility?
+                      </h2>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
+                        Question {currentQuestion + 1} of {questions.length}
+                      </p>
+                      <p className="text-xs text-muted-foreground/80 mt-1 italic">
+                        Just for fun - we won't know your score
+                      </p>
                     </div>
-                  </CardContent>
-                </Card>
+                    <Dialog.Close asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-7 w-7 sm:h-8 sm:w-8 shrink-0"
+                        aria-label="Close quiz"
+                      >
+                        <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      </Button>
+                    </Dialog.Close>
+                  </div>
 
-                <div className="flex justify-end">
-                  <Button
-                    onClick={handleNext}
-                    disabled={selectedAnswer === null}
-                    size="lg"
-                  >
-                    {currentQuestion < questions.length - 1 ? "Next Question" : "See Results"}
-                  </Button>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl sm:text-3xl font-bold">Your Results</h2>
-                  <Dialog.Close asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-8 w-8"
-                      aria-label="Close quiz"
-                      onClick={handleClose}
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
-                  </Dialog.Close>
-                </div>
-
-                <Card className={`mb-6 ${result?.bgColor} border-2`}>
-                  <CardHeader className="text-center">
-                    <div className="flex justify-center mb-4">
-                      <ResultIcon className={`h-16 w-16 ${result?.color}`} />
+                  <div className="mb-4">
+                    <div className="w-full bg-muted rounded-full h-1.5 sm:h-2">
+                      <div
+                        className="bg-primary h-1.5 sm:h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+                      />
                     </div>
-                    <CardTitle className={`text-2xl sm:text-3xl mb-2 ${result?.color}`}>
-                      {result?.title}
-                    </CardTitle>
-                    <CardDescription className="text-lg">
-                      You got {score} out of {questions.length} correct!
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-center text-base sm:text-lg mb-6">
-                      {result?.message}
-                    </p>
-                    
-                    <div className="space-y-2 mb-6">
-                      {questions.map((q, idx) => {
-                        const isCorrect = answers[idx] === q.correctAnswer
-                        const userAnswer = q.options[answers[idx]]
-                        const correctAnswer = q.options[q.correctAnswer]
-                        
-                        return (
-                          <div
-                            key={q.id}
-                            className={`p-3 rounded-lg border ${
-                              isCorrect
-                                ? "bg-green-500/10 border-green-500/20"
-                                : "bg-red-500/10 border-red-500/20"
+                  </div>
+
+                  <Card className="mb-4">
+                    <CardHeader className="pb-3">
+                      <CardTitle id={`question-${questions[currentQuestion].id}`} className="text-base sm:text-lg md:text-xl">
+                        {questions[currentQuestion].question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <div className="space-y-2 sm:space-y-2.5" role="radiogroup" aria-labelledby={`question-${questions[currentQuestion].id}`}>
+                        {questions[currentQuestion].options.map((option, index) => (
+                          <button
+                            key={index}
+                            onClick={() => handleAnswerSelect(index)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault()
+                                handleAnswerSelect(index)
+                              }
+                            }}
+                            className={`w-full text-left p-2.5 sm:p-3 rounded-lg border-2 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 text-sm sm:text-base ${
+                              selectedAnswer === index
+                                ? "border-primary bg-primary/5"
+                                : "border-border hover:border-primary/50 hover:bg-muted/50"
                             }`}
+                            aria-pressed={selectedAnswer === index}
+                            role="radio"
+                            aria-checked={selectedAnswer === index}
                           >
-                            <div className="flex items-start gap-2 mb-1">
-                              {isCorrect ? (
-                                <span className="text-green-600 font-bold text-lg">✓</span>
-                              ) : (
-                                <span className="text-red-600 font-bold text-lg">✗</span>
-                              )}
-                              <div className="flex-1">
-                                <span className="font-medium text-sm block mb-1">{q.question}</span>
-                                {!isCorrect && (
-                                  <div className="text-xs space-y-1 mt-2">
-                                    <p className="text-red-600">
-                                      <span className="font-semibold">Your answer:</span> {userAnswer}
-                                    </p>
-                                    <p className="text-green-600">
-                                      <span className="font-semibold">Correct answer:</span> {correctAnswer}
-                                    </p>
-                                  </div>
+                            <span className="font-medium">{option}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <div className="flex justify-end">
+                    <Button
+                      onClick={handleNext}
+                      disabled={selectedAnswer === null}
+                      size="sm"
+                      className="text-xs sm:text-sm h-9 sm:h-10 px-4 sm:px-6"
+                    >
+                      {currentQuestion < questions.length - 1 ? "Next Question" : "See Results"}
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-start justify-between mb-3">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Your Results</h2>
+                    <Dialog.Close asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-7 w-7 sm:h-8 sm:w-8 shrink-0"
+                        aria-label="Close quiz"
+                        onClick={handleClose}
+                      >
+                        <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      </Button>
+                    </Dialog.Close>
+                  </div>
+
+                  <Card className={`mb-4 ${result?.bgColor} border-2`}>
+                    <CardHeader className="text-center pb-3">
+                      <div className="flex justify-center mb-3">
+                        <ResultIcon className={`h-12 w-12 sm:h-14 sm:w-14 ${result?.color}`} />
+                      </div>
+                      <CardTitle className={`text-lg sm:text-xl md:text-2xl mb-1 ${result?.color}`}>
+                        {result?.title}
+                      </CardTitle>
+                      <CardDescription className="text-sm sm:text-base">
+                        You got {score} out of {questions.length} correct!
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-center text-sm sm:text-base mb-4">
+                        {result?.message}
+                      </p>
+                      
+                      <div className="space-y-1.5 sm:space-y-2 mb-4 max-h-[40vh] overflow-y-auto pr-1">
+                        {questions.map((q, idx) => {
+                          const isCorrect = answers[idx] === q.correctAnswer
+                          const userAnswer = q.options[answers[idx]]
+                          const correctAnswer = q.options[q.correctAnswer]
+                          
+                          return (
+                            <div
+                              key={q.id}
+                              className={`p-2 sm:p-2.5 rounded-lg border ${
+                                isCorrect
+                                  ? "bg-green-500/10 border-green-500/20"
+                                  : "bg-red-500/10 border-red-500/20"
+                              }`}
+                            >
+                              <div className="flex items-start gap-1.5 sm:gap-2">
+                                {isCorrect ? (
+                                  <span className="text-green-600 font-bold text-base sm:text-lg shrink-0 mt-0.5">✓</span>
+                                ) : (
+                                  <span className="text-red-600 font-bold text-base sm:text-lg shrink-0 mt-0.5">✗</span>
                                 )}
+                                <div className="flex-1 min-w-0">
+                                  <span className="font-medium text-xs sm:text-sm block mb-1">{q.question}</span>
+                                  {!isCorrect && (
+                                    <div className="text-xs space-y-0.5 mt-1.5">
+                                      <p className="text-red-600">
+                                        <span className="font-semibold">Your answer:</span> <span className="break-words">{userAnswer}</span>
+                                      </p>
+                                      <p className="text-green-600">
+                                        <span className="font-semibold">Correct:</span> <span className="break-words">{correctAnswer}</span>
+                                      </p>
+                                    </div>
+                                  )}
+                                  {q.explanation && (
+                                    <p className="text-xs text-muted-foreground mt-1.5">
+                                      {q.explanation}
+                                    </p>
+                                  )}
+                                </div>
                               </div>
                             </div>
-                            {q.explanation && (
-                              <p className="text-xs text-muted-foreground ml-7 mt-2">
-                                {q.explanation}
-                              </p>
-                            )}
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </CardContent>
-                </Card>
+                          )
+                        })}
+                      </div>
+                    </CardContent>
+                  </Card>
 
-                <div className="flex flex-col sm:flex-row gap-3 justify-end">
-                  <Button
-                    variant="outline"
-                    onClick={handleRestart}
-                    size="lg"
-                  >
-                    Take Quiz Again
-                  </Button>
-                  <Dialog.Close asChild>
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-end pt-2 border-t">
                     <Button
-                      onClick={handleClose}
-                      size="lg"
+                      variant="outline"
+                      onClick={handleRestart}
+                      size="sm"
+                      className="text-xs sm:text-sm h-9 sm:h-10 px-4 sm:px-6"
                     >
-                      Close
+                      Take Quiz Again
                     </Button>
-                  </Dialog.Close>
-                </div>
-              </>
-            )}
+                    <Dialog.Close asChild>
+                      <Button
+                        onClick={handleClose}
+                        size="sm"
+                        className="text-xs sm:text-sm h-9 sm:h-10 px-4 sm:px-6"
+                      >
+                        Close
+                      </Button>
+                    </Dialog.Close>
+                  </div>
+                </>
+              )}
+            </div>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

@@ -290,23 +290,23 @@ export default function AboutPage() {
                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Build a More Inclusive Web?</h2>
                    <p className="text-lg text-neutral-200 mb-8 max-w-2xl mx-auto">
                      Whether you need help fixing compliance issues or want to start a new project on the right foot, our team is here to guide you.
-                   </p>
-                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                      <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
                        <Link href="/contact">
                          Get in Touch
-                         <ArrowRight className="ml-2 h-4 w-4" />
-                       </Link>
-                     </Button>
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
                      <Button asChild size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-neutral-900">
                        <Link href="/checklist">
                          Explore Checklist
                        </Link>
-                     </Button>
+                </Button>
                    </div>
                  </div>
-               </div>
-             </div>
+              </div>
+            </div>
           </section>
 
         </main>

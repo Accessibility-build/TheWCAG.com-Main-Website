@@ -9,8 +9,8 @@ import { Badge } from "@/components/ui/badge"
 import { HeroSearch } from "@/components/hero-search"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { StructuredData } from "@/components/structured-data"
-import { NewsletterSubscription } from "@/components/newsletter-subscription"
 import { AccessibilityQuiz } from "@/components/accessibility-quiz"
+import { getRecentLawsuits } from "@/lib/lawsuits-data"
 import {
   Search,
   Eye,
@@ -26,6 +26,16 @@ import {
   Rocket,
   HelpCircle,
   TestTube,
+  Users,
+  TrendingUp,
+  DollarSign,
+  Globe,
+  Scale,
+  Monitor,
+  Smartphone,
+  Calendar,
+  ExternalLink,
+  Heart,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -85,6 +95,7 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
+  const recentLawsuits = getRecentLawsuits(2)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -412,7 +423,288 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* CTA Section */}
+          {/* Why Accessibility Matters Section */}
+          <section className="py-12 sm:py-16 md:py-20 bg-muted/30">
+            <div className="container px-4 sm:px-6 lg:px-8">
+              <ScrollAnimation>
+                <div className="text-center mb-10">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Why Accessibility Matters</h2>
+                  <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Accessibility isn't just the right thing to do—it's good business and affects everyone
+                  </p>
+                </div>
+              </ScrollAnimation>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Statistics */}
+                <ScrollAnimation className="lg:col-span-1">
+                  <Card className="h-full bg-linear-to-br from-primary/5 to-primary/10 border-primary/20">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="flex items-center gap-2 text-primary text-lg">
+                        <Users className="h-5 w-5" />
+                        By the Numbers
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="text-center">
+                        <div className="text-2xl sm:text-3xl font-bold text-primary">1.3B</div>
+                        <p className="text-xs sm:text-sm text-muted-foreground">People worldwide with disabilities</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl sm:text-3xl font-bold text-primary">26%</div>
+                        <p className="text-xs sm:text-sm text-muted-foreground">Of US adults have a disability</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl sm:text-3xl font-bold text-primary">$13T</div>
+                        <p className="text-xs sm:text-sm text-muted-foreground">Annual disposable income globally</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </ScrollAnimation>
+
+                {/* Business Benefits */}
+                <ScrollAnimation className="lg:col-span-1" threshold={0.2}>
+                  <Card className="h-full bg-linear-to-br from-secondary/5 to-secondary/10 border-secondary/20">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="flex items-center gap-2 text-secondary text-lg">
+                        <TrendingUp className="h-5 w-5" />
+                        Business Benefits
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2.5">
+                      <div className="flex items-start gap-2">
+                        <DollarSign className="h-4 w-4 text-secondary mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-sm">Larger Market Reach</p>
+                          <p className="text-xs text-muted-foreground">Access to 1.3B+ potential customers</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Search className="h-4 w-4 text-secondary mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-sm">Better SEO</p>
+                          <p className="text-xs text-muted-foreground">Improved search rankings</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <ShieldCheck className="h-4 w-4 text-secondary mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-sm">Legal Compliance</p>
+                          <p className="text-xs text-muted-foreground">Avoid costly lawsuits</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Globe className="h-4 w-4 text-secondary mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-sm">Better UX for All</p>
+                          <p className="text-xs text-muted-foreground">Benefits everyone</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </ScrollAnimation>
+
+                {/* Real User Impact */}
+                <ScrollAnimation className="md:col-span-2 lg:col-span-1" threshold={0.3}>
+                  <Card className="h-full bg-linear-to-br from-accent/5 to-accent/10 border-accent/20">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="flex items-center gap-2 text-accent text-lg">
+                        <Heart className="h-5 w-5" />
+                        Real Impact
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <blockquote className="text-sm italic text-accent border-l-2 border-accent/30 pl-3">
+                        "When websites are accessible, I can shop, work, and connect independently. It's not just convenience—it's dignity."
+                      </blockquote>
+                      <p className="text-xs text-muted-foreground">— Sarah, screen reader user</p>
+                      
+                      <blockquote className="text-sm italic text-accent border-l-2 border-accent/30 pl-3">
+                        "Good contrast and clear navigation help me focus despite my ADHD. Accessible design benefits everyone."
+                      </blockquote>
+                      <p className="text-xs text-muted-foreground">— Marcus, cognitive disability</p>
+                    </CardContent>
+                  </Card>
+                </ScrollAnimation>
+              </div>
+            </div>
+          </section>
+
+          {/* Services Section */}
+          <section className="py-12 sm:py-16 md:py-24">
+            <div className="container px-4 sm:px-6 lg:px-8">
+              <ScrollAnimation>
+                <div className="text-center mb-12">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+                  <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Professional accessibility solutions to help you build inclusive digital experiences
+                  </p>
+                </div>
+              </ScrollAnimation>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <ScrollAnimation threshold={0.1}>
+                  <Link href="/services/accessibility-audit" className="group block">
+                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
+                      <CardHeader>
+                        <div className="w-12 h-12 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                          <Search className="h-6 w-6" />
+                        </div>
+                        <CardTitle className="group-hover:text-primary transition-colors">Accessibility Audits</CardTitle>
+                        <CardDescription>
+                          Comprehensive WCAG 2.2 compliance audits with detailed reporting and recommendations
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.2}>
+                  <Link href="/services/accessibility-remediation" className="group block">
+                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
+                      <CardHeader>
+                        <div className="w-12 h-12 rounded-lg bg-green-500/10 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                          <ShieldCheck className="h-6 w-6" />
+                        </div>
+                        <CardTitle className="group-hover:text-primary transition-colors">Remediation Services</CardTitle>
+                        <CardDescription>
+                          Expert code fixes and design improvements to resolve accessibility issues
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.3}>
+                  <Link href="/services/custom-website-development" className="group block">
+                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
+                      <CardHeader>
+                        <div className="w-12 h-12 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                          <Monitor className="h-6 w-6" />
+                        </div>
+                        <CardTitle className="group-hover:text-primary transition-colors">Web Development</CardTitle>
+                        <CardDescription>
+                          Accessible-first websites built to modern standards and WCAG compliance
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.4}>
+                  <Link href="/services/android-app-development" className="group block">
+                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
+                      <CardHeader>
+                        <div className="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                          <Smartphone className="h-6 w-6" />
+                        </div>
+                        <CardTitle className="group-hover:text-primary transition-colors">Android Apps</CardTitle>
+                        <CardDescription>
+                          Native Android applications built with accessibility and Material Design principles
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.5}>
+                  <Link href="/services/ios-app-development" className="group block">
+                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
+                      <CardHeader>
+                        <div className="w-12 h-12 rounded-lg bg-orange-500/10 text-orange-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                          <Smartphone className="h-6 w-6" />
+                        </div>
+                        <CardTitle className="group-hover:text-primary transition-colors">iOS Apps</CardTitle>
+                        <CardDescription>
+                          Native iOS applications with VoiceOver compatibility and Apple accessibility guidelines
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                </ScrollAnimation>
+              </div>
+
+              <ScrollAnimation>
+                <div className="text-center">
+                  <Button asChild size="lg" variant="outline">
+                    <Link href="/services">
+                      View All Services
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </ScrollAnimation>
+            </div>
+          </section>
+
+          {/* Latest Accessibility Lawsuits Section */}
+          <section className="py-12 sm:py-16 md:py-24 bg-muted/30">
+            <div className="container px-4 sm:px-6 lg:px-8">
+              <ScrollAnimation>
+                <div className="text-center mb-12">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Latest Accessibility Lawsuits</h2>
+                  <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Stay informed about recent accessibility legal cases and their implications
+                  </p>
+                </div>
+              </ScrollAnimation>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                {recentLawsuits.map((lawsuit, index) => (
+                  <ScrollAnimation key={lawsuit.slug} threshold={0.1 + index * 0.1}>
+                    <Link href={`/lawsuits/${lawsuit.slug}`} className="group block">
+                      <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
+                        <CardHeader>
+                          <div className="flex items-start justify-between gap-3 mb-3">
+                            <div className="flex items-center gap-2">
+                              <Scale className="h-5 w-5 text-primary flex-shrink-0" />
+                              <Badge variant={lawsuit.status === 'settled' ? 'default' : lawsuit.status === 'ongoing' ? 'secondary' : 'outline'} className="text-xs">
+                                {lawsuit.status.charAt(0).toUpperCase() + lawsuit.status.slice(1)}
+                              </Badge>
+                            </div>
+                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                              <Calendar className="h-3 w-3" />
+                              {new Date(lawsuit.dateResolved || lawsuit.dateFiled).toLocaleDateString('en-US', { 
+                                year: 'numeric', 
+                                month: 'short' 
+                              })}
+                            </div>
+                          </div>
+                          <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
+                            {lawsuit.title}
+                          </CardTitle>
+                          <CardDescription className="line-clamp-3">
+                            {lawsuit.summary}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="flex items-center justify-between">
+                            <div className="text-sm text-muted-foreground">
+                              <span className="font-medium">Defendant:</span> {lawsuit.defendant}
+                            </div>
+                            <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </ScrollAnimation>
+                ))}
+              </div>
+
+              <ScrollAnimation>
+                <div className="text-center">
+                  <Button asChild size="lg" variant="outline">
+                    <Link href="/lawsuits">
+                      View All Lawsuits
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </ScrollAnimation>
+            </div>
+          </section>
+
+          {/* Primary CTA Section */}
           <section className="border-t bg-card">
             <div className="container py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 text-center">
               <ScrollAnimation>
@@ -420,7 +712,7 @@ export default function HomePage() {
                 <p className="text-base sm:text-lg md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
                   Start learning WCAG 2.2 with our beginner-friendly guides and practical examples
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                   <Button size="lg" asChild>
                     <Link href="/learn">Start Learning</Link>
                   </Button>
@@ -428,54 +720,22 @@ export default function HomePage() {
                     <Link href="/checklist">View Checklist</Link>
                   </Button>
                 </div>
-              </ScrollAnimation>
-            </div>
-          </section>
-
-          {/* Newsletter Section */}
-          <section className="border-t bg-muted/30">
-            <div className="container py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
-              <ScrollAnimation>
-                <div className="max-w-2xl mx-auto">
-                  <div className="text-center mb-8">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
-                      Stay Updated with Accessibility Insights
-                    </h2>
-                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                      Subscribe to our newsletter for the latest WCAG updates, accessibility best practices, and practical tips delivered to your inbox.
+                
+                {/* Inline Quiz Element */}
+                <div className="max-w-md mx-auto">
+                  <div className="bg-linear-to-br from-primary/5 to-background rounded-xl p-4 sm:p-6 border border-primary/20">
+                    <div className="flex items-center justify-center gap-2 mb-3">
+                      <Sparkles className="w-4 h-4 text-primary" aria-hidden="true" />
+                      <h3 className="text-sm sm:text-base font-semibold">Test Your Knowledge</h3>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-4">
+                      Quick quiz - just for fun!
                     </p>
+                    <AccessibilityQuiz />
                   </div>
-                  <div className="bg-card border rounded-xl p-6 sm:p-8 shadow-sm">
-                    <NewsletterSubscription variant="default" />
-                  </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground text-center mt-4">
-                    We respect your privacy. Unsubscribe at any time.
-                  </p>
                 </div>
               </ScrollAnimation>
             </div>
-          </section>
-          {/* Quiz CTA Section */}
-          <section id="quiz" className="container py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
-            <ScrollAnimation>
-              <div className="max-w-4xl mx-auto text-center">
-                <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-3xl p-8 sm:p-12 md:p-16 border-2 border-primary/20 shadow-xl">
-                  <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/20 mb-6 sm:mb-8">
-                    <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 text-primary" aria-hidden="true" />
-                  </div>
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-                    Test Your Accessibility Knowledge
-                  </h2>
-                  <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
-                    How much do you really know about web accessibility? Take our quick quiz and find out!
-                  </p>
-                  <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 max-w-xl mx-auto">
-                    It's fun, interactive, and you might learn something new. No pressure, just a friendly challenge!
-                  </p>
-                  <AccessibilityQuiz />
-                </div>
-              </div>
-            </ScrollAnimation>
           </section>
         </main>
         <Footer />
