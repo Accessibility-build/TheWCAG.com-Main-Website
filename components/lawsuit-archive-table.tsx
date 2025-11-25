@@ -2,6 +2,8 @@
 
 import { useState, useMemo, useEffect } from "react"
 import { getAllArchiveLawsuits, type ArchiveLawsuit, isValidUrl, isDeprecatedUrl, isCaseNumber } from "@/lib/lawsuit-archive"
+import { findMatchingDetailedLawsuit } from "@/lib/lawsuits-data"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -11,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { ArrowUpDown, ArrowUp, ArrowDown, ExternalLink, Search, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowUpDown, ArrowUp, ArrowDown, ExternalLink, Search, ChevronLeft, ChevronRight, FileText } from "lucide-react"
 import {
   Table,
   TableBody,
@@ -272,57 +274,75 @@ export function LawsuitArchiveTable() {
                   </Button>
                 </TableHead>
                 <TableHead className="w-64 px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">Citation</TableHead>
+                <TableHead className="w-32 px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm text-center">Details</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {paginatedLawsuits.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={4} className="text-center py-8 sm:py-12 text-muted-foreground px-4 sm:px-6">
+                  <TableCell colSpan={5} className="text-center py-8 sm:py-12 text-muted-foreground px-4 sm:px-6">
                     No lawsuits found matching your filters.
                   </TableCell>
                 </TableRow>
               ) : (
-                paginatedLawsuits.map((lawsuit, index) => (
-                  <TableRow key={`${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`}>
-                    <TableCell className="font-medium px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.year}</TableCell>
-                    <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.plaintiff}</TableCell>
-                    <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.defendant}</TableCell>
-                    <TableCell className="px-4 py-3 sm:px-6 sm:py-4">
-                      {isValidUrl(lawsuit.citation) ? (
-                        // It's a valid URL - check if it's deprecated
-                        isDeprecatedUrl(lawsuit.citation) ? (
-                          <span className="text-muted-foreground text-xs sm:text-sm">
-                            {lawsuit.citationText} <span className="text-xs">(deprecated)</span>
-                          </span>
+                paginatedLawsuits.map((lawsuit, index) => {
+                  const matchingDetailedLawsuit = findMatchingDetailedLawsuit(lawsuit.defendant, lawsuit.year)
+                  return (
+                    <TableRow key={`${lawsuit.year}-${lawsuit.plaintiff}-${lawsuit.defendant}-${startIndex + index}`}>
+                      <TableCell className="font-medium px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.year}</TableCell>
+                      <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.plaintiff}</TableCell>
+                      <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">{lawsuit.defendant}</TableCell>
+                      <TableCell className="px-4 py-3 sm:px-6 sm:py-4">
+                        {isValidUrl(lawsuit.citation) ? (
+                          // It's a valid URL - check if it's deprecated
+                          isDeprecatedUrl(lawsuit.citation) ? (
+                            <span className="text-muted-foreground text-xs sm:text-sm">
+                              {lawsuit.citationText} <span className="text-xs">(deprecated)</span>
+                            </span>
+                          ) : (
+                            <a
+                              href={lawsuit.citation}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"
+                              aria-label={`View citation for ${lawsuit.plaintiff} v. ${lawsuit.defendant} (opens in new window)`}
+                            >
+                              {lawsuit.citationText}
+                              <ExternalLink className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
+                            </a>
+                          )
                         ) : (
-                          <a
-                            href={lawsuit.citation}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          // Not a URL - check if it's a case number
+                          isCaseNumber(lawsuit.citation) ? (
+                            // Case number - show as plain text without deprecated label
+                            <span className="text-muted-foreground text-xs sm:text-sm">
+                              {lawsuit.citationText}
+                            </span>
+                          ) : (
+                            // Other non-URL text - show as plain text
+                            <span className="text-muted-foreground text-xs sm:text-sm">
+                              {lawsuit.citationText}
+                            </span>
+                          )
+                        )}
+                      </TableCell>
+                      <TableCell className="px-4 py-3 sm:px-6 sm:py-4 text-center">
+                        {matchingDetailedLawsuit ? (
+                          <Link
+                            href={`/lawsuits/${matchingDetailedLawsuit.slug}`}
                             className="text-primary hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"
-                            aria-label={`View citation for ${lawsuit.plaintiff} v. ${lawsuit.defendant} (opens in new window)`}
+                            aria-label={`Read detailed information about ${lawsuit.plaintiff} v. ${lawsuit.defendant}`}
                           >
-                            {lawsuit.citationText}
-                            <ExternalLink className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
-                          </a>
-                        )
-                      ) : (
-                        // Not a URL - check if it's a case number
-                        isCaseNumber(lawsuit.citation) ? (
-                          // Case number - show as plain text without deprecated label
-                          <span className="text-muted-foreground text-xs sm:text-sm">
-                            {lawsuit.citationText}
-                          </span>
+                            <FileText className="h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true" />
+                            <span className="sr-only sm:not-sr-only">Read more</span>
+                          </Link>
                         ) : (
-                          // Other non-URL text - show as plain text
-                          <span className="text-muted-foreground text-xs sm:text-sm">
-                            {lawsuit.citationText}
-                          </span>
-                        )
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))
+                          <span className="text-muted-foreground text-xs">—</span>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  )
+                })
               )}
             </TableBody>
           </Table>
