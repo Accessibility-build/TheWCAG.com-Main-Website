@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -8,6 +9,40 @@ import { NewBadge } from "@/components/new-badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, Sparkles, XCircle } from "lucide-react"
 import { getNewCriteria } from "@/lib/wcag-data"
+
+export const metadata: Metadata = {
+  title: "What's New in WCAG 2.2 - 9 New Success Criteria (October 2023) | TheWCAG",
+  description:
+    "Discover what's new in WCAG 2.2. Learn about 9 new success criteria including Focus Not Obscured, Dragging Movements, Target Size (Minimum), Accessible Authentication, and Redundant Entry.",
+  keywords: [
+    "WCAG 2.2 new criteria",
+    "what's new WCAG",
+    "WCAG 2.2 changes",
+    "new accessibility criteria",
+    "WCAG updates",
+    "focus not obscured",
+    "target size minimum",
+  ],
+  openGraph: {
+    title: "What's New in WCAG 2.2 - 9 New Accessibility Criteria",
+    description:
+      "Complete guide to WCAG 2.2's 9 new success criteria focusing on mobile accessibility, focus visibility, and cognitive improvements.",
+    url: "https://thewcag.com/whats-new",
+    type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "What's New in WCAG 2.2",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/whats-new",
+  },
+}
 
 export default function WhatsNewPage() {
   const newCriteria = getNewCriteria()

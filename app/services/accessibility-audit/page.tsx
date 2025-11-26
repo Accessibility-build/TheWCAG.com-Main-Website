@@ -6,18 +6,32 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  Search, 
-  CheckCircle2, 
-  AlertCircle, 
-  FileText, 
-  Users, 
+import {
+  Search,
+  CheckCircle2,
+  AlertCircle,
+  FileText,
+  Users,
   Target,
   ArrowRight,
   ShieldCheck,
   Zap,
   Code
 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Professional Accessibility Audit Services - WCAG 2.2 Compliance | TheWCAG",
+  description:
+    "Expert WCAG 2.2 accessibility audit services. Comprehensive website evaluation with detailed reports, VPAT documentation, and actionable recommendations. Get certified accessibility compliance.",
+  openGraph: {
+    title: "Professional Accessibility Audit Services",
+    description:
+      "Comprehensive WCAG 2.2 compliance audits. Expert evaluation, detailed reports, and VPAT documentation for your website or application.",
+    url: "https://thewcag.com/services/accessibility-audit",
+    type: "website",
+  },
+}
 
 export default function AccessibilityAuditServicePage() {
   const structuredData = {

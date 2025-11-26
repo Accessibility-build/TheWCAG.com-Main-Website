@@ -8,6 +8,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Code, Palette, TestTube, FileText, GraduationCap } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Learn Web Accessibility - Tutorials, Guides & Resources | TheWCAG",
+  description:
+    "Comprehensive web accessibility learning resources for developers, designers, and content creators. Role-based guides, tutorials, code examples, and best practices for WCAG compliance.",
+  openGraph: {
+    title: "Learn Web Accessibility - Complete Learning Hub",
+    description:
+      "Master web accessibility with role-specific guides, practical tutorials, and expert resources. Learn WCAG implementation for your role.",
+    url: "https://thewcag.com/learn",
+    type: "website",
+  },
+}
 
 export default function LearnPage() {
   const structuredData = {

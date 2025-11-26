@@ -7,12 +7,12 @@ import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { 
-  ArrowRight, 
-  ExternalLink, 
-  Palette, 
-  Search, 
-  FileText, 
+import {
+  ArrowRight,
+  ExternalLink,
+  Palette,
+  Search,
+  FileText,
   CheckCircle2,
   Zap,
   Eye,
@@ -22,6 +22,20 @@ import {
   Sparkles,
   Image
 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Accessibility Testing Tools - Color Contrast, Validators & Checkers | TheWCAG",
+  description:
+    "Free accessibility testing tools including color contrast checker, WCAG validator, screen reader simulators, and more. Test your website for WCAG compliance with our comprehensive tool collection.",
+  openGraph: {
+    title: "Accessibility Testing Tools Collection",
+    description:
+      "Essential free tools for accessibility testing: color contrast checker, validators, screen readers, and browser extensions for WCAG compliance.",
+    url: "https://thewcag.com/tools",
+    type: "website",
+  },
+}
 
 export default function ToolsPage() {
   const structuredData = {

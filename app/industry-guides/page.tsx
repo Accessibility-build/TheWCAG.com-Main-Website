@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -18,6 +19,39 @@ import {
   ArrowRight,
   BookOpen,
 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Industry-Specific Accessibility Guides - E-commerce, Education, Healthcare | TheWCAG",
+  description:
+    "Industry-specific WCAG compliance guides for e-commerce, education, healthcare, finance, and government. Learn requirements, key criteria, common issues, and best practices for your industry.",
+  keywords: [
+    "e-commerce accessibility",
+    "education accessibility",
+    "healthcare accessibility",
+    "Section 508 compliance",
+    "ADA compliance by industry",
+    "industry accessibility guides",
+  ],
+  openGraph: {
+    title: "Industry-Specific Accessibility Guides - WCAG Compliance by Sector",
+    description:
+      "Tailored accessibility guides for different industries. Learn specific requirements, legal obligations, and best practices for your sector.",
+    url: "https://thewcag.com/industry-guides",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Industry-Specific Accessibility Guides",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/industry-guides",
+  },
+}
 
 export default function IndustryGuidesPage() {
   const industries = [

@@ -21,6 +21,20 @@ import {
   Zap,
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Mobile Accessibility Guide - iOS, Android & WCAG Mobile Standards | TheWCAG",
+  description:
+    "Complete mobile accessibility guide. Learn touch targets, gestures, screen readers (VoiceOver, TalkBack), WCAG 2.2 mobile criteria, responsive design, and app accessibility for iOS and Android.",
+  openGraph: {
+    title: "Mobile Accessibility Guide - Make Apps & Mobile Sites Accessible",
+    description:
+      "Master mobile accessibility with our comprehensive guide covering touch targets, gestures, mobile screen readers, and WCAG mobile requirements.",
+    url: "https://thewcag.com/mobile-accessibility",
+    type: "article",
+  },
+}
 
 export default function MobileAccessibilityPage() {
   const structuredData = {

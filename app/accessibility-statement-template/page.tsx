@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -14,6 +15,38 @@ import {
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
 import { TemplateDisplay } from "@/components/accessibility-statement-template-display"
+
+export const metadata: Metadata = {
+  title: "Free Accessibility Statement Template & Generator - WCAG 2.2 Compliant | TheWCAG",
+  description:
+    "Free accessibility statement template and generator for WCAG 2.2 compliance. Download customizable templates, examples, and learn what to include in your accessibility statement.",
+  keywords: [
+    "accessibility statement template",
+    "accessibility statement generator",
+    "WCAG statement template",
+    "accessibility conformance statement",
+    "free accessibility template",
+  ],
+  openGraph: {
+    title: "Free Accessibility Statement Template & Generator",
+    description:
+      "Create a professional WCAG 2.2 compliant accessibility statement with our free template and generator. Download and customize for your website.",
+    url: "https://thewcag.com/accessibility-statement-template",
+    type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessibility Statement Template",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/accessibility-statement-template",
+  },
+}
 
 export default function AccessibilityStatementTemplatePage() {
   const structuredData = {

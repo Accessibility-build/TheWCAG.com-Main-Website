@@ -6,6 +6,20 @@ import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, Eye, Keyboard, Lightbulb, Wrench } from "lucide-react"
 import { principles } from "@/lib/wcag-data"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "WCAG Principles - Perceivable, Operable, Understandable, Robust (POUR) | TheWCAG",
+  description:
+    "Learn the 4 foundational WCAG principles (POUR): Perceivable, Operable, Understandable, and Robust. Complete guide with guidelines, success criteria, and examples for web accessibility.",
+  openGraph: {
+    title: "WCAG Principles - POUR Framework Explained",
+    description:
+      "Master the 4 WCAG principles: Perceivable, Operable, Understandable, Robust. Comprehensive guide with 13 guidelines and 78+ success criteria.",
+    url: "https://thewcag.com/principles",
+    type: "website",
+  },
+}
 
 export default function PrinciplesPage() {
   const structuredData = {

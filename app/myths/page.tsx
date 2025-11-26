@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -7,6 +8,39 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { XCircle, CheckCircle2, AlertTriangle, ArrowRight, BookOpen } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "12 Accessibility Myths Debunked - Common WCAG Misconceptions | TheWCAG",
+  description:
+    "Debunking 12 common web accessibility myths. Learn the truth about WCAG compliance costs, overlays, automated testing, color contrast, and more. Stop believing these misconceptions.",
+  keywords: [
+    "accessibility myths",
+    "WCAG myths",
+    "accessibility misconceptions",
+    "accessibility overlays myth",
+    "accessibility cost myth",
+    "automated testing myth",
+  ],
+  openGraph: {
+    title: "12 Accessibility Myths Debunked - Stop Believing These Misconceptions",
+    description:
+      "Common accessibility myths debunked with facts. Learn the truth about overlays, costs, compliance, automated testing, and design constraints.",
+    url: "https://thewcag.com/myths",
+    type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessibility Myths Debunked",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/myths",
+  },
+}
 
 export default function MythsPage() {
   const myths = [

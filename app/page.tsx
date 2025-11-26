@@ -36,6 +36,8 @@ import {
   Calendar,
   ExternalLink,
   Heart,
+  FileText,
+  AlertCircle,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -700,6 +702,91 @@ export default function HomePage() {
                   <Button asChild size="lg" variant="outline">
                     <Link href="/lawsuits">
                       View All Lawsuits
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </ScrollAnimation>
+            </div>
+          </section>
+
+          {/* Latest Blog Posts Section */}
+          <section className="py-12 sm:py-16 md:py-24">
+            <div className="container px-4 sm:px-6 lg:px-8">
+              <ScrollAnimation>
+                <div className="text-center mb-12">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Latest Blog Posts</h2>
+                  <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Insights, discussions, and analysis from the accessibility community
+                  </p>
+                </div>
+              </ScrollAnimation>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+                <ScrollAnimation threshold={0.1}>
+                  <Link href="/blog/is-accessibility-work-safe-from-ai-in-the-near-future" className="group block h-full">
+                    <Card className="h-full flex flex-col hover:shadow-lg transition-all hover:border-primary/50">
+                      <CardHeader className="flex-1 flex flex-col">
+                        <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
+                          <div className="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+                            <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                          </div>
+                          <div className="flex items-center gap-1 text-xs text-muted-foreground flex-shrink-0">
+                            <Calendar className="h-3 w-3" />
+                            <span className="whitespace-nowrap">Jan 26, 2025</span>
+                          </div>
+                        </div>
+                        <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-2 mb-2 sm:mb-3">
+                          Is Accessibility Work Safe from AI in the Near Future?
+                        </CardTitle>
+                        <CardDescription className="line-clamp-3 text-sm sm:text-base flex-1">
+                          With AI advancing rapidly, accessibility professionals are questioning their career futures. We analyze the Reddit discussion that&apos;s sparking debate: Can AI replace human expertise in making digital content accessible?
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="pt-0 mt-auto">
+                        <div className="flex items-center justify-end">
+                          <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.2}>
+                  <Link href="/blog/why-is-accessibility-being-delinked-from-disability" className="group block h-full">
+                    <Card className="h-full flex flex-col hover:shadow-lg transition-all hover:border-primary/50">
+                      <CardHeader className="flex-1 flex flex-col">
+                        <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
+                          <div className="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+                            <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                          </div>
+                          <div className="flex items-center gap-1 text-xs text-muted-foreground flex-shrink-0">
+                            <Calendar className="h-3 w-3" />
+                            <span className="whitespace-nowrap">Jan 27, 2025</span>
+                          </div>
+                        </div>
+                        <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-2 mb-2 sm:mb-3">
+                          Why Is Accessibility Being De-Linked from Disability?
+                        </CardTitle>
+                        <CardDescription className="line-clamp-3 text-sm sm:text-base flex-1">
+                          A critical examination of how accessibility messaging is shifting away from disability. We explore a Reddit discussion about why &quot;it helps everyone&quot; has replaced &quot;it helps disabled people&quot; as the primary accessibility argument.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="pt-0 mt-auto">
+                        <div className="flex items-center justify-end">
+                          <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </ScrollAnimation>
+              </div>
+
+              <ScrollAnimation>
+                <div className="text-center">
+                  <Button asChild size="lg" variant="outline">
+                    <Link href="/blog">
+                      View All Blog Posts
                       <ExternalLink className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>

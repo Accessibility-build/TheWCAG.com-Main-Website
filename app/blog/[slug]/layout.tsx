@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getBlogPostBySlug } from '@/lib/blog/storage'
+import { Breadcrumb } from '@/components/breadcrumb'
 
 export const dynamicParams = false
 export const revalidate = 3600 // Revalidate every hour
@@ -87,6 +88,25 @@ export default async function BlogPostLayout({
     notFound()
   }
 
-  return <>{children}</>
+  const breadcrumbItems = [
+    { label: 'Blog', href: '/blog' },
+    { label: post.title, href: `/blog/${slug}` },
+  ]
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          [data-blog-breadcrumb="default"] {
+            display: none !important;
+          }
+        `,
+      }} />
+      <div className="-mt-6 sm:-mt-8 md:-mt-12 mb-6 sm:mb-8 md:mb-12">
+        <Breadcrumb items={breadcrumbItems} />
+      </div>
+      {children}
+    </>
+  )
 }
 

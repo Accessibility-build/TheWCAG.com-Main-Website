@@ -21,6 +21,20 @@ import {
   TestTube,
   Lightbulb,
 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Getting Started with Web Accessibility - Complete Beginner's Guide | TheWCAG",
+  description:
+    "Learn web accessibility from scratch. Step-by-step guide to WCAG compliance, testing tools, common issues, and best practices. Perfect for developers and designers new to accessibility.",
+  openGraph: {
+    title: "Getting Started with Web Accessibility - Beginner's Guide",
+    description:
+      "Master web accessibility basics with our comprehensive beginner's guide. Learn WCAG principles, testing, and implementation step-by-step.",
+    url: "https://thewcag.com/getting-started",
+    type: "article",
+  },
+}
 
 export default function GettingStartedPage() {
   const steps = [

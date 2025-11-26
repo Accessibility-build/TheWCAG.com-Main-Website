@@ -6,16 +6,30 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  Code, 
-  CheckCircle2, 
-  ShieldCheck, 
-  Zap, 
-  Store, 
+import {
+  Code,
+  CheckCircle2,
+  ShieldCheck,
+  Zap,
+  Store,
   ArrowRight,
   Smartphone,
   Palette
 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Accessible iOS App Development - VoiceOver & iOS Accessibility | TheWCAG",
+  description:
+    "Professional iOS app development with built-in accessibility. VoiceOver support, Dynamic Type, iOS accessibility guidelines compliance. Swift and SwiftUI expertise.",
+  openGraph: {
+    title: "Accessible iOS App Development Services",
+    description:
+      "Expert iOS development with VoiceOver support and full accessibility compliance. Native Swift apps built for all users.",
+    url: "https://thewcag.com/services/ios-app-development",
+    type: "website",
+  },
+}
 
 export default function IOSAppDevelopmentPage() {
   const structuredData = {

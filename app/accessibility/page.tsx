@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -5,6 +6,44 @@ import { SkipLink } from "@/components/skip-link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Accessibility, CheckCircle2, AlertCircle, ExternalLink, Keyboard, Eye, Volume2 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Accessibility Statement - WCAG 2.2 AA Compliance | TheWCAG",
+  description:
+    "TheWCAG.com Accessibility Statement. Learn about our commitment to WCAG 2.2 Level AA compliance, accessibility features, keyboard navigation, screen reader support, and how to report accessibility issues.",
+  keywords: [
+    "accessibility statement",
+    "WCAG compliance",
+    "WCAG 2.2 AA",
+    "accessibility conformance",
+    "keyboard navigation",
+    "screen reader support",
+    "accessibility commitment",
+  ],
+  openGraph: {
+    title: "Accessibility Statement - WCAG 2.2 AA Compliant",
+    description:
+      "TheWCAG.com's commitment to accessibility. We conform to WCAG 2.2 Level AA standards with keyboard navigation, screen reader support, and more.",
+    url: "https://thewcag.com/accessibility",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "TheWCAG - WCAG 2.2 AA Accessible Website",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/accessibility",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 export default function AccessibilityStatementPage() {
   return (
@@ -191,7 +230,7 @@ export default function AccessibilityStatementPage() {
                       <strong>Website:</strong> <Link href="/contact" className="text-primary hover:underline">Contact Us Page</Link>
                     </p>
                     <p>
-                      <strong>Email:</strong> <a href="mailto:accessibility@thewcag.com" className="text-primary hover:underline">accessibility@thewcag.com</a>
+                      <strong>Email:</strong> <a href="mailto:work@thewcag.com" className="text-primary hover:underline">work@thewcag.com</a>
                     </p>
                   </div>
                   <p className="text-muted-foreground mt-4">

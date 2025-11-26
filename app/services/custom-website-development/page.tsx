@@ -6,17 +6,31 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  Monitor, 
-  CheckCircle2, 
-  Code, 
-  Palette, 
-  Search, 
+import {
+  Monitor,
+  CheckCircle2,
+  Code,
+  Palette,
+  Search,
   ArrowRight,
   Zap,
   ShieldCheck,
   Smartphone
 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Accessible Website Development Services - WCAG 2.2 Compliant | TheWCAG",
+  description:
+    "Custom accessible website development with WCAG 2.2 compliance built-in. Modern, responsive, SEO-optimized websites designed for accessibility from the ground up.",
+  openGraph: {
+    title: "Accessible Website Development Services",
+    description:
+      "Custom website development with accessibility built-in. WCAG 2.2 compliant, responsive, and optimized for all users.",
+    url: "https://thewcag.com/services/custom-website-development",
+    type: "website",
+  },
+}
 
 export default function CustomWebsiteDevelopmentPage() {
   const structuredData = {

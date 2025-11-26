@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -6,6 +7,46 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ShieldCheck, Scale, Heart, Users, Search, Code, Smartphone, Monitor, CheckCircle2, Target, Zap } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "About TheWCAG - Web Accessibility Experts & WCAG Compliance Specialists | TheWCAG",
+  description:
+    "Meet the accessibility experts behind TheWCAG.com. We're an independent educational resource dedicated to simplifying WCAG guidelines for developers, designers, and content creators. Learn about our mission, team, and services.",
+  keywords: [
+    "about thewcag",
+    "accessibility experts",
+    "WCAG specialists",
+    "web accessibility team",
+    "accessibility consulting",
+    "WCAG compliance services",
+  ],
+  openGraph: {
+    title: "About TheWCAG - Accessibility Experts Making the Web Inclusive",
+    description:
+      "Independent educational resource dedicated to simplifying web accessibility. Meet our team of WCAG compliance experts and learn how we help build accessible websites.",
+    url: "https://thewcag.com/about",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "TheWCAG - Web Accessibility Experts",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About TheWCAG - Accessibility Experts Making the Web Inclusive",
+    description:
+      "Independent educational resource dedicated to simplifying web accessibility. Meet our team of WCAG compliance experts.",
+    images: ["https://thewcag.com/Logo.png"],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/about",
+  },
+}
 
 export default function AboutPage() {
   const structuredData = {

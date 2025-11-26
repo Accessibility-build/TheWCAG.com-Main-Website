@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -16,6 +17,39 @@ import {
   BookOpen,
   Rocket,
 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "WCAG 2.2 vs 2.1 - Complete Comparison of Accessibility Standards | TheWCAG",
+  description:
+    "Comprehensive comparison of WCAG 2.2 vs 2.1. Learn about 9 new success criteria, deprecated 4.1.1 Parsing, and how to upgrade from WCAG 2.1 to 2.2. Published October 2023.",
+  keywords: [
+    "WCAG 2.2 vs 2.1",
+    "WCAG comparison",
+    "WCAG 2.2 new criteria",
+    "WCAG upgrade",
+    "WCAG differences",
+    "accessibility standards comparison",
+  ],
+  openGraph: {
+    title: "WCAG 2.2 vs 2.1 - Complete Comparison Guide",
+    description:
+      "Discover the 9 new accessibility criteria in WCAG 2.2, including mobile improvements, focus visibility, and cognitive enhancements. Complete upgrade guide.",
+    url: "https://thewcag.com/wcag-2-2-vs-2-1",
+    type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "WCAG 2.2 vs 2.1 Comparison",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/wcag-2-2-vs-2-1",
+  },
+}
 
 export default function WCAGComparisonPage() {
   const newCriteria = [

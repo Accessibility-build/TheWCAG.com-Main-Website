@@ -6,16 +6,30 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  ShieldCheck, 
-  CheckCircle2, 
-  Code, 
-  Palette, 
-  FileText, 
+import {
+  ShieldCheck,
+  CheckCircle2,
+  Code,
+  Palette,
+  FileText,
   ArrowRight,
   Wrench,
   Zap
 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Accessibility Remediation Services - Fix WCAG Issues Fast | TheWCAG",
+  description:
+    "Professional accessibility remediation services. We fix WCAG violations, update code, improve designs, and ensure ADA compliance. Fast turnaround, guaranteed results.",
+  openGraph: {
+    title: "Accessibility Remediation Services - Fix WCAG Issues",
+    description:
+      "Expert accessibility remediation. We fix code issues, update designs, and ensure WCAG 2.2 compliance for your website or application.",
+    url: "https://thewcag.com/services/accessibility-remediation",
+    type: "website",
+  },
+}
 
 export default function AccessibilityRemediationServicePage() {
   const structuredData = {

@@ -1,9 +1,39 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Scale, FileText, AlertCircle, Shield } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Terms of Service - Website Terms & Conditions | TheWCAG",
+  description:
+    "TheWCAG.com Terms of Service. Read our terms and conditions governing the use of our website, including permitted use, intellectual property, disclaimers, and limitations of liability.",
+  keywords: [
+    "terms of service",
+    "terms and conditions",
+    "website terms",
+    "legal terms",
+    "user agreement",
+    "disclaimer",
+  ],
+  openGraph: {
+    title: "Terms of Service - Website Terms & Conditions",
+    description:
+      "Read TheWCAG.com's terms and conditions governing website use, intellectual property, and disclaimers.",
+    url: "https://thewcag.com/terms",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+  },
+  alternates: {
+    canonical: "https://thewcag.com/terms",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 export default function TermsPage() {
   return (
@@ -219,7 +249,7 @@ export default function TermsPage() {
                       <strong>Website:</strong> <Link href="/contact" className="text-primary hover:underline">Contact Us Page</Link>
                     </p>
                     <p>
-                      <strong>Email:</strong> <a href="mailto:legal@thewcag.com" className="text-primary hover:underline">legal@thewcag.com</a>
+                      <strong>Email:</strong> <a href="mailto:work@thewcag.com" className="text-primary hover:underline">work@thewcag.com</a>
                     </p>
                   </div>
                 </CardContent>

@@ -18,7 +18,7 @@ import {
   Send, 
   CheckCircle2, 
   AlertCircle,
-  Github,
+  Code,
   Twitter,
   Linkedin,
   HelpCircle,
@@ -202,8 +202,8 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-medium text-lg mb-1">Email Us</p>
-                        <a href="mailto:contact@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors">
-                          contact@thewcag.com
+                        <a href="mailto:work@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors">
+                          work@thewcag.com
                         </a>
                       </div>
                     </div>
@@ -214,8 +214,8 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-medium text-lg mb-1">Support</p>
-                        <a href="mailto:info@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors">
-                          info@thewcag.com
+                        <a href="mailto:work@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors">
+                          work@thewcag.com
                         </a>
                       </div>
                     </div>
@@ -226,8 +226,8 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-medium text-lg mb-1">Legal</p>
-                        <a href="mailto:privacy@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors">
-                          privacy@thewcag.com
+                        <a href="mailto:work@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors">
+                          work@thewcag.com
                         </a>
                       </div>
                     </div>
@@ -237,14 +237,32 @@ export default function ContactPage() {
                 <div className="relative z-10 mt-12">
                   <p className="font-medium mb-4">Connect with us</p>
                   <div className="flex gap-4">
-                    <a href="#" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all hover:scale-110" aria-label="GitHub">
-                      <Github className="h-5 w-5" />
-                    </a>
-                    <a href="#" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all hover:scale-110" aria-label="Twitter">
+                    <a 
+                      href="https://x.com/TheWCAG" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" 
+                      aria-label="Follow us on Twitter (X)"
+                    >
                       <Twitter className="h-5 w-5" />
                     </a>
-                    <a href="#" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all hover:scale-110" aria-label="LinkedIn">
+                    <a 
+                      href="https://www.linkedin.com/company/thewcagcom/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" 
+                      aria-label="Follow us on LinkedIn"
+                    >
                       <Linkedin className="h-5 w-5" />
+                    </a>
+                    <a 
+                      href="https://codepen.io/hkeqdwro-the-reactor" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" 
+                      aria-label="View our CodePen profile"
+                    >
+                      <Code className="h-5 w-5" />
                     </a>
                   </div>
                 </div>
@@ -345,8 +363,8 @@ export default function ContactPage() {
                           </p>
                           <p className="text-xs text-destructive/70">
                             If the problem persists, please email us directly at{" "}
-                            <a href="mailto:contact@thewcag.com" className="underline hover:text-destructive">
-                              contact@thewcag.com
+                            <a href="mailto:work@thewcag.com" className="underline hover:text-destructive">
+                              work@thewcag.com
                             </a>
                           </p>
                         </div>

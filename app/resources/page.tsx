@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -7,6 +8,38 @@ import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Download, FileText, BookOpen, ExternalLink, Chrome, Video, ArrowRight } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Accessibility Resources - Checklists, Templates & Tools | TheWCAG",
+  description:
+    "Download free WCAG checklists, accessibility statement templates, and explore browser extensions, testing tools, and official documentation. Everything you need for accessibility compliance.",
+  keywords: [
+    "accessibility resources",
+    "WCAG checklist download",
+    "accessibility templates",
+    "accessibility testing tools",
+    "browser extensions accessibility",
+  ],
+  openGraph: {
+    title: "Accessibility Resources - Free Checklists, Templates & Tools",
+    description:
+      "Download free accessibility resources including WCAG checklists, templates, and find the best testing tools and browser extensions.",
+    url: "https://thewcag.com/resources",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessibility Resources",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/resources",
+  },
+}
 
 export default function ResourcesPage() {
   const structuredData = {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -16,6 +17,42 @@ import {
   GitCompare,
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
+
+export const metadata: Metadata = {
+  title: "WCAG 1.0 - First Web Accessibility Guidelines (1999) | TheWCAG",
+  description:
+    "Historical guide to WCAG 1.0, the first web accessibility standard published in May 1999. Learn about the 14 guidelines that established the foundation for web accessibility. Now obsolete - use WCAG 2.2.",
+  keywords: [
+    "WCAG 1.0",
+    "first accessibility guidelines",
+    "WCAG history",
+    "legacy accessibility standards",
+    "accessibility 1999",
+  ],
+  openGraph: {
+    title: "WCAG 1.0 - The First Web Accessibility Standard (1999)",
+    description:
+      "Historical reference guide to WCAG 1.0, the first international web accessibility standard. Now superseded by WCAG 2.2.",
+    url: "https://thewcag.com/wcag-1-0",
+    type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "WCAG 1.0 Historical Guide",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/wcag-1-0",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 export default function WCAG10Page() {
   const structuredData = {

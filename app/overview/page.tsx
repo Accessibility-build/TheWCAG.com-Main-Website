@@ -6,6 +6,20 @@ import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, CheckCircle2, Eye, Keyboard, Lightbulb, Wrench } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "WCAG Overview - Understanding Web Content Accessibility Guidelines | TheWCAG",
+  description:
+    "Comprehensive overview of WCAG 2.2 accessibility guidelines. Learn the POUR principles, success criteria levels (A, AA, AAA), and how to make websites accessible for everyone.",
+  openGraph: {
+    title: "WCAG Overview - Complete Guide to Accessibility Guidelines",
+    description:
+      "Master WCAG 2.2 with our complete overview. Understand the 4 principles, 13 guidelines, and 78+ success criteria for web accessibility.",
+    url: "https://thewcag.com/overview",
+    type: "article",
+  },
+}
 
 export default function OverviewPage() {
   const structuredData = {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -6,6 +7,39 @@ import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Code2, FormInput, Menu, PlayCircle, Table, GripVertical, AlertCircle, CheckCircle2, Clock } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Accessibility Code Examples - WCAG Compliant Components & Patterns | TheWCAG",
+  description:
+    "13+ accessible component examples with code: forms, buttons, modals, tables, navigation, tooltips, and more. Live demos, WCAG criteria mapping, and copy-paste ready code for developers.",
+  keywords: [
+    "accessibility examples",
+    "accessible components",
+    "WCAG code examples",
+    "accessible forms",
+    "accessible navigation",
+    "accessibility patterns",
+  ],
+  openGraph: {
+    title: "Accessibility Code Examples - Real-World WCAG Implementation",
+    description:
+      "Explore 13+ accessible component examples with live demos and copy-paste code. Forms, navigation, modals, tables, and more with WCAG compliance.",
+    url: "https://thewcag.com/examples",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessibility Code Examples",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/examples",
+  },
+}
 
 export default function ExamplesPage() {
   const structuredData = {

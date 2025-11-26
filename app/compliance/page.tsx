@@ -19,6 +19,20 @@ import {
   MapPin,
   Calendar,
 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Accessibility Compliance Laws & Regulations - ADA, Section 508, WCAG | TheWCAG",
+  description:
+    "Complete guide to digital accessibility compliance laws worldwide. Understand ADA, Section 508, EN 301 549, AODA, European Accessibility Act, and WCAG legal requirements for websites and apps.",
+  openGraph: {
+    title: "Accessibility Compliance Laws & Regulations Guide",
+    description:
+      "Navigate global accessibility laws: ADA, Section 508, EN 301 549, AODA, and European regulations. Learn compliance requirements and avoid legal issues.",
+    url: "https://thewcag.com/compliance",
+    type: "article",
+  },
+}
 
 export default function CompliancePage() {
   const structuredData = {

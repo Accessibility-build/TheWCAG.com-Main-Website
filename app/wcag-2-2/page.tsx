@@ -20,6 +20,20 @@ import {
   AlertCircle,
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "WCAG 2.2 Guidelines - Latest Web Accessibility Standards (October 2023) | TheWCAG",
+  description:
+    "Complete guide to WCAG 2.2, the current web accessibility standard published October 2023. Learn about 9 new success criteria for mobile, cognitive, and vision accessibility with compliance requirements.",
+  openGraph: {
+    title: "WCAG 2.2 - Latest Web Content Accessibility Guidelines",
+    description:
+      "Comprehensive guide to WCAG 2.2 with 9 new success criteria. Learn about mobile accessibility, cognitive improvements, and vision enhancements in the latest standard.",
+    url: "https://thewcag.com/wcag-2-2",
+    type: "article",
+  },
+}
 
 export default function WCAG22Page() {
   const structuredData = {

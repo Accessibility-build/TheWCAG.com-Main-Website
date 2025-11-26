@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -26,6 +27,39 @@ import {
   Image,
   ArrowRight,
 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Accessibility Tools Comparison - Screen Readers, Testing Tools & Services | TheWCAG",
+  description:
+    "Compare popular accessibility tools, screen readers (NVDA, JAWS, VoiceOver), testing tools (axe, WAVE, Lighthouse), and audit services. Find the best accessibility tools for your needs.",
+  keywords: [
+    "accessibility tools comparison",
+    "screen reader comparison",
+    "accessibility testing tools",
+    "axe vs WAVE",
+    "NVDA vs JAWS",
+    "accessibility audit services",
+  ],
+  openGraph: {
+    title: "Accessibility Tools Comparison - Find the Best Tools for Your Needs",
+    description:
+      "Comprehensive comparison of accessibility testing tools, screen readers, and audit services. Features, pricing, and recommendations.",
+    url: "https://thewcag.com/compare",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessibility Tools Comparison",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/compare",
+  },
+}
 
 export default function ComparePage() {
   const structuredData = {

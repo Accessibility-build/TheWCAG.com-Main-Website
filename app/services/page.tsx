@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -6,13 +7,13 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  ShieldCheck, 
-  Code, 
-  Smartphone, 
-  Monitor, 
-  Search, 
-  FileCheck, 
+import {
+  ShieldCheck,
+  Code,
+  Smartphone,
+  Monitor,
+  Search,
+  FileCheck,
   ArrowRight,
   AlertTriangle,
   CheckCircle2,
@@ -20,6 +21,39 @@ import {
   Users,
   Target
 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Professional Accessibility Services - Audits, Development & Remediation | TheWCAG",
+  description:
+    "Expert accessibility services: WCAG 2.2 audits, accessibility remediation, custom website development, iOS & Android app development. We build accessible digital experiences worldwide.",
+  keywords: [
+    "accessibility services",
+    "accessibility audit",
+    "accessibility remediation",
+    "accessible web development",
+    "accessible app development",
+    "WCAG consulting",
+  ],
+  openGraph: {
+    title: "Professional Accessibility Services - Build Accessible Digital Experiences",
+    description:
+      "Expert accessibility services including audits, remediation, custom website development, and mobile app development. WCAG 2.2 compliance guaranteed.",
+    url: "https://thewcag.com/services",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Professional Accessibility Services",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/services",
+  },
+}
 
 export default function ServicesPage() {
   const structuredData = {

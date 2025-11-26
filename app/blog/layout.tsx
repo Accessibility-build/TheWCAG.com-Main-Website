@@ -31,7 +31,6 @@ export default function BlogLayout({
   children: React.ReactNode
 }) {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
     { label: 'Blog', href: '/blog' },
   ]
 
@@ -41,8 +40,10 @@ export default function BlogLayout({
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <div className="container py-6 sm:py-8 md:py-12 max-w-6xl px-4 sm:px-6 lg:px-8">
-            <Breadcrumb items={breadcrumbItems} />
+          <div className="container pt-16 sm:pt-24 md:pt-32 pb-6 sm:pb-8 md:pb-12 max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div data-blog-breadcrumb="default">
+              <Breadcrumb items={breadcrumbItems} className="mb-6 sm:mb-8" />
+            </div>
             {children}
           </div>
         </main>

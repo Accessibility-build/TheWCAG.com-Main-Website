@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowUpRight, Github, Twitter, Linkedin } from "lucide-react"
+import { ArrowUpRight, Twitter, Linkedin, Code } from "lucide-react"
 import { NewsletterSubscription } from "@/components/newsletter-subscription"
 
 export function Footer() {
@@ -35,25 +35,31 @@ export function Footer() {
 
             <div className="mt-8 md:mt-12 flex gap-3 md:gap-4">
               <a
-                href="#"
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground transition-all duration-300"
-                aria-label="GitHub"
-              >
-                <Github className="w-4 h-4 md:w-5 md:h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground transition-all duration-300"
-                aria-label="Twitter"
+                href="https://x.com/TheWCAG"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-foreground"
+                aria-label="Follow us on Twitter (X)"
               >
                 <Twitter className="w-4 h-4 md:w-5 md:h-5" />
               </a>
               <a
-                href="#"
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground transition-all duration-300"
-                aria-label="LinkedIn"
+                href="https://www.linkedin.com/company/thewcagcom/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-foreground"
+                aria-label="Follow us on LinkedIn"
               >
                 <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
+              </a>
+              <a
+                href="https://codepen.io/hkeqdwro-the-reactor"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-foreground"
+                aria-label="View our CodePen profile"
+              >
+                <Code className="w-4 h-4 md:w-5 md:h-5" />
               </a>
             </div>
           </div>

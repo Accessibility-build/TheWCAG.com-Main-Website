@@ -1,16 +1,31 @@
 import Link from 'next/link'
-import { getAllBlogPosts } from '@/lib/blog/storage'
 import { StructuredData } from '@/components/structured-data'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { FileText, Calendar, CheckCircle2, AlertCircle, ExternalLink } from 'lucide-react'
+import { FileText, Calendar, ExternalLink } from 'lucide-react'
 import { format } from 'date-fns'
 
-export const revalidate = 3600 // Revalidate every hour
+// Manual blog posts data
+const manualBlogPosts = [
+  {
+    slug: 'is-accessibility-work-safe-from-ai-in-the-near-future',
+    title: 'Is Accessibility Work Safe from AI in the Near Future?',
+    excerpt: 'With AI advancing rapidly, accessibility professionals are questioning their career futures. We analyze the Reddit discussion that\'s sparking debate: Can AI replace human expertise in making digital content accessible?',
+    publishedAt: '2025-01-26',
+    factCheckStatus: 'verified' as const,
+    isPublished: true,
+  },
+  {
+    slug: 'why-is-accessibility-being-delinked-from-disability',
+    title: 'Why Is Accessibility Being De-Linked from Disability?',
+    excerpt: 'A critical examination of how accessibility messaging is shifting away from disability. We explore a Reddit discussion about why "it helps everyone" has replaced "it helps disabled people" as the primary accessibility argument.',
+    publishedAt: '2025-01-27',
+    factCheckStatus: 'needs_review' as const,
+    isPublished: true,
+  },
+]
 
-export default async function BlogPage() {
-  const allPosts = await getAllBlogPosts()
-  const publishedPosts = allPosts.filter((post) => post.isPublished)
+export default function BlogPage() {
+  const publishedPosts = manualBlogPosts.filter((post) => post.isPublished)
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -33,7 +48,7 @@ export default async function BlogPage() {
       name: 'Accessibility Blog Posts',
       description: 'Collection of accessibility news and insights',
       numberOfItems: publishedPosts.length,
-      itemListElement: publishedPosts.slice(0, 10).map((post, index) => ({
+      itemListElement: publishedPosts.map((post, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         item: {
@@ -65,12 +80,12 @@ export default async function BlogPage() {
   return (
     <>
       <StructuredData data={structuredData} />
-      <div className="mb-8">
+      <div className="mb-8 sm:mb-12">
         <div className="flex items-center gap-3 mb-4">
           <FileText className="h-8 w-8 text-primary" aria-hidden="true" />
-          <h1 className="text-4xl md:text-5xl font-bold">Accessibility Blog</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Accessibility Blog</h1>
         </div>
-        <p className="text-lg text-muted-foreground max-w-3xl">
+        <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
           Stay updated with the latest accessibility news, WCAG updates, and insights from the accessibility community.
           Curated articles from top accessibility sources.
         </p>
@@ -94,43 +109,29 @@ export default async function BlogPage() {
                     <CardTitle className="text-2xl mb-2">
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="hover:text-primary transition-colors"
+                        className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                       >
                         {post.title}
                       </Link>
                     </CardTitle>
                     <CardDescription className="text-base">{post.excerpt}</CardDescription>
                   </div>
-                  <div className="flex flex-col items-end gap-2">
-                    {post.factCheckStatus === 'needs_review' && (
-                      <Badge variant="outline" className="bg-amber-50 text-amber-800 border-amber-300">
-                        <AlertCircle className="h-3 w-3 mr-1" />
-                        Needs Review
-                      </Badge>
-                    )}
-                    {post.factCheckStatus === 'verified' && (
-                      <Badge variant="outline" className="bg-green-50 text-green-800 border-green-300">
-                        <CheckCircle2 className="h-3 w-3 mr-1" />
-                        Verified
-                      </Badge>
-                    )}
-                  </div>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="h-4 w-4" aria-hidden="true" />
                     <time dateTime={post.publishedAt}>
                       {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
                     </time>
                   </div>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="flex items-center gap-1 text-primary hover:underline"
+                    className="flex items-center gap-1 text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                   >
                     Read more
-                    <ExternalLink className="h-4 w-4" />
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>
               </CardContent>

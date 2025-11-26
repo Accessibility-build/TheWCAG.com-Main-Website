@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -19,6 +20,40 @@ import {
   Sparkles,
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
+
+export const metadata: Metadata = {
+  title: "WCAG 2.1 Guidelines - 17 New Mobile & Low Vision Criteria (2018) | TheWCAG",
+  description:
+    "Complete guide to WCAG 2.1, published June 2018. Learn about 17 new success criteria for mobile accessibility, low vision users, and cognitive disabilities. Comprehensive coverage of all 78 criteria.",
+  keywords: [
+    "WCAG 2.1",
+    "WCAG 2.1 guidelines",
+    "mobile accessibility",
+    "low vision accessibility",
+    "WCAG 2.1 criteria",
+    "touch target size",
+    "pointer gestures",
+  ],
+  openGraph: {
+    title: "WCAG 2.1 - 17 New Accessibility Criteria for Mobile & Low Vision",
+    description:
+      "Comprehensive guide to WCAG 2.1 with 17 new success criteria focusing on mobile accessibility, low vision, and cognitive disabilities.",
+    url: "https://thewcag.com/wcag-2-1",
+    type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "WCAG 2.1 Guidelines",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/wcag-2-1",
+  },
+}
 
 export default function WCAG21Page() {
   const structuredData = {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,6 +18,39 @@ import {
   Sparkles,
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
+
+export const metadata: Metadata = {
+  title: "WCAG 2.0 Guidelines - ISO Standard for Web Accessibility (2008) | TheWCAG",
+  description:
+    "Complete guide to WCAG 2.0, published December 2008. Learn about POUR principles, testable success criteria, and the foundation of modern accessibility. Became ISO/IEC 40500:2012.",
+  keywords: [
+    "WCAG 2.0",
+    "WCAG 2.0 guidelines",
+    "ISO 40500",
+    "POUR principles",
+    "web accessibility 2.0",
+    "accessibility ISO standard",
+  ],
+  openGraph: {
+    title: "WCAG 2.0 - The Foundation of Modern Web Accessibility",
+    description:
+      "Comprehensive guide to WCAG 2.0, the ISO standard that introduced POUR principles and testable success criteria. Foundation of all modern accessibility.",
+    url: "https://thewcag.com/wcag-2-0",
+    type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "WCAG 2.0 ISO Standard",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/wcag-2-0",
+  },
+}
 
 export default function WCAG20Page() {
   const structuredData = {

@@ -20,6 +20,20 @@ import {
   Shield,
   FileText,
 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Accessibility Testing Guide - Complete WCAG Testing Methodology | TheWCAG",
+  description:
+    "Learn how to test websites for WCAG compliance. Comprehensive guide covering automated testing tools, manual testing, screen readers, keyboard testing, and accessibility audit best practices.",
+  openGraph: {
+    title: "Accessibility Testing Guide - From Automated to Manual Testing",
+    description:
+      "Master accessibility testing with our complete guide. Learn automated tools, manual testing, screen readers, and create effective accessibility test plans.",
+    url: "https://thewcag.com/testing-guide",
+    type: "article",
+  },
+}
 
 export default function TestingGuidePage() {
   const testingMethods = [

@@ -23,6 +23,20 @@ import {
   BookOpen,
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "How to Make a Website Accessible - Complete WCAG Implementation Guide | TheWCAG",
+  description:
+    "Step-by-step guide to making your website accessible. Learn semantic HTML, ARIA, keyboard navigation, color contrast, forms, images, and WCAG 2.2 compliance with practical examples and code.",
+  openGraph: {
+    title: "How to Make a Website Accessible - Step-by-Step Guide",
+    description:
+      "Complete guide to web accessibility implementation. Learn the essential steps, tools, and techniques to make your website WCAG compliant.",
+    url: "https://thewcag.com/how-to-make-website-accessible",
+    type: "article",
+  },
+}
 
 export default function HowToMakeWebsiteAccessiblePage() {
   // HowTo structured data will be created after steps array is defined

@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -23,6 +24,40 @@ import {
   TrendingUp,
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
+
+export const metadata: Metadata = {
+  title: "WCAG 3.0 (W3C Accessibility Guidelines) - Future of Accessibility Standards | TheWCAG",
+  description:
+    "Complete guide to WCAG 3.0, the next generation accessibility standard. Learn about outcomes-based approach, Bronze/Silver/Gold scoring system, and how it differs from WCAG 2.2. Currently in development.",
+  keywords: [
+    "WCAG 3.0",
+    "W3C Accessibility Guidelines",
+    "WCAG 3",
+    "future accessibility standards",
+    "WCAG 3.0 outcomes",
+    "WCAG scoring system",
+    "Bronze Silver Gold accessibility",
+  ],
+  openGraph: {
+    title: "WCAG 3.0 - The Future of Web Accessibility Standards",
+    description:
+      "Discover WCAG 3.0's outcomes-based approach, scoring system, and what it means for the future of web accessibility. Complete guide to W3C Accessibility Guidelines.",
+    url: "https://thewcag.com/wcag-3-0",
+    type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "WCAG 3.0 - Future of Accessibility",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/wcag-3-0",
+  },
+}
 
 export default function WCAG30Page() {
   const structuredData = {

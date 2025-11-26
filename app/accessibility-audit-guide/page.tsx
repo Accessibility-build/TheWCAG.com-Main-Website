@@ -22,6 +22,20 @@ import {
   Search,
 } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Accessibility Audit Guide - Complete WCAG Website Audit Process | TheWCAG",
+  description:
+    "Learn how to conduct comprehensive accessibility audits. Step-by-step guide to WCAG audits covering automated testing, manual testing, screen readers, reporting, and creating VPAT documents.",
+  openGraph: {
+    title: "Accessibility Audit Guide - Professional WCAG Audit Process",
+    description:
+      "Master accessibility auditing with our comprehensive guide. Learn the complete audit process, tools, methodologies, and reporting best practices.",
+    url: "https://thewcag.com/accessibility-audit-guide",
+    type: "article",
+  },
+}
 
 export default function AccessibilityAuditGuidePage() {
   // HowTo structured data will be created after auditSteps array

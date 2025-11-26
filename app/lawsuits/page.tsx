@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -15,6 +16,39 @@ import { StructuredData } from "@/components/structured-data"
 import { LitigationTrends } from "@/components/litigation-trends"
 import { LawsuitArchiveTable } from "@/components/lawsuit-archive-table"
 import { PaginatedLawsuitsList } from "@/components/paginated-lawsuits-list"
+
+export const metadata: Metadata = {
+  title: "Accessibility Lawsuits Database - ADA & WCAG Legal Cases | TheWCAG",
+  description:
+    "Comprehensive database of accessibility lawsuits, ADA compliance legal cases, and website accessibility settlements. Learn from real-world litigation trends and avoid common violations.",
+  keywords: [
+    "accessibility lawsuits",
+    "ADA lawsuits",
+    "website accessibility legal cases",
+    "WCAG lawsuits",
+    "accessibility settlements",
+    "ADA compliance litigation",
+  ],
+  openGraph: {
+    title: "Accessibility Lawsuits Database - Legal Cases & Settlements",
+    description:
+      "Track recent accessibility lawsuits and ADA compliance legal cases. Learn from settlements and understand litigation trends to protect your business.",
+    url: "https://thewcag.com/lawsuits",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessibility Lawsuits Database",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/lawsuits",
+  },
+}
 
 export default function LawsuitsPage() {
   // Get lawsuits from the last 3 years (current year, last year, and year before)

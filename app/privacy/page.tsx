@@ -1,9 +1,39 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ShieldCheck, Lock, Eye, FileText } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Privacy Policy - Data Protection & Privacy Practices | TheWCAG",
+  description:
+    "TheWCAG.com Privacy Policy. Learn how we collect, use, protect, and manage your data. We're committed to protecting your privacy and complying with data protection regulations.",
+  keywords: [
+    "privacy policy",
+    "data protection",
+    "privacy practices",
+    "GDPR compliance",
+    "data security",
+    "cookies policy",
+  ],
+  openGraph: {
+    title: "Privacy Policy - Data Protection & Privacy Practices",
+    description:
+      "Learn how TheWCAG.com protects your privacy. Our privacy policy explains data collection, usage, and protection practices.",
+    url: "https://thewcag.com/privacy",
+    type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+  },
+  alternates: {
+    canonical: "https://thewcag.com/privacy",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 export default function PrivacyPage() {
   return (
@@ -236,7 +266,7 @@ export default function PrivacyPage() {
                       <strong>Website:</strong> <Link href="/contact" className="text-primary hover:underline">Contact Us Page</Link>
                     </p>
                     <p>
-                      <strong>Email:</strong> <a href="mailto:privacy@thewcag.com" className="text-primary hover:underline">privacy@thewcag.com</a>
+                      <strong>Email:</strong> <a href="mailto:work@thewcag.com" className="text-primary hover:underline">work@thewcag.com</a>
                     </p>
                   </div>
                 </CardContent>

@@ -6,16 +6,30 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  Smartphone, 
-  CheckCircle2, 
-  ShieldCheck, 
-  Zap, 
-  Store, 
+import {
+  Smartphone,
+  CheckCircle2,
+  ShieldCheck,
+  Zap,
+  Store,
   ArrowRight,
   Code,
   Palette
 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Accessible Android App Development - TalkBack & Material Design | TheWCAG",
+  description:
+    "Professional Android app development with accessibility built-in. TalkBack support, Material Design accessibility, Kotlin expertise. Apps that work for everyone.",
+  openGraph: {
+    title: "Accessible Android App Development Services",
+    description:
+      "Expert Android development with TalkBack support and Material Design accessibility. Native Kotlin apps built for all users.",
+    url: "https://thewcag.com/services/android-app-development",
+    type: "website",
+  },
+}
 
 export default function AndroidAppDevelopmentPage() {
   const structuredData = {

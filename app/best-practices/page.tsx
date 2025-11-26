@@ -28,7 +28,20 @@ import {
   Users,
   Zap,
 } from "lucide-react"
-import { StructuredData } from "@/components/structured-data"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Accessibility Best Practices - Essential WCAG Implementation Guide | TheWCAG",
+  description:
+    "Master web accessibility with proven best practices. Learn do's and don'ts for semantic HTML, ARIA, forms, images, navigation, multimedia, and WCAG compliance across all components.",
+  openGraph: {
+    title: "Accessibility Best Practices - Do's and Don'ts for WCAG Compliance",
+    description:
+      "Complete guide to accessibility best practices with practical examples. Learn what works and what to avoid for semantic HTML, ARIA, forms, and more.",
+    url: "https://thewcag.com/best-practices",
+    type: "article",
+  },
+}
 
 export default function BestPracticesPage() {
   const structuredData = {
