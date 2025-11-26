@@ -159,7 +159,7 @@ export default function BlogPost() {
                 <ul className="space-y-3" role="list">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
-                    <span><strong>AI can&apos;t replace human judgment</strong> in accessibility work—it can only assist</span>
+                    <span><strong>AI can&apos;t replace human judgment</strong> in accessibility work it can only assist</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
@@ -248,7 +248,7 @@ export default function BlogPost() {
                 This observation from an accessibility professional highlights a crucial point: even with billions
                 of dollars in resources and years of development, automated accessibility solutions still fall short
                 of human quality. YouTube&apos;s automated captions, despite continuous improvements, frequently make
-                errors that can completely change the meaning of content—especially with:
+                errors that can completely change the meaning of content especially with:
               </p>
               <ul className="space-y-2 my-6 list-disc list-inside">
                 <li>Technical terminology</li>
@@ -324,7 +324,7 @@ export default function BlogPost() {
                     <li>Color contrast and visual design decisions</li>
                   </ul>
                   <p className="text-sm text-muted-foreground mt-4">
-                    These require understanding the document&apos;s purpose, audience, and context—areas where
+                    These require understanding the document&apos;s purpose, audience, and context areas where
                     AI still lacks human-level comprehension.
                   </p>
                 </CardContent>
@@ -379,7 +379,7 @@ export default function BlogPost() {
                 <li>Content moderation AI that makes controversial decisions</li>
               </ul>
               <p className="mb-4">
-                The danger isn&apos;t that AI will become sophisticated enough to replace accessibility professionals—it&apos;s
+                The danger isn&apos;t that AI will become sophisticated enough to replace accessibility professionals it&apos;s
                 that organizations might prematurely adopt AI solutions that provide insufficient accessibility, potentially:
               </p>
               <ul className="space-y-2 my-6 list-disc list-inside">

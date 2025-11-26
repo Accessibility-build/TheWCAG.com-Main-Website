@@ -1471,10 +1471,10 @@ function SortableList({ items }) {
     ],
     codeExamples: {
       html: `<!-- âŒ Bad: Too small -->
-<button style="width: 16px; height: 16px;">Ã—</button>
+<button style="width: 16px; height: 16px;">Ã </button>
 
 <!-- âœ… Good: Minimum 24x24 pixels -->
-<button style="min-width: 24px; min-height: 24px; padding: 8px;">Ã—</button>
+<button style="min-width: 24px; min-height: 24px; padding: 8px;">Ã </button>
 
 <!-- âœ… Good: Link with adequate padding -->
 <a href="#" style="display: inline-block; min-height: 24px; padding: 8px 12px;">

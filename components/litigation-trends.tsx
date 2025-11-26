@@ -201,7 +201,7 @@ export function LitigationTrends() {
                 Key Takeaway
               </p>
               <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">
-                Accessibility litigation continues to grow with expanding geographic reach. Organizations in targeted industries (fashion, food, e-commerce) face increased exposure. The 41% repeat defendant rate demonstrates that temporary fixes are insufficient—comprehensive, proactive accessibility implementation is essential to avoid litigation.
+                Accessibility litigation continues to grow with expanding geographic reach. Organizations in targeted industries (fashion, food, e-commerce) face increased exposure. The 41% repeat defendant rate demonstrates that temporary fixes are insufficient comprehensive, proactive accessibility implementation is essential to avoid litigation.
               </p>
             </div>
           </div>

@@ -3891,7 +3891,7 @@ The case was settled with terms that typically include commitments to remediate 
       "Financial services companies face significant litigation exposure for inaccessible websites",
     ],
     impact:
-      "This case emphasizes that online-only financial institutions cannot rely on physical branch alternatives to excuse inaccessible digital platforms. For banks that operate primarily or exclusively online, website accessibility is not optional—it's a fundamental requirement to ensure equal access to financial services.",
+      "This case emphasizes that online-only financial institutions cannot rely on physical branch alternatives to excuse inaccessible digital platforms. For banks that operate primarily or exclusively online, website accessibility is not optional it's a fundamental requirement to ensure equal access to financial services.",
   },
   {
     slug: "gil-v-winn-dixie-2017-2021",

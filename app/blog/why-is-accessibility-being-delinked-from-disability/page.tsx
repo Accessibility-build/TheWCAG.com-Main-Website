@@ -193,7 +193,7 @@ export default function BlogPost() {
               A recent Reddit discussion in the accessibility community raised a critical question: <strong>Why is accessibility being de-linked from disability?</strong>
             </p>
             <p className="mb-4">
-              The original poster noticed a concerning pattern: accessibility is increasingly being presented in business contexts, tech talks, and DEI initiatives as either a legal requirement or something that &quot;benefits everyone.&quot; What&apos;s often missing? The lived experiences of disabled people—the group that accessibility most directly supports.
+              The original poster noticed a concerning pattern: accessibility is increasingly being presented in business contexts, tech talks, and DEI initiatives as either a legal requirement or something that &quot;benefits everyone.&quot; What&apos;s often missing? The lived experiences of disabled people the group that accessibility most directly supports.
             </p>
             <p>
               As the poster put it: <em>&quot;It&apos;s as if saying &apos;this is for disabled people&apos; is no longer seen as persuasive enough. The messaging becomes: &apos;It helps everyone!&apos; or &apos;It&apos;s good UX!&apos; or &apos;It boosts SEO!&apos;&quot;</em>
@@ -214,10 +214,10 @@ export default function BlogPost() {
               The original post asked a powerful question: <strong>&quot;Are we not worth doing it for on our own?&quot;</strong>
             </p>
             <p className="mb-4">
-              Why is the fact that accessibility empowers disabled people—that it&apos;s essential for our participation, our rights, our dignity—not the main point anymore?
+              Why is the fact that accessibility empowers disabled people that it&apos;s essential for our participation, our rights, our dignity not the main point anymore?
             </p>
             <blockquote className="border-l-4 border-blue-500 pl-4 italic text-xl my-6" cite="https://www.reddit.com/r/accessibility/">
-              <p>&quot;We&apos;re not edge cases or an optional bonus. We&apos;re the reason accessibility exists. Yes, others benefit—but we need it.&quot;</p>
+              <p>&quot;We&apos;re not edge cases or an optional bonus. We&apos;re the reason accessibility exists. Yes, others benefit but we need it.&quot;</p>
             </blockquote>
             <p className="mt-4 mb-4">
               The post highlighted a painful reality: disabled people are being treated as &quot;too political, too uncomfortable, or simply not appealing enough as a reason on our own.&quot; It feels like making the world accessible for disabled people isn&apos;t compelling unless it can be reframed as helping &quot;everyone.&quot;
@@ -272,13 +272,13 @@ export default function BlogPost() {
                   One commenter pointed out a critical issue: <em>&quot;Most people don&apos;t have real relationships with disabled folks, so they don&apos;t see the impact of inaccessibility.&quot;</em>
                 </p>
                 <p className="mb-4">
-                  Disability has been made invisible for generations. Historical &quot;ugly laws&quot; literally banned disabled people from being seen in public. Chicago&apos;s ugly laws weren&apos;t repealed until 1974. That kind of erasure doesn&apos;t just disappear—it gets baked into culture.
+                  Disability has been made invisible for generations. Historical &quot;ugly laws&quot; literally banned disabled people from being seen in public. Chicago&apos;s ugly laws weren&apos;t repealed until 1974. That kind of erasure doesn&apos;t just disappear it gets baked into culture.
                 </p>
                 <p className="mb-4">
                   As another commenter noted: <em>&quot;Even though wheelchairs are literally the symbol of disability, I think it&apos;s been months since I&apos;ve actually seen somebody using one.&quot;</em>
                 </p>
                 <p>
-                  When disability is invisible, it&apos;s easier to ignore—and easier to reframe accessibility as something else entirely.
+                  When disability is invisible, it&apos;s easier to ignore and easier to reframe accessibility as something else entirely.
                 </p>
               </CardContent>
             </Card>

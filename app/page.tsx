@@ -432,7 +432,7 @@ export default function HomePage() {
                 <div className="text-center mb-10">
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Why Accessibility Matters</h2>
                   <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Accessibility isn't just the right thing to do—it's good business and affects everyone
+                    Accessibility isn't just the right thing to do it's good business and affects everyone
                   </p>
                 </div>
               </ScrollAnimation>
@@ -517,14 +517,14 @@ export default function HomePage() {
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <blockquote className="text-sm italic text-accent border-l-2 border-accent/30 pl-3">
-                        "When websites are accessible, I can shop, work, and connect independently. It's not just convenience—it's dignity."
+                        "When websites are accessible, I can shop, work, and connect independently. It's not just convenience it's dignity."
                       </blockquote>
-                      <p className="text-xs text-muted-foreground">— Sarah, screen reader user</p>
+                      <p className="text-xs text-muted-foreground">  Sarah, screen reader user</p>
                       
                       <blockquote className="text-sm italic text-accent border-l-2 border-accent/30 pl-3">
                         "Good contrast and clear navigation help me focus despite my ADHD. Accessible design benefits everyone."
                       </blockquote>
-                      <p className="text-xs text-muted-foreground">— Marcus, cognitive disability</p>
+                      <p className="text-xs text-muted-foreground">  Marcus, cognitive disability</p>
                     </CardContent>
                   </Card>
                 </ScrollAnimation>
