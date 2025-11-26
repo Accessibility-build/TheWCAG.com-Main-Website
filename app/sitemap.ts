@@ -6,10 +6,13 @@ import { getPublishedBlogPosts } from '@/lib/blog/storage'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://thewcag.com'
   
-  // Content update dates
+  // Use current date for all pages to trigger re-indexing
+  const currentDate = new Date()
+  
+  // Content update dates (kept for reference, but using currentDate for all pages)
   const wcag22Published = new Date('2023-10-05') // WCAG 2.2 publication date
   const siteLaunch = new Date('2024-01-01') // Approximate site launch
-  const recentUpdate = new Date('2025-01-15') // Recent major updates (best practices, lawsuits, examples)
+  const recentUpdate = currentDate // Use current date for re-indexing
   const january2025 = new Date('2025-01-01') // January 2025 updates
   const wcag21Published = new Date('2018-06-05') // WCAG 2.1 publication
   const wcag20Published = new Date('2008-12-11') // WCAG 2.0 publication
@@ -19,325 +22,337 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
       url: `${baseUrl}/principles`,
-      lastModified: wcag22Published,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: baseUrl,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/principles`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/checklist`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/learn`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/resources`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/tools`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/services/accessibility-audit`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/services/accessibility-remediation`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/services/custom-website-development`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/services/android-app-development`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/services/ios-app-development`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: siteLaunch,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: siteLaunch,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/compliance`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/getting-started`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tools/contrast-checker`,
-      lastModified: siteLaunch,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/whats-new`,
-      lastModified: wcag22Published,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/overview`,
-      lastModified: wcag22Published,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/examples`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/examples/accessible-input-fields`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/accordions`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/buttons-links`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/cards`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/dropdowns-selects`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/forms`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/lists`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/modals-dialogs`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/navigation`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/pagination`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/progress-indicators`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/tables`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/examples/tooltips`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: siteLaunch,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: siteLaunch,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/accessibility`,
-      lastModified: siteLaunch,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/compare`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/faq`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/glossary`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/wcag-2-2-vs-2-1`,
-      lastModified: wcag22Published,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/myths`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/testing-guide`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/industry-guides`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/wcag-3-0`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/wcag-1-0`,
-      lastModified: wcag10Published,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/wcag-2-0`,
-      lastModified: wcag20Published,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/wcag-2-1`,
-      lastModified: wcag21Published,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/wcag-2-2`,
-      lastModified: wcag22Published,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/how-to-make-website-accessible`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/best-practices`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/accessibility-audit-guide`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/mobile-accessibility`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/accessibility-statement-template`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/lawsuits`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
@@ -347,58 +362,58 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const principlePages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/principles/perceivable`,
-      lastModified: wcag22Published,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/principles/operable`,
-      lastModified: wcag22Published,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/principles/understandable`,
-      lastModified: wcag22Published,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/principles/robust`,
-      lastModified: wcag22Published,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
   ]
 
-  // Criteria pages - use WCAG 2.2 publication date for all, or recent update for new criteria
+  // Criteria pages - use current date for re-indexing
   const criteriaPages: MetadataRoute.Sitemap = successCriteria.map((criterion) => ({
     url: `${baseUrl}/criteria/${criterion.number}`,
-    lastModified: criterion.isNew ? recentUpdate : wcag22Published,
+    lastModified: currentDate,
     changeFrequency: 'monthly',
     priority: criterion.level === 'A' ? 0.8 : criterion.level === 'AA' ? 0.7 : 0.6,
   }))
 
-  // Lawsuit pages
+  // Lawsuit pages - use current date for re-indexing
   const lawsuitPages: MetadataRoute.Sitemap = getAllLawsuits().map((lawsuit) => ({
     url: `${baseUrl}/lawsuits/${lawsuit.slug}`,
-    lastModified: new Date(lawsuit.dateResolved || lawsuit.dateFiled),
+    lastModified: currentDate,
     changeFrequency: 'yearly',
     priority: 0.7,
   }))
 
-  // Blog pages
+  // Blog pages - use current date for re-indexing
   const blogPosts = await getPublishedBlogPosts()
   const blogPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/blog`,
-      lastModified: recentUpdate,
+      lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.8,
     },
     ...blogPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.publishedAt),
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     })),
