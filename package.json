@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npm run generate-blog:build && next build",
+    "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
-    "build:check": "npm run generate-blog:build && next build && echo '✅ Build successful!'",
+    "build:check": "next build && echo '✅ Build successful!'",
     "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true next build",
     "generate-blog:build": "tsx scripts/generate-blog-build.ts",
