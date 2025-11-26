@@ -21,9 +21,7 @@ import {
   Code,
   Twitter,
   Linkedin,
-  HelpCircle,
   FileText,
-  Shield,
   MapPin,
   Clock
 } from "lucide-react"
@@ -201,34 +199,13 @@ export default function ContactPage() {
                         <Mail className="h-6 w-6" />
                       </div>
                       <div>
-                        <p className="font-medium text-lg mb-1">Email Us</p>
-                        <a href="mailto:work@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors">
+                        <p className="font-medium text-lg mb-1">Get in Touch</p>
+                        <a href="mailto:work@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary rounded">
                           work@thewcag.com
                         </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 group">
-                      <div className="p-3 bg-white/10 rounded-xl group-hover:bg-white/20 transition-colors shrink-0">
-                        <HelpCircle className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-lg mb-1">Support</p>
-                        <a href="mailto:work@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors">
-                          work@thewcag.com
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 group">
-                      <div className="p-3 bg-white/10 rounded-xl group-hover:bg-white/20 transition-colors shrink-0">
-                        <Shield className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-lg mb-1">Legal</p>
-                        <a href="mailto:work@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors">
-                          work@thewcag.com
-                        </a>
+                        <p className="text-sm text-primary-foreground/70 mt-2">
+                          For general inquiries, support, or legal matters
+                        </p>
                       </div>
                     </div>
                   </div>
