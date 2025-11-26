@@ -303,8 +303,8 @@ export default function ButtonsLinksPage() {
               <Button
                 type="button"
                 onClick={() => {
-                  // Action would be performed here
-                  console.log("Action performed")
+                  // Demo: In production, perform actual action here
+                  console.log("[Demo] Action performed")
                 }}
                 aria-label="Perform action"
               >
@@ -316,8 +316,8 @@ export default function ButtonsLinksPage() {
               <Button
                 type="button"
                 onClick={() => {
-                  // Dialog would open here
-                  console.log("Dialog would open")
+                  // Demo: In production, open actual dialog here
+                  console.log("[Demo] Dialog would open")
                 }}
                 aria-label="Open dialog"
               >

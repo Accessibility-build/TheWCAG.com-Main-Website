@@ -53,6 +53,23 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()'
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.vercel-insights.com https://*.vercel-scripts.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' data: https://fonts.gstatic.com",
+              "img-src 'self' data: https: blob:",
+              "connect-src 'self' https://www.google-analytics.com https://*.vercel-insights.com https://formspree.io",
+              "frame-src 'self' https://www.youtube.com",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self' https://formspree.io",
+              "frame-ancestors 'self'",
+              "upgrade-insecure-requests"
+            ].join('; ')
           }
         ],
       },

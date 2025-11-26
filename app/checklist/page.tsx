@@ -208,7 +208,7 @@ export default function ChecklistPage() {
                       <label htmlFor="filter-level" className="text-sm font-semibold text-foreground block">
                         Conformance Level
                       </label>
-                      <Select value={filterLevel} onValueChange={(value: any) => setFilterLevel(value)}>
+                      <Select value={filterLevel} onValueChange={(value: string) => setFilterLevel(value)}>
                         <SelectTrigger id="filter-level" className="w-full">
                           <SelectValue placeholder="Select level" />
                         </SelectTrigger>

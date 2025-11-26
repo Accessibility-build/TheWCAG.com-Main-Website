@@ -27,8 +27,18 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accessible Forms - WCAG Compliant Form Examples",
+    description: "Learn how to create accessible forms with proper labels, error handling, and validation.",
+    images: ["https://thewcag.com/Logo.png"],
+  },
   alternates: {
     canonical: "https://thewcag.com/examples/forms",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 

@@ -14,11 +14,30 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Accessible Modals & Dialogs - WCAG Compliant Examples",
     description: "Learn how to create accessible modals and dialogs with proper focus management.",
-    type: "website",
+    type: "article",
     url: "https://thewcag.com/examples/modals-dialogs",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessible Modals & Dialogs Example",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accessible Modals & Dialogs - WCAG Compliant Examples",
+    description: "Learn how to create accessible modals and dialogs with proper focus management.",
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/examples/modals-dialogs",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 

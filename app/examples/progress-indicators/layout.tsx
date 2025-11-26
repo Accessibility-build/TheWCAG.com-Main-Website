@@ -8,11 +8,30 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Accessible Progress Indicators - WCAG Compliant Examples",
     description: "Learn how to create accessible progress indicators with proper ARIA patterns.",
-    type: "website",
+    type: "article",
     url: "https://thewcag.com/examples/progress-indicators",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessible Progress Indicators Example",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accessible Progress Indicators - WCAG Compliant Examples",
+    description: "Learn how to create accessible progress indicators with proper ARIA patterns.",
+    images: ["https://thewcag.com/Logo.png"],
   },
   alternates: {
     canonical: "https://thewcag.com/examples/progress-indicators",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 
