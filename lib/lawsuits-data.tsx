@@ -3761,6 +3761,63 @@ Causes of Action:
       "This case highlights the ongoing wave of e-commerce accessibility lawsuits targeting retail websites. Rowing Blazers, known for its preppy-inspired apparel, joins a growing list of fashion retailers facing ADA litigation. The case underscores that all online retailers, regardless of size or niche market, must ensure their websites are accessible to users with disabilities. The proposed class action format increases potential liability and serves as a warning to e-commerce businesses that have not prioritized web accessibility.",
   },
   {
+    slug: "darnell-williams-v-pete-and-pedro-2025",
+    title: "Darnell Williams v. Pete and Pedro, LLC - Men's Grooming Website Accessibility",
+    defendant: "Pete and Pedro, LLC",
+    plaintiff: "Darnell Williams",
+    dateFiled: "2025-04-25",
+    status: "ongoing",
+    caseNumber: "1:25-cv-04503",
+    summary:
+      "Lawsuit alleging Pete and Pedro's e-commerce website is inaccessible to blind users, preventing visually impaired individuals from accessing the men's grooming brand's products and services in violation of the Americans with Disabilities Act.",
+    details: `Darnell Williams, a visually impaired individual, filed a lawsuit against Pete and Pedro, LLC on April 25, 2025, in the U.S. District Court for the Northern District of Illinois. The case is presided over by Honorable Judge Martha M. Pacold.
+
+Williams alleges that Pete and Pedro's website (www.peteandpedro.com) is not sufficiently digitally accessible to blind and visually impaired users, violating Title III of the Americans with Disabilities Act. Pete & Pedro is a leading men's grooming brand offering professional-quality products and expert advice for hair care and grooming.
+
+The complaint alleges that the website contains accessibility barriers that prevent blind users from independently accessing the company's products, services, and information. These barriers likely include issues with screen reader compatibility, navigation difficulties, and problems accessing product information and completing transactions.
+
+Williams, represented by Equal Access Law Group, PLLC, has filed similar accessibility lawsuits against other companies including Rowing Blazers Ltd., Alphalete Athletics, LLC, and Lowa Boots, LLC, demonstrating a pattern of legal actions to enforce digital accessibility compliance.
+
+Causes of Action:
+- Violation of 42 U.S.C. §§ 12181 et seq. – Title III of the Americans with Disabilities Act
+- Declaratory Relief
+- Negligent Infliction of Emotional Distress`,
+    issues: [
+      "Website inaccessible to blind users",
+      "Digital accessibility barriers",
+      "Screen reader incompatibility",
+      "Navigation difficulties",
+      "Product information inaccessibility",
+      "Transaction completion barriers",
+      "ADA Title III violations",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court for the Northern District of Illinois",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "Law360 - Case Information",
+        url: "https://www.law360.com/cases/680baa3abc3381c449b9e969",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com - Case Summary",
+        url: "https://www.accessibility.com/digital-lawsuits/darnell-williams-vs-pete-and-pedro-llc-2025-04-25",
+      },
+    ],
+    keyTakeaways: [
+      "E-commerce websites in the personal care and grooming industry must be accessible",
+      "Men's grooming and household product retailers face increasing accessibility litigation",
+      "Serial litigants continue to file accessibility lawsuits across diverse industries",
+      "Screen reader compatibility is essential for ADA compliance in e-commerce",
+      "Product information and transaction completion must be accessible to all users",
+      "Smaller niche brands are not exempt from accessibility requirements",
+    ],
+    impact:
+      "This case demonstrates that accessibility litigation extends beyond traditional retail sectors to include personal care and grooming brands. Pete and Pedro, as a specialized men's grooming brand, highlights that companies in the household and personal products industry must ensure their digital presence is accessible. The case reinforces that all e-commerce businesses, regardless of their market niche or product category, face potential legal exposure if their websites are not accessible to users with disabilities.",
+  },
+  {
     slug: "malone-v-disney-das-policy-2024",
     title: "Malone v. Disney - Disability Access Service Class Action",
     defendant: "Walt Disney Parks and Resorts U.S., Inc.",
