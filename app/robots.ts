@@ -48,7 +48,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: 'https://thewcag.com/sitemap.xml',
-    host: 'https://thewcag.com',
   }
 }
 
