@@ -3700,6 +3700,67 @@ The DOJ is seeking $125 million in damages for affected individuals and an injun
       "This lawsuit represents one of the largest disability discrimination cases against a ride-sharing platform, with $125 million in potential damages. It sets a precedent that technology platforms cannot use automated systems that disadvantage people with disabilities, and that companies are responsible for ensuring their drivers comply with ADA requirements.",
   },
   {
+    slug: "darnell-williams-v-rowing-blazers-2025",
+    title: "Darnell Williams v. Rowing Blazers Ltd. - E-Commerce Website Accessibility",
+    defendant: "Rowing Blazers Ltd.",
+    plaintiff: "Darnell Williams",
+    dateFiled: "2025-10-24",
+    status: "ongoing",
+    caseNumber: "1:25-cv-13002",
+    summary:
+      "Class action lawsuit alleging Rowing Blazers' e-commerce website is inaccessible to blind users, with significant barriers preventing navigation and transaction completion in violation of the Americans with Disabilities Act.",
+    details: `Darnell Williams, a visually impaired individual, filed a class action lawsuit against Rowing Blazers Ltd. on October 24, 2025, in the United States District Court for the Northern District of Illinois. The case is presided over by Honorable Judge John Robert Blakey.
+
+Williams alleges that Rowing Blazers' website (www.rowingblazers.com) is inaccessible to blind and visually impaired users, violating Title III of the Americans with Disabilities Act. He encountered significant barriers while attempting to purchase a shirt from the preppy-inspired apparel retailer, including:
+
+- Navigation difficulties that prevented independent browsing
+- Issues completing transactions and checkout processes
+- Inability to access product information and descriptions
+- Screen reader incompatibility with website elements
+
+The lawsuit is filed as a proposed class action on behalf of all legally blind individuals in the United States who have attempted to access rowingblazers.com and were denied access to the enjoyment of goods and services offered on the website during the relevant statutory period.
+
+Williams, represented by Equal Access Law Group, PLLC, has filed similar accessibility lawsuits against other companies including Alphalete Athletics, LLC and Lowa Boots, LLC.
+
+Causes of Action:
+- Violation of 42 U.S.C. §§ 12181 et seq. – Title III of the Americans with Disabilities Act
+- Declaratory Relief
+- Negligent Infliction of Emotional Distress`,
+    issues: [
+      "Website inaccessible to blind users",
+      "Navigation barriers for screen reader users",
+      "Transaction completion issues",
+      "Product information inaccessibility",
+      "Screen reader incompatibility",
+      "ADA Title III violations",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court for the Northern District of Illinois",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "Law360 - Case Information",
+        url: "https://www.law360.com/cases/68fbc50ab443c8fb72d0b447",
+      },
+    ],
+    unofficialLinks: [
+      {
+        title: "Accessibility.com - Case Summary",
+        url: "https://www.accessibility.com/digital-lawsuits/darnell-williams-vs-rowing-blazers-ltd-2025-10-24",
+      },
+    ],
+    keyTakeaways: [
+      "E-commerce websites must be accessible to blind and visually impaired users",
+      "Fashion and apparel retailers face increasing accessibility litigation",
+      "Serial litigants continue to file accessibility lawsuits across multiple industries",
+      "Class action lawsuits amplify potential damages for inaccessible websites",
+      "Screen reader compatibility is essential for ADA compliance",
+      "Transaction completion barriers constitute discriminatory barriers under ADA",
+    ],
+    impact:
+      "This case highlights the ongoing wave of e-commerce accessibility lawsuits targeting retail websites. Rowing Blazers, known for its preppy-inspired apparel, joins a growing list of fashion retailers facing ADA litigation. The case underscores that all online retailers, regardless of size or niche market, must ensure their websites are accessible to users with disabilities. The proposed class action format increases potential liability and serves as a warning to e-commerce businesses that have not prioritized web accessibility.",
+  },
+  {
     slug: "malone-v-disney-das-policy-2024",
     title: "Malone v. Disney - Disability Access Service Class Action",
     defendant: "Walt Disney Parks and Resorts U.S., Inc.",
