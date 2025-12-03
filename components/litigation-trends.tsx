@@ -243,15 +243,15 @@ export function LitigationTrends() {
                 </li>
                 <li className="p-3 rounded-lg bg-white/60 dark:bg-blue-950/30 border border-blue-200/50 dark:border-blue-800/50 hover:shadow-md transition-all">
                   <a
-                    href="https://www.seyfarth.com/practices/ada-title-iii"
+                    href="https://www.justice.gov/crt"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline inline-flex items-center gap-2 font-semibold text-sm sm:text-base"
                   >
-                    Seyfarth Shaw ADA Title III Blog
+                    DOJ Civil Rights Division
                     <ExternalLink className="h-4 w-4" aria-hidden="true" />
                   </a>
-                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 ml-0">Quarterly ADA Title III lawsuit reports and trends</p>
+                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 ml-0">Official Department of Justice ADA enforcement actions and legal resources</p>
                 </li>
                 <li className="p-3 rounded-lg bg-white/60 dark:bg-blue-950/30 border border-blue-200/50 dark:border-blue-800/50 hover:shadow-md transition-all">
                   <a
