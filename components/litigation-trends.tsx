@@ -287,15 +287,15 @@ export function LitigationTrends() {
                 </li>
                 <li className="p-3 rounded-lg bg-white/60 dark:bg-purple-950/30 border border-purple-200/50 dark:border-purple-800/50 hover:shadow-md transition-all">
                   <a
-                    href="https://www.bloomberg.com/news/articles/2024-03-15/ada-website-lawsuits-surge-as-plaintiffs-target-e-commerce"
+                    href="https://natlawreview.com/article/eleventh-circuit-finally-breaks-its-silence-website-accessibility-was-its-decision"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline inline-flex items-center gap-2 font-semibold text-sm sm:text-base"
                   >
-                    Bloomberg Law - ADA Litigation Trends
+                    National Law Review - ADA Website Accessibility Analysis
                     <ExternalLink className="h-4 w-4" aria-hidden="true" />
                   </a>
-                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 ml-0">Industry analysis of accessibility litigation patterns</p>
+                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 ml-0">Legal analysis of ADA website accessibility court decisions and trends</p>
                 </li>
                 <li className="p-3 rounded-lg bg-white/60 dark:bg-purple-950/30 border border-purple-200/50 dark:border-purple-800/50 hover:shadow-md transition-all">
                   <a
