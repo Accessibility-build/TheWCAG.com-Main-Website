@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import {
   Scale,
   AlertCircle,
+  AlertTriangle,
   CheckCircle2,
   TrendingUp,
 } from "lucide-react"
@@ -259,6 +260,16 @@ export default function LawsuitsPage() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  <Link
+                    href="/ada-compliance-risks"
+                    className="p-3 sm:p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-2 sm:gap-3"
+                  >
+                    <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                    <div className="min-w-0">
+                      <div className="font-semibold text-sm sm:text-base">ADA Compliance Risks</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Understand legal, financial & business risks</div>
+                    </div>
+                  </Link>
                   <Link
                     href="/compliance"
                     className="p-3 sm:p-4 rounded-lg border hover:bg-muted transition-colors flex items-center gap-2 sm:gap-3"

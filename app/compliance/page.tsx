@@ -15,6 +15,7 @@ import {
   Shield,
   CheckCircle2,
   AlertCircle,
+  AlertTriangle,
   ExternalLink,
   MapPin,
   Calendar,
@@ -608,6 +609,15 @@ export default function CompliancePage() {
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-4">
+                  <Button asChild variant="outline" className="justify-start h-auto py-4">
+                    <Link href="/ada-compliance-risks">
+                      <AlertTriangle className="h-5 w-5 mr-2" />
+                      <div className="text-left">
+                        <div className="font-semibold">ADA Compliance Risks</div>
+                        <div className="text-xs text-muted-foreground">Understand legal, financial & business risks</div>
+                      </div>
+                    </Link>
+                  </Button>
                   <Button asChild variant="outline" className="justify-start h-auto py-4">
                     <Link href="/checklist">
                       <FileText className="h-5 w-5 mr-2" />

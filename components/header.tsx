@@ -57,6 +57,7 @@ export function Header() {
   // Compliance submenu
   const complianceLinks = [
     { href: "/compliance", label: "Compliance" },
+    { href: "/ada-compliance-risks", label: "ADA Compliance Risks" },
     { href: "/compare", label: "Compare Tools" },
     { href: "/lawsuits", label: "Accessibility Lawsuits" },
     { href: "/wcag-2-2-vs-2-1", label: "WCAG 2.2 vs 2.1" },
