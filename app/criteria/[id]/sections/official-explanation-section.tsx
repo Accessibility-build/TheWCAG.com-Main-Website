@@ -82,7 +82,7 @@ export function OfficialExplanationSection({ criterion }: OfficialExplanationSec
             <p className="text-xs text-muted-foreground">
               Source:{" "}
               <a
-                href="https://www.w3.org/WAI/WCAG22/"
+                href="https://www.w3.org/WAI/standards-guidelines/wcag/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"

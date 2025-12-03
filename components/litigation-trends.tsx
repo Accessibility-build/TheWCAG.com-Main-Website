@@ -255,15 +255,15 @@ export function LitigationTrends() {
                 </li>
                 <li className="p-3 rounded-lg bg-white/60 dark:bg-blue-950/30 border border-blue-200/50 dark:border-blue-800/50 hover:shadow-md transition-all">
                   <a
-                    href="https://www.usatoday.com/story/money/2024/01/08/ada-website-lawsuits-hit-record-high/72131280007/"
+                    href="https://usablenet.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline inline-flex items-center gap-2 font-semibold text-sm sm:text-base"
                   >
-                    USA Today - ADA Website Lawsuit Report
+                    UsableNet - ADA Lawsuit Reports
                     <ExternalLink className="h-4 w-4" aria-hidden="true" />
                   </a>
-                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 ml-0">2024 accessibility lawsuit statistics and analysis</p>
+                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 ml-0">Industry leader in ADA digital accessibility lawsuit tracking and reports</p>
                 </li>
               </ul>
             </div>
@@ -299,15 +299,15 @@ export function LitigationTrends() {
                 </li>
                 <li className="p-3 rounded-lg bg-white/60 dark:bg-purple-950/30 border border-purple-200/50 dark:border-purple-800/50 hover:shadow-md transition-all">
                   <a
-                    href="https://www.accessibility.com/ada-lawsuits"
+                    href="https://www.levelaccess.com/blog/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline inline-flex items-center gap-2 font-semibold text-sm sm:text-base"
                   >
-                    Accessibility.com Lawsuit Tracker
+                    Level Access - Accessibility Blog
                     <ExternalLink className="h-4 w-4" aria-hidden="true" />
                   </a>
-                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 ml-0">Real-time tracking of digital accessibility lawsuits</p>
+                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 ml-0">Expert analysis on digital accessibility trends and litigation</p>
                 </li>
               </ul>
             </div>
