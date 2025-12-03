@@ -116,7 +116,7 @@ export default function CompliancePage() {
         },
         {
           title: "DOJ ADA Technical Assistance",
-          url: "https://www.ada.gov/ta.htm",
+          url: "https://www.ada.gov/resources/",
         },
       ],
       status: "Active",
@@ -239,7 +239,7 @@ export default function CompliancePage() {
         },
         {
           title: "Ontario.ca AODA Information",
-          url: "https://www.ontario.ca/page/about-accessibility-laws-ontario",
+          url: "https://www.ontario.ca/page/about-accessibility-laws",
         },
       ],
       status: "Active",
