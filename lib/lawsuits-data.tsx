@@ -607,7 +607,7 @@ Specific accessibility issues:
     unofficialLinks: [
       {
         title: "Wikipedia - Robles v. Domino's Pizza",
-        url: "https://en.wikipedia.org/wiki/Robles_v._Domino%27s_Pizza,_LLC",
+        url: "https://en.wikipedia.org/wiki/Robles_v._Domino%27s_Pizza",
       },
     ],
     keyTakeaways: [
@@ -3676,7 +3676,7 @@ The DOJ is seeking $125 million in damages for affected individuals and an injun
     officialLinks: [
       {
         title: "DOJ Press Release",
-        url: "https://www.justice.gov/opa/pr/justice-department-sues-uber-discriminating-against-passengers-disabilities",
+        url: "https://www.justice.gov/crt/case/united-states-v-uber-technologies-inc",
       },
     ],
     unofficialLinks: [
@@ -4046,7 +4046,7 @@ The reversal created a circuit split, with the Eleventh Circuit taking a narrowe
     officialLinks: [
       {
         title: "Eleventh Circuit Opinion",
-        url: "https://www.ca11.uscourts.gov/opinions/ops/201713467.pdf",
+        url: "https://media.ca11.uscourts.gov/opinions/pub/files/201713467.pdf",
       },
     ],
     unofficialLinks: [
