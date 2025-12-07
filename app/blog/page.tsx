@@ -3,8 +3,9 @@ import { StructuredData } from '@/components/structured-data'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { FileText, Calendar, ExternalLink } from 'lucide-react'
 import { format } from 'date-fns'
+import { getPublishedBlogPosts } from '@/lib/blog/storage'
 
-// Manual blog posts data
+// Manual blog posts data (for static posts that don't use JSON storage)
 const manualBlogPosts = [
   {
     slug: 'is-accessibility-work-safe-from-ai-in-the-near-future',
@@ -24,8 +25,20 @@ const manualBlogPosts = [
   },
 ]
 
-export default function BlogPage() {
-  const publishedPosts = manualBlogPosts.filter((post) => post.isPublished)
+export default async function BlogPage() {
+  // Get posts from JSON storage
+  const jsonPosts = await getPublishedBlogPosts()
+  
+  // Combine manual and JSON posts, removing duplicates (JSON posts take precedence)
+  const manualSlugs = new Set(manualBlogPosts.map(p => p.slug))
+  const uniqueJsonPosts = jsonPosts.filter(p => !manualSlugs.has(p.slug))
+  
+  // Merge and sort by published date (newest first)
+  const allPosts = [...manualBlogPosts, ...uniqueJsonPosts]
+    .filter((post) => post.isPublished)
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+  
+  const publishedPosts = allPosts
 
   const structuredData = {
     '@context': 'https://schema.org',

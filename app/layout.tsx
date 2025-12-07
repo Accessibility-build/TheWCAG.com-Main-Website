@@ -25,7 +25,7 @@ const pacifico = Pacifico({
 export const metadata: Metadata = {
   // <CHANGE> Updated metadata for WCAG guide
   title: {
-    default: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
+    default: "TheWCAG - An Accessibility Guide",
     template: "%s | TheWCAG",
   },
   description:
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://thewcag.com",
-    title: "TheWCAG - Complete WCAG 2.2 Guidelines",
+    title: "TheWCAG - An Accessibility Guide",
     description:
       "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
     siteName: "TheWCAG - An accessibility Guide",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TheWCAG - Complete WCAG 2.2 Guidelines",
+    title: "TheWCAG - An Accessibility Guide",
     description:
       "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
     images: ["https://thewcag.com/Logo.png"],

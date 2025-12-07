@@ -41,7 +41,7 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
+  title: "TheWCAG - An Accessibility Guide",
   description:
     "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
   keywords: [
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     "Section 508",
   ],
   openGraph: {
-    title: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
+    title: "TheWCAG - An Accessibility Guide",
     description:
       "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
     url: "https://thewcag.com",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
+    title: "TheWCAG - An Accessibility Guide",
     description:
       "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
     images: [ogImages.home()],
@@ -101,7 +101,8 @@ export default function HomePage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "TheWCAG - An accessibility Guide",
+    name: "TheWCAG",
+    alternateName: "TheWCAG - An accessibility Guide",
     description: "Complete WCAG 2.2 Accessibility Guidelines with interactive examples and tools",
     url: "https://thewcag.com",
     potentialAction: {
@@ -114,24 +115,30 @@ export default function HomePage() {
     },
     publisher: {
       "@type": "Organization",
-      name: "TheWCAG - An accessibility Guide",
+      name: "TheWCAG",
+      alternateName: "TheWCAG - An accessibility Guide",
       url: "https://thewcag.com",
       logo: {
         "@type": "ImageObject",
         url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
       },
     },
   }
 
-  const organizationData = {
+    const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "TheWCAG - An accessibility Guide",
+    name: "TheWCAG",
+    alternateName: "TheWCAG - An accessibility Guide",
     url: "https://thewcag.com",
     description: "Comprehensive WCAG 2.2 accessibility guidelines and resources",
     logo: {
       "@type": "ImageObject",
       url: "https://thewcag.com/Logo.png",
+      width: 1200,
+      height: 630,
     },
     sameAs: [
       // Add social media links when available

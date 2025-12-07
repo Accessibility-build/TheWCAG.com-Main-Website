@@ -15,11 +15,20 @@ export default function robots(): MetadataRoute.Robots {
           '/services/',
           '/tools/',
           '/wcag-*',
+          '/favicon/',
         ],
         disallow: [
           '/api/',
           '/admin/',
         ],
+      },
+      {
+        userAgent: 'Googlebot-Image',
+        allow: [
+          '/',
+          '/favicon/',
+        ],
+        disallow: [],
       },
       {
         userAgent: 'Bingbot',
@@ -32,6 +41,7 @@ export default function robots(): MetadataRoute.Robots {
           '/examples/',
           '/services/',
           '/tools/',
+          '/favicon/',
         ],
         disallow: [
           '/api/',
