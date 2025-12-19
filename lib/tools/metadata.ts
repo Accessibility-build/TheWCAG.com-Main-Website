@@ -9,10 +9,16 @@ function truncateDescription(text: string, maxLength: number = 155): string {
   return lastSpace > 0 ? truncated.slice(0, lastSpace) + "..." : truncated + "..."
 }
 
+// Helper function to get correct URL path based on tool category
+function getToolBasePath(tool: Tool): string {
+  return tool.category === "editing" ? "/tools/edit" : "/tools/convert"
+}
+
 export function generateToolMetadata(tool: Tool): Metadata {
   const title = `${tool.name} - Free Online Tool | TheWCAG`
   const description = truncateDescription(tool.description, 155)
-  const url = `https://thewcag.com/tools/convert/${tool.slug}`
+  const basePath = getToolBasePath(tool)
+  const url = `https://thewcag.com${basePath}/${tool.slug}`
   const imageUrl = "https://thewcag.com/Logo.png"
 
   return {
@@ -66,14 +72,17 @@ export function generateToolMetadata(tool: Tool): Metadata {
 export function generateToolStructuredData(tool: Tool) {
   const category = TOOL_CATEGORIES[tool.category]
   const currentDate = new Date().toISOString().split("T")[0]
+  const basePath = getToolBasePath(tool)
+  const isEditingTool = tool.category === "editing"
+  const sectionName = isEditingTool ? "Edit" : "Convert"
   
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: tool.name,
     description: tool.description,
-    url: `https://thewcag.com/tools/convert/${tool.slug}`,
-    applicationCategory: "UtilityApplication",
+    url: `https://thewcag.com${basePath}/${tool.slug}`,
+    applicationCategory: isEditingTool ? "MultimediaApplication" : "UtilityApplication",
     applicationSubCategory: category.name,
     operatingSystem: "Any",
     browserRequirements: "Requires JavaScript. Works in all modern browsers.",
@@ -119,14 +128,14 @@ export function generateToolStructuredData(tool: Tool) {
         {
           "@type": "ListItem",
           position: 3,
-          name: "Convert",
-          item: "https://thewcag.com/tools/convert",
+          name: sectionName,
+          item: `https://thewcag.com${basePath}`,
         },
         {
           "@type": "ListItem",
           position: 4,
           name: tool.name,
-          item: `https://thewcag.com/tools/convert/${tool.slug}`,
+          item: `https://thewcag.com${basePath}/${tool.slug}`,
         },
       ],
     },
@@ -151,6 +160,8 @@ export function generateToolFAQStructuredData(tool: Tool) {
 }
 
 export function generateHowToStructuredData(tool: Tool, steps: string[]) {
+  const basePath = getToolBasePath(tool)
+  
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -172,7 +183,7 @@ export function generateHowToStructuredData(tool: Tool, steps: string[]) {
       position: index + 1,
       name: `Step ${index + 1}`,
       text: step,
-      url: `https://thewcag.com/tools/convert/${tool.slug}#step-${index + 1}`,
+      url: `https://thewcag.com${basePath}/${tool.slug}#step-${index + 1}`,
     })),
   }
 }
@@ -181,6 +192,7 @@ export function generateHowToStructuredData(tool: Tool, steps: string[]) {
 export function getDefaultToolSteps(tool: Tool): string[] {
   // Tool-specific steps for better SEO and accuracy
   const toolSpecificSteps: Record<string, string[]> = {
+    // Utility tools
     "lorem-ipsum-generator": [
       "Choose output type: paragraphs, sentences, or words",
       "Set the quantity you need",
@@ -233,6 +245,90 @@ export function getDefaultToolSteps(tool: Tool): string[] {
       "Select encode or decode operation",
       "View the processed result",
       "Copy the encoded or decoded URL",
+    ],
+    // Editing tools
+    "background-remover": [
+      "Upload your image by dragging and dropping or clicking the upload area",
+      "Select removal method: color-based for simple backgrounds or AI for complex scenes",
+      "Adjust the color threshold for better edge detection if needed",
+      "Choose background replacement: transparent, solid color, or gradient",
+      "Click Remove Background and download your processed image",
+    ],
+    "watermark-remover": [
+      "Upload the image containing the watermark you want to remove",
+      "Select the watermark area using the brush or selection tool",
+      "Choose the inpainting algorithm for best results",
+      "Click Remove Watermark to process the image",
+      "Preview the result and download the clean image",
+    ],
+    "object-remover": [
+      "Upload your photo with unwanted objects",
+      "Use the brush tool to paint over objects you want to remove",
+      "Adjust brush size for precise selection",
+      "Click Remove Objects to apply smart inpainting",
+      "Download your cleaned photo",
+    ],
+    "face-blur": [
+      "Upload an image containing faces you want to blur",
+      "Choose blur method: Gaussian blur, pixelation, or black bar",
+      "Adjust the blur intensity using the slider",
+      "Select faces manually or use automatic detection",
+      "Click Apply Blur and download the privacy-protected image",
+    ],
+    "image-upscaler": [
+      "Upload the image you want to upscale and enhance",
+      "Select upscaling factor: 2x or 4x resolution",
+      "Choose algorithm: AI-powered or bicubic interpolation",
+      "Click Upscale Image to process",
+      "Download your high-resolution enhanced image",
+    ],
+    "image-inpainting": [
+      "Upload an image with areas you want to fill or repair",
+      "Use the brush to mark damaged or missing areas",
+      "Select the inpainting algorithm for best results",
+      "Click Inpaint to fill the selected areas intelligently",
+      "Download your restored image",
+    ],
+    "image-colorizer": [
+      "Upload a black and white or grayscale photo",
+      "Optionally add color hints by clicking on areas and selecting colors",
+      "Click Colorize to apply AI-powered colorization",
+      "Preview the colorized result",
+      "Download your colorized photo",
+    ],
+    "image-restoration": [
+      "Upload your old or damaged photo",
+      "Select restoration options: noise reduction, fade correction, contrast enhancement",
+      "Enable scratch detection for automatic repair",
+      "Click Restore Image to process",
+      "Download your restored and enhanced photo",
+    ],
+    "image-anonymizer": [
+      "Upload an image with sensitive information to anonymize",
+      "Select anonymization method: Gaussian blur, pixelation, or black bar",
+      "Adjust intensity for the desired level of anonymization",
+      "Mark sensitive areas manually or use automatic detection",
+      "Click Anonymize and download the protected image",
+    ],
+    "image-metadata-remover": [
+      "Upload an image to strip metadata from",
+      "Preview all metadata including EXIF, GPS, and camera information",
+      "Click Remove Metadata to strip all private data",
+      "Download the clean image without any metadata",
+    ],
+    "image-duplicate-finder": [
+      "Upload multiple images to compare for duplicates",
+      "Adjust the similarity threshold percentage",
+      "Click Find Duplicates to analyze all images",
+      "Review grouped similar images with similarity scores",
+      "Identify and manage duplicate files",
+    ],
+    "pdf-editor": [
+      "Upload the PDF document you want to edit",
+      "Select the page where you want to add content",
+      "Choose edit type: add text, insert image, or draw shape",
+      "Position and customize your content",
+      "Click Apply Edits and download your modified PDF",
     ],
   }
 
@@ -287,6 +383,13 @@ export function getDefaultToolSteps(tool: Tool): string[] {
         "Adjust options to customize the output",
         "Click generate to create your result",
         "Copy the result to clipboard",
+      ]
+    case "editing":
+      return [
+        "Upload your image or document by dragging and dropping or clicking the upload area",
+        "Select your editing options and adjust settings as needed",
+        "Click the process button to apply your edits",
+        "Preview the result and download your edited file",
       ]
     default:
       return [
