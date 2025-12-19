@@ -16,7 +16,8 @@ import {
   Shield,
   Code,
   Sparkles,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Edit,
 } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -276,7 +277,7 @@ export default function ToolsPage() {
             </section>
 
             {/* Free Conversion Tools */}
-            <section className="mb-12">
+            <section className="mb-8">
               <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border-blue-200 dark:border-blue-800">
                 <CardHeader>
                   <div className="flex items-center gap-3">
@@ -286,7 +287,7 @@ export default function ToolsPage() {
                     <div>
                       <CardTitle className="text-xl">Free Conversion Tools</CardTitle>
                       <CardDescription>
-                        50+ free online tools for converting images, PDFs, documents, and data formats
+                        40+ free online tools for converting images, PDFs, documents, and data formats
                       </CardDescription>
                     </div>
                   </div>
@@ -303,6 +304,41 @@ export default function ToolsPage() {
                   <Button asChild>
                     <Link href="/tools/convert">
                       Browse All Conversion Tools
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Free Editing Tools */}
+            <section className="mb-12">
+              <Card className="bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-950/30 dark:to-teal-950/30 border-green-200 dark:border-green-800">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900">
+                      <Edit className="h-6 w-6 text-green-600 dark:text-green-400" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">Free Editing Tools</CardTitle>
+                      <CardDescription>
+                        Professional image and document editing tools for backgrounds, watermarks, restoration, and more
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="secondary">Background Remover</Badge>
+                    <Badge variant="secondary">Watermark Remover</Badge>
+                    <Badge variant="secondary">Image Upscaler</Badge>
+                    <Badge variant="secondary">Photo Restoration</Badge>
+                    <Badge variant="secondary">PDF Editor</Badge>
+                    <Badge variant="secondary">And more...</Badge>
+                  </div>
+                  <Button asChild>
+                    <Link href="/tools/edit">
+                      Browse All Editing Tools
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>

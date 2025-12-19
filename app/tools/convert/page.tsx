@@ -84,7 +84,9 @@ const categoryIcons: Record<string, React.ComponentType<{ className?: string }>>
 }
 
 export default function ConvertToolsPage() {
-  const categories = getAllCategories()
+  // Exclude editing category from convert page
+  const categories = getAllCategories().filter(cat => cat !== "editing")
+  const convertTools = TOOLS.filter(tool => tool.category !== "editing")
   const currentDate = new Date().toISOString().split("T")[0]
 
   const structuredData = {
@@ -95,7 +97,7 @@ export default function ConvertToolsPage() {
       "50+ free online tools for converting images, documents, data formats, and more.",
     url: "https://thewcag.com/tools/convert",
     dateModified: currentDate,
-    numberOfItems: TOOLS.length,
+    numberOfItems: convertTools.length,
     publisher: {
       "@type": "Organization",
       name: "TheWCAG.com",
@@ -136,8 +138,8 @@ export default function ConvertToolsPage() {
     "@type": "ItemList",
     name: "Free Online Conversion Tools",
     description: "A collection of free online tools for converting images, documents, and data formats.",
-    numberOfItems: TOOLS.length,
-    itemListElement: TOOLS.map((tool, index) => ({
+    numberOfItems: convertTools.length,
+    itemListElement: convertTools.map((tool, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: tool.name,
@@ -188,7 +190,7 @@ export default function ConvertToolsPage() {
                 Free Online Conversion Tools
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mb-6">
-                {TOOLS.length}+ free tools to convert images, documents, data formats, and more.
+                {convertTools.length}+ free tools to convert images, documents, data formats, and more.
                 All processing happens in your browser for maximum privacy and speed.
               </p>
               <div className="flex flex-wrap gap-3">

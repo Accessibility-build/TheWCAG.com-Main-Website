@@ -8,40 +8,53 @@ interface ToolHeaderProps {
 
 export function ToolHeader({ tool }: ToolHeaderProps) {
   const category = TOOL_CATEGORIES[tool.category]
+  const isEditingTool = tool.category === "editing"
+  const basePath = isEditingTool ? "/tools/edit" : "/tools/convert"
+  const baseLabel = isEditingTool ? "Edit" : "Convert"
 
   return (
     <div className="mb-6 sm:mb-8">
       {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="mb-4 overflow-x-auto">
-        <ol className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-muted-foreground whitespace-nowrap min-w-0">
-          <li className="shrink-0">
+      <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
+        <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs sm:text-sm text-muted-foreground">
+          <li className="flex items-center">
             <Link 
               href="/" 
-              className="hover:text-foreground transition-colors py-1 inline-block min-h-[44px] flex items-center"
+              className="hover:text-foreground transition-colors inline-flex items-center"
             >
               Home
             </Link>
           </li>
-          <li aria-hidden="true" className="shrink-0">/</li>
-          <li className="shrink-0">
+          <li aria-hidden="true" className="flex items-center text-muted-foreground/60">
+            <span className="mx-0.5">/</span>
+          </li>
+          <li className="flex items-center">
             <Link 
               href="/tools" 
-              className="hover:text-foreground transition-colors py-1 inline-block min-h-[44px] flex items-center"
+              className="hover:text-foreground transition-colors inline-flex items-center"
             >
               Tools
             </Link>
           </li>
-          <li aria-hidden="true" className="shrink-0">/</li>
-          <li className="shrink-0">
+          <li aria-hidden="true" className="flex items-center text-muted-foreground/60">
+            <span className="mx-0.5">/</span>
+          </li>
+          <li className="flex items-center">
             <Link 
-              href="/tools/convert" 
-              className="hover:text-foreground transition-colors py-1 inline-block min-h-[44px] flex items-center"
+              href={basePath} 
+              className="hover:text-foreground transition-colors inline-flex items-center"
             >
-              Convert
+              {baseLabel}
             </Link>
           </li>
-          <li aria-hidden="true" className="shrink-0">/</li>
-          <li className="text-foreground font-medium truncate max-w-[150px] sm:max-w-none">{tool.name}</li>
+          <li aria-hidden="true" className="flex items-center text-muted-foreground/60">
+            <span className="mx-0.5">/</span>
+          </li>
+          <li className="flex items-center">
+            <span className="text-foreground font-medium" aria-current="page">
+              {tool.name}
+            </span>
+          </li>
         </ol>
       </nav>
 
