@@ -179,6 +179,69 @@ export function generateHowToStructuredData(tool: Tool, steps: string[]) {
 
 // Generate default HowTo steps based on tool type
 export function getDefaultToolSteps(tool: Tool): string[] {
+  // Tool-specific steps for better SEO and accuracy
+  const toolSpecificSteps: Record<string, string[]> = {
+    "lorem-ipsum-generator": [
+      "Choose output type: paragraphs, sentences, or words",
+      "Set the quantity you need",
+      "Click Generate to create placeholder text",
+      "Copy the text to your clipboard",
+    ],
+    "password-generator": [
+      "Set your desired password length",
+      "Select character types to include (uppercase, lowercase, numbers, symbols)",
+      "Click Generate to create a secure password",
+      "Copy the password to your clipboard",
+    ],
+    "uuid-generator": [
+      "Choose UUID version (v4 random or v1 time-based)",
+      "Set how many UUIDs to generate",
+      "Click Generate to create unique identifiers",
+      "Copy the UUIDs to your clipboard",
+    ],
+    "hash-generator": [
+      "Enter or paste your text in the input field",
+      "Select the hash algorithm (MD5, SHA-1, SHA-256, SHA-512)",
+      "View the generated hash instantly",
+      "Copy the hash value to your clipboard",
+    ],
+    "color-converter": [
+      "Enter a color value in any format (HEX, RGB, HSL) or use the picker",
+      "View the color converted to all formats automatically",
+      "Copy any color format value you need",
+    ],
+    "qr-code-generator": [
+      "Enter the URL, text, or data to encode",
+      "Customize size and colors if needed",
+      "Generate and preview the QR code",
+      "Download as PNG or SVG image",
+    ],
+    "json-formatter": [
+      "Paste your JSON data in the input area",
+      "Choose to format (beautify) or minify the JSON",
+      "View the formatted result with syntax highlighting",
+      "Copy or download the formatted JSON",
+    ],
+    "base64-encoder-decoder": [
+      "Enter or paste text in the input field",
+      "Choose encode or decode operation",
+      "View the result instantly",
+      "Copy the encoded or decoded output",
+    ],
+    "url-encoder-decoder": [
+      "Enter your URL or text to process",
+      "Select encode or decode operation",
+      "View the processed result",
+      "Copy the encoded or decoded URL",
+    ],
+  }
+
+  // Return tool-specific steps if available
+  if (toolSpecificSteps[tool.slug]) {
+    return toolSpecificSteps[tool.slug]
+  }
+
+  // Category-based default steps
   const category = tool.category
   
   switch (category) {
@@ -220,10 +283,10 @@ export function getDefaultToolSteps(tool: Tool): string[] {
       ]
     case "utility":
       return [
-        "Enter your input or configure the generator settings",
-        "Adjust any available options to customize the output",
-        "Click generate or process to create your result",
-        "Copy the result to clipboard or download as needed",
+        "Configure the generator settings or enter input",
+        "Adjust options to customize the output",
+        "Click generate to create your result",
+        "Copy the result to clipboard",
       ]
     default:
       return [
