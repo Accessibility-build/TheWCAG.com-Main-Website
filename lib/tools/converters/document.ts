@@ -1,4 +1,4 @@
-import { PDFDocument } from "pdf-lib"
+import { PDFDocument, rgb } from "pdf-lib"
 import { jsPDF } from "jspdf"
 import { readFileAsArrayBuffer, readFileAsText } from "../utils"
 
@@ -204,4 +204,234 @@ export async function imagesToPdf(
   }
   
   return doc.output("blob")
+}
+
+// PDF Editing Functions
+
+export interface PDFEdit {
+  type: "text" | "image" | "shape" | "annotation"
+  page: number
+  x: number
+  y: number
+  content?: string
+  imageFile?: File
+  shapeType?: "rectangle" | "circle" | "line"
+  color?: string
+  fontSize?: number
+  width?: number
+  height?: number
+  opacity?: number
+}
+
+export interface PDFTextOptions {
+  fontSize?: number
+  fontFamily?: string
+  color?: string
+  rotation?: number
+}
+
+export interface PDFImageOptions {
+  width?: number
+  height?: number
+  rotation?: number
+  opacity?: number
+}
+
+export interface PDFAnnotationOptions {
+  type: "highlight" | "underline" | "strikethrough" | "note"
+  color?: string
+  note?: string
+}
+
+function parseColorToRgb(color: string) {
+  // Parse hex color
+  if (color.startsWith("#")) {
+    const hex = color.slice(1)
+    const r = parseInt(hex.slice(0, 2), 16) / 255
+    const g = parseInt(hex.slice(2, 4), 16) / 255
+    const b = parseInt(hex.slice(4, 6), 16) / 255
+    return rgb(r, g, b)
+  }
+  // Default to black
+  return rgb(0, 0, 0)
+}
+
+/**
+ * Edit PDF document
+ */
+export async function editPDF(
+  file: File,
+  edits: PDFEdit[]
+): Promise<Blob> {
+  const arrayBuffer = await readFileAsArrayBuffer(file)
+  const pdfDoc = await PDFDocument.load(arrayBuffer)
+
+  for (const edit of edits) {
+    const pages = pdfDoc.getPages()
+    if (edit.page < 1 || edit.page > pages.length) continue
+    const page = pages[edit.page - 1]
+    const { width, height } = page.getSize()
+
+    if (edit.type === "text" && edit.content) {
+      page.drawText(edit.content, {
+        x: edit.x,
+        y: height - edit.y, // PDF coordinates are bottom-up
+        size: edit.fontSize || 12,
+        color: edit.color ? parseColorToRgb(edit.color) : undefined,
+      })
+    } else if (edit.type === "image" && edit.imageFile) {
+      const imageBytes = await readFileAsArrayBuffer(edit.imageFile)
+      let image
+      if (edit.imageFile.type === "image/png") {
+        image = await pdfDoc.embedPng(imageBytes)
+      } else {
+        image = await pdfDoc.embedJpg(imageBytes)
+      }
+      page.drawImage(image, {
+        x: edit.x,
+        y: height - edit.y - (edit.height || image.height),
+        width: edit.width || image.width,
+        height: edit.height || image.height,
+        opacity: edit.opacity || 1,
+      })
+    } else if (edit.type === "shape") {
+      if (edit.shapeType === "rectangle") {
+        page.drawRectangle({
+          x: edit.x,
+          y: height - edit.y - (edit.height || 50),
+          width: edit.width || 100,
+          height: edit.height || 50,
+          borderColor: edit.color ? parseColorToRgb(edit.color) : undefined,
+        })
+      } else if (edit.shapeType === "circle") {
+        const radius = (edit.width || 50) / 2
+        page.drawCircle({
+          x: edit.x + radius,
+          y: height - edit.y - radius,
+          size: radius,
+          borderColor: edit.color ? parseColorToRgb(edit.color) : undefined,
+        })
+      }
+    }
+  }
+
+  const pdfBytes = await pdfDoc.save()
+  return new Blob([new Uint8Array(pdfBytes)], { type: "application/pdf" })
+}
+
+/**
+ * Add text to PDF
+ */
+export async function addTextToPDF(
+  file: File,
+  text: string,
+  position: { x: number; y: number; page: number },
+  options: PDFTextOptions = {}
+): Promise<Blob> {
+  return editPDF(file, [
+    {
+      type: "text",
+      page: position.page,
+      x: position.x,
+      y: position.y,
+      content: text,
+      fontSize: options.fontSize,
+      color: options.color,
+    },
+  ])
+}
+
+/**
+ * Add image to PDF
+ */
+export async function addImageToPDF(
+  file: File,
+  imageFile: File,
+  position: { x: number; y: number; page: number },
+  options: PDFImageOptions = {}
+): Promise<Blob> {
+  return editPDF(file, [
+    {
+      type: "image",
+      page: position.page,
+      x: position.x,
+      y: position.y,
+      imageFile,
+      width: options.width,
+      height: options.height,
+      opacity: options.opacity,
+    },
+  ])
+}
+
+/**
+ * Add annotation to PDF
+ */
+export async function addAnnotation(
+  file: File,
+  annotation: { x: number; y: number; width: number; height: number; page: number },
+  options: PDFAnnotationOptions
+): Promise<Blob> {
+  const arrayBuffer = await readFileAsArrayBuffer(file)
+  const pdfDoc = await PDFDocument.load(arrayBuffer)
+  const pages = pdfDoc.getPages()
+  if (annotation.page < 1 || annotation.page > pages.length) {
+    throw new Error("Invalid page number")
+  }
+  const page = pages[annotation.page - 1]
+  const { height: pageHeight } = page.getSize()
+
+  const color = options.color || "#FFFF00"
+  const rgbColor = parseColorToRgb(color)
+
+  if (options.type === "highlight") {
+    page.drawRectangle({
+      x: annotation.x,
+      y: pageHeight - annotation.y - annotation.height,
+      width: annotation.width,
+      height: annotation.height,
+      color: rgbColor,
+      opacity: 0.3,
+    })
+  } else if (options.type === "underline") {
+    page.drawLine({
+      start: { x: annotation.x, y: pageHeight - annotation.y },
+      end: { x: annotation.x + annotation.width, y: pageHeight - annotation.y },
+      thickness: 2,
+      color: rgbColor,
+    })
+  }
+
+  const pdfBytes = await pdfDoc.save()
+  return new Blob([new Uint8Array(pdfBytes)], { type: "application/pdf" })
+}
+
+/**
+ * Reorder PDF pages
+ */
+export async function reorderPages(
+  file: File,
+  newOrder: number[]
+): Promise<Blob> {
+  const arrayBuffer = await readFileAsArrayBuffer(file)
+  const pdfDoc = await PDFDocument.load(arrayBuffer)
+  const pageCount = pdfDoc.getPageCount()
+
+  // Validate new order
+  if (newOrder.length !== pageCount) {
+    throw new Error("New order must contain all page numbers")
+  }
+  if (!newOrder.every((p) => p >= 1 && p <= pageCount)) {
+    throw new Error("Invalid page numbers in new order")
+  }
+
+  const newPdf = await PDFDocument.create()
+  const pages = await newPdf.copyPages(
+    pdfDoc,
+    newOrder.map((p) => p - 1)
+  )
+  pages.forEach((page) => newPdf.addPage(page))
+
+  const pdfBytes = await newPdf.save()
+  return new Blob([new Uint8Array(pdfBytes)], { type: "application/pdf" })
 }
