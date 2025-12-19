@@ -14,12 +14,14 @@ import { ogImages } from "@/lib/og-image"
 import {
   Search,
   Eye,
+  Hand,
   Keyboard,
   Lightbulb,
   Wrench,
   ArrowRight,
   BookOpen,
   CheckCircle2,
+  CheckCircle,
   Sparkles,
   Accessibility,
   ShieldCheck,
@@ -38,6 +40,11 @@ import {
   Heart,
   FileText,
   AlertCircle,
+  GraduationCap,
+  FileCheck,
+  FlaskConical,
+  Zap,
+  Code2,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -271,409 +278,791 @@ export default function HomePage() {
           </section>
 
           {/* POUR Principles */}
-          <section className="container py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8">
-            <ScrollAnimation>
-              <div className="text-center mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">The Four Principles</h2>
-                <p className="text-base sm:text-lg md:text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-                  WCAG is organized around four principles that form the foundation of web accessibility
-                </p>
-              </div>
-            </ScrollAnimation>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <ScrollAnimation className="h-full" threshold={0.1}>
-                <Card className="hover:shadow-lg transition-shadow h-full">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                      <Eye className="h-6 w-6 text-primary" aria-hidden="true" />
-                    </div>
-                    <CardTitle>Perceivable</CardTitle>
-                    <CardDescription className="leading-relaxed">
-                      Information must be presentable in ways users can perceive
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Link
-                      href="/principles/perceivable"
-                      className="text-sm font-medium text-primary hover:underline inline-flex items-center"
-                    >
-                      29 criteria
-                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-
-              <ScrollAnimation className="h-full" threshold={0.2}>
-                <Card className="hover:shadow-lg transition-shadow h-full">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
-                      <Keyboard className="h-6 w-6 text-secondary" aria-hidden="true" />
-                    </div>
-                    <CardTitle>Operable</CardTitle>
-                    <CardDescription className="leading-relaxed">
-                      Users must be able to operate interface components
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Link
-                      href="/principles/operable"
-                      className="text-sm font-medium text-secondary hover:underline inline-flex items-center"
-                    >
-                      29 criteria
-                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-
-              <ScrollAnimation className="h-full" threshold={0.3}>
-                <Card className="hover:shadow-lg transition-shadow h-full">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                      <Lightbulb className="h-6 w-6 text-accent" aria-hidden="true" />
-                    </div>
-                    <CardTitle>Understandable</CardTitle>
-                    <CardDescription className="leading-relaxed">
-                      Information and UI must be understandable
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Link
-                      href="/principles/understandable"
-                      className="text-sm font-medium text-accent hover:underline inline-flex items-center"
-                    >
-                      17 criteria
-                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-
-              <ScrollAnimation className="h-full" threshold={0.4}>
-                <Card className="hover:shadow-lg transition-shadow h-full">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                      <Wrench className="h-6 w-6 text-primary" aria-hidden="true" />
-                    </div>
-                    <CardTitle>Robust</CardTitle>
-                    <CardDescription className="leading-relaxed">
-                      Content must work with current and future tools
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Link
-                      href="/principles/robust"
-                      className="text-sm font-medium text-primary hover:underline inline-flex items-center"
-                    >
-                      2 criteria
-                      <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-            </div>
-          </section>
-
-          {/* Features */}
-          <section className="container py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8">
-            <ScrollAnimation>
-              <div className="text-center mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Everything You Need</h2>
-                <p className="text-base sm:text-lg md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
-                  Interactive tools, real code examples, and comprehensive resources
-                </p>
-              </div>
-            </ScrollAnimation>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <ScrollAnimation className="h-full" threshold={0.1}>
-                <Card className="h-full">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <BookOpen className="h-5 w-5 text-primary" aria-hidden="true" />
-                      Interactive Guide
-                    </CardTitle>
-                    <CardDescription className="leading-relaxed">
-                      Every criterion explained with clear definitions, examples, and practical guidance
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </ScrollAnimation>
-
-              <ScrollAnimation className="h-full" threshold={0.2}>
-                <Card className="h-full">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Search className="h-5 w-5 text-secondary" aria-hidden="true" />
-                      Testing Tools
-                    </CardTitle>
-                    <CardDescription className="leading-relaxed">
-                      Built-in contrast checkers, focus testers, and other accessibility evaluation tools
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </ScrollAnimation>
-
-              <ScrollAnimation className="h-full" threshold={0.3}>
-                <Card className="h-full">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-accent" aria-hidden="true" />
-                      Progress Tracking
-                    </CardTitle>
-                    <CardDescription className="leading-relaxed">
-                      Track your compliance progress with interactive checklists and export reports
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </ScrollAnimation>
-            </div>
-          </section>
-
-          {/* Why Accessibility Matters Section */}
-          <section className="py-12 sm:py-16 md:py-20 bg-muted/30">
-            <div className="container px-4 sm:px-6 lg:px-8">
+          <section className="container relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10">
               <ScrollAnimation>
-                <div className="text-center mb-10">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Why Accessibility Matters</h2>
-                  <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Accessibility isn't just the right thing to do it's good business and affects everyone
+                <div className="text-center mb-12 md:mb-20">
+                  {/* Main heading with decorative 4 */}
+                  <div className="relative inline-block mb-8">
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-0 tracking-tighter">
+                      <span className="bg-linear-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                        The Four
+                      </span>
+                      <br />
+                      <span className="relative inline-block">
+                        <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                          Principles
+                        </span>
+                        {/* Decorative large 4 behind "Principles" */}
+                        <span
+                          className="absolute -top-4 -right-12 md:-right-16 text-[10rem] md:text-[12rem] font-black opacity-[0.04] select-none leading-none pointer-events-none"
+                          aria-hidden="true"
+                        >
+                          4
+                        </span>
+                      </span>
+                    </h2>
+                  </div>
+                  {/* Divider line */}
+                  <div
+                    className="w-20 h-1 bg-linear-to-r from-transparent via-primary to-transparent mx-auto mb-6"
+                    aria-hidden="true"
+                  />
+                  <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed font-light">
+                    WCAG is organized around <span className="font-semibold text-foreground">four principles</span> that form
+                    the foundation of web accessibility
                   </p>
                 </div>
               </ScrollAnimation>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Statistics */}
-                <ScrollAnimation className="lg:col-span-1">
-                  <Card className="h-full bg-linear-to-br from-primary/5 to-primary/10 border-primary/20">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="flex items-center gap-2 text-primary text-lg">
-                        <Users className="h-5 w-5" />
-                        By the Numbers
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-primary">1.3B</div>
-                        <p className="text-xs sm:text-sm text-muted-foreground">People worldwide with disabilities</p>
+              {/* Grid */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <ScrollAnimation className="h-full" threshold={0.1}>
+                  <div className="group h-full">
+                    <div className="bg-card border-2 border-border flex flex-col rounded-2xl shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-500 h-full p-8 relative overflow-hidden">
+                      <div
+                        className="absolute -top-8 -right-8 text-[14rem] font-black opacity-[0.06] select-none leading-none text-foreground pointer-events-none"
+                        aria-hidden="true"
+                      >
+                        1
                       </div>
-                      <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-primary">26%</div>
-                        <p className="text-xs sm:text-sm text-muted-foreground">Of US adults have a disability</p>
+                      {/* Subtle gradient overlay */}
+                      <div
+                        className="absolute inset-0 bg-linear-to-br from-primary/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
+                        aria-hidden="true"
+                      />
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                          <Eye className="h-8 w-8 text-primary" aria-hidden="true" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-3">Perceivable</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-6 grow">
+                          Information and user interface components must be presentable to users in ways they can perceive.
+                        </p>
+                        <Link
+                          className="text-sm font-semibold text-primary hover:underline inline-flex items-center group/link mt-auto"
+                          href="/principles/perceivable"
+                        >
+                          Explore 29 criteria
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="ml-2 transition-transform group-hover/link:translate-x-1"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                          </svg>
+                        </Link>
                       </div>
-                      <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-primary">$13T</div>
-                        <p className="text-xs sm:text-sm text-muted-foreground">Annual disposable income globally</p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 </ScrollAnimation>
 
-                {/* Business Benefits */}
-                <ScrollAnimation className="lg:col-span-1" threshold={0.2}>
-                  <Card className="h-full bg-linear-to-br from-secondary/5 to-secondary/10 border-secondary/20">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="flex items-center gap-2 text-secondary text-lg">
-                        <TrendingUp className="h-5 w-5" />
-                        Business Benefits
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-2.5">
-                      <div className="flex items-start gap-2">
-                        <DollarSign className="h-4 w-4 text-secondary mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-sm">Larger Market Reach</p>
-                          <p className="text-xs text-muted-foreground">Access to 1.3B+ potential customers</p>
-                        </div>
+                <ScrollAnimation className="h-full" threshold={0.2}>
+                  <div className="group h-full">
+                    <div className="bg-card border-2 border-border flex flex-col rounded-2xl shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-500 h-full p-8 relative overflow-hidden">
+                      <div
+                        className="absolute -top-8 -right-8 text-[14rem] font-black opacity-[0.06] select-none leading-none text-foreground pointer-events-none"
+                        aria-hidden="true"
+                      >
+                        2
                       </div>
-                      <div className="flex items-start gap-2">
-                        <Search className="h-4 w-4 text-secondary mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-sm">Better SEO</p>
-                          <p className="text-xs text-muted-foreground">Improved search rankings</p>
+                      {/* Subtle gradient overlay */}
+                      <div
+                        className="absolute inset-0 bg-linear-to-br from-primary/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
+                        aria-hidden="true"
+                      />
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                          <Hand className="h-8 w-8 text-primary" aria-hidden="true" />
                         </div>
+                        <h3 className="text-2xl font-bold mb-3">Operable</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-6 grow">
+                          User interface components and navigation must be operable by all users
+                        </p>
+                        <Link
+                          className="text-sm font-semibold text-primary hover:underline inline-flex items-center group/link mt-auto"
+                          href="/principles/operable"
+                        >
+                          View 29 criteria
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="ml-2 transition-transform group-hover/link:translate-x-1"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                          </svg>
+                        </Link>
                       </div>
-                      <div className="flex items-start gap-2">
-                        <ShieldCheck className="h-4 w-4 text-secondary mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-sm">Legal Compliance</p>
-                          <p className="text-xs text-muted-foreground">Avoid costly lawsuits</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <Globe className="h-4 w-4 text-secondary mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-sm">Better UX for All</p>
-                          <p className="text-xs text-muted-foreground">Benefits everyone</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 </ScrollAnimation>
 
-                {/* Real User Impact */}
-                <ScrollAnimation className="md:col-span-2 lg:col-span-1" threshold={0.3}>
-                  <Card className="h-full bg-linear-to-br from-accent/5 to-accent/10 border-accent/20">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="flex items-center gap-2 text-accent text-lg">
-                        <Heart className="h-5 w-5" />
-                        Real Impact
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <blockquote className="text-sm italic text-accent border-l-2 border-accent/30 pl-3">
-                        "When websites are accessible, I can shop, work, and connect independently. It's not just convenience it's dignity."
-                      </blockquote>
-                      <p className="text-xs text-muted-foreground">  Sarah, screen reader user</p>
-                      
-                      <blockquote className="text-sm italic text-accent border-l-2 border-accent/30 pl-3">
-                        "Good contrast and clear navigation help me focus despite my ADHD. Accessible design benefits everyone."
-                      </blockquote>
-                      <p className="text-xs text-muted-foreground">  Marcus, cognitive disability</p>
-                    </CardContent>
-                  </Card>
+                <ScrollAnimation className="h-full" threshold={0.3}>
+                  <div className="group h-full">
+                    <div className="bg-card border-2 border-border flex flex-col rounded-2xl shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-500 h-full p-8 relative overflow-hidden">
+                      <div
+                        className="absolute -top-8 -right-8 text-[14rem] font-black opacity-[0.06] select-none leading-none text-foreground pointer-events-none"
+                        aria-hidden="true"
+                      >
+                        3
+                      </div>
+                      {/* Subtle gradient overlay */}
+                      <div
+                        className="absolute inset-0 bg-linear-to-br from-primary/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
+                        aria-hidden="true"
+                      />
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                          <Lightbulb className="h-8 w-8 text-primary" aria-hidden="true" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-3">Understandable</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-6 grow">
+                          Information and the operation of user interface must be understandable
+                        </p>
+                        <Link
+                          className="text-sm font-semibold text-primary hover:underline inline-flex items-center group/link mt-auto"
+                          href="/principles/understandable"
+                        >
+                          See 17 criteria
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="ml-2 transition-transform group-hover/link:translate-x-1"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </ScrollAnimation>
+
+                <ScrollAnimation className="h-full" threshold={0.4}>
+                  <div className="group h-full">
+                    <div className="bg-card border-2 border-border flex flex-col rounded-2xl shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-500 h-full p-8 relative overflow-hidden">
+                      <div
+                        className="absolute -top-8 -right-8 text-[14rem] font-black opacity-[0.06] select-none leading-none text-foreground pointer-events-none"
+                        aria-hidden="true"
+                      >
+                        4
+                      </div>
+                      {/* Subtle gradient overlay */}
+                      <div
+                        className="absolute inset-0 bg-linear-to-br from-primary/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
+                        aria-hidden="true"
+                      />
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                          <ShieldCheck className="h-8 w-8 text-primary" aria-hidden="true" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-3">Robust</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-6 grow">
+                          Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies
+                        </p>
+                        <Link
+                          className="text-sm font-semibold text-primary hover:underline inline-flex items-center group/link mt-auto"
+                          href="/principles/robust"
+                        >
+                          Review 2 criteria
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="ml-2 transition-transform group-hover/link:translate-x-1"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+              </div>
+            </div>
+          </section>
+
+          {/* Features */}
+          <section className="py-16 md:py-24 bg-background relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+            </div>
+            <div className="container px-4 sm:px-6 lg:px-8 relative">
+              <ScrollAnimation>
+                <div className="text-center mb-16 md:mb-20">
+                  <div className="inline-block mb-3 px-4 py-1.5 bg-primary/10 rounded-full text-xs font-medium uppercase tracking-wider text-primary">
+                    Complete Toolkit
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-balance">Everything You Need</h2>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed">
+                    Interactive tools, real code examples, and comprehensive resources to master web accessibility
+                  </p>
+                </div>
+              </ScrollAnimation>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <ScrollAnimation threshold={0.1}>
+                  <div className="group relative">
+                    {/* Shadow layers for depth */}
+                    <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                    {/* Main card */}
+                    <div className="relative bg-card border-2 border-border rounded-3xl p-8 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                      {/* Background number */}
+                      <div className="absolute top-6 right-6 text-[140px] font-bold text-primary/5 leading-none select-none pointer-events-none">
+                        01
+                      </div>
+                      {/* Icon with modern treatment */}
+                      <div className="relative mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        <BookOpen className="w-7 h-7 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                      </div>
+                      {/* Content */}
+                      <h3 className="relative text-xl font-bold mb-3 group-hover:text-primary transition-colors">Interactive Guide</h3>
+                      <p className="relative text-muted-foreground leading-relaxed">Every criterion explained with clear definitions, examples, and practical guidance</p>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.2}>
+                  <div className="group relative">
+                    {/* Shadow layers for depth */}
+                    <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                    {/* Main card */}
+                    <div className="relative bg-card border-2 border-border rounded-3xl p-8 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                      {/* Background number */}
+                      <div className="absolute top-6 right-6 text-[140px] font-bold text-primary/5 leading-none select-none pointer-events-none">
+                        02
+                      </div>
+                      {/* Icon with modern treatment */}
+                      <div className="relative mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        <Code2 className="w-7 h-7 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                      </div>
+                      {/* Content */}
+                      <h3 className="relative text-xl font-bold mb-3 group-hover:text-primary transition-colors">Code Examples</h3>
+                      <p className="relative text-muted-foreground leading-relaxed">Real-world code snippets showing both accessible and inaccessible patterns</p>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.3}>
+                  <div className="group relative">
+                    {/* Shadow layers for depth */}
+                    <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                    {/* Main card */}
+                    <div className="relative bg-card border-2 border-border rounded-3xl p-8 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                      {/* Background number */}
+                      <div className="absolute top-6 right-6 text-[140px] font-bold text-primary/5 leading-none select-none pointer-events-none">
+                        03
+                      </div>
+                      {/* Icon with modern treatment */}
+                      <div className="relative mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        <CheckCircle className="w-7 h-7 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                      </div>
+                      {/* Content */}
+                      <h3 className="relative text-xl font-bold mb-3 group-hover:text-primary transition-colors">Accessibility Checker</h3>
+                      <p className="relative text-muted-foreground leading-relaxed">Test your websites against WCAG criteria with instant feedback</p>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.4}>
+                  <div className="group relative">
+                    {/* Shadow layers for depth */}
+                    <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                    {/* Main card */}
+                    <div className="relative bg-card border-2 border-border rounded-3xl p-8 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                      {/* Background number */}
+                      <div className="absolute top-6 right-6 text-[140px] font-bold text-primary/5 leading-none select-none pointer-events-none">
+                        04
+                      </div>
+                      {/* Icon with modern treatment */}
+                      <div className="relative mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        <Lightbulb className="w-7 h-7 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                      </div>
+                      {/* Content */}
+                      <h3 className="relative text-xl font-bold mb-3 group-hover:text-primary transition-colors">Best Practices</h3>
+                      <p className="relative text-muted-foreground leading-relaxed">Learn from common mistakes and discover proven solutions</p>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.5}>
+                  <div className="group relative">
+                    {/* Shadow layers for depth */}
+                    <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                    {/* Main card */}
+                    <div className="relative bg-card border-2 border-border rounded-3xl p-8 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                      {/* Background number */}
+                      <div className="absolute top-6 right-6 text-[140px] font-bold text-primary/5 leading-none select-none pointer-events-none">
+                        05
+                      </div>
+                      {/* Icon with modern treatment */}
+                      <div className="relative mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        <FileText className="w-7 h-7 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                      </div>
+                      {/* Content */}
+                      <h3 className="relative text-xl font-bold mb-3 group-hover:text-primary transition-colors">Quick Reference</h3>
+                      <p className="relative text-muted-foreground leading-relaxed">Downloadable checklists and reference guides for your team</p>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+
+                <ScrollAnimation threshold={0.6}>
+                  <div className="group relative">
+                    {/* Shadow layers for depth */}
+                    <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                    {/* Main card */}
+                    <div className="relative bg-card border-2 border-border rounded-3xl p-8 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                      {/* Background number */}
+                      <div className="absolute top-6 right-6 text-[140px] font-bold text-primary/5 leading-none select-none pointer-events-none">
+                        06
+                      </div>
+                      {/* Icon with modern treatment */}
+                      <div className="relative mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        <Sparkles className="w-7 h-7 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                      </div>
+                      {/* Content */}
+                      <h3 className="relative text-xl font-bold mb-3 group-hover:text-primary transition-colors">Regular Updates</h3>
+                      <p className="relative text-muted-foreground leading-relaxed">Stay current with the latest WCAG guidelines and industry standards</p>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+              </div>
+            </div>
+          </section>
+
+          {/* Why Accessibility Matters Section */}
+          <section className="py-16 md:py-24 bg-muted/30 relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
+            </div>
+            <div className="container px-4 sm:px-6 lg:px-8 relative">
+              <ScrollAnimation>
+                <div className="text-center mb-16 md:mb-20">
+                  <div className="inline-block mb-3 px-4 py-1.5 bg-primary/10 rounded-full text-xs font-medium uppercase tracking-wider text-primary">
+                    The Impact
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-balance">Why Accessibility Matters</h2>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed">
+                    Accessibility isn't just the right thing to do — it's good business and affects everyone
+                  </p>
+                </div>
+              </ScrollAnimation>
+
+              <div className="grid lg:grid-cols-12 gap-8">
+                <ScrollAnimation className="lg:col-span-4">
+                  <div className="group relative h-full">
+                    {/* Shadow layers */}
+                    <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                    {/* Main card */}
+                    <div className="relative h-full bg-card border-2 border-border rounded-3xl p-8 md:p-10 group-hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                      {/* Background icon */}
+                      <div className="absolute top-8 right-8 opacity-[0.03]">
+                        <Users className="w-40 h-40 text-primary" strokeWidth={1.5} />
+                      </div>
+                      <div className="relative">
+                        <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
+                            <Users className="w-6 h-6 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                          </div>
+                          By the Numbers
+                        </h3>
+                        <div className="space-y-10">
+                          <div>
+                            <div className="text-5xl md:text-6xl font-bold mb-3 bg-linear-to-br from-primary to-primary/60 bg-clip-text text-transparent">
+                              1.3B
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed">People worldwide with disabilities</p>
+                          </div>
+                          <div>
+                            <div className="text-5xl md:text-6xl font-bold mb-3 bg-linear-to-br from-primary to-primary/60 bg-clip-text text-transparent">
+                              26%
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed">Of US adults have a disability</p>
+                          </div>
+                          <div>
+                            <div className="text-5xl md:text-6xl font-bold mb-3 bg-linear-to-br from-primary to-primary/60 bg-clip-text text-transparent">
+                              $13T
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed">Global spending power of people with disabilities</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+
+                <div className="lg:col-span-8 grid md:grid-cols-2 gap-6">
+                  <ScrollAnimation threshold={0.1}>
+                    <div className="group relative">
+                      {/* Shadow layers */}
+                      <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                      <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                      {/* Main card */}
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-7 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                        <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                          <TrendingUp className="w-6 h-6 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Better Business</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Accessible websites reach 26% more potential customers and see improved conversion rates</p>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation threshold={0.2}>
+                    <div className="group relative">
+                      {/* Shadow layers */}
+                      <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                      <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                      {/* Main card */}
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-7 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                        <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                          <Scale className="w-6 h-6 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Legal Compliance</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Meet ADA, Section 508, and international accessibility requirements to avoid lawsuits</p>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation threshold={0.3}>
+                    <div className="group relative">
+                      {/* Shadow layers */}
+                      <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                      <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                      {/* Main card */}
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-7 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                        <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                          <Heart className="w-6 h-6 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Social Impact</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Create an inclusive web that works for everyone, regardless of ability</p>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation threshold={0.4}>
+                    <div className="group relative">
+                      {/* Shadow layers */}
+                      <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                      <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                      {/* Main card */}
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-7 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                        <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                          <Globe className="w-6 h-6 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Better SEO</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Accessible websites rank higher in search engines and reach wider audiences</p>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation threshold={0.5}>
+                    <div className="group relative">
+                      {/* Shadow layers */}
+                      <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                      <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                      {/* Main card */}
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-7 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1">
+                        <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                          <Zap className="w-6 h-6 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Improved UX</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Accessibility improvements benefit all users with clearer navigation and better usability</p>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+                </div>
               </div>
             </div>
           </section>
 
           {/* Services Section */}
-          <section className="py-12 sm:py-16 md:py-24">
+          <section className="py-16 md:py-24 bg-background">
             <div className="container px-4 sm:px-6 lg:px-8">
-              <ScrollAnimation>
-                <div className="text-center mb-12">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-                  <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Professional accessibility solutions to help you build inclusive digital experiences
-                  </p>
-                </div>
-              </ScrollAnimation>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                <ScrollAnimation threshold={0.1}>
-                  <Link href="/services/accessibility-audit" className="group block">
-                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
-                      <CardHeader>
-                        <div className="w-12 h-12 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                          <Search className="h-6 w-6" />
-                        </div>
-                        <CardTitle className="group-hover:text-primary transition-colors">Accessibility Audits</CardTitle>
-                        <CardDescription>
-                          Comprehensive WCAG 2.2 compliance audits with detailed reporting and recommendations
-                        </CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </Link>
+              <div className="max-w-4xl mx-auto">
+                <ScrollAnimation>
+                  <div className="mb-20">
+                    <h2 className="text-6xl md:text-8xl font-black mb-2 tracking-tighter leading-none">Services</h2>
+                    <p className="text-xl text-muted-foreground">Six ways we help you build accessible digital experiences</p>
+                  </div>
                 </ScrollAnimation>
 
-                <ScrollAnimation threshold={0.2}>
-                  <Link href="/services/accessibility-remediation" className="group block">
-                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
-                      <CardHeader>
-                        <div className="w-12 h-12 rounded-lg bg-green-500/10 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                          <ShieldCheck className="h-6 w-6" />
+                <div className="space-y-8">
+                  <ScrollAnimation threshold={0.1}>
+                    <Link href="/services/accessibility-audit" className="group relative block md:translate-x-12 transition-transform hover:translate-x-0">
+                      {/* Shadow layers for depth */}
+                      <div className="absolute inset-0 bg-foreground/5 rounded-3xl translate-y-3 translate-x-3" />
+                      <div className="absolute inset-0 bg-foreground/10 rounded-3xl translate-y-2 translate-x-2" />
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-10 hover:border-foreground/40 hover:shadow-2xl transition-all duration-300">
+                        {/* Large Number - Split diagonal positioning */}
+                        <div className="absolute top-0 right-8 w-32 h-32 flex items-center justify-center pointer-events-none">
+                          <span className="text-9xl font-black text-foreground/4 group-hover:text-foreground/8 transition-colors leading-none">
+                            1
+                          </span>
                         </div>
-                        <CardTitle className="group-hover:text-primary transition-colors">Remediation Services</CardTitle>
-                        <CardDescription>
-                          Expert code fixes and design improvements to resolve accessibility issues
-                        </CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </Link>
-                </ScrollAnimation>
-
-                <ScrollAnimation threshold={0.3}>
-                  <Link href="/services/custom-website-development" className="group block">
-                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
-                      <CardHeader>
-                        <div className="w-12 h-12 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                          <Monitor className="h-6 w-6" />
+                        <div className="relative z-10 flex flex-col md:flex-row items-start gap-6">
+                          <div className="shrink-0">
+                            <div className="w-20 h-20 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300 group-hover:rotate-6">
+                              <Search className="w-10 h-10" />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <div className="mb-4">
+                              <span className="text-xs font-mono text-muted-foreground tracking-wider">SERVICE 01</span>
+                              <h3 className="text-3xl md:text-4xl font-black mt-1">Accessibility Audits</h3>
+                            </div>
+                            <p className="text-muted-foreground text-lg leading-relaxed">Comprehensive WCAG 2.2 compliance audits with detailed reporting</p>
+                          </div>
                         </div>
-                        <CardTitle className="group-hover:text-primary transition-colors">Web Development</CardTitle>
-                        <CardDescription>
-                          Accessible-first websites built to modern standards and WCAG compliance
-                        </CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </Link>
-                </ScrollAnimation>
-
-                <ScrollAnimation threshold={0.4}>
-                  <Link href="/services/android-app-development" className="group block">
-                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
-                      <CardHeader>
-                        <div className="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                          <Smartphone className="h-6 w-6" />
-                        </div>
-                        <CardTitle className="group-hover:text-primary transition-colors">Android Apps</CardTitle>
-                        <CardDescription>
-                          Native Android applications built with accessibility and Material Design principles
-                        </CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </Link>
-                </ScrollAnimation>
-
-                <ScrollAnimation threshold={0.5}>
-                  <Link href="/services/ios-app-development" className="group block">
-                    <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
-                      <CardHeader>
-                        <div className="w-12 h-12 rounded-lg bg-orange-500/10 text-orange-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                          <Smartphone className="h-6 w-6" />
-                        </div>
-                        <CardTitle className="group-hover:text-primary transition-colors">iOS Apps</CardTitle>
-                        <CardDescription>
-                          Native iOS applications with VoiceOver compatibility and Apple accessibility guidelines
-                        </CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </Link>
-                </ScrollAnimation>
-              </div>
-
-              <ScrollAnimation>
-                <div className="text-center">
-                  <Button asChild size="lg" variant="outline">
-                    <Link href="/services">
-                      View All Services
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      </div>
                     </Link>
-                  </Button>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation threshold={0.2}>
+                    <Link href="/services/accessibility-remediation" className="group relative block md:-translate-x-12 transition-transform hover:translate-x-0">
+                      {/* Shadow layers for depth */}
+                      <div className="absolute inset-0 bg-foreground/5 rounded-3xl translate-y-3 translate-x-3" />
+                      <div className="absolute inset-0 bg-foreground/10 rounded-3xl translate-y-2 translate-x-2" />
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-10 hover:border-foreground/40 hover:shadow-2xl transition-all duration-300">
+                        {/* Large Number - Split diagonal positioning */}
+                        <div className="absolute top-8 right-0 w-32 h-32 flex items-center justify-center pointer-events-none">
+                          <span className="text-9xl font-black text-foreground/4 group-hover:text-foreground/8 transition-colors leading-none">
+                            2
+                          </span>
+                        </div>
+                        <div className="relative z-10 flex flex-col md:flex-row items-start gap-6">
+                          <div className="shrink-0">
+                            <div className="w-20 h-20 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300 group-hover:rotate-6">
+                              <Wrench className="w-10 h-10" />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <div className="mb-4">
+                              <span className="text-xs font-mono text-muted-foreground tracking-wider">SERVICE 02</span>
+                              <h3 className="text-3xl md:text-4xl font-black mt-1">Remediation</h3>
+                            </div>
+                            <p className="text-muted-foreground text-lg leading-relaxed">Expert fixes for accessibility issues to ensure WCAG compliance</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation threshold={0.3}>
+                    <Link href="/services" className="group relative block md:translate-x-12 transition-transform hover:translate-x-0">
+                      {/* Shadow layers for depth */}
+                      <div className="absolute inset-0 bg-foreground/5 rounded-3xl translate-y-3 translate-x-3" />
+                      <div className="absolute inset-0 bg-foreground/10 rounded-3xl translate-y-2 translate-x-2" />
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-10 hover:border-foreground/40 hover:shadow-2xl transition-all duration-300">
+                        {/* Large Number - Split diagonal positioning */}
+                        <div className="absolute top-0 right-8 w-32 h-32 flex items-center justify-center pointer-events-none">
+                          <span className="text-9xl font-black text-foreground/4 group-hover:text-foreground/8 transition-colors leading-none">
+                            3
+                          </span>
+                        </div>
+                        <div className="relative z-10 flex flex-col md:flex-row items-start gap-6">
+                          <div className="shrink-0">
+                            <div className="w-20 h-20 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300 group-hover:rotate-6">
+                              <GraduationCap className="w-10 h-10" />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <div className="mb-4">
+                              <span className="text-xs font-mono text-muted-foreground tracking-wider">SERVICE 03</span>
+                              <h3 className="text-3xl md:text-4xl font-black mt-1">Training</h3>
+                            </div>
+                            <p className="text-muted-foreground text-lg leading-relaxed">Empower your team with accessibility knowledge</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation threshold={0.4}>
+                    <Link href="/services" className="group relative block md:-translate-x-12 transition-transform hover:translate-x-0">
+                      {/* Shadow layers for depth */}
+                      <div className="absolute inset-0 bg-foreground/5 rounded-3xl translate-y-3 translate-x-3" />
+                      <div className="absolute inset-0 bg-foreground/10 rounded-3xl translate-y-2 translate-x-2" />
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-10 hover:border-foreground/40 hover:shadow-2xl transition-all duration-300">
+                        {/* Large Number - Split diagonal positioning */}
+                        <div className="absolute top-8 right-0 w-32 h-32 flex items-center justify-center pointer-events-none">
+                          <span className="text-9xl font-black text-foreground/4 group-hover:text-foreground/8 transition-colors leading-none">
+                            4
+                          </span>
+                        </div>
+                        <div className="relative z-10 flex flex-col md:flex-row items-start gap-6">
+                          <div className="shrink-0">
+                            <div className="w-20 h-20 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300 group-hover:rotate-6">
+                              <FileCheck className="w-10 h-10" />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <div className="mb-4">
+                              <span className="text-xs font-mono text-muted-foreground tracking-wider">SERVICE 04</span>
+                              <h3 className="text-3xl md:text-4xl font-black mt-1">VPAT Reports</h3>
+                            </div>
+                            <p className="text-muted-foreground text-lg leading-relaxed">Documentation for procurement and compliance needs</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation threshold={0.5}>
+                    <Link href="/services" className="group relative block md:translate-x-12 transition-transform hover:translate-x-0">
+                      {/* Shadow layers for depth */}
+                      <div className="absolute inset-0 bg-foreground/5 rounded-3xl translate-y-3 translate-x-3" />
+                      <div className="absolute inset-0 bg-foreground/10 rounded-3xl translate-y-2 translate-x-2" />
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-10 hover:border-foreground/40 hover:shadow-2xl transition-all duration-300">
+                        {/* Large Number - Split diagonal positioning */}
+                        <div className="absolute top-0 right-8 w-32 h-32 flex items-center justify-center pointer-events-none">
+                          <span className="text-9xl font-black text-foreground/4 group-hover:text-foreground/8 transition-colors leading-none">
+                            5
+                          </span>
+                        </div>
+                        <div className="relative z-10 flex flex-col md:flex-row items-start gap-6">
+                          <div className="shrink-0">
+                            <div className="w-20 h-20 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300 group-hover:rotate-6">
+                              <Lightbulb className="w-10 h-10" />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <div className="mb-4">
+                              <span className="text-xs font-mono text-muted-foreground tracking-wider">SERVICE 05</span>
+                              <h3 className="text-3xl md:text-4xl font-black mt-1">Consulting</h3>
+                            </div>
+                            <p className="text-muted-foreground text-lg leading-relaxed">Strategic guidance for embedding accessibility</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation threshold={0.6}>
+                    <Link href="/services" className="group relative block md:-translate-x-12 transition-transform hover:translate-x-0">
+                      {/* Shadow layers for depth */}
+                      <div className="absolute inset-0 bg-foreground/5 rounded-3xl translate-y-3 translate-x-3" />
+                      <div className="absolute inset-0 bg-foreground/10 rounded-3xl translate-y-2 translate-x-2" />
+                      <div className="relative bg-card border-2 border-border rounded-3xl p-10 hover:border-foreground/40 hover:shadow-2xl transition-all duration-300">
+                        {/* Large Number - Split diagonal positioning */}
+                        <div className="absolute top-8 right-0 w-32 h-32 flex items-center justify-center pointer-events-none">
+                          <span className="text-9xl font-black text-foreground/4 group-hover:text-foreground/8 transition-colors leading-none">
+                            6
+                          </span>
+                        </div>
+                        <div className="relative z-10 flex flex-col md:flex-row items-start gap-6">
+                          <div className="shrink-0">
+                            <div className="w-20 h-20 bg-foreground/5 rounded-2xl flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300 group-hover:rotate-6">
+                              <FlaskConical className="w-10 h-10" />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <div className="mb-4">
+                              <span className="text-xs font-mono text-muted-foreground tracking-wider">SERVICE 06</span>
+                              <h3 className="text-3xl md:text-4xl font-black mt-1">Testing</h3>
+                            </div>
+                            <p className="text-muted-foreground text-lg leading-relaxed">Rigorous testing with assistive technologies</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </ScrollAnimation>
                 </div>
-              </ScrollAnimation>
+              </div>
             </div>
           </section>
 
           {/* Latest Accessibility Lawsuits Section */}
-          <section className="py-12 sm:py-16 md:py-24 bg-muted/30">
-            <div className="container px-4 sm:px-6 lg:px-8">
+          <section className="py-16 md:py-24 bg-muted/30 relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+            </div>
+            <div className="container px-4 sm:px-6 lg:px-8 relative">
               <ScrollAnimation>
-                <div className="text-center mb-12">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Latest Accessibility Lawsuits</h2>
-                  <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                <div className="text-center mb-16 md:mb-20">
+                  <div className="inline-block mb-3 px-4 py-1.5 bg-primary/10 rounded-full text-xs font-medium uppercase tracking-wider text-primary">
+                    Legal Updates
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-balance">Latest Lawsuits</h2>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed">
                     Stay informed about recent accessibility legal cases and their implications
                   </p>
                 </div>
               </ScrollAnimation>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 {latestLawsuits.map((lawsuit, index) => (
                   <ScrollAnimation key={lawsuit.slug} threshold={0.1 + index * 0.1}>
-                    <Link href={`/lawsuits/${lawsuit.slug}`} className="group block h-full">
-                      <Card className="h-full flex flex-col hover:shadow-lg transition-all hover:border-primary/50">
-                        <CardHeader className="flex-1 flex flex-col">
-                          <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
-                            <div className="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
-                              <Scale className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
-                              <Badge variant={lawsuit.status === 'settled' ? 'default' : lawsuit.status === 'ongoing' ? 'secondary' : 'outline'} className="text-xs whitespace-nowrap">
+                    <Link href={`/lawsuits/${lawsuit.slug}`} className="group relative block h-full">
+                      {/* Shadow layers for depth */}
+                      <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                      <div className="absolute inset-0 bg-primary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                      {/* Main card */}
+                      <div className="relative h-full bg-card border-2 border-border rounded-3xl p-8 hover:border-primary/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
+                        {/* Background number */}
+                        <div className="absolute top-6 right-6 text-[100px] font-bold text-primary/5 leading-none select-none pointer-events-none">
+                          {String(index + 1).padStart(2, "0")}
+                        </div>
+                        
+                        <div className="relative">
+                          {/* Header with icon and status */}
+                          <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center gap-3">
+                              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                                <Scale className="w-6 h-6 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                              </div>
+                              <Badge 
+                                variant={lawsuit.status === 'settled' ? 'default' : lawsuit.status === 'ongoing' ? 'secondary' : 'outline'} 
+                                className="text-xs font-medium"
+                              >
                                 {lawsuit.status.charAt(0).toUpperCase() + lawsuit.status.slice(1)}
                               </Badge>
                             </div>
-                            <div className="flex items-center gap-1 text-xs text-muted-foreground flex-shrink-0">
-                              <Calendar className="h-3 w-3" />
-                              <span className="whitespace-nowrap">
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <Calendar className="h-4 w-4" />
+                              <span>
                                 {new Date(lawsuit.dateResolved || lawsuit.dateFiled).toLocaleDateString('en-US', { 
                                   year: 'numeric', 
                                   month: 'short' 
@@ -681,24 +1070,29 @@ export default function HomePage() {
                               </span>
                             </div>
                           </div>
-                          <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-2 mb-2 sm:mb-3">
+
+                          {/* Title */}
+                          <h3 className="text-xl md:text-2xl font-bold mb-4 group-hover:text-primary transition-colors line-clamp-2">
                             {lawsuit.title}
-                          </CardTitle>
-                          <CardDescription className="line-clamp-3 text-sm sm:text-base flex-1">
+                          </h3>
+
+                          {/* Summary */}
+                          <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3">
                             {lawsuit.summary}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent className="pt-0 mt-auto">
-                          <div className="flex flex-col gap-2">
-                            <div className="text-xs sm:text-sm text-muted-foreground">
-                              <span className="font-medium">Defendant:</span> <span className="break-words">{lawsuit.defendant}</span>
+                          </p>
+
+                          {/* Footer */}
+                          <div className="flex items-center justify-between pt-4 border-t border-border">
+                            <div className="text-sm text-muted-foreground">
+                              <span className="font-medium text-foreground">Defendant:</span> {lawsuit.defendant}
                             </div>
-                            <div className="flex items-center justify-end">
-                              <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                            <div className="flex items-center gap-2 text-primary font-medium text-sm">
+                              Read more
+                              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                             </div>
                           </div>
-                        </CardContent>
-                      </Card>
+                        </div>
+                      </div>
                     </Link>
                   </ScrollAnimation>
                 ))}
@@ -706,117 +1100,183 @@ export default function HomePage() {
 
               <ScrollAnimation>
                 <div className="text-center">
-                  <Button asChild size="lg" variant="outline">
-                    <Link href="/lawsuits">
-                      View All Lawsuits
-                      <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
+                  <Link 
+                    href="/lawsuits"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
+                  >
+                    View All Lawsuits
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
                 </div>
               </ScrollAnimation>
             </div>
           </section>
 
           {/* Latest Blog Posts Section */}
-          <section className="py-12 sm:py-16 md:py-24">
-            <div className="container px-4 sm:px-6 lg:px-8">
+          <section className="py-16 md:py-24 bg-background relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-20 right-10 w-[300px] h-[300px] bg-primary/5 rounded-full blur-3xl" />
+            </div>
+            <div className="container px-4 sm:px-6 lg:px-8 relative">
               <ScrollAnimation>
-                <div className="text-center mb-12">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Latest Blog Posts</h2>
-                  <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                <div className="text-center mb-16 md:mb-20">
+                  <div className="inline-block mb-3 px-4 py-1.5 bg-secondary/10 rounded-full text-xs font-medium uppercase tracking-wider text-secondary">
+                    From the Blog
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-balance">Latest Insights</h2>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed">
                     Insights, discussions, and analysis from the accessibility community
                   </p>
                 </div>
               </ScrollAnimation>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 <ScrollAnimation threshold={0.1}>
-                  <Link href="/blog/is-accessibility-work-safe-from-ai-in-the-near-future" className="group block h-full">
-                    <Card className="h-full flex flex-col hover:shadow-lg transition-all hover:border-primary/50">
-                      <CardHeader className="flex-1 flex flex-col">
-                        <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
-                          <div className="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
-                            <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                  <Link href="/blog/is-accessibility-work-safe-from-ai-in-the-near-future" className="group relative block h-full">
+                    {/* Shadow layers for depth */}
+                    <div className="absolute inset-0 bg-secondary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-secondary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                    {/* Main card */}
+                    <div className="relative h-full bg-card border-2 border-border rounded-3xl p-8 hover:border-secondary/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
+                      {/* Background decoration */}
+                      <div className="absolute top-6 right-6 text-[80px] font-bold text-secondary/5 leading-none select-none pointer-events-none">
+                        01
+                      </div>
+                      
+                      <div className="relative">
+                        {/* Header with icon and date */}
+                        <div className="flex items-center justify-between mb-6">
+                          <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            <FileText className="w-6 h-6 text-secondary group-hover:text-secondary-foreground" strokeWidth={1.5} />
                           </div>
-                          <div className="flex items-center gap-1 text-xs text-muted-foreground flex-shrink-0">
-                            <Calendar className="h-3 w-3" />
-                            <span className="whitespace-nowrap">Jan 26, 2025</span>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full">
+                            <Calendar className="h-4 w-4" />
+                            <span>Jan 26, 2025</span>
                           </div>
                         </div>
-                        <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-2 mb-2 sm:mb-3">
+
+                        {/* Title */}
+                        <h3 className="text-xl md:text-2xl font-bold mb-4 group-hover:text-secondary transition-colors">
                           Is Accessibility Work Safe from AI in the Near Future?
-                        </CardTitle>
-                        <CardDescription className="line-clamp-3 text-sm sm:text-base flex-1">
+                        </h3>
+
+                        {/* Summary */}
+                        <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3">
                           With AI advancing rapidly, accessibility professionals are questioning their career futures. We analyze the Reddit discussion that&apos;s sparking debate: Can AI replace human expertise in making digital content accessible?
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="pt-0 mt-auto">
-                        <div className="flex items-center justify-end">
-                          <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                        </p>
+
+                        {/* Footer */}
+                        <div className="flex items-center justify-end pt-4 border-t border-border">
+                          <div className="flex items-center gap-2 text-secondary font-medium text-sm">
+                            Read article
+                            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                          </div>
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </div>
                   </Link>
                 </ScrollAnimation>
 
                 <ScrollAnimation threshold={0.2}>
-                  <Link href="/blog/why-is-accessibility-being-delinked-from-disability" className="group block h-full">
-                    <Card className="h-full flex flex-col hover:shadow-lg transition-all hover:border-primary/50">
-                      <CardHeader className="flex-1 flex flex-col">
-                        <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
-                          <div className="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
-                            <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                  <Link href="/blog/why-is-accessibility-being-delinked-from-disability" className="group relative block h-full">
+                    {/* Shadow layers for depth */}
+                    <div className="absolute inset-0 bg-secondary/5 rounded-3xl transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-secondary/3 rounded-3xl transform translate-x-1 translate-y-1 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
+                    {/* Main card */}
+                    <div className="relative h-full bg-card border-2 border-border rounded-3xl p-8 hover:border-secondary/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
+                      {/* Background decoration */}
+                      <div className="absolute top-6 right-6 text-[80px] font-bold text-secondary/5 leading-none select-none pointer-events-none">
+                        02
+                      </div>
+                      
+                      <div className="relative">
+                        {/* Header with icon and date */}
+                        <div className="flex items-center justify-between mb-6">
+                          <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            <FileText className="w-6 h-6 text-secondary group-hover:text-secondary-foreground" strokeWidth={1.5} />
                           </div>
-                          <div className="flex items-center gap-1 text-xs text-muted-foreground flex-shrink-0">
-                            <Calendar className="h-3 w-3" />
-                            <span className="whitespace-nowrap">Jan 27, 2025</span>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full">
+                            <Calendar className="h-4 w-4" />
+                            <span>Jan 27, 2025</span>
                           </div>
                         </div>
-                        <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-2 mb-2 sm:mb-3">
+
+                        {/* Title */}
+                        <h3 className="text-xl md:text-2xl font-bold mb-4 group-hover:text-secondary transition-colors">
                           Why Is Accessibility Being De-Linked from Disability?
-                        </CardTitle>
-                        <CardDescription className="line-clamp-3 text-sm sm:text-base flex-1">
+                        </h3>
+
+                        {/* Summary */}
+                        <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3">
                           A critical examination of how accessibility messaging is shifting away from disability. We explore a Reddit discussion about why &quot;it helps everyone&quot; has replaced &quot;it helps disabled people&quot; as the primary accessibility argument.
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="pt-0 mt-auto">
-                        <div className="flex items-center justify-end">
-                          <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                        </p>
+
+                        {/* Footer */}
+                        <div className="flex items-center justify-end pt-4 border-t border-border">
+                          <div className="flex items-center gap-2 text-secondary font-medium text-sm">
+                            Read article
+                            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                          </div>
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </div>
                   </Link>
                 </ScrollAnimation>
               </div>
 
               <ScrollAnimation>
                 <div className="text-center">
-                  <Button asChild size="lg" variant="outline">
-                    <Link href="/blog">
-                      View All Blog Posts
-                      <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
+                  <Link 
+                    href="/blog"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-secondary-foreground rounded-2xl font-semibold hover:bg-secondary/90 transition-all hover:shadow-lg hover:shadow-secondary/25 hover:-translate-y-0.5"
+                  >
+                    View All Blog Posts
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
                 </div>
               </ScrollAnimation>
             </div>
           </section>
 
           {/* Primary CTA Section */}
-          <section className="border-t bg-card">
-            <div className="container py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 text-center">
+          <section className="py-20 md:py-32 bg-primary relative overflow-hidden">
+            {/* Background decorations */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+              <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+              {/* Large decorative text */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-[20rem] md:text-[30rem] font-black text-white/8 select-none leading-none">
+                  A11Y
+                </span>
+              </div>
+            </div>
+            
+            <div className="container px-4 sm:px-6 lg:px-8 relative">
               <ScrollAnimation>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Ready to Build Accessible Experiences?</h2>
-                <p className="text-base sm:text-lg md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
-                  Start learning WCAG 2.2 with our beginner-friendly guides and practical examples
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" asChild>
-                    <Link href="/learn">Start Learning</Link>
-                  </Button>
-                  <Button size="lg" variant="outline" asChild>
-                    <Link href="/checklist">View Checklist</Link>
-                  </Button>
+                <div className="max-w-4xl mx-auto text-center">
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground">
+                    Ready to Build Accessible Experiences?
+                  </h2>
+                  <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Start learning WCAG 2.2 with our beginner-friendly guides and practical examples
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link 
+                      href="/learn"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-foreground text-primary rounded-2xl font-semibold hover:bg-primary-foreground/90 transition-all hover:shadow-lg hover:-translate-y-0.5 text-lg"
+                    >
+                      Start Learning
+                      <ArrowRight className="h-5 w-5" />
+                    </Link>
+                    <Link 
+                      href="/checklist"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-primary-foreground border-2 border-primary-foreground/30 rounded-2xl font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground/50 transition-all text-lg"
+                    >
+                      View Checklist
+                    </Link>
+                  </div>
                 </div>
               </ScrollAnimation>
             </div>
