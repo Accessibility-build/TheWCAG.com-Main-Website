@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { successCriteria } from '@/lib/wcag-data'
 import { getAllLawsuits } from '@/lib/lawsuits-data'
+import { TOOLS } from '@/lib/tools/constants'
 
 // Manual blog posts data (matching app/blog/page.tsx)
 const manualBlogPosts = [
@@ -416,6 +417,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ]
 
-  return [...staticPages, ...principlePages, ...criteriaPages, ...lawsuitPages, ...blogPages]
+  // Conversion tools pages
+  const toolsPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/tools/convert`,
+      lastModified: recentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    ...TOOLS.map((tool) => ({
+      url: `${baseUrl}/tools/convert/${tool.slug}`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ]
+
+  return [...staticPages, ...principlePages, ...criteriaPages, ...lawsuitPages, ...blogPages, ...toolsPages]
 }
 

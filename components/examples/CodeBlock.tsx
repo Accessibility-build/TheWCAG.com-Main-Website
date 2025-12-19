@@ -48,7 +48,7 @@ export function CodeBlock({ code, id, language }: CodeBlockProps) {
   // Clean HTML entities from code for display and copying
   // Also normalize line breaks and preserve formatting
   const cleanCode = useMemo(() => {
-    let cleaned = code
+    const cleaned = code
       .replace(/&amp;lt;/g, "<")
       .replace(/&amp;gt;/g, ">")
       .replace(/&amp;quot;/g, '"')

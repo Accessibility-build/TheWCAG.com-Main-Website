@@ -45,7 +45,7 @@ async function generateBlogAtBuild() {
 
     // Extract title from content or generate one
     const titleMatch = blogContent.match(/^#\s+(.+)$/m)
-    let title = titleMatch
+    const title = titleMatch
       ? titleMatch[1]
       : `Accessibility News Roundup - ${new Date().toLocaleDateString('en-US', {
           month: 'long',

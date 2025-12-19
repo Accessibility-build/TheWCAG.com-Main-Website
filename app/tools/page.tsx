@@ -3,7 +3,6 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SkipLink } from "@/components/skip-link"
 import { Breadcrumb } from "@/components/breadcrumb"
-import { StructuredData } from "@/components/structured-data"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -11,16 +10,13 @@ import {
   ArrowRight,
   ExternalLink,
   Palette,
-  Search,
   FileText,
-  CheckCircle2,
   Zap,
   Eye,
   Shield,
   Code,
-  MousePointer,
   Sparkles,
-  Image
+  Image as ImageIcon
 } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -84,7 +80,7 @@ export default function ToolsPage() {
       criteria: ["Multiple"],
     },
     {
-      icon: Image,
+      icon: ImageIcon,
       title: "AI Alt Text Generator",
       description: "Intelligent alt text generator powered by AI that analyzes images with full context awareness. Generates descriptive, contextually appropriate alt text that meets WCAG 2.2 requirements. Considers surrounding content, page context, and image purpose to create meaningful descriptions that enhance accessibility.",
       url: "https://www.accessibility.build/tools/alt-text-generator",
@@ -215,6 +211,10 @@ export default function ToolsPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />
@@ -271,6 +271,41 @@ export default function ToolsPage() {
                       </Link>
                     </Button>
                   </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Free Conversion Tools */}
+            <section className="mb-12">
+              <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border-blue-200 dark:border-blue-800">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900">
+                      <FileText className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">Free Conversion Tools</CardTitle>
+                      <CardDescription>
+                        50+ free online tools for converting images, PDFs, documents, and data formats
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="secondary">Image Converter</Badge>
+                    <Badge variant="secondary">PDF Tools</Badge>
+                    <Badge variant="secondary">JSON Formatter</Badge>
+                    <Badge variant="secondary">QR Generator</Badge>
+                    <Badge variant="secondary">Hash Generator</Badge>
+                    <Badge variant="secondary">And more...</Badge>
+                  </div>
+                  <Button asChild>
+                    <Link href="/tools/convert">
+                      Browse All Conversion Tools
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
                 </CardContent>
               </Card>
             </section>

@@ -1,4 +1,4 @@
-﻿import type { SuccessCriterion } from '../types'
+import type { SuccessCriterion } from '../types'
 
 // Guideline 2.4: Navigable
 export const navigableCriteria: SuccessCriterion[] = [
@@ -1565,10 +1565,10 @@ function Link() {
 }
 
 // CSS:
-// .focus\:outline-3:focus {
+// .focus:outline-3:focus {
 //   outline: 3px solid;
 // }
-// .focus\:outline-blue-600:focus {
+// .focus:outline-blue-600:focus {
 //   outline-color: #2563eb; /* High contrast */
 // }`,
     },
