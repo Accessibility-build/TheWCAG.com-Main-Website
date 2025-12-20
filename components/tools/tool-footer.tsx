@@ -3,11 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { ArrowRight, HelpCircle, BookOpen } from "lucide-react"
 import { Tool, getRelatedTools } from "@/lib/tools/constants"
-
-// Helper to get the blog guide slug for a tool
-function getToolBlogGuideSlug(toolSlug: string): string {
-  return `${toolSlug}-guide`
-}
+import { getBlogGuideSlug } from "@/lib/blog/client-utils"
 
 interface ToolFooterProps {
   tool: Tool
@@ -108,7 +104,7 @@ function getToolSteps(tool: Tool): { title: string; description: string }[] {
 export function ToolFooter({ tool }: ToolFooterProps) {
   const relatedTools = getRelatedTools(tool.slug)
   const steps = getToolSteps(tool)
-  const blogGuideSlug = getToolBlogGuideSlug(tool.slug)
+  const blogGuideSlug = getBlogGuideSlug(tool.slug)
 
   return (
     <div className="mt-8 sm:mt-12 space-y-6 sm:space-y-8">
@@ -158,28 +154,30 @@ export function ToolFooter({ tool }: ToolFooterProps) {
         </section>
       )}
 
-      {/* Blog Guide Link */}
-      <section aria-labelledby="learn-more-heading" className="p-4 sm:p-6 bg-muted/50 rounded-lg border">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="flex items-start gap-3">
-            <BookOpen className="h-6 w-6 text-primary shrink-0 mt-0.5" aria-hidden="true" />
-            <div>
-              <h2 id="learn-more-heading" className="text-lg font-semibold mb-1">
-                Want to Learn More?
-              </h2>
-              <p className="text-sm text-muted-foreground">
-                Check out our comprehensive guide with step-by-step instructions, tips, and best practices.
-              </p>
+      {/* Blog Guide Link - Only show if blog guide exists */}
+      {blogGuideSlug && (
+        <section aria-labelledby="learn-more-heading" className="p-4 sm:p-6 bg-muted/50 rounded-lg border">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <BookOpen className="h-6 w-6 text-primary shrink-0 mt-0.5" aria-hidden="true" />
+              <div>
+                <h2 id="learn-more-heading" className="text-lg font-semibold mb-1">
+                  Want to Learn More?
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Check out our comprehensive guide with step-by-step instructions, tips, and best practices.
+                </p>
+              </div>
             </div>
+            <Button asChild className="min-h-[44px] shrink-0">
+              <Link href={`/blog/${blogGuideSlug}`}>
+                Read Full Guide
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
           </div>
-          <Button asChild className="min-h-[44px] shrink-0">
-            <Link href={`/blog/${blogGuideSlug}`}>
-              Read Full Guide
-              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Related tools */}
       {relatedTools.length > 0 && (
