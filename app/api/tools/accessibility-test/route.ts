@@ -1,18 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { JSDOM } from 'jsdom'
+import * as cheerio from 'cheerio'
 import { logger } from '@/lib/logger'
 
 /**
- * Accessibility Testing API Route (Lightweight Version)
+ * Accessibility Testing API Route (Lightweight Cheerio Version)
  * 
- * This route uses fetch + JSDOM + axe-core for Vercel free tier compatibility.
+ * This route uses fetch + Cheerio for Vercel free tier compatibility.
+ * It performs static HTML analysis to detect common accessibility issues.
  * 
  * Limitations:
  * - Only tests static HTML (JavaScript-rendered content is not executed)
+ * - Checks for common issues but not comprehensive WCAG compliance
  * - No screenshot capture
- * - Some dynamic accessibility issues may not be detected
  * 
- * For full JavaScript rendering, use the "Test Current Page" feature in the browser.
+ * For full JavaScript rendering and comprehensive testing, use the 
+ * "Test Current Page" feature in the browser which runs axe-core client-side.
  */
 
 // Maximum timeout for page fetch
@@ -22,11 +24,9 @@ const MAX_TIMEOUT = 25000
 function isValidUrl(urlString: string): boolean {
   try {
     const url = new URL(urlString)
-    // Only allow http and https protocols
     if (!['http:', 'https:'].includes(url.protocol)) {
       return false
     }
-    // Block localhost and private IPs (basic SSRF protection)
     const hostname = url.hostname.toLowerCase()
     if (
       hostname === 'localhost' ||
@@ -75,10 +75,401 @@ interface ProcessedViolation {
   nodes: ViolationNode[]
 }
 
-interface AxeResults {
+interface PassedCheck {
+  id: string
+  description: string
+  help: string
+  helpUrl: string
+  tags: string[]
+  nodes: { html: string; target: string[] }[]
+}
+
+/**
+ * Perform accessibility checks using Cheerio
+ */
+function performAccessibilityChecks($: cheerio.CheerioAPI): {
   violations: ProcessedViolation[]
-  passes: unknown[]
-  incomplete: unknown[]
+  passes: PassedCheck[]
+  incomplete: ProcessedViolation[]
+} {
+  const violations: ProcessedViolation[] = []
+  const passes: PassedCheck[] = []
+  const incomplete: ProcessedViolation[] = []
+
+  // 1. Check for images without alt text
+  const imagesWithoutAlt: ViolationNode[] = []
+  const imagesWithAlt: { html: string; target: string[] }[] = []
+  $('img').each((_, el) => {
+    const $el = $(el)
+    const alt = $el.attr('alt')
+    const src = $el.attr('src') || ''
+    const selector = `img[src="${src}"]`
+    
+    if (alt === undefined) {
+      imagesWithoutAlt.push({
+        html: $.html(el),
+        target: [selector],
+        failureSummary: 'Element does not have an alt attribute'
+      })
+    } else {
+      imagesWithAlt.push({
+        html: $.html(el),
+        target: [selector]
+      })
+    }
+  })
+
+  if (imagesWithoutAlt.length > 0) {
+    violations.push({
+      id: 'image-alt',
+      impact: 'critical',
+      description: 'Ensures <img> elements have alternate text or a role of none or presentation',
+      help: 'Images must have alternate text',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/image-alt',
+      tags: ['wcag2a', 'wcag111', 'section508', 'ACT'],
+      nodes: imagesWithoutAlt
+    })
+  }
+  if (imagesWithAlt.length > 0) {
+    passes.push({
+      id: 'image-alt',
+      description: 'Ensures <img> elements have alternate text or a role of none or presentation',
+      help: 'Images must have alternate text',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/image-alt',
+      tags: ['wcag2a', 'wcag111'],
+      nodes: imagesWithAlt
+    })
+  }
+
+  // 2. Check for form inputs without labels
+  const inputsWithoutLabels: ViolationNode[] = []
+  const inputsWithLabels: { html: string; target: string[] }[] = []
+  $('input:not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="image"])').each((_, el) => {
+    const $el = $(el)
+    const id = $el.attr('id')
+    const ariaLabel = $el.attr('aria-label')
+    const ariaLabelledby = $el.attr('aria-labelledby')
+    const title = $el.attr('title')
+    const name = $el.attr('name') || $el.attr('type') || 'input'
+    const selector = id ? `#${id}` : `input[name="${name}"]`
+
+    const hasLabel = id && $(`label[for="${id}"]`).length > 0
+    const hasAriaLabel = !!ariaLabel || !!ariaLabelledby
+    const hasTitle = !!title
+    const isWrappedInLabel = $el.closest('label').length > 0
+
+    if (!hasLabel && !hasAriaLabel && !hasTitle && !isWrappedInLabel) {
+      inputsWithoutLabels.push({
+        html: $.html(el),
+        target: [selector],
+        failureSummary: 'Form element does not have an associated label'
+      })
+    } else {
+      inputsWithLabels.push({
+        html: $.html(el),
+        target: [selector]
+      })
+    }
+  })
+
+  if (inputsWithoutLabels.length > 0) {
+    violations.push({
+      id: 'label',
+      impact: 'critical',
+      description: 'Ensures every form element has a label',
+      help: 'Form elements must have labels',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/label',
+      tags: ['wcag2a', 'wcag412', 'section508'],
+      nodes: inputsWithoutLabels
+    })
+  }
+  if (inputsWithLabels.length > 0) {
+    passes.push({
+      id: 'label',
+      description: 'Ensures every form element has a label',
+      help: 'Form elements must have labels',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/label',
+      tags: ['wcag2a', 'wcag412'],
+      nodes: inputsWithLabels
+    })
+  }
+
+  // 3. Check for buttons without accessible names
+  const buttonsWithoutNames: ViolationNode[] = []
+  const buttonsWithNames: { html: string; target: string[] }[] = []
+  $('button, [role="button"], input[type="submit"], input[type="button"]').each((_, el) => {
+    const $el = $(el)
+    const text = $el.text().trim()
+    const ariaLabel = $el.attr('aria-label')
+    const ariaLabelledby = $el.attr('aria-labelledby')
+    const title = $el.attr('title')
+    const value = $el.attr('value')
+    const selector = $el.attr('id') ? `#${$el.attr('id')}` : 'button'
+
+    const hasAccessibleName = text || ariaLabel || ariaLabelledby || title || value
+
+    if (!hasAccessibleName) {
+      buttonsWithoutNames.push({
+        html: $.html(el),
+        target: [selector],
+        failureSummary: 'Element does not have an accessible name'
+      })
+    } else {
+      buttonsWithNames.push({
+        html: $.html(el),
+        target: [selector]
+      })
+    }
+  })
+
+  if (buttonsWithoutNames.length > 0) {
+    violations.push({
+      id: 'button-name',
+      impact: 'critical',
+      description: 'Ensures buttons have discernible text',
+      help: 'Buttons must have discernible text',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/button-name',
+      tags: ['wcag2a', 'wcag412', 'section508'],
+      nodes: buttonsWithoutNames
+    })
+  }
+  if (buttonsWithNames.length > 0) {
+    passes.push({
+      id: 'button-name',
+      description: 'Ensures buttons have discernible text',
+      help: 'Buttons must have discernible text',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/button-name',
+      tags: ['wcag2a', 'wcag412'],
+      nodes: buttonsWithNames
+    })
+  }
+
+  // 4. Check for links without accessible names
+  const linksWithoutNames: ViolationNode[] = []
+  const linksWithNames: { html: string; target: string[] }[] = []
+  $('a[href]').each((_, el) => {
+    const $el = $(el)
+    const text = $el.text().trim()
+    const ariaLabel = $el.attr('aria-label')
+    const ariaLabelledby = $el.attr('aria-labelledby')
+    const title = $el.attr('title')
+    const hasImage = $el.find('img[alt]').length > 0
+    const href = $el.attr('href') || ''
+    const selector = `a[href="${href}"]`
+
+    const hasAccessibleName = text || ariaLabel || ariaLabelledby || title || hasImage
+
+    if (!hasAccessibleName) {
+      linksWithoutNames.push({
+        html: $.html(el),
+        target: [selector],
+        failureSummary: 'Element does not have an accessible name'
+      })
+    } else {
+      linksWithNames.push({
+        html: $.html(el),
+        target: [selector]
+      })
+    }
+  })
+
+  if (linksWithoutNames.length > 0) {
+    violations.push({
+      id: 'link-name',
+      impact: 'serious',
+      description: 'Ensures links have discernible text',
+      help: 'Links must have discernible text',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/link-name',
+      tags: ['wcag2a', 'wcag244', 'wcag412', 'section508'],
+      nodes: linksWithoutNames
+    })
+  }
+  if (linksWithNames.length > 0) {
+    passes.push({
+      id: 'link-name',
+      description: 'Ensures links have discernible text',
+      help: 'Links must have discernible text',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/link-name',
+      tags: ['wcag2a', 'wcag244'],
+      nodes: linksWithNames
+    })
+  }
+
+  // 5. Check for missing document language
+  const htmlLang = $('html').attr('lang')
+  if (!htmlLang) {
+    violations.push({
+      id: 'html-has-lang',
+      impact: 'serious',
+      description: 'Ensures every HTML document has a lang attribute',
+      help: '<html> element must have a lang attribute',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/html-has-lang',
+      tags: ['wcag2a', 'wcag311'],
+      nodes: [{
+        html: '<html>',
+        target: ['html'],
+        failureSummary: 'The <html> element does not have a lang attribute'
+      }]
+    })
+  } else {
+    passes.push({
+      id: 'html-has-lang',
+      description: 'Ensures every HTML document has a lang attribute',
+      help: '<html> element must have a lang attribute',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/html-has-lang',
+      tags: ['wcag2a', 'wcag311'],
+      nodes: [{ html: `<html lang="${htmlLang}">`, target: ['html'] }]
+    })
+  }
+
+  // 6. Check for missing page title
+  const title = $('title').text().trim()
+  if (!title) {
+    violations.push({
+      id: 'document-title',
+      impact: 'serious',
+      description: 'Ensures each HTML document contains a non-empty <title> element',
+      help: 'Documents must have <title> element',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/document-title',
+      tags: ['wcag2a', 'wcag242'],
+      nodes: [{
+        html: '<head>...</head>',
+        target: ['head'],
+        failureSummary: 'Document does not have a non-empty <title> element'
+      }]
+    })
+  } else {
+    passes.push({
+      id: 'document-title',
+      description: 'Ensures each HTML document contains a non-empty <title> element',
+      help: 'Documents must have <title> element',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/document-title',
+      tags: ['wcag2a', 'wcag242'],
+      nodes: [{ html: `<title>${title}</title>`, target: ['title'] }]
+    })
+  }
+
+  // 7. Check for proper heading hierarchy
+  const headings = $('h1, h2, h3, h4, h5, h6')
+  let previousLevel = 0
+  let hasHeadingIssue = false
+  const headingNodes: ViolationNode[] = []
+
+  headings.each((_, el) => {
+    const $el = $(el)
+    const tagName = el.tagName.toLowerCase()
+    const level = parseInt(tagName.charAt(1))
+    
+    if (previousLevel > 0 && level > previousLevel + 1) {
+      hasHeadingIssue = true
+      headingNodes.push({
+        html: $.html(el),
+        target: [tagName],
+        failureSummary: `Heading levels should only increase by one. Expected h${previousLevel + 1} or lower, found ${tagName}`
+      })
+    }
+    previousLevel = level
+  })
+
+  if (hasHeadingIssue) {
+    violations.push({
+      id: 'heading-order',
+      impact: 'moderate',
+      description: 'Ensures the order of headings is semantically correct',
+      help: 'Heading levels should only increase by one',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/heading-order',
+      tags: ['wcag2a', 'best-practice'],
+      nodes: headingNodes
+    })
+  } else if (headings.length > 0) {
+    passes.push({
+      id: 'heading-order',
+      description: 'Ensures the order of headings is semantically correct',
+      help: 'Heading levels should only increase by one',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/heading-order',
+      tags: ['wcag2a', 'best-practice'],
+      nodes: [{ html: 'Headings are in correct order', target: ['h1, h2, h3, h4, h5, h6'] }]
+    })
+  }
+
+  // 8. Check for empty links
+  const emptyLinks: ViolationNode[] = []
+  $('a[href]').each((_, el) => {
+    const $el = $(el)
+    const text = $el.text().trim()
+    const hasContent = text || $el.find('img, svg, [aria-label]').length > 0 || $el.attr('aria-label')
+    
+    if (!hasContent && $el.children().length === 0) {
+      emptyLinks.push({
+        html: $.html(el),
+        target: [`a[href="${$el.attr('href')}"]`],
+        failureSummary: 'Link is empty and has no accessible name'
+      })
+    }
+  })
+
+  if (emptyLinks.length > 0) {
+    violations.push({
+      id: 'empty-links',
+      impact: 'serious',
+      description: 'Ensures links are not empty',
+      help: 'Links must not be empty',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/link-name',
+      tags: ['wcag2a', 'wcag244'],
+      nodes: emptyLinks
+    })
+  }
+
+  // 9. Check for missing landmark regions
+  const hasMain = $('main, [role="main"]').length > 0
+  const hasNav = $('nav, [role="navigation"]').length > 0
+  
+  if (!hasMain) {
+    incomplete.push({
+      id: 'landmark-main-is-top-level',
+      impact: 'moderate',
+      description: 'Ensures the main landmark is at top level',
+      help: 'Page should contain a main landmark',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/landmark-main-is-top-level',
+      tags: ['wcag2a', 'best-practice'],
+      nodes: [{
+        html: '<body>',
+        target: ['body'],
+        failureSummary: 'Document does not have a main landmark'
+      }]
+    })
+  }
+
+  // 10. Check for tables without headers
+  const tablesWithoutHeaders: ViolationNode[] = []
+  $('table').each((_, el) => {
+    const $el = $(el)
+    const hasTh = $el.find('th').length > 0
+    const hasScope = $el.find('[scope]').length > 0
+    const hasHeaders = $el.find('[headers]').length > 0
+    
+    if (!hasTh && !hasScope && !hasHeaders) {
+      tablesWithoutHeaders.push({
+        html: $.html(el).substring(0, 200) + '...',
+        target: ['table'],
+        failureSummary: 'Data table does not have header cells'
+      })
+    }
+  })
+
+  if (tablesWithoutHeaders.length > 0) {
+    violations.push({
+      id: 'td-has-header',
+      impact: 'critical',
+      description: 'Ensures each cell in a data table is associated with a header',
+      help: 'All data cells must have table headers',
+      helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/td-has-header',
+      tags: ['wcag2a', 'wcag131', 'section508'],
+      nodes: tablesWithoutHeaders
+    })
+  }
+
+  return { violations, passes, incomplete }
 }
 
 export async function POST(request: NextRequest) {
@@ -127,7 +518,7 @@ export async function POST(request: NextRequest) {
       }
 
       htmlContent = await response.text()
-      finalUrl = response.url // Handle redirects
+      finalUrl = response.url
     } catch (error) {
       clearTimeout(timeoutId)
       if (error instanceof Error) {
@@ -144,73 +535,35 @@ export async function POST(request: NextRequest) {
       throw error
     }
 
-    // Parse HTML with JSDOM
-    const dom = new JSDOM(htmlContent, {
-      url: finalUrl,
-      runScripts: 'outside-only', // Don't run scripts for security
-      resources: 'usable', // Allow loading external resources like CSS
-      pretendToBeVisual: true,
-    })
-
-    const document = dom.window.document
+    // Parse HTML with Cheerio
+    const $ = cheerio.load(htmlContent)
 
     // Extract page metadata
     const pageMetadata = {
-      title: document.title || undefined,
-      description: document.querySelector('meta[name="description"]')?.getAttribute('content') ||
-                   document.querySelector('meta[property="og:description"]')?.getAttribute('content') || undefined,
-      language: document.documentElement.lang || undefined,
+      title: $('title').text().trim() || undefined,
+      description: $('meta[name="description"]').attr('content') ||
+                   $('meta[property="og:description"]').attr('content') || undefined,
+      language: $('html').attr('lang') || undefined,
     }
 
-    // Load axe-core
-    const axeResponse = await fetch('https://unpkg.com/axe-core@4.10.0/axe.min.js')
-    if (!axeResponse.ok) {
-      throw new Error('Failed to load axe-core from CDN')
-    }
-    const axeScript = await axeResponse.text()
-
-    // Inject axe-core into JSDOM
-    const scriptElement = document.createElement('script')
-    scriptElement.textContent = axeScript
-    document.head.appendChild(scriptElement)
-
-    // Evaluate the script in JSDOM context
-    dom.window.eval(axeScript)
-
-    // Run axe-core test
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const axe = (dom.window as any).axe
-
-    if (!axe) {
-      throw new Error('axe-core failed to initialize')
-    }
-
-    const results: AxeResults = await axe.run(document, {
-      tags: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'],
-      rules: {
-        // Enable all rules
-      },
-    })
-
-    // Clean up JSDOM
-    dom.window.close()
+    // Perform accessibility checks
+    const { violations, passes, incomplete } = performAccessibilityChecks($)
 
     // Process and return results
     const processedResults = {
       url: finalUrl,
       timestamp: new Date().toISOString(),
       pageMetadata,
-      violations: results.violations || [],
-      passes: results.passes || [],
-      incomplete: results.incomplete || [],
+      violations,
+      passes,
+      incomplete,
       summary: {
-        violations: results.violations?.length || 0,
-        passes: results.passes?.length || 0,
-        incomplete: results.incomplete?.length || 0,
+        violations: violations.length,
+        passes: passes.length,
+        incomplete: incomplete.length,
       },
-      // Flag that this is a static analysis (no JS execution)
       staticAnalysis: true,
-      staticAnalysisNote: 'This test analyzed the static HTML of the page. JavaScript-rendered content was not executed. For complete testing including dynamic content, use the "Test Current Page" feature or browser extensions like axe DevTools.',
+      staticAnalysisNote: 'This test analyzed the static HTML of the page using pattern-based checks. JavaScript-rendered content was not executed. For comprehensive WCAG testing including dynamic content, use the "Test Current Page" feature or browser extensions like axe DevTools.',
     }
 
     logger.log(
@@ -221,7 +574,6 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     logger.error('Accessibility test failed', error)
 
-    // Handle specific error types
     if (error instanceof Error) {
       if (error.message.includes('fetch failed') || error.message.includes('ENOTFOUND')) {
         return NextResponse.json(
@@ -230,16 +582,6 @@ export async function POST(request: NextRequest) {
             message: 'Unable to access the URL. Please check if the URL is correct and accessible.',
           },
           { status: 400 }
-        )
-      }
-
-      if (error.message.includes('CORS') || error.message.includes('blocked')) {
-        return NextResponse.json(
-          {
-            error: 'Access blocked',
-            message: 'Unable to access the URL due to security restrictions.',
-          },
-          { status: 403 }
         )
       }
 
