@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Calendar, CheckCircle2, AlertCircle, ExternalLink, Wrench, ArrowRight } from 'lucide-react'
 import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
+import type { Components } from 'react-markdown'
 
 // Helper to extract tool slug from blog guide slug
 function getToolSlugFromBlogSlug(blogSlug: string): string | null {
@@ -16,6 +17,66 @@ function getToolSlugFromBlogSlug(blogSlug: string): string | null {
     return blogSlug.replace(/-guide$/, '')
   }
   return null
+}
+
+// Custom components for ReactMarkdown
+const markdownComponents: Components = {
+  h1: ({ children }) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
+  h2: ({ children }) => <h2 className="text-2xl font-bold mt-8 mb-4 pb-2 border-b border-border">{children}</h2>,
+  h3: ({ children }) => <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>,
+  h4: ({ children }) => <h4 className="text-lg font-semibold mt-4 mb-2">{children}</h4>,
+  p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+  ul: ({ children }) => <ul className="list-disc list-inside mb-4 space-y-2 ml-4">{children}</ul>,
+  ol: ({ children }) => <ol className="list-decimal list-inside mb-4 space-y-2 ml-4">{children}</ol>,
+  li: ({ children }) => <li className="mb-1">{children}</li>,
+  strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+  em: ({ children }) => <em className="italic">{children}</em>,
+  a: ({ href, children }) => (
+    <Link href={href || '#'} className="text-primary underline hover:text-primary/80">
+      {children}
+    </Link>
+  ),
+  table: ({ children }) => (
+    <div className="my-6 overflow-x-auto">
+      <table className="w-full border-collapse border border-border">
+        {children}
+      </table>
+    </div>
+  ),
+  thead: ({ children }) => <thead className="bg-muted">{children}</thead>,
+  tbody: ({ children }) => <tbody>{children}</tbody>,
+  tr: ({ children }) => <tr className="border-b border-border">{children}</tr>,
+  th: ({ children }) => (
+    <th className="border border-border bg-muted p-3 text-left font-semibold">
+      {children}
+    </th>
+  ),
+  td: ({ children }) => (
+    <td className="border border-border p-3">
+      {children}
+    </td>
+  ),
+  blockquote: ({ children }) => (
+    <blockquote className="border-l-4 border-primary pl-4 italic my-4 text-muted-foreground">
+      {children}
+    </blockquote>
+  ),
+  code: ({ className, children, ...props }) => {
+    const isInline = !className?.includes('language-')
+    if (isInline) {
+      return (
+        <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-primary" {...props}>
+          {children}
+        </code>
+      )
+    }
+    return (
+      <code className="block bg-muted p-4 rounded overflow-x-auto text-sm font-mono" {...props}>
+        {children}
+      </code>
+    )
+  },
+  hr: () => <hr className="my-8 border-border" />,
 }
 
 export const revalidate = 3600 // Revalidate every hour
@@ -161,8 +222,8 @@ export default async function BlogPostPage({
         </header>
 
         {/* Content */}
-        <div className="prose prose-lg max-w-none dark:prose-invert mb-12 prose-headings:font-bold prose-headings:mt-8 prose-headings:mb-4 prose-h2:text-2xl prose-h2:border-b prose-h2:border-border prose-h2:pb-2 prose-h3:text-xl prose-h3:mt-6 prose-p:leading-relaxed prose-p:mb-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-2 prose-strong:font-semibold prose-strong:text-foreground prose-table:w-full prose-table:my-6 prose-th:border prose-th:border-border prose-th:bg-muted prose-th:p-3 prose-th:font-semibold prose-td:border prose-td:border-border prose-td:p-3 prose-a:text-primary prose-a:underline hover:prose-a:text-primary/80">
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+        <div className="mb-12 max-w-none">
+          <ReactMarkdown components={markdownComponents}>{post.content}</ReactMarkdown>
         </div>
 
         {/* Sources */}
