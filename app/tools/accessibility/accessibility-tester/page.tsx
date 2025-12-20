@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { TestResults } from "@/components/tools/accessibility/test-results"
 import { ExportOptions } from "@/components/tools/accessibility/export-options"
-import { Loader2, Globe, Monitor, AlertCircle } from "lucide-react"
+import { Loader2, Globe, Monitor, AlertCircle, Info } from "lucide-react"
 import { getToolBySlug } from "@/lib/tools/constants"
 import { processAxeResults, type ProcessedResults } from "@/lib/tools/accessibility/processor"
 import { generateToolStructuredData, generateToolFAQStructuredData, generateHowToStructuredData, getDefaultToolSteps } from "@/lib/tools/metadata"
@@ -181,7 +181,7 @@ export default function AccessibilityTesterPage() {
                         onChange={(e) => setUrl(e.target.value)}
                         onKeyPress={handleKeyPress}
                         disabled={loading}
-                        aria-describedby="url-help"
+                        aria-describedby="url-help url-note"
                       />
                       <Button
                         onClick={testUrl}
@@ -205,6 +205,14 @@ export default function AccessibilityTesterPage() {
                     <p id="url-help" className="text-xs text-muted-foreground">
                       Enter a full URL including http:// or https://
                     </p>
+                    <div id="url-note" className="flex items-start gap-2 text-xs text-muted-foreground bg-muted/50 p-2 rounded-md">
+                      <Info className="h-3 w-3 mt-0.5 shrink-0" aria-hidden="true" />
+                      <span>
+                        URL testing analyzes static HTML. For complete testing of JavaScript-rendered content, 
+                        use &quot;Test Current Page&quot; while viewing your site, or use browser extensions like 
+                        <a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground ml-1">axe DevTools</a>.
+                      </span>
+                    </div>
                   </div>
 
                   <div className="relative">
@@ -253,13 +261,18 @@ export default function AccessibilityTesterPage() {
                     <h2 className="text-2xl font-bold" id="results-heading">Test Results</h2>
                     <ExportOptions results={results} />
                   </div>
-                  {testType === "current" && (
-                    <p className="text-sm text-muted-foreground italic">
-                      Note: Screenshots are only available when testing external URLs using the server-side test.
-                    </p>
+                  {testType === "url" && (
+                    <Alert className="border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-950">
+                      <Info className="h-4 w-4 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+                      <AlertDescription className="text-blue-800 dark:text-blue-200">
+                        <strong>Static HTML Analysis:</strong> This test analyzed the page&apos;s static HTML. 
+                        JavaScript-rendered content (React, Vue, etc.) was not executed. For complete testing, 
+                        visit your site and use &quot;Test Current Page&quot; or browser dev tools.
+                      </AlertDescription>
+                    </Alert>
                   )}
                   <div aria-labelledby="results-heading">
-                    <TestResults results={results} showScreenshots={testType === "url"} />
+                    <TestResults results={results} showScreenshots={false} />
                   </div>
                 </div>
               )}

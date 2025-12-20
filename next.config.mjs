@@ -7,8 +7,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  // Mark puppeteer packages as external for serverless compatibility
-  serverExternalPackages: ['puppeteer-core', '@sparticuz/chromium'],
   // Production: Enable image optimization
   images: {
     formats: ['image/avif', 'image/webp'],
