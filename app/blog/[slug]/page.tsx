@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Calendar, CheckCircle2, AlertCircle, ExternalLink, Wrench, ArrowRight } from 'lucide-react'
 import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import type { Components } from 'react-markdown'
 
 // Helper to extract tool slug from blog guide slug
@@ -37,22 +38,22 @@ const markdownComponents: Components = {
     </Link>
   ),
   table: ({ children }) => (
-    <div className="my-6 overflow-x-auto">
-      <table className="w-full border-collapse border border-border">
+    <div className="my-6 overflow-x-auto rounded-lg border border-border">
+      <table className="w-full border-collapse">
         {children}
       </table>
     </div>
   ),
-  thead: ({ children }) => <thead className="bg-muted">{children}</thead>,
-  tbody: ({ children }) => <tbody>{children}</tbody>,
-  tr: ({ children }) => <tr className="border-b border-border">{children}</tr>,
+  thead: ({ children }) => <thead className="bg-muted/50">{children}</thead>,
+  tbody: ({ children }) => <tbody className="divide-y divide-border">{children}</tbody>,
+  tr: ({ children }) => <tr className="hover:bg-muted/30 transition-colors">{children}</tr>,
   th: ({ children }) => (
-    <th className="border border-border bg-muted p-3 text-left font-semibold">
+    <th className="border border-border bg-muted/50 p-3 text-left font-semibold text-sm">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="border border-border p-3">
+    <td className="border border-border p-3 text-sm">
       {children}
     </td>
   ),
@@ -223,7 +224,9 @@ export default async function BlogPostPage({
 
         {/* Content */}
         <div className="mb-12 max-w-none">
-          <ReactMarkdown components={markdownComponents}>{post.content}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+            {post.content}
+          </ReactMarkdown>
         </div>
 
         {/* Sources */}
