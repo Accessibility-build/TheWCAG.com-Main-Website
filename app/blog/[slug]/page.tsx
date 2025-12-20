@@ -161,7 +161,7 @@ export default async function BlogPostPage({
         </header>
 
         {/* Content */}
-        <div className="prose prose-lg max-w-none dark:prose-invert mb-12">
+        <div className="prose prose-lg max-w-none dark:prose-invert mb-12 prose-headings:font-bold prose-headings:mt-8 prose-headings:mb-4 prose-h2:text-2xl prose-h2:border-b prose-h2:border-border prose-h2:pb-2 prose-h3:text-xl prose-h3:mt-6 prose-p:leading-relaxed prose-p:mb-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-2 prose-strong:font-semibold prose-strong:text-foreground prose-table:w-full prose-table:my-6 prose-th:border prose-th:border-border prose-th:bg-muted prose-th:p-3 prose-th:font-semibold prose-td:border prose-td:border-border prose-td:p-3 prose-a:text-primary prose-a:underline hover:prose-a:text-primary/80">
           <ReactMarkdown>{post.content}</ReactMarkdown>
         </div>
 
