@@ -107,7 +107,7 @@ export default function AccessibilityTesterPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url, captureScreenshots: true }),
       })
 
       if (!response.ok) {
@@ -253,8 +253,13 @@ export default function AccessibilityTesterPage() {
                     <h2 className="text-2xl font-bold" id="results-heading">Test Results</h2>
                     <ExportOptions results={results} />
                   </div>
+                  {testType === "current" && (
+                    <p className="text-sm text-muted-foreground italic">
+                      Note: Screenshots are only available when testing external URLs using the server-side test.
+                    </p>
+                  )}
                   <div aria-labelledby="results-heading">
-                    <TestResults results={results} />
+                    <TestResults results={results} showScreenshots={testType === "url"} />
                   </div>
                 </div>
               )}
