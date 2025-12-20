@@ -8,9 +8,18 @@ interface ToolHeaderProps {
 
 export function ToolHeader({ tool }: ToolHeaderProps) {
   const category = TOOL_CATEGORIES[tool.category]
-  const isEditingTool = tool.category === "editing"
-  const basePath = isEditingTool ? "/tools/edit" : "/tools/convert"
-  const baseLabel = isEditingTool ? "Edit" : "Convert"
+  
+  // Determine base path and label based on category
+  let basePath = "/tools/convert"
+  let baseLabel = "Convert"
+  
+  if (tool.category === "editing") {
+    basePath = "/tools/edit"
+    baseLabel = "Edit"
+  } else if (tool.category === "seo") {
+    basePath = "/tools/seo"
+    baseLabel = "SEO"
+  }
 
   return (
     <div className="mb-6 sm:mb-8">

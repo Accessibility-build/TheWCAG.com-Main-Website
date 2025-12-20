@@ -2,8 +2,15 @@ import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, HelpCircle, BookOpen } from "lucide-react"
-import { Tool, getRelatedTools } from "@/lib/tools/constants"
+import { Tool, getRelatedTools, getToolBySlug } from "@/lib/tools/constants"
 import { getBlogGuideSlug } from "@/lib/blog/client-utils"
+
+// Helper function to get correct URL path based on tool category
+function getToolPath(tool: Tool): string {
+  if (tool.category === "editing") return `/tools/edit/${tool.slug}`
+  if (tool.category === "seo") return `/tools/seo/${tool.slug}`
+  return `/tools/convert/${tool.slug}`
+}
 
 interface ToolFooterProps {
   tool: Tool
@@ -91,6 +98,12 @@ function getToolSteps(tool: Tool): { title: string; description: string }[] {
         { title: "Select Files", description: "Upload files to compress or an archive to extract." },
         { title: "Configure Options", description: "Set compression level or extraction preferences." },
         { title: "Download Files", description: "Download your compressed archive or extracted files." },
+      ]
+    case "seo":
+      return [
+        { title: "Fill in Fields", description: "Enter the required information for your SEO element." },
+        { title: "Configure Options", description: "Customize settings and optional fields as needed." },
+        { title: "Copy or Download", description: "Copy the generated code or download the file." },
       ]
     default:
       return [
@@ -194,7 +207,7 @@ export function ToolFooter({ tool }: ToolFooterProps) {
                 </CardHeader>
                 <CardContent className="mt-auto px-4 sm:px-6">
                   <Button variant="outline" className="w-full min-h-[44px]" asChild>
-                    <Link href={`/tools/convert/${relatedTool.slug}`}>
+                    <Link href={getToolPath(relatedTool)}>
                       Use Tool
                       <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                     </Link>

@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
 import { successCriteria } from '@/lib/wcag-data'
-import { getAllLawsuits } from '@/lib/lawsuits-data'
+import { getAllLawsuits, getLawsuitBySlug } from '@/lib/lawsuits-data'
 import { TOOLS } from '@/lib/tools/constants'
-import { getPublishedBlogPosts } from '@/lib/blog/storage'
+import { getPublishedBlogPosts, getBlogPostBySlug } from '@/lib/blog/storage'
 
 // Manual blog posts data (matching app/blog/page.tsx)
 const manualBlogPosts = [
@@ -17,6 +17,18 @@ const manualBlogPosts = [
     isPublished: true,
   },
 ]
+
+/**
+ * Validate that a blog post actually exists and is published
+ */
+async function validateBlogPost(slug: string): Promise<boolean> {
+  try {
+    const post = await getBlogPostBySlug(slug)
+    return post !== null && post.isPublished === true
+  } catch {
+    return false
+  }
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://thewcag.com'
@@ -393,13 +405,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: criterion.level === 'A' ? 0.8 : criterion.level === 'AA' ? 0.7 : 0.6,
   }))
 
-  // Lawsuit pages - use actual lawsuit dates
-  const lawsuitPages: MetadataRoute.Sitemap = getAllLawsuits().map((lawsuit) => ({
-    url: `${baseUrl}/lawsuits/${lawsuit.slug}`,
-    lastModified: new Date(lawsuit.dateResolved || lawsuit.dateFiled),
-    changeFrequency: 'yearly',
-    priority: 0.7,
-  }))
+  // Lawsuit pages - use actual lawsuit dates, validate that lawsuit exists
+  const allLawsuits = getAllLawsuits()
+  const lawsuitPages: MetadataRoute.Sitemap = allLawsuits
+    .filter((lawsuit) => {
+      // Double-check that the lawsuit can be retrieved by slug
+      const validated = getLawsuitBySlug(lawsuit.slug)
+      return validated !== undefined
+    })
+    .map((lawsuit) => ({
+      url: `${baseUrl}/lawsuits/${lawsuit.slug}`,
+      lastModified: new Date(lawsuit.dateResolved || lawsuit.dateFiled),
+      changeFrequency: 'yearly',
+      priority: 0.7,
+    }))
 
   // Blog pages - use actual published dates
   // Get all published blog posts from JSON storage
@@ -415,6 +434,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...uniqueJsonPosts,
   ]
   
+  // Validate that each blog post actually exists and is published
+  const validatedBlogPosts = await Promise.all(
+    allPublishedBlogPosts.map(async (post) => {
+      const isValid = await validateBlogPost(post.slug)
+      return isValid ? post : null
+    })
+  )
+  
+  const validBlogPosts = validatedBlogPosts.filter((post): post is typeof allPublishedBlogPosts[0] => post !== null)
+  
   const blogPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/blog`,
@@ -422,7 +451,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.8,
     },
-    ...allPublishedBlogPosts.map((post) => ({
+    ...validBlogPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.publishedAt),
       changeFrequency: 'weekly' as const,
@@ -430,16 +459,54 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ]
 
-  // Conversion tools pages
+  // Tools pages - categorize by type (convert, edit, seo)
+  const convertTools = TOOLS.filter(tool => tool.category !== 'editing' && tool.category !== 'seo')
+  const editingTools = TOOLS.filter(tool => tool.category === 'editing')
+  const seoTools = TOOLS.filter(tool => tool.category === 'seo')
+  
   const toolsPages: MetadataRoute.Sitemap = [
+    // Main tools pages
+    {
+      url: `${baseUrl}/tools`,
+      lastModified: recentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
     {
       url: `${baseUrl}/tools/convert`,
       lastModified: recentUpdate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    ...TOOLS.map((tool) => ({
+    {
+      url: `${baseUrl}/tools/edit`,
+      lastModified: recentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/tools/seo`,
+      lastModified: recentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // Conversion tools
+    ...convertTools.map((tool) => ({
       url: `${baseUrl}/tools/convert/${tool.slug}`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    // Editing tools
+    ...editingTools.map((tool) => ({
+      url: `${baseUrl}/tools/edit/${tool.slug}`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    // SEO tools
+    ...seoTools.map((tool) => ({
+      url: `${baseUrl}/tools/seo/${tool.slug}`,
       lastModified: recentUpdate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,

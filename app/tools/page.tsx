@@ -18,6 +18,7 @@ import {
   Sparkles,
   Image as ImageIcon,
   Edit,
+  Search,
 } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -312,7 +313,7 @@ export default function ToolsPage() {
             </section>
 
             {/* Free Editing Tools */}
-            <section className="mb-12">
+            <section className="mb-8">
               <Card className="bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-950/30 dark:to-teal-950/30 border-green-200 dark:border-green-800">
                 <CardHeader>
                   <div className="flex items-center gap-3">
@@ -339,6 +340,40 @@ export default function ToolsPage() {
                   <Button asChild>
                     <Link href="/tools/edit">
                       Browse All Editing Tools
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Free SEO Tools */}
+            <section className="mb-12">
+              <Card className="bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 border-orange-200 dark:border-orange-800">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900">
+                      <Search className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">Free SEO Tools</CardTitle>
+                      <CardDescription>
+                        Generate sitemaps, robots.txt, meta tags, schema markup, and Open Graph tags for better search rankings
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="secondary">Sitemap Generator</Badge>
+                    <Badge variant="secondary">Robots.txt Generator</Badge>
+                    <Badge variant="secondary">Meta Tag Generator</Badge>
+                    <Badge variant="secondary">Schema Markup</Badge>
+                    <Badge variant="secondary">Open Graph Tags</Badge>
+                  </div>
+                  <Button asChild>
+                    <Link href="/tools/seo">
+                      Browse All SEO Tools
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>

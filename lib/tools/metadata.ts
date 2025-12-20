@@ -11,7 +11,9 @@ function truncateDescription(text: string, maxLength: number = 155): string {
 
 // Helper function to get correct URL path based on tool category
 function getToolBasePath(tool: Tool): string {
-  return tool.category === "editing" ? "/tools/edit" : "/tools/convert"
+  if (tool.category === "editing") return "/tools/edit"
+  if (tool.category === "seo") return "/tools/seo"
+  return "/tools/convert"
 }
 
 export function generateToolMetadata(tool: Tool): Metadata {
@@ -330,6 +332,37 @@ export function getDefaultToolSteps(tool: Tool): string[] {
       "Position and customize your content",
       "Click Apply Edits and download your modified PDF",
     ],
+    // SEO Tools
+    "sitemap-generator": [
+      "Enter or paste your website URLs (one per line or comma-separated)",
+      "Set priority, change frequency, and last modified date for each URL",
+      "Click Generate to create your XML sitemap",
+      "Download the sitemap.xml file and upload it to your website root",
+    ],
+    "robots-txt-generator": [
+      "Select a preset or start from scratch",
+      "Add user-agent rules with allow/disallow paths",
+      "Set crawl delay and sitemap URL if needed",
+      "Generate and download your robots.txt file",
+    ],
+    "meta-tag-generator": [
+      "Enter your page title and meta description",
+      "Fill in Open Graph and Twitter Card details",
+      "Add additional meta tags like canonical URL and robots",
+      "Copy the generated HTML meta tags to your website",
+    ],
+    "schema-markup-generator": [
+      "Select the schema type for your content (Article, Product, FAQ, etc.)",
+      "Fill in the required and optional fields for your schema",
+      "Preview the generated JSON-LD structured data",
+      "Copy the script tag and add it to your webpage",
+    ],
+    "open-graph-generator": [
+      "Enter your content title, description, and URL",
+      "Add your og:image URL and set dimensions",
+      "Configure Twitter Card settings",
+      "Preview how your link will appear on social media and copy the tags",
+    ],
   }
 
   // Return tool-specific steps if available
@@ -390,6 +423,13 @@ export function getDefaultToolSteps(tool: Tool): string[] {
         "Select your editing options and adjust settings as needed",
         "Click the process button to apply your edits",
         "Preview the result and download your edited file",
+      ]
+    case "seo":
+      return [
+        "Fill in the required fields for your SEO element",
+        "Configure optional settings and customize the output",
+        "Click generate to create your SEO markup or file",
+        "Copy or download the result for use on your website",
       ]
     default:
       return [
