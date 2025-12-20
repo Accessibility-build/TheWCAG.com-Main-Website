@@ -1,11 +1,22 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import { getBlogPostBySlug } from '@/lib/blog/storage'
+import { getToolBySlug } from '@/lib/tools/constants'
 import { StructuredData } from '@/components/structured-data'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Calendar, CheckCircle2, AlertCircle, ExternalLink } from 'lucide-react'
+import { Calendar, CheckCircle2, AlertCircle, ExternalLink, Wrench, ArrowRight } from 'lucide-react'
 import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
+
+// Helper to extract tool slug from blog guide slug
+function getToolSlugFromBlogSlug(blogSlug: string): string | null {
+  if (blogSlug.endsWith('-guide')) {
+    return blogSlug.replace(/-guide$/, '')
+  }
+  return null
+}
 
 export const revalidate = 3600 // Revalidate every hour
 
@@ -20,6 +31,10 @@ export default async function BlogPostPage({
   if (!post || !post.isPublished) {
     notFound()
   }
+
+  // Check if this is a tool guide and get the related tool
+  const toolSlug = getToolSlugFromBlogSlug(slug)
+  const relatedTool = toolSlug ? getToolBySlug(toolSlug) : null
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -115,6 +130,31 @@ export default async function BlogPostPage({
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-amber-800 dark:text-amber-200">{post.factCheckNotes}</p>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Tool CTA for Tool Guides */}
+          {relatedTool && (
+            <Card className="border-primary/30 bg-primary/5 dark:bg-primary/10">
+              <CardContent className="py-4">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-primary/10">
+                      <Wrench className="h-5 w-5 text-primary" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="font-medium">Ready to try {relatedTool.name}?</p>
+                      <p className="text-sm text-muted-foreground">{relatedTool.shortDescription}</p>
+                    </div>
+                  </div>
+                  <Button asChild className="min-h-[44px] shrink-0">
+                    <Link href={`/tools/convert/${relatedTool.slug}`}>
+                      Try Tool Free
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           )}

@@ -23,6 +23,8 @@ export interface BlogPost {
   factCheckNotes?: string
   isPublished: boolean
   tags: string[]
+  isToolGuide?: boolean
+  toolSlug?: string
 }
 
 export interface BlogPostMetadata {
@@ -32,6 +34,8 @@ export interface BlogPostMetadata {
   publishedAt: string
   factCheckStatus: 'verified' | 'needs_review'
   isPublished: boolean
+  isToolGuide?: boolean
+  toolSlug?: string
 }
 
 export interface FactCheckResult {

@@ -5,7 +5,477 @@
     "excerpt": "With AI advancing rapidly, accessibility professionals are questioning their career futures. We analyze the Reddit discussion that's sparking debate: Can AI replace human expertise in making digital content accessible? Explore expert insights on where AI falls short, which skills remain irreplaceable, and how to future-proof your accessibility career.",
     "publishedAt": "2025-01-26",
     "factCheckStatus": "verified",
-    "isPublished": true
+    "isPublished": true,
+    "isToolGuide": false
+  },
+  {
+    "slug": "image-format-converter-guide",
+    "title": "How to Convert Image Formats Online: Complete Guide to JPG, PNG, WebP Conversion",
+    "excerpt": "Learn how to convert images between JPG, PNG, WebP, GIF, and BMP formats using our free online tool. Complete guide with step-by-step instructions, best practices, and tips for optimal image conversion.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-format-converter"
+  },
+  {
+    "slug": "image-resizer-guide",
+    "title": "How to Resize Images Online: Complete Guide to Image Scaling",
+    "excerpt": "Learn how to resize images by dimensions or percentage while maintaining aspect ratio. Complete guide to image resizing with step-by-step instructions and best practices.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-resizer"
+  },
+  {
+    "slug": "image-compressor-guide",
+    "title": "How to Compress Images Online: Reduce File Size Without Losing Quality",
+    "excerpt": "Learn how to compress images online without losing quality. Complete guide to image optimization with step-by-step instructions, quality settings, and best practices for web, email, and storage.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-compressor"
+  },
+  {
+    "slug": "image-cropper-guide",
+    "title": "How to Crop Images Online: Free Form and Preset Aspect Ratios",
+    "excerpt": "Learn how to crop images with custom selections or preset aspect ratios. Complete guide to image cropping for social media, profile pictures, and more.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-cropper"
+  },
+  {
+    "slug": "image-rotator-guide",
+    "title": "How to Rotate and Flip Images Online: Fix Orientation Issues",
+    "excerpt": "Learn how to rotate images by degrees and flip horizontally or vertically. Complete guide to fixing image orientation with step-by-step instructions.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-rotator"
+  },
+  {
+    "slug": "image-to-base64-guide",
+    "title": "How to Convert Images to Base64: Embedding Images in Code",
+    "excerpt": "Learn how to convert images to Base64 data URI format for embedding in HTML, CSS, and JavaScript. Complete guide with examples and best practices.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-to-base64"
+  },
+  {
+    "slug": "base64-to-image-guide",
+    "title": "How to Convert Base64 to Image: Decode Data URIs",
+    "excerpt": "Learn how to decode Base64 strings back to downloadable images. Complete guide to converting data URIs to image files.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "base64-to-image"
+  },
+  {
+    "slug": "image-to-pdf-guide",
+    "title": "How to Convert Images to PDF: Create Documents from Photos",
+    "excerpt": "Learn how to convert single or multiple images to PDF documents. Complete guide with page size options, orientation control, and batch processing.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-to-pdf"
+  },
+  {
+    "slug": "pdf-to-image-guide",
+    "title": "How to Convert PDF to Images: Extract Pages as JPG or PNG",
+    "excerpt": "Learn how to extract PDF pages as high-quality images. Complete guide to PDF to image conversion with format and resolution options.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "pdf-to-image"
+  },
+  {
+    "slug": "favicon-generator-guide",
+    "title": "How to Generate Favicons: Create Complete Icon Packages",
+    "excerpt": "Learn how to generate favicons in all required sizes for your website. Complete guide to creating ICO files, Apple touch icons, and web manifests.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "favicon-generator"
+  },
+  {
+    "slug": "pdf-to-text-guide",
+    "title": "How to Extract Text from PDF: Copy and Save PDF Content",
+    "excerpt": "Learn how to extract text content from PDF documents. Complete guide to copying PDF text to clipboard or downloading as text files.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "pdf-to-text"
+  },
+  {
+    "slug": "text-to-pdf-guide",
+    "title": "How to Convert Text to PDF: Create PDF Documents from Text",
+    "excerpt": "Learn how to create PDF documents from plain text. Complete guide with font customization, page settings, and formatting options.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "text-to-pdf"
+  },
+  {
+    "slug": "pdf-merger-guide",
+    "title": "How to Merge PDF Files: Combine Multiple PDFs into One Document",
+    "excerpt": "Learn how to merge multiple PDF files into a single document. Combine PDFs with drag-and-drop reordering for organized document packages, easier sharing, and simplified printing.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "pdf-merger"
+  },
+  {
+    "slug": "pdf-splitter-guide",
+    "title": "How to Split PDF Files: Extract Pages from PDF Documents",
+    "excerpt": "Learn how to split PDF documents by extracting specific pages or page ranges. Create multiple smaller PDFs from one file with step-by-step instructions.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "pdf-splitter"
+  },
+  {
+    "slug": "pdf-compressor-guide",
+    "title": "How to Compress PDF Files: Reduce PDF Size for Email and Web",
+    "excerpt": "Learn how to compress PDF files to reduce size while maintaining readability. Complete guide for optimizing PDFs for email attachments and web uploads.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "pdf-compressor"
+  },
+  {
+    "slug": "markdown-to-html-guide",
+    "title": "How to Convert Markdown to HTML: Transform Markdown Syntax",
+    "excerpt": "Learn how to convert Markdown text to clean HTML code. Complete guide with live preview, syntax highlighting, and best practices.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "markdown-to-html"
+  },
+  {
+    "slug": "html-to-markdown-guide",
+    "title": "How to Convert HTML to Markdown: Migrate Content Easily",
+    "excerpt": "Learn how to convert HTML code to clean Markdown format. Complete guide for migrating content to Markdown-based systems.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "html-to-markdown"
+  },
+  {
+    "slug": "html-to-text-guide",
+    "title": "How to Extract Text from HTML: Strip Tags and Get Plain Text",
+    "excerpt": "Learn how to strip HTML tags and extract plain text content. Complete guide to HTML to text conversion with formatting options.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "html-to-text"
+  },
+  {
+    "slug": "text-to-html-guide",
+    "title": "How to Convert Text to HTML: Create HTML from Plain Text",
+    "excerpt": "Learn how to convert plain text to HTML with proper paragraph tags and formatting. Complete guide to text-to-HTML conversion.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "text-to-html"
+  },
+  {
+    "slug": "json-formatter-guide",
+    "title": "How to Format JSON: Beautify and Validate JSON Data",
+    "excerpt": "Learn how to format, validate, and beautify JSON data. Complete guide to JSON formatting with minification and error highlighting.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "json-formatter"
+  },
+  {
+    "slug": "json-to-csv-guide",
+    "title": "How to Convert JSON to CSV: Transform Data Formats",
+    "excerpt": "Learn how to convert JSON arrays and objects to CSV format. Complete guide with nested data handling and delimiter options.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "json-to-csv"
+  },
+  {
+    "slug": "csv-to-json-guide",
+    "title": "How to Convert CSV to JSON: Parse CSV Data",
+    "excerpt": "Learn how to convert CSV data to JSON format with automatic header detection and type inference. Complete guide to CSV parsing.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "csv-to-json"
+  },
+  {
+    "slug": "xml-to-json-guide",
+    "title": "How to Convert XML to JSON: Transform XML Documents",
+    "excerpt": "Learn how to convert XML documents to JSON format. Complete guide with attribute handling and namespace support.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "xml-to-json"
+  },
+  {
+    "slug": "yaml-to-json-guide",
+    "title": "How to Convert YAML to JSON: Transform Configuration Files",
+    "excerpt": "Learn how to convert YAML configuration files to JSON format. Complete guide with syntax validation and multi-document support.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "yaml-to-json"
+  },
+  {
+    "slug": "json-to-yaml-guide",
+    "title": "How to Convert JSON to YAML: Create Readable Config Files",
+    "excerpt": "Learn how to convert JSON data to YAML format. Complete guide to creating readable configuration files from JSON.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "json-to-yaml"
+  },
+  {
+    "slug": "url-encoder-decoder-guide",
+    "title": "How to Encode and Decode URLs: Handle Special Characters",
+    "excerpt": "Learn how to encode and decode URLs and query strings. Complete guide to percent encoding with Unicode support.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "url-encoder-decoder"
+  },
+  {
+    "slug": "base64-encoder-decoder-guide",
+    "title": "How to Encode and Decode Base64: Convert Text and Data",
+    "excerpt": "Learn how to encode text to Base64 and decode Base64 to plain text. Complete guide with UTF-8 and URL-safe variant support.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "base64-encoder-decoder"
+  },
+  {
+    "slug": "qr-code-generator-guide",
+    "title": "How to Generate QR Codes: Create Scannable Codes for URLs and Text",
+    "excerpt": "Learn how to generate QR codes for URLs, text, WiFi, and more. Complete guide to QR code creation with customization options.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "qr-code-generator"
+  },
+  {
+    "slug": "color-converter-guide",
+    "title": "How to Convert Colors: HEX, RGB, HSL, and CMYK",
+    "excerpt": "Learn how to convert colors between HEX, RGB, HSL, and CMYK formats. Complete guide to color conversion with visual picker.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "color-converter"
+  },
+  {
+    "slug": "zip-extractor-guide",
+    "title": "How to Extract ZIP Files: Unzip Archives Online",
+    "excerpt": "Learn how to extract files from ZIP archives in your browser. Complete guide to unzipping with preview and selective extraction.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "zip-extractor"
+  },
+  {
+    "slug": "file-to-zip-guide",
+    "title": "How to Create ZIP Files: Compress and Bundle Files",
+    "excerpt": "Learn how to create ZIP archives from multiple files. Complete guide to file compression for easy sharing and storage.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "file-to-zip"
+  },
+  {
+    "slug": "hash-generator-guide",
+    "title": "How to Generate Hashes: MD5, SHA-256, and More",
+    "excerpt": "Learn how to generate MD5, SHA1, SHA256, and SHA512 hashes from text or files. Complete guide to cryptographic hash generation.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "hash-generator"
+  },
+  {
+    "slug": "uuid-generator-guide",
+    "title": "How to Generate UUIDs: Create Unique Identifiers",
+    "excerpt": "Learn how to generate UUIDs (Universally Unique Identifiers). Complete guide to UUID v4 and v1 generation with bulk options.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "uuid-generator"
+  },
+  {
+    "slug": "lorem-ipsum-generator-guide",
+    "title": "How to Generate Lorem Ipsum: Create Placeholder Text",
+    "excerpt": "Learn how to generate Lorem Ipsum placeholder text for designs. Complete guide with word, sentence, and paragraph options.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "lorem-ipsum-generator"
+  },
+  {
+    "slug": "password-generator-guide",
+    "title": "How to Generate Secure Passwords: Create Strong Random Passwords",
+    "excerpt": "Learn how to generate secure random passwords. Complete guide to password creation with customizable length and character options.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "password-generator"
+  },
+  {
+    "slug": "background-remover-guide",
+    "title": "How to Remove Image Backgrounds: AI-Powered Background Removal",
+    "excerpt": "Learn how to remove backgrounds from images automatically using AI. Complete guide to creating transparent PNGs and replacing backgrounds.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "background-remover"
+  },
+  {
+    "slug": "watermark-remover-guide",
+    "title": "How to Remove Watermarks: Intelligent Watermark Removal",
+    "excerpt": "Learn how to remove watermarks, logos, and unwanted text from images. Complete guide to AI-powered inpainting for watermark removal.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "watermark-remover"
+  },
+  {
+    "slug": "object-remover-guide",
+    "title": "How to Remove Objects from Photos: Smart Object Removal",
+    "excerpt": "Learn how to remove unwanted objects from photos using smart inpainting. Complete guide to cleaning up images and removing distractions.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "object-remover"
+  },
+  {
+    "slug": "face-blur-guide",
+    "title": "How to Blur Faces in Photos: Privacy Protection Tool",
+    "excerpt": "Learn how to blur faces and sensitive information for privacy. Complete guide to automatic face detection and manual blur tools.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "face-blur"
+  },
+  {
+    "slug": "image-upscaler-guide",
+    "title": "How to Upscale Images: AI-Powered Image Enhancement",
+    "excerpt": "Learn how to upscale images up to 4x with AI-powered enhancement. Complete guide to improving image quality and resolution.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-upscaler"
+  },
+  {
+    "slug": "image-inpainting-guide",
+    "title": "How to Use Image Inpainting: Fill Missing Areas",
+    "excerpt": "Learn how to fill missing or damaged areas in images with smart inpainting. Complete guide to photo restoration and repair.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-inpainting"
+  },
+  {
+    "slug": "image-colorizer-guide",
+    "title": "How to Colorize Black and White Photos: AI Colorization",
+    "excerpt": "Learn how to add realistic colors to black and white photos using AI. Complete guide to bringing old photos to life.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-colorizer"
+  },
+  {
+    "slug": "image-restoration-guide",
+    "title": "How to Restore Old Photos: Fix Damaged Images",
+    "excerpt": "Learn how to restore old, damaged, or scratched photos. Complete guide to removing scratches, reducing noise, and enhancing faded images.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-restoration"
+  },
+  {
+    "slug": "image-anonymizer-guide",
+    "title": "How to Anonymize Images: Protect Sensitive Information",
+    "excerpt": "Learn how to automatically detect and anonymize sensitive information in images. Complete guide to privacy protection.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-anonymizer"
+  },
+  {
+    "slug": "image-metadata-remover-guide",
+    "title": "How to Remove Image Metadata: Strip EXIF and GPS Data",
+    "excerpt": "Learn how to remove EXIF data, GPS location, and all metadata from images. Complete guide to protecting privacy before sharing.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-metadata-remover"
+  },
+  {
+    "slug": "image-duplicate-finder-guide",
+    "title": "How to Find Duplicate Images: Detect Similar Photos",
+    "excerpt": "Learn how to find duplicate or similar images in a collection. Complete guide to image comparison and duplicate detection.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "image-duplicate-finder"
+  },
+  {
+    "slug": "pdf-editor-guide",
+    "title": "How to Edit PDFs Online: Add Text, Images, and Annotations",
+    "excerpt": "Learn how to edit PDF documents directly in your browser. Complete guide to adding text, images, shapes, and annotations.",
+    "publishedAt": "2025-01-28",
+    "factCheckStatus": "verified",
+    "isPublished": true,
+    "isToolGuide": true,
+    "toolSlug": "pdf-editor"
   }
 ]
-
