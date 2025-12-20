@@ -19,6 +19,7 @@ import {
   Image as ImageIcon,
   Edit,
   Search,
+  Accessibility,
 } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -249,32 +250,61 @@ export default function ToolsPage() {
                   Free accessibility tools built specifically to help you meet WCAG 2.2 requirements.
                 </p>
               </div>
-              <Card className="mb-6">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Palette className="h-5 w-5 text-primary" />
-                    Color Contrast Checker
-                  </CardTitle>
-                  <CardDescription>
-                    Test color combinations for WCAG 2.2 compliance with real-time contrast ratio calculations
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-2 flex-wrap">
-                      <Badge variant="outline">1.4.3</Badge>
-                      <Badge variant="outline">1.4.6</Badge>
-                      <Badge variant="outline">1.4.11</Badge>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Palette className="h-5 w-5 text-primary" />
+                      Color Contrast Checker
+                    </CardTitle>
+                    <CardDescription>
+                      Test color combinations for WCAG 2.2 compliance with real-time contrast ratio calculations
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between">
+                      <div className="flex gap-2 flex-wrap">
+                        <Badge variant="outline">1.4.3</Badge>
+                        <Badge variant="outline">1.4.6</Badge>
+                        <Badge variant="outline">1.4.11</Badge>
+                      </div>
+                      <Button asChild>
+                        <Link href="/tools/contrast-checker">
+                          Use Tool
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
                     </div>
-                    <Button asChild>
-                      <Link href="/tools/contrast-checker">
-                        Use Tool
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Accessibility className="h-5 w-5 text-primary" />
+                      Accessibility Tester
+                    </CardTitle>
+                    <CardDescription>
+                      Test any URL or current page for WCAG 2.2 Level AA compliance using axe-core. Get detailed violation reports with actionable fixes.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between">
+                      <div className="flex gap-2 flex-wrap">
+                        <Badge variant="outline">WCAG 2.2</Badge>
+                        <Badge variant="outline">axe-core</Badge>
+                        <Badge variant="outline">Level AA</Badge>
+                      </div>
+                      <Button asChild>
+                        <Link href="/tools/accessibility/accessibility-tester">
+                          Use Tool
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </section>
 
             {/* Free Conversion Tools */}
@@ -340,6 +370,39 @@ export default function ToolsPage() {
                   <Button asChild>
                     <Link href="/tools/edit">
                       Browse All Editing Tools
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Free Accessibility Tools */}
+            <section className="mb-8">
+              <Card className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-purple-200 dark:border-purple-800">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900">
+                      <Accessibility className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">Free Accessibility Tools</CardTitle>
+                      <CardDescription>
+                        Test and improve your website's accessibility with WCAG compliance checkers and testing tools
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="secondary">Accessibility Tester</Badge>
+                    <Badge variant="secondary">Color Contrast Checker</Badge>
+                    <Badge variant="secondary">WCAG 2.2 Compliance</Badge>
+                    <Badge variant="secondary">axe-core Testing</Badge>
+                  </div>
+                  <Button asChild>
+                    <Link href="/tools/accessibility">
+                      Browse All Accessibility Tools
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>

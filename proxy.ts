@@ -19,11 +19,11 @@ export function proxy(request: NextRequest) {
   // Content Security Policy (adjust as needed for your app)
   const csp = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com",
+    "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://unpkg.com",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https: blob:",
     "font-src 'self' data:",
-    "connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://www.googletagmanager.com https://formspree.io",
+    "connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://www.googletagmanager.com https://formspree.io https://unpkg.com",
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self' https://formspree.io",

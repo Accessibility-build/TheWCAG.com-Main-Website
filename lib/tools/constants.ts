@@ -45,6 +45,11 @@ export const TOOL_CATEGORIES = {
     description: "Generate sitemaps, meta tags, robots.txt, and structured data",
     icon: "Search",
   },
+  accessibility: {
+    name: "Accessibility Tools",
+    description: "Test and improve website accessibility and WCAG compliance",
+    icon: "Accessibility",
+  },
 } as const
 
 export type ToolCategory = keyof typeof TOOL_CATEGORIES
@@ -971,6 +976,24 @@ export const TOOLS: Tool[] = [
       { question: "What size should og:image be?", answer: "Use 1200x630 pixels for optimal display across all platforms. Minimum 600x315 pixels." },
       { question: "What's the difference between OG and Twitter Cards?", answer: "Open Graph is used by Facebook/LinkedIn, while Twitter has its own meta tags. Many sites implement both." },
       { question: "Can I preview how my links will appear?", answer: "Yes, our tool includes a social preview simulator showing how your content will look on different platforms." },
+    ],
+  },
+  {
+    slug: "accessibility-tester",
+    name: "Accessibility Tester",
+    description: "Test website accessibility using axe-core. Scan any URL or test the current page for WCAG 2.2 Level AA compliance. Get detailed violation reports with actionable fixes.",
+    shortDescription: "Test website accessibility with axe-core for WCAG 2.2 compliance",
+    category: "accessibility",
+    keywords: ["accessibility tester", "axe-core", "WCAG testing", "accessibility scanner", "a11y testing", "accessibility audit", "WCAG compliance checker", "accessibility validator"],
+    icon: "Accessibility",
+    features: ["Test any URL", "Test current page", "WCAG 2.2 Level AA rules", "Detailed violation reports", "Actionable fix guidance", "Export results"],
+    relatedTools: ["contrast-checker"],
+    faq: [
+      { question: "What is axe-core?", answer: "axe-core is an open-source accessibility testing engine that checks for WCAG compliance issues. It's used by major companies and is the most popular accessibility testing library." },
+      { question: "What WCAG standards are tested?", answer: "The tool tests against WCAG 2.2 Level AA standards, including rules from WCAG 2.0, 2.1, and 2.2." },
+      { question: "Can I test pages that require authentication?", answer: "Currently, the tool can only test publicly accessible pages. Pages behind authentication or login walls cannot be tested." },
+      { question: "How accurate are the results?", answer: "axe-core catches about 30-40% of accessibility issues automatically. Manual testing and screen reader testing are still recommended for comprehensive audits." },
+      { question: "Can I export the results?", answer: "Yes, you can export results in JSON, CSV, or HTML report formats for documentation and sharing." },
     ],
   },
 ]

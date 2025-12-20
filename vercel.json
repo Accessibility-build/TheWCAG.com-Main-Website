@@ -1,2 +1,9 @@
-{}
+{
+  "functions": {
+    "app/api/tools/accessibility-test/route.ts": {
+      "maxDuration": 60,
+      "memory": 3008
+    }
+  }
+}
 

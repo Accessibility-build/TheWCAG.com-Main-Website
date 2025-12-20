@@ -19,6 +19,9 @@ export function ToolHeader({ tool }: ToolHeaderProps) {
   } else if (tool.category === "seo") {
     basePath = "/tools/seo"
     baseLabel = "SEO"
+  } else if (tool.category === "accessibility") {
+    basePath = "/tools/accessibility"
+    baseLabel = "Accessibility"
   }
 
   return (

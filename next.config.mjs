@@ -7,6 +7,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  // Mark puppeteer packages as external for serverless compatibility
+  serverExternalPackages: ['puppeteer-core', '@sparticuz/chromium'],
   // Production: Enable image optimization
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -58,11 +60,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.vercel-insights.com https://*.vercel-scripts.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.vercel-insights.com https://*.vercel-scripts.com https://unpkg.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' data: https://fonts.gstatic.com",
               "img-src 'self' data: https: blob:",
-              "connect-src 'self' https://www.google-analytics.com https://*.vercel-insights.com https://formspree.io",
+              "connect-src 'self' https://www.google-analytics.com https://*.vercel-insights.com https://formspree.io https://unpkg.com",
               "frame-src 'self' https://www.youtube.com",
               "object-src 'none'",
               "base-uri 'self'",

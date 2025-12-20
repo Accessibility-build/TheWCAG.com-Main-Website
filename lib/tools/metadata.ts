@@ -13,6 +13,7 @@ function truncateDescription(text: string, maxLength: number = 155): string {
 function getToolBasePath(tool: Tool): string {
   if (tool.category === "editing") return "/tools/edit"
   if (tool.category === "seo") return "/tools/seo"
+  if (tool.category === "accessibility") return "/tools/accessibility"
   return "/tools/convert"
 }
 
@@ -362,6 +363,12 @@ export function getDefaultToolSteps(tool: Tool): string[] {
       "Add your og:image URL and set dimensions",
       "Configure Twitter Card settings",
       "Preview how your link will appear on social media and copy the tags",
+    ],
+    "accessibility-tester": [
+      "Enter a URL to test or click 'Test Current Page'",
+      "Wait for the accessibility scan to complete",
+      "Review violations, passed checks, and incomplete items",
+      "Export results in JSON, CSV, or HTML format",
     ],
   }
 

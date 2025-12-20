@@ -9,6 +9,7 @@ import { getBlogGuideSlug } from "@/lib/blog/client-utils"
 function getToolPath(tool: Tool): string {
   if (tool.category === "editing") return `/tools/edit/${tool.slug}`
   if (tool.category === "seo") return `/tools/seo/${tool.slug}`
+  if (tool.category === "accessibility") return `/tools/accessibility/${tool.slug}`
   return `/tools/convert/${tool.slug}`
 }
 
