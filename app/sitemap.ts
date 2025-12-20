@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { successCriteria } from '@/lib/wcag-data'
 import { getAllLawsuits } from '@/lib/lawsuits-data'
 import { TOOLS } from '@/lib/tools/constants'
+import { getPublishedBlogPosts } from '@/lib/blog/storage'
 
 // Manual blog posts data (matching app/blog/page.tsx)
 const manualBlogPosts = [
@@ -401,7 +402,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // Blog pages - use actual published dates
-  const publishedBlogPosts = manualBlogPosts.filter((post) => post.isPublished)
+  // Get all published blog posts from JSON storage
+  const jsonBlogPosts = await getPublishedBlogPosts()
+  
+  // Combine manual and JSON posts, removing duplicates (JSON posts take precedence)
+  const manualSlugs = new Set(manualBlogPosts.map(p => p.slug))
+  const uniqueJsonPosts = jsonBlogPosts.filter(p => !manualSlugs.has(p.slug))
+  
+  // Merge all published blog posts
+  const allPublishedBlogPosts = [
+    ...manualBlogPosts.filter((post) => post.isPublished),
+    ...uniqueJsonPosts,
+  ]
+  
   const blogPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/blog`,
@@ -409,7 +422,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.8,
     },
-    ...publishedBlogPosts.map((post) => ({
+    ...allPublishedBlogPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.publishedAt),
       changeFrequency: 'weekly' as const,
