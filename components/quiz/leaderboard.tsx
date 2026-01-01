@@ -84,17 +84,17 @@ export function Leaderboard() {
   }
 
   const getScoreBadgeStyle = (percentage: number) => {
-    // WCAG AA compliant color combinations with white text
+    // WCAG AA compliant color combinations with white text - using !important to ensure contrast
     if (percentage >= 90) {
-      return 'bg-green-600 text-white border-green-700'
+      return 'bg-green-600 !text-white border-green-700'
     }
     if (percentage >= 70) {
-      return 'bg-blue-600 text-white border-blue-700'
+      return 'bg-blue-600 !text-white border-blue-700'
     }
     if (percentage >= 50) {
-      return 'bg-amber-600 text-white border-amber-700'
+      return 'bg-amber-600 !text-white border-amber-700'
     }
-    return 'bg-red-600 text-white border-red-700'
+    return 'bg-red-600 !text-white border-red-700'
   }
 
   return (
@@ -231,7 +231,8 @@ export function Leaderboard() {
                   
                   <div className="text-right">
                     <div 
-                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-bold border ${getScoreBadgeStyle(entry.percentage)}`}
+                      className={`inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-sm font-bold border ${getScoreBadgeStyle(entry.percentage)}`}
+                      style={{ color: 'white' }}
                     >
                       {entry.percentage}%
                     </div>
