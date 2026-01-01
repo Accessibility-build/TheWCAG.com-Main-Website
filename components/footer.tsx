@@ -212,14 +212,7 @@ export function Footer() {
 
               <div>
                 <h3 className="text-base md:text-lg font-medium mb-4 text-primary">Interactive</h3>
-                <ul className="space-y-2 text-sm text-background/60">
-                  <li>
-                    <Link href="/quiz" className="hover:text-background transition-colors">
-                      Accessibility Quiz
-                    </Link>
-                  </li>
-                </ul>
-                <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
+                <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
                   <p className="text-sm font-semibold text-background/90 mb-2">Test Your Knowledge!</p>
                   <p className="text-xs text-background/70 mb-3">Take our 30-question quiz and compete on the leaderboard.</p>
                   <Link 
