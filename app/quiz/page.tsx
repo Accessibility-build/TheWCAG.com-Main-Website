@@ -144,7 +144,7 @@ export default function QuizPage() {
               </p>
             </div>
             <div className="text-right">
-              <Badge variant="secondary" className={`font-bold ${entry.percentage === 100 ? 'text-white dark:text-white' : getScoreColor(entry.percentage)}`}>
+              <Badge variant="secondary" className="font-bold text-white dark:text-white">
                 {entry.percentage}%
               </Badge>
             </div>

@@ -7,6 +7,10 @@ export interface Question {
   options: string[]
   correctAnswer: number
   explanation?: string
+  source?: {
+    title: string
+    url: string
+  }
   category?: 'basics' | 'wcag' | 'technical' | 'best-practices' | 'advanced'
   difficulty?: 'easy' | 'medium' | 'hard'
 }
@@ -28,6 +32,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "Accessibility is about making websites usable by everyone, including people with disabilities. It's not just about aesthetics or performance.",
+    source: {
+      title: "Introduction to Web Accessibility - W3C WAI",
+      url: "https://www.w3.org/WAI/fundamentals/accessibility-intro/"
+    },
     category: "basics",
     difficulty: "easy"
   },
@@ -42,6 +50,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 0,
     explanation: "WCAG stands for Web Content Accessibility Guidelines, developed by W3C to ensure web content is accessible to all users.",
+    source: {
+      title: "WCAG 2 Overview - W3C WAI",
+      url: "https://www.w3.org/WAI/standards-guidelines/wcag/"
+    },
     category: "basics",
     difficulty: "easy"
   },
@@ -56,6 +68,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "The 'alt' attribute provides alternative text for images, which is read by screen readers and displayed when images fail to load.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 1.1.1 Non-text Content",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+    },
     category: "technical",
     difficulty: "easy"
   },
@@ -70,6 +86,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "WCAG 2.2 Level AA requires a minimum contrast ratio of 4.5:1 for normal text to ensure readability for users with visual impairments.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 1.4.3 Contrast (Minimum)",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+    },
     category: "wcag",
     difficulty: "easy"
   },
@@ -84,6 +104,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     explanation: "The four main principles of WCAG are: Perceivable, Operable, Understandable, and Robust (POUR). Profitable is not a WCAG principle.",
+    source: {
+      title: "Understanding the Four Principles of Accessibility - W3C WAI",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/intro#understanding-the-four-principles-of-accessibility"
+    },
     category: "wcag",
     difficulty: "easy"
   },
@@ -98,6 +122,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "Semantic HTML provides meaning and structure to web content, making it easier for assistive technologies to interpret and navigate.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 1.3.1 Info and Relationships",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html"
+    },
     category: "technical",
     difficulty: "easy"
   },
@@ -112,6 +140,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     explanation: "The <nav> element is the semantic HTML5 element specifically designed for major navigation blocks.",
+    source: {
+      title: "HTML nav element - MDN Web Docs",
+      url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav"
+    },
     category: "technical",
     difficulty: "easy"
   },
@@ -126,6 +158,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "Accessibility benefits everyone, including people with temporary impairments, situational limitations, and aging populations.",
+    source: {
+      title: "Accessibility - W3C WAI",
+      url: "https://www.w3.org/WAI/fundamentals/accessibility-intro/"
+    },
     category: "basics",
     difficulty: "easy"
   },
@@ -140,6 +176,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "WCAG recommends 60-80 characters per line for optimal readability. Lines that are too long or too short can be difficult to read.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 1.4.8 Visual Presentation",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html"
+    },
     category: "best-practices",
     difficulty: "easy"
   },
@@ -154,6 +194,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     explanation: "The aria-label attribute or associated <label> element provides accessible names for form inputs, helping screen reader users understand the purpose of each field.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 3.3.2 Labels or Instructions",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html"
+    },
     category: "technical",
     difficulty: "easy"
   },
@@ -170,6 +214,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     explanation: "Using position: absolute with a large negative left value hides content visually while keeping it in the DOM and accessible to screen readers. display:none and visibility:hidden remove content from the accessibility tree.",
+    source: {
+      title: "Invisible Content Just for Screen Reader Users - WebAIM",
+      url: "https://webaim.org/techniques/css/invisiblecontent/"
+    },
     category: "technical",
     difficulty: "medium"
   },
@@ -184,6 +232,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "ARIA landmarks help users of assistive technologies navigate and understand the structure of a web page by identifying key regions like navigation, main content, and complementary areas.",
+    source: {
+      title: "ARIA Landmarks - W3C WAI",
+      url: "https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/"
+    },
     category: "wcag",
     difficulty: "medium"
   },
@@ -198,6 +250,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "Success Criterion 2.1.1 Keyboard (Level A) requires that all functionality be available from a keyboard, ensuring users who cannot use a mouse can still access all features.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 2.1.1 Keyboard",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+    },
     category: "wcag",
     difficulty: "medium"
   },
@@ -212,6 +268,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "WCAG 2.2 Level AA requires a minimum target size of 44x44 CSS pixels for clickable elements to ensure they're easy to activate for users with motor impairments.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 2.5.8 Target Size (Minimum)",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+    },
     category: "wcag",
     difficulty: "medium"
   },
@@ -226,6 +286,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "The 'role' attribute defines the type or purpose of an element for assistive technologies, helping them understand how to interact with and present the element to users.",
+    source: {
+      title: "ARIA Roles - MDN Web Docs",
+      url: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles"
+    },
     category: "technical",
     difficulty: "medium"
   },
@@ -240,6 +304,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     explanation: "Both hidden links that appear on focus and always-visible links are valid approaches to skip navigation. The key is that they must be keyboard accessible and appear early in the tab order.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 2.4.1 Bypass Blocks",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html"
+    },
     category: "best-practices",
     difficulty: "medium"
   },
@@ -254,6 +322,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "The 'aria-live' attribute announces dynamic content changes to screen readers, ensuring users are aware of updates without needing to navigate to the changed content.",
+    source: {
+      title: "ARIA Live Regions - MDN Web Docs",
+      url: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions"
+    },
     category: "technical",
     difficulty: "medium"
   },
@@ -268,6 +340,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     explanation: "After an <h2>, you can use either another <h2> (for a sibling section) or an <h3> (for a subsection). Heading levels should not skip (e.g., h2 to h4).",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 1.3.1 Info and Relationships",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html"
+    },
     category: "best-practices",
     difficulty: "medium"
   },
@@ -282,6 +358,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 0,
     explanation: "The aria-required='true' attribute indicates that a form field must be filled out before submission. The HTML5 'required' attribute can also be used.",
+    source: {
+      title: "aria-required - MDN Web Docs",
+      url: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required"
+    },
     category: "technical",
     difficulty: "medium"
   },
@@ -296,6 +376,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "Focus management involves controlling where keyboard focus moves during interactions, especially in dynamic content like modals, ensuring a logical and predictable user experience.",
+    source: {
+      title: "Managing Focus - W3C WAI",
+      url: "https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/"
+    },
     category: "best-practices",
     difficulty: "medium"
   },
@@ -312,6 +396,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "Success Criterion 3.2.4 Consistent Identification (Level AA) requires that components with the same functionality be identified consistently across a set of web pages.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 3.2.4 Consistent Identification",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification.html"
+    },
     category: "wcag",
     difficulty: "hard"
   },
@@ -326,6 +414,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "A custom accessible dropdown should use a <button> element with aria-expanded to indicate state and aria-controls to reference the menu, along with proper keyboard navigation and focus management.",
+    source: {
+      title: "Disclosure (Show/Hide) Pattern - W3C ARIA Authoring Practices",
+      url: "https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/"
+    },
     category: "advanced",
     difficulty: "hard"
   },
@@ -340,6 +432,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "The 'aria-describedby' attribute references additional descriptive information (like help text or error messages) that provides more context beyond the accessible name.",
+    source: {
+      title: "aria-describedby - MDN Web Docs",
+      url: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby"
+    },
     category: "advanced",
     difficulty: "hard"
   },
@@ -354,6 +450,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 0,
     explanation: "2.4.11 Focus Not Obscured (Minimum) is one of the new success criteria in WCAG 2.2, ensuring that focused elements are not entirely hidden by other content.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 2.4.11 Focus Not Obscured (Minimum)",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html"
+    },
     category: "wcag",
     difficulty: "hard"
   },
@@ -368,6 +468,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     explanation: "Error messages should use aria-live='assertive' with role='alert' to immediately interrupt and announce the error to screen reader users.",
+    source: {
+      title: "ARIA alert role - MDN Web Docs",
+      url: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role"
+    },
     category: "advanced",
     difficulty: "hard"
   },
@@ -382,6 +486,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "aria-label provides accessible text directly as an attribute value, while aria-labelledby references the ID(s) of other elements whose text content should be used as the label.",
+    source: {
+      title: "ARIA Labels and Descriptions - W3C WAI",
+      url: "https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/"
+    },
     category: "advanced",
     difficulty: "hard"
   },
@@ -396,6 +504,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 2,
     explanation: "Level AAA requires captions for all live audio content (1.2.9). Level AA only requires captions for prerecorded audio content.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 1.2.9 Audio-only (Live)",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/audio-only-live.html"
+    },
     category: "wcag",
     difficulty: "hard"
   },
@@ -410,6 +522,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "When opening a modal, focus should move to the first focusable element within the modal (often the close button or first form field), and focus should be trapped within the modal until it's closed.",
+    source: {
+      title: "Dialog (Modal) Pattern - W3C ARIA Authoring Practices",
+      url: "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
+    },
     category: "advanced",
     difficulty: "hard"
   },
@@ -424,6 +540,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "The 'aria-hidden' attribute removes elements from the accessibility tree, making them invisible to assistive technologies while keeping them visually present.",
+    source: {
+      title: "aria-hidden - MDN Web Docs",
+      url: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden"
+    },
     category: "advanced",
     difficulty: "hard"
   },
@@ -438,6 +558,10 @@ export const questions: Question[] = [
     ],
     correctAnswer: 1,
     explanation: "3.3.8 Accessible Authentication (Minimum) is a new WCAG 2.2 criterion that requires authentication methods to not rely on cognitive function tests like memorizing passwords or solving puzzles.",
+    source: {
+      title: "WCAG 2.2 - Success Criterion 3.3.8 Accessible Authentication (Minimum)",
+      url: "https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html"
+    },
     category: "wcag",
     difficulty: "hard"
   }

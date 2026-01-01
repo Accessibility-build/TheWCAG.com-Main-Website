@@ -1,11 +1,11 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Trophy, Smile, Meh, Frown, Sparkles, ArrowRight, RotateCcw, Send, Clock, HelpCircle, CheckCircle2 } from "lucide-react"
+import { Trophy, Smile, Meh, Frown, Sparkles, ArrowRight, RotateCcw, Send, Clock, HelpCircle, CheckCircle2, Plus, ExternalLink } from "lucide-react"
 import { questions as allQuestions, type Question } from "@/lib/quiz/questions"
 
 interface QuizFlowProps {
@@ -78,6 +78,9 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
   const [showExplanation, setShowExplanation] = useState(false)
   const [timeLeft, setTimeLeft] = useState(15)
   const [timerActive, setTimerActive] = useState(false)
+  const [showTimeExtension, setShowTimeExtension] = useState(false)
+  const [announcement, setAnnouncement] = useState("")
+  const liveRegionRef = useRef<HTMLDivElement>(null)
 
   const startQuiz = useCallback(() => {
     const shuffled = [...allQuestions].sort(() => Math.random() - 0.5)
@@ -93,7 +96,7 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
     setState('quiz')
   }, [questionCount])
 
-  // Timer effect
+  // Timer effect with warnings
   useEffect(() => {
     if (!timerActive || showExplanation || state !== 'quiz') return
 
@@ -101,7 +104,15 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           setTimerActive(false)
+          setAnnouncement("Time is up! Would you like 15 more seconds to answer this question?")
+          setShowTimeExtension(true)
           return 0
+        }
+        // Announce warnings at 10 and 5 seconds
+        if (prev === 10) {
+          setAnnouncement("Warning: 10 seconds remaining")
+        } else if (prev === 5) {
+          setAnnouncement("Warning: 5 seconds remaining")
         }
         return prev - 1
       })
@@ -110,16 +121,36 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
     return () => clearInterval(timer)
   }, [timerActive, showExplanation, state])
 
-  // Auto-advance when timer runs out
-  useEffect(() => {
-    if (timeLeft === 0 && !showExplanation && selectedAnswer === null) {
-      // Auto-select a wrong answer or skip
-      const timeout = setTimeout(() => {
-        handleNext()
-      }, 500)
-      return () => clearTimeout(timeout)
+  // Handle time extension response
+  const handleExtendTime = () => {
+    setTimeLeft(15)
+    setTimerActive(true)
+    setShowTimeExtension(false)
+    setAnnouncement("15 seconds added to timer")
+  }
+
+  const handleSkipQuestion = () => {
+    setShowTimeExtension(false)
+    setAnnouncement("Question skipped. Moving to next question.")
+    // Move to next question without selecting an answer
+    if (currentQuestion < questions.length - 1) {
+      const newAnswers = [...answers, -1] // -1 indicates skipped
+      setAnswers(newAnswers)
+      setCurrentQuestion(currentQuestion + 1)
+      setSelectedAnswer(null)
+      setShowExplanation(false)
+      setTimeLeft(15)
+      setTimerActive(true)
+    } else {
+      // Last question - go to results
+      const newAnswers = [...answers, -1]
+      const finalScore = questions.reduce((acc, q, idx) => {
+        return acc + (newAnswers[idx] === q.correctAnswer ? 1 : 0)
+      }, 0)
+      setScore(finalScore)
+      setState('name-entry')
     }
-  }, [timeLeft, showExplanation, selectedAnswer])
+  }
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (showExplanation) return
@@ -131,7 +162,10 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
     if (selectedAnswer === null) return
 
     if (!showExplanation) {
+      const currentQ = questions[currentQuestion]
+      const isCorrect = selectedAnswer === currentQ.correctAnswer
       setShowExplanation(true)
+      setAnnouncement(isCorrect ? "Correct answer!" : "Incorrect. Review the explanation below.")
       return
     }
 
@@ -144,11 +178,13 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
       setShowExplanation(false)
       setTimeLeft(15)
       setTimerActive(true)
+      setAnnouncement(`Moving to question ${currentQuestion + 2} of ${questions.length}`)
     } else {
       const finalScore = questions.reduce((acc, q, idx) => {
         return acc + (newAnswers[idx] === q.correctAnswer ? 1 : 0)
       }, 0)
       setScore(finalScore)
+      setAnnouncement("Quiz complete! Entering your score.")
       setState('name-entry')
     }
   }
@@ -282,34 +318,96 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
     const currentScore = answers.filter((a, i) => a === questions[i].correctAnswer).length
 
     return (
-      <Card className="border-2 overflow-hidden">
-        {/* Progress Header */}
-        <div className="bg-muted/50 px-6 py-4 border-b">
-          <div className="flex justify-between items-center mb-3">
-            <span className="text-sm font-semibold">
-              Question {currentQuestion + 1} of {questions.length}
-            </span>
-            <div className="flex items-center gap-4">
-              {!showExplanation && (
-                <div className={`flex items-center gap-2 px-3 py-1 rounded-full ${
-                  timeLeft <= 5 ? 'bg-red-500/20 text-red-600 dark:text-red-400' : 'bg-primary/10 text-primary'
-                }`}>
-                  <Clock className="h-4 w-4" />
-                  <span className="text-sm font-bold">{timeLeft}s</span>
+      <>
+        {/* ARIA Live Region for announcements */}
+        <div 
+          ref={liveRegionRef}
+          role="status" 
+          aria-live="polite" 
+          aria-atomic="true"
+          className="sr-only"
+        >
+          {announcement}
+        </div>
+
+        {/* Time Extension Dialog */}
+        {showTimeExtension && (
+          <Card className="border-2 border-amber-500 bg-amber-500/10 mb-6">
+            <CardContent className="p-6">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-full bg-amber-500/20">
+                  <Clock className="h-6 w-6 text-amber-600 dark:text-amber-400" />
                 </div>
-              )}
-              <span className="text-sm font-semibold text-primary">
-                Score: {currentScore}/{currentQuestion}
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg mb-2">Time's Up!</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Would you like 15 more seconds to answer this question, or skip to the next one?
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <Button 
+                      onClick={handleExtendTime}
+                      className="gap-2"
+                      autoFocus
+                    >
+                      <Plus className="h-4 w-4" />
+                      Add 15 Seconds
+                    </Button>
+                    <Button 
+                      onClick={handleSkipQuestion}
+                      variant="outline"
+                    >
+                      Skip Question
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        <Card className="border-2 overflow-hidden">
+          {/* Progress Header */}
+          <div className="bg-muted/50 px-6 py-4 border-b">
+            <div className="flex justify-between items-center mb-3">
+              <span className="text-sm font-semibold">
+                Question {currentQuestion + 1} of {questions.length}
               </span>
+              <div className="flex items-center gap-4">
+                {!showExplanation && !showTimeExtension && (
+                  <div 
+                    className={`flex items-center gap-2 px-3 py-1 rounded-full ${
+                      timeLeft <= 5 ? 'bg-red-500/20 text-red-600 dark:text-red-400' : 'bg-primary/10 text-primary'
+                    }`}
+                    role="timer"
+                    aria-live="polite"
+                    aria-atomic="true"
+                  >
+                    <Clock className="h-4 w-4" aria-hidden="true" />
+                    <span className="text-sm font-bold">
+                      <span className="sr-only">Time remaining: </span>
+                      {timeLeft} seconds
+                    </span>
+                  </div>
+                )}
+                <span className="text-sm font-semibold text-primary">
+                  <span className="sr-only">Current score: </span>
+                  Score: {currentScore}/{currentQuestion}
+                </span>
+              </div>
+            </div>
+            <div className="w-full bg-muted rounded-full h-2.5 overflow-hidden">
+              <div
+                className="bg-gradient-to-r from-primary to-violet-500 h-2.5 rounded-full transition-all duration-500 ease-out"
+                style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+                role="progressbar"
+                aria-valuenow={currentQuestion + 1}
+                aria-valuemin={1}
+                aria-valuemax={questions.length}
+                aria-label={`Question ${currentQuestion + 1} of ${questions.length}`}
+              />
             </div>
           </div>
-          <div className="w-full bg-muted rounded-full h-2.5 overflow-hidden">
-            <div
-              className="bg-gradient-to-r from-primary to-violet-500 h-2.5 rounded-full transition-all duration-500 ease-out"
-              style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-            />
-          </div>
-        </div>
 
         <CardContent className="p-6 md:p-8">
           <h3 id={`question-${currentQ.id}`} className="text-xl md:text-2xl font-bold leading-relaxed mb-6">
@@ -351,22 +449,42 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
           </div>
 
           {showExplanation && currentQ.explanation && (
-            <div className={`mt-6 p-5 rounded-xl border-2 ${isCorrect ? 'bg-green-500/10 border-green-500/30' : 'bg-amber-500/10 border-amber-500/30'}`}>
+            <div 
+              className={`mt-6 p-5 rounded-xl border-2 ${isCorrect ? 'bg-green-500/10 border-green-500/30' : 'bg-amber-500/10 border-amber-500/30'}`}
+              role="region"
+              aria-label="Answer explanation"
+            >
               <p className="font-bold mb-2 flex items-center gap-2">
                 {isCorrect ? (
-                  <><CheckCircle2 className="h-5 w-5 text-green-500" /> Correct!</>
+                  <><CheckCircle2 className="h-5 w-5 text-green-500" aria-hidden="true" /> Correct!</>
                 ) : (
-                  <><span className="text-amber-500">💡</span> Learn from this</>
+                  <><span className="text-amber-500" aria-hidden="true">💡</span> Learn from this</>
                 )}
               </p>
-              <p className="text-muted-foreground">{currentQ.explanation}</p>
+              <p className="text-muted-foreground mb-4">{currentQ.explanation}</p>
+              
+              {currentQ.source && (
+                <div className="mt-4 pt-4 border-t border-border/50">
+                  <p className="text-xs font-semibold text-muted-foreground mb-2">Source Reference:</p>
+                  <a 
+                    href={currentQ.source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+                  >
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                    {currentQ.source.title}
+                    <span className="sr-only">(opens in new tab)</span>
+                  </a>
+                </div>
+              )}
             </div>
           )}
 
           <div className="flex justify-end mt-6">
             <Button
               onClick={handleNext}
-              disabled={selectedAnswer === null}
+              disabled={selectedAnswer === null || showTimeExtension}
               size="lg"
               className="min-w-[160px] h-12"
             >
@@ -376,11 +494,12 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
                   ? 'Next Question' 
                   : 'See Results'
               }
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Button>
           </div>
         </CardContent>
       </Card>
+      </>
     )
   }
 
