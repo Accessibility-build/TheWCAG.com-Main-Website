@@ -1,0 +1,274 @@
+{
+  "scores": [
+    {
+      "id": "dummy-10-1766999905014",
+      "name": "Rohan Gupta",
+      "score": 30,
+      "total": 30,
+      "percentage": 100,
+      "timestamp": "2025-12-29T09:18:25.014Z",
+      "date": "2025-12-29"
+    },
+    {
+      "id": "dummy-12-1766824105014",
+      "name": "Ananya Reddy",
+      "score": 30,
+      "total": 30,
+      "percentage": 100,
+      "timestamp": "2025-12-27T08:28:25.014Z",
+      "date": "2025-12-27"
+    },
+    {
+      "id": "dummy-20-1766159965014",
+      "name": "Aditya Verma",
+      "score": 30,
+      "total": 30,
+      "percentage": 100,
+      "timestamp": "2025-12-19T15:59:25.014Z",
+      "date": "2025-12-19"
+    },
+    {
+      "id": "dummy-19-1767093805014",
+      "name": "Emily Chen",
+      "score": 29,
+      "total": 30,
+      "percentage": 97,
+      "timestamp": "2025-12-30T11:23:25.014Z",
+      "date": "2025-12-30"
+    },
+    {
+      "id": "dummy-18-1766383885014",
+      "name": "Karthik Iyer",
+      "score": 29,
+      "total": 30,
+      "percentage": 97,
+      "timestamp": "2025-12-22T06:11:25.014Z",
+      "date": "2025-12-22"
+    },
+    {
+      "id": "dummy-15-1766555305014",
+      "name": "James O'Connor",
+      "score": 27,
+      "total": 30,
+      "percentage": 90,
+      "timestamp": "2025-12-24T05:48:25.014Z",
+      "date": "2025-12-24"
+    },
+    {
+      "id": "dummy-29-1766052445014",
+      "name": "Ava Martinez",
+      "score": 27,
+      "total": 30,
+      "percentage": 90,
+      "timestamp": "2025-12-18T10:07:25.014Z",
+      "date": "2025-12-18"
+    },
+    {
+      "id": "dummy-1-1767123445014",
+      "name": "Alex Johnson",
+      "score": 26,
+      "total": 30,
+      "percentage": 87,
+      "timestamp": "2025-12-30T19:37:25.014Z",
+      "date": "2025-12-30"
+    },
+    {
+      "id": "dummy-23-1767101245014",
+      "name": "Hannah Lee",
+      "score": 26,
+      "total": 30,
+      "percentage": 87,
+      "timestamp": "2025-12-30T13:27:25.014Z",
+      "date": "2025-12-30"
+    },
+    {
+      "id": "dummy-28-1766874145014",
+      "name": "Varun Malhotra",
+      "score": 26,
+      "total": 30,
+      "percentage": 87,
+      "timestamp": "2025-12-27T22:22:25.014Z",
+      "date": "2025-12-27"
+    },
+    {
+      "id": "dummy-9-1766674525014",
+      "name": "Olivia Brown",
+      "score": 26,
+      "total": 30,
+      "percentage": 87,
+      "timestamp": "2025-12-25T14:55:25.014Z",
+      "date": "2025-12-25"
+    },
+    {
+      "id": "dummy-6-1766538625014",
+      "name": "Vikram Singh",
+      "score": 26,
+      "total": 30,
+      "percentage": 87,
+      "timestamp": "2025-12-24T01:10:25.014Z",
+      "date": "2025-12-24"
+    },
+    {
+      "id": "dummy-22-1766133085014",
+      "name": "Rajesh Nair",
+      "score": 26,
+      "total": 30,
+      "percentage": 87,
+      "timestamp": "2025-12-19T08:31:25.014Z",
+      "date": "2025-12-19"
+    },
+    {
+      "id": "dummy-14-1766183125014",
+      "name": "Neha Kapoor",
+      "score": 25,
+      "total": 30,
+      "percentage": 83,
+      "timestamp": "2025-12-19T22:25:25.014Z",
+      "date": "2025-12-19"
+    },
+    {
+      "id": "dummy-7-1766648965014",
+      "name": "Isabella Garcia",
+      "score": 24,
+      "total": 30,
+      "percentage": 80,
+      "timestamp": "2025-12-25T07:49:25.014Z",
+      "date": "2025-12-25"
+    },
+    {
+      "id": "dummy-16-1766636065014",
+      "name": "Sanjay Mehta",
+      "score": 23,
+      "total": 30,
+      "percentage": 77,
+      "timestamp": "2025-12-25T04:14:25.014Z",
+      "date": "2025-12-25"
+    },
+    {
+      "id": "dummy-5-1766557045014",
+      "name": "Sophie Martin",
+      "score": 23,
+      "total": 30,
+      "percentage": 77,
+      "timestamp": "2025-12-24T06:17:25.014Z",
+      "date": "2025-12-24"
+    },
+    {
+      "id": "dummy-27-1766359225014",
+      "name": "Chloe Wilson",
+      "score": 22,
+      "total": 30,
+      "percentage": 73,
+      "timestamp": "2025-12-21T23:20:25.014Z",
+      "date": "2025-12-21"
+    },
+    {
+      "id": "dummy-21-1766172625014",
+      "name": "Sofia Rodriguez",
+      "score": 22,
+      "total": 30,
+      "percentage": 73,
+      "timestamp": "2025-12-19T19:30:25.014Z",
+      "date": "2025-12-19"
+    },
+    {
+      "id": "dummy-2-1767039265014",
+      "name": "Rahul Patel",
+      "score": 20,
+      "total": 30,
+      "percentage": 67,
+      "timestamp": "2025-12-29T20:14:25.014Z",
+      "date": "2025-12-29"
+    },
+    {
+      "id": "dummy-0-1766949805014",
+      "name": "Priya Sharma",
+      "score": 20,
+      "total": 30,
+      "percentage": 67,
+      "timestamp": "2025-12-28T19:23:25.014Z",
+      "date": "2025-12-28"
+    },
+    {
+      "id": "dummy-13-1766036485014",
+      "name": "Lucas Schmidt",
+      "score": 20,
+      "total": 30,
+      "percentage": 67,
+      "timestamp": "2025-12-18T05:41:25.014Z",
+      "date": "2025-12-18"
+    },
+    {
+      "id": "dummy-26-1766522305014",
+      "name": "Manish Agarwal",
+      "score": 19,
+      "total": 30,
+      "percentage": 63,
+      "timestamp": "2025-12-23T20:38:25.014Z",
+      "date": "2025-12-23"
+    },
+    {
+      "id": "dummy-3-1767203305014",
+      "name": "Emma Williams",
+      "score": 17,
+      "total": 30,
+      "percentage": 57,
+      "timestamp": "2025-12-31T17:48:25.014Z",
+      "date": "2025-12-31"
+    },
+    {
+      "id": "dummy-4-1767127645014",
+      "name": "Arjun Kumar",
+      "score": 17,
+      "total": 30,
+      "percentage": 57,
+      "timestamp": "2025-12-30T20:47:25.014Z",
+      "date": "2025-12-30"
+    },
+    {
+      "id": "dummy-17-1766819425014",
+      "name": "Charlotte Dubois",
+      "score": 17,
+      "total": 30,
+      "percentage": 57,
+      "timestamp": "2025-12-27T07:10:25.014Z",
+      "date": "2025-12-27"
+    },
+    {
+      "id": "dummy-24-1766136745014",
+      "name": "Deepak Joshi",
+      "score": 17,
+      "total": 30,
+      "percentage": 57,
+      "timestamp": "2025-12-19T09:32:25.014Z",
+      "date": "2025-12-19"
+    },
+    {
+      "id": "dummy-11-1766403805014",
+      "name": "Mia Anderson",
+      "score": 15,
+      "total": 30,
+      "percentage": 50,
+      "timestamp": "2025-12-22T11:43:25.014Z",
+      "date": "2025-12-22"
+    },
+    {
+      "id": "dummy-8-1766459185014",
+      "name": "Amit Desai",
+      "score": 13,
+      "total": 30,
+      "percentage": 43,
+      "timestamp": "2025-12-23T03:06:25.014Z",
+      "date": "2025-12-23"
+    },
+    {
+      "id": "dummy-25-1766497345014",
+      "name": "Zoe Taylor",
+      "score": 12,
+      "total": 30,
+      "percentage": 40,
+      "timestamp": "2025-12-23T13:42:25.014Z",
+      "date": "2025-12-23"
+    }
+  ]
+}
