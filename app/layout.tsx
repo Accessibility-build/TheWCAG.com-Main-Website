@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { QuizWelcomeDialog } from "@/components/quiz/quiz-welcome-dialog"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -174,6 +175,7 @@ export default function RootLayout({
         </Script>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light" disableTransitionOnChange>
           {children}
+          <QuizWelcomeDialog />
         </ThemeProvider>
         <Analytics />
       </body>

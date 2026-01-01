@@ -214,11 +214,21 @@ export function Footer() {
                 <h3 className="text-base md:text-lg font-medium mb-4 text-primary">Interactive</h3>
                 <ul className="space-y-2 text-sm text-background/60">
                   <li>
-                    <Link href="/#quiz" className="hover:text-background transition-colors">
+                    <Link href="/quiz" className="hover:text-background transition-colors">
                       Accessibility Quiz
                     </Link>
                   </li>
                 </ul>
+                <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
+                  <p className="text-sm font-semibold text-background/90 mb-2">Test Your Knowledge!</p>
+                  <p className="text-xs text-background/70 mb-3">Take our 30-question quiz and compete on the leaderboard.</p>
+                  <Link 
+                    href="/quiz" 
+                    className="inline-flex items-center justify-center rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 w-full transition-colors"
+                  >
+                    Start Quiz →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

@@ -84,17 +84,17 @@ export function Leaderboard() {
   }
 
   const getScoreBadgeStyle = (percentage: number) => {
-    // WCAG AA compliant color combinations with proper contrast ratios
+    // WCAG AA compliant color combinations with white text
     if (percentage >= 90) {
-      return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 border-green-300 dark:border-green-700'
+      return 'bg-green-600 text-white border-green-700'
     }
     if (percentage >= 70) {
-      return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 border-blue-300 dark:border-blue-700'
+      return 'bg-blue-600 text-white border-blue-700'
     }
     if (percentage >= 50) {
-      return 'bg-amber-100 text-amber-900 dark:bg-amber-900 dark:text-amber-100 border-amber-300 dark:border-amber-700'
+      return 'bg-amber-600 text-white border-amber-700'
     }
-    return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100 border-red-300 dark:border-red-700'
+    return 'bg-red-600 text-white border-red-700'
   }
 
   return (
