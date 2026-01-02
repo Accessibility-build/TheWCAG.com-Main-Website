@@ -304,6 +304,33 @@ export default function ToolsPage() {
                     </div>
                   </CardContent>
                 </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <FileText className="h-5 w-5 text-primary" />
+                      Markdown Document Viewer
+                    </CardTitle>
+                    <CardDescription>
+                      Upload and view multiple Markdown files with beautiful rendering, syntax highlighting, and table of contents. Perfect for reading AI-generated documentation.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between">
+                      <div className="flex gap-2 flex-wrap">
+                        <Badge variant="outline">Markdown</Badge>
+                        <Badge variant="outline">Syntax Highlight</Badge>
+                        <Badge variant="outline">Local Storage</Badge>
+                      </div>
+                      <Button asChild>
+                        <Link href="/tools/document-viewer">
+                          Use Tool
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </section>
 

@@ -83,10 +83,15 @@ const categoryIcons: Record<string, React.ComponentType<{ className?: string }>>
   utility: Wrench,
 }
 
+// Tools that have their own top-level pages and should not appear in convert
+const TOP_LEVEL_TOOL_SLUGS = ["document-viewer"]
+
 export default function ConvertToolsPage() {
-  // Exclude editing category from convert page
+  // Exclude editing category and top-level tools from convert page
   const categories = getAllCategories().filter(cat => cat !== "editing")
-  const convertTools = TOOLS.filter(tool => tool.category !== "editing")
+  const convertTools = TOOLS.filter(tool => 
+    tool.category !== "editing" && !TOP_LEVEL_TOOL_SLUGS.includes(tool.slug)
+  )
   const currentDate = new Date().toISOString().split("T")[0]
 
   const structuredData = {
@@ -232,7 +237,9 @@ export default function ConvertToolsPage() {
             <div className="space-y-16">
               {categories.map((categoryKey) => {
                 const category = TOOL_CATEGORIES[categoryKey]
-                const tools = getToolsByCategory(categoryKey)
+                const tools = getToolsByCategory(categoryKey).filter(
+                  tool => !TOP_LEVEL_TOOL_SLUGS.includes(tool.slug)
+                )
                 const Icon = categoryIcons[categoryKey]
 
                 if (tools.length === 0) return null
