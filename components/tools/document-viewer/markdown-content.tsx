@@ -9,8 +9,8 @@ import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/pris
 // Type for syntax highlighter style
 type SyntaxStyle = { [key: string]: CSSProperties }
 import { useTheme } from "next-themes"
-import { Document } from "@/lib/tools/document-viewer"
-import { FileText, Copy, Check, Clock, Hash } from "lucide-react"
+import { Document, isInternalDocumentLink, extractAnchorFromLink } from "@/lib/tools/document-viewer"
+import { FileText, Copy, Check, Clock, Hash, ExternalLink, Link2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState, useCallback, useEffect } from "react"
 import { cn } from "@/lib/utils"
@@ -19,9 +19,10 @@ interface MarkdownContentProps {
   document: Document | null
   className?: string
   isFullscreen?: boolean
+  onNavigateToDocument?: (href: string, anchor?: string | null) => boolean // Returns true if navigation was handled
 }
 
-export function MarkdownContent({ document, className, isFullscreen = false }: MarkdownContentProps) {
+export function MarkdownContent({ document, className, isFullscreen = false, onNavigateToDocument }: MarkdownContentProps) {
   const { resolvedTheme } = useTheme()
   const [copiedCode, setCopiedCode] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
@@ -39,6 +40,23 @@ export function MarkdownContent({ document, className, isFullscreen = false }: M
       console.error("Failed to copy code")
     }
   }, [])
+
+  // Handle link clicks - intercept internal document links
+  const handleLinkClick = useCallback((href: string, e: React.MouseEvent) => {
+    if (isInternalDocumentLink(href) && onNavigateToDocument) {
+      e.preventDefault()
+      const anchor = extractAnchorFromLink(href)
+      const handled = onNavigateToDocument(href, anchor)
+      
+      // If the document was found and we have an anchor, scroll to it after a brief delay
+      if (handled && anchor) {
+        setTimeout(() => {
+          const element = window.document.getElementById(anchor)
+          element?.scrollIntoView({ behavior: "smooth", block: "start" })
+        }, 100)
+      }
+    }
+  }, [onNavigateToDocument])
 
   if (!document) {
     return (
@@ -230,17 +248,33 @@ export function MarkdownContent({ document, className, isFullscreen = false }: M
                 </div>
               )
             },
-            // Custom link component
-            a: ({ href, children, ...props }) => (
-              <a
-                href={href}
-                target={href?.startsWith("http") ? "_blank" : undefined}
-                rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                {...props}
-              >
-                {children}
-              </a>
-            ),
+            // Custom link component with internal document navigation
+            a: ({ href, children, ...props }) => {
+              const isExternal = href?.startsWith("http") || href?.startsWith("mailto:")
+              const isInternal = href ? isInternalDocumentLink(href) : false
+              const hasHandler = isInternal && onNavigateToDocument
+              
+              return (
+                <a
+                  href={href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  onClick={hasHandler ? (e) => handleLinkClick(href!, e) : undefined}
+                  className={cn(
+                    hasHandler && "cursor-pointer inline-flex items-center gap-1"
+                  )}
+                  {...props}
+                >
+                  {children}
+                  {isInternal && hasHandler && (
+                    <Link2 className="inline h-3 w-3 opacity-60" />
+                  )}
+                  {isExternal && (
+                    <ExternalLink className="inline h-3 w-3 opacity-60" />
+                  )}
+                </a>
+              )
+            },
             // Custom table with professional styling
             table: ({ children, ...props }) => (
               <div className="overflow-x-auto my-6 rounded-lg border shadow-sm">

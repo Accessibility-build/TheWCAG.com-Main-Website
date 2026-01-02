@@ -17,6 +17,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { getToolBySlug } from "@/lib/tools/constants"
 import { 
   Document, 
@@ -25,6 +26,7 @@ import {
   removeDocument as removeDocumentFromStorage,
   clearAllDocuments,
   searchDocuments,
+  findDocumentByLink,
 } from "@/lib/tools/document-viewer"
 import { 
   generateToolStructuredData, 
@@ -32,7 +34,7 @@ import {
   generateHowToStructuredData, 
   getDefaultToolSteps 
 } from "@/lib/tools/metadata"
-import { PanelLeft, PanelRight, X, Maximize2, Minimize2, FileText } from "lucide-react"
+import { PanelLeft, PanelRight, X, Maximize2, Minimize2, FileText, Search, ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const tool = getToolBySlug("document-viewer")!
@@ -144,17 +146,53 @@ export default function DocumentViewerPage() {
     return () => window.removeEventListener("resize", checkDesktop)
   }, [])
 
-  // Fullscreen view
+  // Handle internal document link navigation
+  const handleNavigateToDocument = useCallback((href: string, anchor?: string | null): boolean => {
+    const targetDoc = findDocumentByLink(documents, href, selectedDocument?.path)
+    if (targetDoc) {
+      setSelectedDocumentId(targetDoc.id)
+      return true
+    }
+    // Show a message if document not found
+    setError(`Document not found: ${href}. Make sure the linked document is uploaded.`)
+    return false
+  }, [documents, selectedDocument?.path])
+
+  // Fullscreen sidebar state
+  const [fullscreenSidebarOpen, setFullscreenSidebarOpen] = useState(true)
+  const [fullscreenSearchQuery, setFullscreenSearchQuery] = useState("")
+  
+  // Filter documents for fullscreen mode
+  const fullscreenFilteredDocuments = useMemo(() => {
+    return searchDocuments(documents, fullscreenSearchQuery)
+  }, [documents, fullscreenSearchQuery])
+
+  // Fullscreen view with all three panels
   if (isFullscreen && selectedDocument) {
     return (
       <div className="fixed inset-0 z-50 bg-background flex flex-col">
         {/* Fullscreen header */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b bg-background/95 backdrop-blur-sm sticky top-0 z-10">
           <div className="flex items-center gap-3">
-            <FileText className="h-5 w-5 text-muted-foreground" />
-            <span className="font-medium text-sm truncate max-w-[200px] sm:max-w-none">
-              {selectedDocument.name}
-            </span>
+            <Button
+              variant={fullscreenSidebarOpen ? "default" : "outline"}
+              size="sm"
+              onClick={() => setFullscreenSidebarOpen(!fullscreenSidebarOpen)}
+              className="text-xs"
+            >
+              {fullscreenSidebarOpen ? (
+                <ChevronLeft className="h-4 w-4 mr-1" />
+              ) : (
+                <ChevronRight className="h-4 w-4 mr-1" />
+              )}
+              <span className="hidden sm:inline">Documents</span>
+            </Button>
+            <div className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground">
+              <FileText className="h-4 w-4" />
+              <span className="font-medium truncate max-w-[300px]">
+                {selectedDocument.name}
+              </span>
+            </div>
           </div>
           <div className="flex items-center gap-2">
             {selectedDocument.headings.length > 0 && (
@@ -180,18 +218,97 @@ export default function DocumentViewerPage() {
           </div>
         </div>
 
-        {/* Fullscreen content */}
+        {/* Fullscreen content with three panels */}
         <div className="flex-1 flex overflow-hidden">
+          {/* Left Panel - Document List */}
+          {fullscreenSidebarOpen && (
+            <div className="w-64 lg:w-72 border-r bg-background flex flex-col shrink-0">
+              {/* Search in fullscreen */}
+              <div className="p-3 border-b">
+                <div className="relative">
+                  <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Search documents..."
+                    value={fullscreenSearchQuery}
+                    onChange={(e) => setFullscreenSearchQuery(e.target.value)}
+                    className="pl-8 h-8 text-sm"
+                  />
+                  {fullscreenSearchQuery && (
+                    <Button
+                      variant="ghost"
+                      size="icon-sm"
+                      className="absolute right-1 top-1/2 -translate-y-1/2 h-6 w-6"
+                      onClick={() => setFullscreenSearchQuery("")}
+                    >
+                      <X className="h-3 w-3" />
+                    </Button>
+                  )}
+                </div>
+              </div>
+              
+              {/* Document List */}
+              <div className="flex-1 overflow-auto">
+                {fullscreenFilteredDocuments.length === 0 ? (
+                  <div className="p-4 text-center text-muted-foreground text-sm">
+                    <FileText className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                    <p>No documents found</p>
+                  </div>
+                ) : (
+                  <div className="divide-y">
+                    {fullscreenFilteredDocuments.map((doc) => (
+                      <div
+                        key={doc.id}
+                        className={cn(
+                          "px-3 py-2.5 cursor-pointer hover:bg-muted/50 transition-colors",
+                          selectedDocumentId === doc.id && "bg-primary/10 hover:bg-primary/15 border-l-2 border-primary"
+                        )}
+                        onClick={() => setSelectedDocumentId(doc.id)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault()
+                            setSelectedDocumentId(doc.id)
+                          }
+                        }}
+                      >
+                        <div className="flex items-start gap-2">
+                          <FileText className="h-4 w-4 mt-0.5 shrink-0 text-muted-foreground" />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium truncate">{doc.name}</p>
+                            {doc.path !== doc.name && (
+                              <p className="text-xs text-muted-foreground truncate">{doc.path}</p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              {/* Document count */}
+              <div className="px-3 py-2 border-t bg-muted/30 text-xs text-muted-foreground">
+                {documents.length} document{documents.length !== 1 ? "s" : ""}
+              </div>
+            </div>
+          )}
+          
+          {/* Center Panel - Content */}
           <div className={cn(
             "flex-1 overflow-auto",
             tocOpen && selectedDocument.headings.length > 0 && "lg:mr-64"
           )}>
             <div className="max-w-4xl mx-auto">
-              <MarkdownContent document={selectedDocument} isFullscreen />
+              <MarkdownContent 
+                document={selectedDocument} 
+                isFullscreen 
+                onNavigateToDocument={handleNavigateToDocument}
+              />
             </div>
           </div>
           
-          {/* Floating TOC */}
+          {/* Right Panel - Table of Contents */}
           {tocOpen && selectedDocument.headings.length > 0 && (
             <div className="hidden lg:block fixed right-0 top-[57px] bottom-0 w-64 border-l bg-background/95 backdrop-blur-sm overflow-auto">
               <TableOfContents headings={selectedDocument.headings} />
@@ -315,7 +432,10 @@ export default function DocumentViewerPage() {
                       <ResizableHandle withHandle />
                       <ResizablePanel defaultSize={58} minSize={30}>
                         <div className="h-full overflow-auto">
-                          <MarkdownContent document={selectedDocument} />
+                          <MarkdownContent 
+                            document={selectedDocument} 
+                            onNavigateToDocument={handleNavigateToDocument}
+                          />
                         </div>
                       </ResizablePanel>
                       {selectedDocument && selectedDocument.headings.length > 0 && (
@@ -361,7 +481,10 @@ export default function DocumentViewerPage() {
                       {(!sidebarOpen || selectedDocumentId) && (
                         <div className="flex-1 flex">
                           <div className="flex-1 overflow-auto">
-                            <MarkdownContent document={selectedDocument} />
+                            <MarkdownContent 
+                              document={selectedDocument} 
+                              onNavigateToDocument={handleNavigateToDocument}
+                            />
                           </div>
                           {tocOpen && selectedDocument && selectedDocument.headings.length > 0 && (
                             <div className="w-48 border-l overflow-auto hidden sm:block">

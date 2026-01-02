@@ -252,3 +252,124 @@ export function formatDate(timestamp: number): string {
   })
 }
 
+/**
+ * Check if a link is an internal document link (markdown file)
+ */
+export function isInternalDocumentLink(href: string): boolean {
+  if (!href) return false
+  
+  // Skip external links
+  if (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:")) {
+    return false
+  }
+  
+  // Skip anchor-only links
+  if (href.startsWith("#")) {
+    return false
+  }
+  
+  // Remove anchor if present
+  const pathWithoutAnchor = href.split("#")[0]
+  
+  // Check if it's a markdown file
+  const lowerPath = pathWithoutAnchor.toLowerCase()
+  return (
+    lowerPath.endsWith(".md") ||
+    lowerPath.endsWith(".markdown") ||
+    lowerPath.endsWith(".txt")
+  )
+}
+
+/**
+ * Extract the anchor from a link (e.g., "setup.md#installation" -> "installation")
+ */
+export function extractAnchorFromLink(href: string): string | null {
+  const parts = href.split("#")
+  return parts.length > 1 ? parts[1] : null
+}
+
+/**
+ * Find a document by its link path
+ * This handles relative paths like ./setup.md, ../api/reference.md, etc.
+ */
+export function findDocumentByLink(
+  documents: Document[],
+  linkHref: string,
+  currentDocPath?: string
+): Document | null {
+  if (!linkHref || documents.length === 0) return null
+  
+  // Remove anchor if present
+  const linkPath = linkHref.split("#")[0]
+  
+  // Normalize the link path (remove ./ prefix)
+  const normalizedLink = linkPath.replace(/^\.\//, "")
+  
+  // Get just the filename from the link
+  const linkFilename = normalizedLink.split("/").pop()?.toLowerCase() || ""
+  
+  // Strategy 1: Exact path match
+  let found = documents.find(doc => {
+    const docPath = doc.path.toLowerCase()
+    const normalizedDocPath = docPath.replace(/^\.\//, "")
+    return normalizedDocPath === normalizedLink.toLowerCase()
+  })
+  if (found) return found
+  
+  // Strategy 2: Match by filename (case-insensitive)
+  found = documents.find(doc => {
+    const docFilename = doc.name.toLowerCase()
+    return docFilename === linkFilename
+  })
+  if (found) return found
+  
+  // Strategy 3: If we have the current document's path, try to resolve relative path
+  if (currentDocPath) {
+    const currentDir = currentDocPath.split("/").slice(0, -1).join("/")
+    
+    // Handle ../ navigation
+    if (normalizedLink.startsWith("../")) {
+      const parts = normalizedLink.split("/")
+      const upCount = parts.filter(p => p === "..").length
+      const remainingPath = parts.filter(p => p !== "..").join("/")
+      
+      const currentParts = currentDir.split("/")
+      const resolvedDir = currentParts.slice(0, -upCount).join("/")
+      const resolvedPath = resolvedDir ? `${resolvedDir}/${remainingPath}` : remainingPath
+      
+      found = documents.find(doc => {
+        const docPath = doc.path.toLowerCase()
+        return docPath === resolvedPath.toLowerCase() || docPath.endsWith(`/${resolvedPath.toLowerCase()}`)
+      })
+      if (found) return found
+    }
+    
+    // Try combining current directory with link
+    if (currentDir) {
+      const combinedPath = `${currentDir}/${normalizedLink}`.toLowerCase()
+      found = documents.find(doc => {
+        const docPath = doc.path.toLowerCase()
+        return docPath === combinedPath || docPath.endsWith(combinedPath)
+      })
+      if (found) return found
+    }
+  }
+  
+  // Strategy 4: Partial path match (link ends with document path or vice versa)
+  found = documents.find(doc => {
+    const docPath = doc.path.toLowerCase()
+    const linkLower = normalizedLink.toLowerCase()
+    return docPath.endsWith(linkLower) || linkLower.endsWith(docPath)
+  })
+  if (found) return found
+  
+  // Strategy 5: Fuzzy filename match (remove extension and compare)
+  const linkWithoutExt = linkFilename.replace(/\.(md|markdown|txt)$/i, "")
+  found = documents.find(doc => {
+    const docWithoutExt = doc.name.toLowerCase().replace(/\.(md|markdown|txt)$/i, "")
+    return docWithoutExt === linkWithoutExt
+  })
+  
+  return found || null
+}
+
