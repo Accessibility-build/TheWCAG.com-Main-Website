@@ -370,6 +370,13 @@ export function getDefaultToolSteps(tool: Tool): string[] {
       "Review violations, passed checks, and incomplete items",
       "Export results in JSON, CSV, or HTML format",
     ],
+    "document-viewer": [
+      "Upload markdown files by dragging and dropping or using the file picker",
+      "Optionally upload entire folders containing markdown documentation",
+      "Select a document from the sidebar to view it",
+      "Use the table of contents to navigate within the document",
+      "Search across all documents using the search bar",
+    ],
   }
 
   // Return tool-specific steps if available

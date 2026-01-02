@@ -9,6 +9,10 @@ interface ToolHeaderProps {
 export function ToolHeader({ tool }: ToolHeaderProps) {
   const category = TOOL_CATEGORIES[tool.category]
   
+  // Tools that appear directly under /tools/ without a sub-category
+  const topLevelTools = ["document-viewer", "contrast-checker"]
+  const isTopLevelTool = topLevelTools.includes(tool.slug)
+  
   // Determine base path and label based on category
   let basePath = "/tools/convert"
   let baseLabel = "Convert"
@@ -48,17 +52,21 @@ export function ToolHeader({ tool }: ToolHeaderProps) {
               Tools
             </Link>
           </li>
-          <li aria-hidden="true" className="flex items-center text-muted-foreground/60">
-            <span className="mx-0.5">/</span>
-          </li>
-          <li className="flex items-center">
-            <Link 
-              href={basePath} 
-              className="hover:text-foreground transition-colors inline-flex items-center"
-            >
-              {baseLabel}
-            </Link>
-          </li>
+          {!isTopLevelTool && (
+            <>
+              <li aria-hidden="true" className="flex items-center text-muted-foreground/60">
+                <span className="mx-0.5">/</span>
+              </li>
+              <li className="flex items-center">
+                <Link 
+                  href={basePath} 
+                  className="hover:text-foreground transition-colors inline-flex items-center"
+                >
+                  {baseLabel}
+                </Link>
+              </li>
+            </>
+          )}
           <li aria-hidden="true" className="flex items-center text-muted-foreground/60">
             <span className="mx-0.5">/</span>
           </li>

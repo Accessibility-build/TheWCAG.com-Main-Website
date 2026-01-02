@@ -66,6 +66,11 @@ function getToolSteps(tool: Tool): { title: string; description: string }[] {
       { title: "Choose Operation", description: "Select URL encode or decode operation." },
       { title: "Copy Result", description: "Copy the processed URL to your clipboard." },
     ],
+    "document-viewer": [
+      { title: "Upload Documents", description: "Drag and drop markdown files or click to upload files or folders." },
+      { title: "Select Document", description: "Click on a document in the sidebar to view its rendered content." },
+      { title: "Navigate Content", description: "Use the table of contents to jump to sections, or search across all documents." },
+    ],
   }
 
   // Check for tool-specific steps first

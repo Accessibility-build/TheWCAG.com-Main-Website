@@ -996,6 +996,24 @@ export const TOOLS: Tool[] = [
       { question: "Can I export the results?", answer: "Yes, you can export results in JSON, CSV, or HTML report formats for documentation and sharing." },
     ],
   },
+  {
+    slug: "document-viewer",
+    name: "Markdown Document Viewer",
+    description: "Upload and view multiple Markdown files with beautiful rendering, syntax highlighting, and table of contents. Perfect for reading AI-generated documentation. Files are stored locally in your browser.",
+    shortDescription: "Upload and read multiple Markdown files with syntax highlighting",
+    category: "document",
+    keywords: ["markdown viewer", "md viewer", "readme viewer", "document reader", "markdown reader", "documentation viewer", "markdown preview", "bulk markdown viewer"],
+    icon: "FileText",
+    features: ["Drag & drop upload", "Folder upload support", "Syntax highlighting", "Auto table of contents", "Search across documents", "Local storage persistence"],
+    relatedTools: ["markdown-to-html", "html-to-markdown", "text-to-pdf"],
+    faq: [
+      { question: "Are my files uploaded to a server?", answer: "No, all files are processed and stored locally in your browser. Nothing is uploaded to any server." },
+      { question: "Will my documents persist after closing the browser?", answer: "Yes, documents are saved in localStorage and will be available when you return." },
+      { question: "What file types are supported?", answer: "The viewer supports .md, .markdown, and .txt files." },
+      { question: "Can I upload entire folders?", answer: "Yes, you can upload folders and the viewer will find all Markdown files within them." },
+      { question: "Is there a file size limit?", answer: "Files are limited by browser localStorage capacity, typically 5-10MB total." },
+    ],
+  },
 ]
 
 // Helper functions
