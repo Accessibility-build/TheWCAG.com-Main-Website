@@ -47,7 +47,7 @@
         "@radix-ui/react-toggle-group": "1.1.1",
         "@radix-ui/react-tooltip": "1.1.6",
         "@types/react-syntax-highlighter": "^15.5.13",
-        "@vercel/analytics": "latest",
+        "@vercel/analytics": "^1.6.1",
         "autoprefixer": "^10.4.20",
         "axe-core": "^4.10.0",
         "cheerio": "^1.0.0-rc.12",
