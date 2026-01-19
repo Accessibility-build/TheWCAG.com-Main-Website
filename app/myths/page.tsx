@@ -10,21 +10,24 @@ import { Button } from "@/components/ui/button"
 import { XCircle, CheckCircle2, AlertTriangle, ArrowRight, BookOpen } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "12 Accessibility Myths Debunked - Common WCAG Misconceptions | TheWCAG",
+  title: "12 Accessibility Myths Debunked 2025 - Common WCAG 2.2 Misconceptions | TheWCAG",
   description:
-    "Debunking 12 common web accessibility myths. Learn the truth about WCAG compliance costs, overlays, automated testing, color contrast, and more. Stop believing these misconceptions.",
+    "Debunking 12 common web accessibility myths with facts. Learn the truth about WCAG 2.2 compliance costs, overlays, automated testing, color contrast, and design constraints. Stop believing these misconceptions today.",
   keywords: [
     "accessibility myths",
-    "WCAG myths",
+    "WCAG 2.2 myths",
     "accessibility misconceptions",
     "accessibility overlays myth",
     "accessibility cost myth",
     "automated testing myth",
+    "WCAG myths debunked",
+    "accessibility false beliefs",
+    "common a11y myths",
   ],
   openGraph: {
-    title: "12 Accessibility Myths Debunked - Stop Believing These Misconceptions",
+    title: "12 Accessibility Myths Debunked 2025 - Stop Believing These Misconceptions",
     description:
-      "Common accessibility myths debunked with facts. Learn the truth about overlays, costs, compliance, automated testing, and design constraints.",
+      "Common accessibility myths debunked with facts. Learn the truth about overlays, costs, compliance, automated testing, and design constraints. WCAG 2.2 facts.",
     url: "https://thewcag.com/myths",
     type: "article",
     siteName: "TheWCAG - An accessibility Guide",
@@ -40,9 +43,65 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://thewcag.com/myths",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "12 Accessibility Myths Debunked 2025 - Common WCAG 2.2 Misconceptions",
+    description: "Debunking 12 common web accessibility myths with facts. Learn the truth about WCAG 2.2 compliance.",
+    images: ["https://thewcag.com/Logo.png"],
+  },
 }
 
 export default function MythsPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is accessibility expensive?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Accessibility is often more affordable when integrated from the start. Many improvements are simple and quick. While retrofitting can be expensive, building accessible from the beginning adds minimal cost and provides long-term benefits."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Do accessibility overlays make websites compliant?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Accessibility overlays are controversial and often don't provide true WCAG compliance. Many experts recommend fixing issues at the code level. Overlays may not work with all assistive technologies and can create additional barriers."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Are automated tools enough for accessibility testing?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No, automated tools catch only about 30-40% of accessibility issues. Manual testing with keyboard navigation, screen readers, and user testing with people with disabilities is essential for true WCAG 2.2 compliance."
+        }
+      }
+    ]
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://thewcag.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Accessibility Myths",
+        item: "https://thewcag.com/myths",
+      },
+    ],
+  }
+
   const myths = [
     {
       myth: "Accessibility is expensive and time-consuming",
@@ -120,6 +179,14 @@ export default function MythsPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

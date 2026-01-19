@@ -32,15 +32,43 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility Best Practices - Essential WCAG Implementation Guide | TheWCAG",
+  title: "Accessibility Best Practices 2025 - Essential WCAG 2.2 Implementation Guide | TheWCAG",
   description:
-    "Master web accessibility with proven best practices. Learn do's and don'ts for semantic HTML, ARIA, forms, images, navigation, multimedia, and WCAG compliance across all components.",
+    "Master web accessibility with proven best practices. Learn do's and don'ts for semantic HTML, ARIA, forms, images, navigation, multimedia, and WCAG 2.2 compliance across all components. Free code examples included.",
+  keywords: [
+    "accessibility best practices",
+    "WCAG 2.2 best practices",
+    "web accessibility practices",
+    "accessible design patterns",
+    "accessibility do's and don'ts",
+    "WCAG implementation",
+    "accessible code examples",
+    "a11y best practices",
+  ],
   openGraph: {
-    title: "Accessibility Best Practices - Do's and Don'ts for WCAG Compliance",
+    title: "Accessibility Best Practices 2025 - Essential WCAG 2.2 Implementation Guide",
     description:
-      "Complete guide to accessibility best practices with practical examples. Learn what works and what to avoid for semantic HTML, ARIA, forms, and more.",
+      "Complete guide to accessibility best practices with practical WCAG 2.2 examples. Learn what works and what to avoid for semantic HTML, ARIA, forms, and more.",
     url: "https://thewcag.com/best-practices",
     type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessibility Best Practices 2025",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accessibility Best Practices 2025 - Essential WCAG 2.2 Implementation Guide",
+    description: "Complete guide to accessibility best practices with practical WCAG 2.2 examples. Learn what works and what to avoid.",
+    images: ["https://thewcag.com/Logo.png"],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/best-practices",
   },
 }
 
@@ -760,9 +788,61 @@ function closeModal() {
     },
   ]
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What are the most important accessibility best practices?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Key best practices include: using semantic HTML, providing proper labels for all form inputs, ensuring keyboard accessibility, maintaining proper heading hierarchy, providing alt text for images, ensuring sufficient color contrast, and testing with assistive technologies."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Should I use ARIA or semantic HTML?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Always prefer semantic HTML over ARIA when possible. Use button instead of div with role='button', use nav instead of div with role='navigation'. Only use ARIA when semantic HTML doesn't provide the needed functionality or meaning."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What are common accessibility mistakes to avoid?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Common mistakes include: using div/span for interactive elements, missing form labels, poor color contrast, missing alt text, improper heading hierarchy, inaccessible modals, and relying solely on automated testing. Always test manually with keyboard and screen readers."
+        }
+      }
+    ]
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://thewcag.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Best Practices",
+        item: "https://thewcag.com/best-practices",
+      },
+    ],
+  }
+
   return (
     <>
       <StructuredData data={structuredData} />
+      <StructuredData data={faqSchema} />
+      <StructuredData data={breadcrumbSchema} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />

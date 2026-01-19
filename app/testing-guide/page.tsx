@@ -23,15 +23,44 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility Testing Guide - Complete WCAG Testing Methodology | TheWCAG",
+  title: "Accessibility Testing Guide 2025 - Complete WCAG 2.2 Testing Methodology | TheWCAG",
   description:
-    "Learn how to test websites for WCAG compliance. Comprehensive guide covering automated testing tools, manual testing, screen readers, keyboard testing, and accessibility audit best practices.",
+    "Learn how to test websites for WCAG 2.2 compliance. Comprehensive guide covering automated testing tools, manual testing, screen readers, keyboard testing, and accessibility audit best practices. Free testing checklist included.",
+  keywords: [
+    "accessibility testing",
+    "WCAG 2.2 testing",
+    "accessibility audit",
+    "automated testing",
+    "manual testing",
+    "screen reader testing",
+    "keyboard testing",
+    "accessibility test plan",
+    "WCAG compliance testing",
+  ],
   openGraph: {
-    title: "Accessibility Testing Guide - From Automated to Manual Testing",
+    title: "Accessibility Testing Guide 2025 - Complete WCAG 2.2 Testing Methodology",
     description:
-      "Master accessibility testing with our complete guide. Learn automated tools, manual testing, screen readers, and create effective accessibility test plans.",
+      "Master accessibility testing with our complete guide. Learn automated tools, manual testing, screen readers, and create effective WCAG 2.2 test plans.",
     url: "https://thewcag.com/testing-guide",
     type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessibility Testing Guide 2025",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accessibility Testing Guide 2025 - Complete WCAG 2.2 Testing Methodology",
+    description: "Master accessibility testing with our complete guide. Learn automated tools, manual testing, and screen readers.",
+    images: ["https://thewcag.com/Logo.png"],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/testing-guide",
   },
 }
 
@@ -222,9 +251,9 @@ export default function TestingGuidePage() {
   const howToStructuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Test Website Accessibility - Complete Testing Guide",
+    name: "How to Test Website Accessibility 2025 - Complete WCAG 2.2 Testing Guide",
     description:
-      "Complete 6-step guide to testing your website for WCAG compliance. Learn how to use automated tools, manual testing, screen readers, and user testing methods to ensure accessibility.",
+      "Complete 6-step guide to testing your website for WCAG 2.2 compliance. Learn how to use automated tools, manual testing, screen readers, and user testing methods to ensure accessibility.",
     url: "https://thewcag.com/testing-guide",
     datePublished: "2024-01-01",
     dateModified: new Date().toISOString().split("T")[0],
@@ -278,9 +307,61 @@ export default function TestingGuidePage() {
     })),
   }
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How do I test my website for WCAG 2.2 compliance?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Start with automated testing tools like axe DevTools or WAVE to catch common issues, then perform manual testing with keyboard navigation and screen readers. Test with real users with disabilities for comprehensive validation. Use our interactive checklist to track your progress."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Are automated tools enough for accessibility testing?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No, automated tools catch only about 30-40% of accessibility issues. Manual testing with keyboard navigation, screen readers (NVDA, JAWS, VoiceOver), and user testing with people with disabilities is essential for true WCAG 2.2 compliance."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What screen readers should I test with?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Test with multiple screen readers: NVDA (Windows, free), JAWS (Windows, paid), VoiceOver (macOS/iOS, built-in), and Narrator (Windows, built-in). Each has different behaviors, so testing with multiple ensures broader compatibility."
+        }
+      }
+    ]
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://thewcag.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Testing Guide",
+        item: "https://thewcag.com/testing-guide",
+      },
+    ],
+  }
+
   return (
     <>
       <StructuredData data={howToStructuredData} />
+      <StructuredData data={faqSchema} />
+      <StructuredData data={breadcrumbSchema} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />
