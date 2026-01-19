@@ -48,7 +48,7 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "WCAG 2.2 Compliance Guide 2025 | Complete Accessibility Checklist & Tools",
+  title: "WCAG 2.2 Compliance Guide 2026 | Complete Accessibility Checklist & Tools",
   description:
     "Master WCAG 2.2 accessibility standards with our complete guide. Free tools, code examples, interactive checklist, and expert resources. Achieve ADA compliance today.",
   keywords: [
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     "web accessibility tools",
   ],
   openGraph: {
-    title: "WCAG 2.2 Compliance Guide 2025 | Complete Accessibility Checklist & Tools",
+    title: "WCAG 2.2 Compliance Guide 2026 | Complete Accessibility Checklist & Tools",
     description:
       "Master WCAG 2.2 accessibility standards with our complete guide. Free tools, code examples, interactive checklist, and expert resources. Achieve ADA compliance today.",
     url: "https://thewcag.com",
@@ -80,13 +80,13 @@ export const metadata: Metadata = {
         url: ogImages.home(),
         width: 1200,
         height: 630,
-        alt: "WCAG 2.2 Compliance Guide 2025 - Complete Accessibility Resources",
+        alt: "WCAG 2.2 Compliance Guide 2026 - Complete Accessibility Resources",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WCAG 2.2 Compliance Guide 2025 | Complete Accessibility Checklist & Tools",
+    title: "WCAG 2.2 Compliance Guide 2026 | Complete Accessibility Checklist & Tools",
     description:
       "Master WCAG 2.2 accessibility standards with our complete guide. Free tools, code examples, interactive checklist, and expert resources.",
     images: [ogImages.home()],

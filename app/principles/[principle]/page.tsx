@@ -29,7 +29,7 @@ export async function generateMetadata({
   const criteria = getCriteriaByPrinciple(principle)
 
   return {
-    title: `${principleData.title} Principle - Complete WCAG 2.2 Guide 2025 | TheWCAG`,
+    title: `${principleData.title} Principle - Complete WCAG 2.2 Guide 2026 | TheWCAG`,
     description: `Learn about the ${principleData.title} principle in WCAG 2.2. ${principleData.detailedDescription.substring(0, 120)}... Complete guide with ${criteria.length} success criteria, examples, and implementation tips.`,
     keywords: [
       `${principleData.title} principle`,
@@ -43,7 +43,7 @@ export async function generateMetadata({
       ...principleData.guidelines.map(g => `${g.number} ${g.title}`),
     ],
     openGraph: {
-      title: `${principleData.title} Principle - Complete WCAG 2.2 Guide 2025`,
+      title: `${principleData.title} Principle - Complete WCAG 2.2 Guide 2026`,
       description: `Learn about the ${principleData.title} principle in WCAG 2.2. Complete guide with ${criteria.length} success criteria, examples, and implementation tips.`,
       url: `https://thewcag.com/principles/${principle}`,
       siteName: "TheWCAG - An accessibility Guide",
@@ -59,7 +59,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${principleData.title} Principle - Complete WCAG 2.2 Guide 2025`,
+      title: `${principleData.title} Principle - Complete WCAG 2.2 Guide 2026`,
       description: `Learn about the ${principleData.title} principle in WCAG 2.2. Complete guide with ${criteria.length} success criteria and examples.`,
       images: ["https://thewcag.com/Logo.png"],
     },

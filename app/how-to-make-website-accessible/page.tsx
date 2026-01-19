@@ -385,7 +385,7 @@ button:focus {
                 <Target className="h-6 w-6 sm:h-8 sm:w-8 text-primary shrink-0" aria-hidden="true" />
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">How to Make a Website Accessible</h1>
               </div>
-              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2026</p>
               <p className="text-lg text-muted-foreground max-w-3xl">
                 A comprehensive, step-by-step guide to making your website accessible and WCAG 2.2 compliant. Follow
                 these actionable steps to improve accessibility for all users.

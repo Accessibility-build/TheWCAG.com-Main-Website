@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Pagination Example 2025 - WCAG 2.2 Compliant Guide | TheWCAG",
+  title: "Accessible Pagination Example 2026 - WCAG 2.2 Compliant Guide | TheWCAG",
   description:
     "Learn how to create accessible pagination with proper navigation, keyboard support, and ARIA labels. Complete WCAG 2.2 compliant pagination examples with free code snippets.",
   keywords: [

@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Tooltips Example 2025 - WCAG 2.2 Compliant Guide | TheWCAG",
+  title: "Accessible Tooltips Example 2026 - WCAG 2.2 Compliant Guide | TheWCAG",
   description:
     "Learn how to create accessible tooltips with proper ARIA patterns and keyboard support. Complete WCAG 2.2 compliant tooltip examples with hover, focus, and keyboard-triggered tooltips with free code snippets.",
   keywords: [

@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Modals & Dialogs Example 2025 - WCAG 2.2 Guide | TheWCAG",
+  title: "Accessible Modals & Dialogs Example 2026 - WCAG 2.2 Guide | TheWCAG",
   description:
     "Learn how to create accessible modals and dialogs with proper focus management, keyboard trapping, and ARIA patterns. Complete WCAG 2.2 compliant dialog examples with free code snippets.",
   keywords: [

@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Navigation Example 2025 - WCAG 2.2 Compliant Guide | TheWCAG",
+  title: "Accessible Navigation Example 2026 - WCAG 2.2 Compliant Guide | TheWCAG",
   description:
     "Learn how to create accessible navigation patterns including semantic nav, breadcrumbs, skip links, mega menus, and tabs. Complete WCAG 2.2 compliant navigation examples with free code snippets.",
   keywords: [

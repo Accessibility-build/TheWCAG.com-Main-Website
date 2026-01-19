@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Progress Indicators Example 2025 - WCAG 2.2 Guide | TheWCAG",
+  title: "Accessible Progress Indicators Example 2026 - WCAG 2.2 Guide | TheWCAG",
   description:
     "Learn how to create accessible progress indicators with native HTML and ARIA patterns. Complete WCAG 2.2 compliant progress examples including progress bars, loading states, and status messages with free code snippets.",
   keywords: [

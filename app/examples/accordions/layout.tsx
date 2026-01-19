@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Accordions Example 2025 - WCAG 2.2 Compliant Guide | TheWCAG",
+  title: "Accessible Accordions Example 2026 - WCAG 2.2 Compliant Guide | TheWCAG",
   description:
     "Learn how to create accessible accordions with native details/summary and ARIA patterns. Complete WCAG 2.2 compliant accordion examples with keyboard navigation and free code snippets.",
   keywords: [

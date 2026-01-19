@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Lists Example 2025 - WCAG 2.2 Compliant Guide | TheWCAG",
+  title: "Accessible Lists Example 2026 - WCAG 2.2 Compliant Guide | TheWCAG",
   description:
     "Learn how to create accessible lists with semantic HTML and ARIA patterns. Complete WCAG 2.2 compliant list examples including ordered, unordered, and description lists with free code snippets.",
   keywords: [

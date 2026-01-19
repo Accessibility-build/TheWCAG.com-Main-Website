@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Input Fields Example 2025 - WCAG 2.2 Form Implementation Guide | TheWCAG",
+  title: "Accessible Input Fields Example 2026 - WCAG 2.2 Form Implementation Guide | TheWCAG",
   description:
     "Learn how to create accessible input fields with proper labels, error messages, and validation. Complete WCAG 2.2 compliant form examples with code snippets. Implement WCAG 3.3.1, 3.3.2, and 4.1.2 today.",
   keywords: [

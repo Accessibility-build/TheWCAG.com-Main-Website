@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Cards Example 2025 - WCAG 2.2 Compliant Guide | TheWCAG",
+  title: "Accessible Cards Example 2026 - WCAG 2.2 Compliant Guide | TheWCAG",
   description:
     "Learn how to create accessible card components with proper heading hierarchy, keyboard support, and ARIA patterns. Complete WCAG 2.2 compliant card examples with free code snippets.",
   keywords: [

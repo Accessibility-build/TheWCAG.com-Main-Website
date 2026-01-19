@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Forms Example 2025 - WCAG 2.2 Compliant Guide | TheWCAG",
+  title: "Accessible Forms Example 2026 - WCAG 2.2 Compliant Guide | TheWCAG",
   description:
     "Learn how to create accessible forms with proper labels, error handling, validation, and multi-step patterns. Complete WCAG 2.2 compliant form examples with free code snippets and best practices.",
   keywords: [

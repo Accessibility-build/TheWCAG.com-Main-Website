@@ -24,7 +24,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Getting Started with Web Accessibility 2025 - Complete WCAG 2.2 Beginner's Guide | TheWCAG",
+  title: "Getting Started with Web Accessibility 2026 - Complete WCAG 2.2 Beginner's Guide | TheWCAG",
   description:
     "Learn web accessibility from scratch with our complete beginner's guide. Step-by-step WCAG 2.2 compliance tutorial, testing tools, common issues, and best practices. Perfect for developers and designers.",
   keywords: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
         url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
-        alt: "Getting Started with Web Accessibility 2025",
+        alt: "Getting Started with Web Accessibility 2026",
       },
     ],
   },
@@ -216,7 +216,7 @@ export default function GettingStartedPage() {
   const howToStructuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "Getting Started with Web Accessibility 2025 - Complete WCAG 2.2 Beginner's Guide",
+    name: "Getting Started with Web Accessibility 2026 - Complete WCAG 2.2 Beginner's Guide",
     description:
       "A beginner-friendly 6-step guide to understanding and implementing web accessibility with WCAG 2.2. Learn the basics, audit your site, fix issues, and test your improvements.",
     url: "https://thewcag.com/getting-started",
@@ -333,7 +333,7 @@ export default function GettingStartedPage() {
                 <Rocket className="h-6 w-6 sm:h-8 sm:w-8 text-primary shrink-0" aria-hidden="true" />
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Getting Started with Web Accessibility</h1>
               </div>
-              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2026</p>
               <p className="text-lg text-muted-foreground">
                 A step-by-step guide to making your website accessible and WCAG compliant. Perfect for beginners,
                 developers, and designers.

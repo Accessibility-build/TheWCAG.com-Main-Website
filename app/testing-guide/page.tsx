@@ -23,7 +23,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility Testing Guide 2025 - Complete WCAG 2.2 Testing Methodology | TheWCAG",
+  title: "Accessibility Testing Guide 2026 - Complete WCAG 2.2 Testing Methodology | TheWCAG",
   description:
     "Learn how to test websites for WCAG 2.2 compliance. Comprehensive guide covering automated testing tools, manual testing, screen readers, keyboard testing, and accessibility audit best practices. Free testing checklist included.",
   keywords: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
         url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
-        alt: "Accessibility Testing Guide 2025",
+        alt: "Accessibility Testing Guide 2026",
       },
     ],
   },
@@ -251,7 +251,7 @@ export default function TestingGuidePage() {
   const howToStructuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Test Website Accessibility 2025 - Complete WCAG 2.2 Testing Guide",
+    name: "How to Test Website Accessibility 2026 - Complete WCAG 2.2 Testing Guide",
     description:
       "Complete 6-step guide to testing your website for WCAG 2.2 compliance. Learn how to use automated tools, manual testing, screen readers, and user testing methods to ensure accessibility.",
     url: "https://thewcag.com/testing-guide",
@@ -374,7 +374,7 @@ export default function TestingGuidePage() {
                 <TestTube className="h-6 w-6 sm:h-8 sm:w-8 text-primary shrink-0" aria-hidden="true" />
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Accessibility Testing Guide</h1>
               </div>
-              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2026</p>
               <p className="text-lg text-muted-foreground">
                 Learn how to test your website for WCAG compliance using automated tools, manual testing, screen
                 readers, and user testing methods.

@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessible Dropdowns & Selects Example 2025 - WCAG 2.2 Guide | TheWCAG",
+  title: "Accessible Dropdowns & Selects Example 2026 - WCAG 2.2 Guide | TheWCAG",
   description:
     "Learn how to create accessible dropdowns and selects with native HTML and ARIA combobox patterns. Complete WCAG 2.2 compliant select examples with keyboard navigation and free code snippets.",
   keywords: [

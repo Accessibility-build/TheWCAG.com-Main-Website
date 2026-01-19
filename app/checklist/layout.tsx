@@ -42,7 +42,7 @@ function getChecklistFAQSchema() {
 }
 
 export const metadata: Metadata = {
-  title: "Free WCAG 2.2 AA Compliance Checklist 2025 | Download PDF | TheWCAG",
+  title: "Free WCAG 2.2 AA Compliance Checklist 2026 | Download PDF | TheWCAG",
   description:
     "Complete WCAG 2.2 AA compliance checklist with all 86 success criteria. Download free PDF, use interactive checklist, track progress, and achieve accessibility compliance. Filter by level, save your progress.",
   keywords: [
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
         url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
-        alt: "Free WCAG 2.2 AA Compliance Checklist 2025",
+        alt: "Free WCAG 2.2 AA Compliance Checklist 2026",
       },
     ],
   },

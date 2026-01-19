@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { XCircle, CheckCircle2, AlertTriangle, ArrowRight, BookOpen } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "12 Accessibility Myths Debunked 2025 - Common WCAG 2.2 Misconceptions | TheWCAG",
+  title: "12 Accessibility Myths Debunked 2026 - Common WCAG 2.2 Misconceptions | TheWCAG",
   description:
     "Debunking 12 common web accessibility myths with facts. Learn the truth about WCAG 2.2 compliance costs, overlays, automated testing, color contrast, and design constraints. Stop believing these misconceptions today.",
   keywords: [
@@ -199,7 +199,7 @@ export default function MythsPage() {
                 <AlertTriangle className="h-6 w-6 sm:h-8 sm:w-8 text-primary shrink-0" aria-hidden="true" />
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Accessibility Myths Debunked</h1>
               </div>
-              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2026</p>
               <p className="text-lg text-muted-foreground">
                 Separate fact from fiction. Learn the truth about common accessibility misconceptions and why they're
                 wrong.

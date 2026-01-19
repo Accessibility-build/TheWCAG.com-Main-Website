@@ -32,7 +32,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility Best Practices 2025 - Essential WCAG 2.2 Implementation Guide | TheWCAG",
+  title: "Accessibility Best Practices 2026 - Essential WCAG 2.2 Implementation Guide | TheWCAG",
   description:
     "Master web accessibility with proven best practices. Learn do's and don'ts for semantic HTML, ARIA, forms, images, navigation, multimedia, and WCAG 2.2 compliance across all components. Free code examples included.",
   keywords: [
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
-        alt: "Accessibility Best Practices 2025",
+        alt: "Accessibility Best Practices 2026",
       },
     ],
   },
@@ -76,7 +76,7 @@ export default function BestPracticesPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Web Accessibility Best Practices - Complete Guide 2025",
+    headline: "Web Accessibility Best Practices - Complete Guide 2026",
     description:
       "Comprehensive guide to web accessibility best practices with detailed scenarios, code examples, and strategies that go beyond compliance to create exceptional user experiences.",
     url: "https://thewcag.com/best-practices",
@@ -94,7 +94,7 @@ export default function BestPracticesPage() {
         url: "https://thewcag.com/Logo.png",
       },
     },
-    datePublished: "2025-01-01",
+    datePublished: "2026-01-01",
     dateModified: new Date().toISOString().split("T")[0],
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -859,7 +859,7 @@ function closeModal() {
                 </h1>
               </div>
               <div className="space-y-3 sm:space-y-4">
-                <p className="text-sm sm:text-base text-muted-foreground">Last Updated: January 2025</p>
+                <p className="text-sm sm:text-base text-muted-foreground">Last Updated: January 2026</p>
                 <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
                   A comprehensive guide to web accessibility that goes beyond compliance. Learn not just what meets the
                   legal requirements, but how to create exceptional, inclusive experiences that benefit all users.

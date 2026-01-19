@@ -24,7 +24,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Free WCAG Compliance Tools 2025 | Accessibility Checker & Generators | TheWCAG",
+  title: "Free WCAG Compliance Tools 2026 | Accessibility Checker & Generators | TheWCAG",
   description:
     "Free WCAG 2.2 compliance tools: accessibility checker, contrast analyzer, code generators, and more. Test and fix accessibility issues instantly. All tools are free and work in your browser.",
   keywords: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
-        alt: "Free WCAG Compliance Tools 2025",
+        alt: "Free WCAG Compliance Tools 2026",
       },
     ],
   },
