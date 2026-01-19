@@ -25,15 +25,44 @@ import { StructuredData } from "@/components/structured-data"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility Audit Guide - Complete WCAG Website Audit Process | TheWCAG",
+  title: "Accessibility Audit Guide 2026 - Complete WCAG 2.2 Website Audit Process | TheWCAG",
   description:
-    "Learn how to conduct comprehensive accessibility audits. Step-by-step guide to WCAG audits covering automated testing, manual testing, screen readers, reporting, and creating VPAT documents.",
+    "Learn how to conduct comprehensive accessibility audits for WCAG 2.2 compliance. Step-by-step guide covering automated testing, manual testing, screen readers, reporting, and creating VPAT documents. Free audit checklist included.",
+  keywords: [
+    "accessibility audit",
+    "WCAG 2.2 audit",
+    "accessibility audit guide",
+    "website accessibility audit",
+    "WCAG compliance audit",
+    "accessibility testing audit",
+    "VPAT creation",
+    "accessibility audit checklist",
+    "accessibility evaluation",
+  ],
   openGraph: {
-    title: "Accessibility Audit Guide - Professional WCAG Audit Process",
+    title: "Accessibility Audit Guide 2026 - Complete WCAG 2.2 Website Audit Process",
     description:
-      "Master accessibility auditing with our comprehensive guide. Learn the complete audit process, tools, methodologies, and reporting best practices.",
+      "Master accessibility auditing with our comprehensive guide. Learn the complete WCAG 2.2 audit process, tools, methodologies, and reporting best practices. Free checklist included.",
     url: "https://thewcag.com/accessibility-audit-guide",
     type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Accessibility Audit Guide 2026",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accessibility Audit Guide 2026 - Complete WCAG 2.2 Website Audit Process",
+    description: "Master accessibility auditing with our comprehensive guide. Learn the complete WCAG 2.2 audit process and best practices.",
+    images: ["https://thewcag.com/Logo.png"],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/accessibility-audit-guide",
   },
 }
 
@@ -161,7 +190,7 @@ export default function AccessibilityAuditGuidePage() {
   const howToStructuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Conduct an Accessibility Audit - Complete Guide",
+    name: "How to Conduct an Accessibility Audit 2026 - Complete WCAG 2.2 Guide",
     description:
       "Complete 7-step guide to conducting comprehensive accessibility audits. Learn how to systematically evaluate your website for WCAG 2.2 compliance using automated tools, manual testing, and user testing methods.",
     url: "https://thewcag.com/accessibility-audit-guide",
@@ -234,9 +263,61 @@ export default function AccessibilityAuditGuidePage() {
     ],
   }
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How do I conduct an accessibility audit?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Start by defining your audit scope and goals, then use automated testing tools like axe DevTools and WAVE. Follow with manual testing including keyboard navigation and screen reader testing. Document findings, prioritize issues, and create a remediation plan with timelines."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What tools are needed for an accessibility audit?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Essential tools include automated scanners (axe DevTools, WAVE, Lighthouse), screen readers (NVDA, JAWS, VoiceOver), keyboard testing, color contrast checkers, and manual testing checklists. A combination of automated and manual testing is recommended."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How long does an accessibility audit take?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Audit duration depends on website size and complexity. A small site (10-20 pages) might take 1-2 days, while a large enterprise site could take 1-2 weeks. The process includes planning, automated testing, manual testing, documentation, and report creation."
+        }
+      }
+    ]
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://thewcag.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Accessibility Audit Guide",
+        item: "https://thewcag.com/accessibility-audit-guide",
+      },
+    ],
+  }
+
   return (
     <>
       <StructuredData data={howToStructuredData} />
+      <StructuredData data={faqSchema} />
+      <StructuredData data={breadcrumbSchema} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />
@@ -248,7 +329,7 @@ export default function AccessibilityAuditGuidePage() {
                 <FileSearch className="h-6 w-6 sm:h-8 sm:w-8 text-primary shrink-0" aria-hidden="true" />
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Accessibility Audit Guide</h1>
               </div>
-              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2026</p>
               <p className="text-lg text-muted-foreground">
                 Complete guide to conducting comprehensive accessibility audits. Learn how to systematically evaluate
                 your website for WCAG 2.2 compliance.

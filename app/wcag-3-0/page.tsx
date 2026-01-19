@@ -26,22 +26,25 @@ import {
 import { StructuredData } from "@/components/structured-data"
 
 export const metadata: Metadata = {
-  title: "WCAG 3.0 (W3C Accessibility Guidelines) - Future of Accessibility Standards | TheWCAG",
+  title: "WCAG 3.0 Guide 2026 - W3C Accessibility Guidelines Future Standards | TheWCAG",
   description:
-    "Complete guide to WCAG 3.0, the next generation accessibility standard. Learn about outcomes-based approach, Bronze/Silver/Gold scoring system, and how it differs from WCAG 2.2. Currently in development.",
+    "Complete guide to WCAG 3.0, the next generation accessibility standard. Learn about outcomes-based approach, Bronze/Silver/Gold scoring system, and how it differs from WCAG 2.2. Currently in development. Updated 2026.",
   keywords: [
     "WCAG 3.0",
     "W3C Accessibility Guidelines",
     "WCAG 3",
+    "WCAG 3.0 2026",
     "future accessibility standards",
     "WCAG 3.0 outcomes",
     "WCAG scoring system",
     "Bronze Silver Gold accessibility",
+    "WCAG 3.0 vs 2.2",
+    "next generation WCAG",
   ],
   openGraph: {
-    title: "WCAG 3.0 - The Future of Web Accessibility Standards",
+    title: "WCAG 3.0 Guide 2026 - The Future of Web Accessibility Standards",
     description:
-      "Discover WCAG 3.0's outcomes-based approach, scoring system, and what it means for the future of web accessibility. Complete guide to W3C Accessibility Guidelines.",
+      "Discover WCAG 3.0's outcomes-based approach, scoring system, and what it means for the future of web accessibility. Complete guide to W3C Accessibility Guidelines. Updated 2026.",
     url: "https://thewcag.com/wcag-3-0",
     type: "article",
     siteName: "TheWCAG - An accessibility Guide",
@@ -50,12 +53,18 @@ export const metadata: Metadata = {
         url: "https://thewcag.com/Logo.png",
         width: 1200,
         height: 630,
-        alt: "WCAG 3.0 - Future of Accessibility",
+        alt: "WCAG 3.0 Guide 2026",
       },
     ],
   },
   alternates: {
     canonical: "https://thewcag.com/wcag-3-0",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WCAG 3.0 Guide 2026 - W3C Accessibility Guidelines Future Standards",
+    description: "Complete guide to WCAG 3.0, the next generation accessibility standard. Learn about outcomes-based approach and scoring system.",
+    images: ["https://thewcag.com/Logo.png"],
   },
 }
 
@@ -63,7 +72,7 @@ export default function WCAG30Page() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "WCAG 3.0 - The Future of Web Accessibility Guidelines",
+    headline: "WCAG 3.0 Guide 2026 - The Future of Web Accessibility Guidelines",
     description:
       "Comprehensive guide to WCAG 3.0 (W3C Accessibility Guidelines), the next generation of accessibility standards with outcomes-based approach.",
     url: "https://thewcag.com/wcag-3-0",
@@ -146,9 +155,61 @@ export default function WCAG30Page() {
     },
   ]
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is WCAG 3.0?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "WCAG 3.0 (W3C Accessibility Guidelines) is the next generation of accessibility standards currently in development. It uses an outcomes-based approach with a Bronze/Silver/Gold scoring system, moving away from the pass/fail model of WCAG 2.2."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "When will WCAG 3.0 be released?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "WCAG 3.0 is currently in Working Draft status. The latest working draft was published on September 4, 2025. It is not yet a W3C Recommendation and is expected to take several more years before finalization."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How is WCAG 3.0 different from WCAG 2.2?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "WCAG 3.0 uses an outcomes-based approach with Bronze/Silver/Gold scoring levels instead of WCAG 2.2's pass/fail success criteria. It's designed to be more flexible and cover a wider range of disabilities, including cognitive disabilities and mobile accessibility."
+        }
+      }
+    ]
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://thewcag.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "WCAG 3.0",
+        item: "https://thewcag.com/wcag-3-0",
+      },
+    ],
+  }
+
   return (
     <>
       <StructuredData data={structuredData} />
+      <StructuredData data={faqSchema} />
+      <StructuredData data={breadcrumbSchema} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />
@@ -164,7 +225,7 @@ export default function WCAG30Page() {
                   In Development
                 </Badge>
               </div>
-              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2025</p>
+              <p className="text-sm text-muted-foreground mb-2">Last Updated: January 2026</p>
               <p className="text-lg text-muted-foreground max-w-3xl">
                 WCAG 3.0 (also known as W3C Accessibility Guidelines) is the next generation of accessibility
                 standards, currently in development. Learn about the new outcomes-based approach, scoring system, and

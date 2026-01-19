@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility Lawsuits - Legal Cases, Archive & Trends 2024-2025 | TheWCAG",
+  title: "Accessibility Lawsuits 2026 - Legal Cases, Archive & Trends | TheWCAG",
   description:
     "Comprehensive collection of accessibility lawsuits, legal cases & settlements. Explore recent ADA compliance cases, historical lawsuit archive (2000-2017), litigation trends, and digital accessibility legal outcomes. Learn from real-world WCAG violations.",
   keywords: [
@@ -53,6 +53,54 @@ export default function LawsuitsLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://thewcag.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Accessibility Lawsuits",
+        item: "https://thewcag.com/lawsuits",
+      },
+    ],
+  }
+
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Accessibility Lawsuits Database",
+    description: "Comprehensive collection of accessibility lawsuits, legal cases, and settlements. Explore recent ADA compliance cases, historical lawsuit archive, and litigation trends.",
+    url: "https://thewcag.com/lawsuits",
+    publisher: {
+      "@type": "Organization",
+      name: "TheWCAG.com",
+      url: "https://thewcag.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thewcag.com/Logo.png",
+      },
+    },
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+      {children}
+    </>
+  )
 }
 
