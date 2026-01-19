@@ -243,11 +243,85 @@ export default function ToolsPage() {
     },
   ]
 
+  const softwareApplicationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Free WCAG 2.2 Compliance Tools",
+    description: "Collection of free accessibility tools for WCAG 2.2 compliance testing and implementation",
+    itemListElement: [
+      {
+        "@type": "SoftwareApplication",
+        name: "Color Contrast Checker",
+        applicationCategory: "WebApplication",
+        operatingSystem: "Web Browser",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        description: "Free color contrast checker tool to test WCAG 2.2 compliance for text and UI components",
+        url: "https://thewcag.com/tools/contrast-checker",
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: "Accessibility Tester",
+        applicationCategory: "WebApplication",
+        operatingSystem: "Web Browser",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        description: "Free accessibility testing tool that scans websites for WCAG 2.2 compliance issues",
+        url: "https://thewcag.com/tools/accessibility/accessibility-tester",
+      },
+    ],
+  }
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What free accessibility tools are available?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We offer free WCAG 2.2 compliance tools including color contrast checker, accessibility tester, code generators, and more. All tools work directly in your browser and require no installation."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How do I test my website for WCAG compliance?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Use our free accessibility tester tool to scan your website for WCAG 2.2 compliance issues. The tool checks for common accessibility problems and provides detailed reports with recommendations."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Are these accessibility tools free?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, all our accessibility tools are completely free to use. They work directly in your web browser and require no registration or payment."
+        }
+      }
+    ]
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <SkipLink />
       <div className="flex min-h-screen flex-col">

@@ -29,19 +29,22 @@ export async function generateMetadata({
   const criteria = getCriteriaByPrinciple(principle)
 
   return {
-    title: `${principleData.title} Principle - WCAG 2.2 | TheWCAG`,
-    description: `${principleData.detailedDescription.substring(0, 155)}... Learn about ${criteria.length} success criteria under ${principleData.guidelines.length} guidelines.`,
+    title: `${principleData.title} Principle - Complete WCAG 2.2 Guide 2025 | TheWCAG`,
+    description: `Learn about the ${principleData.title} principle in WCAG 2.2. ${principleData.detailedDescription.substring(0, 120)}... Complete guide with ${criteria.length} success criteria, examples, and implementation tips.`,
     keywords: [
-      `WCAG ${principleData.title}`,
       `${principleData.title} principle`,
+      `WCAG ${principleData.title}`,
+      `WCAG 2.2 ${principleData.title}`,
       "WCAG 2.2",
       "web accessibility",
       "accessibility principles",
+      "POUR principles",
+      `${principleData.title} accessibility`,
       ...principleData.guidelines.map(g => `${g.number} ${g.title}`),
     ],
     openGraph: {
-      title: `${principleData.title} Principle - WCAG 2.2`,
-      description: principleData.detailedDescription.substring(0, 200),
+      title: `${principleData.title} Principle - Complete WCAG 2.2 Guide 2025`,
+      description: `Learn about the ${principleData.title} principle in WCAG 2.2. Complete guide with ${criteria.length} success criteria, examples, and implementation tips.`,
       url: `https://thewcag.com/principles/${principle}`,
       siteName: "TheWCAG - An accessibility Guide",
       type: "website",
@@ -56,8 +59,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${principleData.title} Principle - WCAG 2.2`,
-      description: principleData.detailedDescription.substring(0, 200),
+      title: `${principleData.title} Principle - Complete WCAG 2.2 Guide 2025`,
+      description: `Learn about the ${principleData.title} principle in WCAG 2.2. Complete guide with ${criteria.length} success criteria and examples.`,
       images: ["https://thewcag.com/Logo.png"],
     },
     alternates: {
@@ -169,11 +172,46 @@ export default async function PrinciplePage({
     },
   }
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `What is the ${principleData.title} principle in WCAG 2.2?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `${principleData.description} ${principleData.detailedDescription.substring(0, 100)}...`
+        }
+      },
+      {
+        "@type": "Question",
+        name: `How many success criteria are in the ${principleData.title} principle?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `The ${principleData.title} principle has ${criteria.length} success criteria organized under ${principleData.guidelines.length} guidelines in WCAG 2.2.`
+        }
+      },
+      {
+        "@type": "Question",
+        name: `What are the guidelines under ${principleData.title}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `The ${principleData.title} principle includes ${principleData.guidelines.length} guidelines: ${principleData.guidelines.map(g => `${g.number} ${g.title}`).join(', ')}.`
+        }
+      }
+    ]
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <SkipLink />
       <div className="flex min-h-screen flex-col">

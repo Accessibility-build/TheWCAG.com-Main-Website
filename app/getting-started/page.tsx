@@ -24,15 +24,44 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Getting Started with Web Accessibility - Complete Beginner's Guide | TheWCAG",
+  title: "Getting Started with Web Accessibility 2025 - Complete WCAG 2.2 Beginner's Guide | TheWCAG",
   description:
-    "Learn web accessibility from scratch. Step-by-step guide to WCAG compliance, testing tools, common issues, and best practices. Perfect for developers and designers new to accessibility.",
+    "Learn web accessibility from scratch with our complete beginner's guide. Step-by-step WCAG 2.2 compliance tutorial, testing tools, common issues, and best practices. Perfect for developers and designers.",
+  keywords: [
+    "web accessibility beginner",
+    "WCAG 2.2 tutorial",
+    "accessibility guide",
+    "learn web accessibility",
+    "WCAG compliance guide",
+    "accessibility for developers",
+    "accessibility basics",
+    "WCAG 2.2 beginner",
+  ],
   openGraph: {
-    title: "Getting Started with Web Accessibility - Beginner's Guide",
+    title: "Getting Started with Web Accessibility 2025 - Complete WCAG 2.2 Beginner's Guide",
     description:
-      "Master web accessibility basics with our comprehensive beginner's guide. Learn WCAG principles, testing, and implementation step-by-step.",
+      "Learn web accessibility from scratch. Step-by-step WCAG 2.2 compliance tutorial, testing tools, and best practices for developers and designers.",
     url: "https://thewcag.com/getting-started",
     type: "article",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Getting Started with Web Accessibility 2025",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Getting Started with Web Accessibility 2025 - Complete WCAG 2.2 Beginner's Guide",
+    description:
+      "Learn web accessibility from scratch. Step-by-step WCAG 2.2 compliance tutorial for developers and designers.",
+    images: ["https://thewcag.com/Logo.png"],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/getting-started",
   },
 }
 
@@ -187,9 +216,9 @@ export default function GettingStartedPage() {
   const howToStructuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "Getting Started with Web Accessibility - Beginner's Guide",
+    name: "Getting Started with Web Accessibility 2025 - Complete WCAG 2.2 Beginner's Guide",
     description:
-      "A beginner-friendly 6-step guide to understanding and implementing web accessibility. Learn the basics, audit your site, fix issues, and test your improvements.",
+      "A beginner-friendly 6-step guide to understanding and implementing web accessibility with WCAG 2.2. Learn the basics, audit your site, fix issues, and test your improvements.",
     url: "https://thewcag.com/getting-started",
     datePublished: "2024-01-01",
     dateModified: new Date().toISOString().split("T")[0],
@@ -257,9 +286,41 @@ export default function GettingStartedPage() {
     ],
   }
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How do I get started with web accessibility?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Start by understanding the four POUR principles (Perceivable, Operable, Understandable, Robust), then audit your current website, fix critical issues like missing alt text and poor contrast, implement semantic HTML, test with assistive technologies, and maintain accessibility in your workflow."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What is WCAG 2.2 compliance?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "WCAG 2.2 (Web Content Accessibility Guidelines 2.2) is the latest version of accessibility standards with 86 success criteria. Most organizations aim for Level AA compliance, which requires meeting all Level A and Level AA criteria."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How long does it take to make a website accessible?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The time varies based on your website's size and current state. Quick wins like adding alt text can take minutes per image. A full audit and remediation for a small website might take 20-40 hours, while larger sites may require weeks or months. Start with critical issues first."
+        }
+      }
+    ]
+  }
+
   return (
     <>
       <StructuredData data={howToStructuredData} />
+      <StructuredData data={faqSchema} />
       <SkipLink />
       <div className="flex min-h-screen flex-col">
         <Header />
