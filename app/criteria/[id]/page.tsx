@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
-import { getCriterionById } from "@/lib/wcag-data"
+import { getCriterionById, getCriteriaByPrinciple } from "@/lib/wcag-data"
 import { getCriterionOGImage } from "@/lib/og-image"
 import { CriteriaPageLayout } from "@/components/criteria-page-layout"
 import { LevelBadge } from "@/components/level-badge"
 import { Button } from "@/components/ui/button"
+import { QuickAnswerBox } from "@/components/quick-answer-box"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
@@ -25,6 +26,7 @@ import { CommonFailuresSection } from "./sections/common-failures-section"
 import { RelatedCriteriaSection } from "./sections/related-criteria-section"
 import { ResourcesSection } from "./sections/resources-section"
 import { ImplementationCTASection } from "./sections/implementation-cta-section"
+import { RelatedContent } from "@/components/related-content"
 
 interface CriterionPageProps {
   params: Promise<{ id: string }>
@@ -42,8 +44,8 @@ export async function generateMetadata({ params }: CriterionPageProps): Promise<
   }
 
   return {
-    title: `${criterion.number} ${criterion.title} - WCAG 2.2 Guide | TheWCAG`,
-    description: criterion.summary,
+    title: `WCAG 2.2 ${criterion.number} ${criterion.title} - Complete Guide with Examples | TheWCAG`,
+    description: `Learn WCAG 2.2 success criterion ${criterion.number} ${criterion.title}. ${criterion.summary} Includes examples, testing methods, and implementation guide for ${criterion.level} compliance.`,
     keywords: [
       `WCAG ${criterion.number}`,
       criterion.title,
@@ -54,8 +56,8 @@ export async function generateMetadata({ params }: CriterionPageProps): Promise<
       criterion.principle
     ],
     openGraph: {
-      title: `${criterion.number} ${criterion.title} - WCAG 2.2 Guide`,
-      description: criterion.summary,
+      title: `WCAG 2.2 ${criterion.number} ${criterion.title} - Complete Guide with Examples`,
+      description: `Learn WCAG 2.2 success criterion ${criterion.number} ${criterion.title}. ${criterion.summary} Includes examples, testing methods, and implementation guide.`,
       type: "article",
       url: `https://thewcag.com/criteria/${criterion.number}`,
       images: [
@@ -69,8 +71,8 @@ export async function generateMetadata({ params }: CriterionPageProps): Promise<
     },
     twitter: {
       card: "summary_large_image",
-      title: `${criterion.number} ${criterion.title} - WCAG 2.2 Guide`,
-      description: criterion.summary,
+      title: `WCAG 2.2 ${criterion.number} ${criterion.title} - Complete Guide with Examples`,
+      description: `Learn WCAG 2.2 success criterion ${criterion.number} ${criterion.title}. Includes examples, testing methods, and implementation guide.`,
       images: [getCriterionOGImage(criterion.number, criterion.title, criterion.level as 'A' | 'AA' | 'AAA')],
     },
     alternates: {
@@ -90,6 +92,16 @@ export default async function CriterionPage({ params }: CriterionPageProps) {
   }
 
   const principleName = criterion.principle.charAt(0).toUpperCase() + criterion.principle.slice(1)
+
+  // Get related criteria from the same principle
+  const relatedCriteria = getCriteriaByPrinciple(criterion.principle)
+    .filter(c => c.id !== criterion.id)
+    .slice(0, 6)
+    .map(c => ({
+      title: `${c.number} ${c.title}`,
+      description: c.summary.substring(0, 100) + (c.summary.length > 100 ? '...' : ''),
+      href: `/criteria/${c.number}`,
+    }))
 
   return (
     <CriteriaPageLayout>
@@ -163,6 +175,13 @@ export default async function CriterionPage({ params }: CriterionPageProps) {
           </div>
           )}
         </header>
+
+        {/* Quick Answer Box */}
+        <QuickAnswerBox
+          question={`What is WCAG 2.2 ${criterion.number} ${criterion.title}?`}
+          answer={criterion.summary}
+          criterionNumber={criterion.number}
+        />
 
         {/* Official Explanation Section */}
         <OfficialExplanationSection criterion={criterion} />
@@ -266,6 +285,14 @@ export default async function CriterionPage({ params }: CriterionPageProps) {
             </div>
           </div>
         </div>
+
+        {/* Related Criteria */}
+        {relatedCriteria.length > 0 && (
+          <RelatedContent 
+            title="Related Success Criteria"
+            items={relatedCriteria}
+          />
+        )}
       </div>
     </CriteriaPageLayout>
   )

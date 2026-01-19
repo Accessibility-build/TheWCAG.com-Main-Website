@@ -338,8 +338,17 @@ button:focus {
       text: `${step.description}. ${step.actions.join(". ")}`,
       url: `https://thewcag.com/how-to-make-website-accessible#step-${step.number}`,
       ...(step.time && {
-        totalTime: step.time.includes("hour") ? `PT${step.time.match(/\d+/)?.[0] || "1"}H` : undefined,
+        totalTime: step.time.includes("hour") 
+          ? `PT${step.time.match(/\d+/)?.[0] || "1"}H` 
+          : step.time.includes("min")
+          ? `PT${step.time.match(/\d+/)?.[0] || "5"}M`
+          : undefined,
       }),
+      itemListElement: step.actions.map((action, actionIndex) => ({
+        "@type": "HowToDirection",
+        text: action,
+        position: actionIndex + 1,
+      })),
     })),
     tool: [
       {

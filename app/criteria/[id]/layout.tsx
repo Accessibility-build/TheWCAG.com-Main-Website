@@ -29,20 +29,23 @@ export async function generateMetadata({
   }
 
   const principleName = criterion.principle.charAt(0).toUpperCase() + criterion.principle.slice(1)
-  const title = `${criterion.number} ${criterion.title} - WCAG ${criterion.level} | TheWCAG`
-  const description = `${criterion.summary} Learn about ${criterion.number} ${criterion.title}, a WCAG ${criterion.level} success criterion under ${principleName}. ${criterion.whyItMatters}`
+  const title = `WCAG 2.2 ${criterion.number} ${criterion.title} - Complete Guide with Examples | TheWCAG`
+  const description = `Learn WCAG 2.2 success criterion ${criterion.number} ${criterion.title}. ${criterion.summary} Includes examples, testing methods, implementation guide, and code snippets for ${criterion.level} compliance.`
 
   return {
     title,
     description,
     keywords: [
+      `WCAG 2.2 ${criterion.number}`,
       `WCAG ${criterion.number}`,
+      `${criterion.number} ${criterion.title}`,
       `WCAG ${criterion.level}`,
-      criterion.title,
+      "WCAG 2.2",
       "web accessibility",
       "accessibility guidelines",
+      "success criterion",
+      criterion.title.toLowerCase(),
       principleName.toLowerCase(),
-      criterion.guideline.toLowerCase(),
       "a11y",
       "accessibility compliance",
     ],
@@ -84,6 +87,39 @@ export async function generateMetadata({
   }
 }
 
+function getCriterionFAQSchema(criterion: any, principleName: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `What is WCAG 2.2 ${criterion.number} ${criterion.title}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `${criterion.summary} This is a Level ${criterion.level} success criterion under the ${principleName} principle. ${criterion.whyItMatters || ''}`
+        }
+      },
+      {
+        "@type": "Question",
+        name: `How do I test for ${criterion.number} compliance?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `To test for ${criterion.number} compliance, ${criterion.testingMethods || 'review the success criterion requirements, test with assistive technologies, and verify that your implementation meets all the requirements.'}`
+        }
+      },
+      {
+        "@type": "Question",
+        name: `What level is ${criterion.number}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `${criterion.number} ${criterion.title} is a Level ${criterion.level} success criterion. ${criterion.level === 'A' ? 'This is a minimum requirement for all WCAG compliance.' : criterion.level === 'AA' ? 'This is required for standard WCAG AA compliance, which is the most common target for organizations.' : 'This is an enhanced requirement for WCAG AAA compliance.'}`
+        }
+      }
+    ]
+  }
+}
+
 export default async function CriteriaLayout({
   children,
   params,
@@ -101,6 +137,7 @@ export default async function CriteriaLayout({
   }
 
   const principleName = criterion.principle.charAt(0).toUpperCase() + criterion.principle.slice(1)
+  const faqSchema = getCriterionFAQSchema(criterion, principleName)
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -177,6 +214,10 @@ export default async function CriteriaLayout({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {children}
     </>

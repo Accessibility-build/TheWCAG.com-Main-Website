@@ -24,15 +24,46 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility Testing Tools - Color Contrast, Validators & Checkers | TheWCAG",
+  title: "Free WCAG Compliance Tools 2025 | Accessibility Checker & Generators | TheWCAG",
   description:
-    "Free accessibility testing tools including color contrast checker, WCAG validator, screen reader simulators, and more. Test your website for WCAG compliance with our comprehensive tool collection.",
+    "Free WCAG 2.2 compliance tools: accessibility checker, contrast analyzer, code generators, and more. Test and fix accessibility issues instantly. All tools are free and work in your browser.",
+  keywords: [
+    "WCAG compliance tools",
+    "accessibility checker",
+    "WCAG testing tools",
+    "contrast checker",
+    "accessibility tools",
+    "free WCAG tools",
+    "a11y tools",
+    "web accessibility tools",
+    "WCAG 2.2 tools",
+    "accessibility testing",
+  ],
   openGraph: {
-    title: "Accessibility Testing Tools Collection",
+    title: "Free WCAG Compliance Tools 2025 | Accessibility Checker & Generators",
     description:
-      "Essential free tools for accessibility testing: color contrast checker, validators, screen readers, and browser extensions for WCAG compliance.",
+      "Free WCAG 2.2 compliance tools: accessibility checker, contrast analyzer, code generators, and more. Test and fix accessibility issues instantly.",
     url: "https://thewcag.com/tools",
     type: "website",
+    siteName: "TheWCAG - An accessibility Guide",
+    images: [
+      {
+        url: "https://thewcag.com/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Free WCAG Compliance Tools 2025",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free WCAG Compliance Tools 2025 | Accessibility Checker & Generators",
+    description:
+      "Free WCAG 2.2 compliance tools: accessibility checker, contrast analyzer, code generators, and more.",
+    images: ["https://thewcag.com/Logo.png"],
+  },
+  alternates: {
+    canonical: "https://thewcag.com/tools",
   },
 }
 

@@ -48,26 +48,30 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "TheWCAG - An Accessibility Guide",
+  title: "WCAG 2.2 Compliance Guide 2025 | Complete Accessibility Checklist & Tools",
   description:
-    "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
+    "Master WCAG 2.2 accessibility standards with our complete guide. Free tools, code examples, interactive checklist, and expert resources. Achieve ADA compliance today.",
   keywords: [
-    "WCAG",
     "WCAG 2.2",
-    "web accessibility",
-    "accessibility guidelines",
-    "a11y",
     "WCAG compliance",
-    "accessibility standards",
-    "web accessibility tools",
     "accessibility checklist",
+    "WCAG 2.2 guide",
+    "web accessibility",
     "ADA compliance",
+    "accessibility tools",
+    "WCAG 2.2 checklist",
+    "accessibility standards",
+    "WCAG 2.2 AA",
     "Section 508",
+    "a11y",
+    "WCAG",
+    "accessibility guidelines",
+    "web accessibility tools",
   ],
   openGraph: {
-    title: "TheWCAG - An Accessibility Guide",
+    title: "WCAG 2.2 Compliance Guide 2025 | Complete Accessibility Checklist & Tools",
     description:
-      "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
+      "Master WCAG 2.2 accessibility standards with our complete guide. Free tools, code examples, interactive checklist, and expert resources. Achieve ADA compliance today.",
     url: "https://thewcag.com",
     siteName: "TheWCAG - An accessibility Guide",
     type: "website",
@@ -76,15 +80,15 @@ export const metadata: Metadata = {
         url: ogImages.home(),
         width: 1200,
         height: 630,
-        alt: "TheWCAG - Complete WCAG 2.2 Accessibility Guidelines",
+        alt: "WCAG 2.2 Compliance Guide 2025 - Complete Accessibility Resources",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "TheWCAG - An Accessibility Guide",
+    title: "WCAG 2.2 Compliance Guide 2025 | Complete Accessibility Checklist & Tools",
     description:
-      "Master WCAG 2.2 accessibility with interactive guides, code examples, and tools. Complete reference for developers and designers building accessible websites.",
+      "Master WCAG 2.2 accessibility standards with our complete guide. Free tools, code examples, interactive checklist, and expert resources.",
     images: [ogImages.home()],
   },
   alternates: {
@@ -152,10 +156,80 @@ export default function HomePage() {
     ],
   }
 
+  const faqData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is WCAG 2.2?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "WCAG 2.2 (Web Content Accessibility Guidelines 2.2) is the latest version of accessibility standards published by the W3C. It includes 86 success criteria across four principles: Perceivable, Operable, Understandable, and Robust (POUR)."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How do I check WCAG compliance?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can check WCAG compliance using our free accessibility checker tool, manual testing with our interactive checklist, and by reviewing each success criterion. We provide code examples and testing methods for each criterion."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What are WCAG 2.2 success criteria?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "WCAG 2.2 has 86 success criteria organized under four principles. Each criterion has three conformance levels: A (minimum), AA (standard), and AAA (enhanced). Most organizations aim for AA compliance."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What's new in WCAG 2.2?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "WCAG 2.2 adds 9 new success criteria including focus appearance (2.4.13), dragging movements (2.5.7), target size (2.5.8), and fixed reference points (1.4.12). These address mobile accessibility and improved focus visibility."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Is WCAG 2.2 required for ADA compliance?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "While ADA doesn't explicitly require WCAG 2.2, courts have consistently recognized WCAG 2.0/2.1 Level AA as the standard for web accessibility compliance. WCAG 2.2 is the current best practice and recommended standard."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How many success criteria are in WCAG 2.2?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "WCAG 2.2 has 86 success criteria across four principles: Perceivable (29 criteria), Operable (29 criteria), Understandable (17 criteria), and Robust (2 criteria)."
+        }
+      }
+    ]
+  }
+
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://thewcag.com",
+      },
+    ],
+  }
+
   return (
     <>
       <StructuredData data={structuredData} />
       <StructuredData data={organizationData} />
+      <StructuredData data={faqData} />
+      <StructuredData data={breadcrumbData} />
       <SkipLink />
       <div className="flex min-h-screen flex-col overflow-x-hidden">
         <Header />
