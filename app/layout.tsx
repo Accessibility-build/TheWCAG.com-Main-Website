@@ -155,6 +155,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://formspree.io" />
+        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
         {/* Preconnect only for critical resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -173,6 +174,12 @@ export default function RootLayout({
             gtag('config', 'G-9WQ5PHRJ4K');
           `}
         </Script>
+        {/* Ahrefs Analytics */}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="GuHTbuOe41iZIoXX/DWD0Q"
+          strategy="lazyOnload"
+        />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light" disableTransitionOnChange>
           {children}
           <QuizWelcomeDialog />
