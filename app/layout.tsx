@@ -178,7 +178,7 @@ export default function RootLayout({
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="GuHTbuOe41iZIoXX/DWD0Q"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light" disableTransitionOnChange>
           {children}
