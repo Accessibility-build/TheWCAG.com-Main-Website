@@ -5,13 +5,12 @@ import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { QuizWelcomeDialog } from "@/components/quiz/quiz-welcome-dialog"
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 })
-const outfit = Outfit({ 
+const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
   display: "swap",
@@ -182,7 +181,6 @@ export default function RootLayout({
         />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light" disableTransitionOnChange>
           {children}
-          <QuizWelcomeDialog />
         </ThemeProvider>
         <Analytics />
       </body>

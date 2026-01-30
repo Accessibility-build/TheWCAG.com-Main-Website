@@ -160,6 +160,20 @@ export default function ChecklistPage() {
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Track your progress toward WCAG compliance with this interactive checklist
               </p>
+              {/* Download Buttons */}
+              <div className="flex flex-wrap gap-3 mt-4">
+                <Link href="/checklist/download">
+                  <Button variant="default" className="gap-2">
+                    <Download className="h-4 w-4" />
+                    Download Excel
+                  </Button>
+                </Link>
+                <Link href="/checklist/download">
+                  <Button variant="outline">
+                    Customize Download
+                  </Button>
+                </Link>
+              </div>
             </div>
 
             {/* Progress Card */}
@@ -176,7 +190,7 @@ export default function ChecklistPage() {
                 </div>
               </CardHeader>
               <CardContent>
-                <div 
+                <div
                   className="w-full h-5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden border-2 border-gray-400 dark:border-gray-600 shadow-inner"
                   role="progressbar"
                   aria-valuenow={progressPercent}
@@ -270,8 +284,8 @@ export default function ChecklistPage() {
                       </div>
                     </div>
 
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       onClick={clearAll}
                       className="h-9"
                     >
@@ -300,7 +314,7 @@ export default function ChecklistPage() {
                         </Badge>
                       </div>
                       <CardDescription className="text-sm sm:text-base">{principleData.description}</CardDescription>
-                      <div 
+                      <div
                         className="w-full h-2.5 sm:h-3 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden mt-3 border border-gray-400 dark:border-gray-600 shadow-inner"
                         role="progressbar"
                         aria-valuenow={principlePercent}
@@ -361,20 +375,23 @@ export default function ChecklistPage() {
                   <Download className="h-5 w-5" aria-hidden="true" />
                   Export & Share
                 </CardTitle>
-                <CardDescription>Download your checklist progress or print for offline use</CardDescription>
+                <CardDescription>Download your checklist or print for offline use</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-3">
                 <Button variant="outline" onClick={() => window.print()}>
                   Print Checklist
                 </Button>
-                <Button variant="outline" disabled>
-                  Export to PDF
-                  <span className="ml-2 text-xs">(Coming Soon)</span>
-                </Button>
-                <Button variant="outline" disabled>
-                  Export to CSV
-                  <span className="ml-2 text-xs">(Coming Soon)</span>
-                </Button>
+                <Link href="/checklist/download">
+                  <Button variant="default" className="gap-2">
+                    <Download className="h-4 w-4" />
+                    Download Excel
+                  </Button>
+                </Link>
+                <Link href="/checklist/download">
+                  <Button variant="outline">
+                    Customize Download
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
