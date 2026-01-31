@@ -112,36 +112,38 @@ export default function ResourcesPage() {
                 </p>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
-                <Card>
+                <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
                       <FileText className="h-6 w-6 text-primary" aria-hidden="true" />
-                      <CardTitle>WCAG 2.2 Checklist (PDF)</CardTitle>
+                      <CardTitle>WCAG 2.2 Checklist (Excel)</CardTitle>
                     </div>
-                    <CardDescription>Complete printable checklist of all 86 success criteria</CardDescription>
+                    <CardDescription>Complete customizable checklist of all 86 success criteria</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button variant="outline" className="w-full bg-transparent" disabled>
-                      <Download className="mr-2 h-4 w-4" aria-hidden="true" />
-                      Download PDF
-                      <span className="ml-2 text-xs">(Coming Soon)</span>
+                    <Button variant="default" className="w-full" asChild>
+                      <Link href="/checklist/download">
+                        <Download className="mr-2 h-4 w-4" aria-hidden="true" />
+                        Download Checklist
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="border-2 border-secondary/20 bg-gradient-to-br from-secondary/5 to-transparent">
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
                       <FileText className="h-6 w-6 text-secondary" aria-hidden="true" />
-                      <CardTitle>Excel Compliance Tracker</CardTitle>
+                      <CardTitle>Templates & Checklists</CardTitle>
                     </div>
-                    <CardDescription>Spreadsheet template for tracking remediation progress</CardDescription>
+                    <CardDescription>5 free professional templates for accessibility work</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button variant="outline" className="w-full bg-transparent" disabled>
-                      <Download className="mr-2 h-4 w-4" aria-hidden="true" />
-                      Download Excel
-                      <span className="ml-2 text-xs">(Coming Soon)</span>
+                    <Button variant="secondary" className="w-full" asChild>
+                      <Link href="/resources/templates">
+                        <ArrowRight className="mr-2 h-4 w-4" aria-hidden="true" />
+                        Browse Templates
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -152,13 +154,14 @@ export default function ResourcesPage() {
                       <FileText className="h-6 w-6 text-accent" aria-hidden="true" />
                       <CardTitle>VPAT Template</CardTitle>
                     </div>
-                    <CardDescription>Voluntary Product Accessibility Template for documentation</CardDescription>
+                    <CardDescription>WCAG 2.0/2.1/2.2 conformance documentation with fillable criteria</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button variant="outline" className="w-full bg-transparent" disabled>
-                      <Download className="mr-2 h-4 w-4" aria-hidden="true" />
-                      Download Template
-                      <span className="ml-2 text-xs">(Coming Soon)</span>
+                    <Button variant="secondary" className="w-full" asChild>
+                      <Link href="/resources/templates/vpat-template">
+                        <ArrowRight className="mr-2 h-4 w-4" aria-hidden="true" />
+                        Fill VPAT Template
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -169,13 +172,14 @@ export default function ResourcesPage() {
                       <FileText className="h-6 w-6 text-primary" aria-hidden="true" />
                       <CardTitle>Quick Reference Guide</CardTitle>
                     </div>
-                    <CardDescription>One-page summary of key WCAG requirements</CardDescription>
+                    <CardDescription>One-page visual summary of WCAG 2.2 requirements</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button variant="outline" className="w-full bg-transparent" disabled>
-                      <Download className="mr-2 h-4 w-4" aria-hidden="true" />
-                      Download PDF
-                      <span className="ml-2 text-xs">(Coming Soon)</span>
+                    <Button variant="secondary" className="w-full" asChild>
+                      <Link href="/resources/templates/quick-reference">
+                        <ArrowRight className="mr-2 h-4 w-4" aria-hidden="true" />
+                        View & Print Guide
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
