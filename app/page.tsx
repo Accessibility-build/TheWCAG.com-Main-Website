@@ -138,7 +138,7 @@ export default function HomePage() {
     },
   }
 
-    const organizationData = {
+  const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "TheWCAG",
@@ -266,7 +266,6 @@ export default function HomePage() {
                     >
                       <Link href="/learn">
                         Start Learning
-                        <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                       </Link>
                     </Button>
                     <Button
@@ -275,6 +274,13 @@ export default function HomePage() {
                       className="h-11 sm:h-12 md:h-14 px-5 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground w-full sm:w-auto"
                     >
                       <Link href="/checklist">View Checklist</Link>
+                    </Button>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="h-11 sm:h-12 md:h-14 px-5 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground w-full sm:w-auto"
+                    >
+                      <Link href="/resources">Explore Resources</Link>
                     </Button>
                   </div>
                 </div>
@@ -1119,7 +1125,7 @@ export default function HomePage() {
                         <div className="absolute top-6 right-6 text-[100px] font-bold text-primary/5 leading-none select-none pointer-events-none">
                           {String(index + 1).padStart(2, "0")}
                         </div>
-                        
+
                         <div className="relative">
                           {/* Header with icon and status */}
                           <div className="flex items-center justify-between mb-6">
@@ -1127,8 +1133,8 @@ export default function HomePage() {
                               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                                 <Scale className="w-6 h-6 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
                               </div>
-                              <Badge 
-                                variant={lawsuit.status === 'settled' ? 'default' : lawsuit.status === 'ongoing' ? 'secondary' : 'outline'} 
+                              <Badge
+                                variant={lawsuit.status === 'settled' ? 'default' : lawsuit.status === 'ongoing' ? 'secondary' : 'outline'}
                                 className="text-xs font-medium"
                               >
                                 {lawsuit.status.charAt(0).toUpperCase() + lawsuit.status.slice(1)}
@@ -1137,9 +1143,9 @@ export default function HomePage() {
                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                               <Calendar className="h-4 w-4" />
                               <span>
-                                {new Date(lawsuit.dateResolved || lawsuit.dateFiled).toLocaleDateString('en-US', { 
-                                  year: 'numeric', 
-                                  month: 'short' 
+                                {new Date(lawsuit.dateResolved || lawsuit.dateFiled).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'short'
                                 })}
                               </span>
                             </div>
@@ -1174,7 +1180,7 @@ export default function HomePage() {
 
               <ScrollAnimation>
                 <div className="text-center">
-                  <Link 
+                  <Link
                     href="/lawsuits"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
                   >
@@ -1217,7 +1223,7 @@ export default function HomePage() {
                       <div className="absolute top-6 right-6 text-[80px] font-bold text-secondary/5 leading-none select-none pointer-events-none">
                         01
                       </div>
-                      
+
                       <div className="relative">
                         {/* Header with icon and date */}
                         <div className="flex items-center justify-between mb-6">
@@ -1263,7 +1269,7 @@ export default function HomePage() {
                       <div className="absolute top-6 right-6 text-[80px] font-bold text-secondary/5 leading-none select-none pointer-events-none">
                         02
                       </div>
-                      
+
                       <div className="relative">
                         {/* Header with icon and date */}
                         <div className="flex items-center justify-between mb-6">
@@ -1301,7 +1307,7 @@ export default function HomePage() {
 
               <ScrollAnimation>
                 <div className="text-center">
-                  <Link 
+                  <Link
                     href="/blog"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-secondary-foreground rounded-2xl font-semibold hover:bg-secondary/90 transition-all hover:shadow-lg hover:shadow-secondary/25 hover:-translate-y-0.5"
                   >
@@ -1326,7 +1332,7 @@ export default function HomePage() {
                 </span>
               </div>
             </div>
-            
+
             <div className="container px-4 sm:px-6 lg:px-8 relative">
               <ScrollAnimation>
                 <div className="max-w-4xl mx-auto text-center">
@@ -1337,14 +1343,14 @@ export default function HomePage() {
                     Start learning WCAG 2.2 with our beginner-friendly guides and practical examples
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link 
+                    <Link
                       href="/learn"
                       className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-foreground text-primary rounded-2xl font-semibold hover:bg-primary-foreground/90 transition-all hover:shadow-lg hover:-translate-y-0.5 text-lg"
                     >
                       Start Learning
                       <ArrowRight className="h-5 w-5" />
                     </Link>
-                    <Link 
+                    <Link
                       href="/checklist"
                       className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-primary-foreground border-2 border-primary-foreground/30 rounded-2xl font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground/50 transition-all text-lg"
                     >

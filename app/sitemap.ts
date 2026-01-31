@@ -32,7 +32,7 @@ async function validateBlogPost(slug: string): Promise<boolean> {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://thewcag.com'
-  
+
   // Content update dates
   const wcag22Published = new Date('2023-10-05') // WCAG 2.2 publication date
   const siteLaunch = new Date('2024-01-01') // Approximate site launch
@@ -40,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const wcag21Published = new Date('2018-06-05') // WCAG 2.1 publication
   const wcag20Published = new Date('2008-12-11') // WCAG 2.0 publication
   const wcag10Published = new Date('1999-05-05') // WCAG 1.0 publication
-  
+
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -373,6 +373,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/resources/templates/vpat-template`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/resources/templates/quick-reference`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/resources/templates/mobile-accessibility-checklist`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/resources/templates/pdf-accessibility-checklist`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/resources/templates/form-accessibility-checklist`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
   ]
 
   // Principle pages
@@ -429,17 +459,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Blog pages - use actual published dates
   // Get all published blog posts from JSON storage
   const jsonBlogPosts = await getPublishedBlogPosts()
-  
+
   // Combine manual and JSON posts, removing duplicates (JSON posts take precedence)
   const manualSlugs = new Set(manualBlogPosts.map(p => p.slug))
   const uniqueJsonPosts = jsonBlogPosts.filter(p => !manualSlugs.has(p.slug))
-  
+
   // Merge all published blog posts
   const allPublishedBlogPosts = [
     ...manualBlogPosts.filter((post) => post.isPublished),
     ...uniqueJsonPosts,
   ]
-  
+
   // Validate that each blog post actually exists and is published
   const validatedBlogPosts = await Promise.all(
     allPublishedBlogPosts.map(async (post) => {
@@ -447,9 +477,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return isValid ? post : null
     })
   )
-  
+
   const validBlogPosts = validatedBlogPosts.filter((post): post is typeof allPublishedBlogPosts[0] => post !== null)
-  
+
   const blogPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/blog`,
@@ -469,7 +499,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const convertTools = TOOLS.filter(tool => tool.category !== 'editing' && tool.category !== 'seo')
   const editingTools = TOOLS.filter(tool => tool.category === 'editing')
   const seoTools = TOOLS.filter(tool => tool.category === 'seo')
-  
+
   const toolsPages: MetadataRoute.Sitemap = [
     // Main tools pages
     {

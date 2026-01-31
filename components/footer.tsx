@@ -227,25 +227,65 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-background/10 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4 text-xs md:text-sm text-background/40">
-          <p>© {new Date().getFullYear()} TheWCAG.com. All rights reserved.</p>
-          <p>Designed with inclusion in mind.</p>
-        </div>
+
       </div>
 
-      {/* Large Brand Text - Full Width (Outside Container) */}
-      <div className="w-full overflow-x-visible">
-        <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-8 sm:pb-12 md:pb-16 lg:pb-20 w-full">
-          <div className="w-full flex justify-center items-center">
-            <div className="flex flex-col items-center justify-center w-full min-w-0">
-              <h2 className="text-[20vw] sm:text-[18vw] md:text-[17vw] lg:text-[19vw] xl:text-[21vw] leading-[0.85] sm:leading-[0.8] font-black tracking-tighter text-center select-none pointer-events-none text-orange-500/40 drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] whitespace-nowrap px-1">
-                TheWCAG
-              </h2>
-              <span className="text-[5vw] sm:text-[4.5vw] md:text-[5vw] lg:text-[5.5vw] xl:text-[6vw] text-background/35 font-black tracking-tighter select-none pointer-events-none whitespace-nowrap">
-                .com
-              </span>
+      {/* Large Brand Text with Layered People - Engine Inspired */}
+      <div className="w-full bg-white overflow-hidden">
+        {/* Top bar with copyright and links */}
+        <div className="container px-4 sm:px-6 lg:px-8 pt-12 pb-16">
+          <div className="flex flex-col md:flex-row justify-between items-center text-xs lg:text-sm font-medium text-black/60 gap-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center">
+              <p>© TheWCAG {new Date().getFullYear()}. All Rights Reserved.</p>
+              <span className="hidden sm:inline text-black/20">|</span>
+              <p>Designed with inclusion in mind.</p>
             </div>
+            <div className="flex gap-6 sm:gap-8">
+              <a href="#" className="hover:text-black transition-colors">Privacy Preferences</a>
+              <a href="/terms" className="hover:text-black transition-colors">Terms of Service</a>
+              <a href="/privacy" className="hover:text-black transition-colors">Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+
+        {/* Layered Text and Image Section */}
+        <div className="relative w-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-end justify-center">
+          {/* Background Text Layer - Behind people */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+            <h2
+              className="text-[28vw] sm:text-[26vw] md:text-[24vw] lg:text-[22vw] font-black tracking-[-0.05em] text-black leading-none whitespace-nowrap"
+              style={{ fontFamily: 'var(--font-outfit), system-ui, sans-serif' }}
+            >
+              TheWCAG
+              <sup className="text-[4vw] sm:text-[3vw] align-super">™</sup>
+            </h2>
+          </div>
+
+          {/* People Image Layer - Positioned on top of background text */}
+          <div className="relative z-10 w-full flex justify-center items-end px-4">
+            <img
+              src="/Footer_decoraitve.png"
+              alt="Diverse group of people representing accessibility - including individuals with prosthetics, in wheelchairs, with guide dogs, using mobility aids, and working on laptops"
+              className="w-full max-w-5xl h-auto object-contain object-bottom"
+              style={{
+                marginBottom: '-2px',
+                maxHeight: '450px'
+              }}
+            />
+          </div>
+
+          {/* Foreground Text Layer - Subtle outline that appears in front of people */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+            <h2
+              className="text-[28vw] sm:text-[26vw] md:text-[24vw] lg:text-[22vw] font-black tracking-[-0.05em] text-transparent leading-none whitespace-nowrap"
+              style={{
+                fontFamily: 'var(--font-outfit), system-ui, sans-serif',
+                WebkitTextStroke: '1px rgba(0,0,0,0.05)'
+              }}
+            >
+              TheWCAG
+              <sup className="text-[4vw] sm:text-[3vw] align-super">™</sup>
+            </h2>
           </div>
         </div>
       </div>
