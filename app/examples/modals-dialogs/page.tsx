@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2, ExternalLink, X } from "lucide-react"
 import { ExampleSection } from "@/components/examples/ExampleSection"
 import { AccessibilityNotes } from "@/components/examples/AccessibilityNotes"
+import { CodeComparison } from "@/components/examples/code-comparison"
 
 export default function ModalsDialogsPage() {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,20 +27,20 @@ export default function ModalsDialogsPage() {
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       ) as HTMLElement
       firstFocusable?.focus()
-      
+
       // Trap focus within dialog
       const handleTab = (e: KeyboardEvent) => {
         if (e.key !== "Tab") return
-        
+
         const focusableElements = dialogRef.current?.querySelectorAll(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         ) as NodeListOf<HTMLElement>
-        
+
         if (!focusableElements || focusableElements.length === 0) return
-        
+
         const firstElement = focusableElements[0]
         const lastElement = focusableElements[focusableElements.length - 1]
-        
+
         if (e.shiftKey) {
           if (document.activeElement === firstElement) {
             e.preventDefault()
@@ -52,7 +53,7 @@ export default function ModalsDialogsPage() {
           }
         }
       }
-      
+
       document.addEventListener("keydown", handleTab)
       return () => {
         document.removeEventListener("keydown", handleTab)
@@ -73,20 +74,20 @@ export default function ModalsDialogsPage() {
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       ) as HTMLElement
       firstFocusable?.focus()
-      
+
       // Trap focus within alert dialog
       const handleTab = (e: KeyboardEvent) => {
         if (e.key !== "Tab") return
-        
+
         const focusableElements = alertDialogRef.current?.querySelectorAll(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         ) as NodeListOf<HTMLElement>
-        
+
         if (!focusableElements || focusableElements.length === 0) return
-        
+
         const firstElement = focusableElements[0]
         const lastElement = focusableElements[focusableElements.length - 1]
-        
+
         if (e.shiftKey) {
           if (document.activeElement === firstElement) {
             e.preventDefault()
@@ -99,7 +100,7 @@ export default function ModalsDialogsPage() {
           }
         }
       }
-      
+
       document.addEventListener("keydown", handleTab)
       return () => {
         document.removeEventListener("keydown", handleTab)
@@ -154,6 +155,33 @@ export default function ModalsDialogsPage() {
             </Badge>
           </div>
         </div>
+
+        {/* Why It Matters */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Why It Matters</h2>
+          <div className="bg-muted/30 border border-border rounded-xl p-6 md:p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">1</span>
+                  Screen Reader Users
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  When a modal opens, focus must move into it immediately. If it doesn't, screen reader users might not realize a dialog has appeared, continuing to browse the underlying page which should be inert.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">2</span>
+                  Keyboard Users
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Without a "focus trap", pressing "Tab" on the last element of the modal might move focus back to the page background (e.g., the URL bar or footer), causing users to lose their place and struggle to close the dialog.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* WCAG Requirements */}
         <section className="mb-12">
@@ -390,6 +418,53 @@ export default function ModalsDialogsPage() {
             )}
           </div>
         </ExampleSection>
+
+        {/* Common Mistakes */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Common Mistakes</h2>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">1. Non-accessible Trigger Elements</h3>
+            <p className="text-muted-foreground mb-4">Using generic <code>div</code> or <code>span</code> elements for buttons prevents keyboard users from opening the modal.</p>
+            <CodeComparison
+              badCode={`<div 
+  onClick={openModal} 
+  className="btn"
+>
+  Open Settings
+</div>`}
+              goodCode={`<button 
+  onClick={openModal} 
+  className="btn"
+  type="button"
+>
+  Open Settings
+</button>`}
+              badDescription="Divs are not focusable by default and don't support Enter/Space keys."
+              goodDescription="Buttons are natively focusable and trigger on both click and keypress."
+            />
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">2. Missing Focus Management</h3>
+            <p className="text-muted-foreground mb-4">Failing to move focus to the modal when it opens leaves keyboard users lost.</p>
+            <CodeComparison
+              badCode={`const openModal = () => {
+  setIsOpen(true);
+  // No focus management
+}`}
+              goodCode={`const openModal = () => {
+  setIsOpen(true);
+  // Wait for render, then focus
+  setTimeout(() => {
+    modalRef.current?.focus();
+  }, 0);
+}`}
+              badDescription="User focus remains on the trigger button (now behind the backdrop)."
+              goodDescription="Programmatically moving focus ensures the user context switches to the modal."
+            />
+          </div>
+        </section>
 
         {/* Best Practices */}
         <section className="mb-12">

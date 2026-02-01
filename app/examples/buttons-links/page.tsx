@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2, ExternalLink, Loader2, Star, Heart } from "lucide-react"
 import { ExampleSection } from "@/components/examples/ExampleSection"
 import { AccessibilityNotes } from "@/components/examples/AccessibilityNotes"
+import { CodeComparison } from "@/components/examples/code-comparison"
 
 export default function ButtonsLinksPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -114,6 +115,33 @@ export default function ButtonsLinksPage() {
                 </ul>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* Why It Matters */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Why It Matters</h2>
+          <div className="bg-muted/30 border border-border rounded-xl p-6 md:p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">1</span>
+                  Expectation Mismatch
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Screen readers announce "Link" vs "Button". Users expect Links to take them somewhere (navigation) and Buttons to do something (action). Using the wrong one breaks this mental model.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">2</span>
+                  Functionality Loss
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Links have features buttons don't (open in new tab, bookmark). Buttons have features links don't (activation with Space key). Mixing them up robs users of these native behaviors.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -326,6 +354,41 @@ export default function ButtonsLinksPage() {
             </div>
           </div>
         </ExampleSection>
+
+        {/* Common Mistakes */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Common Mistakes</h2>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">1. Links as Buttons</h3>
+            <p className="text-muted-foreground mb-4">Using an anchor tag for an action prevents keyboard users from using the Space key to activate it.</p>
+            <CodeComparison
+              badCode={`<a href="#" onClick={save}>
+  Save
+</a>`}
+              goodCode={`<button onClick={save}>
+  Save
+</button>`}
+              badDescription="Enter key triggers navigation (refresh), Space key scrolls. Semantically incorrect."
+              goodDescription="Button handles Space/Enter activation correctly and doesn't affect URL."
+            />
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">2. Ambiguous Link Text</h3>
+            <p className="text-muted-foreground mb-4">"Click Here" or "Read More" provides zero context to screen reader users scanning a list of links.</p>
+            <CodeComparison
+              badCode={`<a href="/article">
+  Read More
+</a>`}
+              goodCode={`<a href="/article">
+  Read more about WCAG 2.2
+</a>`}
+              badDescription="Screen reader user hears: 'Link, Read More'. Read more about what?"
+              goodDescription="Descriptive text explains exactly where the link goes."
+            />
+          </div>
+        </section>
 
         {/* Best Practices */}
         <section className="mb-12">

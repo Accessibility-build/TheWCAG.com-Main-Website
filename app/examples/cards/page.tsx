@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2, ExternalLink } from "lucide-react"
 import { ExampleSection } from "@/components/examples/ExampleSection"
 import { AccessibilityNotes } from "@/components/examples/AccessibilityNotes"
+import { CodeComparison } from "@/components/examples/code-comparison"
 
 export default function CardsPage() {
   return (
@@ -38,6 +39,33 @@ export default function CardsPage() {
             </Badge>
           </div>
         </div>
+
+        {/* Why It Matters */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Why It Matters</h2>
+          <div className="bg-muted/30 border border-border rounded-xl p-6 md:p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">1</span>
+                  Screen Reader Navigation
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Users often navigate by headings (H key). If a card's title isn't a heading, it's invisible to this navigation mode. If it skips levels (H2 to H4), it confuses the document structure.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">2</span>
+                  Redundant Focus
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  A card with an image link, a title link, and a "Read More" link pointing to the same place forces keyboard users to tab three times for one operational item.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Semantic Card */}
         <ExampleSection
@@ -90,6 +118,45 @@ export default function CardsPage() {
             </Link>
           </div>
         </ExampleSection>
+
+        {/* Common Mistakes */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Common Mistakes</h2>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">1. Div Soup</h3>
+            <p className="text-muted-foreground mb-4">Using generic divs for cards makes content difficult to navigate and understand.</p>
+            <CodeComparison
+              badCode={`<div className="card">
+  <div className="title">Title</div>
+  <div>Description...</div>
+</div>`}
+              goodCode={`<article className="card">
+  <h3>Title</h3>
+  <p>Description...</p>
+</article>`}
+              badDescription="No semantic value. Screen readers treat it as plain text."
+              goodDescription="Article role and Heading structure provide context and navigation points."
+            />
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">2. Redundant Links</h3>
+            <p className="text-muted-foreground mb-4">Linking the image, title, and 'read more' separately creates a noisy experience.</p>
+            <CodeComparison
+              badCode={`<a href="/post"><img ... /></a>
+<h3><a href="/post">Title</a></h3>
+<a href="/post">Read more</a>`}
+              goodCode={`<div className="card relative">
+  <img ... />
+  <h3><a href="/post" className="after:absolute after:inset-0">Title</a></h3>
+  <p>Read more</p>
+</div>`}
+              badDescription="Keyboard user tabs 3 times for the same destination."
+              goodDescription="Single link covers the whole card (via CSS) -> single tab stop."
+            />
+          </div>
+        </section>
 
         {/* Best Practices */}
         <section className="mb-12">

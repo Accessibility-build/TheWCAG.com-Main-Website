@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { CriteriaPageLayout } from "@/components/criteria-page-layout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -9,9 +9,37 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2, ExternalLink, Info } from "lucide-react"
 import { ExampleSection } from "@/components/examples/ExampleSection"
 import { AccessibilityNotes } from "@/components/examples/AccessibilityNotes"
+import { CodeComparison } from "@/components/examples/code-comparison"
 
 export default function TooltipsPage() {
   const [showTooltip, setShowTooltip] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+    setShowTooltip(true)
+  }
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setShowTooltip(false)
+    }, 300) // 300ms grace period to move cursor to tooltip
+  }
+
+  const handleFocus = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+    setShowTooltip(true)
+  }
+
+  const handleBlur = () => {
+    setShowTooltip(false)
+  }
 
   // Allow tooltip to be dismissed with Escape key (WCAG 1.4.13)
   useEffect(() => {
@@ -22,7 +50,10 @@ export default function TooltipsPage() {
     }
 
     document.addEventListener("keydown", handleEscape)
-    return () => document.removeEventListener("keydown", handleEscape)
+    return () => {
+      document.removeEventListener("keydown", handleEscape)
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
   }, [showTooltip])
 
   return (
@@ -56,6 +87,33 @@ export default function TooltipsPage() {
             </Badge>
           </div>
         </div>
+
+        {/* Why It Matters */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Why It Matters</h2>
+          <div className="bg-muted/30 border border-border rounded-xl p-6 md:p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">1</span>
+                  Magnification Users
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Users who zoom in often need to pan the screen. If the tooltip disappears when the mouse pointer moves (e.g., to scroll), they can't read the content.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">2</span>
+                  Cognitive Load
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Tooltips that vanish instantly require precise mouse movements. This is frustrating and sometimes impossible for users with tremors or motor impairments.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* WCAG Requirements */}
         <section className="mb-12">
@@ -146,23 +204,41 @@ useEffect(() => {
   return () => document.removeEventListener("keydown", handleEscape)
 }, [showTooltip])
 
-<button
-  aria-describedby="tooltip1"
-  onFocus={() => setShowTooltip(true)}
-  onBlur={() => setShowTooltip(false)}
-  onMouseEnter={() => setShowTooltip(true)}
-  onMouseLeave={() => setShowTooltip(false)}
->
-  Hover or focus me
-</button>
-<div
-  id="tooltip1"
-  role="tooltip"
-  className={showTooltip ? "visible" : "hidden"}
-  aria-hidden={!showTooltip}
->
-  This is helpful information
-</div>`}
+const timeoutRef = useRef(null)
+
+const handleMouseEnter = () => {
+  clearTimeout(timeoutRef.current)
+  setShowTooltip(true)
+}
+
+const handleMouseLeave = () => {
+  // Grace period for moving cursor to tooltip
+  timeoutRef.current = setTimeout(() => setShowTooltip(false), 300)
+}
+
+return (
+  <>
+    <button
+      aria-describedby="tooltip1"
+      onFocus={() => setShowTooltip(true)}
+      onBlur={() => setShowTooltip(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      Hover or focus me
+    </button>
+    <div
+      id="tooltip1"
+      role="tooltip"
+      // Add handlers to tooltip too so it stays open
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave}
+      className={showTooltip ? "visible" : "hidden"}
+    >
+      This is helpful information
+    </div>
+  </>
+)`}
           testingGuide={{
             keyboard: [
               "Tab to trigger element - tooltip appears on focus",
@@ -180,10 +256,10 @@ useEffect(() => {
             <button
               className="px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary"
               aria-describedby="tooltip-example"
-              onFocus={() => setShowTooltip(true)}
-              onBlur={() => setShowTooltip(false)}
-              onMouseEnter={() => setShowTooltip(true)}
-              onMouseLeave={() => setShowTooltip(false)}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               Hover or focus me
             </button>
@@ -192,6 +268,8 @@ useEffect(() => {
               role="tooltip"
               className={`absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded shadow-lg z-50 whitespace-nowrap ${showTooltip ? "visible" : "hidden"}`}
               aria-hidden={!showTooltip}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               This is helpful tooltip information
               <span
@@ -201,6 +279,43 @@ useEffect(() => {
             </div>
           </div>
         </ExampleSection>
+
+        {/* Common Mistakes */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Common Mistakes</h2>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">1. Missing Hover Bridge</h3>
+            <p className="text-muted-foreground mb-4">If the tooltip is slightly separated from the trigger, moving the mouse to the tooltip will close it.</p>
+            <CodeComparison
+              badCode={`<button onMouseLeave={() => setShow(false)}>
+  Trigger
+</button>`}
+              goodCode={`<button onMouseLeave={safeClose}>
+  Trigger
+</button>
+// safeClose waits 300ms before closing`}
+              badDescription="Tooltip closes instantly, making it impossible to hover over the content."
+              goodDescription="A small timeout allows users to traverse the gap between trigger and tooltip."
+            />
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">2. Using Title Attribute</h3>
+            <p className="text-muted-foreground mb-4">The native `title` attribute is visually inconsistent and not keyboard accessible in many browsers.</p>
+            <CodeComparison
+              badCode={`<button title="More info">
+  Help
+</button>`}
+              goodCode={`<button aria-describedby="tip">
+  Help
+</button>
+<div id="tip" role="tooltip">More info</div>`}
+              badDescription="Title attribute often won't appear on focus and can't be styled."
+              goodDescription="Custom tooltips give you full control over accessibility and styling."
+            />
+          </div>
+        </section>
 
         {/* Best Practices */}
         <section className="mb-12">

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2, ExternalLink, ChevronDown } from "lucide-react"
 import { ExampleSection } from "@/components/examples/ExampleSection"
 import { AccessibilityNotes } from "@/components/examples/AccessibilityNotes"
+import { CodeComparison } from "@/components/examples/code-comparison"
 
 export default function AccordionsPage() {
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set(["item1"]))
@@ -51,6 +52,33 @@ export default function AccordionsPage() {
             </Badge>
           </div>
         </div>
+
+        {/* Why It Matters */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Why It Matters</h2>
+          <div className="bg-muted/30 border border-border rounded-xl p-6 md:p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">1</span>
+                  Screen Reader Users
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Without <code>aria-expanded</code>, a screen reader user doesn't know if the content is hidden or visible. They might press the button and wait for something to happen, not realizing the content expanded below.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">2</span>
+                  Keyboard Efficiency
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Proper accordions allow users to skip large blocks of content. If the header isn't keyboard-accessible (e.g., a <code>div</code>), users have to tab through every single link in the expanded content to move forward.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* WCAG Requirements */}
         <section className="mb-12">
@@ -212,6 +240,51 @@ export default function AccordionsPage() {
             ))}
           </div>
         </ExampleSection>
+
+        {/* Common Mistakes */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Common Mistakes</h2>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">1. Using Divs as Headers</h3>
+            <p className="text-muted-foreground mb-4">Divs are not focusable and don't support keyboard activitation.</p>
+            <CodeComparison
+              badCode={`<div 
+  onClick={toggle} 
+  className="accordion-header"
+>
+  Menu
+</div>`}
+              goodCode={`<button 
+  onClick={toggle} 
+  className="accordion-header"
+  aria-expanded={isOpen}
+>
+  Menu
+</button>`}
+              badDescription="Keyboard users cannot focus or activate this element."
+              goodDescription="Button element handles focus and Enter/Space activation automatically."
+            />
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">2. Missing State Indication</h3>
+            <p className="text-muted-foreground mb-4">Changing an icon visually isn't enough for screen readers.</p>
+            <CodeComparison
+              badCode={`<button onClick={toggle}>
+  Settings {isOpen ? '▼' : '▶'}
+</button>`}
+              goodCode={`<button 
+  onClick={toggle}
+  aria-expanded={isOpen}
+>
+  Settings <span aria-hidden="true">{isOpen ? '▼' : '▶'}</span>
+</button>`}
+              badDescription="Screen reader announces 'Settings' but not whether it's open or closed."
+              goodDescription="aria-expanded explicitly communicates the state (e.g., 'Settings, expanded')."
+            />
+          </div>
+        </section>
 
         {/* Best Practices */}
         <section className="mb-12">

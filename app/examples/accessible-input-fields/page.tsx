@@ -29,6 +29,7 @@ import {
   Play,
 } from "lucide-react"
 import Link from "next/link"
+import { CodeComparison } from "@/components/examples/code-comparison"
 
 export default function AccessibleInputFieldsPage() {
   const [copiedCode, setCopiedCode] = useState<string | null>(null)
@@ -176,6 +177,33 @@ export default function AccessibleInputFieldsPage() {
           </div>
         </section>
 
+        {/* Why It Matters */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Why It Matters</h2>
+          <div className="bg-muted/30 border border-border rounded-xl p-6 md:p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">1</span>
+                  Voice Control Users
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Users relying on voice commands often say the visible label to focus an input (e.g., "Click First Name"). If the visible label doesn't match the programmatic name, the command fails, frustrating the user.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">2</span>
+                  Cognitive Accessibility
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Clear, persistent labels help users with memory impairments remember what information is required, especially in long forms where placeholders disappear once typing starts.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Best Practices Beyond WCAG */}
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-6">Best Practices Beyond WCAG</h2>
@@ -215,6 +243,48 @@ export default function AccessibleInputFieldsPage() {
           </Card>
         </section>
 
+        {/* Common Mistakes */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Common Mistakes</h2>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">1. Placeholder as Label</h3>
+            <p className="text-muted-foreground mb-4">Relying solely on placeholders is problematic because they disappear when text is entered and often have poor contrast.</p>
+            <CodeComparison
+              badCode={`<input 
+  type="text" 
+  placeholder="Enter your name" 
+/>`}
+              goodCode={`<label htmlFor="name">Name</label>
+<input 
+  id="name"
+  type="text" 
+  placeholder="Enter your name" 
+/>`}
+              badDescription="No permanent label exists. Screen readers may read the placeholder, but it vanishes visually."
+              goodDescription="Explicit <label> linked via 'for/id' ensures the input always has a name."
+            />
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">2. Generic Error Messages</h3>
+            <p className="text-muted-foreground mb-4">Using color alone to indicate errors or generic messages like 'Invalid' confuses users.</p>
+            <CodeComparison
+              badCode={`<input style={{ borderColor: 'red' }} />
+<span>Error</span>`}
+              goodCode={`<input 
+  aria-invalid="true" 
+  aria-describedby="email-error"
+/>
+<span id="email-error">
+  Please enter a valid email address
+</span>`}
+              badDescription="Screen reader users won't know the field is invalid or why."
+              goodDescription="Programmatic association links the specific error message to the field."
+            />
+          </div>
+        </section>
+
         {/* Text Input */}
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-6">Text Input</h2>
@@ -222,20 +292,20 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Text inputs are fundamental form elements that require proper labeling and error handling to meet 
-                  WCAG 2.2 standards. Every input field must have an associated label that clearly identifies its 
-                  purpose. The label should be programmatically associated using the <code className="bg-background px-1.5 py-0.5 rounded text-sm">for</code> 
-                  attribute or by wrapping the input within the label element. Error messages must be clearly 
-                  identified, described in text, and associated with the input field using <code className="bg-background px-1.5 py-0.5 rounded text-sm">aria-describedby</code>. 
-                  The <code className="bg-background px-1.5 py-0.5 rounded text-sm">aria-invalid</code> attribute 
-                  should be set to "true" when validation errors occur. Helpful hints can be provided via 
-                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">aria-describedby</code> to guide 
+                  Text inputs are fundamental form elements that require proper labeling and error handling to meet
+                  WCAG 2.2 standards. Every input field must have an associated label that clearly identifies its
+                  purpose. The label should be programmatically associated using the <code className="bg-background px-1.5 py-0.5 rounded text-sm">for</code>
+                  attribute or by wrapping the input within the label element. Error messages must be clearly
+                  identified, described in text, and associated with the input field using <code className="bg-background px-1.5 py-0.5 rounded text-sm">aria-describedby</code>.
+                  The <code className="bg-background px-1.5 py-0.5 rounded text-sm">aria-invalid</code> attribute
+                  should be set to "true" when validation errors occur. Helpful hints can be provided via
+                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">aria-describedby</code> to guide
                   users without cluttering the visual interface.
                 </p>
               </CardContent>
             </Card>
           </div>
-          
+
           {/* Interactive Example - Full Width */}
           <Card className="mb-6">
             <CardHeader>
@@ -403,18 +473,18 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Email input fields require the <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="email"</code> 
-                  attribute to enable proper browser validation and mobile keyboard optimization. The 
-                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="email"</code> attribute 
-                  allows password managers and browsers to recognize and autofill email addresses, improving user 
-                  experience and reducing input errors. Mobile devices will automatically display an email-optimized 
-                  keyboard with the @ symbol readily accessible. Browser-level validation provides immediate feedback 
+                  Email input fields require the <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="email"</code>
+                  attribute to enable proper browser validation and mobile keyboard optimization. The
+                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="email"</code> attribute
+                  allows password managers and browsers to recognize and autofill email addresses, improving user
+                  experience and reducing input errors. Mobile devices will automatically display an email-optimized
+                  keyboard with the @ symbol readily accessible. Browser-level validation provides immediate feedback
                   for invalid email formats, though server-side validation remains essential for security.
                 </p>
               </CardContent>
             </Card>
           </div>
-          
+
           {/* Interactive Example - Full Width */}
           <Card className="mb-6">
             <CardHeader>
@@ -575,18 +645,18 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Password input fields require careful attention to autocomplete attributes for proper password manager 
-                  integration. Use <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="new-password"</code> 
-                  for registration forms and <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="current-password"</code> 
-                  for login forms. This distinction enables password managers to correctly suggest new passwords or autofill 
-                  existing ones. Password requirements should be clearly communicated upfront, and real-time validation 
-                  provides immediate feedback. Consider implementing a password strength indicator and a show/hide toggle 
+                  Password input fields require careful attention to autocomplete attributes for proper password manager
+                  integration. Use <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="new-password"</code>
+                  for registration forms and <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="current-password"</code>
+                  for login forms. This distinction enables password managers to correctly suggest new passwords or autofill
+                  existing ones. Password requirements should be clearly communicated upfront, and real-time validation
+                  provides immediate feedback. Consider implementing a password strength indicator and a show/hide toggle
                   for improved usability while maintaining security.
                 </p>
               </CardContent>
             </Card>
           </div>
-          
+
           {/* Interactive Example - Full Width */}
           <Card className="mb-6">
             <CardHeader>
@@ -744,19 +814,19 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Number input fields use <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="number"</code> 
-                  to enable numeric input with built-in validation. The <code className="bg-background px-1.5 py-0.5 rounded text-sm">min</code>, 
-                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">max</code>, and 
-                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">step</code> attributes provide 
-                  constraints that guide user input and enable browser-level validation. Mobile devices automatically 
-                  display a numeric keypad when this input type is focused, significantly improving the user experience. 
-                  Always provide clear hints about acceptable value ranges, and ensure error messages are specific and 
+                  Number input fields use <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="number"</code>
+                  to enable numeric input with built-in validation. The <code className="bg-background px-1.5 py-0.5 rounded text-sm">min</code>,
+                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">max</code>, and
+                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">step</code> attributes provide
+                  constraints that guide user input and enable browser-level validation. Mobile devices automatically
+                  display a numeric keypad when this input type is focused, significantly improving the user experience.
+                  Always provide clear hints about acceptable value ranges, and ensure error messages are specific and
                   actionable when validation fails.
                 </p>
               </CardContent>
             </Card>
           </div>
-          
+
           {/* Interactive Example - Full Width */}
           <Card className="mb-6">
             <CardHeader>
@@ -920,18 +990,18 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Telephone input fields use <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="tel"</code> 
-                  to optimize mobile input by displaying a numeric keypad. Unlike number inputs, tel inputs accept 
-                  various formats including dashes, parentheses, and spaces, making them ideal for international phone 
-                  numbers. The <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="tel"</code> 
-                  attribute enables browsers and password managers to recognize and autofill phone numbers. Placeholders 
-                  can provide format hints, but they should never replace labels as placeholders disappear when users 
+                  Telephone input fields use <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="tel"</code>
+                  to optimize mobile input by displaying a numeric keypad. Unlike number inputs, tel inputs accept
+                  various formats including dashes, parentheses, and spaces, making them ideal for international phone
+                  numbers. The <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="tel"</code>
+                  attribute enables browsers and password managers to recognize and autofill phone numbers. Placeholders
+                  can provide format hints, but they should never replace labels as placeholders disappear when users
                   start typing and may not be announced by screen readers.
                 </p>
               </CardContent>
             </Card>
           </div>
-          
+
           {/* Interactive Example - Full Width */}
           <Card className="mb-6">
             <CardHeader>
@@ -1092,12 +1162,12 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Dates are tricky! Is it MM/DD/YYYY or DD/MM/YYYY? Are we talking about the 4th of July or July 4th? 
-                  This is where <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="date"</code> becomes 
-                  your best friend. It provides a native date picker that respects the user's locale and system settings, 
-                  eliminating the "which format?" confusion entirely. No more users entering "13/25/2024" and wondering why 
-                  it's invalid. The browser handles the formatting, validation, and even provides a nice calendar UI. 
-                  It's like having a personal assistant who knows exactly how dates work in your user's part of the world. 
+                  Dates are tricky! Is it MM/DD/YYYY or DD/MM/YYYY? Are we talking about the 4th of July or July 4th?
+                  This is where <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="date"</code> becomes
+                  your best friend. It provides a native date picker that respects the user's locale and system settings,
+                  eliminating the "which format?" confusion entirely. No more users entering "13/25/2024" and wondering why
+                  it's invalid. The browser handles the formatting, validation, and even provides a nice calendar UI.
+                  It's like having a personal assistant who knows exactly how dates work in your user's part of the world.
                   Accessibility win? Absolutely. User experience win? You betcha!
                 </p>
               </CardContent>
@@ -1199,14 +1269,14 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Textareas are where users pour their hearts out (or at least their feedback). They're the big, 
-                  spacious fields for longer content. But here's the thing: just because it's bigger doesn't mean 
-                  it needs less attention! Character counters are like friendly reminders - "Hey, you've got 50 more 
-                  characters before you hit the limit!" They help users stay within bounds without the frustration of 
-                  hitting submit and discovering they're over. Use <code className="bg-background px-1.5 py-0.5 rounded text-sm">aria-live="polite"</code> 
-                  on the counter so screen readers announce updates without being disruptive. And that 
-                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">rows</code> attribute? Set it to a 
-                  reasonable default (4-5 rows is usually perfect), but let it grow if needed. Nobody likes scrolling 
+                  Textareas are where users pour their hearts out (or at least their feedback). They're the big,
+                  spacious fields for longer content. But here's the thing: just because it's bigger doesn't mean
+                  it needs less attention! Character counters are like friendly reminders - "Hey, you've got 50 more
+                  characters before you hit the limit!" They help users stay within bounds without the frustration of
+                  hitting submit and discovering they're over. Use <code className="bg-background px-1.5 py-0.5 rounded text-sm">aria-live="polite"</code>
+                  on the counter so screen readers announce updates without being disruptive. And that
+                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">rows</code> attribute? Set it to a
+                  reasonable default (4-5 rows is usually perfect), but let it grow if needed. Nobody likes scrolling
                   through a tiny box to write their novel-length complaint about shipping delays.
                 </p>
               </CardContent>
@@ -1323,13 +1393,13 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Dropdowns are the "choose your adventure" of forms. Country? Dropdown. State? Dropdown. Favorite 
-                  pizza topping? You guessed it - dropdown! But here's where many forms go wrong: that first option 
-                  that says "Select a country" or "Choose one..." needs to be an empty value, not just placeholder 
-                  text. Why? Because when users skip it, you know they haven't made a choice yet. And always, 
-                  always label your selects properly. A screen reader user navigating by form controls needs to know 
-                  what they're selecting. Pro tip: if you have more than about 10 options, consider adding a search 
-                  or grouping them. Nobody wants to scroll through 195 countries to find "Zambia" (though it's a 
+                  Dropdowns are the "choose your adventure" of forms. Country? Dropdown. State? Dropdown. Favorite
+                  pizza topping? You guessed it - dropdown! But here's where many forms go wrong: that first option
+                  that says "Select a country" or "Choose one..." needs to be an empty value, not just placeholder
+                  text. Why? Because when users skip it, you know they haven't made a choice yet. And always,
+                  always label your selects properly. A screen reader user navigating by form controls needs to know
+                  what they're selecting. Pro tip: if you have more than about 10 options, consider adding a search
+                  or grouping them. Nobody wants to scroll through 195 countries to find "Zambia" (though it's a
                   lovely country, I'm sure). Keep it organized, keep it labeled, and your users will keep coming back!
                 </p>
               </CardContent>
@@ -1446,14 +1516,14 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Checkboxes are the "yes, I agree" buttons of the web. Terms and conditions? Checkbox. Newsletter 
-                  subscription? Checkbox. "Remember me"? You know it - checkbox! But here's the critical part: the 
-                  label must be associated with the checkbox using the <code className="bg-background px-1.5 py-0.5 rounded text-sm">for</code> 
-                  attribute (or wrap the input in the label). This isn't just for screen readers - it also makes the 
-                  entire label clickable, which is a huge usability win. Ever tried to click a tiny checkbox on mobile? 
-                  Yeah, not fun. But when the whole label is clickable? That's a much bigger target, and your users 
-                  (and their thumbs) will thank you. And please, for the love of all that is good, don't make the 
-                  checkbox required without clearly indicating it. A little asterisk and 
+                  Checkboxes are the "yes, I agree" buttons of the web. Terms and conditions? Checkbox. Newsletter
+                  subscription? Checkbox. "Remember me"? You know it - checkbox! But here's the critical part: the
+                  label must be associated with the checkbox using the <code className="bg-background px-1.5 py-0.5 rounded text-sm">for</code>
+                  attribute (or wrap the input in the label). This isn't just for screen readers - it also makes the
+                  entire label clickable, which is a huge usability win. Ever tried to click a tiny checkbox on mobile?
+                  Yeah, not fun. But when the whole label is clickable? That's a much bigger target, and your users
+                  (and their thumbs) will thank you. And please, for the love of all that is good, don't make the
+                  checkbox required without clearly indicating it. A little asterisk and
                   <code className="bg-background px-1.5 py-0.5 rounded text-sm">aria-required="true"</code> go a long way!
                 </p>
               </CardContent>
@@ -1559,14 +1629,14 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Radio buttons are like a multiple-choice test where you can only pick one answer. They're perfect for 
-                  "choose one" scenarios, but they need to be grouped properly. Enter the <code className="bg-background px-1.5 py-0.5 rounded text-sm">fieldset</code> 
-                  and <code className="bg-background px-1.5 py-0.5 rounded text-sm">legend</code> - the dynamic duo 
-                  of accessible radio groups! The fieldset groups related options together, and the legend describes 
-                  what the group is about. Screen readers announce the legend when users enter the group, giving crucial 
-                  context. Think of it like a section header in a document - it tells you what you're about to read. 
-                  And here's a fun fact: all radio buttons in a group must share the same <code className="bg-background px-1.5 py-0.5 rounded text-sm">name</code> 
-                  attribute. It's how the browser knows "these are related, only one can be selected." It's like a 
+                  Radio buttons are like a multiple-choice test where you can only pick one answer. They're perfect for
+                  "choose one" scenarios, but they need to be grouped properly. Enter the <code className="bg-background px-1.5 py-0.5 rounded text-sm">fieldset</code>
+                  and <code className="bg-background px-1.5 py-0.5 rounded text-sm">legend</code> - the dynamic duo
+                  of accessible radio groups! The fieldset groups related options together, and the legend describes
+                  what the group is about. Screen readers announce the legend when users enter the group, giving crucial
+                  context. Think of it like a section header in a document - it tells you what you're about to read.
+                  And here's a fun fact: all radio buttons in a group must share the same <code className="bg-background px-1.5 py-0.5 rounded text-sm">name</code>
+                  attribute. It's how the browser knows "these are related, only one can be selected." It's like a
                   family dinner where only one person can talk at a time - organized chaos, but it works!
                 </p>
               </CardContent>
@@ -1696,14 +1766,14 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  File uploads are where things can get messy (literally and figuratively). Users might try to upload 
-                  a 500MB video when you only accept PDFs under 5MB. The <code className="bg-background px-1.5 py-0.5 rounded text-sm">accept</code> 
-                  attribute is your first line of defense - it filters the file picker to show only relevant file types. 
-                  But here's the thing: it's a hint, not a security measure. Always validate on the server too! 
-                  And those file size limits? Tell users upfront! There's nothing more frustrating than waiting for 
-                  a file to upload only to get "file too large" at the end. Be clear about what you accept, how big 
-                  it can be, and what happens next. A helpful hint like "Accepted formats: PDF, DOC, DOCX. Maximum 
-                  size: 5MB" sets expectations and reduces frustration. It's like putting a "maximum occupancy" sign 
+                  File uploads are where things can get messy (literally and figuratively). Users might try to upload
+                  a 500MB video when you only accept PDFs under 5MB. The <code className="bg-background px-1.5 py-0.5 rounded text-sm">accept</code>
+                  attribute is your first line of defense - it filters the file picker to show only relevant file types.
+                  But here's the thing: it's a hint, not a security measure. Always validate on the server too!
+                  And those file size limits? Tell users upfront! There's nothing more frustrating than waiting for
+                  a file to upload only to get "file too large" at the end. Be clear about what you accept, how big
+                  it can be, and what happens next. A helpful hint like "Accepted formats: PDF, DOC, DOCX. Maximum
+                  size: 5MB" sets expectations and reduces frustration. It's like putting a "maximum occupancy" sign
                   on an elevator - everyone knows the rules before they get in!
                 </p>
               </CardContent>
@@ -1808,14 +1878,14 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  URLs are like addresses for the internet - they need to be formatted correctly or you'll end up in 
-                  the digital equivalent of a wrong neighborhood. Using <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="url"</code> 
-                  helps browsers validate the format and provides helpful hints. But here's where many developers 
-                  stumble: validation. "example.com" looks like a URL, but it's missing the protocol (http:// or 
-                  https://). Should you auto-add it? Should you require it? That's up to your use case, but whatever 
-                  you choose, tell users! A helpful placeholder like "https://example.com" shows the expected format 
-                  without being a label. And remember, <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="url"</code> 
-                  helps browsers and password managers recognize this field, making form filling smoother. It's all 
+                  URLs are like addresses for the internet - they need to be formatted correctly or you'll end up in
+                  the digital equivalent of a wrong neighborhood. Using <code className="bg-background px-1.5 py-0.5 rounded text-sm">type="url"</code>
+                  helps browsers validate the format and provides helpful hints. But here's where many developers
+                  stumble: validation. "example.com" looks like a URL, but it's missing the protocol (http:// or
+                  https://). Should you auto-add it? Should you require it? That's up to your use case, but whatever
+                  you choose, tell users! A helpful placeholder like "https://example.com" shows the expected format
+                  without being a label. And remember, <code className="bg-background px-1.5 py-0.5 rounded text-sm">autocomplete="url"</code>
+                  helps browsers and password managers recognize this field, making form filling smoother. It's all
                   about reducing friction and helping users get where they need to go (pun intended)!
                 </p>
               </CardContent>
@@ -1916,14 +1986,14 @@ export default function AccessibleInputFieldsPage() {
             <Card className="bg-muted/30 border-primary/20">
               <CardContent className="pt-6">
                 <p className="text-base leading-relaxed text-left">
-                  Search inputs are the "where's Waldo?" helpers of your site. They help users find what they're 
-                  looking for without playing hide-and-seek with your navigation. The <code className="bg-background px-1.5 py-0.5 rounded text-sm">role="searchbox"</code> 
-                  attribute tells assistive technologies "hey, this is for searching!" It's like putting a sign on 
-                  a door that says "Search Here." And here's a neat trick: you can hide the label visually with 
-                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">sr-only</code> (screen reader only) 
-                  if the search icon and placeholder make it obvious what the field is for. But always keep the label 
-                  in the code for screen readers! They need that context. The placeholder can say "Search..." but 
-                  the label should say "Search" (or be more specific like "Search products"). It's the difference 
+                  Search inputs are the "where's Waldo?" helpers of your site. They help users find what they're
+                  looking for without playing hide-and-seek with your navigation. The <code className="bg-background px-1.5 py-0.5 rounded text-sm">role="searchbox"</code>
+                  attribute tells assistive technologies "hey, this is for searching!" It's like putting a sign on
+                  a door that says "Search Here." And here's a neat trick: you can hide the label visually with
+                  <code className="bg-background px-1.5 py-0.5 rounded text-sm">sr-only</code> (screen reader only)
+                  if the search icon and placeholder make it obvious what the field is for. But always keep the label
+                  in the code for screen readers! They need that context. The placeholder can say "Search..." but
+                  the label should say "Search" (or be more specific like "Search products"). It's the difference
                   between a helpful hint and essential information. Both are important, but they serve different purposes!
                 </p>
               </CardContent>
