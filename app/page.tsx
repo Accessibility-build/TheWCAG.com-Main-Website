@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { HeroSearch } from "@/components/hero-search"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
+import { ChecklistCTA } from "@/components/checklist-cta"
 import { StructuredData } from "@/components/structured-data"
 import { getLatestLawsuits } from "@/lib/lawsuits-data"
 import { ogImages } from "@/lib/og-image"
@@ -1320,47 +1321,8 @@ export default function HomePage() {
           </section>
 
           {/* Primary CTA Section */}
-          <section className="py-20 md:py-32 bg-primary relative overflow-hidden">
-            {/* Background decorations */}
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-              <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-              {/* Large decorative text */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-[20rem] md:text-[30rem] font-black text-white/8 select-none leading-none">
-                  A11Y
-                </span>
-              </div>
-            </div>
+          <ChecklistCTA />
 
-            <div className="container px-4 sm:px-6 lg:px-8 relative">
-              <ScrollAnimation>
-                <div className="max-w-4xl mx-auto text-center">
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground">
-                    Ready to Build Accessible Experiences?
-                  </h2>
-                  <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Start learning WCAG 2.2 with our beginner-friendly guides and practical examples
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link
-                      href="/learn"
-                      className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-foreground text-primary rounded-2xl font-semibold hover:bg-primary-foreground/90 transition-all hover:shadow-lg hover:-translate-y-0.5 text-lg"
-                    >
-                      Start Learning
-                      <ArrowRight className="h-5 w-5" />
-                    </Link>
-                    <Link
-                      href="/checklist"
-                      className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-primary-foreground border-2 border-primary-foreground/30 rounded-2xl font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground/50 transition-all text-lg"
-                    >
-                      View Checklist
-                    </Link>
-                  </div>
-                </div>
-              </ScrollAnimation>
-            </div>
-          </section>
         </main>
         <Footer />
       </div>

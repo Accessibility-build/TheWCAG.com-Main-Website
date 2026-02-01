@@ -79,23 +79,23 @@ export function Header() {
   const [learnOpen, setLearnOpen] = useState(false)
   const [complianceOpen, setComplianceOpen] = useState(false)
   const [resourcesOpen, setResourcesOpen] = useState(false)
-  
+
   const [focusedLearnIndex, setFocusedLearnIndex] = useState(-1)
   const [focusedComplianceIndex, setFocusedComplianceIndex] = useState(-1)
   const [focusedResourceIndex, setFocusedResourceIndex] = useState(-1)
-  
+
   const learnRef = useRef<HTMLDivElement>(null)
   const complianceRef = useRef<HTMLDivElement>(null)
   const resourcesRef = useRef<HTMLDivElement>(null)
-  
+
   const learnButtonRef = useRef<HTMLButtonElement>(null)
   const complianceButtonRef = useRef<HTMLButtonElement>(null)
   const resourcesButtonRef = useRef<HTMLButtonElement>(null)
-  
+
   const learnMenuRef = useRef<HTMLDivElement>(null)
   const complianceMenuRef = useRef<HTMLDivElement>(null)
   const resourcesMenuRef = useRef<HTMLDivElement>(null)
-  
+
   const learnLinksRef = useRef<(HTMLAnchorElement | null)[]>([])
   const complianceLinksRef = useRef<(HTMLAnchorElement | null)[]>([])
   const resourceLinksRef = useRef<(HTMLAnchorElement | null)[]>([])
@@ -129,7 +129,7 @@ export function Header() {
       // Use setTimeout to allow focus to settle on the new element
       setTimeout(() => {
         const activeElement = document.activeElement
-        
+
         // Check Learn menu
         if (learnOpen && learnRef.current) {
           const isWithinLearn = learnRef.current.contains(activeElement)
@@ -138,7 +138,7 @@ export function Header() {
             setFocusedLearnIndex(-1)
           }
         }
-        
+
         // Check Compliance menu
         if (complianceOpen && complianceRef.current) {
           const isWithinCompliance = complianceRef.current.contains(activeElement)
@@ -147,7 +147,7 @@ export function Header() {
             setFocusedComplianceIndex(-1)
           }
         }
-        
+
         // Check Resources menu
         if (resourcesOpen && resourcesRef.current) {
           const isWithinResources = resourcesRef.current.contains(activeElement)
@@ -261,7 +261,7 @@ export function Header() {
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1 bg-secondary/5 p-1 rounded-full border border-border/40 backdrop-blur-sm">
+        <nav className="hidden xl:flex items-center gap-1 bg-secondary/5 p-1 rounded-full border border-border/40 backdrop-blur-sm">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -271,7 +271,7 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          
+
           {/* Learn Dropdown */}
           <div className="relative" ref={learnRef}>
             <button
@@ -473,7 +473,7 @@ export function Header() {
           />
 
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild className="lg:hidden">
+            <SheetTrigger asChild className="xl:hidden">
               <Button
                 variant="ghost"
                 size="icon"
