@@ -361,6 +361,85 @@ The agreement included provisions for handling bulk ATM acquisitions and establi
 
   // DIGITAL & WEB ACCESSIBILITY - 2024-2025
   {
+    slug: "wilson-v-buck-knives-2025",
+    title: "Wilson v. Buck Knives - E-commerce Accessibility Compliance",
+    defendant: "Buck Knives, Inc.",
+    plaintiff: "Howard Wilson",
+    dateFiled: "2025-11-23",
+    status: "ongoing",
+    summary:
+      "Recent class action alleging the knife retailer's website barriers prevented a blind user from purchasing specific products, highlighting broken links and missing alt text.",
+    details: `Howard Wilson, a visually impaired individual, filed a lawsuit against Buck Knives, Inc. alleging that its website (www.buckknives.com) failed to be accessible to blind users. The plaintiff specifically cited his inability to purchase an "838 Deploy Auto Knife" due to accessibility barriers.
+
+Key allegations include:
+- Missing alternative text for images (alt-text)
+- Broken links preventing navigation
+- Incompatibility with screen-reading software
+- Denial of equal access to goods and services
+
+The lawsuit seeks a permanent injunction requiring the company to comply with ADA standards and a declaration that the website discriminates against blind individuals. This case illustrates the continued high volume of retail e-commerce lawsuits targeting specific transaction failures.`,
+    issues: [
+      "Missing alt text",
+      "Broken links",
+      "Inability to purchase products",
+      "Screen reader incompatibility",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "United States (Federal Court)",
+    category: "digital",
+    keyTakeaways: [
+      "Retail e-commerce sites remain primary targets for accessibility suits",
+      "Specific transaction failures (unable to buy X) are powerful drivers for standing",
+      "Basic technical issues like broken links can lead to discrimination claims",
+      "Plaintiffs continue to seek injunctive relief to force compliance",
+    ],
+    impact:
+      "This case reinforces the liability risks for online retailers who fail to maintain basic accessibility standards, particularly for core purchasing pathways.",
+  },
+
+  {
+    slug: "colak-v-sweetgreen-2024",
+    title: "Colak v. Sweetgreen - Repeat Offender Risk",
+    defendant: "Sweetgreen, Inc.",
+    plaintiff: "Ali Colak (on behalf of class)",
+    dateFiled: "2024-01-16",
+    status: "ongoing",
+    summary:
+      "Class action against the fast-casual chain for website accessibility barriers, notable because Sweetgreen had previously settled a similar lawsuit in 2016.",
+    details: `In January 2024, Sweetgreen faced a new class action lawsuit filed by Ali Colak in the Southern District of New York. The complaint alleges that Sweetgreen's website contains numerous access barriers for blind users, violating the ADA and New York City Human Rights Law.
+
+Specific barriers cited:
+- Missing alternative text for images
+- Unannounced pop-ups that interfere with screen readers
+- Incorrectly formatted lists hindering navigation
+- General screen reader incompatibility
+
+This lawsuit is particularly significant because Sweetgreen had previously reached a settlement regarding website accessibility in 2016. The recurrence of litigation highlights a critical lesson: accessibility is an ongoing commitment, not a one-time fix. Companies that lapse in their maintenance can and do face repeat lawsuits.`,
+    issues: [
+      "Unannounced pop-ups",
+      "Missing alt text",
+      "Incorrect list formatting",
+      "Screen reader interference",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "Southern District of New York (SDNY)",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "Court Listener - Colak v. Sweetgreen",
+        url: "https://www.courtlistener.com/docket/68172054/colak-v-sweetgreen-inc/",
+      }
+    ],
+    keyTakeaways: [
+      "Previous settlements do not immunize companies from future lawsuits if accessibility lapses",
+      "Pop-ups and overlays can be major barriers if not properly announced",
+      "Digital accessibility requires continuous monitoring and maintenance",
+      "New York remains a highly active jurisdiction for digital accessibility litigation",
+    ],
+    impact:
+      "The Sweetgreen case serves as a warning that 'fixing' a website once is insufficient. Without ongoing governance and maintenance, accessibility degrades, leaving companies vulnerable to repeat litigation.",
+  },
+  {
     slug: "fashion-nova-class-action-2025",
     title: "Fashion Nova Class Action Settlement",
     defendant: "Fashion Nova LLC",
@@ -4168,7 +4247,7 @@ export function getLawsuitsByCategory(category: string): Lawsuit[] {
 export function getRecentLawsuitsByYears(years: number = 3): Lawsuit[] {
   const currentYear = new Date().getFullYear()
   const startYear = currentYear - (years - 1)
-  
+
   return lawsuits.filter((lawsuit) => {
     const filedYear = new Date(lawsuit.dateFiled).getFullYear()
     return filedYear >= startYear && filedYear <= currentYear
@@ -4183,19 +4262,19 @@ const ARCHIVE_TO_DETAILED_MAP: Record<string, string> = {
   // 2000 cases
   "2000|Brown, et al|Bank of America": "brown-v-bank-of-america-2000",
   "2000|NFB, et al.|HDVest, Intuit, H & R Block, and Gilman & Ciocia": "nfb-v-hdvest-intuit-hrblock-2000",
-  
+
   // 2001 cases
   "2001|Bay State Council of the Blind, et al.|Fleet Bank": "bay-state-council-v-fleet-bank-2001",
-  
+
   // 2002 cases
   "2002|Bay State Council of the Blind, et al.|Sovereign Bank": "bay-state-council-v-sovereign-bank-2002",
   "2002|Martinez, et al.|Washington Mutual": "martinez-v-washington-mutual-2002",
-  
+
   // 2003 cases
   "2003|Kelly Pierce, Anna Byrne|Bank One": "pierce-byrne-v-bank-one-2003",
   "2003|Carmelle, et al|First Union": "carmelle-v-first-union-2003",
   "2003|US Dept. Of Education|CSU Fullerton": "us-doe-v-csu-fullerton-2003",
-  
+
   // 2004 DOJ cases
   "2004|US DOJ|Butler County, MO": "doj-v-butler-county-mo-2004",
   "2004|US DOJ|Carpinteria": "doj-v-carpinteria-2004",
@@ -4225,7 +4304,7 @@ const ARCHIVE_TO_DETAILED_MAP: Record<string, string> = {
   "2004|US DOJ|Town of Vail, CO": "doj-v-town-of-vail-co-2004",
   "2004|US DOJ|Vail Recreation District": "doj-v-vail-recreation-district-2004",
   "2004|US DOJ|Washington County, UT": "doj-v-washington-county-ut-2004",
-  
+
   // 2005 DOJ cases
   "2005|US DOJ|Ada County, ID": "doj-v-ada-county-id-2005",
   "2005|US DOJ|Allen County, IN": "doj-v-allen-county-in-2005",
@@ -4235,7 +4314,7 @@ const ARCHIVE_TO_DETAILED_MAP: Record<string, string> = {
   "2005|US DOJ|Birmingham, AL": "doj-v-birmingham-al-2005",
   "2005|US DOJ|City of Durham, NC": "doj-v-city-of-durham-nc-2005",
   "2005|US DOJ|City of Fontana, CA": "doj-v-city-of-fontana-ca-2005",
-  
+
   // 2005 other cases
   "2005|ACB, et al.|LaSalle Bank": "acb-v-lasalle-bank-2005",
 }
@@ -4253,11 +4332,11 @@ export function findMatchingDetailedLawsuit(
   const plaintiff = archivePlaintiff || ""
   const mapKey = `${archiveYear}|${plaintiff}|${archiveDefendant}`
   const mappedSlug = ARCHIVE_TO_DETAILED_MAP[mapKey]
-  
+
   if (mappedSlug) {
     return lawsuits.find((l) => l.slug === mappedSlug)
   }
-  
+
   // For DOJ cases, try matching by defendant and year (plaintiff is always "US DOJ" or "U.S. Department of Justice")
   if (plaintiff.includes("DOJ") || plaintiff.includes("Department of Justice")) {
     // Try with "US DOJ" as plaintiff
@@ -4266,7 +4345,7 @@ export function findMatchingDetailedLawsuit(
     if (dojMappedSlug) {
       return lawsuits.find((l) => l.slug === dojMappedSlug)
     }
-    
+
     // Try without comma variations (e.g., "Town of Vail CO" vs "Town of Vail, CO")
     const normalizedDefendant = archiveDefendant.replace(/,/g, "")
     const normalizedMapKey = `${archiveYear}|US DOJ|${normalizedDefendant}`
@@ -4275,14 +4354,14 @@ export function findMatchingDetailedLawsuit(
       return lawsuits.find((l) => l.slug === normalizedMappedSlug)
     }
   }
-  
+
   // Fallback: try without plaintiff (for cases that might have slight variations)
   const mapKeyNoPlaintiff = `${archiveYear}||${archiveDefendant}`
   const mappedSlugNoPlaintiff = ARCHIVE_TO_DETAILED_MAP[mapKeyNoPlaintiff]
   if (mappedSlugNoPlaintiff) {
     return lawsuits.find((l) => l.slug === mappedSlugNoPlaintiff)
   }
-  
+
   // Fallback to normalized matching for any remaining cases
   const normalizeName = (name: string): string => {
     return name
