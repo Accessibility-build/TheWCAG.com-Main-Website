@@ -62,11 +62,11 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' data: https://fonts.gstatic.com",
               "img-src 'self' data: https: blob:",
-              "connect-src 'self' https://www.google-analytics.com https://*.vercel-insights.com https://formspree.io https://unpkg.com",
+              "connect-src 'self' https://www.google-analytics.com https://*.vercel-insights.com https://formspree.io https://formsubmit.co https://unpkg.com",
               "frame-src 'self' https://www.youtube.com",
               "object-src 'none'",
               "base-uri 'self'",
-              "form-action 'self' https://formspree.io",
+              "form-action 'self' https://formspree.io https://formsubmit.co",
               "frame-ancestors 'self'",
               "upgrade-insecure-requests"
             ].join('; ')

@@ -74,7 +74,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setStatus("sending")
-    
+
     try {
       // Ensure all required fields are present
       if (!formData.name || !formData.email || !formData.subject || !formData.message) {
@@ -83,41 +83,49 @@ export default function ContactPage() {
         return
       }
 
-      // Create FormData with proper field names for Formspree
-      const formDataToSend = new FormData()
-      formDataToSend.append("name", formData.name)
-      formDataToSend.append("email", formData.email)
-      formDataToSend.append("_replyto", formData.email) // Formspree uses this for auto-reply
-      formDataToSend.append("subject", formData.subject)
-      formDataToSend.append("message", formData.message)
-
-      const response = await fetch("https://formspree.io/f/xpwndkoe", {
+      // FormSubmit.co AJAX endpoint — sends submissions to contact@thewcag.com.
+      // Note: the first submission from a new deploy triggers an activation email
+      // to the recipient; confirm that email once to enable future deliveries.
+      const response = await fetch("https://formsubmit.co/ajax/contact@thewcag.com", {
         method: "POST",
-        body: formDataToSend,
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _replyto: formData.email,
+          _subject: formData.subject,
+          _template: "table",
+          _captcha: "false",
+          subject: formData.subject,
+          message: formData.message,
+        }),
       })
 
-      let data
+      // Clone response so we can fall back to reading text if JSON parsing fails
+      const responseClone = response.clone()
+      let data: { success?: string | boolean; message?: string } = {}
       try {
         data = await response.json()
       } catch (jsonError) {
-        // If response is not JSON, log the text response
-        const textResponse = await response.text()
-        logger.error("Formspree non-JSON response", jsonError, { textResponse })
-        data = {}
+        const textResponse = await responseClone.text().catch(() => "")
+        logger.error("FormSubmit non-JSON response", jsonError, { textResponse })
       }
 
-      if (response.ok) {
+      // FormSubmit returns { success: "true", message: "..." } on success
+      const isSuccess = response.ok && (data.success === "true" || data.success === true)
+
+      if (isSuccess) {
         setStatus("success")
         setFormData({ name: "", email: "", subject: "", message: "" })
         setTimeout(() => setStatus("idle"), 5000)
       } else {
-        logger.error("Formspree error response", undefined, {
+        logger.error("FormSubmit error response", undefined, {
           status: response.status,
           statusText: response.statusText,
-          data: data,
+          data,
         })
         setStatus("error")
         setTimeout(() => setStatus("idle"), 5000)
@@ -200,8 +208,8 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-medium text-lg mb-1">Get in Touch</p>
-                        <a href="mailto:work@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary rounded">
-                          work@thewcag.com
+                        <a href="mailto:contact@thewcag.com" className="text-primary-foreground/80 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary rounded">
+                          contact@thewcag.com
                         </a>
                         <p className="text-sm text-primary-foreground/70 mt-2">
                           For general inquiries, support, or legal matters
@@ -340,8 +348,8 @@ export default function ContactPage() {
                           </p>
                           <p className="text-xs text-destructive/70">
                             If the problem persists, please email us directly at{" "}
-                            <a href="mailto:work@thewcag.com" className="underline hover:text-destructive">
-                              work@thewcag.com
+                            <a href="mailto:contact@thewcag.com" className="underline hover:text-destructive">
+                              contact@thewcag.com
                             </a>
                           </p>
                         </div>

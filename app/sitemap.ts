@@ -374,6 +374,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/ada-title-ii-deadline-extension`,
+      lastModified: new Date('2026-04-19'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/quiz`,
       lastModified: recentUpdate,
       changeFrequency: 'weekly',

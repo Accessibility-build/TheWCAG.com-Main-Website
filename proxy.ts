@@ -23,10 +23,10 @@ export function proxy(request: NextRequest) {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https: blob:",
     "font-src 'self' data:",
-    "connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://www.googletagmanager.com https://formspree.io https://unpkg.com",
+    "connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://www.googletagmanager.com https://formspree.io https://formsubmit.co https://unpkg.com",
     "frame-ancestors 'self'",
     "base-uri 'self'",
-    "form-action 'self' https://formspree.io",
+    "form-action 'self' https://formspree.io https://formsubmit.co",
   ].join('; ')
 
   response.headers.set('Content-Security-Policy', csp)

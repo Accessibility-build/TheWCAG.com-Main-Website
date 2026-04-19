@@ -153,7 +153,7 @@ export default function RootLayout({
         {/* Resource hints for external services - Non-blocking */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://formspree.io" />
+        <link rel="dns-prefetch" href="https://formsubmit.co" />
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
         <script
           src="https://analytics.ahrefs.com/analytics.js"

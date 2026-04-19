@@ -266,7 +266,7 @@ export default function PrivacyPage() {
                       <strong>Website:</strong> <Link href="/contact" className="text-primary hover:underline">Contact Us Page</Link>
                     </p>
                     <p>
-                      <strong>Email:</strong> <a href="mailto:work@thewcag.com" className="text-primary hover:underline">work@thewcag.com</a>
+                      <strong>Email:</strong> <a href="mailto:contact@thewcag.com" className="text-primary hover:underline">contact@thewcag.com</a>
                     </p>
                   </div>
                 </CardContent>
