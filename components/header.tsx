@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Search, ArrowRight, ChevronDown } from "lucide-react"
+import { Search, ArrowRight, ChevronDown, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect, useRef } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -471,6 +471,18 @@ export function Header() {
               </Button>
             }
           />
+
+          {/* Contact Button */}
+          <Button
+            asChild
+            size="sm"
+            className="rounded-full h-9 px-3 sm:h-10 sm:px-4 gap-2 shadow-sm"
+          >
+            <Link href="/contact" aria-label="Contact us">
+              <Mail className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+              <span className="hidden sm:inline text-sm font-medium">Contact</span>
+            </Link>
+          </Button>
 
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild className="xl:hidden">
