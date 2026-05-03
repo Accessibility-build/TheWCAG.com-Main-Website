@@ -358,6 +358,51 @@ export default function HomePage() {
             </ScrollAnimation>
           </section>
 
+          {/* ADA Title II Deadline Extension CTA */}
+          <section className="container px-4 sm:px-6 lg:px-8 pb-2">
+            <ScrollAnimation>
+              <Link
+                href="/ada-title-ii-deadline-extension"
+                className="group block rounded-2xl md:rounded-3xl border border-amber-500/40 bg-amber-500/5 hover:bg-amber-500/10 hover:border-amber-500/60 transition-colors p-5 sm:p-6 md:p-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                aria-label="DOJ extends ADA Title II web accessibility deadline by one year — read the April 2026 update"
+              >
+                <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                  <div className="flex items-start gap-3 md:items-center md:shrink-0">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                      <AlertCircle className="w-6 h-6" aria-hidden="true" />
+                    </div>
+                    <div className="md:hidden">
+                      <Badge className="bg-amber-500/15 text-amber-700 dark:text-amber-300 hover:bg-amber-500/20 border-none text-[10px] tracking-wide uppercase">
+                        Updated · April 2026
+                      </Badge>
+                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="hidden md:flex items-center gap-2 mb-2">
+                      <Badge className="bg-amber-500/15 text-amber-700 dark:text-amber-300 hover:bg-amber-500/20 border-none text-[10px] tracking-wide uppercase">
+                        Updated · April 2026
+                      </Badge>
+                      <span className="text-xs text-muted-foreground">DOJ Interim Final Rule</span>
+                    </div>
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight mb-1.5">
+                      ADA Title II web accessibility deadline pushed back by one year
+                    </h2>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      On April 17, 2026, the DOJ filed an Interim Final Rule extending the Title II compliance deadlines for
+                      every covered state and local government. See exactly what changed, the new dates, and what advocates are saying.
+                    </p>
+                  </div>
+                  <div className="md:shrink-0">
+                    <span className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-amber-700 dark:text-amber-300 group-hover:gap-3 transition-all">
+                      Read the update
+                      <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </ScrollAnimation>
+          </section>
+
           {/* POUR Principles */}
           <section className="container relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8">
             <div className="relative z-10">

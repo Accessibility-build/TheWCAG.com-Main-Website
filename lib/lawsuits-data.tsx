@@ -359,6 +359,105 @@ The agreement included provisions for handling bulk ATM acquisitions and establi
       "This agreement demonstrated how comprehensive accessibility programs could be implemented across multi-state banking operations with clear phased rollouts. The commitment to install all new ATMs as Talking ATMs reinforced the principle that accessibility should be built into new technology from the start.",
   },
 
+  // DIGITAL & WEB ACCESSIBILITY - 2024-2026
+  {
+    slug: "doj-soi-alcazar-v-fashion-nova-2026",
+    title: "DOJ Statement of Interest in Alcazar v. Fashion Nova - Federal Government Opposes Class Settlement",
+    defendant: "Fashion Nova, Inc. (and proposed class settlement)",
+    plaintiff: "United States (Statement of Interest); Juan Alcazar (named class plaintiff)",
+    dateFiled: "2026-02-02",
+    status: "ongoing",
+    summary:
+      "On February 2, 2026, the U.S. Department of Justice filed a Statement of Interest urging the federal court to reject the proposed Alcazar v. Fashion Nova class settlement, arguing the deal pays attorneys $2.52M while delivering little real accessibility relief — and that even the claims-submission website was inaccessible to screen reader users.",
+    details: `On February 2, 2026, the U.S. Department of Justice filed a Statement of Interest in Alcazar v. Fashion Nova, Inc. (N.D. Cal.), opposing the proposed class action settlement that had been pending before the court. A final approval hearing was held on February 12, 2026.
+
+The underlying case alleged that Fashion Nova, a California-based apparel retailer, operated an online store that was not accessible to blind shoppers using screen-reading software, in violation of Title III of the ADA and California's Unruh Civil Rights Act. Under the proposed settlement, Fashion Nova agreed to pay approximately $2.43 million to California class members (capped at $4,000 per household) and roughly $2.52 million in attorneys' fees and costs to plaintiffs' counsel, plus a commitment to modify its website "as needed" to substantially conform to WCAG 2.1.
+
+The DOJ argued the settlement should be rejected because:
+- The injunctive relief was a "mere recitation" of an existing ADA obligation, with no concrete remediation milestones, no specified WCAG conformance level, and no enforcement or monitoring mechanism.
+- Attorneys' fees ($2.52M) exceeded the recovery available to the class itself ($2.43M).
+- The website set up by class counsel for class members to submit claims was itself inaccessible to screen reader users — DOJ retained an expert who identified significant barriers that could cause class members to abandon the claims process.
+
+This Statement of Interest is widely viewed as a signal that the DOJ intends to take a more active role policing private accessibility settlements, scrutinizing both the substance of injunctive relief and the accessibility of class-administration tooling.`,
+    issues: [
+      "Inadequate injunctive relief in proposed class settlement",
+      "Attorneys' fees disproportionate to class recovery",
+      "Settlement administration website not accessible to screen readers",
+      "Lack of enforcement and monitoring mechanisms",
+      "No defined WCAG conformance level or remediation timeline",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "United States District Court, Northern District of California",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "DOJ Press Release - Statement of Interest in Alcazar v. Fashion Nova",
+        url: "https://www.justice.gov/opa/pr/department-justice-opposes-unfair-class-action-settlement-involving-accessibility-website",
+      },
+      {
+        title: "DOJ Civil Rights Division - Case Page",
+        url: "https://www.justice.gov/crt/case/alcazar-v-fashion-nova-inc",
+      },
+      {
+        title: "Statement of Interest - Filing PDF",
+        url: "https://www.justice.gov/crt/media/1426326/dl",
+      },
+    ],
+    keyTakeaways: [
+      "DOJ is willing to intervene in private ADA class settlements it considers unfair",
+      "Injunctive relief in accessibility settlements must be concrete, time-bound, and enforceable",
+      "Class-administration websites and claim portals must themselves be accessible",
+      "Courts are expected to scrutinize attorneys' fees that outpace class recovery",
+      "Generic 'WCAG 2.1' language without a specified level and milestones may not satisfy DOJ",
+    ],
+    impact:
+      "The Statement of Interest signals heightened federal scrutiny of digital accessibility class settlements and will likely reshape how plaintiffs' counsel structure injunctive relief, claims processes, and fee requests. Defendants negotiating accessibility settlements should expect demands for specific WCAG conformance levels, third-party audits, and accessible claim-submission infrastructure.",
+  },
+  {
+    slug: "erkan-v-hidalgo-2025",
+    title: "Erkan v. Hidalgo - Standing Defenses and Accessibility Widget Recognition",
+    defendant: "Dr. David Hidalgo (medical practice website)",
+    plaintiff: "Nihal Erkan",
+    dateFiled: "2023-12-29",
+    dateResolved: "2025-01-23",
+    status: "dismissed",
+    summary:
+      "EDNY Judge Frederic Block dismissed a serial-filer ADA website accessibility suit, holding the plaintiff lacked standing because her allegations of intent to return were vague and the defendant had remediated the site post-filing — including by deploying an accessibility widget.",
+    details: `In Erkan v. Hidalgo, No. 23-CV-9553 (E.D.N.Y. 2025), plaintiff Nihal Erkan, a legally blind New York resident, sued Manhattan plastic surgeon Dr. David Hidalgo alleging the practice's website contained access barriers — ambiguous link text, inaccurate alt text, and inaccessible drop-down menus — that prevented her from independently using it with screen-reading software.
+
+On January 23, 2025, Judge Frederic Block of the U.S. District Court for the Eastern District of New York granted the defendant's motion to dismiss, finding:
+- Erkan's allegations regarding her intent to return to the website were too generalized and conclusory to establish a "real and immediate" threat of future injury under Article III standing doctrine.
+- Mere geographic proximity to the practice did not constitute a concrete injury sufficient to confer standing.
+- The defendant had voluntarily remediated the website after the lawsuit was filed — implementing improved alt text, clearer navigation labels, and an accessibility widget — which mooted the plaintiff's claim for injunctive relief.
+
+The decision is notable as one of a series of recent E.D.N.Y. rulings tightening standing requirements against high-volume "tester" plaintiffs who file numerous boilerplate ADA website complaints. It also expressly recognized an accessibility widget as part of the defendant's remedial response, although the court did not endorse widgets as a standalone substitute for WCAG conformance.`,
+    issues: [
+      "Ambiguous link text",
+      "Inaccurate alt text on graphics",
+      "Inaccessible drop-down menus",
+      "Screen reader incompatibility",
+    ],
+    wcagLevel: "AA",
+    jurisdiction: "U.S. District Court, Eastern District of New York",
+    caseNumber: "23-CV-9553",
+    category: "digital",
+    officialLinks: [
+      {
+        title: "Casemine - Erkan v. Hidalgo Opinion",
+        url: "https://www.casemine.com/judgement/us/6791c5d628730f3ea8e4aef8",
+      },
+    ],
+    keyTakeaways: [
+      "Boilerplate 'intent to return' allegations are increasingly vulnerable to standing challenges",
+      "Voluntary post-filing remediation can moot claims for injunctive relief in tester suits",
+      "E.D.N.Y. courts are tightening Article III scrutiny against repeat ADA website plaintiffs",
+      "Geographic proximity alone does not establish standing for online accessibility claims",
+      "Accessibility widgets may support a mootness argument, but are not a safe harbor for WCAG compliance",
+    ],
+    impact:
+      "Erkan reinforces a developing trend in the Second Circuit toward more rigorous standing analysis in ADA website cases, giving defendants meaningful tools to dispose of cookie-cutter complaints early. Companies that move quickly to remediate after receiving a complaint may be able to moot injunctive claims, although the safer long-term posture remains substantive WCAG 2.1/2.2 AA conformance rather than reliance on overlay widgets.",
+  },
+
   // DIGITAL & WEB ACCESSIBILITY - 2024-2025
   {
     slug: "wilson-v-buck-knives-2025",
