@@ -1,7 +1,9 @@
+import Fuse from 'fuse.js'
 import { successCriteria } from './wcag-data'
 import type { SuccessCriterion } from './wcag-data'
 import { getAllLawsuits } from './lawsuits-data'
 import type { Lawsuit } from './lawsuits-data'
+import { examples as examplesIndex } from './examples-data'
 
 export type SearchResultType = 'criterion' | 'page' | 'lawsuit' | 'example' | 'principle' | 'tool'
 
@@ -265,106 +267,14 @@ const staticPages: Array<{
   }
 ]
 
-// Examples data
-const examples: Array<{
-  title: string
-  url: string
-  description: string
-  category?: string
-  keywords?: string[]
-}> = [
-  {
-    title: 'Accessible Input Fields',
-    url: '/examples/accessible-input-fields',
-    description: 'Proper labels, error messages, and validation for accessible form inputs',
-    category: 'Forms',
-    keywords: ['input', 'form', 'label', 'validation']
-  },
-  {
-    title: 'Forms',
-    url: '/examples/forms',
-    description: 'Complete form patterns with validation, multi-step, and fieldset groups',
-    category: 'Forms',
-    keywords: ['form', 'validation', 'multi-step', 'fieldset']
-  },
-  {
-    title: 'Dropdowns & Selects',
-    url: '/examples/dropdowns-selects',
-    description: 'Native and custom select components with ARIA combobox pattern',
-    category: 'Forms',
-    keywords: ['dropdown', 'select', 'combobox', 'aria']
-  },
-  {
-    title: 'Tables',
-    url: '/examples/tables',
-    description: 'Semantic HTML and ARIA table patterns with sorting and responsive layouts',
-    category: 'Data Display',
-    keywords: ['table', 'data', 'sorting', 'responsive']
-  },
-  {
-    title: 'Navigation',
-    url: '/examples/navigation',
-    description: 'Accessible navigation patterns including menus, breadcrumbs, and skip links',
-    category: 'Navigation',
-    keywords: ['navigation', 'menu', 'breadcrumb', 'skip link']
-  },
-  {
-    title: 'Buttons & Links',
-    url: '/examples/buttons-links',
-    description: 'Accessible button and link patterns with proper semantics and keyboard support',
-    category: 'Interactive',
-    keywords: ['button', 'link', 'keyboard', 'semantic']
-  },
-  {
-    title: 'Modals & Dialogs',
-    url: '/examples/modals-dialogs',
-    description: 'Accessible modal and dialog patterns with focus management and ARIA',
-    category: 'Interactive',
-    keywords: ['modal', 'dialog', 'focus', 'aria']
-  },
-  {
-    title: 'Tooltips',
-    url: '/examples/tooltips',
-    description: 'Accessible tooltip patterns with proper ARIA attributes and keyboard support',
-    category: 'Interactive',
-    keywords: ['tooltip', 'aria', 'keyboard']
-  },
-  {
-    title: 'Accordions',
-    url: '/examples/accordions',
-    description: 'Accessible accordion patterns with proper ARIA and keyboard navigation',
-    category: 'Interactive',
-    keywords: ['accordion', 'collapse', 'aria', 'keyboard']
-  },
-  {
-    title: 'Cards',
-    url: '/examples/cards',
-    description: 'Accessible card components with proper heading hierarchy',
-    category: 'Data Display',
-    keywords: ['card', 'component', 'heading']
-  },
-  {
-    title: 'Lists',
-    url: '/examples/lists',
-    description: 'Semantic lists with proper structure and ARIA patterns',
-    category: 'Data Display',
-    keywords: ['list', 'semantic', 'aria']
-  },
-  {
-    title: 'Pagination',
-    url: '/examples/pagination',
-    description: 'Keyboard accessible page navigation with proper ARIA',
-    category: 'Navigation',
-    keywords: ['pagination', 'navigation', 'aria', 'keyboard']
-  },
-  {
-    title: 'Progress Indicators',
-    url: '/examples/progress-indicators',
-    description: 'Accessible progress indicators and loading states with ARIA live regions',
-    category: 'Feedback',
-    keywords: ['progress', 'loading', 'aria live', 'status']
-  }
-]
+// Examples data — sourced from lib/examples-data.ts and shaped for search.
+const examples = examplesIndex.map((e) => ({
+  title: e.title,
+  url: `/examples/${e.slug}`,
+  description: e.description,
+  category: e.category,
+  keywords: e.keywords,
+}))
 
 // Principles data
 const principles: Array<{
@@ -524,7 +434,9 @@ export function searchAll(query: string, limit: number = 20): SearchResult[] {
       results.push({
         type: 'criterion',
         title: `${criterion.number} ${criterion.title}`,
-        url: `/criteria/${criterion.id}`,
+        // Route is statically generated using criterion.number (dot format, e.g. "1.4.3").
+        // Using criterion.id (dash format) would 404 since dynamicParams = false.
+        url: `/criteria/${criterion.number}`,
         description: criterion.summary,
         score,
         matchedFields,
@@ -755,7 +667,168 @@ export function searchAll(query: string, limit: number = 20): SearchResult[] {
   }
 
   // Sort by score (highest first) and limit results
-  return results.sort((a, b) => b.score - a.score).slice(0, limit)
+  const sorted = results.sort((a, b) => b.score - a.score)
+
+  // If exact-match scoring returned little to nothing, fall back to fuzzy search
+  // so a misspelled term ("contras", "1.4 .3") still yields useful results.
+  if (sorted.length < 3 && query.trim().length >= 2) {
+    const fuzzy = fuzzySearch(query, limit - sorted.length)
+    const seen = new Set(sorted.map((r) => r.url))
+    for (const f of fuzzy) {
+      if (!seen.has(f.url)) {
+        sorted.push(f)
+        seen.add(f.url)
+      }
+    }
+  }
+
+  return sorted.slice(0, limit)
+}
+
+// --- Fuzzy fallback ---
+
+interface FuzzyDoc {
+  type: SearchResultType
+  title: string
+  url: string
+  description: string
+  // For criteria
+  number?: string
+  level?: string
+  principle?: string
+  // For lawsuits
+  defendant?: string
+  plaintiff?: string
+  category?: string
+  principleName?: string
+  toolName?: string
+  // back-references for hydration
+  criterion?: SuccessCriterion
+  lawsuit?: Lawsuit
+}
+
+let fuseInstance: Fuse<FuzzyDoc> | null = null
+
+function buildFuzzyIndex(): Fuse<FuzzyDoc> {
+  if (fuseInstance) return fuseInstance
+
+  const docs: FuzzyDoc[] = []
+
+  for (const c of successCriteria) {
+    docs.push({
+      type: 'criterion',
+      title: `${c.number} ${c.title}`,
+      url: `/criteria/${c.number}`,
+      description: c.summary,
+      number: c.number,
+      level: c.level,
+      principle: c.principle,
+      criterion: c,
+    })
+  }
+
+  for (const p of staticPages) {
+    docs.push({
+      type: 'page',
+      title: p.title,
+      url: p.url,
+      description: p.description,
+      category: p.category,
+    })
+  }
+
+  for (const l of getAllLawsuits()) {
+    docs.push({
+      type: 'lawsuit',
+      title: l.title,
+      url: `/lawsuits/${l.slug}`,
+      description: l.summary,
+      defendant: l.defendant,
+      plaintiff: l.plaintiff,
+      lawsuit: l,
+    })
+  }
+
+  for (const e of examples) {
+    docs.push({
+      type: 'example',
+      title: e.title,
+      url: e.url,
+      description: e.description,
+      category: e.category,
+    })
+  }
+
+  for (const p of principles) {
+    docs.push({
+      type: 'principle',
+      title: p.title,
+      url: p.url,
+      description: p.description,
+      principleName: p.principleName,
+    })
+  }
+
+  for (const t of tools) {
+    docs.push({
+      type: 'tool',
+      title: t.title,
+      url: t.url,
+      description: t.description,
+      toolName: t.toolName,
+    })
+  }
+
+  fuseInstance = new Fuse<FuzzyDoc>(docs, {
+    keys: [
+      { name: 'title', weight: 0.5 },
+      { name: 'description', weight: 0.2 },
+      { name: 'number', weight: 0.4 },
+      { name: 'defendant', weight: 0.25 },
+      { name: 'plaintiff', weight: 0.15 },
+      { name: 'category', weight: 0.1 },
+      { name: 'principleName', weight: 0.1 },
+      { name: 'toolName', weight: 0.1 },
+    ],
+    threshold: 0.4, // 0 = exact, 1 = match anything
+    ignoreLocation: true,
+    includeScore: true,
+    minMatchCharLength: 2,
+  })
+  return fuseInstance
+}
+
+function fuzzySearch(query: string, limit: number): SearchResult[] {
+  const fuse = buildFuzzyIndex()
+  const hits = fuse.search(query.trim(), { limit: Math.max(limit, 5) })
+  return hits.map((hit) => {
+    const d = hit.item
+    // Fuse score: 0 = perfect, 1 = no match. Map to our descending integer score.
+    const fuseScore = hit.score ?? 1
+    const baseScore = Math.round((1 - fuseScore) * 100)
+    const common = {
+      title: d.title,
+      url: d.url,
+      description: d.description,
+      score: baseScore,
+      matchedFields: ['fuzzy'],
+    }
+    switch (d.type) {
+      case 'criterion':
+        return { ...common, type: 'criterion', criterion: d.criterion! } as CriterionSearchResult
+      case 'lawsuit':
+        return { ...common, type: 'lawsuit', lawsuit: d.lawsuit! } as LawsuitSearchResult
+      case 'example':
+        return { ...common, type: 'example', category: d.category } as ExampleSearchResult
+      case 'principle':
+        return { ...common, type: 'principle', principleName: d.principleName ?? d.title } as PrincipleSearchResult
+      case 'tool':
+        return { ...common, type: 'tool', toolName: d.toolName ?? d.title } as ToolSearchResult
+      case 'page':
+      default:
+        return { ...common, type: 'page', category: d.category } as PageSearchResult
+    }
+  })
 }
 
 /**

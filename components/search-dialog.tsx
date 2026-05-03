@@ -13,10 +13,11 @@ interface SearchDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   trigger?: React.ReactNode
+  initialQuery?: string
 }
 
-export function SearchDialog({ open, onOpenChange, trigger }: SearchDialogProps) {
-  const [query, setQuery] = React.useState("")
+export function SearchDialog({ open, onOpenChange, trigger, initialQuery = "" }: SearchDialogProps) {
+  const [query, setQuery] = React.useState(initialQuery)
   const [searchResults, setSearchResults] = React.useState<SearchResult[]>([])
   const inputRef = React.useRef<HTMLInputElement>(null)
   const router = useRouter()
@@ -31,17 +32,15 @@ export function SearchDialog({ open, onOpenChange, trigger }: SearchDialogProps)
     }
   }, [query])
 
-  // Focus input when dialog opens
+  // Reset state when dialog opens or initialQuery changes
   React.useEffect(() => {
     if (open) {
-      setTimeout(() => {
-        inputRef.current?.focus()
-      }, 100)
+      setQuery(initialQuery)
     } else {
       setQuery("")
       setSearchResults([])
     }
-  }, [open])
+  }, [open, initialQuery])
 
   const handleClear = React.useCallback(() => {
     setQuery("")
@@ -75,7 +74,13 @@ export function SearchDialog({ open, onOpenChange, trigger }: SearchDialogProps)
       {triggerElement}
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-        <Dialog.Content className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-0 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-h-[85vh] flex flex-col">
+        <Dialog.Content
+          className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-0 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-h-[85vh] flex flex-col"
+          onOpenAutoFocus={(e) => {
+            e.preventDefault()
+            inputRef.current?.focus()
+          }}
+        >
           {/* Dialog Header with Title and Close Button */}
           <div className="flex items-start justify-between gap-4 px-4 sm:px-6 pt-4 sm:pt-6 pb-2 border-b border-border">
             <div className="flex-1 min-w-0">

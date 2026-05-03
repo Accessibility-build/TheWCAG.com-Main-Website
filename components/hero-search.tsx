@@ -9,13 +9,16 @@ import { SearchDialog } from "@/components/search-dialog"
 
 export function HeroSearch() {
   const [searchDialogOpen, setSearchDialogOpen] = React.useState(false)
+  const [initialQuery, setInitialQuery] = React.useState("")
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   const handleInputFocus = () => {
+    setInitialQuery("")
     setSearchDialogOpen(true)
   }
 
   const handleBadgeClick = (term: string) => {
+    setInitialQuery(term)
     setSearchDialogOpen(true)
   }
 
@@ -90,6 +93,7 @@ export function HeroSearch() {
       <SearchDialog
         open={searchDialogOpen}
         onOpenChange={setSearchDialogOpen}
+        initialQuery={initialQuery}
       />
     </div>
   )

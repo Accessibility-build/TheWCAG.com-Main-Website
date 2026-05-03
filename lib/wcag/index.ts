@@ -38,12 +38,16 @@ export function getNewCriteria() {
 }
 
 export function getCriteriaByLevel(level: "A" | "AA" | "AAA") {
-  if (level === "AAA") {
-    return successCriteria // All criteria
-  } else if (level === "AA") {
-    return successCriteria.filter((c) => c.level === "A" || c.level === "AA")
-  } else {
-    return successCriteria.filter((c) => c.level === "A")
-  }
+  return successCriteria.filter((c) => c.level === level)
+}
+
+/**
+ * Get all criteria required for the given conformance target.
+ * AAA conformance includes A + AA + AAA. AA conformance includes A + AA.
+ */
+export function getCriteriaForConformance(target: "A" | "AA" | "AAA") {
+  if (target === "AAA") return successCriteria
+  if (target === "AA") return successCriteria.filter((c) => c.level === "A" || c.level === "AA")
+  return successCriteria.filter((c) => c.level === "A")
 }
 

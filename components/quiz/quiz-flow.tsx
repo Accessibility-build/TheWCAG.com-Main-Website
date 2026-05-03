@@ -75,12 +75,14 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
   const [score, setScore] = useState(0)
   const [name, setName] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [showExplanation, setShowExplanation] = useState(false)
   const [timeLeft, setTimeLeft] = useState(15)
   const [timerActive, setTimerActive] = useState(false)
   const [showTimeExtension, setShowTimeExtension] = useState(false)
   const [announcement, setAnnouncement] = useState("")
   const liveRegionRef = useRef<HTMLDivElement>(null)
+  const timeExtensionRef = useRef<HTMLDivElement>(null)
 
   const startQuiz = useCallback(() => {
     const shuffled = [...allQuestions].sort(() => Math.random() - 0.5)
@@ -189,42 +191,51 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
     }
   }
 
-  const handleSubmitScore = async () => {
+  const submitScore = async (includeName: boolean): Promise<boolean> => {
     setIsSubmitting(true)
+    setSubmitError(null)
     try {
-      await fetch('/api/quiz/scores', {
+      const res = await fetch('/api/quiz/scores', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           score,
           total: questions.length,
-          name: name.trim() || undefined,
+          name: includeName ? name.trim() || undefined : undefined,
         }),
       })
+      const json = await res.json().catch(() => null)
+      if (!res.ok || !json?.success) {
+        throw new Error(json?.error || `Request failed with status ${res.status}`)
+      }
+      setIsSubmitting(false)
+      return true
     } catch (error) {
       console.error('Failed to submit score:', error)
+      setSubmitError("We couldn't save your score. Check your connection and try again.")
+      setAnnouncement("Failed to submit score. Please try again.")
+      setIsSubmitting(false)
+      return false
     }
-    setIsSubmitting(false)
+  }
+
+  const handleSubmitScore = async () => {
+    const ok = await submitScore(true)
+    if (!ok) return
     onComplete?.(score, questions.length, name.trim() || undefined)
     setState('results')
   }
 
   const handleSkipName = async () => {
-    setIsSubmitting(true)
-    try {
-      await fetch('/api/quiz/scores', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          score,
-          total: questions.length,
-        }),
-      })
-    } catch (error) {
-      console.error('Failed to submit score:', error)
-    }
-    setIsSubmitting(false)
+    const ok = await submitScore(false)
+    if (!ok) return
     onComplete?.(score, questions.length)
+    setState('results')
+  }
+
+  const handleViewResultsWithoutSaving = () => {
+    setSubmitError(null)
+    onComplete?.(score, questions.length, name.trim() || undefined)
     setState('results')
   }
 
@@ -332,32 +343,39 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
 
         {/* Time Extension Dialog */}
         {showTimeExtension && (
-          <Card className="border-2 border-amber-500 bg-amber-500/10 mb-6">
+          <Card
+            ref={timeExtensionRef}
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="time-extension-title"
+            aria-describedby="time-extension-description"
+            className="border-2 border-amber-500 bg-amber-500/10 mb-6"
+          >
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-amber-500/20">
-                  <Clock className="h-6 w-6 text-amber-600 dark:text-amber-400" />
+                  <Clock className="h-6 w-6 text-amber-600 dark:text-amber-400" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-lg mb-2">Time's Up!</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <h3 id="time-extension-title" className="font-bold text-lg mb-2">Time&apos;s Up!</h3>
+                  <p id="time-extension-description" className="text-muted-foreground mb-4">
                     Would you like 15 more seconds to answer this question, or skip to the next one?
                   </p>
                   <div className="flex flex-wrap gap-3">
-                    <Button 
+                    <Button
                       onClick={handleExtendTime}
                       className="gap-2"
                       autoFocus
                     >
-                      <Plus className="h-4 w-4" />
+                      <Plus className="h-4 w-4" aria-hidden="true" />
                       Add 15 Seconds
                     </Button>
-                    <Button 
+                    <Button
                       onClick={handleSkipQuestion}
                       variant="outline"
                     >
                       Skip Question
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                     </Button>
                   </div>
                 </div>
@@ -392,7 +410,7 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
                 )}
                 <span className="text-sm font-semibold text-primary">
                   <span className="sr-only">Current score: </span>
-                  Score: {currentScore}/{currentQuestion}
+                  Score: {currentScore}/{answers.length}
                 </span>
               </div>
             </div>
@@ -554,24 +572,44 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
                 />
               </div>
               
+              {submitError && (
+                <div
+                  role="alert"
+                  className="rounded-lg border border-red-500/40 bg-red-500/10 p-3 text-left text-sm text-red-700 dark:text-red-300"
+                >
+                  <p className="font-semibold mb-1">Submission failed</p>
+                  <p className="text-red-700/90 dark:text-red-300/90">{submitError}</p>
+                </div>
+              )}
+
               <div className="flex flex-col gap-3">
-                <Button 
+                <Button
                   onClick={handleSubmitScore}
                   disabled={isSubmitting}
                   size="lg"
                   className="w-full h-12"
                 >
-                  <Send className="mr-2 h-5 w-5" />
-                  {isSubmitting ? 'Submitting...' : 'Submit to Leaderboard'}
+                  <Send className="mr-2 h-5 w-5" aria-hidden="true" />
+                  {isSubmitting ? 'Submitting...' : submitError ? 'Retry Submission' : 'Submit to Leaderboard'}
                 </Button>
-                <Button 
+                <Button
                   onClick={handleSkipName}
                   variant="ghost"
                   disabled={isSubmitting}
                   className="w-full"
                 >
-                  Submit Anonymously
+                  {isSubmitting ? 'Submitting...' : 'Submit Anonymously'}
                 </Button>
+                {submitError && (
+                  <Button
+                    onClick={handleViewResultsWithoutSaving}
+                    variant="link"
+                    disabled={isSubmitting}
+                    className="w-full text-muted-foreground"
+                  >
+                    Skip saving and view results
+                  </Button>
+                )}
               </div>
             </div>
           </div>
@@ -601,7 +639,12 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
 
           <div className="max-h-[350px] overflow-y-auto space-y-2 pr-2 mb-6">
             {questions.map((q, idx) => {
-              const isQuestionCorrect = answers[idx] === q.correctAnswer
+              const userAnswerIdx = answers[idx]
+              const wasSkipped = userAnswerIdx === -1 || userAnswerIdx === undefined
+              const isQuestionCorrect = !wasSkipped && userAnswerIdx === q.correctAnswer
+              const userAnswerText = wasSkipped
+                ? 'Skipped (no answer)'
+                : q.options[userAnswerIdx as number] ?? 'No answer recorded'
               return (
                 <div
                   key={q.id}
@@ -612,15 +655,15 @@ export function QuizFlow({ onComplete, questionCount = 30 }: QuizFlowProps) {
                   }`}
                 >
                   <div className="flex items-start gap-3">
-                    <span className={`font-bold text-lg shrink-0 mt-0.5 ${isQuestionCorrect ? 'text-green-500' : 'text-red-500'}`}>
-                      {isQuestionCorrect ? '✓' : '✗'}
+                    <span className={`font-bold text-lg shrink-0 mt-0.5 ${isQuestionCorrect ? 'text-green-500' : 'text-red-500'}`} aria-hidden="true">
+                      {isQuestionCorrect ? '✓' : wasSkipped ? '–' : '✗'}
                     </span>
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-sm">{q.question}</p>
                       {!isQuestionCorrect && (
                         <div className="text-xs mt-2 space-y-1">
                           <p className="text-red-600 dark:text-red-400">
-                            <span className="font-semibold">Your answer:</span> {q.options[answers[idx]]}
+                            <span className="font-semibold">Your answer:</span> {userAnswerText}
                           </p>
                           <p className="text-green-600 dark:text-green-400">
                             <span className="font-semibold">Correct:</span> {q.options[q.correctAnswer]}

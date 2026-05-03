@@ -1,7 +1,21 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
+// Match /criteria/<digits>-<digits>-<digits>(-<digits>)? — the legacy dash format.
+// The actual route is statically generated for dot format (e.g. /criteria/1.4.3).
+const CRITERION_DASH_PATH = /^\/criteria\/(\d+(?:-\d+){1,3})\/?$/
+
 export function proxy(request: NextRequest) {
+  // Permanent redirect dash-format criterion URLs to the canonical dot format.
+  // Without this, /criteria/1-4-3 hard-404s because dynamicParams=false in the route.
+  const dashMatch = request.nextUrl.pathname.match(CRITERION_DASH_PATH)
+  if (dashMatch) {
+    const dotted = dashMatch[1].replace(/-/g, '.')
+    const url = request.nextUrl.clone()
+    url.pathname = `/criteria/${dotted}`
+    return NextResponse.redirect(url, 308)
+  }
+
   const response = NextResponse.next()
 
   // Security headers
