@@ -870,7 +870,7 @@ function calculateImpactBreakdown(violations: ProcessedViolation[]): Record<'cri
   const breakdown = { critical: 0, serious: 0, moderate: 0, minor: 0 }
   
   violations.forEach(v => {
-    if (v.impact && breakdown.hasOwnProperty(v.impact)) {
+    if (v.impact && Object.prototype.hasOwnProperty.call(breakdown, v.impact)) {
       breakdown[v.impact]++
     }
   })

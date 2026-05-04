@@ -98,17 +98,19 @@ export function TestResults({ results, showScreenshots = true }: TestResultsProp
         case 'priority':
           comparison = b.priorityScore - a.priorityScore
           break
-        case 'impact':
+        case 'impact': {
           const impactOrder = { critical: 4, serious: 3, moderate: 2, minor: 1 }
           comparison = impactOrder[b.impact] - impactOrder[a.impact]
           break
+        }
         case 'elements':
           comparison = b.affectedElements.length - a.affectedElements.length
           break
-        case 'complexity':
+        case 'complexity': {
           const complexityOrder = { complex: 3, moderate: 2, quick: 1 }
           comparison = complexityOrder[a.fixComplexity] - complexityOrder[b.fixComplexity]
           break
+        }
         case 'name':
           comparison = a.humanReadableName.localeCompare(b.humanReadableName)
           break

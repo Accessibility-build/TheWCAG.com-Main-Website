@@ -3,6 +3,8 @@ import { JSDOM, VirtualConsole } from "jsdom"
 import { readFile } from "fs/promises"
 import { join } from "path"
 import { logger } from "@/lib/logger"
+import { clientIdentifier, getRateLimiter, rateLimitHeaders } from "@/lib/rate-limit"
+import { validateScanUrl } from "@/lib/scan-validation"
 
 interface AxeRunResultLike {
   violations: AxeViolation[]
@@ -34,6 +36,14 @@ function loadAxeSource(): Promise<string> {
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
+// Vercel function timeout — axe-core + JSDOM against a moderate site can run
+// 5–15s. 60s requires Pro; the runtime caps to plan limits if smaller.
+export const maxDuration = 60
+
+// Per-IP throttle: 10 scans per minute and 60 per hour. Burst-friendly for
+// dashboards; brutal enough to deter scripted abuse.
+const SCAN_BURST = { name: "scan-burst", requests: 10, windowSeconds: 60 }
+const SCAN_HOURLY = { name: "scan-hourly", requests: 60, windowSeconds: 3600 }
 
 const FETCH_TIMEOUT_MS = 12_000
 const MAX_HTML_BYTES = 5 * 1024 * 1024 // 5 MB
@@ -69,24 +79,6 @@ function badRequest(error: string) {
   return NextResponse.json({ ok: false, error }, { status: 400 })
 }
 
-function isPrivateHost(hostname: string): boolean {
-  const lower = hostname.toLowerCase()
-  if (lower === "localhost" || lower === "127.0.0.1" || lower === "0.0.0.0" || lower === "::1") return true
-  if (lower.endsWith(".localhost") || lower.endsWith(".internal") || lower.endsWith(".local")) return true
-  // IPv4 private ranges
-  const m = lower.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/)
-  if (m) {
-    const a = +m[1]
-    const b = +m[2]
-    if (a === 10) return true
-    if (a === 127) return true
-    if (a === 169 && b === 254) return true
-    if (a === 172 && b >= 16 && b <= 31) return true
-    if (a === 192 && b === 168) return true
-  }
-  return false
-}
-
 export async function POST(request: NextRequest) {
   try {
     return await runScan(request)
@@ -102,27 +94,41 @@ export async function POST(request: NextRequest) {
 
 async function runScan(request: NextRequest) {
   const started = Date.now()
-  let url: string
+
+  // Rate limit before doing any expensive work.
+  const ip = clientIdentifier(request.headers)
+  const burst = await getRateLimiter(SCAN_BURST).limit(ip)
+  if (!burst.success) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: `Too many scans — please wait until ${new Date(burst.reset).toISOString()} before trying again.`,
+      },
+      { status: 429, headers: rateLimitHeaders(burst) }
+    )
+  }
+  const hourly = await getRateLimiter(SCAN_HOURLY).limit(ip)
+  if (!hourly.success) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: `Hourly scan quota reached. Try again after ${new Date(hourly.reset).toISOString()}.`,
+      },
+      { status: 429, headers: rateLimitHeaders(hourly) }
+    )
+  }
+
+  let rawUrl: string
   try {
     const body = await request.json()
-    url = typeof body?.url === "string" ? body.url.trim() : ""
+    rawUrl = typeof body?.url === "string" ? body.url : ""
   } catch {
     return badRequest("Request body must be JSON: { url: string }.")
   }
-  if (!url) return badRequest("Provide a URL to scan.")
 
-  let parsed: URL
-  try {
-    parsed = new URL(url)
-  } catch {
-    return badRequest("That doesn't look like a valid URL. Include http:// or https://.")
-  }
-  if (!/^https?:$/.test(parsed.protocol)) {
-    return badRequest("Only http and https URLs are supported.")
-  }
-  if (isPrivateHost(parsed.hostname)) {
-    return badRequest("Scanning of private, internal, or loopback hosts is not allowed.")
-  }
+  const validation = validateScanUrl(rawUrl)
+  if (!validation.ok) return badRequest(validation.message)
+  const parsed = validation.url
 
   const ctrl = new AbortController()
   const timeout = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)

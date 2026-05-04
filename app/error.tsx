@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -63,10 +64,10 @@ export default function Error({
                 Try Again
               </Button>
               <Button asChild variant="outline" size="lg" className="gap-2">
-                <a href="/">
+                <Link href="/">
                   <Home className="h-4 w-4" />
                   Go Home
-                </a>
+                </Link>
               </Button>
             </div>
 
@@ -75,10 +76,10 @@ export default function Error({
                 If this problem persists, please contact support or try again later.
               </p>
               <Button asChild variant="link" size="sm" className="gap-2">
-                <a href="/">
+                <Link href="/">
                   <ArrowLeft className="h-4 w-4" />
                   Back to Home
-                </a>
+                </Link>
               </Button>
             </div>
           </div>

@@ -537,7 +537,7 @@ export function generateReportFilename(url: string, format: string): string {
  * Escape markdown special characters
  */
 export function escapeMarkdown(text: string): string {
-  return text.replace(/[*_`~\[\]()#+-=|{}.!\\]/g, '\\$&')
+  return text.replace(/[*_`~[\]()#+\-=|{}.!\\]/g, '\\$&')
 }
 
 /**

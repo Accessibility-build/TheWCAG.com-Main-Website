@@ -3,6 +3,9 @@ import { successCriteria } from '@/lib/wcag-data'
 import { getAllLawsuits, getLawsuitBySlug } from '@/lib/lawsuits-data'
 import { TOOLS } from '@/lib/tools/constants'
 import { getPublishedBlogPosts, getBlogPostBySlug } from '@/lib/blog/storage'
+import { getWcagTags } from '@/lib/wcag/tags'
+import { categoryKeys, lawsuitYears, statusKeys } from '@/lib/lawsuits/hub-helpers'
+import { getStateLawSlugs } from '@/lib/state-accessibility-laws'
 
 // Manual blog posts data (matching app/blog/page.tsx)
 const manualBlogPosts = [
@@ -380,6 +383,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/hhs-section-504-deadline`,
+      lastModified: new Date('2026-05-04'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/european-accessibility-act`,
+      lastModified: new Date('2026-05-04'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/aria-cheatsheet`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/screen-reader-shortcuts`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/scan`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/tools/color-blindness-simulator`,
+      lastModified: recentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/quiz`,
       lastModified: recentUpdate,
       changeFrequency: 'weekly',
@@ -561,5 +600,53 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ]
 
-  return [...staticPages, ...principlePages, ...criteriaPages, ...lawsuitPages, ...blogPages, ...toolsPages]
+  // Lawsuit hub pages — auto-generated from data dimensions.
+  const lawsuitHubPages: MetadataRoute.Sitemap = [
+    ...lawsuitYears().map((year) => ({
+      url: `${baseUrl}/lawsuits/year/${year}`,
+      lastModified: recentUpdate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
+    ...categoryKeys().map((category) => ({
+      url: `${baseUrl}/lawsuits/category/${category}`,
+      lastModified: recentUpdate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
+    ...statusKeys().map((status) => ({
+      url: `${baseUrl}/lawsuits/status/${status}`,
+      lastModified: recentUpdate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    })),
+  ]
+
+  // WCAG criterion tag hubs.
+  const criterionTagPages: MetadataRoute.Sitemap = getWcagTags().map((tag) => ({
+    url: `${baseUrl}/criteria/tag/${tag.slug}`,
+    lastModified: recentUpdate,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
+  // Per-state accessibility-law pages.
+  const stateLawPages: MetadataRoute.Sitemap = getStateLawSlugs().map((slug) => ({
+    url: `${baseUrl}/compliance/state/${slug}`,
+    lastModified: recentUpdate,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
+  return [
+    ...staticPages,
+    ...principlePages,
+    ...criteriaPages,
+    ...lawsuitPages,
+    ...lawsuitHubPages,
+    ...criterionTagPages,
+    ...stateLawPages,
+    ...blogPages,
+    ...toolsPages,
+  ]
 }
