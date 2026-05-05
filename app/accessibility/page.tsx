@@ -60,7 +60,7 @@ export default function AccessibilityStatementPage() {
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Accessibility Statement</h1>
               </div>
               <p className="text-lg text-muted-foreground">
-                Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                Last updated: May 5, 2026
               </p>
               <div className="mt-4 flex items-center gap-2">
                 <Badge variant="outline" className="text-sm">
